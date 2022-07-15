@@ -63,4 +63,4 @@ Miniconda is a stripped version of Anaconda, containing a minimal *base* conda e
 
 In this set of tutorials we will use Miniconda to create a conda environment and install the latest version of JupyterLab from the ```conda-forge``` channel. Anaconda installation is very similar and can be used in place of Miniconda for these tutorials. The only difference is in the conda *base* environment which will be untouched when creating our own *conda* environment:
 
-[002_ubuntu_install](./002_ubuntu_install/)
+[Miniconda Install on Ubuntu](./002_ubuntu_install/)
