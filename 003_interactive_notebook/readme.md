@@ -28,7 +28,7 @@ A highlighted code cell may be switched to markdown using the ```Esc``` and ```m
 
 The shortcut key shift ```⇧``` and enter ```↵``` can be used to run a currently selected cell:
 
-![006_code_cell](./images/006_code_cell.PNG)
+[006_code_cell](./images/006_code_cell.PNG)
 
 If a code cell that has previously been run is reselected and run again. It will only display a single number, indicating the order at the last time the cell was run, in this case the number is now ```3```: 
 
