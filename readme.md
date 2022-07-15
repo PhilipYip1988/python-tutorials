@@ -90,6 +90,6 @@ Select Restart:
 
 ![019_kernel](./images/019_kernel.PNG)
 
-Now all the Cell outputs are blank and there is no number beside any of the cells, indicatingthat none of the cells are ran:
+Now all the Cell outputs are blank and there is no number beside any of the cells, indicating that none of the cells are ran:
 
 ![020_kernel](./images/020_kernel.PNG)
