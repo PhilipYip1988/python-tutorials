@@ -277,3 +277,6 @@ The prompt will return and you can close the Terminal:
 
 ![034_jupyterlab_close](./images/034_jupyterlab_close.PNG)
 
+Return to:
+
+[Home](../../../)
