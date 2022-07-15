@@ -7,11 +7,14 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 [Miniconda Installation](./001_install/)
 
-## Markdown
+## Markdown File Tutorial
 
 [Markdown Tutorial](./002_markdown/)
 
-## Python
+## Interactive Python Notebook Tutorial
+
+[Interactive Notebook Tutorial](./003_interactive_notebook/)
+
 
 [003_python](./003_python/)
 
