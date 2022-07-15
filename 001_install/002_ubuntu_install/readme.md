@@ -1,4 +1,4 @@
-# JupyterLab IDE Setup
+# JupyterLab IDE Setup on Ubuntu 22.04 LTS
 
 ## System Requirements
 
