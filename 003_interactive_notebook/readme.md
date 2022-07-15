@@ -93,3 +93,7 @@ Select Restart:
 Now all the Cell outputs are blank and there is no number beside any of the cells, indicatingthat none of the cells are ran:
 
 ![020_kernel](./images/020_kernel.PNG)
+
+An example notebook file can be opened in JupyterLab:
+
+![Example Notebook File](./001_example_notebook_file.ipynb)
