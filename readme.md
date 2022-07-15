@@ -2,9 +2,9 @@
 
 This set of tutorials will look at the Python Programming Language and some of the most commonly used libraries for Data Science using the JupyterLab IDE:
 
-[001_install](./001_install/)
+[Miniconda Installation](./001_install/)
 
-[002_markdown](./002_markdown/)
+[Markdown Tutorial](./002_markdown/)
 
 [003_python](./003_python/)
 
