@@ -279,4 +279,4 @@ The prompt will return and you can close the Terminal:
 
 Return to:
 
-[Home](../../../)
+[Home](../../../../)
