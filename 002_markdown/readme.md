@@ -4,7 +4,7 @@ A text file can only be used to store unformatted text. The markdown file is sim
 
 ![001_markdown_preview](./images/001_markdown_preview.PNG)
 
-And the Markdown Preview can be viewd in another pane:
+And the Markdown Preview can be viewed in another pane:
 
 ![002_markdown_preview](./images/002_markdown_preview.PNG)
 ---
