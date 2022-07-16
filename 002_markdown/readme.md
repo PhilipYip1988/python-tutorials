@@ -7,6 +7,11 @@ A text file can only be used to store unformatted text. The markdown file is sim
 And the Markdown Preview can be viewed in another pane:
 
 ![002_markdown_preview](./images/002_markdown_preview.PNG)
+
+To download the files, in this GitHub repository, so you can open down the markdown file and interactive notebooks in JupyterLab. Select Code and Download Zip. Then extract the downloaded ZIP file and copy it to your Documents folder. You can then open these up in JupyterLab.
+
+![001_download_zip](./images/001_download_zip.PNG)
+
 ---
 
 ## Formatted Text
