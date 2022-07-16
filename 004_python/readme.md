@@ -1,5 +1,5 @@
 # Python Tutorials
 
-These tutorials will use JupyterLab to look at the Python Programming Language:
+These tutorials will look at the concepts behing the Python Programming Language:
 
-[Python objects: functions, classes and instances](001_functions_classes_instances.ipynb)
+[Introduction to Python objects: functions, classes and instances](001_functions_classes_instances.ipynb)
