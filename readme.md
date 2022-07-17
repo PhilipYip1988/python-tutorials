@@ -16,4 +16,4 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 ## Python (Core Python)
 
-[The Python Programming Language](./004_pythonn/)
+[The Python Programming Language](./004_python/)
