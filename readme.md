@@ -14,7 +14,6 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 [Interactive Notebook Tutorial](./003_interactive_notebook/)
 
+## Python (Core Python)
 
-[003_python](./003_python/)
-
-[004_numpy](./004_numpy/)
+[The Python Programming Language](./004_pythonn/)
