@@ -4,11 +4,11 @@
 
 To install Miniconda you will need a PC that satisfies the following system requirements:
 
-* Modern Linux Kernel Version 5.8 or Later: Ubuntu 22.04 LTS (Kernel 5.15), Fedora 36 (Kernel 5.17)
+* Modern Linux Kernel Version 5.8 or Later: Ubuntu 22.04 LTS (Kernel 5.15), Mint 21 (Kernel 5.15), Fedora 36 (Kernel 5.17)
 * 6th Generation Intel i5 Processor or Later
 * 8 GB DDR3 RAM or Superior
 * 250 GB SSD or Superior
-* Chromium should be installed from the Ubuntu Software
+* Chromium should be installed from the Distros Software Store
 
 The performance will be very poor if these system requirements are not satisfied.
 
