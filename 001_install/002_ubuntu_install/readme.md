@@ -197,7 +197,7 @@ Installing ```scikit-learn``` and ```scikit-image``` will give you commonly used
 
 ### Installing JupyterLab Extensions
 
-JupyterLab extensions are written using node javascipt. The are also commonly built upon interactive widgets. Install the following:
+JupyterLab extensions are written using node javascript. The are also commonly built upon interactive widgets. Install the following:
 
 ```
 conda install -c conda-forge nodejs ipywidgets 
@@ -217,7 +217,7 @@ conda install -c conda-forge jupyterlab-variableinspector ipympl plotly jupyterl
 
 ### Updating the conda environment
 
-You may want to periodically check for any updates to packages in your *jupyterlab-cf* conda environment by first makign sure the *jupyterlab-cf* conda environment is updated and then using the following command:
+You may want to periodically check for any updates to packages in your *jupyterlab-cf* conda environment by first making sure the *jupyterlab-cf* conda environment is updated and then using the following command:
 
 ```
 conda update -c conda-forge --all
@@ -237,17 +237,17 @@ Unfortunately on Ubuntu as the browser opens you may get:
 
 ![026_launching_jupyterlab](./images/026_launching_jupyterlab.PNG)
 
-This is because of the elevated security permissions of a browser snap package.
+This error message displays dueto the elevated security permissions of a browser snap package.
 
-You can copy and paste the address from the terminal to your browser address abr to open JupyerLab.
+You can copy and paste the address from the terminal to your browser address bar to open JupyterLab.
 
-![027_launching_jupyterlab](./images/027_launching_jupyterlabPNG)
+![027_launching_jupyterlab](./images/027_launching_jupyterlab.PNG)
 
 ![028_launching_jupyterlab](./images/028_launching_jupyterlab.PNG)
 
 ![029_launching_jupyterlab](./images/029_launching_jupyterlab.PNG)
 
-To the left hand side you have the files tab where you can open a file. Files created in JupyterLab should always be opened in the Files tab within JupyterLab and not the FIle Explorer within Linux:
+To the left hand side you have the Files tab where you can open a file. Files created in JupyterLab should always be opened in the Files tab within JupyterLab and not the File Explorer within Linux:
 
 ![030_jupyterlab_files](./images/030_jupyterlab_files.PNG)
 
