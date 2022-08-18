@@ -59,7 +59,7 @@ Where ```package``` is the name of the package. The ```pip``` command should onl
 
 In this set of tutorials we will use Miniconda to create a new ```conda``` environment and install the latest version of JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Linux:
 
-[Miniconda Install on windows](./001_windows_install/)
+[Miniconda Install on Windows](./001_windows_install/)
 
 [Miniconda Install on Ubuntu](./002_ubuntu_install/)
 
