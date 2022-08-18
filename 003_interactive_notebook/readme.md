@@ -97,3 +97,7 @@ Now all the Cell outputs are blank and there is no number beside any of the cell
 An example notebook file can be opened in JupyterLab:
 
 [Example Notebook File](./001_example_notebook_file.ipynb)
+
+Return to:
+
+[Home](../../../)
