@@ -1,9 +1,9 @@
-# Fundamental Datatypes
+# fundamental datatypes
 
 There are two fundamental datatypes:
 
-* text
-* numeric
+* text datatypes
+* numeric datatypes
 
 ## text variables
 
@@ -551,3 +551,9 @@ print(f"{num1}+{num2}={num1+num2}")
 ```
 
 ![56_input_function](./images/56_input_function.PNG)
+
+### formatted strings continued
+
+update section on formatted strings using numeric and text variables...
+
+add link to home ...
