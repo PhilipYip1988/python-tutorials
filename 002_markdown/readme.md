@@ -1,4 +1,4 @@
-# Markdown Introduction
+# Markdown
 
 A text file can only be used to store unformatted text. The markdown file is similar to the text file, however allows text to be formatted using very simple markdown syntax. The Markdown file can be editted in JupyterLab:
 
