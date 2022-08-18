@@ -16,4 +16,4 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 ## Python (Core Python)
 
-[Introduction to Python - Fundamental Datatypes](./004_python/)
+[Introduction to Python - Fundamental Datatypes](./004_python_fundamental_datatypes/)
