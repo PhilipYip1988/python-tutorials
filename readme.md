@@ -1,6 +1,6 @@
 # Python tutorials
 
-This set of tutorials will look at the Python Programming Language and some of the most commonly used libraries for Data Science using the JupyterLab IDE:
+This set of tutorials will look at the Python Programming Language and some of the most commonly used libraries for Data Science using the JupyterLab IDE.
 
 ## installation
 
@@ -17,3 +17,6 @@ This set of tutorials will look at the Python Programming Language and some of t
 ## Python
 
 [introduction to Python - understanding fundamental datatypes](./004_python_fundamental_datatypes/)
+
+
+These guides are a work in progress...
