@@ -1,7 +1,7 @@
 # The Python Ecosystem
 
 Python is a programming language that is under continuous development:
-* Python has numerous third-party libraries for data science. 
+* Python has numerous third-party libraries for data science 
 * Python has numerous **I**ntegrated **D**evelopment **E**nvironments (**IDE**s) which are essentially user interfaces for the programmer to interact with the Python programming language. 
 
 Installing Python for a begineer can be tricky as the Python ecosystem is so flexible. Installation of Python directly and installation of Python libraries using pip often results in the instalaltion of Python libraries that are not compatible with each other and therefore lots of error messages! Take a moment to understand the Python ecosystem before installing!
@@ -10,15 +10,10 @@ There are essentially three main ways to install Python.
 
 The Python installer:
 * The Python Programming Language
-* A limited set of inbuilt modules 
+* A limited set of inbuilt modules
 * The **pip** package manager (**p**ython **i**nstall **p**ackage)
 * The IDLE (Integrated Development **L**earner Environment)
-pip is usually too flexible for beginners as it usually installs incompatible versions of packages.
-
-The Miniconda installer base conda environment contains:
-* The Python Programming Language
-* The conda package manager
-The conda package manager performs checks to ensure that the packages being installed are compatible.
+Note: pip is usually too flexible for beginners as it usually installs incompatible versions of packages. 
 
 The Anaconda installer base conda environment contains:
 * The Python Programming Language
@@ -32,7 +27,12 @@ The Anaconda installer base conda environment contains:
     * scipy
     * scikit-learn
     * scikit-image
-Note that the Anaconda installer has commercial restrictions and often includes annual versions of the IDEs and data science libraries. These annual versions often contain errors that have been addressed.
+In theory you should be able to install and use Anaconda directly as it contains the most commonly used libraries. You will have to eventually use a library not included in Anaconda, so should learn how to create a conda environment (subinstallation) to install packages in. Note however that the Anaconda installer includes annual versions of the IDEs and data science libraries. These annual versions often contain errors that have been previously been addressed by developers. The Anaconda installer also has some commercial restrictions.
+
+The Miniconda installer base conda environment contains:
+* The Python Programming Language
+* The conda package manager
+Miniconda is essentially a lightweight version of Anaconda without commercial restrictions and has only the bare essentials in the default (base) conda environments. The conda package manager performs checks to ensure that the packages being installed are compatible. 
 
 # Package Managers: pip vs conda
 
@@ -42,15 +42,16 @@ pip - python install package can theoretically be used to install any version of
 
 The conda package manager is more stringent, essentially only allowing the user to install compatible packages and therefore having more stable functionality. For the conda-package manager there are two channels, the ```conda``` channel which is maintained by the Anaconda company and gets updated approximately annually and the ```conda-forge``` channel which is the community channel which gets directly updated by developers directly. 
 
-When using Miniconda/Anaconda:
+Note when using Anaconda or Miniconda:
 
 ```conda install package```
+```conda install -c conda-forge package```
 
 Should be used in preference to:
 
 ```pip install package```
 
-Where ```package``` is the name of the package.
+Where ```package``` is the name of the package. The ```pip``` command should only be used when the package is not found on available on the ```conda``` or ```conda-forge``` channel which is quite rare. 
 
 # Miniconda Installation
 
@@ -59,6 +60,3 @@ In this set of tutorials we will use Miniconda to create a conda environment and
 [Miniconda Install on windows](./001_windows_install/)
 
 [Miniconda Install on Ubuntu](./002_ubuntu_install/)
-
-
-
