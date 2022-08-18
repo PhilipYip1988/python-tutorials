@@ -1,19 +1,19 @@
-# Python Tutorials
+# Python tutorials
 
 This set of tutorials will look at the Python Programming Language and some of the most commonly used libraries for Data Science using the JupyterLab IDE:
 
-## Installation
+## installation
 
-[Miniconda Installation](./001_install/)
+[Miniconda installation](./001_install/)
 
-## Markdown File Tutorial
+## markdown files .md
 
-[Markdown Tutorial](./002_markdown/)
+[markdown tutorial](./002_markdown/)
 
-## Interactive Python Notebook Tutorial
+## interactive Python notebook files .ipynb
 
-[Interactive Notebook Tutorial](./003_interactive_notebook/)
+[interactive notebook tutorial](./003_interactive_notebook/)
 
-## Python (Core Python)
+## Python
 
-[Introduction to Python - Fundamental Datatypes](./004_python_fundamental_datatypes/)
+[introduction to Python - understanding fundamental datatypes](./004_python_fundamental_datatypes/)
