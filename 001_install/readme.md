@@ -2,7 +2,9 @@
 
 Python is a programming language that is under continuous development:
 * Python has numerous third-party libraries for data science 
-* Python has numerous **I**ntegrated **D**evelopment **E**nvironments (**IDE**s) which are essentially user interfaces for the programmer to interact with the Python programming language. 
+* Python has numerous **I**ntegrated **D**evelopment **E**nvironments (**IDE**s) 
+
+An IDE is essentially a program with a user interfaces for the programmer to interact with the Python programming language.
 
 Installing Python for a begineer can be tricky as the Python ecosystem is so flexible. Installation of Python directly and installation of Python libraries using ```pip``` often results in the installation of Python libraries that are not compatible with each other and therefore lots of error messages! Take a moment to understand the Python ecosystem before installing!
 
@@ -27,7 +29,7 @@ The Anaconda installer base conda environment contains:
     * scipy
     * scikit-learn
     * scikit-image
-In theory you should be able to install and use Anaconda directly as it contains the most commonly used libraries. You will have to eventually use a library not included in Anaconda, so should learn how to create a conda environment (subinstallation) to install packages in. Note however that the Anaconda installer includes annual versions of the IDEs and data science libraries. These annual versions often contain errors that have been previously been addressed by developers. The Anaconda installer also has some commercial restrictions.
+In theory you should be able to install Anaconda directly and use a preinstalled IDE alongside the inbuilt data science libraries directly from the default (base) conda environment. Note however that the Anaconda installer includes annual versions of the IDEs and data science libraries. These annual versions often contain bugs that have been previously been addressed by developers. The Anaconda installer also has some commercial restrictions. In addition, you will have to eventually use a library not preinstalled, so should learn how to create a conda environment (subinstallation) to install packages in. conda environments can also be created with Miniconda. 
 
 The Miniconda installer base conda environment contains:
 * The Python Programming Language
@@ -53,10 +55,12 @@ Should be used in preference to:
 
 Where ```package``` is the name of the package. The ```pip``` command should only be used when the package is not found on available on the ```conda``` or ```conda-forge``` channel which is quite rare. 
 
-# Miniconda Installation
+# Installation
 
 In this set of tutorials we will use Miniconda to create a new ```conda``` environment and install the latest version of JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Linux:
 
 [Miniconda Install on windows](./001_windows_install/)
 
 [Miniconda Install on Ubuntu](./002_ubuntu_install/)
+
+The instructions above will also work with Anaconda, as we are in any case creating a seperate ```conda``` environment.
