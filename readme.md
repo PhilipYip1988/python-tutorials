@@ -18,5 +18,11 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 [introduction to Python - understanding fundamental datatypes](./004_python_fundamental_datatypes/)
 
-
 These guides are a work in progress...
+
+[introduction to Python - understanding collections]
+
+[introduction to Python - code blocks]
+
+[introduction to Python - object orientated programming]
+
