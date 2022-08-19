@@ -424,6 +424,205 @@ round(0.1+0.2, 6) == 0.3
 
 ![42_round_function](./images/42_round_function.PNG)
 
+### boolean numbers
+
+The ```bool``` is an abbreviation for boolean and has two values ```False``` or ```True```. We have seen these boolean values when we used the comparison operators above. These two values map to two values of binary integers ```0``` and ```1``` and are therefore considered numeric. For example ```False + True``` can be conceptualised as ```0``` + ```1``` and ```False * True``` can be conceptualised as ```0``` * ```1```:
+
+![61_boolean_values](./images/61_boolean_values.PNG)
+
+Although boolean values can be used as ```0``` and ```1``` with numeric operators. It is more common to use them with the ```and``` or ```or``` operator which combines the conditions.
+
+condition 1 ```and``` condition 2 will only be ```True``` if both condition 1 **and** condition 2 are ```True```:
+
+```
+(True) and (True)
+(True) and (False)
+(False) and (True)
+(False) and (False)
+```
+
+condition 1 ```or``` condition 2 will be ```True``` if either condition 1 **or** condition 2 are ```True```:
+
+```
+(True) or (True)
+(True) or (False)
+(False) or (True)
+(False) or (False)
+```
+
+![62_boolean_values](./images/62_boolean_values.PNG)
+
+The operator ```not``` will invert a condition:
+
+```
+not True
+```
+
+![66_not](./images/66_not.PNG)
+
+### parenthesis
+
+The following code becomes hard to read. It is not obvious what operation occurs first:
+ 
+```
+1 > 5 or 1 < 2
+```
+
+When comparing conditions, parenthesis are normally used to enclose each condition:
+
+```
+(1 > 5) or (1 < 2)
+```
+
+![63_boolean_values](./images/63_boolean_values.PNG)
+
+Both expressions are on the left hand side and the right hand side of the or operator are enclosed in single parenthesis therefore it doesn't matter which expression we tackle first:
+
+<pre>
+<b>(</b>1 > 5<b>)</b> or (1 < 2)
+</pre>
+
+This therefore becomes and we can now tackle the parenthesis on the right hand side:
+
+<pre>
+False or <b>(</b>1 < 2<b>)</b>
+</pre>
+
+Then:
+
+```
+False or True
+```
+
+This finally becomes:
+
+```
+True
+```
+
+Likewise for a more complicated expression, we can use multiple parenthesis:
+
+```
+(1 > 2) and ((1 > 5) or (1 < 2))
+```
+
+The left hand side is enclosed in single parenthesis right hand side is enclosed in double parenthesis, therefore we tackle the right hand side first:
+
+<pre>
+(1 > 2) and <b>(</b>(1 > 5) or (1 < 2)<b>)</b>
+</pre>
+
+Then within this double bracket, both conditions around the ```or``` operator are enclosed in single parenthesis, so it doesn't matter which operation we carry out first, so we will start with the left hand side expression:
+
+<pre>
+(1 > 2) and (<b>(</b>1 > 5<b>)</b> or (1 < 2))
+</pre>
+
+<pre>
+(1 > 2) and <b>(</b>False or (1 < 2)<b>)</b>
+</pre>
+
+Now this calculated, we can tackle the right hand side expression:
+
+<pre>
+(1 > 2) and (False or <b>(</b>1 < 2)<b>)</b>)
+</pre>
+
+<pre>
+(1 > 2) and (False or True)
+</pre>
+
+Now the left and right hand side of the ```and``` operator are enclosed in single parenthesis and it doesn't matter which side we carry out first. We will continue with the right hand side:
+
+<pre>
+(1 > 2) and <b>(</b>False or True<b>)</b>
+</pre>
+
+<pre>
+(1 > 2) and True
+</pre>
+
+Now that the right hand side is tackled, we tackle the left hand side which is single parenthesis:
+
+<pre>
+<b>(</b>1 > 2<b>)</b> and True
+</pre>
+
+<pre>
+False and True
+</pre>
+
+This finally becomes:
+
+```
+False
+```
+
+![64_boolean_values](./images/64_boolean_values.PNG)
+
+Parenthesis are used to set order of preference for other numeric operations. For example, if you have a look at:
+
+```
+1 + 5 * 3
+```
+
+If you assume the operators are carried out from left to right, you may calculate:
+
+```
+6 * 3
+```
+
+Which is:
+
+```
+18
+```
+
+However by default multiplication and division operations take precedence over addition and subtraction and the result is actually:
+
+```
+1 + 15
+```
+
+Which is:
+
+```
+16
+```
+
+The order or precedence can be changed using parenthesis which take the highest precedence:
+
+```
+(1 + 5) * 3
+```
+
+Is:
+
+```
+18
+```
+
+And:
+
+```
+1 + (5 * 3)
+```
+
+Is:
+
+```
+16
+```
+
+![65_parenthesis](./images/65_parenthesis.PNG)
+
+The order of precedence is:
+* parenthesis ```( )```
+* exponent ```**```
+* multiplication ```*```, float division ```/```, floor division ```//```, modulus ```%```
+* addition ```+```, subtraction ```-```
+
+
 ## working between numeric and text variables
 
 ### indexing
