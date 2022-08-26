@@ -437,6 +437,6 @@ Multiplication can be calculated using a multiplication of the mantissa of the t
 
 Division can be calculated using division of the mantissa of the two numbers, combined with the exponent of the difference of the two numbers exponents:
 
-```n * m``` 
+```n / m``` 
 
 ```(5.3 / 6.9551) e (-11-(+8))```
