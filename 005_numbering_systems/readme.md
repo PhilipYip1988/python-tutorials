@@ -388,6 +388,8 @@ Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different to
 
 As we have seen earlier, the computer operates usign a series of binary switches known as bits and 8 of these are grouped together to make a byte. The computer hardware itself can be digital "on" (1) or "off" (0) or analog, in the case of 8 bit analog 0-255 or 0X00-0XFF or 0B00000000-0B11111111. In either case, these are a number of quantised descrete values.
 
+## Scientific Notation
+
 In real life however we have numbers which include a decimal point and these numbers can range from extremely small to very large. For example:
 
 * the radius of a hydrogen atom = 0.000000000053 m 
