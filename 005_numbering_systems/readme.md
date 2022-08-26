@@ -384,15 +384,17 @@ Other signals are generated using different output devices. For example a buzzer
 
 Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different tones of buzzer which are encoded from 0-255 and a tune can be made from a sequence of tones for specified durations.
 
-# Negative Numbers
-So far we have only considered positive numbers.
+# Signed Numbers
 
+We have only considered only a byte of positive numbers, ranging from 0-255 which is known as an 8 bit unsigned integer. Recall 8 bit is 1 byte.
 
+There are other numbering systems which we can use that include negative numbers such as the 8 bit signed integer. This also spans over 8 bit or one byte. The binary representation therefore spans from ```-128``` (```0B 0000 0000``` or ```0X 00```) to ```+127```(```0B 1111 1111``` or ```0X FF```). As ```-0``` and ```+0``` are the same value, we only need one configuration for ```0``` and therefore tend to have the negative limit one larger than the positive limit.
 
+For larger numbers we can use more bytes. The 32 bit signed integer for example uses 32 bits as the name suggest or 8 bytes. This ranges from ```-2147483648``` (```0B 0000 0000 0000 0000 0000 0000 0000 0000``` or ```0X 00 00 00 00 00 00 00 00```) to ```2147483647``` (```0B 1111 1111 1111 1111 1111 1111 1111 1111``` or ```0X FF FF FF FF FF FF FF FF```).
 
 # Floating Point Numbers
 
-As we have seen earlier, the computer operates usign a series of binary switches known as bits and 8 of these are grouped together to make a byte. The computer hardware itself can be digital "on" (1) or "off" (0) or analog, in the case of 8 bit analog 0-255 or 0X00-0XFF or 0B00000000-0B11111111. In either case, these are a number of quantised descrete values.
+As we have seen earlier, the computer operates using a series of binary switches known as bits and 8 of these are grouped together to make a byte. The computer hardware itself can be digital "on" (1) or "off" (0) or analog, in the case of 8 bit analog 0-255 or 0X00-0XFF or 0B00000000-0B11111111. In either case, these are a number of quantised descrete values.
 
 ## Scientific Notation
 
