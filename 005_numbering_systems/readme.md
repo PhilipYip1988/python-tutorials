@@ -384,6 +384,12 @@ Other signals are generated using different output devices. For example a buzzer
 
 Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different tones of buzzer which are encoded from 0-255 and a tune can be made from a sequence of tones for specified durations.
 
+# Negative Numbers
+So far we have only considered positive numbers.
+
+
+
+
 # Floating Point Numbers
 
 As we have seen earlier, the computer operates usign a series of binary switches known as bits and 8 of these are grouped together to make a byte. The computer hardware itself can be digital "on" (1) or "off" (0) or analog, in the case of 8 bit analog 0-255 or 0X00-0XFF or 0B00000000-0B11111111. In either case, these are a number of quantised descrete values.
@@ -442,3 +448,21 @@ Division can be calculated using division of the mantissa of the two numbers, co
 ```n / m``` 
 
 ```(5.3 / 6.9551) e (-11-(+8))```
+
+## IEEE Standard for Floating-Point Arithmetic 
+
+The above scientific notation uses the decimal system, but as discussed earlier computers operate in binary. We must therefore look at a binary equivalent of scientific notation for representing a number:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
