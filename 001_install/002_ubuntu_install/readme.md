@@ -237,7 +237,7 @@ Unfortunately on Ubuntu as the browser opens you may get:
 
 ![026_launching_jupyterlab](./images/026_launching_jupyterlab.PNG)
 
-This error message displays dueto the elevated security permissions of a browser snap package.
+This error message displays due to the elevated security permissions of a browser snap package.
 
 You can copy and paste the address from the terminal to your browser address bar to open JupyterLab.
 
