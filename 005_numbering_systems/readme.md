@@ -384,56 +384,31 @@ Other signals are generated using different output devices. For example a buzzer
 
 Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different tones of buzzer which are encoded from 0-255 and a tune can be made from a sequence of tones for specified durations.
 
-## Floating Point Values
+# Floating Point Numbers
 
-As we have seen earlier, the computer operates usign a seies of binary switches known as bits and 8 of these are grouped together to make a byte. The computer hardware itself can be digital "on" (1) or "off" (0) or analog, in the case of 8 bit analog 0-255 or 0X00-0XFF or 0B00000000-0B11111111. In either case, these are a number of quantised descrete values.
+As we have seen earlier, the computer operates usign a series of binary switches known as bits and 8 of these are grouped together to make a byte. The computer hardware itself can be digital "on" (1) or "off" (0) or analog, in the case of 8 bit analog 0-255 or 0X00-0XFF or 0B00000000-0B11111111. In either case, these are a number of quantised descrete values.
 
 In real life however we have numbers which include a decimal point and these numbers can range from extremely small to very large. For example:
 
-* the radius of a hydrogen atom = 0.000000000053 m = 5.3e-11 m
+* the radius of a hydrogen atom = 0.000000000053 m 
 
 * the height of a human = 1.5 m
 
-* the radius of the sun = 695510000 m = 6.9551e+8 m 
+* the radius of the sun = 95700000 m 
 
 These numbers are typically expressed in scientific notation. 
 
-To get to scientific notation, the number of digits is counted with respect to the decimal point:
+To convert from a decimal number to a decimal number in scientific notation, we take the order of magnitude of the highest significant digit which is shown depicted in red and this is the value of the exponent at -11 and 8 for the small and large number respectively. We take the remaining non-zero numbers highlighted in yellow and add the decimal point after the most digit giving the mantissa which is 5.3 and 6.957 for the small and large number respectively:
 
+![033_scientificnotation](./images/033_scientificnotation.PNG)
 
+We then write the number using the form ```mantissa```e```exponent``` and therefore:
 
-
-
-
-
-
-
-
-
-
-* the radius of a hydrogen atom = 0.000000000053 m = 5.3e-11 m
+* the radius of a hydrogen atom = 5.3e-11 m 
 
 * the height of a human = 1.5 m
 
-* the radius of the sun = 695510000 m = 6.9551e+8 m 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* the radius of the sun = 9.57e8 m 
 
 From the length examples above, we can see approximately 20 of orders of magnitude and there are still smaller and larger objects. To map each possible value over this scale of magnitude directly as a binary value will require an unworkable amount of computer memory.
 
@@ -446,16 +421,22 @@ n = 6.9551e+8
 
 We can take advantage of the following operations. For ```n>>m``` where ```n``` is a large number and ```m``` is a small number, interactions involving addition or subtraction of the small number, leave the bigger number essentially unchanged:
 
-```n+m~n``` 
+```n + m ~ n``` 
 
-```n-m~n``` 
+```n - m ~ n``` 
 
 In other words, the change due to the presence of the smaller number is insignificant to the error of the larger number.
 
-However interactions involving multiplication or division are significant, with multiplication of:
+However interactions involving multiplication or division are significant.
 
-```n*m``` 
+Multiplication can be calculated using a multiplication of the mantissa of the two numbers, combined with the exponent of the sum of the two numbers exponents:
 
-Being a multiplication of the mantissa of the two numbers combined with the exponentent of the sum of the two nmbers exponents:
+```n * m``` 
 
-```5.3*6.9551e(-11+8)```
+```5.3 * 6.9551 e (-11+8)```
+
+Division can be calculated using division of the mantissa of the two numbers, combined with the exponent of the difference of the two numbers exponents:
+
+```n * m``` 
+
+```5.3 / 6.9551 e (-11-(+8))```
