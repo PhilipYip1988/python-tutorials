@@ -388,9 +388,9 @@ Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different to
 
 We have only considered only a byte of positive numbers, ranging from 0-255 which is known as an 8 bit unsigned integer. Recall 8 bit is 1 byte.
 
-There are other numbering systems which we can use that include negative numbers such as the 8 bit signed integer. This also spans over 8 bit or one byte. The binary representation therefore spans from ```-128``` (```0B 0000 0000``` or ```0X 00```) to ```+127```(```0B 1111 1111``` or ```0X FF```). As ```-0``` and ```+0``` are the same value, we only need one configuration for ```0``` and therefore tend to have the negative limit one larger than the positive limit.
+There are other numbering systems which we can use that include negative numbers such as the 8 bit signed integer. This numbering system also spans over 8 bit or one byte. In this numbering system we have to use half the possible arrangement of bits in the byte to represent the negative numbers and the other hafl is used to represent the positive numbers. The binary representation therefore spans from ```-128``` (```0B 0000 0000``` or ```0X 00```) to ```+127```(```0B 1111 1111``` or ```0X FF```). Note as ```-0``` and ```+0``` are the same value, we only need one configuration for ```0``` and therefore a signed integer tends to have the modulus of the negative limit being one larger than the modulus of the positive limit.
 
-For larger numbers we can use more bytes. The 32 bit signed integer for example uses 32 bits as the name suggest or 8 bytes. This ranges from ```-2147483648``` (```0B 0000 0000 0000 0000 0000 0000 0000 0000``` or ```0X 00 00 00 00 00 00 00 00```) to ```2147483647``` (```0B 1111 1111 1111 1111 1111 1111 1111 1111``` or ```0X FF FF FF FF FF FF FF FF```).
+For larger numbers we can use more bits. The 32 bit signed integer, for example uses 32 bits as the name suggests which is 8 bytes. This ranges from ```-2147483648``` (```0B 0000 0000 0000 0000 0000 0000 0000 0000``` or ```0X 00 00 00 00 00 00 00 00```) to ```2147483647``` (```0B 1111 1111 1111 1111 1111 1111 1111 1111``` or ```0X FF FF FF FF FF FF FF FF```).
 
 # Floating Point Numbers
 
@@ -453,7 +453,19 @@ Division can be calculated using division of the mantissa of the two numbers, co
 
 ## IEEE Standard for Floating-Point Arithmetic 
 
-The above scientific notation uses the decimal system, but as discussed earlier computers operate in binary. We must therefore look at a binary equivalent of scientific notation for representing a number:
+The above scientific notation uses the decimal system, but as discussed earlier computers operate using binary switches known as bits. We must therefore look at a binary equivalent of scientific notation to representing a floating point number. 
+
+Floating point arithmetic is essentially a binary representation of scientific notation using the base 2 system opposed to the base 10 system.
+
+IEEE 754 half-precision binary floating-point format: binary16
+
+This section does not cite any sources. Please help improve this section by adding citations to reliable sources. Unsourced material may be challenged and removed.
+Find sources: "Half-precision floating-point" – news · newspapers · books · scholar · JSTOR (January 2021) (Learn how and when to remove this template message)
+The IEEE 754 standard[9] specifies a binary16 as having the following format:
+
+Sign bit: 1 bit
+Exponent width: 5 bits
+Significand precision: 11 bits (10 explicitly stored)
 
 
 
