@@ -1,4 +1,6 @@
-# Fundamental Datatypes
+# Numbering Systems
+
+## Fundamental Datatypes
 
 We have explored:
 * text datatypes
@@ -386,17 +388,62 @@ Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different to
 
 # Signed Numbers
 
-We have only considered only a byte of positive numbers, ranging from 0-255 which is known as an 8 bit unsigned integer. Recall 8 bit is 1 byte.
+We have only considered only a byte of positive numbers, ranging from 0-255 which is known as an 8 bit **unsigned** integer because all the numbers are positive integers. Recall that 8 bit is 1 byte.
 
-There are other numbering systems which we can use that include negative numbers such as the 8 bit signed integer. This numbering system also spans over 8 bit or one byte. In this numbering system we have to use half the possible arrangement of bits in the byte to represent the negative numbers and the other hafl is used to represent the positive numbers. The binary representation therefore spans from ```-128``` (```0B 0000 0000``` or ```0X 00```) to ```+127```(```0B 1111 1111``` or ```0X FF```). Note as ```-0``` and ```+0``` are the same value, we only need one configuration for ```0``` and therefore a signed integer tends to have the modulus of the negative limit being one larger than the modulus of the positive limit.
+There are other numbering systems which we can use that include negative numbers such as the 8 bit **signed** integer. This numbering system also spans over 8 bit or one byte. In this numbering system we have to use half the possible arrangement of bits in the byte to represent the negative numbers and the other half is used to represent the positive numbers. The binary representation therefore spans from:
 
-For larger numbers we can use more bits. The 32 bit signed integer, for example uses 32 bits as the name suggests which is 8 bytes. This ranges from ```-2147483648``` (```0B 0000 0000 0000 0000 0000 0000 0000 0000``` or ```0X 00 00 00 00 00 00 00 00```) to ```2147483647``` (```0B 1111 1111 1111 1111 1111 1111 1111 1111``` or ```0X FF FF FF FF FF FF FF FF```).
+![006_byte_LED](./images/006_byte_LED.PNG)
+
+```-128```
+
+```0B 0000 0000```
+
+```0X 00```
+
+to:
+
+![013_byte_LED](./images/013_byte_LED.PNG)
+
+```+127```
+
+```0B 1111 1111```
+
+```0X FF``` 
+
+Note as ```-0``` and ```+0``` are the same value, we only need one configuration for ```0``` and therefore a signed integer tends to have the modulus of the negative limit (-128) being one larger than the modulus of the positive limit (+127).
+
+To count up to larger numbers we can use more computer memory to store the number i.e. a larger number of bits. The 32 bit signed integer, for example uses 32 bits as the name suggests (which is 8 bytes). In this numbering system the lower limit is:
+
+```-2147483648```
+
+```0B 0000 0000 0000 0000 0000 0000 0000 0000```
+
+```0X 00 00 00 00 00 00 00 00```
+
+And the upper limit is:
+
+```2147483647``` 
+
+```0B 1111 1111 1111 1111 1111 1111 1111 1111```
+
+```0X FF FF FF FF FF FF FF FF```
 
 # Floating Point Numbers
 
-As we have seen earlier, the computer operates using a series of binary switches known as bits and 8 of these are grouped together to make a byte. The computer hardware itself can be digital "on" (1) or "off" (0) or analog, in the case of 8 bit analog 0-255 or 0X00-0XFF or 0B00000000-0B11111111. In either case, these are a number of quantised descrete values.
+As we have seen earlier, the computer operates using a series of binary switches known as bits and 8 of these are grouped together to make a byte. 
 
-## Scientific Notation
+Signals received or emitted from computer hardware itself can be digital:
+* "off" (0) 
+* "on" (1)
+
+Or analog, in the case of 8 bit analog: 
+* 0-255 
+* 0X 00 - 0X FF
+* 0B 00 00 00 00 - 0B 11 11 11 11
+
+In either case, these are a number of quantised discrete values.
+
+## Scientific Notation in Decimal
 
 In real life however we have numbers which include a decimal point and these numbers can range from extremely small to very large. For example:
 
@@ -406,9 +453,11 @@ In real life however we have numbers which include a decimal point and these num
 
 * the radius of the sun = 95700000 m 
 
-These numbers are typically expressed in scientific notation. 
+As very small and very large numbers have a large number of preceding zeros or trailing zeros they become difficult to transcribe and are therefore typically expressed in scientific notation. 
 
-To convert from a decimal number to a decimal number in scientific notation, we take the order of magnitude of the highest significant digit which is shown depicted in red and this is the value of the exponent at -11 and 8 for the small and large number respectively. We take the remaining non-zero numbers highlighted in yellow and add the decimal point after the most digit giving the mantissa which is 5.3 and 6.957 for the small and large number respectively:
+To convert from a decimal number to a decimal number in scientific notation:
+* We take the order of magnitude of the highest significant digit which is shown depicted in red and this is the value of the exponent at -11 and 8 for the small and large number respectively. 
+* We take the remaining non-zero numbers highlighted in yellow and add the decimal point after the most digit giving the mantissa which is 5.3 and 6.957 for the small and large number respectively.
 
 ![033_scientificnotation](./images/033_scientificnotation.PNG)
 
@@ -435,7 +484,9 @@ We can take advantage of the following operations. For ```n>>m``` where ```n``` 
 
 ```n - m ~ n``` 
 
-In other words, the change due to the presence of the smaller number is insignificant to the error of the larger number.
+![032_scientificnotation](./images/032_scientificnotation.PNG)
+
+In other words, the change due to the presence of the smaller number is insignificant to the error of the larger number. 
 
 However interactions involving multiplication or division are significant.
 
@@ -443,40 +494,270 @@ Multiplication can be calculated using a multiplication of the mantissa of the t
 
 ```n * m``` 
 
-```(5.3 * 6.9551) e (-11+8)```
+```(6.9551 * 5.3) e (+8 + (-11))```
+
+![034_scientificnotation](./images/034_scientificnotation.PNG)
 
 Division can be calculated using division of the mantissa of the two numbers, combined with the exponent of the difference of the two numbers exponents:
 
 ```n / m``` 
 
-```(5.3 / 6.9551) e (-11-(+8))```
+```(6.9551 / 5.3) e (+8 -(-11))```
+
+![035_scientificnotation](./images/035_scientificnotation.PNG)
+
+Physically the sun is made up of a huge number of hydrogen atoms and the uncertainty of the suns radius is therefore much larger than the size of a single hydrogen atom itself which is why the addition and subtraction of the radius of a hydrogen atom from the sun is insignificant. When we use division of the radius of the sun by the radius of the hydrogen atom, we return the number of hydrogen atoms along the diameter of the sun and we can see this is a very large number and therefore a difference of a single hydrogen atom is insignificant with respect to this very large number.
+
+## Scientific Notation in Binary
+
+The above scientific notation uses the decimal system (base ten; characters 0-9), but as discussed earlier computers operate using binary switches known as bits (base two; characters 0-1). We must therefore look at a binary equivalent of scientific notation to representing a floating point number. 
+
+Let's explore converting a floating point decimal (base 10) into a floating point decimal (base 2).
+
+Take:
+
+```
+0.25 (base 10)
+```
+
+Let's begin to convert this into binary. To do this we are going to multiply the number by 2 and divide it by 1 in a series of steps. If the value before the decimal point is 0 we will subtract 0, if the value before the decimal point is 1 we will subtract 1.
+
+
+(0.25 * 2 / 1 = 0.5) - ```0``` = 0.5 
+
+(0.5 * 2 / 1 = 1.0) - ```1``` = 0
+
+(0 * 2 / 1 = 0.0) - ```0``` = 0
+
+⋮
+
+To get the number in base 2, we place these numbers after the decimal point:
+
+```
+0.01 (base 2)
+```
+
+Let's look at another example:
+
+```
+0.20 (base 10)
+```
+
+(**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
+
+(0.4 * 2 / 1 = 0.8) - ```0``` = 0.8
+
+(0.8 * 2 / 1 = 1.6) - ```1``` = 0.6
+
+(0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
+
+Notice that we return to a value of 0.2. This means we will are effectively repeating the same operation, again and again and again...
+
+(**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
+
+(0.4 * 2 / 1 = 0.8) - ```0``` = 0.8
+
+(0.8 * 2 / 1 = 1.6) - ```1``` = 0.6
+
+(0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
+
+(**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
+
+(0.4 * 2 / 1 = 0.8) - ```0``` = 0.8
+
+(0.8 * 2 / 1 = 1.6) - ```1``` = 0.6
+
+(0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
+
+(**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
+
+(0.4 * 2 / 1 = 0.8) - ```0``` = 0.8
+
+(0.8 * 2 / 1 = 1.6) - ```1``` = 0.6
+
+(0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
+
+⋮
+
+The number in binary is therefore recurring:
+
+```
+0.001100110011... (base 2)
+```
+
+Let's also have a look at the example:
+
+```
+0.10 (base 10)
+```
+
+(0.1 * 2 / 1 = 0.2) - ```0``` = 0.2
+
+(**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
+
+(0.4 * 2 / 1 = 0.8) - ```0``` = 0.8
+
+(0.8 * 2 / 1 = 1.6) - ```1``` = 0.6
+
+(0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
+
+(**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
+
+(0.4 * 2 / 1 = 0.8) - ```0``` = 0.8
+
+(0.8 * 2 / 1 = 1.6) - ```1``` = 0.6
+
+(0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
+
+(**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
+
+(0.4 * 2 / 1 = 0.8) - ```0``` = 0.8
+
+(0.8 * 2 / 1 = 1.6) - ```1``` = 0.6
+
+(0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
+
+⋮
+
+Once again, we get a recurring operation:
+
+```
+0.000110011001... (base 2)
+```
+
+Both 0.1 (base 10) and 0.2 (base 10) are recurring when represented in base 2:
+
+```
+0.1 (base 10)
+
+0.000110011001... (base 2)
+```
+
+```
+0.2 (base 10)
+
+0.001100110011... (base 2)
+```
+
+Recurring operations are more prevalent in the base 2 numbering system as there are less unique characters to represent a number than in decimal making it even more limited. Physically a computer can only store numbers to a specified precision of physical bits and therefore rounding errors are observed when working with floating point numbers.
 
 ## IEEE Standard for Floating-Point Arithmetic 
 
-The above scientific notation uses the decimal system, but as discussed earlier computers operate using binary switches known as bits. We must therefore look at a binary equivalent of scientific notation to representing a floating point number. 
+Floating point arithmetic is fundamentally a binary representation of scientific notation using the base two system opposed to the base ten system. For simplicity let's look at the floating-point format binary 16 specified by the Institute of Electrical and Electronics Engineers (IEEE).
 
-Floating point arithmetic is essentially a binary representation of scientific notation using the base 2 system opposed to the base 10 system.
+The floating-point format binary 16 has a similar form to binary scientific notation:
 
-IEEE 754 half-precision binary floating-point format: binary16
+* mantissa sign: 1 bit 
+* signed exponent: 5 bits
+* mantissa modulus: 10 bits
 
-This section does not cite any sources. Please help improve this section by adding citations to reliable sources. Unsourced material may be challenged and removed.
-Find sources: "Half-precision floating-point" – news · newspapers · books · scholar · JSTOR (January 2021) (Learn how and when to remove this template message)
-The IEEE 754 standard[9] specifies a binary16 as having the following format:
+There are a number of optimisations used in the IEEE 754 to efficiently store the numbers:
 
-Sign bit: 1 bit
-Exponent width: 5 bits
-Significand precision: 11 bits (10 explicitly stored)
+```0B``` ```0``` ```00000``` ```0000000000```
 
+The mantissa sign is split from the mantissa modulus. With ```0``` representing a positive number and:
 
+```0B``` ```0``` ```?????``` ```??????????```
 
+and ```1``` representing a negative number:
 
+```0B``` ```1``` ```?????``` ```??????????```
 
+The mantissa is split as explicitly specifying all combinations from a range of negative to positive numbers would take more memory.
 
+In the case of the exponent, a biased exponent is used. In the case of 5 bits, there are ```2**5``` combinations which is 32. These range from the positive values 0 to 31. A offset of ```15``` is selected for 0 giving the range -15 to +16.
 
+An exponent of ```0``` for example will be encoded as ```0+15``` which is ```15``` and 15 in binary is:
 
+```0B``` ```?``` ```01111``` ```??????????```
 
+Confer with the hexadecimal and binary values corresponding to the numbers 0-15 when hexadecimal notation was discussed.
 
+An exponent of ```-1``` for example will be encoded as ```-1+15``` which is ```14``` and 14 in binary is:
 
+```0B``` ```?``` ```01110``` ```??????????```
 
+An exponent of ```+1``` for example will be encoded as ```+1+15``` which is ```16``` and 16 in binary is:
 
+```0B``` ```?``` ```10000``` ```??????????```
 
+For scientific notation of the decimal system we placed the first non-zero value in front of the decimal point and because we had ten characters, this gave us the following possibilities where xxx is the rest of the mantissa and yyy is the exponent:
+
+* ```1.```xxx...eyyy...
+* ```2.```xxx...eyyy...
+* ```3.```xxx...eyyy...
+* ```4.```xxx...eyyy...
+* ```5.```xxx...eyyy...
+* ```6.```xxx...eyyy...
+* ```7.```xxx...eyyy...
+* ```8.```xxx...eyyy...
+* ```9.```xxx...eyyy...
+
+In binary, the only non-zero value is of the form:
+
+* ```1.```xxx...eyyy...
+
+And therefore all binary numbers begin with ```1.```. To conserve memory we don't encode this first digit and hence would just encode the xxx...
+
+Let's have a look at the number:
+
+```
+0.2 (base 10)
+```
+
+We have already seen that this is:
+
+```
+0.001100110011... (base 2)
+```
+
+The number is positive so the sign is 0:
+
+```0B``` ```0``` ```?????``` ```??????????```
+
+We see that the most significant non-zero value:
+
+```
+0.001100110011... (base 2)
+```
+
+Has the power -3 (base 10). 
+
+```1.```100110011... 
+
+If we add the exponent offset of 15 (base 10), we get -3 (base 10) + 15 (base 10) which is 12 (base 10). In binary representation using 5 bits this is:
+
+```01100 (base 2)```
+
+The exponent therefore becomes:
+
+```0B``` ```0``` ```01100``` ```??????????```
+
+As the first number before the decimal point is always 1, it is ignored and the preceding numbers after the decimal point are encoded. In this numbering system, we use 10 bits to store the number:
+
+1.```1001100110```... 
+
+The number therefore is encoded as:
+
+```0B``` ```0``` ```01100``` ```1001100110```
+
+The half-precision floating-point format binary 16 is the easiest to illustrate, however it is more typical for a double precision to be used in scientific applications where a greater range of values are required in the signed exponent and a higher precision is required.
+
+The half-precision floating-point format binary 16 uses 16 bits:
+* mantissa sign: 1 bit 
+* signed exponent: 5 bits (15 is the offset)
+* mantissa modulus: 10 bits
+
+The single floating-point format binary 32 uses 32 bits:
+* mantissa sign: 1 bit 
+* signed exponent: 8 bits (127 is the offset)
+* mantissa modulus: 23 bits
+
+The double floating-point format binary 64 uses 64 bits:
+* mantissa sign: 1 bit 
+* signed exponent: 11 bits (1023 is the offset)
+* mantissa modulus: 52 bits
+
+Return to:
+
+[Home](../../../)
