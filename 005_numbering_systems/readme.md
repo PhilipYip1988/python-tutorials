@@ -531,7 +531,7 @@ Let's begin to convert this into binary. To do this we are going to multiply the
 
 ⋮
 
-To get the number in base 2, we place these numbers after the decimal point:
+To get the number in base 2, we place these numbers after the ~~decimal (base 10)~~ binary (base 2) point:
 
 ```
 0.01 (base 2)
@@ -639,7 +639,7 @@ Both 0.1 (base 10) and 0.2 (base 10) are recurring when represented in base 2:
 0.001100110011... (base 2)
 ```
 
-Recurring operations are more prevalent in the base 2 numbering system as there are less unique characters to represent a number than in decimal making it even more limited. Physically a computer can only store numbers to a specified precision of physical bits and therefore rounding errors are observed when working with floating point numbers.
+Recurring operations are more prevalent in the base 2 numbering system as there are less unique characters to represent a number than in decimal, making it even more limited. Physically a computer can only store numbers to a specified precision of physical bits and therefore rounding errors are observed when working with floating point numbers. This is the reason for the error seen at the beginning of this tutorial.
 
 ## IEEE Standard for Floating-Point Arithmetic 
 
@@ -665,7 +665,7 @@ and ```1``` representing a negative number:
 
 The mantissa is split as explicitly specifying all combinations from a range of negative to positive numbers would take more memory.
 
-In the case of the exponent, a biased exponent is used. In the case of 5 bits, there are ```2**5``` combinations which is 32. These range from the positive values 0 to 31. A offset of ```15``` is selected for 0 giving the range -15 to +16.
+In the case of the exponent, a biased exponent is used. In the case of 5 bits, there are ```2**5``` combinations which is 32 (base 10). These range from the positive values 0 to 31. A offset of ```15``` is selected for 0 giving the range -15 to +16.
 
 An exponent of ```0``` for example will be encoded as ```0+15``` which is ```15``` and 15 in binary is:
 
@@ -681,7 +681,7 @@ An exponent of ```+1``` for example will be encoded as ```+1+15``` which is ```1
 
 ```0B``` ```?``` ```10000``` ```??????????```
 
-For scientific notation of the decimal system we placed the first non-zero value in front of the decimal point and because we had ten characters, this gave us the following possibilities where xxx is the rest of the mantissa and yyy is the exponent:
+For scientific notation of the decimal system we placed the first non-zero value in front of the decimal point and because we had ten characters, this gave us the following nine possibilities where xxx is the rest of the mantissa and yyy is the exponent:
 
 * ```1.```xxx...eyyy...
 * ```2.```xxx...eyyy...
@@ -693,11 +693,11 @@ For scientific notation of the decimal system we placed the first non-zero value
 * ```8.```xxx...eyyy...
 * ```9.```xxx...eyyy...
 
-In binary, the only non-zero value is of the form:
+In binary, because we only have two characters, the only non-zero value in front of the binary point is of the form:
 
 * ```1.```xxx...eyyy...
 
-And therefore all binary numbers begin with ```1.```. To conserve memory we don't encode this first digit and hence would just encode the xxx...
+Therefore since all floating point numbers start with ```1.```, to conserve memory we don't encode this first digit and hence would just encode the trailing xxx... after the binary point:
 
 Let's have a look at the number:
 
@@ -725,7 +725,7 @@ Has the power -3 (base 10).
 
 ```1.```100110011... 
 
-If we add the exponent offset of 15 (base 10), we get -3 (base 10) + 15 (base 10) which is 12 (base 10). In binary representation using 5 bits this is:
+If we add the exponent offset of 15, we get -3 + 15 which is 12 (base 10). In binary representation using 5 bits this is:
 
 ```01100 (base 2)```
 
