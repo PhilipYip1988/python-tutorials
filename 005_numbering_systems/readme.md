@@ -441,11 +441,11 @@ Or analog, in the case of 8 bit analog:
 * 0X 00 - 0X FF
 * 0B 00 00 00 00 - 0B 11 11 11 11
 
-In either case, these are a number of quantised discrete values.
+In the cases discussed above, these numbers are quantised discrete values or integers.
 
 ## Scientific Notation in Decimal
 
-In real life however we have numbers which include a decimal point and these numbers can range from extremely small to very large. For example:
+In real life however we have numbers which aren't integers and include a decimal point. Moreover these numbers typically range from extremely small to very large. For example:
 
 * the radius of a hydrogen atom = 0.000000000053 m 
 
@@ -506,7 +506,7 @@ Division can be calculated using division of the mantissa of the two numbers, co
 
 ![035_scientificnotation](./images/035_scientificnotation.PNG)
 
-Physically the sun is made up of a huge number of hydrogen atoms and the uncertainty of the suns radius is therefore much larger than the size of a single hydrogen atom itself which is why the addition and subtraction of the radius of a hydrogen atom from the sun is insignificant. When we use division of the radius of the sun by the radius of the hydrogen atom, we return the number of hydrogen atoms along the diameter of the sun and we can see this is a very large number and therefore a difference of a single hydrogen atom is insignificant with respect to this very large number.
+Physically the sun is made up of a huge number of hydrogen atoms and the uncertainty of the suns radius is therefore much larger than the size of a single hydrogen atom itself which is why the addition and subtraction of the radius of a hydrogen atom from the sun is insignificant. When we use division of the radius of the sun by the radius of the hydrogen atom, we return the number of hydrogen atoms along the diameter of the sun. We can see this is a very large number of hydrogen atoms and therefore a difference of a single hydrogen atom is insignificant with respect to this very large number.
 
 ## Scientific Notation in Binary
 
@@ -591,7 +591,7 @@ Let's also have a look at the example:
 0.10 (base 10)
 ```
 
-(0.1 * 2 / 1 = 0.2) - ```0``` = 0.2
+(0.1 * 2 / 1 = 0.2) - ```0``` = **0.2**
 
 (**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
 
@@ -639,11 +639,11 @@ Both 0.1 (base 10) and 0.2 (base 10) are recurring when represented in base 2:
 0.001100110011... (base 2)
 ```
 
-Recurring operations are more prevalent in the base 2 numbering system as there are less unique characters to represent a number than in decimal, making it even more limited. Physically a computer can only store numbers to a specified precision of physical bits and therefore rounding errors are observed when working with floating point numbers. This is the reason for the error seen at the beginning of this tutorial.
+Recurring operations are more prevalent in the base 2 numbering system as there are less unique characters to represent a number than in decimal, making it even more limited. Physically a computer can only store numbers to a specified precision of physical bits and therefore rounding errors are observed when working with floating point numbers, with the last digit truncated. This is the reason for the rounding error observed at the beginning of this tutorial.
 
 ## IEEE Standard for Floating-Point Arithmetic 
 
-Floating point arithmetic is fundamentally a binary representation of scientific notation using the base two system opposed to the base ten system. For simplicity let's look at the floating-point format binary 16 specified by the Institute of Electrical and Electronics Engineers (IEEE).
+Floating point arithmetic specified by the Institute of Electrical and Electronics Engineers (IEEE) is fundamentally a binary representation of scientific notation. For simplicity let's look at the floating-point format binary 16.
 
 The floating-point format binary 16 has a similar form to binary scientific notation:
 
@@ -651,7 +651,7 @@ The floating-point format binary 16 has a similar form to binary scientific nota
 * signed exponent: 5 bits
 * mantissa modulus: 10 bits
 
-There are a number of optimisations used in the IEEE 754 to efficiently store the numbers:
+There are a number of optimisations used to efficiently store the numbers:
 
 ```0B``` ```0``` ```00000``` ```0000000000```
 
@@ -663,15 +663,15 @@ and ```1``` representing a negative number:
 
 ```0B``` ```1``` ```?????``` ```??????????```
 
-The mantissa is split as explicitly specifying all combinations from a range of negative to positive numbers would take more memory.
+The mantissa is split because explicitly specifying all combinations from a range of negative to positive numbers would take more memory.
 
-In the case of the exponent, a biased exponent is used. In the case of 5 bits, there are ```2**5``` combinations which is 32 (base 10). These range from the positive values 0 to 31. A offset of ```15``` is selected for 0 giving the range -15 to +16.
+In the case of the exponent, a biased exponent is used. For 5 bits, there are ```2**5``` combinations which is 32 (base 10). These range from the positive values 0 to 31. A offset of ```15``` is selected for 0 giving the range -15 to +16.
 
 An exponent of ```0``` for example will be encoded as ```0+15``` which is ```15``` and 15 in binary is:
 
 ```0B``` ```?``` ```01111``` ```??????????```
 
-Confer with the hexadecimal and binary values corresponding to the numbers 0-15 when hexadecimal notation was discussed.
+Confer with the hexadecimal and binary values corresponding to the numbers 0-15 when hexadecimal notation was discussed earlier in this tutorial.
 
 An exponent of ```-1``` for example will be encoded as ```-1+15``` which is ```14``` and 14 in binary is:
 
