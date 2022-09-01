@@ -16,6 +16,6 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 ## Python (Core Python)
 
-[Using Fundamental Datatypes](./004_python_fundamental_datatypes/)
+[Fundamental Datatypes](./004_python_fundamental_datatypes/)
 
 [Understanding Numbering Systems](./005_numbering_systems/)
