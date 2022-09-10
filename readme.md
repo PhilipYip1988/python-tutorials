@@ -4,7 +4,7 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 ## Installation
 
-[Miniconda Installation](./001_install/)
+[Mambaforge Installation](./001_install/)
 
 ## Markdown File Tutorial
 
