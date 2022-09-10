@@ -5,11 +5,12 @@
 # System Requirements
 To install Mambaconda you will need a PC that satisfies the following system requirements:
 
-Windows 11 or Windows 10 64 Bit
-6th Generation Intel i5 Processor or Later
-8 GB DDR3 RAM or Superior
-250 GB SSD or Superior
-Google Chrome or Microsoft Edge Browser
+* Windows 11 or Windows 10 64 Bit
+* 6th Generation Intel i5 Processor or Later
+* 8 GB DDR3 RAM or Superior
+* 250 GB SSD or Superior
+* Google Chrome or Microsoft Edge Browser
+
 The performance will be very poor if these system requirements are not satisfied.
 
 # Mambaforge Install
