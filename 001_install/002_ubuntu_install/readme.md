@@ -2,7 +2,7 @@
 
 ## System Requirements
 
-To install Miniconda you will need a PC that satisfies the following system requirements:
+To install Mambaconda you will need a PC that satisfies the following system requirements:
 
 * Modern Linux Kernel Version 5.8 or Later: Ubuntu 22.04 LTS (Kernel 5.15), Mint 21 (Kernel 5.15), Fedora 36 (Kernel 5.17)
 * 6th Generation Intel i5 Processor or Later
@@ -12,11 +12,13 @@ To install Miniconda you will need a PC that satisfies the following system requ
 
 The performance will be very poor if these system requirements are not satisfied.
 
+Note the screenshots were originally taken from an install using Miniconda. Installation of Mambaconda is very similar. Ensure you use the ```mamba``` package manager opposed to the ```conda``` package manager (text is updated).
+
 ## Miniconda Installation
 
-Download the Linux 64 Bit Shell Script (.sh file extension) from the Miniconda website:
+Download the Linux 64 Bit Shell Script (.sh file extension) from the Mambaconda website:
 
-[Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+[Mambaforge](https://github.com/conda-forge/miniforge/releases)
 
 Open up the Downloads folder and right click empty space and select Open in Terminal:
 
@@ -92,7 +94,7 @@ When the terminal is opened. It will be prefixed with ```(base)``` which means t
 Use the command:
 
 ```
-conda update --all
+mamba update -c conda-forge --all
 ```
 
 to update the conda package manager and all packages in the conda base environment from the official ```conda``` channel. This is the channel maintained by the Anaconda company.
@@ -111,20 +113,20 @@ to proceed.
 
 ![016_conda_base_update](./images/016_conda_base_update.PNG)
 
-The conda base environment will then be updated.
+The Python base environment will then be updated.
 
-## Creating a jupyterlab-cf conda environment
-### creating a conda environment
+## Creating a jupyterlab-cf Python environment
+### creating a Python environment
 We will now use the command:
 ```
-conda create -n jupyterlab-cf
+mamba create -n jupyterlab-cf
 
 ```
-to create a new conda environment to install the latest version of JupyterLab from the conda-forge community channel.
+to create a new Python environment to install the latest version of JupyterLab from the conda-forge community channel.
 
 ![017_create_conda_env](./images/017_create_conda_env.PNG)
 
-Details about the conda environment will be given:
+Details about the Python environment will be given:
 
 ![018_create_conda_env](./images/018_create_conda_env.PNG)
 
@@ -133,33 +135,33 @@ Input:
 ```
 y
 ```
-in order to proceed. The conda environment is now created and you can view details in the terminal about the conda environment such as its physical file location which you can explorer in Files.
+in order to proceed. The Python environment is now created and you can view details in the terminal about the conda environment such as its physical file location which you can explorer in Files.
 
-### activating a conda environment
+### activating a Python environment
 
-The conda environment is now created but the *base* conda environment is still selected as indicated by the prompt beginning with ```(base)```. To activate the *jupyterlab-cf* conda environment use:
+The Python environment is now created but the *base* Python environment is still selected as indicated by the prompt beginning with ```(base)```. To activate the *jupyterlab-cf* Python environment use:
 
 ```
-conda activate jupyterlab-cf
+mamba activate jupyterlab-cf
 ```
 
 ![019_activate_conda_env](./images/019_activate_conda_env.PNG)
 
-Now the *jupyterlab-cf* conda environment is activated as indicated by the prompt beginning with ```(jupyterlab-cf)```:
+Now the *jupyterlab-cf* Python environment is activated as indicated by the prompt beginning with ```(jupyterlab-cf)```:
 
 ![020_activate_conda_env](./images/020_activate_conda_env.PNG)
 
-This means any package manipulation will now be carried out in the conda environment *jupyterlab-cf* and the *base* conda environment will be uninfluenced.
+This means any package manipulation will now be carried out in the Python environment *jupyterlab-cf* and the *base* conda environment will be uninfluenced.
 
 ### install jupyterlab
 
 To install the latest version of JupyterLab from the community conda-forge channel use:
 
 ```
-conda install -c conda-forge jupyterlab
+mamba install -c conda-forge jupyterlab
 ```
 
-The ```-c conda-forge``` means the *conda-forge* community channel is selected opposed to the *conda* channel maintained by the Anaconda company.
+The ```-c conda-forge``` means the *conda-forge* community channel is selected opposed to the outdated *conda* channel maintained by the Anaconda company.
 
 ![021_installing_packages](./images/021_installing_packages.PNG)
 
@@ -176,7 +178,7 @@ in order to proceed.
 
 ![023_installing_packages](./images/023_installing_packages.PNG)
 
-The packages will be downloaded and installed to the *jupyterlab-cf* conda environment:
+The packages will be downloaded and installed to the *jupyterlab-cf* Python environment:
 
 ![024_installing_packages](./images/024_installing_packages.PNG)
 
@@ -185,7 +187,7 @@ The packages will be downloaded and installed to the *jupyterlab-cf* conda envir
 It is recommended to install the following data science libraries using:
 
 ```
-conda install -c conda-forge cython seaborn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy scikit-learn scikit-image
+mamba install -c conda-forge cython seaborn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy scikit-learn scikit-image
 ```
 You will get similar screens to the above showing the packages to be installed alongside a query prompt to install them.
 
@@ -200,11 +202,19 @@ Installing ```scikit-learn``` and ```scikit-image``` will give you commonly used
 JupyterLab extensions are written using node javascript. The are also commonly built upon interactive widgets. Install the following:
 
 ```
-conda install -c conda-forge nodejs ipywidgets 
+mamba install -c conda-forge nodejs ipywidgets 
 ```
-Then the optional extensions can be installed:
+
+It is recommended to also install plotly and dash using:
+
 ```
-conda install -c conda-forge jupyterlab-variableinspector ipympl plotly jupyterlab-drawio
+mamba install -c conda-forge plotly dash jupyter-dash
+```
+
+Optional extensions can be installed:
+
+```
+mamba install -c conda-forge jupyterlab-variableinspector ipympl jupyterlab-drawio
 ```
 
 ```jupyterlab-variableinspector``` gives a basic variable explorer.
@@ -217,15 +227,15 @@ conda install -c conda-forge jupyterlab-variableinspector ipympl plotly jupyterl
 
 ### Updating the conda environment
 
-You may want to periodically check for any updates to packages in your *jupyterlab-cf* conda environment by first making sure the *jupyterlab-cf* conda environment is updated and then using the following command:
+You may want to periodically check for any updates to packages in your *jupyterlab-cf* Python environment by first making sure the *jupyterlab-cf* Python environment is updated and then using the following command:
 
 ```
-conda update -c conda-forge --all
+mamba update -c conda-forge --all
 ```
 
 ## Launching JupyterLab
 
-Ensure the *jupyterlab-cf* conda environment is selected and input:
+Ensure the *jupyterlab-cf* Python environment is selected and input:
 
 ```
 jupyter-lab
