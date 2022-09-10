@@ -1,66 +1,65 @@
 # The Python Ecosystem
 
-Python is a programming language that is under continuous development:
-* Python has numerous third-party libraries for data science 
-* Python has numerous **I**ntegrated **D**evelopment **E**nvironments (**IDE**s) 
+The Python ecosystem is pretty vast and a consequence there are numerous ways to install and use Python. There are five common ways:
 
-An IDE is essentially a program with a user interfaces for the programmer to interact with the Python programming language.
+|Installer|Package Manager|Channel|Base|
+|:-:|:-:|:-:|:-:|
+|Python|pip|pip|minimal|
+|Anaconda|conda|conda|data science distribution|
+|Miniconda|conda|conda|minimal|
+|Miniforge|conda|conda-forge|minimal|
+|Mambaforge|mamba|conda-forge|minimal|
 
-Installing Python for a begineer can be tricky as the Python ecosystem is so flexible. Installation of Python directly and installation of Python libraries using ```pip``` often results in the installation of Python libraries that are not compatible with each other and therefore lots of error messages! Take a moment to understand the Python ecosystem before installing!
+## Package Mananger
 
-There are essentially three main ways to install Python.
+### pip
 
-The Python installer:
-* The Python Programming Language
-* A limited set of inbuilt modules
-* The **pip** package manager (**p**ython **i**nstall **p**ackage)
-* The IDLE (Integrated Development **L**earner Environment)
-Note: ```pip``` is usually too flexible for beginners as it usually installs incompatible versions of packages. 
+The most simple package manager is ```pip``` which is an abbreviation for Python Install Package. This is the most flexible package manage but does not check for library dependencies or compatible versions. 
 
-The Anaconda installer base conda environment contains:
-* The Python Programming Language
-* The conda package manager
-* The Spyder and JupyterLab IDEs
-* Numerous Data Science Libraries such as:
-    * numpy
-    * pandas
-    * matplotlib
-    * seaborn
-    * scipy
-    * scikit-learn
-    * scikit-image
-In theory you should be able to install Anaconda directly and use a preinstalled IDE alongside the inbuilt data science libraries directly from the default (base) conda environment. Note however that the Anaconda installer includes annual versions of the IDEs and data science libraries. These annual versions often contain bugs that have been previously been addressed by developers. The Anaconda installer also has some commercial restrictions. In addition, you will have to eventually use a library not preinstalled, so should learn how to create a conda environment (subinstallation) to install packages in. conda environments can also be created with Miniconda. 
+In short you can install anything but there is a good chance that a beginner will install a combination of packages that are incompatible with each other and subsequently run into alot of errors when using data science libraries for example.
 
-The Miniconda installer base conda environment contains:
-* The Python Programming Language
-* The conda package manager
-Miniconda is essentially a lightweight version of Anaconda without commercial restrictions and has only the bare essentials in the default (base) conda environments. The ```conda``` package manager performs checks to ensure that the packages being installed are compatible. 
+### conda 
 
-# Package Managers: pip vs conda
+The next package manager is ```conda``` which performs a number of dependency checks and looks for compatibility between packages. The ```conda``` package manager uses two channels:
+* ```conda``` the channel maintained by the Anaconda Company
+* ```conda-forge``` the community channel
 
-A Python library can be thought of as a collection of Python code. Therefore when functions from a Python library are called, under the hood some Python code will be executed. As a consequence a compatible version of Python is a required for the Python library and is known as a dependency. When Python is updated the core functionality of the Python programming language may change. When a Python library is configured to use the old core functionality, an error may occur. The Python library will therefore have to be updated in order to be compatible with the newest Python version. In the case of the datascience libraries, numpy can be thought of as the primary datascience library; pandas is built upon numpy and therefore has Python and numpy as dependencies. matplotlib has Python, numpy and pandas as dependencies and seaborn has Python, numpy, pandas and matplotlib as dependencies. It therefore takes time for the developers of these datascience libraries to update the libraries to be compatible with the latest version of Python and to be compatible with each other. This means a standard user will run into issues when using the latest version of Python.
+Both the package manager and company channel are called ```conda```. In theory, a user should be able to install Anaconda and use the ```base```conda environment which is populated with the most commonly used data science libraries. However in practice, due to the vast size of the Python ecosystem, the Anaconda company are struggling to keep up with all the developments for even the most popular Python packages and as a result their ```conda``` channel is often months or even years behind the  community ```conda-forge``` channel.
 
-```pip``` - python install package can theoretically be used to install any version of a Python library and gives the greatest flexibility. However this flexibility comes at the compromise of possible broken functionality i.e. conflicts if any of the dependencies haven't yet been updated to support the latest version of Python.
+There are also many developments in niche areas that the Anaconda has not incorporated into their ```base``` conda environment. 
 
-The ```conda``` package manager is more stringent, essentially only allowing the user to install compatible packages and therefore having more stable functionality. For the ```conda``` package manager there are two channels, the ```conda``` channel which is maintained by the Anaconda company and gets updated approximately annually and the ```conda-forge``` channel which is the community channel and gets directly updated by the developers. 
+The conda package manager also has a number of drawbacks, it can be quite slow to solve a Python environment (check for compatibility of Python packages) and usually hangs when attepting to solve environments which use packages from two channels such as ```conda``` and ```conda-forge```.
 
-Note when using Anaconda or Miniconda:
+Due to the above, there is a high level of confusion when users try and install the latest version of a package, and the latest version on the ```conda``` channel is several releases behind the ```conda-forge``` channel (or if more niche not available on the ```conda``` channel). This results in frustration when the ```conda``` package manager is unable to solve the Python environment, particularly when a package from ```conda-forge``` is attempted to be added to the vast ```base``` Python environment in Anaconda which uses the ```conda``` channel. The solution is normally to create a seperate Python environment (sub-installation) which defeats the purpose of using Anaconda over Miniconda which has a lightweight ```base``` Python environment. Miniforge is essentially Miniconda with the base environment configured to use packages in the ```conda-forge``` channel by default.
 
-```conda install package```
-```conda install -c conda-forge package```
+### mamba
 
-Should be used in preference to:
+The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager and the ```mambaforge``` installer is configured to use the ```mamba``` package manager and uses packages in the ```conda-forge``` by default.
 
-```pip install package```
+### Package Managers Syntax:
 
-Where ```package``` is the name of the package. The ```pip``` command should only be used when the package is not found on available on the ```conda``` or ```conda-forge``` channel which is quite rare. 
+When using the mamba package manager, you should avoid use of commands which invoke the ```pip``` or ```conda``` package manager as use of multiple package managers in a single Python environment can result in instability. For example:
+
+```
+pip install packagename
+conda install packagename
+conda install -c conda-forge packagename
+```
+
+And instead replace them with:
+
+```
+mamba install -c conda-forge packagename
+```
+
+Where possible also specify, the ```conda-forge``` channel opposed to the ```conda``` channel. Some packages such as ```pytorch``` use their own channel.
 
 # Installation
 
-In this set of tutorials we will use Miniconda to create a new ```conda``` environment and install the latest version of JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Linux:
+In this set of tutorials we will use Mambaconda to create a new Python environment and install the latest version of JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Linux:
 
 [Miniconda Install on Windows](./001_windows_install/)
 
 [Miniconda Install on Ubuntu](./002_ubuntu_install/)
 
-The instructions above will also work with Anaconda, as we are in any case creating a seperate ```conda``` environment.
+
