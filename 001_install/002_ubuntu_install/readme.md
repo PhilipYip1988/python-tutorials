@@ -14,7 +14,7 @@ The performance will be very poor if these system requirements are not satisfied
 
 Note the screenshots were originally taken from an install using Miniconda. Installation of Mambaconda is very similar. Ensure you use the ```mamba``` package manager opposed to the ```conda``` package manager (text is updated).
 
-## Miniconda Installation
+## Mambaforge Installation
 
 Download the Linux 64 Bit Shell Script (.sh file extension) from the Mambaconda website:
 
