@@ -607,3 +607,7 @@ mamba env remove -n corrupted
 This removes the Python environment:
 
 ![083_jupyterlab](./images/083_jupyterlab.png)
+
+Return to:
+
+[Home](../../../../)
