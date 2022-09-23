@@ -54,6 +54,29 @@ mamba install -c conda-forge packagename
 
 Where possible explicitly specify, the ```conda-forge``` channel opposed to the ```conda``` channel. Note some larger developers such as ```pytorch``` use their own channel and you should continue to use their channel when instructed.
 
+For example, to create a mamba environment for the latest version of Spyder and JupyterLab use:
+
+```
+mamba update -c conda-forge --all
+
+mamba create -n spyder-cf
+conda activate spyder-cf
+mamba install -c conda-forge spyder
+mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+spyder
+
+mamba create -n jupyterlab-cf
+mamba activate jupyterlab-cf
+mamba install -c conda-forge jupyterlab
+mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install -c conda-forge nodejs ipywidgets 
+mamba install -c conda-forge plotly dash jupyter-dash
+mamba install -c conda-forge jupyterlab-variableinspector
+jupyter-lab
+```
+
+For those unexperienced with Python environments, the installation guides below explain the use of the above commands in a lot more detail and reveal what is physically happening using the file explorer.
+
 # Installation
 
 In this set of tutorials we will use Mambaconda to create a new Python environment and install the latest version of JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Linux:
