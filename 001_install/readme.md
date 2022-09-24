@@ -22,7 +22,7 @@ In short you can install anything but there is a good chance that a beginner wil
 
 ### conda 
 
-The next package manager is ```conda``` which performs a number of dependency checks and looks for compatibility between packages. The ```conda``` package manager uses two channels:
+The next package manager is ```conda``` which performs a number of dependency checks and looks for compatibility between packages. The ```conda``` package manager uses two main channels:
 * ```conda``` the channel maintained by the Anaconda Company
 * ```conda-forge``` the community channel
 
@@ -32,9 +32,11 @@ The conda package manager also has a number of drawbacks, it can be quite slow t
 
 Due to the above, there is a high level of confusion when users try and install the latest version of a package, and the latest version on the ```conda``` channel is several releases behind the ```conda-forge``` channel (or if more niche, not available at all on the ```conda``` channel). This results in problems when the ```conda``` package manager is unable to solve the Python environment, particularly when a package from ```conda-forge``` is attempted to be added to the vast ```base``` Python environment in Anaconda which uses the ```conda``` channel. The solution is normally to create a seperate Python environment (sub-installation) which defeats the purpose of using Anaconda over Miniconda which has a lightweight ```base``` Python environment. Miniforge is essentially Miniconda with the base environment configured to use packages in the ```conda-forge``` channel by default.
 
+Finally, the Anaconda Python Datascience Distribution and packages in Anacondas ```conda``` channel have some licensing restrictions when it comes to commercial use. These licensing restrictions are not present for packages in the open-source ```conda-forge``` channel.
+
 ### mamba
 
-The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager and the ```mambaforge``` installer is configured to use the ```mamba``` package manager and uses packages in the ```conda-forge``` by default.
+The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager and the ```mambaforge``` installer is configured to use the ```mamba``` package manager and uses packages in the ```conda-forge``` channel by default.
 
 ### Package Managers Syntax:
 
