@@ -2,7 +2,7 @@
 
 The Python ecosystem is pretty vast and a consequence there are numerous ways to install and use Python. There are five common ways:
 
-|Installer Name|Package Manager|Base Environment|Base Environment Channel|
+|Installer Name|Package Manager|Python Base Environment|Python Base Environment Channel|
 |:-:|:-:|:-:|:-:|
 |Python|pip|minimal|pip|
 |Anaconda|conda|data science distribution|conda|
@@ -26,19 +26,21 @@ The next package manager is ```conda``` which performs a number of dependency ch
 * ```conda``` the channel maintained by the Anaconda Company
 * ```conda-forge``` the community channel
 
-Note that both the package manager and anaconda maintained channel are called ```conda```. 
+Note that both the package manager and the Anaconda maintained channel are called ```conda```. 
 
-In theory, a user should be able to install Anaconda and use the ```base``` Python environment which is populated with the most commonly used data science libraries. However in practice, due to the vast size of the Python ecosystem, the Anaconda company are struggling to keep up with all the developments for even the most popular Python packages and as a result their ```conda``` channel is often months or even years behind the  community ```conda-forge``` channel. For example the ```conda`` channel usually has older versions of popular IDEs such as Spyder and JupyterLab, these older versions contain issues that have been rapidly addressed by developers and have newer releases in the ```conda-forge``` channel. There are also many developments in niche areas that the Anaconda has not incorporated into their ```base``` Python environment. 
+### Anaconda Python Distribution Issues
+
+In theory, a user should be able to install Anaconda and use the ```base``` Python environment which is populated with the most commonly used data science libraries. However in practice, due to the vast size of the Python ecosystem, the Anaconda company are struggling to keep up with all the developments for even the most popular Python packages and as a result their ```conda``` channel is often months or even years behind the  community ```conda-forge``` channel. For example, the ```conda`` channel usually has older versions of popular IDEs such as Spyder and JupyterLab and these older versions contain issues that have been rapidly addressed by developers of the IDEs in newer versions available only on the ```conda-forge``` channel. There are also many developments in niche areas that the Anaconda has not incorporated into their ```base``` Python environment. 
 
 The conda package manager also has a number of drawbacks, it can be quite slow to solve a Python environment (check for compatibility of Python packages) and usually hangs when attempting to solve environments which use packages from multiple channels such as ```conda``` and ```conda-forge```.
 
-Due to the above, there is a high level of confusion when users try and install the latest version of a package, and the latest version on the ```conda``` channel is several releases behind the ```conda-forge``` channel (or if more niche, not available at all on the ```conda``` channel). This results in problems when the ```conda``` package manager is unable to solve the Python environment, particularly when a package from ```conda-forge``` is attempted to be added to the vast ```base``` Python environment in Anaconda which uses the ```conda``` channel. The solution is normally to create a seperate Python environment (sub-installation) which defeats the purpose of using Anaconda over Miniconda which has a lightweight ```base``` Python environment. Miniforge is essentially Miniconda with the base environment configured to use packages in the ```conda-forge``` channel by default.
+Due to the above, there is a high level of confusion when users try and install the latest version of a package, and the latest version on the ```conda``` channel is several releases behind the ```conda-forge``` channel (or if more niche, not available at all on the ```conda``` channel). This results in problems when the ```conda``` package manager is unable to solve the Python environment, particularly when a package from ```conda-forge``` is attempted to be added to the vast ```base``` Python environment in Anaconda which uses the ```conda``` channel. The solution is normally to create a seperate Python environment (sub-installation) which defeats the purpose of using Anaconda over Miniconda which is a stripped Anaconda with a lightweight ```base``` Python environment. Miniforge is essentially Miniconda with the base environment configured to use packages from the ```conda-forge``` channel by default instead of the ```conda``` channel.
 
 Finally, the Anaconda Python Datascience Distribution and packages in Anacondas ```conda``` channel have some licensing restrictions when it comes to commercial use. These licensing restrictions are not present for packages in the open-source ```conda-forge``` channel.
 
 ### mamba
 
-The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager and the ```mambaforge``` installer is configured to use the ```mamba``` package manager and uses packages in the ```conda-forge``` channel by default.
+The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager and the Mambaforge installer is essentially the Miniforge installer configured to use the ```mamba``` package manager. Like Miniforge, the Python base environment uses packages in the ```conda-forge``` channel by default.
 
 ### Package Managers Syntax:
 
