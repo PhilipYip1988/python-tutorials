@@ -12,7 +12,7 @@ The Python ecosystem is pretty vast and a consequence there are numerous ways to
 
 ## Package Manager
 
-Before going ahead with the install, it is worthwhile taking the time to understand the differences in the above methods, which fundamentally relate to the package manager, utility used to install Python Packages.
+Before going ahead with the install, it is worthwhile taking the time to understand the differences in the above methods, which fundamentally relate to the package manager, which is the utility used to install Python Packages.
 
 ### pip
 
@@ -34,17 +34,17 @@ In theory, a user should be able to install Anaconda and use the ```base``` Pyth
 
 The conda package manager also has a number of drawbacks, it can be quite slow to solve a Python environment (check for compatibility of Python packages) and usually hangs when attempting to solve environments which use packages from multiple channels such as ```conda``` and ```conda-forge```.
 
-Due to the above, there is a high level of confusion when users try and install the latest version of a package, and the latest version on the ```conda``` channel is several releases behind the ```conda-forge``` channel (or if more niche, not available at all on the ```conda``` channel). This results in problems when the ```conda``` package manager is unable to solve the Python environment, particularly when a package from ```conda-forge``` is attempted to be added to the vast ```base``` Python environment in Anaconda which uses the ```conda``` channel. The solution is normally to create a seperate Python environment (sub-installation) which defeats the purpose of using Anaconda over Miniconda which is a stripped Anaconda with a lightweight ```base``` Python environment. Miniforge is essentially Miniconda with the base environment configured to use packages from the ```conda-forge``` channel by default instead of the ```conda``` channel.
+Due to the above, there is a high level of confusion when users try and install the latest version of a package, and the latest version on the ```conda``` channel is several releases behind the ```conda-forge``` channel (or if more niche, not available at all on the ```conda``` channel). This results in problems when the ```conda``` package manager is unable to solve the Python environment, particularly when a package from ```conda-forge``` is attempted to be added to the vast ```base``` Python environment in Anaconda which uses the ```conda``` channel. The solution is normally to create a seperate Python environment (sub-installation) which defeats the purpose of using Anaconda over Miniconda. Miniconda is a stripped Anaconda with a lightweight ```base``` Python environment. Miniforge is essentially the same as Miniconda however the packages in the base environment are from the ```conda-forge``` channel by default instead of the ```conda``` channel.
 
 Finally, the Anaconda Python Datascience Distribution and packages in Anacondas ```conda``` channel have some licensing restrictions when it comes to commercial use. These licensing restrictions are not present for packages in the open-source ```conda-forge``` channel.
 
 ### mamba
 
-The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager and the Mambaforge installer is essentially the Miniforge installer configured to use the ```mamba``` package manager. Like Miniforge, the Python base environment uses packages in the ```conda-forge``` channel by default.
+The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager. The Mambaforge installer is essentially the same as the Miniforge installer but includes the ```mamba``` package manager. 
 
 ### Package Managers Syntax:
 
-When using the mamba package manager, you should avoid use of commands which invoke the ```pip``` or ```conda``` package manager as use of multiple package managers in a single Python environment can result in instability. For example when you see installation commands to install packages:
+When using the mamba package manager, you should avoid use of commands which invoke the ```pip``` or ```conda``` package managers, as use of multiple package managers in a single Python environment can result in issues. For example when you see installation commands to install packages:
 
 ```
 pip install packagename
@@ -69,7 +69,6 @@ mamba create -n spyder-cf
 conda activate spyder-cf
 mamba install -c conda-forge spyder
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
-spyder
 
 mamba create -n jupyterlab-cf
 mamba activate jupyterlab-cf
@@ -78,6 +77,11 @@ mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xls
 mamba install -c conda-forge nodejs ipywidgets 
 mamba install -c conda-forge plotly dash jupyter-dash
 mamba install -c conda-forge jupyterlab-variableinspector
+
+conda activate spyder-cf
+spyder
+
+conda activate jupyterlab-cf
 jupyter-lab
 ```
 
