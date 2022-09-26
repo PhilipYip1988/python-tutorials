@@ -20,4 +20,6 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 [Understanding Numbering Systems](./005_numbering_systems/)
 
-[Collections str, list, tuple, set, dict](./006_collections/)
+[Collections; str, list, tuple, set, dict](./006_collections/)
+
+[Code Blocks; for loops, if-elif-else, match-case, while loops](./007_code_blocks/)
