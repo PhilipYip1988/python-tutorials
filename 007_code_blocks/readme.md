@@ -424,6 +424,23 @@ for idx, val in roe:
 
 ## if, elif, else
 
+A number of code blocks can be made in response to a single condition.
+
+|Code Block|Purpose|
+|---|---|
+|if|Code block is carried out if condition is True|
+|else|Code block is carried out if condition is False|
+
+Or setup in response to multiple conditions.
+
+|Code Block|Purpose|
+|---|---|
+|if|Code block is carried out if first condition is True|
+|elif|Code block is carried out if first condition is False and second condition is True|
+|elif|Code block is carried out if first and second conditions are False and third condition is True|
+|else|Code block is carried out else all conditions are False|
+
+
 Code in the ```if``` code block is only implemented if the condition is ```True```
 
 ```
@@ -676,12 +693,16 @@ while True:
 
 Notice that the output of the cell continues indefinitely and the kernel gets hung on the cell output. The kernel typically needs to be restarted to exit out of the ```while``` loop.
 
+|Code Block|Purpose|
+|---|---|
+|for|Code block is carried out for each item in a known sequence|
+|while|Code block is carried out while a condition is True|
+
 ```while``` loops are typically invoked when interacting with hardware. For example a bathroom light might be instructed to turn on in respond to the reading from a Near-Infrared motion sensor. In this example there is no set sequence or specified period of time until someone walks until the bathroom, making it unviable to work with only a ```for``` loop.
 
 ```for``` loops are instead preferred when working over a known timeframe or sequence within a known collection. 
 
 Although there is a preference to use a ```for``` loop or a ```while``` loop, the ```while``` loop can be used in place of the ```for``` loop for all circumstances however the ```for``` loop cannot replace the ```while``` loop with an unknown sequence or timeframe. To understand how to use a ```while``` loop it is useful to recreate some of the ```for``` loops used above with a ```while``` loop.
-
 
 ![033_for_loop](./images/033_for_loop.png)
 
