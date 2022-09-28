@@ -771,9 +771,9 @@ number = 5
 # value of a number squared plus one
 try:
     # Check to see if the number is numeric by testing for concatenation
-    number + 1
-except TypeError:
-    # Handle a TypeError
+    float(number) + 1
+except ValueError:
+    # Handle a ValueError
     print("invalid number, number set to 0")
     number = 0
 else:
