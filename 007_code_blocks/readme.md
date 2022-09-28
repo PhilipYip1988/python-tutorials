@@ -429,17 +429,17 @@ A number of code blocks can be made in response to a single condition.
 |Code Block|Purpose|
 |---|---|
 |if|Code block is carried out if condition is True|
-|else|Code block is carried out if condition is False|
+|else|Code block is carried out elsewise i.e. when the condition is False|
 
 Or setup in response to multiple conditions.
 
 |Code Block|Purpose|
 |---|---|
-|if|Code block is carried out if first condition is True|
-|elif|Code block is carried out if first condition is False and second condition is True|
-|elif|Code block is carried out if first and second conditions are False and third condition is True|
-|elif...|Each additional elif code block is carried out if all previous conditions are False and current condition is True|
-|else|Code block is carried out else all conditions are False|
+|if|Code block is carried out if the first condition is True|
+|elif|Code block is carried out if the first condition is False and the second condition is True|
+|elif|Code block is carried out if the first and the second conditions are False and the third condition is True|
+|elif...|Each additional elif code block is carried out if all previous conditions are False and the current condition is True|
+|else|Code block is carried out elsewise i.e. all conditions above are False|
 
 
 Code in the ```if``` code block is only implemented if the condition is ```True```
