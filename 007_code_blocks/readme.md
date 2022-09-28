@@ -732,4 +732,13 @@ Notice that the final value of ```loop_idx``` is 3, meaning the condition is the
 
 ![073_while](./images/073_while.png)
 
-## try, except
+## try, except, else, finally
+
+Earlier we seen the use of if, elif and else statements to carry out different code blocks in response to a condition or conditions. In Python we have a similar structure setup for handling errors.
+
+|Code Block|Purpose|
+|---|---|
+|try|This block will test the code for an expected error|
+|except|Here you can handle the error|
+|else|If there is no error, this additional code block gets carried out|
+|finally|carried out regardless if there is an error or not|
