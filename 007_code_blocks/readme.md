@@ -764,3 +764,23 @@ Earlier we seen the use of if, elif and else statements to carry out different c
 |except|This code block will be used to handle the error|
 |else|This code block will be used elsewise when there is no error|
 |finally|This code block is carried out regardless if there is an error or not|
+
+```
+number = 5
+
+# value of a number squared plus one
+try:
+    # Check to see if the number is numeric by testing for concatenation
+    number + 1
+except TypeError:
+    # Handle a TypeError
+    print("invalid number, number set to 0")
+    number = 0
+else:
+    # Square the number
+    number_sq = number ** 2
+finally:
+    value = number_sq + 1
+
+
+```
