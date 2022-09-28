@@ -22,4 +22,4 @@ This set of tutorials will look at the Python Programming Language and some of t
 
 [Collections; str, list, tuple, set, dict](./006_collections/)
 
-[Code Blocks; for loops, if-elif-else, match-case, while loops](./007_code_blocks/)
+[Code Blocks; for loops, if-elif-else, match-case, while loops, try-except-else-finally](./007_code_blocks/)
