@@ -438,6 +438,7 @@ Or setup in response to multiple conditions.
 |if|Code block is carried out if first condition is True|
 |elif|Code block is carried out if first condition is False and second condition is True|
 |elif|Code block is carried out if first and second conditions are False and third condition is True|
+|elif...|Each additional elif code block is carried out if all previous conditions are False and current condition is True|
 |else|Code block is carried out else all conditions are False|
 
 
