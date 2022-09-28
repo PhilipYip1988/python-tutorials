@@ -738,7 +738,7 @@ Earlier we seen the use of if, elif and else statements to carry out different c
 
 |Code Block|Purpose|
 |---|---|
-|try|This block will test the code for an expected error|
-|except|Here you can handle the error|
-|else|If there is no error, this additional code block gets carried out|
-|finally|carried out regardless if there is an error or not|
+|try|This code block will test the code for an expected error|
+|except|This code block will be used to handle the error|
+|else|This code block will be used elsewise when there is no error|
+|finally|This code block is carried out regardless if there is an error or not|
