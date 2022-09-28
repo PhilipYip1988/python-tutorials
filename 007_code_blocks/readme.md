@@ -761,26 +761,46 @@ Earlier we seen the use of if, elif and else statements to carry out different c
 |Code Block|Purpose|
 |---|---|
 |try|This code block will test the code for an expected error|
-|except|This code block will be used to handle the error|
+|except|This code block will be used to handle an error type|
 |else|This code block will be used elsewise when there is no error|
 |finally|This code block is carried out regardless if there is an error or not|
 
-```
-number = 5
+If the variable number is created and assigned to a string. Casting will work, if the string is recognised as numeric.
 
-# value of a number squared plus one
+```
+number = "5"
+float(number)
+```
+
+![074_try](./images/074_try.png)
+
+However a "ValueError" will be given when the string is not recognised as numeric.
+
+```
+number = "five"
+float(number)
+```
+
+![075_try](./images/075_try.png)
+
+The following code blocks can be setup in response to the ```number``` variable above. Normally these would be setup with a function and the variable ```number``` would be an input argument of the function. However for clarity these are shown outwith a function and functions will be discussed in the next tutorial.
+
+```
 try:
-    # Check to see if the number is numeric by testing for concatenation
-    float(number) + 1
+    float(number)
 except ValueError:
-    # Handle a ValueError
     print("invalid number, number set to 0")
     number = 0
 else:
-    # Square the number
-    number_sq = number ** 2
+    number = float(number)
 finally:
-    value = number_sq + 1
-
-
+    value = number + 1
 ```
+
+When the ```try``` code block does not find an error, the code in the ```else``` code block and the ```finally``` code blocks are carried out.
+
+![076_try](./images/076_try.png)
+
+When the ```try``` code block does find a ```ValueError```, the code in the ```except ValueError``` code block and the ```finally``` code blocks are carried out.
+
+![077_try](./images/077_try.png)
