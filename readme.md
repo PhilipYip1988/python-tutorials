@@ -6,11 +6,9 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Mambaforge Installation](./001_install/)
 
-## Markdown File Tutorial
+## JupyterLab
 
 [Markdown Tutorial](./002_markdown/)
-
-## Interactive Python Notebook Tutorial
 
 [Interactive Notebook Tutorial](./003_interactive_notebook/)
 
