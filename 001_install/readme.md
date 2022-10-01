@@ -105,7 +105,7 @@ For those unexperienced with Python environments, the installation guides below 
 
 # Installation
 
-In this set of tutorials we will use Mambaconda to create a new Python environment and install the latest version of JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Linux:
+In this set of tutorials we will use Mambaconda to create a new Python environment and install the latest version of the Spyder and JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Linux:
 
 [Mambaforge Install on Windows](./001_windows_install/)
 
