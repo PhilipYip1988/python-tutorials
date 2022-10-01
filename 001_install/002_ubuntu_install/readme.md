@@ -116,6 +116,8 @@ Input ```yes```.
 
 The ```.bashrc``` file will now be updated to include:
 
+![img_134](./images/img_134.png)
+
 ```
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
