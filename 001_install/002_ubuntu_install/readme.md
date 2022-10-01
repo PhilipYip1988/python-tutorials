@@ -1,7 +1,7 @@
 ## System Requirements
 To install Mambaconda you will need a PC that satisfies the following system requirements:
 
-* Ubuntu 22.10 or  Ubuntu 22.04 LTS/Mint 21
+* Ubuntu 22.10, Fedora 37 or Ubuntu 22.04 LTS/Mint 21
 * 6th Generation Intel i5 Processor or Later
 * 8 GB DDR3 RAM or Superior
 * 250 GB SSD or Superior
