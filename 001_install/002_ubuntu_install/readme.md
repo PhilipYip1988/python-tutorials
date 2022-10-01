@@ -117,8 +117,26 @@ Input ```yes```.
 The ```.bashrc``` file will now be updated to include:
 
 ```
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/philip/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/philip/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/philip/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/philip/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
 
+if [ -f "/home/philip/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/philip/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
 ```
+My username ```philip``` appears 6 times. If manually initialising the install copy and paste the above into the ```.bashrc``` file and replace these 6 instances with your username.
 
 The updated ```bashrc``` will only be referenced when invoking a new instance of the Terminal, so close any Terminal Windows and reopen the Terminal.
 
