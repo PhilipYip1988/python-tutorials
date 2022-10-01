@@ -167,7 +167,7 @@ This is because ```None``` is the default return value.
 
 ### Input Arguments
 
-A simple function can be defined which has a single input argument ```value```. This function does nothing to this input argument ```value``` and merely returns it unaltered.
+A simple function can be defined which has a single input argument ```value```. This function will return this input argument ```value``` unaltered.
 
 ```
 def return_value(value):
@@ -186,12 +186,18 @@ var = return_value()
 
 If the function name is typed with open parenthesis followed by the shortcut key shift ```⇧``` and tab ```↹```, details about the expected input argument are displayed.
 
+![img_020](./images/img_020.png)
+
 If the function is called with an input argument, it will run as expected. The new variables ```var1``` and ```var2``` will display on the variable explorer.
 
 ```
 var1 = return_value("Hello")
 var2 = return_value(value="Hello")
 ```
+
+![img_021](./images/img_021.png)
+
+![img_022](./images/img_022.png)
 
 In the above case, when assigning the output of the function to ```var1```, the function was called by providing a singular positional input argument. When using positional input arguments, they need to be provided in the correct order, matching the order of the function definition.
 
@@ -200,7 +206,7 @@ When assigning the output of the function to ```var2```, the function was called
 
 ### docstring
 
-When using shift ```⇧``` and tab ```↹```, details about the input arguments are supplied, alongside the functions docstring. A docstring can be provided by creating a multi-line comment at the top of the functions code block. Notice that the template for the docstring displays as soon as the multiline comment is added.
+When using shift ```⇧``` and tab ```↹```, details about the input arguments are supplied, alongside the functions docstring. A docstring can be provided by creating a multi-line comment at the top of the functions code block. 
 
 ```
 def return_value(value):
@@ -211,7 +217,7 @@ def return_value(value):
 
 ```
 
-
+Notice that the template for the docstring displays as soon as the multiline comment is added.
 
 ```
 def return_value(value):
@@ -234,7 +240,7 @@ def return_value(value):
 
 ```
 
-The docstring should provide a quick description of what the function does. For each input argument and the return value, the expected datatype should be supplied.
+This template should be filled out, so that the docstring should provide a quick description of what the function does. For each input argument and the return value, the expected datatype should be supplied. For example.
 
 ```
 def return_value(value):
@@ -259,7 +265,9 @@ def return_value(value):
 
 When inputting the functions name with open parenthesis followed by shift ```⇧``` and tab ```↹```, the updated docstring displays. 
 
-Another function ```make_plural``` can be defined which takes in a singular input value and returns the plural of it. i.e. concatenates the original string with an ```"s"```.
+![img_023](./images/img_023.png)
+
+Another function ```make_plural``` can be defined which once again takes in a singular input value. This time the input is manipulated to a plural value by concatention with an ```"s"``` within the functions body and the function returns the plural value. 
 
 ```
 def make_plural(word):
@@ -283,6 +291,23 @@ def make_plural(word):
 
 ```
 
+![img_024](./images/img_024.png)
+
+This function can be tested using the input strings ```"cat"``` and ```"dog"``` respectively.
+
+```
+word1 = "cat"
+word2 = "dog"
+
+word1s = make_plural(word1)
+word2s = make_plural(word2)
+```
+
+![img_025](./images/img_025.png)
+
+![img_026](./images/img_026.png)
+
+Another function can be defiend which coutns the number of vowels within a word. In this example the code block of the function body contains a nested for loop. The input argument ```word``` is a string and the return value ```vowel_count``` is an integer.
 
 ```
 def count_vowels(word):
@@ -311,19 +336,20 @@ def count_vowels(word):
 
 ```
 
+![img_027](./images/img_027.png)
 
+This function can be tested using the input string ```"anaconda"```.
 
+```
+word1 = "anaconda"
+vowel_n = count_vowels(word1)
+```
 
+![img_028](./images/img_028.png)
 
+![img_029](./images/img_029.png)
 
-
-
-
-
-
-
-
-
+Each function can only have one return statement. However this return value can be a collection such as a list or a tuple. The function above can be midified to return a list containing two values, the vowel count and the consonant count. Once again the docstring should outline clearly what each input argument is and what each value in the return list is.
 
 ```
 
@@ -357,8 +383,163 @@ def count_vowels_cons(word):
 
 ```
 
-A return statement can be used to return a collection such as a list or tuple.
+![img_030](./images/img_030.png)
 
+This function can be once again be tested using the input string ```"anaconda"```. 
+
+```
+word1 = "anaconda"
+[vowel_n, cons_n] = count_vowels_cons(word1)
+```
+![img_031](./images/img_031.png)
+
+![img_032](./images/img_032.png)
+
+The list collection can also be unpacked using.
+
+```
+vowel_n, cons_n = count_vowels_cons(word1)
+```
+
+![img_033](./images/img_033.png)
+
+### Positional and Keyword Input Arguments
+
+So far a function has been created with no positional input arguments and one positional input argument. It is possible to create a function with other combinations of positional and keyword input arguments. 
+
+A keyword input argument is assigned a default value during the functions definition and this means the function can be called without specifying the keyword input argument. For example a custom ```print_word``` function can be created.
+
+```
+def print_word(word="Hello"):
+    """
+    
+
+    Parameters
+    ----------
+    word : string, optional
+        DESCRIPTION. The default is "Hello".
+
+    Returns
+    -------
+    None.
+
+    """
+    print(word)
+    return None
+
+
+```
+
+If no input argument is supplied when calling the function, the default value is printed.
+
+```
+print_word()
+```
+
+This default value can however be assigned a new value while calling the function to instead print the new value.
+
+```
+print_word(word="Goodbye")
+```
+
+![img_034](./images/img_034.png)
+
+Since this function only has a single keyword input argument, this function can be called using the position of this input argument:
+
+```
+print_word("Farewell")
+```
+
+![img_035](./images/img_035.png)
+
+A more complicated function can be created with 4 input arguments; 2 positional and 2 keyword input arguments.
+
+```
+def print_words(word1, word2, word3="Hello", word4="Goodbye"):
+    """
+    
+
+    Parameters
+    ----------
+    word1 : string
+        DESCRIPTION.
+    word2 : string
+        DESCRIPTION.
+    word3 : string, optional
+        DESCRIPTION. The default is "Hello".
+    word4 : string, optional
+        DESCRIPTION. The default is "Goodbye".
+
+    Returns
+    -------
+    None.
+
+    """
+    output = [word1, word2, word3, word4]
+    print(output)
+    return None
+
+
+```
+
+![img_036](./images/img_036.png)
+
+When calling this function, the 2 positional input arguments must be supplied in order. 
+
+```
+print_words("Python", "Anaconda")
+```
+
+Normally the name of positional input arguments aren't provided but they can optional be supplied:
+
+```
+print_words(word1="Python", word2="Anaconda")
+```
+
+Once all positional input arguments are assigned a value, any keyword input arguments can also be supplied a custom value:
+
+```
+print_words("Python", "Anaconda", word3="pip")
+
+print_words("Python", "Anaconda", word4="mamba")
+
+print_words("Python", "Anaconda", word3="pip", word4="mamba")
+```
+
+It is possible to call the function by assigning the name of all the input arguments and assigning them each to a value:
+
+```
+print_words(word1="Python", word2="Anaconda", word3="pip", word4="mamba")
+```
+
+Alternatively it is possible to list the value of all input arguments without use of any of the input argument names:
+
+```
+print_words("Python", "Anaconda", "pip", "mamba")
+```
+
+![img_037](./images/img_037.png)
+
+When all the names of the input arguments are supplied, they can be listed in any order. 
+
+```
+print_words(word4="mamba", word1="Python", word2="Anaconda", word3="pip")
+```
+
+![img_038](./images/img_038.png)
+
+**However this is generally bad practice*** and it is better practice to maintain the order of the positional input arguments to prevent any confusion. 
+
+The more conventional syntax used to call the function above is of the form:
+
+```
+print_words("Python", "Anaconda", word3="pip", word4="mamba")
+print_words("Python", "Anaconda", word3="pip")
+print_words("Python", "Anaconda", word4="mamba")
+print_words("Python", "Anaconda")
+```
+
+![img_039](./images/img_039.png)
 
 ### Function Local Scope
 
@@ -393,7 +574,7 @@ def count_vowels(word):
 count_vowels("hello")
 ```
 
-### Positional and Keyword Input Arguments
+
 
 
 ### Asserting Input Arguments
