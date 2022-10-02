@@ -30,11 +30,11 @@ modules
 
 classes
 
-
-os module
-
-sys module
-
 datetime module
 
 math module
+
+File and Directory Operations with the os and shutil modules
+
+sys module
+
