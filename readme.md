@@ -29,3 +29,10 @@ list and dict comprehensions and lambda functions
 modules
 
 classes
+
+
+os module
+
+sys module
+
+datetime module
