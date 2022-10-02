@@ -541,6 +541,224 @@ print_words("Python", "Anaconda")
 
 ![img_039](./images/img_039.png)
 
+### Asserting Input Arguments
+
+```
+
+def print_words(word1, word2, word3="Hello", word4="Goodbye"):
+    """
+    prints the concatenation of all input words
+
+    Parameters
+    ----------
+    word1 : str
+        DESCRIPTION.
+    word2 : str
+        DESCRIPTION.
+    word3 : str, optional
+        DESCRIPTION. The default is "Hello".
+    word4 : str, optional
+        DESCRIPTION. The default is "Goodbye".
+
+    Returns
+    -------
+    None.
+
+    """
+    output = word1 + word2 + word3 + word4
+    print(output)
+    return None
+
+
+```
+
+```
+print_words("Python", "Anaconda")
+```
+
+```
+print_words(1, "Anaconda")
+```
+
+
+```
+print_words(1, 2, word3=3, word4=4)
+```
+
+
+
+
+
+
+```
+isinstance("Python", str)
+isinstance(1, str)
+isinstance(3.14, str)
+isinstance("Python", int)
+isinstance(1, int)
+isinstance(3.14, int)
+isinstance("Python", (int, float, bool))
+isinstance(1, (int, float, bool))
+isinstance(3.14, (int, float, bool))
+```
+
+
+```
+condition = True
+assert condition
+```
+
+```
+condition = False
+assert condition
+```
+
+```
+condition = True
+assert condition, "optional message"
+```
+
+```
+condition = False
+assert condition, "optional message"
+```
+
+
+```
+def print_words(word1, word2, word3="Hello", word4="Goodbye"):
+    """
+    prints the concatenation of all input words
+
+    Parameters
+    ----------
+    word1 : str
+        DESCRIPTION.
+    word2 : str
+        DESCRIPTION.
+    word3 : str, optional
+        DESCRIPTION. The default is "Hello".
+    word4 : str, optional
+        DESCRIPTION. The default is "Goodbye".
+
+    Returns
+    -------
+    None.
+
+    """
+    assert isinstance(word1, str), "word1 must be a str"
+    assert isinstance(word2, str), "word2 must be a str"
+    assert isinstance(word3, str), "word3 must be a str"
+    assert isinstance(word4, str), "word4 must be a str"
+    
+    output = word1 + word2 + word3 + word4
+    print(output)
+    return None
+    
+    
+```
+
+```
+print_words("Python", "Anaconda")
+```
+
+```
+print_words(1, 2, word3=3, word4=4)
+```
+
+```
+def print_words(word1, word2, word3="Hello", word4="Goodbye"):
+    """
+    prints the concatenation of all input words
+
+    Parameters
+    ----------
+    word1 : str
+        DESCRIPTION.
+    word2 : str
+        DESCRIPTION.
+    word3 : str, optional
+        DESCRIPTION. The default is "Hello".
+    word4 : str, optional
+        DESCRIPTION. The default is "Goodbye".
+
+    Returns
+    -------
+    None.
+
+    """
+    assert isinstance(word1, str), "word1 must be a str"
+    assert isinstance(word2, str), "word2 must be a str"
+    try:
+        assert isinstance(word3, str), "word3 must be a str, set to default \"Hello\""
+    except AssertionError:
+        word3 = "Hello"
+    try:
+        assert isinstance(word4, str), "word4 must be a str, set to default \"Goodbye\""
+    except AssertionError:
+        word4 = "Goodbye"
+    
+    output = word1 + word2 + word3 + word4
+    print(output)
+    return None
+
+
+```
+
+```
+print_words("Python", "Anaconda", word3=3, word4=4)
+```
+
+```
+def print_words(word1, word2, word3="Hello", word4="Goodbye"):
+    """
+    prints the concatenation of all input words
+
+    Parameters
+    ----------
+    word1 : str
+        DESCRIPTION.
+    word2 : str
+        DESCRIPTION.
+    word3 : str, optional
+        DESCRIPTION. The default is "Hello".
+    word4 : str, optional
+        DESCRIPTION. The default is "Goodbye".
+
+    Returns
+    -------
+    None.
+
+    """
+    assert isinstance(word1, str), "word1 must be a str"
+    assert isinstance(word2, str), "word2 must be a str"
+    try:
+        assert isinstance(word3, str), "word3 must be a str, set to default \"Hello\""
+    except AssertionError:
+        print("word3 must be a str, set to default \"Hello\"")
+        word3 = "Hello"
+    try:
+        assert isinstance(word4, str), "word4 must be a str, set to default \"Goodbye\""
+    except AssertionError:
+        print("word4 must be a str, set to default \"Goodbye\"")
+        word4 = "Goodbye"
+    
+    output = word1 + word2 + word3 + word4
+    print(output)
+    return None
+
+
+```
+
+```
+print_words("Python", "Anaconda", word3=3, word4=4)
+```
+
+
+
+
+
+
+
 ### Function Local Scope
 
 ```
@@ -573,11 +791,6 @@ def count_vowels(word):
 ```
 count_vowels("hello")
 ```
-
-
-
-
-### Asserting Input Arguments
 
 
 ### *args and **kwargs
