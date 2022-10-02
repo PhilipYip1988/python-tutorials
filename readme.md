@@ -21,3 +21,11 @@ This set of tutorials will look at the Python Programming Language using the mar
 [Collections; str, list, tuple, set, dict](./006_collections/)
 
 [Code Blocks; for loops, if-elif-else, match-case, while loops, try-except-else-finally](./007_code_blocks/)
+
+[Functions](./008_functions/)
+
+list and dict comprehensions and lambda functions
+
+modules
+
+classes
