@@ -36,3 +36,5 @@ os module
 sys module
 
 datetime module
+
+math module
