@@ -973,7 +973,7 @@ result = add_numbers()
 
 Up until this point, a specified number of positional and keyword input arguments have been used. 
 
-Sometimes, it is desirable to have more flexibility and instead to have a unction that accepts a variable number of input arguments. For example conceptualise a simple function that sums numbers:
+Sometimes, it is desirable to have more flexibility and instead to have a function that accepts a variable number of input arguments. For example conceptualise a simple function that sums numbers:
 
 ```
 sum_all(1)
