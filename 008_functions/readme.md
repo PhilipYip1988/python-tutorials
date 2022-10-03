@@ -841,36 +841,144 @@ print_words("Python", "Anaconda", word3=2)
 
 ### Function Local Scope
 
+Two variables will be created ```x``` and ```y```, alongside a function ```add_numbers``` that takes two positional input arguments ```x``` and ```y```. **These should not be confused with one another and are not the same variable.**
+
 ```
-def count_vowels(word):
+x = 1
+y = 2
+
+def add_numbers(x, y):
     """
-    This function takes in a word and counts the number of vowels.
+    Returns the sum of the two input integers
 
     Parameters
     ----------
-    word : str
-        Input word.
+    x : int
+        DESCRIPTION.
+    y : int
+        DESCRIPTION.
 
     Returns
     -------
-    vowel_count: int
-        The number of vowels.
+    value : int
+        DESCRIPTION.
 
     """
-    vowel_count = 0
-    for let in word:
-        if let in ["a", "e", "i", "o", "u"]:
-            vowel_count += 1
+    value = x + y
+    return value
+
+
+result = add_numbers(x=3, y=4)
+
+
+```
+
+When the code above is run:
+
+![img_060](./images/img_060.png)
+
+The internal function variable ```value``` is computed by summing the values of ```x``` and ```y``` that were supplied as the input arguments when the function was called. Notice that these had the values ```3``` and ```4``` respectively, meaning ```value``` has a value of ```7```. This variable ```value``` is assigned to the variable ```result```, as assignment to this variable name was made during the function call. Therefore ```result``` has a value of ```7``` and this is a variable that is outside the function.
+
+After the function call, the values of ```x``` and ```y``` remain ```1``` and ```2``` as these variables are outside the function and independent of the input arguments of the function which had the same names but operated over a different scope.
+
+![img_061](./images/img_061.png)
+
+The ```x``` and ```y``` assigned outside the function are inaccessible within the local scope of the function. The only way to access variables within a function is to explicitly supply the values of the variables as input arguments when calling the function:
+
+```
+result = add_numbers(x=x, y=y)
+```
+
+![img_062](./images/img_062.png)
+
+The input arguments ```"x"``` and ```"y"``` become local function variables. These local function variables are not accessible outside the function, unless they are returned to an interactive notebook variable using the ```return``` statement.
+
+To demonstrate, the value of the input arguments ```x``` and ```y``` can be reassigned within the code block of the function and a new variable ```z``` can also be created within the code block of the function. ```x```, ```y``` and ```z``` are local function variables and not accessible elsewhere.
+
+The local function variable ```value``` on the other hand which was computed using the final values of ```x```, ```y``` and ```z``` is supplied via the ```return``` statement and assigned to the variable ```result```. Once again an assignment to this variable name was made during the function call.
+
+```
+x = 1
+y = 2
+
+def add_numbers(x, y):
+    """
+    Returns the sum and more of the two input integers
+
+    Parameters
+    ----------
+    x : int
+        DESCRIPTION.
+    y : int
+        DESCRIPTION.
+
+    Returns
+    -------
+    value : int
+        DESCRIPTION.
+
+    """
+    x = x + 1
+    y = y + 1
+    z = 5
+    value = x + y + z
+    return value
+
+
+result = add_numbers(x=3, y=4)
+
+
+```
+
+![img_063](./images/img_063.png)
+
+Variables from outside a function can be accessed by making them global variables. Notice that the values of these variables will be altered within the function.
+
+```
+x = 1
+y = 2
+
+def add_numbers():
+    """
+    Returns the sum and more of the two global variables
     
+    Parameters
+    ----------
+    x : int
+        DESCRIPTION.
+    y : int
+        DESCRIPTION.
+    Returns
+    -------
+    value : int
+        DESCRIPTION.
+    """
+    
+    global x
+    global y
+    x = x + 1
+    y = y + 1
+    value = x + y
+    return value
 
-    return vowel_count
+
+result = add_numbers()
 
 
 ```
 
-```
-count_vowels("hello")
-```
-
+![img_064](./images/img_064.png)
 
 ### *args and **kwargs
+
+Up until this point, a specified number of positional and keyword input arguments have been used. 
+
+Sometimes, it is desirable to have more flexibility and instead to have a unction that accepts a variable number of input arguments. For example conceptualise a simple function that sums numbers:
+
+```
+sum_all(1)
+sum_all(1, 2)
+sum_all(1, 2, 3)
+```
+
+The desired output would be ```1```, ```3``` and ```6``` respectively.
