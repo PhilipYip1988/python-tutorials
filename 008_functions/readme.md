@@ -543,6 +543,8 @@ print_words("Python", "Anaconda")
 
 ### Asserting Input Arguments
 
+The following function can be created which expects 4 strings as input arguments; 2 positional strings and 2 keyword strings:
+
 ```
 
 def print_words(word1, word2, word3="Hello", word4="Goodbye"):
@@ -572,57 +574,115 @@ def print_words(word1, word2, word3="Hello", word4="Goodbye"):
 
 ```
 
+![img_040](./images/img_040.png)
+
+The function can be called using 2 positional strings and works as expected, concatenating all the strings together and printing the concatenated string.
+
 ```
 print_words("Python", "Anaconda")
 ```
 
+![img_041](./images/img_041.png)
+
+When one of these is set to an incorrect datatype, an error is displayed:
+
 ```
 print_words(1, "Anaconda")
 ```
+![img_042](./images/img_042.png)
 
+However, more dangerously, when all of these input arguments are the wrong datatype, the code appears to "work":
 
 ```
 print_words(1, 2, word3=3, word4=4)
 ```
 
+![img_043](./images/img_043.png)
 
+The inbuilt ```isinstance``` function can be used to check if a variable belongs to a class. It has the form:
 
+```
+isinstance(variable, class)
+```
 
+Or:
 
+```
+isinstance(variable, (class1, class2, class2))
+```
+For example, the following can be checked:
 
 ```
 isinstance("Python", str)
+```
+
+![img_044](./images/img_044.png)
+
+```
 isinstance(1, str)
+```
+
+![img_045](./images/img_045.png)
+
+```
 isinstance(3.14, str)
-isinstance("Python", int)
-isinstance(1, int)
+```
+
+![img_046](./images/img_046.png)
+
+```3.14``` can be checked to see if it is an integer using:
+
+```
 isinstance(3.14, int)
-isinstance("Python", (int, float, bool))
-isinstance(1, (int, float, bool))
+```
+
+![img_047](./images/img_047.png)
+
+```3.14``` can be checked to see if it is numeric using:
+
+```
 isinstance(3.14, (int, float, bool))
 ```
 
+![img_048](./images/img_048.png)
+
+The ```assert``` keyword can be used, to assert a condition. If the condition is True, the code will continue as normal:
 
 ```
 condition = True
 assert condition
 ```
 
+![img_049](./images/img_049.png)
+
+If the condition is False, an ```AssertionError``` will display:
+
 ```
 condition = False
 assert condition
 ```
+
+![img_050](./images/img_050.png)
+
+An optional message can be displayed alongside the error. This does not display when the condition is True:
 
 ```
 condition = True
 assert condition, "optional message"
 ```
 
+![img_051](./images/img_051.png)
+
+But displays when the condition is False:
+
 ```
 condition = False
 assert condition, "optional message"
 ```
 
+![img_052](./images/img_052.png)
+
+Thefunction above can be modified, to assert that each input is a string:
 
 ```
 def print_words(word1, word2, word3="Hello", word4="Goodbye"):
@@ -657,13 +717,25 @@ def print_words(word1, word2, word3="Hello", word4="Goodbye"):
     
 ```
 
+![img_053](./images/img_053.png)
+
+The function works in the same manner as before, when the input arguments supplied are of the correct datatype:
+
 ```
 print_words("Python", "Anaconda")
 ```
 
+![img_054](./images/img_054.png)
+
+The ```AssertionError``` will display when these are the wrong datatypes:
+
 ```
 print_words(1, 2, word3=3, word4=4)
 ```
+
+![img_055](./images/img_055.png)
+
+```try``` and ```except``` code blocks can be setup to handle the ```AssertionError``` for the keyword input arguments. When these arguments are the wrong datatypes, the value can be assigned to a default value:
 
 ```
 def print_words(word1, word2, word3="Hello", word4="Goodbye"):
@@ -704,9 +776,17 @@ def print_words(word1, word2, word3="Hello", word4="Goodbye"):
 
 ```
 
+![img_056](./images/img_056.png)
+
+The default value for ```word3``` is now automatically applied when ```word3``` is assigned to a value of the wrong datatype:
+
 ```
-print_words("Python", "Anaconda", word3=3, word4=4)
+print_words("Python", "Anaconda", word3=2)
 ```
+
+![img_057](./images/img_057.png)
+
+Because the ```AssertionError``` has been handled, the error message does not display. A warning can be printed using the ```except``` code block to inform the user, that the default value has been used:
 
 ```
 def print_words(word1, word2, word3="Hello", word4="Goodbye"):
@@ -749,15 +829,15 @@ def print_words(word1, word2, word3="Hello", word4="Goodbye"):
 
 ```
 
+![img_058](./images/img_058.png)
+
+The default value for ```word3``` is now automatically applied when ```word3``` is assigned to a value of the wrong datatype and the user is informed of this change:
+
 ```
-print_words("Python", "Anaconda", word3=3, word4=4)
+print_words("Python", "Anaconda", word3=2)
 ```
 
-
-
-
-
-
+![img_059](./images/img_059.png)
 
 ### Function Local Scope
 
@@ -794,6 +874,3 @@ count_vowels("hello")
 
 
 ### *args and **kwargs
-
-
-## lambda Expressions
