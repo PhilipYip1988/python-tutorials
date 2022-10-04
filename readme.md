@@ -32,7 +32,7 @@ classes
 
 datetime module
 
-math module
+math, fraction, random, statistics module
 
 [File and Directory Operations with the os and shutil modules](./014_os_module/)
 
