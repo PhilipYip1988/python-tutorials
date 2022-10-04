@@ -34,7 +34,7 @@ datetime module
 
 math module
 
-File and Directory Operations with the os and shutil modules
+[File and Directory Operations with the os and shutil modules](./014_os_module/)
 
 sys module
 
