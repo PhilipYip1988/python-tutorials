@@ -6,21 +6,21 @@
 
 The Documents folder can be opened in file explorer:
 
-![img_000.png](./images/img_000.png)
+![000_img.png](./images/000_img.png)
 
 An interactive notebook file can be created in the Documents folder and opened with JupyterLab:
 
-![img_001.png](./images/img_001.png)
+![001_img.png](./images/001_img.png)
 
 A new text file can be created in the file explorer:
 
-![img_002.png](./images/img_002.png)
+![002_img.png](./images/002_img.png)
 
-![img_003.png](./images/img_003.png)
+![003_img.png](./images/003_img.png)
 
 Some text can be added into this text file:
 
-![img_004.png](./images/img_004.png)
+![004_img.png](./images/004_img.png)
 
 The text file can be opened in Python using the following syntax:
 
@@ -28,7 +28,7 @@ The text file can be opened in Python using the following syntax:
 file_object = open(file="text_file.txt", mode="r")
 ```
 
-![img_005.png](./images/img_005.png)
+![005_img.png](./images/005_img.png)
 
 Because ```text_file.txt``` is in the same folder as ```file_os_module.ipynb```. The file can be expressed implicitly without explicitly specifying the full path.
 
@@ -36,11 +36,11 @@ The mode can be ```"r"``` for read, ```"w"``` for write and ```"a"``` for append
 
 The file_object has a number of attributes and methods which can be accessed by typing in the file object names followed by a dot ```.``` and tab ```↹```:
 
-![img_006.png](./images/img_006.png)
+![006_img.png](./images/006_img.png)
 
-![img_007.png](./images/img_007.png)
+![007_img.png](./images/007_img.png)
 
-![img_008.png](./images/img_008.png)
+![008_img.png](./images/008_img.png)
 
 The ```close``` method is used to close the file and should always be used after working with the file.
 
@@ -53,7 +53,7 @@ with open(file="text_file.txt", mode="r") as file_object:
     
 ```
 
-![img_009.png](./images/img_009.png)
+![009_img.png](./images/009_img.png)
 
 In the code block above, the final line of the code block explicitly closes the file object. However since the keyword ```with``` is used, the file will automatically close the file when the code block ends. The file will be closed after this code block executes: 
 
@@ -64,7 +64,7 @@ with open(file="text_file.txt", mode="r") as file_object:
     
 ```
 
-![img_010.png](./images/img_010.png)
+![010_img.png](./images/010_img.png)
 
 For clarity, the close method will explicitly be stated at the bottom of a code block. The file contents can be read using the method ```read```.
 
@@ -77,15 +77,15 @@ with open(file="text_file.txt", mode="r") as file_object:
     
 ```
 
-![img_011.png](./images/img_011.png)
+![011_img.png](./images/011_img.png)
 
 The object ```file_contents``` can be explored on the variable explorer and is a string of length 193 characters:
 
-![img_015.png](./images/img_015.png)
+![015_img.png](./images/015_img.png)
 
 The read method has a positional input argument size. This can be used to specify the upper size of characters to read from a file.
 
-![img_012.png](./images/img_012.png)
+![012_img.png](./images/012_img.png)
 
 This can be set to 10 for example:
 
@@ -98,15 +98,15 @@ with open(file="text_file.txt", mode="r") as file_object:
     
 ```    
 
-![img_013.png](./images/img_013.png)
+![013_img.png](./images/013_img.png)
 
 The object ```file_contents``` can be explored on the variable explorer and is a string of length 10:
 
-![img_014.png](./images/img_014.png)
+![014_img.png](./images/014_img.png)
 
 Before this code block closes the file, the cursor of the text file can be visualised at the position 10:
 
-![img_016.png](./images/img_016.png)
+![016_img.png](./images/016_img.png)
 
 The code can be updated to read two 10 character strings from the file.
 
@@ -122,15 +122,15 @@ with open(file="text_file.txt", mode="r") as file_object:
     
 ```    
 
-![img_017.png](./images/img_017.png)
+![017_img.png](./images/017_img.png)
 
 Now ```file_contents``` and ```file_contents2``` display on the variable explorer:
 
-![img_018.png](./images/img_018.png)
+![018_img.png](./images/018_img.png)
 
 Before this code block closes the file, the cursor of the text file can be visualised at the position 20:
 
-![img_019.png](./images/img_019.png)
+![019_img.png](./images/019_img.png)
 
 The function ```seek``` can be used to change the offset position of the cursor. The starting position for example can be set at position ```25```
 
@@ -144,11 +144,11 @@ with open(file="text_file.txt", mode="r") as file_object:
     
 ```    
 
-![img_020.png](./images/img_020.png)
+![020_img.png](./images/020_img.png)
 
-![img_021.png](./images/img_021.png)
+![021_img.png](./images/021_img.png)
 
-![img_022.png](./images/img_022.png)
+![022_img.png](./images/022_img.png)
 
 Notice that ```file_contents``` is a multi-line string.
 
@@ -165,15 +165,15 @@ with open(file="text_file.txt", mode="r") as file_object:
 
 The presence of the newline character can be seen by changing the ```end``` keyword input argument in the ```print``` function to ```*```. The ```*``` starts of a newline indicating the last character in the string ```file_contents``` is the newline.
 
-![img_023.png](./images/img_023.png)
+![023_img.png](./images/023_img.png)
 
 This newline can be seen in the variable explorer, if examined with care:
 
-![img_024.png](./images/img_024.png)
+![024_img.png](./images/024_img.png)
 
 Before this code block closes the file, the cursor of the text file can be visualised at the start of the second line:
 
-![img_025.png](./images/img_025.png)
+![025_img.png](./images/025_img.png)
 
 
 Readlines can be used to read multiple lines into an output list.
@@ -187,9 +187,9 @@ with open(file="text_file.txt", mode="r") as file_object:
 
 ```
 
-![img_026.png](./images/img_026.png)
+![026_img.png](./images/026_img.png)
 
-![img_027.png](./images/img_027.png)
+![027_img.png](./images/027_img.png)
 
 ### Creating Files
 
@@ -202,19 +202,19 @@ with open(file="text_file2.txt", mode="w") as file_object:
     
 ```
 
-![img_031.png](./images/img_031.png)
+![031_img.png](./images/031_img.png)
 
 The blank file can be opened in file explorer:
 
-![img_028.png](./images/img_028.png)
+![028_img.png](./images/028_img.png)
 
 The blank contents can be seen in notepad:
 
-![img_029.png](./images/img_029.png)
+![029_img.png](./images/029_img.png)
 
 Some text can be added:
 
-![img_030.png](./images/img_030.png)
+![030_img.png](./images/030_img.png)
 
 Using write mode when an existing file is present, will overwrite the file:
 
@@ -225,15 +225,15 @@ with open(file="text_file2.txt", mode="w") as file_object:
     
 ```
 
-![img_032.png](./images/img_032.png)
+![032_img.png](./images/032_img.png)
 
-![img_033.png](./images/img_033.png)
+![033_img.png](./images/033_img.png)
 
 ### Appending Files
 
 If some text is added to the file, in notepad again.
 
-![img_034.png](./images/img_034.png)
+![034_img.png](./images/034_img.png)
 
 The third mode of operation append can be explored. In the append mode, the file will be opened with write access, however the offset position of the cursor will be at the end of the file.
 
@@ -251,11 +251,11 @@ with open(file="text_file2.txt", mode="a") as file_object:
     
 ```    
 
-![img_035.png](./images/img_035.png)
+![035_img.png](./images/035_img.png)
 
 Notice the updated contents of the file. The cursor started immediately after ```Hello``` and there was no new line or space so, the first sentance continued immediately after Hello: 
 
-![img_036.png](./images/img_036.png)
+![036_img.png](./images/036_img.png)
 
 ## Working with Directories
 
@@ -271,7 +271,7 @@ The inbuilt operating system module ```os``` is used for file and folder manipul
 import os
 ```
 
-![img_037.png](./images/img_037.png)
+![037_img.png](./images/037_img.png)
 
 A large number of objects can be called from the ```os``` by typing in ```os``` followed by a dot ```.``` and tab ```↹```.
 
@@ -283,11 +283,11 @@ The method getcwd is an abbreviation for get current working directory:
 os.getcwd()
 ```
 
-![img_038.png](./images/img_038.png)
+![038_img.png](./images/038_img.png)
 
 By default, this is the folder or directory of the currently executed script (.py file) or interactive notebook (.ipynb file). This folder can be viewed in Windows Explorer to visualise its contents:
 
-![img_039.png](./images/img_039.png)
+![039_img.png](./images/039_img.png)
 
 ### List Directory
 
@@ -297,11 +297,11 @@ The method ```listdir``` will list all items in the current working directory:
 os.listdir()
 ```
 
-![img_040.png](./images/img_040.png)
+![040_img.png](./images/040_img.png)
 
 This method has a keyword input argument path that can be used to select a different location. If unspecified, path defaults to the current working directory.
 
-![img_041.png](./images/img_041.png)
+![041_img.png](./images/041_img.png)
 
 The path searched for will also be in reference to the current directory unless explicitly specified. The path can be changed to Downloads by going up a level ```..``` to get to ```$UserProfile$``` and then to Downloads using:
 
@@ -309,27 +309,27 @@ The path searched for will also be in reference to the current directory unless 
 os.listdir(r"../Downloads")
 ```
 
-![img_042.png](./images/img_042.png)
+![042_img.png](./images/042_img.png)
 
-![img_043.png](./images/img_043.png)
+![043_img.png](./images/043_img.png)
 
 ### Environmental Variables
 
 The ```$UserProfile$``` is typically found in the ```C:\Users``` folder within file explorer.
 
-![img_044.png](./images/img_044.png)
+![044_img.png](./images/044_img.png)
 
-![img_045.png](./images/img_045.png)
+![045_img.png](./images/045_img.png)
 
 This folder is defined by what is known as an Operating System wide Environmental Variable. These are listed within essentially a dictionary.
 
-![img_046.png](./images/img_046.png)
+![046_img.png](./images/046_img.png)
 
-![img_047.png](./images/img_047.png)
+![047_img.png](./images/047_img.png)
 
 On Windows, inputting ```%UserProfile$"``` into the file explorer changes the directory of the file explorer to the user profile:
 
-![img_048.png](./images/img_048.png)
+![048_img.png](./images/048_img.png)
 
 The location can be accessed as a string from this dictionary-like object using the key ```"USERPROFILE"```:
 
@@ -337,7 +337,7 @@ The location can be accessed as a string from this dictionary-like object using 
 os.environ["USERPROFILE"]
 ```
 
-![img_049.png](./images/img_049.png)
+![049_img.png](./images/049_img.png)
 
 On Linux, the equivalent key is called ```"HOME"```.
 
@@ -353,11 +353,11 @@ os.environ["USERPROFILE"] + "Documents"
 os.environ["USERPROFILE"] + r"\Documents"
 ```
 
-![img_050.png](./images/img_050.png)
+![050_img.png](./images/050_img.png)
 
 As a consequence a collection of operations relating to the file path are available under the ```os``` attribute ```path```:
 
-![img_051.png](./images/img_051.png)
+![051_img.png](./images/051_img.png)
 
 For example the function ```join``` can be used to join the os environmental variable, Documents folder and text file within the Documents folder:
 
@@ -366,7 +366,7 @@ os.path.join(os.environ["USERPROFILE"], "Documents")
 os.path.join(os.environ["USERPROFILE"], "Documents", "text_file.txt")
 ```
 
-![img_052.png](./images/img_052.png)
+![052_img.png](./images/052_img.png)
 
 The file path above can be assigned to a variable ```file_path```:
 
@@ -380,7 +380,7 @@ file_path = os.path.join(os.environ["USERPROFILE"],
 file_path
 ```
 
-![img_053.png](./images/img_053.png)
+![053_img.png](./images/053_img.png)
 
 The os path method ```exists``` will check if the physical file path exists, returning a boolean value. In this case the ```file_path``` exists:
 
@@ -388,16 +388,16 @@ The os path method ```exists``` will check if the physical file path exists, ret
 os.path.exists(path=file_path)
 ```
 
-![img_054.png](./images/img_054.png)
+![054_img.png](./images/054_img.png)
 
 The os path method ```isfile``` will check if the file path corresponds to a file, returning a boolean value. In this case, ```file_path``` is a file:
 
 ```
 os.path.isfile(path=file_path)
 ```
-![img_055.png](./images/img_055.png)
+![055_img.png](./images/055_img.png)
 
-![img_056.png](./images/img_056.png)
+![056_img.png](./images/056_img.png)
 
 The os path method ```isdir``` will check if the file path corresponds to a directory or folder, returning a boolean value. In this case, ```file_path``` is a file and not a folder:
 
@@ -405,7 +405,7 @@ The os path method ```isdir``` will check if the file path corresponds to a dire
 os.path.isdir(s=file_path)
 ```
 
-![img_057.png](./images/img_057.png)
+![057_img.png](./images/057_img.png)
 
 For a file path that is a file, it can be split into a basename (name of the file itself, including the file extension) and also the dirname (directory or folder name) using the os path methods ```dirname``` and ```basename``` respectively:
 
@@ -414,7 +414,7 @@ os.path.basename(p=file_path)
 os.path.dirname(p=file_path)
 ```
 
-![img_058.png](./images/img_058.png)
+![058_img.png](./images/058_img.png)
 
 This gives the file and path respectively:
 
@@ -423,7 +423,7 @@ os.path.isfile(path=os.path.basename(p=file_path))
 os.path.isdir(s=os.path.dirname(p=file_path))
 ```
 
-![img_059.png](./images/img_059.png)
+![059_img.png](./images/059_img.png)
 
 The os path method ```splitext``` is an abbreviation for split extension. It will return a tuple containing the file path excluding the extension in the 0th index and the extension itself in the 1st index:
 
@@ -432,7 +432,7 @@ os.path.splitext(p=file_path)
 os.path.splitext(p="text_file.txt")
 ```
 
-![img_060.png](./images/img_060.png)
+![060_img.png](./images/060_img.png)
 
 The os path method ```split``` on the other hand will split the directory or folder and the file name. It will return a tuple with the directory or folder name in the 0th index and the file name including the extension in the 1st index:
 
@@ -443,7 +443,7 @@ folder
 file
 ```
 
-![img_061.png](./images/img_061.png)
+![061_img.png](./images/061_img.png)
 
 ### Make and Delete Directories
 
@@ -453,9 +453,9 @@ The ```mkdir``` function is an abbreviation, for make directory:
 os.mkdir(path="Test")
 ```
 
-![img_062.png](./images/img_062.png)
+![062_img.png](./images/062_img.png)
 
-![img_063.png](./images/img_063.png)
+![063_img.png](./images/063_img.png)
 
 The ```rmdir``` function is an abbreviation, for remove directory:
 
@@ -463,9 +463,9 @@ The ```rmdir``` function is an abbreviation, for remove directory:
 os.rmdir(path="Test")
 ```
 
-![img_064.png](./images/img_064.png)
+![064_img.png](./images/064_img.png)
 
-![img_065.png](./images/img_065.png)
+![065_img.png](./images/065_img.png)
 
 ### Rename Directory
 
@@ -475,9 +475,9 @@ The ```Test``` directory or folder can be remade using:
 os.mkdir("Test")
 ```
 
-![img_066.png](./images/img_066.png)
+![066_img.png](./images/066_img.png)
 
-![img_067.png](./images/img_067.png)
+![067_img.png](./images/067_img.png)
 
 The ```rename``` function can be used to rename a source directory to a destination directory. In this example ```"Test"``` will be renamed ```"Test2"```:
 
@@ -485,9 +485,9 @@ The ```rename``` function can be used to rename a source directory to a destinat
 os.rename(src="Test", dst="Test2")
 ```
 
-![img_068.png](./images/img_068.png)
+![068_img.png](./images/068_img.png)
 
-![img_069.png](./images/img_069.png)
+![069_img.png](./images/069_img.png)
 
 A file can also be renamed by specifying the source and the destination in terms of an original file name and a new file name:
 
@@ -496,11 +496,11 @@ os.rename(src="text_file2.txt",
           dst="mary_mary_quite_contrary.txt")
 ```
 
-![img_070.png](./images/img_070.png)
+![070_img.png](./images/070_img.png)
 
-![img_071.png](./images/img_071.png)
+![071_img.png](./images/071_img.png)
 
-![img_072.png](./images/img_072.png)
+![072_img.png](./images/072_img.png)
 
 Moving the location of a file is done using rename and specifying the folder location as part of the destination:
 
@@ -509,11 +509,11 @@ os.rename(src="mary_mary_quite_contrary.txt",
           dst=r"Test2\\mary_mary_quite_contrary.txt")
 ```
 
-![img_073.png](./images/img_073.png)
+![073_img.png](./images/073_img.png)
 
-![img_074.png](./images/img_074.png)
+![074_img.png](./images/074_img.png)
 
-![img_075.png](./images/img_075.png)
+![075_img.png](./images/075_img.png)
 
 The changes to the file name and location can be reverted using:
 
@@ -522,11 +522,11 @@ os.rename(src=r"Test2//mary_mary_quite_contrary.txt",
           dst="text_file2.txt")
 ```
 
-![img_076.png](./images/img_076.png)
+![076_img.png](./images/076_img.png)
 
-![img_077.png](./images/img_077.png)
+![077_img.png](./images/077_img.png)
 
-![img_078.png](./images/img_078.png)
+![078_img.png](./images/078_img.png)
 
 ### Change Current Working Directory
 
@@ -536,7 +536,7 @@ So far, all operations have been carried out from the current working directory,
 os.getcwd()
 ```
 
-![img_079.png](./images/img_079.png)
+![079_img.png](./images/079_img.png)
 
 The items in the current working directory can be listed using the function list directory ```listdir```:
 
@@ -544,9 +544,9 @@ The items in the current working directory can be listed using the function list
 os.listdir()
 ```
 
-![img_080.png](./images/img_080.png)
+![080_img.png](./images/080_img.png)
 
-![img_081.png](./images/img_081.png)
+![081_img.png](./images/081_img.png)
 
 The current working directory can be changed using the command change directory ```chdir``` which takes a positional input argument ```path```. The ```path``` can be expressed as a subfolder within the original current working directory: 
 
@@ -554,23 +554,23 @@ The current working directory can be changed using the command change directory 
 os.chdir(path="Test2")
 ```
 
-![img_082.png](./images/img_082.png)
+![082_img.png](./images/082_img.png)
 
 Now ```listdir``` shows an empty list as the directory is empty:
 
-![img_083.png](./images/img_083.png)
+![083_img.png](./images/083_img.png)
 
 ```
 os.listdir()
 ```
 
-![img_084.png](./images/img_084.png)
+![084_img.png](./images/084_img.png)
 
 The current working directory is now ```Test2``` or more explicitly ```r"C://Users//Philip//Documents//Test2"```. 
 
 To get to ```r"C://Users//Philip//Documents"``` from this current directory in file explorer, press ```Alt``` + ```↑```
 
-![img_085.png](./images/img_085.png)
+![085_img.png](./images/085_img.png)
 
 To go up a level in Python the syntax ```r"..//"``` is used. For example, the directory can be changed up a level to ```r"C://Users//Philip//Documents"``` by using:
 
@@ -578,7 +578,7 @@ To go up a level in Python the syntax ```r"..//"``` is used. For example, the di
 os.chdir(path=r"..//")
 ```
 
-![img_086.png](./images/img_086.png)
+![086_img.png](./images/086_img.png)
 
 ```getcwd``` can be used to confirm that the ```r"C://Users//Philip//Documents"``` folder is now selected:
 
@@ -586,7 +586,7 @@ os.chdir(path=r"..//")
 os.getcwd()
 ```
 
-![img_087.png](./images/img_087.png)
+![087_img.png](./images/087_img.png)
 
 The related syntax ```r"./"``` means in the same directory. Changing to the same directory should result in no changes:
 
@@ -594,7 +594,7 @@ The related syntax ```r"./"``` means in the same directory. Changing to the same
 os.chdir(path=r"./")
 ```
 
-![img_088.png](./images/img_088.png)
+![088_img.png](./images/088_img.png)
 
 
 ```getcwd``` can be used to confirm that the current working directory is still the ```r"C://Users//Philip//Documents"``` folder:
@@ -603,11 +603,11 @@ os.chdir(path=r"./")
 os.getcwd()
 ```
 
-![img_089.png](./images/img_089.png)
+![089_img.png](./images/089_img.png)
 
 While the above operation may have seemed pointless (changing to the same directory). This syntax is sometimes explicitly used to indicated that a file is in the same directory as the current working directory. For example the text file ```r".//text_file2.txt"```
 
-![img_090.png](./images/img_090.png)
+![090_img.png](./images/090_img.png)
 
 The current working directory can also be changed using a full file path. For example ```r"C://Users//Philip//Documents//Test2"```:
 
@@ -615,7 +615,7 @@ The current working directory can also be changed using a full file path. For ex
 os.chdir(path=r"C://Users//Philip//Documents//Test2")
 ```
 
-![img_091.png](./images/img_091.png)
+![091_img.png](./images/091_img.png)
 
 This change can once again be checked using ```getcwd```:
 
@@ -623,7 +623,7 @@ This change can once again be checked using ```getcwd```:
 os.getcwd()
 ```
 
-![img_092.png](./images/img_092.png)
+![092_img.png](./images/092_img.png)
 
 Recall that the file path can also be constructed using the ```path``` method ```join``` with the ```os``` path environmental variable:
 
@@ -634,7 +634,7 @@ os.chdir(path=os.path.join(os.environ["USERPROFILE"],
         )
 ```
 
-![img_093.png](./images/img_093.png)
+![093_img.png](./images/093_img.png)
 
 This change can once again be checked using ```getcwd```:
 
@@ -642,7 +642,7 @@ This change can once again be checked using ```getcwd```:
 os.getcwd()
 ```
 
-![img_094.png](./images/img_094.png)
+![094_img.png](./images/094_img.png)
 
 Now that the current working directory is this folder ```"Test2"```, the function ```rename``` can be used to move the file ```"text_file2.txt"``` from up a level to the folder ```Test2```:
 
@@ -650,11 +650,11 @@ Now that the current working directory is this folder ```"Test2"```, the functio
 os.rename(src=r"..//text_file2.txt", dst="text_file2.txt")
 ```
 
-![img_095.png](./images/img_095.png)
+![095_img.png](./images/095_img.png)
 
-![img_096.png](./images/img_096.png)
+![096_img.png](./images/096_img.png)
 
-![img_097.png](./images/img_097.png)
+![097_img.png](./images/097_img.png)
 
 ### Make and Delete Multi-Level Directories 
 
@@ -665,9 +665,9 @@ only work within the current working directory and do not work over multiple lev
 os.mkdir(path="SubFolder1")
 ```
 
-![img_098.png](./images/img_098.png)
+![098_img.png](./images/098_img.png)
 
-![img_099.png](./images/img_099.png)
+![099_img.png](./images/099_img.png)
 
 To create a subfolder within ```"Subfolder1"```, the directory needs to be changed to ```"Subfolder1"```. Then a ```SubSubfolder1``` can be created:
 
@@ -675,9 +675,9 @@ To create a subfolder within ```"Subfolder1"```, the directory needs to be chang
 os.chdir(path="SubFolder1")
 ```
 
-![img_100.png](./images/img_100.png)
+![100_img.png](./images/100_img.png)
 
-![img_101.png](./images/img_101.png)
+![101_img.png](./images/101_img.png)
 
 Now the ```"SubSubFolder1"``` can be created:
 
@@ -685,9 +685,9 @@ Now the ```"SubSubFolder1"``` can be created:
 os.mkdir(path="SubSubFolder1")
 ```
 
-![img_102.png](./images/img_102.png)
+![102_img.png](./images/102_img.png)
 
-![img_103.png](./images/img_103.png)
+![103_img.png](./images/103_img.png)
 
 
 ```makedirs``` and ```removedirs``` are functions suited for multi-level operations. For example if the current working directory is change back to ```"Documents"```:
@@ -696,15 +696,15 @@ os.mkdir(path="SubSubFolder1")
 os.chdir(path=os.path.join(os.environ["USERPROFILE"], "Documents"))
 ```
 
-![img_104.png](./images/img_104.png)
+![104_img.png](./images/104_img.png)
 
 ```
 os.makedirs(name=r"Test2\\SubFolder2\\SubSubFolder2")
 ```
 
-![img_105.png](./images/img_105.png)
+![105_img.png](./images/105_img.png)
 
-![img_106.png](./images/img_106.png)
+![106_img.png](./images/106_img.png)
 
 
 Care should be taken when using the function ```removedirs``` as it will remove all empty directories. FOr example if the following is used;
@@ -713,11 +713,11 @@ Care should be taken when using the function ```removedirs``` as it will remove 
 os.removedirs(name=r"Test2\\SubFolder2\\SubSubFolder2")
 ```
 
-![img_107.png](./images/img_107.png)
+![107_img.png](./images/107_img.png)
 
 ```"SubSubFolder2"``` and ```"SubFolder2"``` will be removed as both are empty. ```"Test2"``` has a file in it and is not removed:
 
-![img_108.png](./images/img_108.png)
+![108_img.png](./images/108_img.png)
 
 ### Walk
 
@@ -732,16 +732,16 @@ for root, dirs, files in os.walk(file_path, topdown=False):
       print(os.path.join(root, name))
 ```
 
-![img_109.png](./images/img_109.png)
+![109_img.png](./images/109_img.png)
 
 
 ### Statistics
 
 From the right click contaxt menu of a file in WIndows Explorer, a files propteries can be examined:
 
-![img_110.png](./images/img_110.png)
+![110_img.png](./images/110_img.png)
 
-![img_111.png](./images/img_111.png)
+![111_img.png](./images/111_img.png)
 
 These file properties or statistics can be obtained using the ```stat``` function:
 
@@ -749,7 +749,7 @@ These file properties or statistics can be obtained using the ```stat``` functio
 os.stat(path="text_file.txt")
 ```
 
-![img_112.png](./images/img_112.png)
+![112_img.png](./images/112_img.png)
 
 Each statistic can be read off as an attribute. 
 
@@ -759,7 +759,7 @@ The size for Windows Explorer is ```st_size```:
 os.stat(path="text_file.txt").st_size
 ```
 
-![img_113.png](./images/img_113.png)
+![113_img.png](./images/113_img.png)
 
 The created, modified and accessed time are ```st_ctime```, ```st_mtime``` and ```st_atime``` respectively:
 
@@ -767,7 +767,7 @@ The created, modified and accessed time are ```st_ctime```, ```st_mtime``` and `
 os.stat(path="text_file2.txt").st_ctime
 ```
 
-![img_114.png](./images/img_114.png)
+![114_img.png](./images/114_img.png)
 
 The value given is a timestamp which is the time in milliseconds using ```00:00:00 1 January 1970``` as a reference. This can be converted into a date using the datetime class:
 
@@ -776,14 +776,14 @@ import datetime as dt
 dt.datetime.fromtimestamp(os.stat(path="text_file.txt").st_ctime)
 ```
 
-![img_115.png](./images/img_115.png)
+![115_img.png](./images/115_img.png)
 
 ```
 import datetime as dt
 print(dt.datetime.fromtimestamp(os.stat(path="text_file.txt").st_ctime))
 ```
 
-![img_116.png](./images/img_116.png)
+![116_img.png](./images/116_img.png)
 
 ### Copy File
 
@@ -794,11 +794,11 @@ import shutil
 shutil.copy(src="text_file.txt", dst="text_file3.txt")
 ```
 
-![img_117.png](./images/img_117.png)
+![117_img.png](./images/117_img.png)
 
-![img_118.png](./images/img_118.png)
+![118_img.png](./images/118_img.png)
 
-![img_119.png](./images/img_119.png)
+![119_img.png](./images/119_img.png)
 
 Return to:
 [Home](../../../)
