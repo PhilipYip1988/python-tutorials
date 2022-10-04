@@ -982,3 +982,88 @@ sum_all(1, 2, 3)
 ```
 
 The desired output would be ```1```, ```3``` and ```6``` respectively.
+
+This can be achieved by using ```*args``` as the input arguments. This becomes accessible as the list ```args``` within the code block of the function in the form of a list. This list can be used in a for loop which can iterate over each provided input argument to generate, in this basic sample, the sum of the arguments.
+
+```
+def sum_all(*args):
+    """
+    
+
+    Parameters
+    ----------
+    *args : list
+        List of integers.
+
+    Returns
+    -------
+    summed_args : int
+        summation of int values in args.
+
+    """
+    summed_args = 0
+    for arg in args:
+        summed_args += arg
+        
+    
+    return summed_args
+
+
+```
+
+![img_065](./images/img_065.png)
+
+This function works as expected:
+
+```
+sum_all()
+sum_all(1)
+sum_all(1, 2)
+sum_all(1, 2, 3)
+```
+
+![img_066](./images/img_066.png)
+
+A variable number of keyword input arguments can be supplied if ```**kwargs``` is supplied as the input arguments. ```kwargs``` is accessible in the code block in the form of a dictionary. This dictionary can be iterated over in a for loop. In this example a new dict ```a_dict``` is created which only has the key value pairs of keys that begin with the letter ```"a"```:
+
+```
+def a_keys(**kwargs):
+    """
+    
+
+    Parameters
+    ----------
+    **kwargs : dict
+        key, value pairs.
+
+    Returns
+    -------
+    a_dict : dict
+        key, value pairs with only key values
+        that begin with a
+
+    """
+    print(kwargs)
+    a_dict = {}
+    for (key, val) in kwargs.items():
+        if key[0] == "a":
+            a_dict[key] = val
+    
+    
+    return a_dict
+
+
+```
+
+![img_067](./images/img_067.png)
+
+This can be tested using:
+
+```
+a_keys(apple=1, banana=2, apricot=3)
+```
+
+![img_068](./images/img_068.png)
+
+Return to:
+[Home](../../../)
