@@ -24,7 +24,7 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Functions](./008_functions/)
 
-list and dict comprehensions and lambda functions
+[list and dict comprehensions and lambda functions](./009_comprehensions_and_lambda_expressions/)
 
 modules
 
