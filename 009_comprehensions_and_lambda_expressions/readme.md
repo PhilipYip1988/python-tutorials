@@ -549,3 +549,6 @@ list(map((lambda num1, num2: num1 + num2), [1, 2, 3], [2, 4, 6]))
 ```
 
 ![img_043](./images/img_043.png)
+
+Return to:
+[Home](../../../)
