@@ -105,10 +105,9 @@ For those unexperienced with Python environments, the installation guides below 
 
 # Installation
 
-In this set of tutorials we will use Mambaconda to create a new Python environment and install the latest version of the Spyder and JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Ubuntu Linux:
+In this set of tutorials we will use Mambaconda to create a new Python environment and install the latest version of the Spyder and JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Ubuntu Linux (for Mac follow the Ubuntu Linux Instructions):
 
 [Mambaforge Install on Windows](./001_windows_install/)
 
 [Mambaforge Install on Ubuntu](./002_ubuntu_install/)
 
-Installation and use of Mambaforge on a Mac is more or less identical to installation on Ubuntu Linux.
