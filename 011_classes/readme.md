@@ -275,6 +275,23 @@ The end user (homeowner or tenant) will be able to uniquely interact with their 
 
 The homeowner of ```house000``` may want to rent out a bedroom in their house and may have to list it with the following attributes ```house000.nrooms``` and ```house000.bedroomsize``` for example. The dot syntax ```.``` once again indicates that the attribute is being read from the object ```house000```. Usually if an attribute is altered, it'll be altered via a function and not reassigned directly. For example if the ```house000.nrooms``` attribute is altered, it'll typically be altered by using a function for example ```house000.buildextension()```.
 
+# object Class
+
+In Python, everything is based around the concept of an object and there is a generic ```object``` class. This can be 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Creating a Custom Class
 
 Instead of conceptualising the class as an abstract blueprint, let's explore how to create
