@@ -30,6 +30,38 @@ word = "Hello"
 
 ![img_007](./images/img_007.png)
 
+Notice that there is a subtle difference with properties shown in the dropdown list for the ```int``` class with instances or attributes shown in the dropdown list for the instance ```num```:
+
+```
+int.real
+int.imag
+
+num.real
+num.imag
+```
+
+![img_027](./images/img_027.png)
+
+If the function is referenced:
+
+```
+int.conjugate
+num.conjugate
+```
+
+There is once again a subtle difference referecing a function from a class where it is called a ```method``` to referencing a function from an instance where it is still called a function:
+
+![img_028](./images/img_028.png)
+
+As these are functions they need to be called using parnethesis to enclose any input arguments. When the function is called from a class as a method, an instance needs to be provided as an input argument as otherwise no instance is specified:
+
+```
+int.conjugate(num)
+num.conjugate()
+```
+
+![img_029](./images/img_029.png)
+
 There are a number of hidden functions not shown in the lists above which map to operators. For example the hidden function ```__add__``` which is mapped to the ```+``` operator:
 
 ```
@@ -71,7 +103,7 @@ collection.__len__()
 
 ![img_013](./images/img_013.png)
 
-The string method count also returns an instance of the integer class:
+The string function count also returns an instance of the integer class:
 
 ```
 word1.count("l")
@@ -79,7 +111,7 @@ word1.count("l")
 
 ![img_014](./images/img_014.png)
 
-The string methods ```__repr__``` and ```__str__``` are two functions which define the string representations of an object. ```__repr__``` is formal and ```__str__``` is informal. Often the string is the same for both functions and as a result they are often confused. However there is a subtle difference. 
+The string functions ```__repr__``` and ```__str__``` are two functions which define the string representations of an object. ```__repr__``` is formal and ```__str__``` is informal. Often the string is the same for both functions and as a result they are often confused. However there is a subtle difference. 
 
 This can be demonstated using the string ```file_path```. Due to the ```\``` being used to insert escape characters and the ```\``` being an escape character inserted in the file path:
 
@@ -141,17 +173,15 @@ list.__len__(collection)
 
 Recall that a function determines the behaviour of an object.
 
-When the function is called from a class, no object is implied and therefore an instance to act upon needs to be provided as an input argument. This instance in the context of a class is commonly denoted as ```self```:
+When the function is called from a class, it is known as a ```method``` and the 1st positional input argument must be ```self```:
 
 ![img_019](./images/img_019.png)
 
-When the function is instead called from an instance, the object being acted upon is implied to be the instance the function is called from. i.e. ```self``` is the object name. Int hsi case ```self``` is ```collection```:
+When the function is instead called from an instance, the object being acted upon is implied to be the instance name in this case ```collection```. This can be conceptualised as automatic assignment of ```self``` to the object name, the function is being called from:
 
 ![img_020](./images/img_020.png)
 
-When the function is called from an instance, it is locked to that instance with ```self``` being implied and taking on the value of the instance. In this scenario the function is known as a ```method``` of that instance. On the other hand when the function is called from a class, it can be applied to any instance using the input argument ```self``` and is not strictly a ```method``` when called this way. 
-
-A ```method``` is a set of instructions that are associated with an ```object``` while a ```function``` is a set of instructions or procedures to perform a specific task.
+**To recap, when a function is called from a class, it is known as a ```method``` and requires an instance ```self``` to be provided as the 1st positional input argument.**
 
 Importing modules and librarys was examined in detail in the previous tutorial. Recall, that a library is a number of Python script files in a folder. One of these script files is an initialisation script file called ```__init__.py```:
 
@@ -167,7 +197,7 @@ import library
 
 ![img_023](./images/img_023.png)
 
-Each class has an initialisation method ```__init__``` which typically takes in one or more input arguments and uses these alongside a return statement to return a new instance of the class. 
+Each class has an initialisation method ```__init__``` which typically takes in one or more input arguments and uses these alongside, a return statement to return a new instance of the class. 
 
 ![img_025](./images/img_025.png)
 
@@ -185,7 +215,7 @@ str(5)
 
 # Datamodel Methods
 
-Python uses a number of datamodel methods which map to inbuilt Python functions or operators. These datamodel methods are sometimes known as special methods or colloquially called double underscore or dunder methods.
+Python uses a number of datamodel methods which control the behaviour of inbuilt Python functions or operators that interact with instances of the class. These datamodel methods are sometimes known as special methods or colloquially called double underscore or dunder methods.
 
 The following methods define the behaviour of methods, on the instance ```self```:
 
