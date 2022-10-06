@@ -237,8 +237,8 @@ The following methods define the behaviour of methods, on the instance ```self``
 |\_\_sub\_\_|-|subtraction|subtraction|subtraction|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_mul\_\_|\*|multiplication|multiplication|multiplication|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_pow\_\_|\*\*|exponentiation|exponentiation|exponentiation|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_truediv\_\_|\\|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_floordiv\_\_|\\\\|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_truediv\_\_|\|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_floordiv\_\_|\\|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_mod\_\_|%|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_divmod\_\_|divmod|(floor division, modulo)|(floor division, modulo)|(floor division, modulo)|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_matmul\_\_|@|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
@@ -257,8 +257,8 @@ The following methods define the behaviour of methods, on the instance ```self``
 |\_\_isub\_\_|-=|subtraction|subtraction|subtraction|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_imul\_\_|\*=|multiplication|multiplication|multiplication|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_ipow\_\_|\*\*=|exponentiation|exponentiation|exponentiation|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_itruediv\_\_|\\=|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_ifloordiv\_\_|\\\\=|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_itruediv\_\_|\=|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_ifloordiv\_\_|\\=|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_imod\_\_|%=|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_imatmul\_\_|@=|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 
