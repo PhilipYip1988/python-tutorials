@@ -1,4 +1,5 @@
 ## System Requirements
+
 To install Mambaconda you will need a PC that satisfies the following system requirements:
 
 * Ubuntu 22.10, Fedora 37 or Ubuntu 22.04 LTS/Mint 21
@@ -11,7 +12,9 @@ The performance will be very poor if these system requirements are not satisfied
 
 ## Mambaforge Shell Script Install
 
-Mambaforge can be downloaded from the Miniforge GitHub repository, which lists Mambaforge and Miniforge installers for each Operating System. Both products are almost identical, however only the Mambaforge installer includes the ```mamba``` package manager which will be used in this guide. For Ubuntu, use the installer ending in ```Linux-x86_64.sh```. Alternativelt for Arch Linux use the ```Linux-aarch64.sh``` and for Mac use use the ```MacOSX-x86_64.sh```. Instructions for isntallation on these Operating Systems is otherwise more or less identical: 
+Mambaforge can be downloaded from the Miniforge GitHub repository, which lists Mambaforge and Miniforge installers for each Operating System. Both products are almost identical, however only the Mambaforge installer includes the ```mamba``` package manager which will be used in this guide. For Ubuntu, use the installer ending in ```Linux-x86_64.sh```. 
+
+Alternatively for Arch Linux use the ```Linux-aarch64.sh``` and for Mac use use the ```MacOSX-x86_64.sh```. Instructions for installation on these Operating Systems is otherwise more or less identical.
 
 ![img_000](./images/img_000.png)
 
