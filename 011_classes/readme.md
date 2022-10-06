@@ -228,6 +228,7 @@ The following datamodel methods operate on only the instance ```self```:
 |\_\_len\_\_|len|Not Implemented|Not Implemented|Not Implemented|length|length|length|length|
 |\_\_repr\_\_|repr|formal str|formal str|formal str|formal str|formal str|formal str|formal str|
 |\_\_str\_\_|str|informal str|informal str|informal str|informal str|informal str|informal str|informal str|
+|\_\_dir\_\_|dir|dir|dir|dir|dir|dir|dir|dir|
 
 The following datamodel methods require two instances ```self``` and ```other```:
 
@@ -274,14 +275,23 @@ The end user (homeowner or tenant) will be able to uniquely interact with their 
 
 The homeowner of ```house000``` may want to rent out a bedroom in their house and may have to list it with the following attributes ```house000.nrooms``` and ```house000.bedroomsize``` for example. The dot syntax ```.``` once again indicates that the attribute is being read from the object ```house000```. Usually if an attribute is altered, it'll be altered via a function and not reassigned directly. For example if the ```house000.nrooms``` attribute is altered, it'll typically be altered by using a function for example ```house000.buildextension()```.
 
-# Fraction Class
+# Creating a Custom Class
 
-In Python, third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate third-party classes from inbuilt objects.
+Instead of conceptualising the class as an abstract blueprint, let's explore how to create
+In Python, third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate third-party classes from inbuilt objects. 
 
 ```
 class EmptyEmpty(object):
    pass
    
+   
 ```   
 
+```
+empty = EmptyEmpty()
+```
+
+```
+empty
+```
 
