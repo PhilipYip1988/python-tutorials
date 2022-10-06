@@ -277,32 +277,286 @@ The homeowner of ```house000``` may want to rent out a bedroom in their house an
 
 # object Class
 
-In Python, everything is based around the concept of an object and there is a generic ```object``` class. This can be 
+In Python, everything is based around the concept of an object. To explore this in more detail, the generic ```object``` class can be examined. If ```object(``` is input followed by shift ```⇧``` and tab ```↹``` th docstring for the initialisation signature of the object class display:
 
+![img_031](./images/img_031.png)
 
+Recall that this uses the method ```__init__```:
 
+![img_032](./images/img_032.png)
 
+The docstring states:
 
+```
+"""
+The base class of the class hierarchy.
 
+When called, it accepts no arguments and returns a new featureless
+instance that has no instance attributes and cannot be given any.
+"""
+```
 
+Therefore in this case, to create an object instance of the object class, no positional input arguments are required.
 
+```
+instance = object()
+```
 
+![img_033](./images/img_033.png)
 
+If ```instance.``` is typed followed by a tab ```↹```, nothing displays because this object has no instance attributes.
 
+![img_034](./images/img_034.png)
 
+The ```dir``` function treats the object instance as a directory and lists all the objects within that directory. This includes the datamodel methods which are hidden from the ```.↹```listing: 
 
+```
+dir
+```
+
+A list displays which includes the data model methods:
+
+![img_035](./images/img_035.png)
+
+These include ```__init__```, ```__dir__```, ```__repr__``` and ```__str__```. ```__repr__``` and ```__str___```, the formal and informal representation of a string display that the object is present in a certain memory locaiton by default:
+
+![img_036](./images/img_036.png)
+
+```__eq__``` and ```__neq__``` comparison methods are defined.
+
+![img_038](./images/img_038.png)
+
+And they can be used to check whether or not two objects are the same:
+
+```
+instance1 = object()
+instance2 = object()
+instance1 == instance2
+instance1 != instance2
+```
+
+![img_037](./images/img_037.png)
+
+The four other comparison operators ```__gt__```, ```__ge__```, ```__lt__``` and ```__le__``` show in the directory listing. However these operations are not supported between instances of the class object as instance1 and instance2 are not ordinal:
+
+![img_039](./images/img_039.png)
+
+![img_040](./images/img_040.png)
+
+The other data model methods are not listed and therefore have no code defining them and are unsupported:
+
+![img_041](./images/img_041.png)
 
 # Creating a Custom Class
 
-Instead of conceptualising the class as an abstract blueprint, let's explore how to create
-In Python, third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate third-party classes from inbuilt objects. 
+The ```class``` keyword is used to construct a class. Third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate user defined third-party classes from inbuilt objects. Parenthesis are used to enclose the parent class. When no parent class is defined, the default parent class ```object``` is used. A colon ```:``` is then used to begin a code block. For now ```pass``` will be used:
 
 ```
 class EmptyEmpty(object):
    pass
    
    
-```   
+``` 
+
+![img_042](./images/img_042.png)
+
+The ```___init___``` datamodel method will be inherited from the parent class ```object```.
+
+![img_043](./images/img_043.png)
+
+Notice that no ```docstring``` displays for this method. Like the ```_init__``` method from the parent class ```object``` an instance is instantiated without providing an input argument
+
+```
+instance = EmptyEmpty()
+instance
+print(instance)
+```
+
+![img_044](./images/img_044.png)
+
+The formal and informal string represation also display details about the instance, in a manner similar to the parent class ```object```. This is because the methods ```__repr__``` and ```__str__``` are inherited from the parent class. The ```dir``` function treats the ```EmptyEmpty``` ```instance``` called ```instance``` as a directory and lists all the objects within that directory.
+
+```
+dir(instance)
+```
+
+![img_045](./images/img_045.png)
+
+Notice that these are identical to a instance of the ```object``` class. This is expected as the ```child``` class ```EmptyEmpty``` inherits these methods from the parent class ```object``` and no additional functionality has been added to the ```child``` class.
+
+Another class can be created called ```TestClass``` which has additional functionality. A class can be conceptualised as a grouping of functions.
+
+```
+class TestClass(object):
+    def function1(*args, **kwargs):
+        return None
+       
+       
+    def function2(*args, **kwargs):    
+        return None
+       
+       
+    def function3(*args, **kwargs):    
+        return None
+       
+       
+    def function4(*args, **kwargs):    
+        return None
+       
+   
+``` 
+
+Because each function in the class is a method, the first positional input argument must be ```self```:
+
+```
+class TestClass(object):
+    def function1(self, *args, **kwargs):
+        return None
+       
+       
+    def function2(self, *args, **kwargs):    
+        return None
+       
+       
+    def function3(self, *args, **kwargs):    
+        return None
+       
+       
+    def function4(self, *args, **kwargs):    
+        return None
+       
+
+``` 
+
+An additional functio ca be created that takes in 4 additional input arguments and creates 4 variables:
+
+```
+class TestClass(object):
+    def function1(self, *args, **kwargs):
+        return None
+       
+       
+    def function2(self, *args, **kwargs):    
+        return None
+       
+       
+    def function3(self, *args, **kwargs):    
+        return None
+       
+       
+    def function4(self, *args, **kwargs):    
+        return None
+       
+       
+    def create_attributes(self, value1, value2, value3, value4):
+        var1 = value1
+        var2 = value2
+        var3 = value3
+        var4 = value4
+   
+   
+``` 
+
+For these variables to become attributes, they must be referenced with respect to the isntance which is denoted ```self```:
+
+```
+class TestClass(object):
+    def function1(self, *args, **kwargs):
+        return None
+       
+       
+    def function2(self, *args, **kwargs):    
+        return None
+       
+       
+    def function3(self, *args, **kwargs):    
+        return None
+       
+       
+    def function4(self, *args, **kwargs):    
+        return None
+       
+       
+    def create_attributes(self, value1, value2, value3, value4):
+        self.var1 = value1
+        self.var2 = value2
+        self.var3 = value3
+        self.var4 = value4
+        return None
+   
+   
+``` 
+
+Note a clear distinction was made to the leftand right hand side of the assignment operator. The hand side attribute name and right hand side input argumen have different names. It is more typical to use the same name in both cases:
+
+```
+class TestClass(object):
+    def function1(self, *args, **kwargs):
+        return None
+       
+       
+    def function2(self, *args, **kwargs):    
+        return None
+       
+       
+    def function3(self, *args, **kwargs):    
+        return None
+       
+       
+    def function4(self, *args, **kwargs):    
+        return None
+       
+        
+    def create_attributes(self, var1, var2, var3, var4):
+        self.var1 = value1
+        self.var2 = value2
+        self.var3 = value3
+        self.var4 = value4
+        return None
+   
+   
+   
+``` 
+
+Now that the ```TestClass``` class is ready:
+
+![img_046](./images/img_046.png)
+
+An instance can be created:
+
+```
+instance = TestClass()
+```
+
+And if he insance name ```instance``` is input follwoed by a dot ```.``` and tab, a list of attributes available fucntions display:
+
+![img_047](./images/img_047.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The class can be thought of as a grouping of attributes (objects or properies) and methods (functions).
+
+
+
+
+
+
+
+
+  
 
 ```
 empty = EmptyEmpty()
