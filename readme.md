@@ -1,6 +1,6 @@
 # Python Tutorials
 
-This set of tutorials will look at the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE and variable explorer of the Spyder IDE:
+This set of tutorials will look at the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE and use the variable explorer of the Spyder IDE for data visualisation:
 
 ## Installation
 
