@@ -239,7 +239,7 @@ The following methods define the behaviour of methods, on the instance ```self``
 |\_\_pow\_\_|\*\*|exponentiation|exponentiation|exponentiation|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_truediv\_\_|\\|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_floordiv\_\_|\\\\|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_mod\_\_|\\\\|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_mod\_\_|%|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_divmod\_\_|divmod|(floor division, modulo)|(floor division, modulo)|(floor division, modulo)|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_matmul\_\_|@|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_gt\_\_|>|greater than|greater than|greater than|greater than|greater than|greater than|greater than|
@@ -259,7 +259,7 @@ The following methods define the behaviour of methods, on the instance ```self``
 |\_\_ipow\_\_|\*\*=|exponentiation|exponentiation|exponentiation|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_itruediv\_\_|\\=|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_ifloordiv\_\_|\\\\=|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_imod\_\_|\\\\=|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_imod\_\_|%=|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_imatmul\_\_|@=|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 
 # Blueprint House Analogy
