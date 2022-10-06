@@ -218,9 +218,9 @@ str(5)
 
 # Datamodel Methods
 
-Python uses a number of datamodel methods which control the behaviour of inbuilt Python functions or operators that interact with instances of the class. These datamodel methods are sometimes known as special methods or colloquially called double underscore or dunder methods.
+Python uses a number of datamodel methods which control the behaviour of inbuilt Python functions or the behaviour of inbuilt operators. Under the hood, datamodel methods define how an instance ```self``` interacts or how an instance ```self``` interacts with another instance called ```other```. These datamodel methods are sometimes known as special methods or colloquially called double underscore methods abbreviated as dunder methods.
 
-The following methods define the behaviour of methods, on the instance ```self```:
+The following datamodel methods operate on only the instance ```self```:
 
 |method|operator or function|int|float|bool|str|list|tuple|dict|
 |---|:-:|---|---|---|---|---|---|---|
@@ -229,7 +229,7 @@ The following methods define the behaviour of methods, on the instance ```self``
 |\_\_repr\_\_|repr|formal str|formal str|formal str|formal str|formal str|formal str|formal str|
 |\_\_str\_\_|str|informal str|informal str|informal str|informal str|informal str|informal str|informal str|
 
-The following methods define the behaviour of methods, on the instance ```self``` with another instance of the same class ```other```:
+The following datamodel methods require two instances ```self``` and ```other```:
 
 |method|operator or function|int|float|bool|str|list|tuple|dict|
 |---|:-:|---|---|---|---|---|---|---|
@@ -249,7 +249,7 @@ The following methods define the behaviour of methods, on the instance ```self``
 |\_\_eq\_\_|==|equal to|equal to|equal to|equal to|equal to|equal to|equal to|
 |\_\_ne\_\_|!=|not equal to|not equal to|not equal to|not equal to|not equal to|not equal to|not equal to|
 
-The following methods define the behaviour of methods, on the instance ```self``` with another instance of the same class ```other``` and update ```self``` inplace:
+The following datamodel methods require two instances ```self``` and ```other``` and update ```self``` inplace:
 
 |method|operator or function|int|float|bool|str|list|tuple|dict|
 |---|:-:|---|---|---|---|---|---|---|
@@ -262,22 +262,26 @@ The following methods define the behaviour of methods, on the instance ```self``
 |\_\_imod\_\_|%=|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_imatmul\_\_|@=|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 
-# Blueprint House Analogy
+# Class Instance and Blueprint House Analogy
 
-In Python each object has a class, which initially can be conceptualised as an abstract blueprint which defines how to create a new object and outlines the properties and functionality behind an object. Before looking at custom classes, it is useful to explore this concept using every day intuition.
+In Python each object has a class, which initially can be conceptualised as an abstract blueprint which defines how to create a new object and outlines the properties and functionality behind an object. Before looking at creating a custom class, it is useful to explore the concept of a class by using every day intuition and framing it in Python syntax.
 
-To conceptualise this idea take for example the concept of building a house. An Architect may create a blueprint for a house called ```House```, this blueprint is an abstract object, that an end user cannot interact with. It will outline the features or attributes of a house such as the height of the house ```househeight```, how many rooms it possesses ```nrooms``` and the size of the bedroom ```bedroomsize```. It will also outline the functionality of the house such as the doors in the house ```frontdooropen``` or ```frontdoorclose```, the windows in the house ```frontwindowopen``` or ```frontwindowclose```, the central heating system controls ```sethousetemperature``` and the sewage controls ```flushtoilet```.
+To conceptualise this idea take for example the concept of building a house. An Architect may create a blueprint for a house called ```House```, this blueprint is an abstract object, that an end user cannot interact with. CamelCaseCapitalisation is used for third-party class names and this convention is used to clearly distinguish them from inbuilt objects. The class ```House``` will outline the features or attributes of a house such as the height of the house ```househeight```, how many rooms it possesses ```nrooms``` and the size of the bedroom ```bedroomsize```. It will also outline the functionality of the house such as the doors in the house ```frontdooropen``` or ```frontdoorclose```, the windows in the house ```frontwindowopen``` or ```frontwindowclose```, the central heating system controls ```sethousetemperature``` and the sewage controls ```flushtoilet```.
 
-A construction company can follow the instructions in this blueprint called ```House``` to create one or multiple houses. Each house will be constructed using the same blueprint but each object created will be unique. To indicate that each house is unique, the construction company will assign each new house object, a name during construction which we know as a post code. This process is known as initialisation or instantiation, creating a new instance of the class ```House```. In Python, the post code is known as the ```object name``` or ```instance name```, for simplicity two houses ```house000``` and ```house001``` can be made.
+A construction company can follow the instructions in this blueprint called ```House``` to create one or multiple houses. Each house will be constructed using the same blueprint but each object created will be unique. To indicate that each house is unique, the construction company will assign each new house object, a name during construction which is known as a post code. This process is known as initialisation or instantiation, creating a new physical object or instance from the blueprint or class ```House```. In Python, the post code is known as the ```object name``` or ```instance name```, for simplicity two houses ```house000``` and ```house001``` can be made.
 
-The end user (homeowner or tenant) will be able to uniquely interact with their own house object using the functions outlined in the blueprint House. These functions are methods for interacting with a house object. For example the owner of ```house000``` will be able to leave their house by calling the method ```house000.frontdooropen()``` and ```house000.frontdoorclose()``` and set the temperature on their central heating system by calling the method ```house000.sethousetemperature(temp=24)```. These interactions with ```house000``` will not change the functionality of ```house001``` although the behaviour for both houses are defined in the same ```House``` class. Notice that because these methods are functions, they are called with parenthesis and in the case of the last method an input argument is provided. The dot syntax ```.``` indicates that the method is being called from the object ```house000```.
+The end user (homeowner or tenant) will be able to uniquely interact with their own house object using the functions outlined in the blueprint House. These functions are methods for interacting with a house object. For example the owner of ```house000``` will be able to leave their house by calling the method ```house000.frontdooropen()``` and ```house000.frontdoorclose()``` and set the temperature on their central heating system by calling the method ```house000.sethousetemperature(temp=24)```. Notice that these interactions with ```house000``` will not change the functionality of ```house001``` although the behaviour for both houses is defined in the same ```House``` class. Notice that these functions, are called with parenthesis and in the case of the last function an input argument is provided. The dot syntax ```.``` indicates that the function is being called from the object ```house000```.
 
-The homeowner of ```house000``` may want to rent out a bedroom in their house and may have to list it with the following attributes ```house000.nrooms``` and ```house000.bedroomsize``` for example. The dot syntax ```.``` once again indicates that the attribute is being read from ```house000```. The property is being referenced and therefore no parenthesis are added - think of this syntax as being more or less equivalent to referencing a variable from a script module. If the ```house000.nrooms``` attribute is altered, it'll typically be altered by using a method for example ```house000.buildextension()```.
+The homeowner of ```house000``` may want to rent out a bedroom in their house and may have to list it with the following attributes ```house000.nrooms``` and ```house000.bedroomsize``` for example. The dot syntax ```.``` once again indicates that the attribute is being read from the object ```house000```. Usually if an attribute is altered, it'll be altered via a function and not reassigned directly. For example if the ```house000.nrooms``` attribute is altered, it'll typically be altered by using a function for example ```house000.buildextension()```.
 
 # Fraction Class
 
 In Python, third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate third-party classes from inbuilt objects.
 
-
+```
+class EmptyEmpty(object):
+   pass
+   
+```   
 
 
