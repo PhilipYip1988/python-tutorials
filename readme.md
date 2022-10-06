@@ -26,9 +26,9 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Comprehensions (list and dict) and Lambda Functions](./009_comprehensions_and_lambda_expressions/)
 
-[Custom modules](./010_modules/)
+[Modules](./010_modules/)
 
-classes
+Classes
 
 datetime module
 
