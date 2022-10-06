@@ -16,7 +16,7 @@ A number of Python objects have previously been explored which belong to either 
 
 ![img_005](./images/img_005.png)
 
-Under the hood, each of these functions and properties is defined in the class which can be conceptualised as a blueprint with instructions to make an object and not a physical object itself. Any instance of the class (object built using the blueprint) will have these associated functions and properties. For example:
+Under the hood, each of these functions and properties is defined in the class. A class can be conceptualised as a blueprint which is a set of instructions to make an object and is not a physical object itself. Any instance of the class (physical object built using the blueprint) will have these associated functions and properties. For example:
 
 ```
 num = 5
@@ -30,7 +30,7 @@ word = "Hello"
 
 ![img_007](./images/img_007.png)
 
-Notice that there is a subtle difference with properties shown in the dropdown list for the ```int``` class with instances or attributes shown in the dropdown list for the instance ```num```:
+Notice that there is a subtle difference between ```int.attribute``` and ```int_instance.attribute```. In the former case ```attribute of "int" objects``` displays and the class is displaying information, like a blueprint does. In the latter case a number displays. Attributes can be conceptualised as an embedded object and an analogy to an attribute of an instance of a class is a variable in a module. Notice that identical syntax is used in both cases compare ```module.variable``` with ```int_instance.attribute```, in both cases the object being accessed is to the right hand side of the dot ```.``` and the object used as a container is to the left hand side of the ```.```:
 
 ```
 int.real
@@ -42,18 +42,21 @@ num.imag
 
 ![img_027](./images/img_027.png)
 
-If the function is referenced:
+A function can be referenced in an identical manner to an attribute:
 
 ```
 int.conjugate
 num.conjugate
 ```
 
-There is once again a subtle difference referecing a function from a class where it is called a ```method``` to referencing a function from an instance where it is still called a function:
+Notice that there is a subtle difference between ```int.function``` and ```int_instance.function```. In the former case the function is called a ```method```. A ```method``` has an additional positional input argument called ```self``` which must be assigned to an instance of the object for the function to act on. In the latter case, because the function is referenced from an instance, this instance is automatically implied to be ```self```:
 
 ![img_028](./images/img_028.png)
 
-As these are functions they need to be called using parnethesis to enclose any input arguments. When the function is called from a class as a method, an instance needs to be provided as an input argument as otherwise no instance is specified:
+Functions are called using parenthesis to enclose any input arguments:
+
+* For the method ```conjugate``` an instance ```self``` must be proved for the function to operate on. 
+* For the function ```conjugate``` there are no input arguments with ```self``` being implied from the instance ```num```. 
 
 ```
 int.conjugate(num)
@@ -62,7 +65,7 @@ num.conjugate()
 
 ![img_029](./images/img_029.png)
 
-There are a number of hidden functions not shown in the lists above which map to operators. For example the hidden function ```__add__``` which is mapped to the ```+``` operator:
+There are a number of hidden functions not shown in the lists above which typically map to operators. For example the hidden function ```__add__``` which is mapped to the ```+``` operator:
 
 ```
 num1 = 5
@@ -173,15 +176,15 @@ list.__len__(collection)
 
 Recall that a function determines the behaviour of an object.
 
-When the function is called from a class, it is known as a ```method``` and the 1st positional input argument must be ```self```:
+For the method ```__len__``` an instance ```self``` must be proved for the function to operate on:
 
 ![img_019](./images/img_019.png)
 
-When the function is instead called from an instance, the object being acted upon is implied to be the instance name in this case ```collection```. This can be conceptualised as automatic assignment of ```self``` to the object name, the function is being called from:
+For the function ```__len__``` there are no input arguments with ```self``` being implied from the instance ```num```. 
 
 ![img_020](./images/img_020.png)
 
-**To recap, when a function is called from a class, it is known as a ```method``` and requires an instance ```self``` to be provided as the 1st positional input argument.**
+**When a function is called from a class, it is known as a ```method``` and requires an instance ```self``` to be provided as the 1st positional input argument.**
 
 Importing modules and librarys was examined in detail in the previous tutorial. Recall, that a library is a number of Python script files in a folder. One of these script files is an initialisation script file called ```__init__.py```:
 
@@ -189,7 +192,7 @@ Importing modules and librarys was examined in detail in the previous tutorial. 
 
 ![img_022](./images/img_022.png)
 
-When the name of the folder is imported, this ```__init__.py``` is selected:
+Recall when the name of the folder is imported, this ```__init__.py``` is selected:
 
 ```
 import library
@@ -197,7 +200,7 @@ import library
 
 ![img_023](./images/img_023.png)
 
-Each class has an initialisation method ```__init__``` which typically takes in one or more input arguments and uses these alongside, a return statement to return a new instance of the class. 
+Each class also has an initialisation method ```__init__``` which typically takes in one or more input arguments and uses these alongside, a return statement to return a new instance of the class. This iniitialisation method can be thought of as a constructor function which builds a physical object from a blueprint:
 
 ![img_025](./images/img_025.png)
 
