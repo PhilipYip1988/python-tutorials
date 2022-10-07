@@ -528,7 +528,7 @@ An instance can be created:
 instance = TestClass()
 ```
 
-And if he insance name ```instance``` is input follwoed by a dot ```.``` and tab, a list of attributes available fucntions display:
+And if the instance name ```instance``` is input followed by a dot ```.``` and tab, a list of attributes available functions display:
 
 ![img_047](./images/img_047.png)
 
