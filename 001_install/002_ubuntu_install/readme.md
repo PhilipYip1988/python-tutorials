@@ -587,7 +587,7 @@ The script can be saved with a ```.py``` extension:
 
 ![img_098](./images/img_098.png)
 
-To the top there are four buttons to Run a Script, Run a Cell in a Script, Run a Cell in a Script snd Move onto the next Cell and to Run a Seclecgtion within the Script. At first launch, there will be a dialog for Run options:
+To the top there are four buttons to Run a Script, Run a Cell in a Script, Run a Cell in a Script snd Move onto the next Cell and to Run a Selection within the Script. At first launch, there will be a dialog for Run options:
 
 ![img_099](./images/img_099.png)
 
