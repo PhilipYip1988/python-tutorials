@@ -3,7 +3,8 @@
 [Installing Mambaforge on Windows 11 YouTube](https://www.youtube.com/watch?v=W1KQl3_VFF8)
 
 # System Requirements
-To install Mambaconda you will need a PC that satisfies the following system requirements:
+
+The PC should match or exceed the following system requirements:
 
 * Windows 11 (22H2) or Windows 10 (22H2) 64 Bit
 * 6th Generation Intel i5 Processor or Later
@@ -11,7 +12,7 @@ To install Mambaconda you will need a PC that satisfies the following system req
 * 250 GB SSD or Superior
 * Google Chrome or Microsoft Edge Browser
 
-The performance will be very poor if these system requirements are not satisfied.
+The performance for Python will be very poor if these system requirements are not satisfied.
 
 # Mambaforge Install
 
