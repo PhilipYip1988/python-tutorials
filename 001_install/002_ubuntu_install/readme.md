@@ -489,7 +489,7 @@ The optional dependencies can be installed using:
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
-Note multiple packages are being installed here and each package name is seperated by a space. seaborn will install a compatible version of numpy, pandas and matplotlib as dependencies. sympy openpyxl xlrd xlsxwriter lxml sqlachemy are file format convertes commonly used by libraries such as pandas.
+Note multiple packages are being installed here and each package name is seperated by a space. seaborn will install a compatible version of numpy, pandas and matplotlib as dependencies. sympy openpyxl xlrd xlsxwriter lxml sqlachemy are file format converters commonly used by libraries such as pandas.
 
 
 ![img_082](./images/img_082.png)
