@@ -290,7 +290,7 @@ There is an ```envs``` subfolder which is empty by default.
 
 ## Spyder IDE Python Environment
 
-A new environment can be created for the SPyder IDE using the command:
+A new environment can be created for the Spyder IDE using the command:
 
 ```
 mamba create spyder-cf
