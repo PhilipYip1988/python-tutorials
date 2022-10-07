@@ -49,13 +49,15 @@ In the next screen, select the default options to register Mambaforge as my defa
 
 ![005_mambaforge_install](./images/005_mambaforge_install.png)
 
-You can optionally add Mambaforge to the Windows Environment Variable Paths. This makes the ```base``` Python environment accessible via the Windows Terminal. For most purposes you will want to use the Mambaforge Prompt instead which is optimised to work with multiple Python environments and not hard coded to the one in the Windows Environmental Variables Path. However if you are using Python extenally you may want to select this option:
+**Mambaforge can optionally be added to the Windows Environment Variable Path.** This makes the ```base``` Python environment accessible via the Windows Terminal. This allows third party applications to accessing Python from the Windows Terminal. Such a use case is normally more advanced, for example a C++ IDE that is configured by default to access the Windows Terminal will also be able to invoke a Python Script if Mambaforge is added to the WIndows Environmental Variables Path.
+
+Note that in most regular use scenarios the Mambaforge Prompt should be preferentially used to interact with Python instead of the Windows Terminal. The Mambaforge Prompt is similar to the Windows Terminal but is optimised to work with multiple Python environments and not hard coded to the single base environment provided in the Windows Environmental Variables Path like in the case of the Windows Terminal. The Mambaforge Prompt can be used to install packages in Python environments and launch IDEs installed in the Python environments. 
 
 ![006_mambaforge_install](./images/006_mambaforge_install.png)
 
 ![007_mambaforge_install](./images/007_mambaforge_install.png)
 
-Once you have made your options, select Install:
+Once the decision to add Mambaforge to the Windwos Environmental Path or not is configured. Select Install:
 
 ![008_mambaforge_install](./images/008_mambaforge_install.png)
 
@@ -113,7 +115,7 @@ In Windows Explorer, navigate to:
 %UserProfile\mambaforge
 ```
 
-Notice there is a python.exe in this folder. This is your default Python executable.
+Notice there is a python.exe in this folder. This is the default Python executable.
 
 ![018_miniforge_prompt](./images/018_miniforge_prompt.png)
 
@@ -139,7 +141,7 @@ where third party data science libraries are installed (if they are installed to
 
 # Updating the base Python Environment
 
-Before making any changes to packages th base conda environment should be updated as this will make sure you have the latest version of the ```mamba``` package manager. Use the command:
+Before making any changes to packages the base conda environment should be updated as this will make sure the latest version of the ```mamba``` package manager is installed. Use the command:
 
 ```
 mamba update -c conda-forge --all
@@ -149,7 +151,7 @@ Where ```-c``` is an abbreviation for channel and ```conda-forge``` is the commu
 
 ![021_miniforge_prompt](./images/021_miniforge_prompt.png)
 
-You will get details about the overall changes to your Python environment:
+Details will display outlining the proposed changes to the base Python environment:
 
 ![022_miniforge_prompt](./images/022_miniforge_prompt.png)
 
@@ -161,19 +163,19 @@ To proceed input:
 
 ```y```
 
-You can use the following commands to search for a package:
+The following command is used to search for a package:
 
 ```
 mamba search -c conda-forge packagename
 ```
 
-To install a package:
+To install a package use the command:
 
 ```
 mamba install -c conda-forge packagename
 ```
 
-To install a package of specific version:
+To install a package of specific version use the command:
 
 ```
 mamba install -c conda-forge packagename=1.2.3
@@ -217,7 +219,7 @@ It is mainly empty by default:
 
 ![029_envs](./images/029_envs.png)
 
-Notice the prompt is prefixed wit ```(base)``` which means your ```base``` Python environment is selected and any commands to change packages will therefore influence this environment. 
+Notice the prompt is prefixed with ```(base)``` which means the ```base``` Python environment is selected and any commands to change packages will therefore operate on this environment. 
 
 ![030_envs](./images/030_envs.png)
 
@@ -229,13 +231,13 @@ conda activate spyder-cf
 
 ![031_envs](./images/031_envs.png)
 
-Notice after activation (selection) the prompt now begins with ```spyder-cf``` indicating that any commands to change pakcages will now influence this Python environmen (leaving the ```base``` Python environment untouched).
+Notice after activation (selection) the prompt now begins with ```spyder-cf``` indicating that any commands to change packages will operate on the ```spyder-cf``` Python environment (leaving the ```base``` Python environment untouched).
 
 ![032_envs](./images/032_envs.png)
 
-**Closing the Mambaforge Prompt and relaunching will automatically reselect the ```base``` Python Environment. You will need to reactivate your desired Python environment before amending packages or attempting to launch an IDE for the Python Environment.**
+**Closing the Mambaforge Prompt and relaunching will automatically reselect the ```base``` Python Environment. Reactivate the desired Python environment before amending packages or attempting to launch an IDE from the Python Environment.**
 
-To look at the packages installed in the Python environment you can use:
+To look at the packages installed in the Python environment use:
 
 ```
 mamba list
@@ -243,17 +245,17 @@ mamba list
 
 ![033_envs](./images/033_envs.png)
 
-In this case, this is an empty Python environment as expected.
+In this case, this is an empty Python environment as expected:
 
 ![034_envs](./images/034_envs.png)
 
-For other Python environments you can look at changes made to the environment using:
+For other Python environments revisions made to the environment can be examined using:
 
 ```
 mamba list --revision
 ```
 
-To search for spyder we will use:
+To search for spyder use:
 
 ```
 mamba search -c conda-forge spyder
@@ -265,7 +267,7 @@ Numerous versions of the Spyder IDE spyder package are listed:
 
 ![036_envs](./images/036_envs.png)
 
-We can install the latest version using:
+Install the latest version using:
 
 ```
 mamba install -c conda-forge spyder
@@ -287,7 +289,7 @@ Spyder will now be installed with its mandatory dependencies.
 
 ![039_envs](./images/039_envs.png)
 
-The mandatory dependencies essetially only allow you to use Spyder with the Python programing language itself. Notice that in the folder there is now a python application. This is associated with thi Python environment: 
+The mandatory dependencies essentially only allow use of Spyder with the Python programing language itself and none of the commonly used data science libraries are available. Notice that in the folder there is now a python application, which is associated with this Python environment. This Python application will be launched when using a Python command while this Python environment is selected: 
 
 ```
 %UserProfile\mambaforge\envs\spyder-cf
@@ -295,7 +297,7 @@ The mandatory dependencies essetially only allow you to use Spyder with the Pyth
 
 ![040_envs](./images/040_envs.png)
 
-This Python environment also has a Lib subfolder containing the inbuilt python modules such as datetime and email:
+This Python environment also has a Lib subfolder containing the inbuilt python modules such as datetime and email. These will be used if these modules are imported within a Python script that is ran while this Python environment is selected:
 
 ```
 %UserProfile\mambaforge\envs\spyder-cf\Lib
@@ -303,19 +305,19 @@ This Python environment also has a Lib subfolder containing the inbuilt python m
 
 ![041_envs](./images/041_envs.png)
 
-And a site-packages folder for data-science libraries to be installed:
+There is also a site-packages folder which is the location for data-science libraries to be installed:
 
 ![042_envs](./images/042_envs.png)
 
 ## Installing the Data Science Libraries
 
-Currently the installation contains only mandatory dependencies, allowing Spyder to work with Python and lacks the data science libraries commonly used with Spyder. We can install these using:
+Currently the installation contains only mandatory dependencies, allowing Spyder to work with Python and lacks the data science libraries commonly used with Spyder. These can be installed using:
 
 ```
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
-Note multiple packages are being installed here and each package name is seperated by a space. seaborn will install a compatible version of numpy, pandas and matplotlib as dependencies. sympy openpyxl xlrd xlsxwriter lxml sqlachemy are file format convertes commonly used by libraries such as pandas.
+Note multiple packages are being installed here and each package name is seperated by a space. seaborn will install a compatible version of numpy, pandas and matplotlib as dependencies. sympy openpyxl xlrd xlsxwriter lxml sqlachemy are file format converters commonly used by libraries such as pandas.
 
 ![043_envs](./images/043_envs.png)
 
@@ -423,7 +425,7 @@ Note within this random folder is another ```__init__.py``` and this is the spec
 
 ![053_envs](./images/053_envs.png)
 
-The next most commonly imported library is ```pandas``` which is imported usign the alias ```pd```:
+The next most commonly imported library is ```pandas``` which is imported using the alias ```pd```:
 
 ```
 import pandas as pd
@@ -505,7 +507,7 @@ An individual line of code from a script can be highlighted and ran in the conso
 
 # JupyterLab IDE Overview
 
-We will create another Python environment for the JupyterLab IDE. The JupyterLab IDE is a browser based IDE and has the same optional dependencies as Spyder. because it is browser absed, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. These extensions require ```nodejs```. An optional variable inspector is also available however is limited in comparison to Spyder.
+Another Python environment will be created for the JupyterLab IDE. The JupyterLab IDE is a browser based IDE and has the same optional dependencies as Spyder. because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. These extensions require ```nodejs```. An optional variable inspector is also available however is limited in comparison to Spyder.
 
 ```
 mamba create -n jupyterlab-cf
@@ -527,7 +529,7 @@ Note this is the only place where a ```-``` is used between Jupyter and Lab:
 
 ![067_jupyterlab](./images/067_jupyterlab.png)
 
-You will be asked to build JupyterLab, select Build:
+Whhen first launched, there will be a prompt to build JupyterLab, select Build:
 
 ![068_jupyterlab](./images/068_jupyterlab.png)
 
@@ -577,7 +579,7 @@ The server runs in an infinite loop. To end it press ```Ctrl``` + ```c```:
 
 # Python Environments Continued
 
-Now we have created multiple Python environments. We can list them using:
+Now multiple Python environments have been created. They can be listed using:
 
 ```
 mamba env list
@@ -587,7 +589,7 @@ The environments are listed and the currently selected one is indicated with a `
 
 ![080_jupyterlab](./images/080_jupyterlab.png)
 
-If we create another environment called ```corrupted``` and list the environments again using:
+Another environment called ```corrupted``` can be created and once it is created the Python environments can be relisted:
 
 ```
 mamba create -n corrupted
@@ -596,7 +598,7 @@ mamba env list
 
 ![081_jupyterlab](./images/081_jupyterlab.png)
 
-We can demonstrate how to delete a Python environment using:
+The corrupted environment can be removed using:
 
 ```
 mamba env remove -n corrupted
@@ -604,7 +606,7 @@ mamba env remove -n corrupted
 
 ![082_jupyterlab](./images/082_jupyterlab.png)
 
-This removes the Python environment:
+This corrupted Python environment is now removed:
 
 ![083_jupyterlab](./images/083_jupyterlab.png)
 
