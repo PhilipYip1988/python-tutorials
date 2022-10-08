@@ -13,7 +13,7 @@ So far we have explored the following fundamental datatypes:
 
 ## The string collection
 
-We have discussed in Python how a string can be regarded as both a fundamental datatype and also a collection of individual characters. In other words an individual character in Python is classified as a string. Let's explore some of the collection characteristics a string has:
+Previous tutorials discussed how a string can be regarded as both a fundamental datatype and also a collection of individual characters. In other words an individual character in Python is classified as a string. Some of the collection characteristics of a string can be explored:
 
 ### Concatenation
 
@@ -35,7 +35,7 @@ num1 + num2
 
 ### Indexing
 
-We have also discussed how we can index from a string using square brackets enclosing an integer value:
+It is possible to index into a string using square brackets. The square brackets enclose the integer value to index:
 
 ```
 "hello"[1]
@@ -47,7 +47,7 @@ In the above example, the letter ```"e"``` is returned which is at index 1.
 ![002_str_indexing](./images/002_str_indexing.png)
 
 
-If you expected ```"h"```, recall that Python indexing uses zero order which is inclusive of ```0```:
+Note ```"h"```, isn't at index 1 as Python indexing uses zero order which is inclusive of ```0```:
 
 ![003_str_indexing](./images/003_str_indexing.png)
 
@@ -57,7 +57,7 @@ If you expected ```"h"```, recall that Python indexing uses zero order which is 
 
 ![004_str_indexing](./images/004_str_indexing.png)
 
-Python zero order indexing is exclusive of the upper bound, which is the length of the string. We go up to but don't include the upper bound:
+Python zero order indexing is exclusive of the upper bound, which is the length of the string. Python indexes up to but doesn't include the upper bound:
 
 ```
 "hello"[len("hello")]
@@ -81,7 +81,7 @@ To recap, in Pythons zero order indexing, the first value is at index 0 and the 
 
 ![006_str_indexing](./images/006_str_indexing.png)
 
-We can also index using negative index values. When using a negative index we can think of the string as being a rolled up object. 
+Indexing can be carried out using negative integer values. When using a negative index, the string can be conceptualised as a rolled up object. 
 
 For example instead of viewing the string ```"hello"``` as a line:
 
@@ -89,7 +89,7 @@ For example instead of viewing the string ```"hello"``` as a line:
 hello
 ```
 
-We can view it as:
+It can be viewed as:
 
 ```
 
@@ -100,7 +100,7 @@ o         e
    
 ```
 
-Which has the positive indexes:
+Which has the positive integer index values:
 
 ```
 
@@ -111,7 +111,7 @@ Which has the positive indexes:
    
 ```
 
-In this rolled up view, we have only explored the clockwise motion from the initial value ```0```, we can also explore the anti-clockwise motion using negative indexes. The integer number before ```0``` is ```-1```:
+In this rolled up view, clockwise motion from the initial value ```0``` has been explored. Instead the anti-clockwise motion can be explored using negative indexes. The integer number before ```0``` is ```-1```:
 
 ```
 
@@ -133,7 +133,7 @@ The initial value ```0``` can also be expressed as a negative index, which is th
    
 ```
 
-So we can get the last value and the first value using the negative indexes:
+The last value and the first value can be accessed using the negative integer index values:
 
 ```
 "hello"[-1]
@@ -145,13 +145,33 @@ So we can get the last value and the first value using the negative indexes:
 
 ![007_str_indexing](./images/007_str_indexing.png)
 
-We can index using a slice. In full a slice uses the following notation:
+Indexing can be carried out using a slice. The ```slice``` function can be used to create a slice object: 
+
+![096_img](./images/096_img.png)
+
+The slice function is similar to the ```range``` function. Both functions have a ```start```, ```stop``` and ```step``` value:
+
+![098_img](./images/098_img.png)
+
+```
+"hello"slice[(start, stop, step)]
+```
+
+For example a start value of 1, stop value of 1 and step value of 3 can be specified:
+
+```
+"hello"[slice(1, 3, 1)]
+```
+
+![097_img](./images/097_img.png)
+
+Slicing is however more commonly carried out with the following notation:
 
 ```
 "hello"[start:stop:step]
 ```
 
-Because zero-order indexing is used, we are inclusive of the start bound and inclusive of the stop bound:
+Because zero-order indexing is used, the indexing is inclusive of the start bound and exclusive of the stop bound:
 
 ```
 "hello"[1:3:1]
@@ -159,7 +179,7 @@ Because zero-order indexing is used, we are inclusive of the start bound and inc
 
 ![008_str_indexing](./images/008_str_indexing.png)
 
-so this means we start at the letter at index 1 which is ```"e"``` and we go up in steps of one, taking us to index 2 which has the letter ```"l"```. We go up to the stop index 3 but we do not include it. Therefore this slice is ```"el"``` and not ```"ell"```.
+so this means the start is at the letter at index 1 which is ```"e"``` and steps of 1, are used until index 2 which has the letter ```"l"```. The indexing can be thought of as approaching the stop at index 3 but never reaching it. Therefore this slice is ```"el"``` and not ```"ell"```.
 
 Indexing has default values:
 
@@ -175,7 +195,7 @@ The ```start``` has a default value that is ```0```, the ```stop``` has a defaul
 
 ![009_str_indexing](./images/009_str_indexing.png)
 
-If we don't specify the step, a default value of 1 is selected, returning the whole string:
+If no step is specified, a default value of 1 is selected, returning the whole string:
 
 ```
 "hello"[0:len("hello"):]
@@ -183,15 +203,16 @@ If we don't specify the step, a default value of 1 is selected, returning the wh
 
 ![010_str_indexing](./images/010_str_indexing.png)
 
-This also works if we don't supply the second colon:
+This also works if the second colon is not supplied:
 
 ```
 "hello"[0:len("hello")]
+"hello"[slice(0, len("hello")]
 ```
 
 ![011_str_indexing](./images/011_str_indexing.png)
 
-Examples using the default value of ```stop```:
+If the ```stop``` value is unspecified, it is assumed to be the length of the string:
 
 ```
 "hello"[0:]
@@ -203,7 +224,7 @@ Examples using the default value of ```stop```:
 
 ![012_str_indexing](./images/012_str_indexing.png)
 
-Examples using the default value of ```start```:
+If the ```start``` is not specified it is assumed to be 0:
 
 ```
 "hello"[:len("hello")]
@@ -215,7 +236,7 @@ Examples using the default value of ```start```:
 
 ![013_str_indexing](./images/013_str_indexing.png)
 
-Examples using the default value of ```start```, ```stop``` and ```step```:
+An example using the default value of ```start```, ```stop``` and ```step```:
 
 ```
 "hello"[:]
@@ -227,7 +248,7 @@ Examples using the default value of ```start```, ```stop``` and ```step```:
 
 ![014_str_indexing](./images/014_str_indexing.png)
 
-We can take every second value of the string using a ```step``` of ```2```:
+Every second value of the string can be selected using a ```step``` of ```2```:
 
 ```
 "hello"[::2]
@@ -235,7 +256,7 @@ We can take every second value of the string using a ```step``` of ```2```:
 
 ![015_str_indexing](./images/015_str_indexing.png)
 
-Since we ```start``` at ```0```, this selects all the even indexs. If we instead want all the odd indexes, we can start at ```1```:
+Since ```start``` is ```0``` this selects all the even indexes. To instead get all the odd indexes, start at ```1```:
 
 ```
 "hello"[1::2]
@@ -243,7 +264,7 @@ Since we ```start``` at ```0```, this selects all the even indexs. If we instead
 
 ![016_str_indexing](./images/016_str_indexing.png)
 
-We can get the string in reverse by specifying a step size of ```-1```:
+A string can be obtained in reverse by specifying a step size of ```-1```:
 
 ```
 "hello"[::-1]
@@ -259,7 +280,7 @@ When using a step of ```-1```, the ```start``` takes on a default value of ```-1
 
 ![018_str_indexing](./images/018_str_indexing.png)
 
-Care needs to be taken when using the negative index as we are still inclusive of the ```start``` bound and exclusive of the ```stop``` bound.
+Care needs to be taken when using the negative integer index values as Python is still using zero-order indexing, which is inclusive of the ```start``` bound and exclusive of the ```stop``` bound.
 
 ## The list collection
 
@@ -341,11 +362,11 @@ Care should be taken to ensure that the square brackets inner and outer brackets
 
 ### list functions and mutability
 
-If we type in the variable or object name of one of the lists followed by a dot ```.``` and press tab ```↹```, we will see a number of functions that we can call from the object:
+If the variable (or object) name of one of the lists is input followed by a dot ```.``` and tab ```↹```, a number of functions that can be called from the object display:
 
 ![033_lists](./images/033_lists.png)
 
-Most of these functions modify the original list, this in place modification is also known as mutation. Notice that cell 31 and cell 33 do not show an output. In cell 32 and cell 34, when we look at the original list, we see the list has been updated:
+Most of these functions modify the original list, this in place modification is also known as mutation. Notice that cell 31 and cell 33 do not show an output. In cell 34, the original list, has been updated:
 
 ```
 items.append([5, "bananas"])
@@ -356,7 +377,7 @@ items
 
 ![034_lists](./images/034_lists.png)
 
-We can see the subtle difference between the list functions ```append``` which appends a collection to a new upper index of the list and ```extend``` which extends the list by the items in the collection. For a single fundamental datatype such as an integer, float, boolean or string we should use ```append``` opposed to ```extend```:
+There is a subtle difference between the list functions ```append```, which appends a collection to a new upper index of the list and ```extend```, which extends the list by the items in the collection. For a single fundamental datatype such as an integer, float, boolean or string ```append``` should be used opposed to ```extend```:
 
 ```
 items.append(1)
@@ -365,11 +386,11 @@ items
 
 ![035_lists](./images/035_lists.png)
 
-If we type in the function name with open parenthesis and press shift ```⇧``` and tab ```↹``` we can see the functions docstring and details about the input arguments. We see in the case of append, we are looking for an object whereas in the case of extend, we are looking for an iterable object i.e. a collection:
+If the function name is input with open parenthesis and shift ```⇧``` and tab ```↹``` are pressed. The functions docstring and details about the functions input arguments display. In the case of ```append```, the input argument is an object whereas in the case of extend, the input argument is an iterable object i.e. a collection:
 
 ![036_lists](./images/036_lists.png)
 
-Recall that a string is a collection, if we use the string method extend with a string, we will iterate over the string and extend the list by placing each individual letter in the string as its own additional index:
+Recall that a string is a collection, if the string method extend is used with a string, it will iterate over the string and extend the list by placing each individual letter in the string as its own additional index:
 
 ```
 items.extend("hello")
@@ -378,7 +399,7 @@ items
 
 ![037_lists](./images/037_lists.png)
 
-Care should be taken to understand how these functions operate regarding list mutability. These functions modify the list object in place and if we assign the output of the function to a new variable name, the new variable name will be the type ```NoneType``` object:
+Care should be taken to understand how these functions operate regarding list mutability. These functions modify the list object in place and output of the function is assigned to a new variable name, the new variable name will be of the type ```NoneType``` object:
 
 ```
 old_list = [1, 2, 3, 4]
@@ -409,7 +430,7 @@ Note in cells 42 and 43 an output is shown. This is because the operators ```+``
 
 ![040_lists](./images/040_lists.png)
 
-To understand how mutability works, we can create a custom append function, that uses a global list and mutates it:
+To understand how mutability works, a custom append function can be created, that uses a global list and mutates it:
 
 ```
 items1 = [1, "apples", 3.14]
@@ -419,17 +440,17 @@ def append1(other_list):
     items1 = items1 + other_list
 ```
 
-If we call this function, supplying the positional input argument ```other_list```:
+If this function is called and supplied with the positional input argument ```other_list```:
 
 ```
 append1(["hello", "goodbye"])
 ```
 
-We see that there is no return value shown because this function has no return statement but ```items1``` is mutated:
+There is no return value shown because this function has no return statement but ```items1``` is mutated:
 
 ![041_lists](./images/041_lists.png)
 
-Now if we instead create a function without a global variable and instead use a return value:
+If instead another function without a global variable is created, that takes two lists as input arguments and returns the concatenated value:
 
 ```
 items1 = [1, "apples", 3.14]
@@ -438,19 +459,17 @@ def append2(orig_list, other_list):
     return orig_list + other_list
 ```
 
-If we call this function supplying the two input inputs ```orig_list``` and ```other_list```:
+If this function is called, supplying the two input lists ```orig_list``` and ```other_list```:
 
 ```
 append2(items1, ["hello", "goodbye"])
 ```
 
-We see a return value corresponding to the return value supplied when the function ```append2``` was defined and in this case the original list ```items1``` is unaltered:
+A return value corresponding to the concatenated lists is supplied and in this case the original list ```items1``` is unaltered:
 
 ![042_lists](./images/042_lists.png)
 
-We will look at functions and code blocks in a later guide. However the main point to highlight here is the list functions that mutate the original list have no return function and therefore return NoneType when assigned or reassigned to a variable or object name. 
-
-We have already seen the ```append``` and ```extend``` list function which mutate the list:
+Custom functions and code blocks will be examined in more detail in a later guide. However the main point to highlight here is the list functions ```append``` and ```extend``` for example mutate the original list and have no return function. If they are sued and assigned or reassigned to a variable name, the variable name will have the value ```NoneType``` when assigned or reassigned to a variable or object name. Care should be made when using them. An IDE such as Spyder has a Variable Explorer which makes it easier to visualise the variables as these list methods are beign utilised.
 
 ![033_lists](./images/033_lists.png)
 
@@ -472,7 +491,7 @@ items1 = [1, "apples", 3.14, "apples"]
 items1.index("apples")
 ```
 
-An optional secondary input argument can be supplied to selecting a starting index value to begin the search from. If for example index 2 is selected, we will return the next occurance of ```"apples"``` at index 3:
+An optional secondary input argument can be supplied to selecting a starting index value to begin the search from. If for example index 2 is selected,the next occurance of ```"apples"``` at index 3 will be returned:
 
 ```
 items1.index("apples", 2)
@@ -482,7 +501,7 @@ items1.index("apples", 2)
 
 ![046_lists](./images/046_lists.png)
 
-If we recreate the simple list:
+If the simple list is recrated:
 
 ```
 items1 = [1, "apples", 3.14]
@@ -492,7 +511,7 @@ items1 = [1, "apples", 3.14]
 
 ![048_lists](./images/048_lists.png)
 
-The ```insert``` function, can be used to select an index and insert a value at the index. Any values past the index of insertion will be shunted one up:
+The ```insert``` function, can be used to select an index and insert a value at the index. Any values past the index of insertion will have an index integer value shunted up by 1:
 
 ```
 items1.insert(2, "bananas")
@@ -521,7 +540,7 @@ The function ```remove``` will remove the first occurance of an item in a list:
 items1.remove("apples")
 ```
 
-This function mutates the original list and an item higher than the index of the item being removed is shunted down by one index:
+This function mutates the original list and an item higher than the index of the item being removed will have an index integer value shunted down by 1:
 
 ![053_lists](./images/053_lists.png)
 
@@ -556,7 +575,7 @@ items1.count("apples")
 
 ![057_lists](./images/057_lists.png)
 
-Note it will only count the occurances in the outer list and no occurances within nested collections. For example if we append a list:
+Note it will only count the occurances in the outer list and no occurances within nested collections. For example if a list is appended:
 
 ```
 items1.append(["apples", "apples"])
@@ -566,7 +585,7 @@ items1.append(["apples", "apples"])
 
 ![059_lists](./images/059_lists.png)
 
-And then use:
+And then the function ```count``` is used on the outer list ```items1```:
 
 ```
 items1.count("apples")
@@ -574,7 +593,7 @@ items1.count("apples")
 
 ![060_lists](./images/060_lists.png)
 
-We get a return value of ```2``` and not ```4```. The last index with respect to the outer list has the value ```["apples", "apples"]``` which differs from the precise search term ```"apples"```. Likewise if we append a single value ```"pineapples"```:
+A return value of ```2``` displays and not ```4```. The last index with respect to the outer list has the value ```["apples", "apples"]``` which differs from the precise search term ```"apples"```. Likewise if a single value ```"pineapples"``` is appended:
 
 ```
 items1.append("pineapples")
@@ -614,7 +633,7 @@ items1.pop()
 
 ![067_lists](./images/067_lists.png)
 
-Therefore when using this function, we can assign the output to a variable:
+Therefore when using this function, the output can be assigned to a variable:
 
 ```
 last_value = items1.pop()
@@ -638,20 +657,20 @@ words
 
 ![069_lists](./images/069_lists.png)
 
-If we assign the list to a new object name:
+If the list ```words``` is assigned to a new object name ```fruits```:
 
 ```
 fruits = words
 ```
 
-We see that both the new list ```fruits``` is equal ```==``` to the list ```words``` meaning all the values in the list match but also that ```fruits``` ```is``` ```words``` meaning the two names are alias for the same list object in memory:
+Both the new list ```fruits``` is equal ```==``` to the list ```words``` meaning all the values in the list match but also that ```fruits``` ```is``` ```words``` meaning the two names are alias for the same list object in memory:
 
 ```
 fruits == words
 fruits is words
 ```
 
-This means when we mutate ```fruits```, then because ```words``` ```is``` ```fruits``` then ```fruits``` is seen to be mutated:
+This means mutation of ```fruits```, will mutate ```words``` because ```words``` ```is``` ```fruits```:
 
 ```
 fruits.append("oranges")
@@ -659,21 +678,21 @@ fruits.append("oranges")
 
 ![070_lists](./images/070_lists.png)
 
-We have the list function ```copy``` which returns a copy of the original list:
+The list function ```copy``` returns a copy of the original list:
 
 ```
 words = ["banana", "apples", "grapes"]
 fruits = words.copy()
 ```
 
-We see that the new list ```fruits``` is equal ```==``` to the list ```words``` meaning all the values in the list match but now that ```fruits``` ```is not``` ```words``` meaning these are two different list objects in memory:
+The new list ```fruits``` is equal ```==``` to the list ```words``` meaning all the values in the list match once again. However now ```fruits``` ```is not``` ```words``` meaning these are two different list objects in memory:
 
 ```
 fruits == words
 fruits is words
 ```
 
-Mutating one list now leaves the other list unchanged:
+Mutating one list now leaves the other list unchanged, because they are different objects:
 
 ```
 fruits.append("oranges")
@@ -683,7 +702,7 @@ fruits.append("oranges")
 
 ## The tuple collection
 
-If we replace the square brackets ```[ ]``` with ```( )``` we get another collection known as a ```tuple```: 
+If the square brackets ```[ ]``` are replaced with ```( )``` another collection known as a ```tuple``` is created: 
 
 ```
 words_l = ["banana", "apples", "grapes"]
@@ -700,7 +719,7 @@ The difference can be more clearly seen when inputting the objects name followed
 
 ![074_tuples](./images/074_tuples.png)
 
-We see in the case of the ```tuple``` that we only have the functions which return a value and cannot access equivalents to any of the list functions which mutate the list. 
+In the case of the ```tuple``` only the functions which return a value display and there are no equivalents to any of the list functions which mutate the list. 
 
 A tuple can be indexed using ```[ ]``` brackets in the exact same manner as a list or a string:
 
@@ -720,7 +739,7 @@ empty_tuple = tuple()
 
 ![076_tuples](./images/076_tuples.png)
 
-The classes ```tuple``` and ```list``` can be used to create an empty tuple or empty list. We can think of them as conversion functions which will return a tuple form a list or vice versa:
+The classes ```tuple``` and ```list``` can be used to create an empty tuple or empty list. At present these classes can be conceptualised as conversion functions which will return a tuple from a list or vice versa:
 
 ```
 fruits = ("banana", "apples", "grapes")
@@ -738,7 +757,7 @@ fruits = list(fruits)
 
 ![078_tuples](./images/078_tuples.png)
 
-tuples at first glance may seem to be lists with limited capabilities however mutability isn't always a desired trait, for example when using constants, mutability can allow accidental change of the constant which lead to issues in a longer program. tuples also use less memory than lists, and may be faster for large datasets that don't need mutated.
+tuples at first glance may seem to be lists with limited capabilities however mutability isn't always a desired trait, for example when using constants, mutability can allow accidental change of the constant which could result in a problem in a longer program. tuples also use less memory than lists, and may be faster for large datasets that don't need mutated.
 
 ## The set collection
 
@@ -752,7 +771,7 @@ items1 = {1, "apples", 3.14, "apples"}
 
 ![080_sets](./images/080_sets.png)
 
-When we created the set above, we supplied ```"apples"``` at 1 and also 3. Only one instance of ```"apples"``` displays. Notice also on the variable explorer, that there is no index in a ```set```, order is not maintained as only a single instance of a unique item is retained. A ```set``` is an unordered collection.
+When the set was created above, ```"apples"``` was supplied at 1 and also 3. Note however that only one instance of ```"apples"``` displays. Notice also on the variable explorer, that there is no index in a ```set```. This is because the order is not maintained in a set, as only a single instance of a unique item is retained. A ```set``` is an unordered collection.
 
 Input the set objects name followed by a dot ```.``` and press tab ```↹``` to view the number of functions that can be called from the set the object:
 
@@ -784,7 +803,7 @@ A dictionary can be conceptualised as an English dictionary:
 |record|information that is written on paper or stored on computer so that it can be used in the future|
 |record|a flat, round, plastic disc that music is stored on, used especially in the past|
 
-Instead of a word and a meaning, we use the terms key and value:
+Instead of a word and a meaning, the terms key and value are sued:
 
 |key|value|
 |:-:|:-:|
@@ -810,7 +829,7 @@ Each key must be unique:
 |"a few"|some, or a small number of|
 |"record"|information that is written on paper or stored on computer so that it can be used in the future|
 
-The value can be a fundamental datatype such as an integer, float, boolean value, complex number or string (collection of characters). It can also be another collection. Dictionaries are normally used when a key is easy to remember and a value is more difficult to remember. If we have a look at a Word Processor such as Microsoft Word, we see that each Standard Color has a name which we can take as a key for example "green":
+The value can be a fundamental datatype such as an integer, float, boolean value, complex number or string (collection of characters). It can also be another collection. Dictionaries are normally used when a key is easy to remember and a value is more difficult to remember. If a Word Processor is examined such as Microsoft Word, each Standard Color has a name which we can take as a key for example "green":
 
 ![084_dict](./images/084_dict.png)
 
@@ -902,7 +921,7 @@ colors.items()
 
 Most of the other functions are similar to their counterparts in a list, with slight differences due to the dictionary having a ```key: value``` pair opposed to just a ```value```.
 
-The color dicitonary can be recreated using a r, g, b list or tuple for each number: 
+The color dictionary can be recreated using a ```[r, g, b]``` list or ```(r, g, b)``` tuple for each color: 
 
 ```
 colors = {"wine": [192, 0, 0], 
@@ -920,16 +939,14 @@ colors = {"wine": [192, 0, 0],
 ![092_dict](./images/092_dict.png)
 ![093_dict](./images/093_dict.png)
 
-We can get the value of the key ```"purple"``` using:
+Dictionaries do not have numeric indexes. However index is carried out using square brackets which enclose the key. The key is normally a string, for example in this case ```"purple"```:
 
 ```
 colors["purple"]
 
 ```
 
-
-
-And specifically the g value of purple by indexing into this list using index 1:
+And specifically the ```g``` value of purple can be obtained by indexing into the output list at index 1:
 
 ```
 colors["purple"][1]
