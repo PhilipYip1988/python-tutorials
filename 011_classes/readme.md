@@ -277,7 +277,7 @@ The homeowner of ```house000``` may want to rent out a bedroom in their house an
 
 # The object Class
 
-In Python, everything is based around the concept of an object. To explore this in more detail, the generic ```object``` class can be examined. If ```object(``` is input followed by shift ```⇧``` and tab ```↹``` th docstring for the initialisation signature of the object class display:
+In Python, everything is based around the concept of an object. To explore this in more detail, the generic ```object``` class can be examined. If ```object(``` is input followed by shift ```⇧``` and tab ```↹``` the docstring for the initialisation signature of the object class display:
 
 ![img_031](./images/img_031.png)
 
@@ -349,7 +349,7 @@ The other data model methods are not listed and therefore have no code defining 
 
 # Creating a Custom Class
 
-The ```class``` keyword is used to construct a class. Third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate user defined third-party classes from inbuilt objects. Parenthesis are used to enclose the parent class. When no parent class is defined, the default parent class ```object``` is used. A colon ```:``` is then used to begin a code block. For now ```pass``` will be used:
+The ```class``` keyword is used to create a class. Third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate third-party classes from inbuilt objects. Parenthesis are used to enclose the parent class. When no parent class is defined, the default parent class ```object``` is used. A colon ```:``` is then used to begin a code block. For now ```pass``` will be used:
 
 ```
 class EmptyEmpty(object):
@@ -528,7 +528,7 @@ Now that the ```TestClass``` class is ready:
 
 ![img_046](./images/img_046.png)
 
-An instance can be created:
+An instance can be instantiated to the object name ```instance```:
 
 ```
 instance = TestClass()
@@ -536,8 +536,21 @@ instance = TestClass()
 
 ![img_048](./images/img_048.png)
 
+The inbuilt function ```isinstance``` can be used to check whether the object name ```instance``` is an instance of the class ```TestClass``` or of another class such as ```int```. The values are ```True``` and ```False``` as expected:
 
-And if the instance name ```instance``` is input followed by a dot ```.``` and tab ```↹```, a list of available functions display:
+```
+isinstance(instance, TestClass)
+```
+
+![img_049](./images/img_049.png)
+
+```
+isinstance(instance, int)
+```
+
+![img_050](./images/img_050.png)
+
+If the instance name ```instance``` is input followed by a dot ```.``` and tab ```↹```, a list of available functions display:
 
 ![img_047](./images/img_047.png)
 
@@ -550,13 +563,15 @@ instance.function3()
 instance.function4()
 ```
 
-
+![img_051](./images/img_051.png)
 
 If the instance name ```instance``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions displays and is unaltered:
 
-
+![img_052](./images/img_0521.png)
 
 If ```instance.create_attributes(``` is input followed by shift ```⇧``` and ```↹```, details about the positional input arguments display ```value1```, ```value2```, ```value3``` and ```value4```. Because no docstring was provided, ```<no docstring>``` displays.
+
+![img_053](./images/img_053.png)
 
 For simplicity these will be input as ```1```, ```2```, ```3``` and ```4```:
 
@@ -564,8 +579,11 @@ For simplicity these will be input as ```1```, ```2```, ```3``` and ```4```:
 instance.create_attributes(1, 2, 3, 4)
 ```
 
+![img_054](./images/img_054.png)
 
 If the instance name ```instance``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions displays and now includes a list of the four attributes:
+
+![img_055](./images/img_055.png)
 
 ```
 instance.value1
@@ -574,11 +592,11 @@ instance.value3
 instance.value4
 ```
 
+![img_056](./images/img_056.png)
+
 ## The ```__init__``` Datamodel Initialisation Method
 
-The initialisation method ```__init__``` is invoked when instantiating a class. The ```__init__``` method is often refered to as a constructor as it is used to construct a new physical object or instance of the class. Going back to the analogy of a blueprint and a house, the constructor is used to build a house from the blueprint. 
-
-If the method ```create_attributes``` is renamed ```__init__``` and the class is redefined.
+The initialisation method ```__init__``` is invoked when instantiating a class. The ```__init__``` method is often refered to as a constructor as it is used to construct a new physical object or instance of the class. A physical object has properties or attributes and the ```__init__``` constructor can be used to initialise these. If the method ```create_attributes``` is renamed ```__init__```, the attributes ```value1```, ```value2```, ```value3``` and ```value4``` will be assigned upon instantiation.
 
 ```
 class TestClass(object):
@@ -608,41 +626,45 @@ class TestClass(object):
    
 ```
 
+![img_057](./images/img_057.png)
+
 When ```TestClass(``` is input followed by shift ```⇧``` and ```↹```, details about the positional input arguments display. ```value1```, ```value2```, ```value3``` and ```value4``` are shown. These come from the definition of the ```__init__``` method and a value for each of these positional input arguments must now be provided during instantiation.
 
+![img_058](./images/img_058.png)
 
-
-Two instantiations can be made to the names ```instance1``` and ```instance2```
+Two instantiations can be made to the variable names ```instance1``` and ```instance2``` respectively:
 
 ``` 
 instance1 = TestClass(1, 2, 3, 4)
 instance2 = TestClass(2, 4, 6, 8)
 ```
-
+![img_059](./images/img_059.png)
 
 If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
 
-
+![img_060](./images/img_060.png)
 
 An identical list of available functions and attributes displays for ```instance2```:
 
-
-
+![img_061](./images/img_061.png)
 
 Notice that although the attributes have the same name, they are assigned to have different values for each instance.
 
 ```
 instance1.value1
-instance1.value2
-instance1.value3
-instance1.value4
 instance2.value1
+
+instance1.value2
 instance2.value2
+
+instance1.value3
 instance2.value3
+
+instance1.value4
 instance2.value4
 ```
 
-If ```instance1``` and ```instance2``` are conceptualised as houses, built from a common blueprint, each of the values can be considered as a property of the house. ```value1``` for example could be the number of rooms in the house during construction.
+![img_062](./images/img_062.png)
 
 ## Accessing a Method within another Method
 
@@ -659,7 +681,7 @@ The ```create_attributes``` method can be redefined:
         
 ```
 
-The ```__init__``` method can be modified to call ```create_attributes``` function from the instance ```self```. 
+The ```__init__``` method can be modified to call ```create_attributes``` function from the instance ```self```. All the input arguments required to call the ```create_attributes``` must be present in the ```__init__``` function.
 
 ```
     def __init__(self, value1, value2, value3, value4):
@@ -675,17 +697,9 @@ The ```create_attributes``` function can be called by the ```__init__``` method 
         return None
 ```
 
-Notice ```self``` is provided as the first positional input argument for the ```__init__``` method. The other 4 positional arguments ```value1```, ```value2```, ```value3``` and ```value4``` must also be supplied, so they can be passed onto the method ```create_attributes```.
-
-```
-    def __init__(self, value1, value2, value3, value4):
-        self.create_attributes(value1, value2, value3, value4)
-        return None
-```
-
 Notice that when the function ```create_attributes``` is called, it is called from an instance ```self``` and therefore ```self``` should not be provided as an input argument.
 
-The updated ```TestClass``` is as follows and should have identical behaviour to before:
+The updated ```TestClass``` is as follows:
 
 ```
 class TestClass(object):
@@ -720,37 +734,94 @@ class TestClass(object):
 
 ```
 
-Two instantiations can be made to the names ```instance1``` and ```instance2```
+The updated class has identical behaviour to before and the ```__init__``` method docstring looks the same:
+
+![img_063](./images/img_063.png)
+
+Two instantiations can be made to the variable names ```instance1``` and ```instance2``` respectively:
 
 ``` 
 instance1 = TestClass(1, 2, 3, 4)
 instance2 = TestClass(2, 4, 6, 8)
 ```
 
-If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
+![img_065](./images/img_065.png)
 
+If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays. This is identical to before but includes ```create_attributes```:
 
+![img_066](./images/img_066.png)
 
 An identical list of available functions and attributes displays for ```instance2```:
 
+![img_067](./images/img_067.png)
 
-
-Both of these are identical to before.
+To save a bit of repetition. ```*args``` and ```**kwargs``` can be used within the ```__init__``` method.
 
 ```
-instance1.value1
-instance1.value2
-instance1.value3
-instance1.value4
-instance2.value1
-instance2.value2
-instance2.value3
-instance2.value4
+    def __init__(self, *args, **kwargs):
+        self.create_attributes(*args, **kwargs)
+        return None  
+
+
 ```
+
+The class becomes:
+
+```
+class TestClass(object):
+    def function1(self, *args, **kwargs):
+        return None
+       
+       
+    def function2(self, *args, **kwargs):    
+        return None
+       
+       
+    def function3(self, *args, **kwargs):    
+        return None
+       
+       
+    def function4(self, *args, **kwargs):    
+        return None
+       
+        
+    def create_attributes(self, value1, value2, value3, value4):
+        self.value1 = value1
+        self.value2 = value2
+        self.value3 = value3
+        self.value4 = value4
+        return None
+   
+
+    def __init__(self, *args, **kwargs):
+        self.create_attributes(*args, **kwargs)
+        return None  
+    
+    
+```
+
+![img_068](./images/img_068.png)
+
+This however makes the ```docstring``` for the ```__init__``` initialisation constructor less useful:
+
+![img_069](./images/img_069.png)
+
+Two instantiations can be made to the variable names ```instance1``` and ```instance2``` respectively in the exact same manner as before:
+
+``` 
+instance1 = TestClass(1, 2, 3, 4)
+instance2 = TestClass(2, 4, 6, 8)
+```
+
+![img_070](./images/img_070.png)
+
+If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays. This is identical to before:
+
+![img_071](./images/img_071.png)
 
 ## Public, Internal Use and Private
 
-The method ```create_attributes``` is public and is therefore accessible from any instance created. It can be designated as a method designed for internal use by prefixing the method name with an underscore ```_```. In this case ```create_attributes``` becomes ```_create_attributes```. The ```__init__``` method also needs to be updated to call ```_create_attributes``` instead of ```create_attributes```:
+The method ```create_attributes``` is public and is therefore accessible from any instance created. This may not be useful, if for example this method is only intended to be used as during initialisation. This method can be designated as a method designed for internal use by prefixing the method name with an underscore ```_```. In this case ```create_attributes``` becomes ```_create_attributes```. The ```__init__``` method also needs to be updated to call ```_create_attributes``` instead of ```create_attributes```:
 
 ```
     def _create_attributes(self, value1, value2, value3, value4):
@@ -761,12 +832,14 @@ The method ```create_attributes``` is public and is therefore accessible from an
         return None
     
     
-    def __init__(self, value1, value2, value3, value4):
-        self._create_attributes(value1, value2, value3, value4)
-        return None
+    def __init__(self, *args, **kwargs):
+        self._create_attributes(*args, **kwargs)
+        return None  
+        
+        
 ```
 
-The class therefore becomes:
+The class becomes:
 
 ```
 class TestClass(object):
@@ -794,12 +867,14 @@ class TestClass(object):
         return None
     
     
-    def __init__(self, value1, value2, value3, value4):
-        self._create_attributes(value1, value2, value3, value4)
-        return None
+    def __init__(self, *args, **kwargs):
+        self._create_attributes(*args, **kwargs)
+        return None  
    
    
 ```   
+
+![img_072](./images/img_072.png)
 
 Two instantiations can be made to the names ```instance1``` and ```instance2``` respectively:
 
@@ -808,37 +883,19 @@ instance1 = TestClass(1, 2, 3, 4)
 instance2 = TestClass(2, 4, 6, 8)
 ```
 
+![img_073](./images/img_073.png)
 
 If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
 
+![img_074](./images/img_074.png)
 
-
-An identical list of available functions and attributes displays for ```instance2```:
-
-
-
-Notice that both of these do not display ```_create_attributes``` which has been designated for only internal use.
-
-
-
-This method will show if ```dir``` is used:
+Notice that ```_create_attributes``` does not display because it has been designated for only internal use. This method will show if ```dir``` is used which gives more details:
 
 ```
-dir(TestClass)
+dir(instance1)
 ```
 
-The values of the attributes are identical to before:
-
-```
-instance1.value1
-instance1.value2
-instance1.value3
-instance1.value4
-instance2.value1
-instance2.value2
-instance2.value3
-instance2.value4
-```
+![img_075](./images/img_075.png)
 
 Althought the method ```_create_attributes``` is designated for internal use. It can however be called from an instance using:
 
@@ -846,6 +903,7 @@ Althought the method ```_create_attributes``` is designated for internal use. It
 instance1._create_attributes(10, 20, 30, 40)
 ```
 
+![img_076](./images/img_076.png)
 
 The attributes are updated as expected:
 
@@ -856,6 +914,7 @@ instance1.value3
 instance1.value4
 ```
 
+![img_077](./images/img_077.png)
 
 The method ```create_attributes``` can be designated as a private method using a double underscore ```__create_attributes``` instead of a single underscore ```_create_attributes```. Once again both the method and ```__init__``` which calls the method need to be updated:
 
@@ -866,18 +925,17 @@ The method ```create_attributes``` can be designated as a private method using a
         self.value3 = value3
         self.value4 = value4
         return None
-    
-    
-    def __init__(self, value1, value2, value3, value4):
-        self.__create_attributes(value1, value2, value3, value4)
-        return None
+   
+
+    def __init__(self, *args, **kwargs):
+        self.__create_attributes(*args, **kwargs)
+        return None  
    
 ```
 
 The updated class becomes:
 
 ```
-
 class TestClass(object):
     def function1(self, *args, **kwargs):
         return None
@@ -901,15 +959,16 @@ class TestClass(object):
         self.value3 = value3
         self.value4 = value4
         return None
-    
-    
-    def __init__(self, value1, value2, value3, value4):
-        self.__create_attributes(value1, value2, value3, value4)
-        return None
    
 
+    def __init__(self, *args, **kwargs):
+        self.__create_attributes(*args, **kwargs)
+        return None  
+    
+    
 ```
 
+![img_078](./images/img_078.png)
 
 Two instantiations can be made to the names ```instance1``` and ```instance2``` respectively:
 
@@ -918,57 +977,27 @@ instance1 = TestClass(1, 2, 3, 4)
 instance2 = TestClass(2, 4, 6, 8)
 ```
 
+![img_079](./images/img_079.png)
 
 If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
 
+![img_080](./images/img_080.png)
 
-
-An identical list of available functions and attributes displays for ```instance2```:
-
-
-
-Notice that both of these do not display ```__create_attributes``` which has been designated for only private use.
-
-
-
-This method will show at the top if ```dir``` is used:
+Notice that ```__create_attributes``` does not display because it has been designated as private. This method will show if ```dir``` is used which gives more details:
 
 ```
-dir(TestClass)
+dir(instance1)
 ```
 
-Notice it shows as ```_TestClass__create_attributes``` opposed to ```__create_attributes```.
+![img_081](./images/img_081.png)
 
-The values of the attributes are identical to before:
-
-```
-instance1.value1
-instance1.value2
-instance1.value3
-instance1.value4
-instance2.value1
-instance2.value2
-instance2.value3
-instance2.value4
-```
-
-
-
-An ```AttributeError``` displays if the function```__create_attributes``` is attempted to be called from an instance:
-
-```
-instance1.__create_attributes(10, 20, 30, 40)
-```
-
-
-
-In Python, nothing is truely private and the function can be called using ```_TestClass__create_attributes``` with the clear syntax ```_TestClass``` (this method is designed for internal use only within ```TestClass``` and ```__``` this method is designed to be private):
+However notice that this does not display as ```__create_attributes``` but as ```_TestClass__create_attributes```. In Python, nothing is truely private and the function can be called using ```_TestClass__create_attributes``` with the clear syntax ```_TestClass``` (this method is designed for internal use only within ```TestClass``` followed by ```__``` this method is designed to be private):
 
 ```
 instance1._TestClass__create_attributes(10, 20, 30, 40)
 ```
 
-
+![img_082](./images/img_082.png)
 
 The attributes are updated as expected:
 
@@ -979,189 +1008,110 @@ instance1.value3
 instance1.value4
 ```
 
+![img_083](./images/img_083.png)
 
-
-If the method ```create_attributes``` is updated to assert the datatype of each input argument as an ```int```:
-
-```
-    def create_attributes(self, value1, value2, value3, value4):
-        assert type(value1) == int
-        assert type(value2) == int
-        assert type(value3) == int
-        assert type(value4) == int
-        self.value1 = value1
-        self.value2 = value2
-        self.value3 = value3
-        self.value4 = value4
-        return None
-    
-    
-    def __init__(self, value1, value2, value3, value4):
-        self.create_attributes(value1, value2, value3, value4)
-        return None
-   
-```   
-
-The updated class becomes:
+The TestClass can be simplified to create one attribute ```value1``` and the datatype of this attribute can be asserted to be an integer:
 
 ```
 class TestClass(object):
-    def function1(self, *args, **kwargs):
-        return None
-       
-       
-    def function2(self, *args, **kwargs):    
-        return None
-       
-       
-    def function3(self, *args, **kwargs):    
-        return None
-       
-       
-    def function4(self, *args, **kwargs):    
-        return None
-       
-        
-    def create_attributes(self, value1, value2, value3, value4):
+
+    def __init__(self, value1):
         assert type(value1) == int
-        assert type(value2) == int
-        assert type(value3) == int
-        assert type(value4) == int
         self.value1 = value1
-        self.value2 = value2
-        self.value3 = value3
-        self.value4 = value4
-        return None
+        return None  
     
     
-    def __init__(self, value1, value2, value3, value4):
-        self.create_attributes(value1, value2, value3, value4)
-        return None
-   
+```    
+
+![img_084](./images/img_084.png)
+
+Now the class instantiates when provided with the correct number of input arguments of the correct datatype:
 
 ```
-
-Two instantiations can be made to the names ```instance1``` and ```instance2```:
-
-``` 
-instance1 = TestClass(1, 2, 3, 4)
-instance2 = TestClass(2, 4, 6, 8)
+instance1 = TestClass(1)
+instance2 = TestClass("Hello")
 ```
 
+![img_085](./images/img_085.png)
 
-If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
-
-
-
-An identical list of available functions and attributes displays for ```instance2```:
-
-
-
-Since the attributes can be accessed directly, they can be assigned to any value or any datatype. For example:
+However because the attribute is public, it can be changed to the wrong datatype overriding the protection made with the assertion:
 
 ```
 instance1.value1 = "Hello"
 ```
 
+![img_086](./images/img_086.png)
 
-
-This makes the assertion protection used in the method ```create_attributes``` redundant and the user could experience later problems with one of the attributes being the wrong datatype.
-
-To prevent this, it is common to designate the attributes as designed for internal use or private once again by prefixing with a single underscore ```_``` or double underscore ```__```. Methods can be created to get and set the attribute, with the set method also asserting the correct datatype. In this example the method ```_function1``` and attribute ```_value``` are designated for internal use and the method ```__function2``` and attribute ```__value2``` are designated as private. Both these attributes have simple ```get``` and ```set``` methods.
-
+The probability of this happening can be reduced by by prefixing the method name with an underscore ```_``` to designate it for internal use, using the same convention seen earlier for a method as this attribute will become hidden unless ```dir``` is used:
 
 ```
 class TestClass(object):
-    def _function1(self, *args, **kwargs):
-        return None
-       
-       
-    def __function2(self, *args, **kwargs):    
-        return None
-       
-       
-    def function3(self, *args, **kwargs):    
-        return None
-       
-       
-    def function4(self, *args, **kwargs):    
-        return None
-       
-        
-    def create_attributes(self, value1, value2, value3, value4):
+
+    def __init__(self, value1):
         assert type(value1) == int
-        assert type(value2) == int
-        assert type(value3) == int
-        assert type(value4) == int
         self._value1 = value1
-        self.__value2 = value2
-        self.value3 = value3
-        self.value4 = value4
-        return None
-    
-    
-    def __init__(self, value1, value2, value3, value4):
-        self.create_attributes(value1, value2, value3, value4)
-        return None
-    
-    
-    def get_value1(self):
-        return self._value1
-   
-
-    def set_value1(self, new_value1):
-        assert type(new_value1) == int
-        self._value1 = new_value1
-        return None
-    
-    
-    def get_value2(self):
-        return self.__value2
-   
-
-    def set_value2(self, new_value2):
-        assert type(new_value2) == int
-        self.__value2 = new_value2
-        return None
-    
+        return None  
     
 ```    
 
-
-
-Notice that the attributes designated for internal use and private use do not display when ```dir``` is used:
+A get and set method can be made to access the variable and safely assign the variable to a new value of the correct datatype. 
 
 ```
-dir(TestClass)
+class TestClass(object):
+
+    def __init__(self, value1):
+        assert type(value1) == int
+        self._value1 = value1
+        return None  
+    
+    
+    def get_value1(self):
+        return self._value1  
+
+    
+    def set_value1(self, new_value1):
+        assert type(new_value1) == int
+        self._value1 = new_value1
+        
+
 ```
 
-An instantiation of the class can be made to the name ```instance1```:
+![img_087](./images/img_087.png)
 
-```
-instance1 = TestClass(1, 2, 3, 4)
-```
+Now the class instantiates when provided with the correct number of input arguments of the correct datatype:
 
-
+![img_088](./images/img_088.png)
 
 If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
 
+![img_089](./images/img_089.png)
 
+The methods ```get_value1``` and ```set_value1``` display but the attribute ```_value1``` doesn't displays as it is designated for internal use. Now the attribute is protected from being cast into the wrong datatype:
 
 ```
 instance1.get_value1()
-instance1.set_value1(10)
+instance1.set_value1(3)
 instance1.get_value1()
-instance1.get_value2()
-instance1.set_value2(20)
-instance1.get_value2()
+instance1.set_value1("Hello")
 ```
 
+![img_090](./images/img_090.png)
 
 ## Linking Get, Set and Del Methods
+
+The above implementation protects the attribute from being cast into the wrong datatype, however the attribute itself cannot be accessed using standard Python syntax. A better way of doing this is using the ```property``` function.
 
 ```
 ? property
 ```
+
+![img_091](./images/img_091.png)
+
+The attribute is accessed directly using standard Python syntax in the ```__init__``` initialisation constructor using ```self.value1``` without any underscore prefix. 
+
+A get, set and del method are created for the attribute. In these methods, the attribute is treated as if it is designated for internal use using ```self._value1``` with the underscore prefix.
+
+After these three methods are defined. The name of the attribute ```value1``` without the underscore prefix is assigned to a variable of the name ```value1```. Note because it is a variable and not an attribute, there is no ```self.```. The value of the variable ```value1``` is assigned to a property function which takes the get, set and del methods as input arguments:
 
 ```
 class TestClass(object):
@@ -1193,14 +1143,39 @@ class TestClass(object):
     
 ```
 
+![img_092](./images/img_092.png)
+
+print statements have been added so it is clear to see what method is invoked when accessing the attribute and reassigning it to a new value. Notice the ```set_value1``` method is used during initialisation. This means any code used to assert the properties of the attribute can be used in the set method and don't need to be duplicated in the ```__init__``` constructor.
+
+The class instantiates when provided with the correct number of input arguments of the correct datatype:
+
 ```
-instance = TestClass(4)
-instance.value1
-instance.value1 = 10
-instance.value1
-del instance.value1
-instance.value1
+instance1 = TestClass(4)
 ```
+
+![img_093](./images/img_093.png)
+
+If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
+
+![img_094](./images/img_094.png)
+
+Notice there are 3 functions and an attribute associated with this variable. The standard Python syntax may be used to access the attribute and assign it to a new value:
+
+```
+instance1.value1
+instance1.value1 = 10
+instance1.value1
+del instance1.value1
+instance1.value1
+```
+
+![img_095](./images/img_095.png)
+
+This behaviour can also be carried out with inbuilt decorators ```@property``` which is used to define a method called ```value1``` which returns a private attribute of the same name ```self._value1```. This is essentially the get method.
+
+The set decorator is ```@value1.setter``` and the method created has the same name ```value1```. This is used to set the private attribute with the same name ```self._value1``` and optionally assert the datatype of the attribute while it is being set.
+
+The delete decorator is ```@value1.deleter``` and the method created has the same name ```value1```. This is used to delete the attribute ```self._value1```.
 
 ```
 class TestClass(object):
@@ -1232,8 +1207,25 @@ class TestClass(object):
     
 ```
 
+The print statements have been kept so it is clear to see what method is invoked when accessing the attribute and reassigning it to a new value. Notice the ```setter``` method is used during initialisation. 
+
+![img_096](./images/img_096.png)
+
+The class instantiates when provided with the correct number of input arguments of the correct datatype:
+
 ```
-instance = TestClass(4)
+instance1 = TestClass(4)
+```
+
+![img_097](./images/img_097.png)
+
+If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
+
+![img_098](./images/img_098.png)
+
+In this case, only ```value1``` displays and this attribute is get, set and deleted using regular Python syntax:
+
+```
 instance.value1
 instance.value1 = 10
 instance.value1
@@ -1241,6 +1233,9 @@ del instance.value1
 instance.value1
 ```
 
+![img_099](./images/img_099.png)
+
+This is a much cleaner solution than having 3 additional methods populate in the list for each attribute.
 
 ## Class Variable
 
