@@ -1237,6 +1237,19 @@ instance.value1
 
 This is a much cleaner solution than having 3 additional methods populate in the list for each attribute.
 
+The attribute can also be used with the inbuilt Python functions ```hasattr```, ```getattr```, ```setattr``` and ```delattr```:
+
+```
+hasattr(instance1, "value1")
+getattr(instance1, "value1")
+setattr(instance1, "value1", 5)
+getattr(instance1, "value1")
+delattr(instance1, "value1")
+getattr(instance1, "value1")
+```
+
+![img_100](./images/img_100.png)
+
 ## Class Variable
 
 ```
@@ -1374,24 +1387,3 @@ Static and class methods communicate and (to a certain degree) enforce developer
 ? property 
 ## Inheritance 
 
-isinstance(4, int)
-
-hasattr(int, "real")
-
-getattr(int, "real")
-
-getattr(num, "real")
-
-delattr()
-
-setattr(
-
-issubclass(bool, int)
-
-bool
-
-int
-
-? slice
-
-[1, 2, 3, 4][slice(2)]
