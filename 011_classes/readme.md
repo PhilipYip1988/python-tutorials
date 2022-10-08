@@ -16,7 +16,7 @@ A number of Python objects have previously been explored which belong to either 
 
 ![img_005](./images/img_005.png)
 
-Under the hood, each of these functions and properties is defined in the class. A class can be conceptualised as a blueprint which is a set of instructions to make an object and is not a physical object itself. Any instance of the class (physical object built using the blueprint) will have these associated functions and properties. For example:
+Under the hood, each of these functions and properties is defined in the class which can be conceptualised as a blueprint with instructions to make an object and not a physical object itself. Any instance of the class (object built using the blueprint) will have these associated functions and properties. For example:
 
 ```
 num = 5
@@ -30,7 +30,7 @@ word = "Hello"
 
 ![img_007](./images/img_007.png)
 
-Notice that there is a subtle difference between ```int.attribute``` and ```int_instance.attribute```. In the former case ```attribute of "int" objects``` displays and the class is displaying information, like a blueprint does. In the latter case a number displays. Attributes can be conceptualised as an embedded object and an analogy to an attribute of an instance of a class is a variable in a module. Notice that identical syntax is used in both cases compare ```module.variable``` with ```int_instance.attribute```, in both cases the object being accessed is to the right hand side of the dot ```.``` and the object used as a container is to the left hand side of the ```.```:
+Notice that there is a subtle difference with properties shown in the dropdown list for the ```int``` class with instances or attributes shown in the dropdown list for the instance ```num```:
 
 ```
 int.real
@@ -42,21 +42,18 @@ num.imag
 
 ![img_027](./images/img_027.png)
 
-A function can be referenced in an identical manner to an attribute:
+If the function is referenced:
 
 ```
 int.conjugate
 num.conjugate
 ```
 
-Notice that there is a subtle difference between ```int.function``` and ```int_instance.function```. In the former case the function is called a ```method```. A ```method``` has an additional positional input argument called ```self``` which must be assigned to an instance of the object for the function to act on. In the latter case, because the function is referenced from an instance, this instance is automatically implied to be ```self```:
+There is once again a subtle difference referecing a function from a class where it is called a ```method``` to referencing a function from an instance where it is still called a function:
 
 ![img_028](./images/img_028.png)
 
-Functions are called using parenthesis to enclose any input arguments:
-
-* For the method ```conjugate``` an instance ```self``` must be proved for the function to operate on. 
-* For the function ```conjugate``` there are no input arguments with ```self``` being implied from the instance ```num```. 
+As these are functions they need to be called using parenthesis to enclose any input arguments. When the function is called from a class as a method, an instance needs to be provided as an input argument as otherwise no instance is specified:
 
 ```
 int.conjugate(num)
@@ -65,7 +62,20 @@ num.conjugate()
 
 ![img_029](./images/img_029.png)
 
-There are a number of hidden functions not shown in the lists above which typically map to operators. For example the hidden function ```__add__``` which is mapped to the ```+``` operator:
+As an integer is a non-complex object. The attribute ```real``` will always be the value of the original integer and the attribute ```imag``` will always be ```0.``` The complex ```conjugate``` which is calculated as ```real``` - ```imag*1j``` will also always be ```real```. The differences in these can be seen by assigning ```num``` to a complex number:
+
+```
+num = 1 + 5j
+num.real
+num.imag
+num.conjugate()
+```
+
+![img_030](./images/img_030.png)
+
+The main focus here, is not how complex numbers work but merely how to reference an attribute from an object or call a function from an object.
+
+There are a number of hidden functions not shown in the lists above which map to operators. For example the hidden function ```__add__``` which is mapped to the ```+``` operator:
 
 ```
 num1 = 5
@@ -176,15 +186,15 @@ list.__len__(collection)
 
 Recall that a function determines the behaviour of an object.
 
-For the method ```__len__``` an instance ```self``` must be proved for the function to operate on:
+When the function is called from a class, it is known as a ```method``` and the 1st positional input argument must be ```self```:
 
 ![img_019](./images/img_019.png)
 
-For the function ```__len__``` there are no input arguments with ```self``` being implied from the instance ```num```. 
+When the function is instead called from an instance, the object being acted upon is implied to be the instance name in this case ```collection```. This can be conceptualised as automatic assignment of ```self``` to the object name, the function is being called from:
 
 ![img_020](./images/img_020.png)
 
-**When a function is called from a class, it is known as a ```method``` and requires an instance ```self``` to be provided as the 1st positional input argument.**
+**To recap, when a function is called from a class, it is known as a ```method``` and requires an instance ```self``` to be provided as the 1st positional input argument.**
 
 Importing modules and librarys was examined in detail in the previous tutorial. Recall, that a library is a number of Python script files in a folder. One of these script files is an initialisation script file called ```__init__.py```:
 
@@ -192,7 +202,7 @@ Importing modules and librarys was examined in detail in the previous tutorial. 
 
 ![img_022](./images/img_022.png)
 
-Recall when the name of the folder is imported, this ```__init__.py``` is selected:
+When the name of the folder is imported, this ```__init__.py``` is selected:
 
 ```
 import library
@@ -200,7 +210,7 @@ import library
 
 ![img_023](./images/img_023.png)
 
-Each class also has an initialisation method ```__init__``` which typically takes in one or more input arguments and uses these alongside, a return statement to return a new instance of the class. This iniitialisation method can be thought of as a constructor function which builds a physical object from a blueprint:
+Each class has an initialisation method ```__init__``` which typically takes in one or more input arguments and uses these alongside, a return statement to return a new instance of the class. 
 
 ![img_025](./images/img_025.png)
 
@@ -218,9 +228,9 @@ str(5)
 
 # Datamodel Methods
 
-Python uses a number of datamodel methods which control the behaviour of inbuilt Python functions or the behaviour of inbuilt operators. Under the hood, datamodel methods define how an instance ```self``` interacts or how an instance ```self``` interacts with another instance called ```other```. These datamodel methods are sometimes known as special methods or colloquially called double underscore methods abbreviated as dunder methods.
+Python uses a number of datamodel methods which control the behaviour of inbuilt Python functions or operators that interact with instances of the class. These datamodel methods are sometimes known as special methods or colloquially called double underscore or dunder methods.
 
-The following datamodel methods operate on only the instance ```self```:
+The following methods define the behaviour of methods, on the instance ```self```:
 
 |method|operator or function|int|float|bool|str|list|tuple|dict|
 |---|:-:|---|---|---|---|---|---|---|
@@ -228,9 +238,8 @@ The following datamodel methods operate on only the instance ```self```:
 |\_\_len\_\_|len|Not Implemented|Not Implemented|Not Implemented|length|length|length|length|
 |\_\_repr\_\_|repr|formal str|formal str|formal str|formal str|formal str|formal str|formal str|
 |\_\_str\_\_|str|informal str|informal str|informal str|informal str|informal str|informal str|informal str|
-|\_\_dir\_\_|dir|dir|dir|dir|dir|dir|dir|dir|
 
-The following datamodel methods require two instances ```self``` and ```other```:
+The following methods define the behaviour of methods, on the instance ```self``` with another instance of the same class ```other```:
 
 |method|operator or function|int|float|bool|str|list|tuple|dict|
 |---|:-:|---|---|---|---|---|---|---|
@@ -238,9 +247,9 @@ The following datamodel methods require two instances ```self``` and ```other```
 |\_\_sub\_\_|-|subtraction|subtraction|subtraction|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_mul\_\_|\*|multiplication|multiplication|multiplication|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_pow\_\_|\*\*|exponentiation|exponentiation|exponentiation|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_truediv\_\_| \\ |float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_floordiv\_\_| \\\\ |floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_mod\_\_|%|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_truediv\_\_|\\|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_floordiv\_\_|\\\\|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_mod\_\_|\\\\|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_divmod\_\_|divmod|(floor division, modulo)|(floor division, modulo)|(floor division, modulo)|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_matmul\_\_|@|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_gt\_\_|>|greater than|greater than|greater than|greater than|greater than|greater than|greater than|
@@ -250,7 +259,7 @@ The following datamodel methods require two instances ```self``` and ```other```
 |\_\_eq\_\_|==|equal to|equal to|equal to|equal to|equal to|equal to|equal to|
 |\_\_ne\_\_|!=|not equal to|not equal to|not equal to|not equal to|not equal to|not equal to|not equal to|
 
-The following datamodel methods require two instances ```self``` and ```other``` and update ```self``` inplace:
+The following methods define the behaviour of methods, on the instance ```self``` with another instance of the same class ```other``` and update ```self``` inplace:
 
 |method|operator or function|int|float|bool|str|list|tuple|dict|
 |---|:-:|---|---|---|---|---|---|---|
@@ -258,311 +267,27 @@ The following datamodel methods require two instances ```self``` and ```other```
 |\_\_isub\_\_|-=|subtraction|subtraction|subtraction|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_imul\_\_|\*=|multiplication|multiplication|multiplication|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_ipow\_\_|\*\*=|exponentiation|exponentiation|exponentiation|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_itruediv\_\_| \\= |float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_ifloordiv\_\_| \\\\= |floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
-|\_\_imod\_\_|%=|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_itruediv\_\_|\\=|float division|float division|float division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_ifloordiv\_\_|\\\\=|floor division|floor division|floor division|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
+|\_\_imod\_\_|\\\\=|modulo|modulo|modulo|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 |\_\_imatmul\_\_|@=|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|Not Implemented|
 
-# Class Instance and Blueprint House Analogy
+# Blueprint House Analogy
 
-In Python each object has a class, which initially can be conceptualised as an abstract blueprint which defines how to create a new object and outlines the properties and functionality behind an object. Before looking at creating a custom class, it is useful to explore the concept of a class by using every day intuition and framing it in Python syntax.
+In Python each object has a class, which initially can be conceptualised as an abstract blueprint which defines how to create a new object and outlines the properties and functionality behind an object. Before looking at custom classes, it is useful to explore this concept using every day intuition.
 
-To conceptualise this idea take for example the concept of building a house. An Architect may create a blueprint for a house called ```House```, this blueprint is an abstract object, that an end user cannot interact with. CamelCaseCapitalisation is used for third-party class names and this convention is used to clearly distinguish them from inbuilt objects. The class ```House``` will outline the features or attributes of a house such as the height of the house ```househeight```, how many rooms it possesses ```nrooms``` and the size of the bedroom ```bedroomsize```. It will also outline the functionality of the house such as the doors in the house ```frontdooropen``` or ```frontdoorclose```, the windows in the house ```frontwindowopen``` or ```frontwindowclose```, the central heating system controls ```sethousetemperature``` and the sewage controls ```flushtoilet```.
+To conceptualise this idea take for example the concept of building a house. An Architect may create a blueprint for a house called ```House```, this blueprint is an abstract object, that an end user cannot interact with. It will outline the features or attributes of a house such as the height of the house ```househeight```, how many rooms it possesses ```nrooms``` and the size of the bedroom ```bedroomsize```. It will also outline the functionality of the house such as the doors in the house ```frontdooropen``` or ```frontdoorclose```, the windows in the house ```frontwindowopen``` or ```frontwindowclose```, the central heating system controls ```sethousetemperature``` and the sewage controls ```flushtoilet```.
 
-A construction company can follow the instructions in this blueprint called ```House``` to create one or multiple houses. Each house will be constructed using the same blueprint but each object created will be unique. To indicate that each house is unique, the construction company will assign each new house object, a name during construction which is known as a post code. This process is known as initialisation or instantiation, creating a new physical object or instance from the blueprint or class ```House```. In Python, the post code is known as the ```object name``` or ```instance name```, for simplicity two houses ```house000``` and ```house001``` can be made.
+A construction company can follow the instructions in this blueprint called ```House``` to create one or multiple houses. Each house will be constructed using the same blueprint but each object created will be unique. To indicate that each house is unique, the construction company will assign each new house object, a name during construction which we know as a post code. This process is known as initialisation or instantiation, creating a new instance of the class ```House```. In Python, the post code is known as the ```object name``` or ```instance name```, for simplicity two houses ```house000``` and ```house001``` can be made.
 
-The end user (homeowner or tenant) will be able to uniquely interact with their own house object using the functions outlined in the blueprint House. These functions are methods for interacting with a house object. For example the owner of ```house000``` will be able to leave their house by calling the method ```house000.frontdooropen()``` and ```house000.frontdoorclose()``` and set the temperature on their central heating system by calling the method ```house000.sethousetemperature(temp=24)```. Notice that these interactions with ```house000``` will not change the functionality of ```house001``` although the behaviour for both houses is defined in the same ```House``` class. Notice that these functions, are called with parenthesis and in the case of the last function an input argument is provided. The dot syntax ```.``` indicates that the function is being called from the object ```house000```.
+The end user (homeowner or tenant) will be able to uniquely interact with their own house object using the functions outlined in the blueprint House. These functions are methods for interacting with a house object. For example the owner of ```house000``` will be able to leave their house by calling the method ```house000.frontdooropen()``` and ```house000.frontdoorclose()``` and set the temperature on their central heating system by calling the method ```house000.sethousetemperature(temp=24)```. These interactions with ```house000``` will not change the functionality of ```house001``` although the behaviour for both houses are defined in the same ```House``` class. Notice that because these methods are functions, they are called with parenthesis and in the case of the last method an input argument is provided. The dot syntax ```.``` indicates that the method is being called from the object ```house000```.
 
-The homeowner of ```house000``` may want to rent out a bedroom in their house and may have to list it with the following attributes ```house000.nrooms``` and ```house000.bedroomsize``` for example. The dot syntax ```.``` once again indicates that the attribute is being read from the object ```house000```. Usually if an attribute is altered, it'll be altered via a function and not reassigned directly. For example if the ```house000.nrooms``` attribute is altered, it'll typically be altered by using a function for example ```house000.buildextension()```.
+The homeowner of ```house000``` may want to rent out a bedroom in their house and may have to list it with the following attributes ```house000.nrooms``` and ```house000.bedroomsize``` for example. The dot syntax ```.``` once again indicates that the attribute is being read from ```house000```. The property is being referenced and therefore no parenthesis are added - think of this syntax as being more or less equivalent to referencing a variable from a script module. If the ```house000.nrooms``` attribute is altered, it'll typically be altered by using a method for example ```house000.buildextension()```.
 
-# object Class
+# Fraction Class
 
-In Python, everything is based around the concept of an object. To explore this in more detail, the generic ```object``` class can be examined. If ```object(``` is input followed by shift ```⇧``` and tab ```↹``` th docstring for the initialisation signature of the object class display:
+In Python, third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate third-party classes from inbuilt objects.
 
-![img_031](./images/img_031.png)
 
-Recall that this uses the method ```__init__```:
 
-![img_032](./images/img_032.png)
-
-The docstring states:
-
-```
-"""
-The base class of the class hierarchy.
-
-When called, it accepts no arguments and returns a new featureless
-instance that has no instance attributes and cannot be given any.
-"""
-```
-
-Therefore in this case, to create an object instance of the object class, no positional input arguments are required.
-
-```
-instance = object()
-```
-
-![img_033](./images/img_033.png)
-
-If ```instance.``` is typed followed by a tab ```↹```, nothing displays because this object has no instance attributes.
-
-![img_034](./images/img_034.png)
-
-The ```dir``` function treats the object instance as a directory and lists all the objects within that directory. This includes the datamodel methods which are hidden from the ```.↹```listing: 
-
-```
-dir
-```
-
-A list displays which includes the data model methods:
-
-![img_035](./images/img_035.png)
-
-These include ```__init__```, ```__dir__```, ```__repr__``` and ```__str__```. ```__repr__``` and ```__str___```, the formal and informal representation of a string display that the object is present in a certain memory locaiton by default:
-
-![img_036](./images/img_036.png)
-
-```__eq__``` and ```__neq__``` comparison methods are defined.
-
-![img_038](./images/img_038.png)
-
-And they can be used to check whether or not two objects are the same:
-
-```
-instance1 = object()
-instance2 = object()
-instance1 == instance2
-instance1 != instance2
-```
-
-![img_037](./images/img_037.png)
-
-The four other comparison operators ```__gt__```, ```__ge__```, ```__lt__``` and ```__le__``` show in the directory listing. However these operations are not supported between instances of the class object as instance1 and instance2 are not ordinal:
-
-![img_039](./images/img_039.png)
-
-![img_040](./images/img_040.png)
-
-The other data model methods are not listed and therefore have no code defining them and are unsupported:
-
-![img_041](./images/img_041.png)
-
-# Creating a Custom Class
-
-The ```class``` keyword is used to construct a class. Third-party class names are typically named using CamelCaseCapitalisation. This syntax is used to clearly differenciate user defined third-party classes from inbuilt objects. Parenthesis are used to enclose the parent class. When no parent class is defined, the default parent class ```object``` is used. A colon ```:``` is then used to begin a code block. For now ```pass``` will be used:
-
-```
-class EmptyEmpty(object):
-   pass
-   
-   
-``` 
-
-![img_042](./images/img_042.png)
-
-The ```___init___``` datamodel method will be inherited from the parent class ```object```.
-
-![img_043](./images/img_043.png)
-
-Notice that no ```docstring``` displays for this method. Like the ```_init__``` method from the parent class ```object``` an instance is instantiated without providing an input argument
-
-```
-instance = EmptyEmpty()
-instance
-print(instance)
-```
-
-![img_044](./images/img_044.png)
-
-The formal and informal string represation also display details about the instance, in a manner similar to the parent class ```object```. This is because the methods ```__repr__``` and ```__str__``` are inherited from the parent class. The ```dir``` function treats the ```EmptyEmpty``` ```instance``` called ```instance``` as a directory and lists all the objects within that directory.
-
-```
-dir(instance)
-```
-
-![img_045](./images/img_045.png)
-
-Notice that these are identical to a instance of the ```object``` class. This is expected as the ```child``` class ```EmptyEmpty``` inherits these methods from the parent class ```object``` and no additional functionality has been added to the ```child``` class.
-
-Another class can be created called ```TestClass``` which has additional functionality. A class can be conceptualised as a grouping of functions.
-
-```
-class TestClass(object):
-    def function1(*args, **kwargs):
-        return None
-       
-       
-    def function2(*args, **kwargs):    
-        return None
-       
-       
-    def function3(*args, **kwargs):    
-        return None
-       
-       
-    def function4(*args, **kwargs):    
-        return None
-       
-   
-``` 
-
-Because each function in the class is a method, the first positional input argument must be ```self```:
-
-```
-class TestClass(object):
-    def function1(self, *args, **kwargs):
-        return None
-       
-       
-    def function2(self, *args, **kwargs):    
-        return None
-       
-       
-    def function3(self, *args, **kwargs):    
-        return None
-       
-       
-    def function4(self, *args, **kwargs):    
-        return None
-       
-
-``` 
-
-An additional functio ca be created that takes in 4 additional input arguments and creates 4 variables:
-
-```
-class TestClass(object):
-    def function1(self, *args, **kwargs):
-        return None
-       
-       
-    def function2(self, *args, **kwargs):    
-        return None
-       
-       
-    def function3(self, *args, **kwargs):    
-        return None
-       
-       
-    def function4(self, *args, **kwargs):    
-        return None
-       
-       
-    def create_attributes(self, value1, value2, value3, value4):
-        var1 = value1
-        var2 = value2
-        var3 = value3
-        var4 = value4
-   
-   
-``` 
-
-For these variables to become attributes, they must be referenced with respect to the isntance which is denoted ```self```:
-
-```
-class TestClass(object):
-    def function1(self, *args, **kwargs):
-        return None
-       
-       
-    def function2(self, *args, **kwargs):    
-        return None
-       
-       
-    def function3(self, *args, **kwargs):    
-        return None
-       
-       
-    def function4(self, *args, **kwargs):    
-        return None
-       
-       
-    def create_attributes(self, value1, value2, value3, value4):
-        self.var1 = value1
-        self.var2 = value2
-        self.var3 = value3
-        self.var4 = value4
-        return None
-   
-   
-``` 
-
-Note a clear distinction was made to the leftand right hand side of the assignment operator. The hand side attribute name and right hand side input argumen have different names. It is more typical to use the same name in both cases:
-
-```
-class TestClass(object):
-    def function1(self, *args, **kwargs):
-        return None
-       
-       
-    def function2(self, *args, **kwargs):    
-        return None
-       
-       
-    def function3(self, *args, **kwargs):    
-        return None
-       
-       
-    def function4(self, *args, **kwargs):    
-        return None
-       
-        
-    def create_attributes(self, var1, var2, var3, var4):
-        self.var1 = value1
-        self.var2 = value2
-        self.var3 = value3
-        self.var4 = value4
-        return None
-   
-   
-   
-``` 
-
-Now that the ```TestClass``` class is ready:
-
-![img_046](./images/img_046.png)
-
-An instance can be created:
-
-```
-instance = TestClass()
-```
-
-And if the instance name ```instance``` is input followed by a dot ```.``` and tab, a list of attributes available functions display:
-
-![img_047](./images/img_047.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The class can be thought of as a grouping of attributes (objects or properies) and methods (functions).
-
-
-
-
-
-
-
-
-  
-
-```
-empty = EmptyEmpty()
-```
-
-```
-empty
-```
 
