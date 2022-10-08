@@ -567,7 +567,7 @@ instance.function4()
 
 If the instance name ```instance``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions displays and is unaltered:
 
-![img_052](./images/img_0521.png)
+![img_052](./images/img_052.png)
 
 If ```instance.create_attributes(``` is input followed by shift ```⇧``` and ```↹```, details about the positional input arguments display ```value1```, ```value2```, ```value3``` and ```value4```. Because no docstring was provided, ```<no docstring>``` displays.
 
