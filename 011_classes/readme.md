@@ -1252,123 +1252,269 @@ getattr(instance1, "value1")
 
 ## Class Variable
 
-```
-class TestClass(object):
-    def __init__(self, value1, value2, value3, value4):
-        # internal attribute
-        self._value1 = value1
-        # private attribute
-        self.__value2 = value2
-        # public attributes
-        self.value3 = value3
-        self.value4 = value4        
-        return None
-        
-        
-```
-
+A class variable is a variable assigned within the class without reference to an instance ```self```:
 
 ```
 class TestClass(object):
-    def __init__(self, value1, value2, value3):
-        # internal attribute
-        self._value1 = value1
-        # private attribute
-        self.__value2 = value2
-        # public attribute
-        self.value3 = value3      
+    
+    value1 = 1
+    
+    def __init__(self):
         return None
     
-    # class variable
-    value4 = 4  
+    
+```
+
+![img_101](./images/img_101.png)
+
+In this simple example, there are no input arguments required to instantiate the class:
+
+![img_102](./images/img_102.png)
+
+Three instances can be made:
+
+```
+instance1 = TestClass()
+instance2 = TestClass()
+instance3 = TestClass()
+```
+
+![img_103](./images/img_103.png)
+
+Each instance can access the class variable as an attribute:
+
+```
+instance1.value1
+instance2.value1
+instance3.value1
+```
+
+![img_104](./images/img_104.png)
+
+If the attribute is assigned in one of the instances, it does not effect the other instances:
+
+```
+instance1.value1 += 1
+instance1.value1
+instance2.value1
+instance3.value1
+```
+
+![img_105](./images/img_105.png)
+
+The variable can also be accessed from the class (hence the name class variable):
+
+![img_106](./images/img_106.png)
+
+```
+TestClass.value1
+```
+
+![img_107](./images/img_107.png)
+
+
+If the class variable is reassigned from the class:
+
+```
+TestClass.value1 = 10
+```
+
+Notice it updates the value of the attribute for each instance of the class:
+
+```
+TestClass.value1
+instance1.value1
+instance2.value1
+instance3.value1
+```
+
+![img_108](./images/img_108.png)
+
+The only attribute that wasn't updated was for ```instance1``` due to the attribute previously being assigned an integer value independent of the class.
+
+The class variable can be used to count the number of instances. ```n_instances``` is initially assigned to ```0``` however the initialisation method ```__init__``` updates it by 1 for every instance created. A print statement will be added to initialisation method ```__init__``` to show the value of ```n_instances``` for clarity:
+
+```
+class TestClass(object):
+    
+    n_instances = 0
+    
+    def __init__(self):
+        TestClass.n_instances += 1
+        print(f"n_instances={TestClass.n_instances}")
+        return None
     
     
 ```    
 
-
-
-Three instantiations can be made to the names ```instance1```, ```instance2``` and ```instance3```:
-
+![img_109](./images/img_109.png)
 
 ```
-instance1 = TestClass(1, 2, 3)
-instance2 = TestClass(2, 4, 6)
-instance3 = TestClass(3, 6, 9)
+instance1 = TestClass()
+instance1.n_instances
+instance2 = TestClass()
+instance1.n_instances
+instance2.n_instances
+instance3 = TestClass()
+instance1.n_instances
 ```
 
+![img_110](./images/img_110.png)
 
-If the instance name ```instance1``` is input followed by a dot ```.``` and tab ```↹```, the list of available functions and attributes displays:
+## Class Methods and Static Methods
 
+### Instance Method
 
-
-An identical list of available functions and attributes displays for ```instance2```:
-
-
-
-An identical list of available functions and attributes displays for ```instance3```:
-
-
-
-
-Notice only the public attribute and class variable display as attributes. Each instance of the class will have the same initial value for the attribute:
-
-```
-instance1.value4
-instance2.value4
-instance3.value4
-```
-
-If the variable is accessed as an attribute from an instance and changed, it will not influence other instances:
-
-```
-instance1.value4 += 1
-instance1.value4
-instance2.value4
-instance3.value4
-```
-
-The class variable can be accessed from the class, without defining an instance. Reassigning it from the class will update the variable in all instances:
-
-```
-TestClass.value4 = 10
-instance1.value4
-instance2.value4
-instance3.value4
-```
-
-Notice however that the class variable wasn't updated as an attribute for instance1 because the attribute on instance1 was previously redefined to an integer.
-
-The class variable can be used to count the number of instances. ```n_instances``` is initially assigned to ```0``` however the initiation method ```__init__``` updates it by 1 for every instance created:
+An example of a class with an instance method is as follows:
 
 ```
 class TestClass(object):
-    # class variable
-    n_instances = 0
     
-    def __init__(self, value1, value2, value3):
-        # internal attribute
-        self._value1 = value1
-        # private attribute
-        self.__value2 = value2
-        # public attribute
-        self.value3 = value3 
-        TestClass.n_instances += 1
+    def __init__(self):
         return None
-   
-   
-```
+    
+    
+    def instance_method(self):
+        return None
+
+    
+```    
+
+An instance can be created using:
 
 ```
-instance1 = TestClass(1, 2, 3)
-instance1.n_instances
-instance1 = TestClass(2, 4, 6)
-instance1.n_instances
-instance2.n_instances
-instance3 = TestClass(3, 6, 9)
-instance1.n_instances
+instance1 = TestClass()
 ```
 
-## Class Methods and Static Methods
+The method can be called from the instance using:
+
+```
+instance1.instance_method()
+```
+
+The method can be called from a class, providing an instance as an input argument using:
+
+```
+TestClass.instance_method(instance1)
+```
+
+The method cannot be called from a class without an instance:
+
+```
+TestClass.instance_method()
+```
+
+![img_111](./images/img_111.png)
+
+### Class Method
+
+It is possible to create a class method which can be run from the class without speciying an instance:
+
+```
+? classmethod
+```
+
+![img_112](./images/img_112.png)
+
+Notice in the definition, the decorator ```@classmethod``` is used and the 1st positional input argument is the class ```TestClass``` and not the instance ```self```:
+
+```
+class TestClass(object):
+    
+    def __init__(self):
+        return None
+    
+    @classmethod
+    def class_method(TestClass):
+        return None
+
+    
+```
+
+![img_113](./images/img_113.png)
+
+The method can be called from a class without an instance using:
+
+```
+TestClass.class_method()
+```
+
+An instance can be created using:
+
+```
+instance1 = TestClass()
+```
+
+The class method can also be called from the instance using:
+
+```
+instance1.class_method()
+```
+
+The method cannot be called from a class with an instance supplied as too many input arguments are provided:
+
+```
+TestClass.class_method(instance1)
+```
+
+![img_114](./images/img_114.png)
+
+### Static Method
+
+It is also possible to create a static method which works like a regular function but exists within the namespace of the class: 
+
+```
+? staticmethod
+```
+
+![img_115](./images/img_115.png)
+
+Notice in the definition, the decorator ```@staticmethod``` is used and the 1st positional input argument is absent; neither the class ```TestClass``` nor the instance ```self``` are provided as this static method is more similar to a standard function:
+
+```
+class TestClass(object):
+    
+    def __init__(self):
+        return None
+    
+    @staticmethod
+    def static_method():
+        return None
+
+    
+```    
+
+![img_116](./images/img_116.png)
+
+The method can be called from a class without an instance using:
+
+```
+TestClass.static_method()
+```
+
+An instance can be created using:
+
+```
+instance1 = TestClass()
+```
+
+The class method can also be called from the instance using:
+
+```
+instance1.static_method()
+```
+
+The method cannot be called from a class with an instance supplied as too many input arguments are provided:
+
+```
+TestClass.static_method(instance1)
+```
+
+![img_117](./images/img_117.png)
+
+
+
+
 
 
 
@@ -1384,6 +1530,5 @@ Static methods don’t have access to cls or self. They work like regular functi
 
 Static and class methods communicate and (to a certain degree) enforce developer intent about class design. This can have maintenance benefits.
 
-? property 
 ## Inheritance 
 
