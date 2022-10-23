@@ -182,9 +182,162 @@ To install a package of specific version use the command:
 mamba install -c conda-forge packagename=1.2.3
 ```
 
+# Running Python from the Mambaforge Prompt
+
+Python is now installed and it can be used to execute code in a Python Script File. Go to the Documents folder and right click the empty space and select New → Text Document:
+
+![084_img](./images/084_img.png)
+
+Name the file ```script0.py``` changing the file extension from ```.txt``` to ```.py``` and select Yes at the warning to change the file extension:
+
+![085_img](./images/085_img.png)
+
+Right click the file and select Open With... and then select Notepad:
+
+![086_img](./images/086_img.png)
+
+Input:
+
+```
+print("Hello World!")
+```
+
+and save the file.
+
+![087_img](./images/087_img.png)
+
+Open the Mambaforge Prompt:
+
+![088_img](./images/088_img.png)
+
+Input:
+
+```
+cd Documents
+```
+
+cd is a PowerShell command which is an abbreviation for change directory (change folder). Because the MambaForge opened in ```%UserProfile```, ```Documents``` could directly be selected as a subfolder.
+
+![089_img](./images/089_img.png)
+
+To use Python to run the Python script file input python (lower case) followed by the name of the script file including the file extension:
+
+```
+python script0.py
+```
+
+![090_img](./images/090_img.png)
+
+The print statement included in the Python Script file will be displayed on the console:
+
+![091_img](./images/091_img.png)
+
+Bringing this together, there is a console (Mambaforge Prompt), a script file editor (Notepad) and the file explorer (Windows Explorer):
+
+![092_img](./images/092_img.png)
+
+If Notepad++ is used in place of Notepad as the script editor, there are some code completion options displayed as code is input:
+
+![093_img](./images/093_img.png)
+
+If ```python``` is input into the Mambaforge Prompt without any script file. The Python interpretter will display:
+
+```
+python
+```
+
+![094_img](./images/094_img.png)
+
+Notice the prompt change from ```(base) %UserProfile%``` to ```>>>```. When the Python interpretter is invoked, individual lines of Python can be executed. Input:
+
+```
+print("Hello World!")
+```
+
+![095_img](./images/095_img.png)
+
+To exit the Python interpretter type in the command:
+
+```
+exit()
+```
+
+![096_img](./images/096_img.png)
+
+Notice the prompt change back to ```(base) %UserProfile%``` from ```>>>```. 
+
+# Integrated Development Environment
+
+Python has a large number of Integrated Development Environments often abbreivated as IDEs. These are essentially a GUI which includes a console, script editior and file explorer.
+
+# The IDLE IDE Overview
+
+Python comes preinstalled with the Integrated Development Learner Environment (IDLE). IDLE is found in:
+
+```
+%UserProfile%/mambaforge/Lib/idlelib
+```
+
+![097_img](./images/097_img.png)
+
+![098_img](./images/098_img.png)
+
+And can be launched using the ```idle.bat```:
+
+![099_img](./images/099_img.png)
+
+More commonly it is launched from the mabaforge prompt by inputting:
+
+```
+idle
+```
+
+The first component of IDLE is the IDLE Shell which is essentially a Console. The prompt displays ```>>>``` indicating the Python interpretter is invoked. Individual lines of Python can be input directly as seen before:
+
+![100_img](./images/100_img.png)
+
+The File menu can be used to create a new file or open an existing file:
+
+![101_img](./images/101_img.png)
+
+In this case a new file is selected and the script editor displays. Before adding contents to the file, select File → Save As...:
+
+![102_img](./images/102_img.png)
+
+Save the file with a ```.py``` extension:
+
+![103_img](./images/103_img.png)
+
+The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was ```p``` and the command ```print``` has this code prefix:
+
+![104_img](./images/104_img.png)
+
+When a function name is input with open parenthesis, a docstring popup displays giving details about the functions input arguments. In this case the positional input ```value``` is going to be the string that is printed. 
+
+![105_img](./images/105_img.png)
+
+
+Once again input:
+
+```
+print("hello world!")
+```
+
+![106_img](./images/106_img.png)
+
+A Python Script File is also known as a Module. Once the Python Script File is saved, it can be run by selecting Run → Run Module:
+
+![107_img](./images/107_img.png)
+
+The print statement is observed on the IDLE Shell as expected:
+
+![108_img](./images/108_img.png)
+
 # Python Environments
 
-It is generally advised to create seperate Python environment from ```base``` which is essentially a subinstallation. In the mambaforge folder, there is a subfolder called ```envs```:
+Other Python IDEs generally need to be installed. Because these IDEs are typically large programs, with a large number of dependencies, it is generally advised to create a seperate Python environment for each IDE. A Python environment is essentially a subinstallation. Up until this point the default Python environment has been used ```base```. 
+
+In the mambaforge folder, there is a subfolder called ```envs```:
 
 ```
 %UserProfile\mambaforge\envs
@@ -312,7 +465,7 @@ There is also a site-packages folder which is the location for data-science libr
 
 ## Installing the Data Science Libraries
 
-Currently the installation contains only mandatory dependencies, allowing Spyder to work with Python and lacks the data science libraries commonly used with Spyder. These can be installed using:
+Currently the installation contains only mandatory dependencies, allowing Spyder to work with Python and lacks the data science libraries which are commonly used with Spyder. These can be installed using:
 
 ```
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
@@ -530,7 +683,7 @@ Note this is the only place where a ```-``` is used between Jupyter and Lab:
 
 ![067_jupyterlab](./images/067_jupyterlab.png)
 
-Whhen first launched, there will be a prompt to build JupyterLab, select Build:
+When first launched, there will be a prompt to build JupyterLab, select Build:
 
 ![068_jupyterlab](./images/068_jupyterlab.png)
 
@@ -538,19 +691,112 @@ This will take a while. When finished select Save and Reload:
 
 ![069_jupyterlab](./images/069_jupyterlab.png)
 
-JupyterLab has a file explorer to the left hand side where you can navigate to your Documents folder. A series of tabs are available to the right. A new tab can be opened using the plus button. A new tab displays the launcher which can be used to create a new Interactive Python Notebook (```.ipynb``` file extension):
+JupyterLab has a file explorer to the left hand side where you can navigate to your Documents folder. 
 
-![070_jupyterlab](./images/070_jupyterlab.png)
+![109_img](./images/109_img.png)
 
-To the left in the file explorer, right click the file and select rename. Once again the file name should be named following the rules of Python object names.
+The Terminal can be invoked to run an existing Python Script file:
 
-![071_jupyterlab](./images/071_jupyterlab.png)
+![131_img](./images/131_img.png)
 
-The notbook consists of a series of cells:
+Using the same command as before:
 
-![072_jupyterlab](./images/072_jupyterlab.png)
+```
+python script0.py
+```
 
-These can be markdown cells or code cells:
+Displays Hello World on the Terminal.
+
+![132_img](./images/132_img.png)
+
+A Python file can be created from the launcher:
+
+![110_img](./images/110_img.png)
+
+The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the onen tab at the top which displays the file name:
+
+![111_img](./images/111_img.png)
+
+![112_img](./images/112_img.png)
+
+To get code completion options to display while editing the file, right click blank space within the file and select Create Console for Editor:
+
+![113_img](./images/113_img.png)
+
+Select the default Kernel and select Select:
+
+![114_img](./images/114_img.png)
+
+![115_img](./images/115_img.png)
+
+Code completion will work in a similar manner as IDLE. The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was ```p``` and the command ```print``` has this code prefix:
+
+![116_img](./images/116_img.png)
+
+A docstring will display if a function is input with open parenthesis and the shift ```⇧``` and tab ```↹``` are pressed:
+
+![117_img](./images/117_img.png)
+
+A list of all the identifiers within a standard Python module will be displayed after the module is imported and the module name is input followed by a dot ```.``` and ```↹```:
+
+![119_img](./images/119_img.png)
+
+For a third-party module such as a datascience library, no code completion options display. 
+
+![120_img](./images/120_img.png)
+
+The library generally needs to be imported into the console for its code completion to be recognised. The line of code (lines of code) with the data science library imports can be selected:
+
+![121_img](./images/121_img.png)
+
+Then Run and Run Code can be selected:
+
+![122_img](./images/122_img.png)
+
+The list of all the identifiers within the numpy module should now display after the module is imported and the module name is input followed by a dot ```.``` and ```↹```. 
+
+*This doesn't seem to work correctly in a script file for a script file and this problem occurs on IDLE, Spyder and JupyterLab and is likely a bug in the IPython console that needs to be addressed.*
+
+![123_img](./images/123_img.png)
+
+A docstring will display if a function is input with open parenthesis and the shift ```⇧``` and tab ```↹``` are pressed:
+
+![124_img](./images/124_img.png)
+
+Additional test code can be added to make a plot:
+
+![125_img](./images/125_img.png)
+
+Now all the code can be run by selecting Run→Run All Code:
+
+![126_img](./images/126_img.png)
+
+The script file is executed ad the print statement and plot are displayed in the console:
+
+![127_img](./images/127_img.png)
+
+The plot backend can be changed from the default inline to automatic using:
+
+![130_img](./images/130_img.png)
+
+The JupyterLab IDE lacks some features available in Spyder when it comes to editting Python Script Files:
+
+* It has no Variable Inspector or Variable Explorer
+* It has no way of running cells within a Python Script File.
+
+The JupyterLab IDE has more of a focus on Interactive Python Notebooks which have the ```.ipynb``` extension:
+
+![133_img](./images/133_img.png)
+
+The notebook can be renamed using the file explorer or the top tab of the open notebook:
+
+![134_img](./images/134_img.png)
+
+The notebook consists of cells. The cells can be:
+
+* markdown - for markdown syntax: The Markdown display will be shown when the code is run.
+* python - for Python code: Python code will be executed when the cell is run.
+* raw - The notebook itself is written in nodejs, another programming language used for web development. 
 
 ![073_jupyterlab](./images/073_jupyterlab.png)
 
@@ -566,9 +812,19 @@ We can now create a code cell:
 
 ![076_jupyterlab](./images/076_jupyterlab.png)
 
-When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the Spyder console) and indicates the number of cells ran in the Python kernel:
+When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the console when running Python code or a Python script file) and indicates the number of cells ran in the Python kernel:
 
 ![077_jupyterlab](./images/077_jupyterlab.png)
+
+JupyterLab has a Variable Inspector that can be viewed by right clicking blank space in the notebook file and selecting open Variable Inspector:
+
+![135_img](./images/135_img.png)
+
+This opens in a new tab which can be repositioned:
+
+![136_img](./images/136_img.png)
+
+![137_img](./images/137_img.png)
 
 To close JupyterLab, close the tab in the browser. In the mambaforge prompt you will notice that the server is still running.
 
@@ -577,6 +833,12 @@ To close JupyterLab, close the tab in the browser. In the mambaforge prompt you 
 The server runs in an infinite loop. To end it press ```Ctrl``` + ```c```:
 
 ![079_jupyterlab](./images/079_jupyterlab.png)
+
+If the ```.ipynb``` file is opened in notepad. The nodejs script can be viewed directly.
+
+![138_img](./images/138_img.png)
+
+The nodejs code can be seen to enclose the Python code. Plotting libraries such as plotly take Python syntax from the user and output nodejs code which is used to display the interactive plot.
 
 # Python Environments Continued
 
