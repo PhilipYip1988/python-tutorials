@@ -8,7 +8,7 @@ The PC should match or exceed the following system requirements:
 
 * Windows 11 (22H2) or Windows 10 (22H2) 64 Bit
 * 6th Generation Intel i5 Processor or Later
-* 8 GB DDR3 RAM or Superior
+* 8 GB RAM or Superior
 * 250 GB SSD or Superior
 * Google Chrome or Microsoft Edge Browser
 
