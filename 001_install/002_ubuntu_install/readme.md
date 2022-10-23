@@ -4,7 +4,7 @@ The PC should match or exceed the following system requirements:
 
 * Ubuntu 22.10, Fedora 37 or Ubuntu 22.04 LTS/Mint 21
 * 6th Generation Intel i5 Processor or Later
-* 8 GB DDR3 RAM or Superior
+* 8 GB RAM or Superior
 * 250 GB SSD or Superior
 * Chromium or Google Chrome Browser
 
@@ -265,6 +265,162 @@ Notice that the version number of the mamba dist-info folder has changed.
 ![img_042](./images/img_042.png)
 
 The ```base``` Python environment and ```mamba``` package manager are now up to date.
+
+## Running Python from the Terminal
+
+The Text Editor preinstalled with Ubuntu can be launched from the Start Screen:
+
+![img_135](./images/img_135.png)
+
+The Text Editor can be used to make a Python Script File:
+
+![img_136](./images/img_136.png)
+
+Input:
+
+```
+print("Hello World!")
+```
+
+![img_137](./images/img_137.png)
+
+Save the file using the shortcut key ```Ctrl``` + ```s```. Select the location as Documents and name the file ```script0.py``` changing the file extension from ```.txt``` to ```.py```:
+
+![img_138](./images/img_138.png)
+
+The file should now show in Documents:
+
+![img_139](./images/img_139.png)
+
+Open up the Terminal. The MambaForge is opened in ```~``` (home) by default. Input:
+
+```
+cd ~/Documents
+```
+
+cd is a Linux command which is an abbreviation for change directory (change folder).
+
+![img_140](./images/img_140.png)
+
+To use Python to run the Python script file input python3 (lower case) followed by the name of the script file including the file extension:
+
+```
+python3 script0.py
+```
+
+![img_141](./images/img_141.png)
+
+The print statement included in the Python Script file will be displayed on the terminal:
+
+![img_142](./images/img_142.png)
+
+Bringing this together, there is a terminal (Mambaforge Prompt), a script file editor (Text Editor) and the file explorer (Nautilus):
+
+![img_143](./images/img_143.png)
+
+If ```python3``` is input into the Mambaforge Prompt without any script file. The Python interpretter will display:
+
+```
+python3
+```
+
+![img_143](./images/img_143.png)
+
+Notice the prompt change from ```(base)``` to ```>>>```. When the Python interpretter is invoked, individual lines of Python can be executed. Input:
+
+```
+print("Hello World!")
+```
+
+![img_145](./images/img_145.png)
+
+To exit the Python interpretter type in the command:
+
+```
+exit()
+```
+
+![img_147](./images/img_147.png)
+
+Notice the prompt change back to ```(base)``` from ```>>>```.
+
+## IDLE IDE
+
+Python comes preinstalled with the Integrated Development Learner Environment (IDLE). IDLE is found in:
+
+```
+~/mambaforge/lib/python3.10/idlelib
+```
+
+![img_148](./images/img_148.png)
+
+![img_149](./images/img_149.png)
+
+![img_150](./images/img_150.png)
+
+It can be launched using the ```idle.py``` module:
+
+![img_151](./images/img_151.png)
+
+Right click empty space in the folder and select Open in Terminal:
+
+![img_153](./images/img_153.png)
+
+Input:
+
+```
+python3 idle.py
+```
+
+![img_154](./images/img_154.png)
+
+IDLE can also be launched directly from the terminal irrespective of the file path the terminal is open in by using the command:
+
+```
+idle3
+```
+
+![img_155](./images/img_155.png)
+
+The first component of IDLE is the IDLE Shell which is essentially a Console. The prompt displays ```>>>``` indicating the Python interpretter is invoked. Individual lines of Python can be input directly as seen before:
+
+![img_156](./images/img_156.png)
+
+The File menu can be used to create a new file or open an existing file:
+
+![img_157](./images/img_157.png)
+
+In this case a new file is selected and the script editor displays. Before adding contents to the file, select File → Save As...:
+
+![img_158](./images/img_158.png)
+
+Save the file with a ```.py``` extension:
+
+![img_159](./images/img_159.png)
+
+The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was p and the command print has this code prefix:
+
+![img_160](./images/img_160.png)
+
+When a function name is input with open parenthesis, a docstring popup displays giving details about the functions input arguments. In this case the positional input value is going to be the string that is printed.
+
+![img_161](./images/img_161.png)
+
+Once again input:
+
+```
+print("hello world!")
+```
+
+![img_162](./images/img_162.png)
+
+A Python Script File is also known as a Module. Once the Python Script File is saved, it can be run by selecting Run → Run Module:
+
+![img_163](./images/img_163.png)
+
+The print statement is observed on the IDLE Shell as expected:
+
+![img_164](./images/img_164.png)
 
 ## Python Environments
 
