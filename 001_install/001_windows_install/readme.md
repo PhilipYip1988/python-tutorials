@@ -812,11 +812,7 @@ A code cell can now be created:
 
 ![076_jupyterlab](./images/076_jupyterlab.png)
 
-When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the console when running Python code or a Python script file) and indicates the number of cells ran in the Python kernel:
-
-![077_jupyterlab](./images/077_jupyterlab.png)
-
-Code completion works better in a notebook file. A third-party data science module needs to be imported in a previously cell. Once this cell is run typing in the module name or module alias followed by a ```.``` and then pressing the tab ```↹``` key will display the list of identifiers from the module:
+Code completion works better in a notebook file. A third-party data science module needs to be imported in a previously cell. Once this cell is run typing in the module name or module alias followed by a ```.```, pressing the tab ```↹``` key will display the list of identifiers from the module:
 
 ![139_img](./images/139_img.png)
 
@@ -828,6 +824,10 @@ Inputting a function name with open parenthesis and pressing shift ```⇧``` and
 
 ![140_img](./images/140_img.png)
 
+When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the console when running Python code or a Python script file) and indicates the number of cells ran in the Python kernel:
+
+![077_jupyterlab](./images/077_jupyterlab.png)
+
 JupyterLab has a Variable Inspector that can be viewed by right clicking blank space in the notebook file and selecting open Variable Inspector:
 
 ![135_img](./images/135_img.png)
@@ -837,6 +837,8 @@ This opens in a new tab which can be repositioned:
 ![136_img](./images/136_img.png)
 
 ![137_img](./images/137_img.png)
+
+This Variable Inspector is quite limited with respect to the Variable Explorer found within Spyder.
 
 To close JupyterLab, close the tab in the browser. In the mambaforge prompt you will notice that the server is still running.
 
