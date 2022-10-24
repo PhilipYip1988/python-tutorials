@@ -316,7 +316,7 @@ The print statement included in the Python Script file will be displayed on the 
 
 Bringing this together, there is a terminal (Mambaforge Prompt), a script file editor (Text Editor) and the file explorer (Nautilus):
 
-![img_143](./images/img_143.png)
+![img_148](./images/img_148.png)
 
 If ```python3``` is input into the Mambaforge Prompt without any script file. The Python interpretter will display:
 
@@ -344,12 +344,16 @@ exit()
 
 Notice the prompt change back to ```(base)``` from ```>>>```.
 
-## IDLE IDE
+## Integrated Development Environment¶
+
+Python has a large number of Integrated Development Environments often abbreivated as IDEs. These are essentially a GUI which includes a console, script editior and file explorer.
+
+## The IDLE IDE
 
 Python comes preinstalled with the Integrated Development Learner Environment (IDLE). IDLE is found in:
 
 ```
-~/mambaforge/lib/python3.10/idlelib
+~/mambaforge/lib/python3.xx/idlelib
 ```
 
 ![img_148](./images/img_148.png)
@@ -444,7 +448,7 @@ There is an ```envs``` subfolder which is empty by default.
 
 ![img_044](./images/img_044.png)
 
-## Spyder IDE Python Environment
+## The Spyder IDE
 
 A new environment can be created for the Spyder IDE using the command:
 
@@ -743,11 +747,11 @@ The script can be saved with a ```.py``` extension:
 
 ![img_098](./images/img_098.png)
 
-To the top there are four buttons to Run a Script, Run a Cell in a Script, Run a Cell in a Script snd Move onto the next Cell and to Run a Selection within the Script. At first launch, there will be a dialog for Run options:
+In Python prefixing a line with a ```#``` turns it into a comment. In Spyder prefixing a line with ```#%%``` turns it into a new cell. A script file can be run using the run button or each cell can be run individually using the run cell or run cell and move onto the next cell button:
 
 ![img_099](./images/img_099.png)
 
-Select Run:
+At first launch, there will be a dialog for Run options. Select Run:
 
 ![img_100](./images/img_100.png)
 
@@ -828,7 +832,7 @@ When instead, the ```spyder-cf``` environment is activated, the following file i
 
 This file exists and therefore Spyder launches.
 
-## JupyterLab IDE Python Environment
+## The JupyterLab IDE
 
 A similar Python environment can be setup for JupyterLab, the browser based IDE using:
 
@@ -913,6 +917,170 @@ The redirect bool can be changed from the default bool of ```True``` to ```False
 The default browser can be changed to ```"chromium"``` if it is opening in FireFox instead of Chromium:
 
 ![img_133](./images/img_133.png)
+
+JupyterLab has a file explorer to the left hand side where you can navigate to your Documents folder.
+
+109_img
+
+The Terminal can be invoked to run an existing Python Script file:
+
+131_img
+
+Using the same command as before:
+
+python script0.py
+Displays Hello World on the Terminal.
+
+132_img
+
+A Python file can be created from the launcher:
+
+110_img
+
+The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the onen tab at the top which displays the file name:
+
+111_img
+
+112_img
+
+To get code completion options to display while editing the file, right click blank space within the file and select Create Console for Editor:
+
+113_img
+
+Select the default Kernel and select Select:
+
+114_img
+
+115_img
+
+Code completion will work in a similar manner as IDLE. The tab ↹ key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was p and the command print has this code prefix:
+
+116_img
+
+A docstring will display if a function is input with open parenthesis and the shift ⇧ and tab ↹ are pressed:
+
+117_img
+
+A list of all the identifiers within a standard Python module will be displayed after the module is imported and the module name is input followed by a dot . and ↹:
+
+119_img
+
+For a third-party module such as a datascience library, no code completion options display.
+
+120_img
+
+The library generally needs to be imported into the console for its code completion to be recognised. The line of code (lines of code) with the data science library imports can be selected:
+
+121_img
+
+Then Run and Run Code can be selected:
+
+122_img
+
+The list of all the identifiers within the numpy module should now display after the module is imported and the module name is input followed by a dot . and ↹.
+
+This doesn't seem to work correctly in a script file for a script file and this problem occurs on IDLE, Spyder and JupyterLab and is likely a bug in the IPython console that needs to be addressed.
+
+123_img
+
+A docstring will display if a function is input with open parenthesis and the shift ⇧ and tab ↹ are pressed:
+
+124_img
+
+Additional test code can be added to make a plot:
+
+125_img
+
+Now all the code can be run by selecting Run→Run All Code:
+
+126_img
+
+The script file is executed ad the print statement and plot are displayed in the console:
+
+127_img
+
+The plot backend can be changed from the default inline to automatic using:
+
+130_img
+
+The JupyterLab IDE lacks some features available in Spyder when it comes to editting Python Script Files:
+
+It has no Variable Inspector or Variable Explorer
+It has no way of running cells within a Python Script File.
+The JupyterLab IDE has more of a focus on Interactive Python Notebooks which have the .ipynb extension:
+
+133_img
+
+The notebook can be renamed using the file explorer or the top tab of the open notebook:
+
+134_img
+
+The notebook consists of cells. The cells can be:
+
+markdown - for markdown syntax: The Markdown display will be shown when the code is run.
+python - for Python code: Python code will be executed when the cell is run.
+raw - The notebook itself is written in nodejs, another programming language used for web development.
+073_jupyterlab
+
+We can create a markdown heading and run the cell:
+
+074_jupyterlab
+
+The heading will now display under the notebooks bookmarks:
+
+075_jupyterlab
+
+We can now create a code cell:
+
+076_jupyterlab
+
+When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the console when running Python code or a Python script file) and indicates the number of cells ran in the Python kernel:
+
+077_jupyterlab
+
+JupyterLab has a Variable Inspector that can be viewed by right clicking blank space in the notebook file and selecting open Variable Inspector:
+
+135_img
+
+This opens in a new tab which can be repositioned:
+
+136_img
+
+137_img
+
+To close JupyterLab, close the tab in the browser. In the mambaforge prompt you will notice that the server is still running.
+
+078_jupyterlab
+
+The server runs in an infinite loop. To end it press Ctrl + c:
+
+079_jupyterlab
+
+If the .ipynb file is opened in notepad. The nodejs script can be viewed directly.
+
+138_img
+
+The nodejs code can be seen to enclose the Python code. Plotting libraries such as plotly take Python syntax from the user and output nodejs code which is used to display the interactive plot.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Return to:
 
