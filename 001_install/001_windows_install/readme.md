@@ -800,7 +800,7 @@ The notebook consists of cells. The cells can be:
 
 ![073_jupyterlab](./images/073_jupyterlab.png)
 
-We can create a markdown heading and run the cell:
+A markdown heading can be created and then the cell can be run:
 
 ![074_jupyterlab](./images/074_jupyterlab.png)
 
@@ -808,13 +808,25 @@ The heading will now display under the notebooks bookmarks:
 
 ![075_jupyterlab](./images/075_jupyterlab.png)
 
-We can now create a code cell:
+A code cell can now be created:
 
 ![076_jupyterlab](./images/076_jupyterlab.png)
 
 When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the console when running Python code or a Python script file) and indicates the number of cells ran in the Python kernel:
 
 ![077_jupyterlab](./images/077_jupyterlab.png)
+
+Code completion works better in a notebook file. A third-party data science module needs to be imported in a previously cell. Once this cell is run typing in the module name or module alias followed by a ```.``` and then pressing the tab ```↹``` key will display the list of identifiers from the module:
+
+![139_img](./images/139_img.png)
+
+The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was np.a and the command np.array has this code prefix:
+
+![141_img](./images/141_img.png)
+
+Inputting a function name with open parenthesis and pressing shift ```⇧``` and the tab ```↹``` key will display the functions docstring as a popup:
+
+![140_img](./images/140_img.png)
 
 JupyterLab has a Variable Inspector that can be viewed by right clicking blank space in the notebook file and selecting open Variable Inspector:
 
