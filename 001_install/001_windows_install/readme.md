@@ -1,7 +1,3 @@
-# YouTube Tutorial Video
-
-[Installing Mambaforge on Windows 11 YouTube](https://www.youtube.com/watch?v=W1KQl3_VFF8)
-
 # System Requirements
 
 The PC should match or exceed the following system requirements:
