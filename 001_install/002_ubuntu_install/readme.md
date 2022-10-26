@@ -7,7 +7,6 @@ The PC should match or exceed the following system requirements:
 * 8 GB RAM or Superior
 * 250 GB SSD or Superior
 * Chromium or Google Chrome Browser
-
 The performance will be very poor if these system requirements are not satisfied.
 
 Alternatively a Mac with equivalent hardware specifications can be used.
@@ -1136,7 +1135,7 @@ mamba install -c conda-forge plotly dash
 mamba install -c conda-forge notebook vscode-python
 ```
 
-Visual Studio Code can then be installed either from the deb package on the [Visual Studio Code website](https://code.visualstudio.com/download) or the Ubuntu Store:
+Visual Studio Code can then be installed either from the deb package (Ubuntu), the rpm package (Fedora) or the Mac package (Mac) available on the [Visual Studio Code website](https://code.visualstudio.com/download). It is also available as a snap package in the Ubuntu Store:
 
 ![img_211](./images/img_211.png)
 
