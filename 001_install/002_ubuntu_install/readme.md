@@ -832,6 +832,42 @@ When instead, the ```spyder-cf``` environment is activated, the following file i
 
 This file exists and therefore Spyder launches.
 
+Similar to IDLE, the tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was p and the command print has this code prefix:
+
+![img_202](./images/img_202.png)
+
+When a function name is input with open parenthesis, a docstring popup balloon displays giving details about the functions input arguments. In this case the positional input value is going to be the string that is printed.
+
+![img_203](./images/img_203.png)
+
+The code-completion in Spyder works well with Python and Python Standard Modules. For example a list of identifiers displays when the standard module ```datetime``` is imported using the alias ```dt``` and ```dt.``` followed by a tab ```↹```:
+
+![img_204](./images/img_204.png)
+
+The code-completion on the script editor has some limitations when it comes to third-party modules such as the datascience libraries. For example the list of identifiers displays when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹```:
+
+![img_205](./images/img_205.png)
+
+Typically, the line of code importing the third party library needs to be run in the console:
+
+![img_206](./images/img_206.png)
+
+The list of identifiers still does not display when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹```:
+
+![img_207](./images/img_207.png)
+
+However if a function from the numpy library is input with open parenthesis, its docstring will display as a pop-up balloon:
+
+![img_208](./images/img_208.png)
+
+The console uses slightly different code completion to the script editor. The list of identifiers does displays when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹``` however there is no distinction to what each identifier is i.e. whether it is a variable, function or class.
+
+![img_209](./images/img_209.png)
+
+The docstring popup balloon also looks slightly different between the console and the editor:
+
+![img_210](./images/img_210.png)
+
 ## The JupyterLab IDE
 
 A similar Python environment can be setup for JupyterLab, the browser based IDE using:
