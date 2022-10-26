@@ -940,7 +940,7 @@ A Python file can be created from the launcher:
 
 ![img_168](./images/img_168.png)
 
-The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the onen tab at the top which displays the file name:
+The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the open tab at the top which displays the file name:
 
 ![img_169](./images/img_169.png)
 
@@ -993,13 +993,12 @@ A docstring will display if a function is input with open parenthesis and the sh
 
 Additional test code can be added to make a plot:
 
-![img_181](./images/img_181.png)
-
+onen
 Now all the code can be run by selecting Run→Run All Code:
 
 ![img_182](./images/img_182.png)
 
-The script file is executed ad the print statement and plot are displayed in the console:
+The script file is executed and the print statement and plot are displayed in the console:
 
 ![img_183](./images/img_183.png)
 
@@ -1072,11 +1071,11 @@ This opens in a new tab which can be repositioned:
 
 To close JupyterLab, close the tab in the browser. In the Terminal you will notice that the server is still running.
 
-078_jupyterlab
+![img_197](./images/img_197.png)
 
 The server runs in an infinite loop. To end it press Ctrl + c:
 
-079_jupyterlab
+![img_198](./images/img_198.png)
 
 If the .ipynb file is opened in notepad. The nodejs script can be viewed directly.
 
