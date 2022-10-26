@@ -1236,6 +1236,43 @@ Visual Studio Code can also be used to work with an Interactive Python Notebook.
 
 ![img_236](./images/img_236.png)
 
+## Removing a Python Environment
+
+Now multiple Python environments have been created. They can be listed using:
+
+```
+mamba env list
+```
+
+The environments are listed and the currently selected one is indicated with a *:
+
+![img_237](./images/img_237.png)
+
+Another environment called corrupted can be created and once it is created the Python environments can be relisted:
+
+```
+mamba create -n corrupted
+mamba env list
+```
+
+![img_238](./images/img_238.png)
+
+![img_239](./images/img_239.png)
+
+![img_240](./images/img_240.png)
+
+The corrupted environment can be removed using:
+
+```
+mamba env remove -n corrupted
+```
+
+This corrupted Python environment is now removed:
+
+![img_241](./images/img_241.png)
+
+![img_242](./images/img_242.png)
+
 Return to:
 
 [Home](../../../../)
