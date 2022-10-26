@@ -7,6 +7,7 @@ A python script file called ```script0.py``` will be created in the same folder 
 ```
 greeting = "Hello"
 row_number_to_str = lambda number: "r" + str(number)
+print(greeting)
 ```
 
 ![img_000](./images/img_000.png)
@@ -22,6 +23,8 @@ import script0
 Note when the import command is used, there is no ```.py``` file extension provided for the input script.
 
 ![img_001](./images/img_001.png)
+
+Notice that when the ```script0``` is imported, the code within ```script0``` is executed. The variable ```greeting``` and the function ```row_number_to_str``` are defined within the namespace of the module and the print statement is executed which is why ```hello``` is shown in the cell output.
 
 The file extension is dropped because the dot ```.``` is used in Python to indicate that an object is contained within another object. Think of the syntax ```container.item``` as taking an ```item``` out of a ```container```. If ```script0.``` is typed followed by tab ```↹```:
 
