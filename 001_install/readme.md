@@ -40,7 +40,7 @@ Finally, the Anaconda Python Datascience Distribution and packages in Anacondas 
 
 ### mamba
 
-The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager. The [Mambaforge installer](https://github.com/conda-forge/miniforge#mambaforge) is essentially the same as the Miniforge installer but includes the ```mamba``` package manager. The rest of this guide will focus only on Mambaforge which is the most reliable solution. 
+The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager. The [Mambaforge installer](https://github.com/conda-forge/miniforge#mambaforge) is essentially the same as the Miniforge installer but includes the ```mamba``` package manager. The rest of this guide will focus only on Mambaforge which is the most reliable solution and include detailed installation instructions for both Windows and Ubuntu Linux (Mac Installation should be very similar to Ubuntu). 
 
 ### Package Managers Syntax:
 
