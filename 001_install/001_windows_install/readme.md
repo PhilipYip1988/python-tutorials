@@ -16,9 +16,9 @@ The performance for Python will be very poor if these system requirements are no
 
 # Mambaforge Install
 
-Mambaforge can be downloaded from the Mambaforge GitHub repository. Make sure to download Mambaforge and not Miniforge:
+Mambaforge can be downloaded from the Mambaforge GitHub repository. Make sure to download Mambaforge and not Miniforge (which excludes the Mamba package manager):
 
-[Mambaforge](https://github.com/conda-forge/miniforge/releases)
+[Mambaforge](https://github.com/conda-forge/miniforge#mambaforge)
 
 Double click to launch the installer:
 
@@ -50,7 +50,7 @@ In the next screen, select the default options to register Mambaforge as my defa
 
 ![005_mambaforge_install](./images/005_mambaforge_install.png)
 
-**Mambaforge can optionally be added to the Windows Environment Variable Path.** This makes the ```base``` Python environment accessible via the Windows Terminal. This allows third party applications to accessing Python from the Windows Terminal. Such a use case is normally more advanced, for example a C++ IDE that is configured by default to access the Windows Terminal will also be able to invoke a Python Script if Mambaforge is added to the WIndows Environmental Variables Path.
+**Mambaforge can optionally be added to the Windows Environment Variable Path.** This makes the ```base``` Python environment accessible via the Windows Terminal. This allows third party applications to accessing Python from the Windows Terminal. Such a use case is normally more advanced, for example a C++ IDE that is configured by default to access the Windows Terminal will also be able to invoke a Python Script if Mambaforge is added to the Windows Environmental Variables Path.
 
 Note that in most regular use scenarios the Mambaforge Prompt should be preferentially used to interact with Python instead of the Windows Terminal. The Mambaforge Prompt is similar to the Windows Terminal but is optimised to work with multiple Python environments and not hard coded to the single base environment provided in the Windows Environmental Variables Path like in the case of the Windows Terminal. The Mambaforge Prompt can be used to install packages in Python environments and launch IDEs installed in the Python environments. 
 
@@ -58,7 +58,7 @@ Note that in most regular use scenarios the Mambaforge Prompt should be preferen
 
 ![007_mambaforge_install](./images/007_mambaforge_install.png)
 
-Once the decision to add Mambaforge to the Windwos Environmental Path or not is configured. Select Install:
+Once the decision to add Mambaforge to the Windows Environmental Path or not is configured. Select Install:
 
 ![008_mambaforge_install](./images/008_mambaforge_install.png)
 
@@ -312,7 +312,7 @@ The tab ```↹``` key can be pressed after inputting some code prefix. This will
 
 ![104_img](./images/104_img.png)
 
-When a function name is input with open parenthesis, a docstring popup displays giving details about the functions input arguments. In this case the positional input ```value``` is going to be the string that is printed. 
+When a function name is input with open parenthesis, a docstring popup balloon displays giving details about the functions input arguments. In this case the positional input ```value``` is going to be the string that is printed. 
 
 ![105_img](./images/105_img.png)
 
@@ -359,7 +359,7 @@ mamba create -n spyder-cf
 
 ![027_envs](./images/027_envs.png)
 
-Where ```-n``` is an abbreviation for name and ```spyder-cf``` is the name of the Python environment. In this case the name is spyder-c indicating we are going to install the latest version of spyder from the ```conda-forge``` channel.
+Where ```-n``` is an abbreviation for name and ```spyder-cf``` is the name of the Python environment. In this case the name is spyder-cf denotes an install of the latest version of spyder from the ```conda-forge``` channel.
 
 The following folder appears:
 
@@ -487,7 +487,7 @@ These data science libaries will now be installed:
 
 ![045_envs](./images/045_envs.png)
 
-## Launching the Spyder
+## Launching the Spyder IDE
 
 To launch spyder, ensure the ```spyder-cf``` Python environment is activated and use the command:
 
@@ -655,9 +655,45 @@ Rerunning the script now displays an automatic plot:
 
 ![065_envs](./images/065_envs.png)
 
-An individual line of code from a script can be highlighted and ran in the console by selcting run seleciton or current line:
+An individual line of code from a script can be highlighted and ran in the console by selecting run selection or current line:
 
 ![066_envs](./images/066_envs.png)
+
+Similar to IDLE, the tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was p and the command print has this code prefix:
+
+![142_img](./images/142_img.png)
+
+When a function name is input with open parenthesis, a docstring popup balloon displays giving details about the functions input arguments. In this case the positional input value is going to be the string that is printed.
+
+![143_img](./images/143_img.png)
+
+The code-completion in Spyder works well with Python and Python Standard Modules. For example a list of identifiers displays when the standard module ```datetime``` is imported using the alias ```dt``` and ```dt.``` followed by a tab ```↹```:
+
+![144_img](./images/144_img.png)
+
+The code-completion on the script editor has some limitations when it comes to third-party modules such as the datascience libraries. For example the list of identifiers displays when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹```:
+
+![145_img](./images/145_img.png)
+
+Typically, the line of code importing the third party library needs to be run in the console:
+
+![146_img](./images/146_img.png)
+
+The list of identifiers still does not display when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹```:
+
+![147_img](./images/147_img.png)
+
+However if a function from the numpy library is input with open parenthesis, its docstring will display as a pop-up balloon:
+
+![148_img](./images/148_img.png)
+
+The console uses slightly different code completion to the script editor. The list of identifiers does displays when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹``` however there is no distinction to what each identifier is i.e. whether it is a variable, function or class.
+
+![149_img](./images/149_img.png)
+
+The docstring popup balloon also looks slightly different between the console and the editor:
+
+![150_img](./images/150_img.png)
 
 # JupyterLab IDE Overview
 
@@ -713,7 +749,7 @@ A Python file can be created from the launcher:
 
 ![110_img](./images/110_img.png)
 
-The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the onen tab at the top which displays the file name:
+The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the open tab at the top which displays the file name:
 
 ![111_img](./images/111_img.png)
 
@@ -755,9 +791,13 @@ Then Run and Run Code can be selected:
 
 The list of all the identifiers within the numpy module should now display after the module is imported and the module name is input followed by a dot ```.``` and ```↹```. 
 
-*This doesn't seem to work correctly in a script file for a script file and this problem occurs on IDLE, Spyder and JupyterLab and is likely a bug in the IPython console that needs to be addressed.*
+This doesn't seem to work correctly in a script editor but works correctly in the Console.
+
+*This problem occurs on IDLE, Spyder and JupyterLab and is likely a bug in the IPython console that needs to be addressed.*
 
 ![123_img](./images/123_img.png)
+
+![154_img](./images/154_img.png)
 
 A docstring will display if a function is input with open parenthesis and the shift ```⇧``` and tab ```↹``` are pressed:
 
@@ -771,7 +811,7 @@ Now all the code can be run by selecting Run→Run All Code:
 
 ![126_img](./images/126_img.png)
 
-The script file is executed ad the print statement and plot are displayed in the console:
+The script file is executed and the print statement and plot are displayed in the console:
 
 ![127_img](./images/127_img.png)
 
@@ -812,6 +852,16 @@ A code cell can now be created:
 
 ![076_jupyterlab](./images/076_jupyterlab.png)
 
+The shortcut key ```esc``` and ```m``` will change the current cell to a markdown cell.
+
+The shortcut key ```esc``` and ```y``` will change the current cell to a code cell.
+
+The shortcut key ```⇧``` and ```↵``` will run a cell.
+
+The shortcut key ```alt``` and ```↵``` will run a cell and insert a blank cell below it.
+
+To get to Keyboard Shortcuts. Select the Settings menu to the top and then select Advanced Settings Editor. To the left select Command Palette and then select keyboard shortcuts.
+
 Code completion works better in a notebook file. A third-party data science module needs to be imported in a previously cell. Once this cell is run typing in the module name or module alias followed by a ```.```, pressing the tab ```↹``` key will display the list of identifiers from the module:
 
 ![139_img](./images/139_img.png)
@@ -820,7 +870,7 @@ The tab ```↹``` key can be pressed after inputting some code prefix. This will
 
 ![141_img](./images/141_img.png)
 
-Inputting a function name with open parenthesis and pressing shift ```⇧``` and the tab ```↹``` key will display the functions docstring as a popup:
+Inputting a function name with open parenthesis and pressing shift ```⇧``` and the tab ```↹``` key will display the functions docstring as a popup balloon:
 
 ![140_img](./images/140_img.png)
 
@@ -828,7 +878,19 @@ When code cells are run, a number displays to the left hand side of the cell (th
 
 ![077_jupyterlab](./images/077_jupyterlab.png)
 
-JupyterLab has a Variable Inspector that can be viewed by right clicking blank space in the notebook file and selecting open Variable Inspector:
+The Kernel can be restarted in an interactive notebok by selecting Kernel. Then Restart Kernel and Run All Cells:
+
+![151_img](./images/151_img.png)
+
+Then select Restart:
+
+![152_img](./images/152_img.png)
+
+Notice now each cell is ran in numeric order:
+
+![153_img](./images/153_img.png)
+
+JupyterLab has a Variable Inspector extension that can be viewed in an interactive notebook by right clicking blank space in the notebook file and selecting open Variable Inspector:
 
 ![135_img](./images/135_img.png)
 
