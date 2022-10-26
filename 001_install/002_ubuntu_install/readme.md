@@ -1123,6 +1123,119 @@ The nodejs code can be seen to enclose the Python code. Plotting libraries such 
 
 ![img_201](./images/img_201.png)
 
+## The Visual Studio Code IDE
+
+A similar Python environment can be setup for Visual Studio Code:
+
+```
+mamba create -n vscode-cf
+mamba activate vscode-cf
+mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install -c conda-forge nodejs ipywidgets 
+mamba install -c conda-forge plotly dash
+mamba install -c conda-forge notebook vscode-python
+```
+
+Visual Studio Code can then be installed either from the deb package on the [Visual Studio Code website](https://code.visualstudio.com/download) or the Ubuntu Store:
+
+![img_211](./images/img_211.png)
+
+Once installed, launch Visual Studio Code from the Start Screen. Select your desired colour scheme:
+
+![img_212](./images/img_212.png)
+
+To the left select extensions and then select the Python Extension and select Install:
+
+![img_213](./images/img_213.png)
+
+Visual Studio Code requires a folder for each project. Open files and create a new folder:
+
+![img_214](./images/img_214.png)
+
+In Visual Studio Code, select the files tab and select Open Folder. Select the folder just created:
+
+![img_215](./images/img_215.png)
+
+You will be asked for permissions. Select Yes, I trust the authors:
+
+![img_216](./images/img_216.png)
+
+Select New File and create a Python Script file with the ```.py``` file extension:
+
+![img_217](./images/img_217.png)
+
+Open the file. To the bottom right you will see your Python interpretter. By default Visual Studio Code will use the Python preinstalled on Ubuntu, which lacks any of the additional datascience libraries. 
+
+![img_218](./images/img_218.png)
+
+To change this to the ```vscode-cf``` press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter:
+
+![img_219](./images/img_219.png)
+
+Select the ```vscode-cf``` mamba environment:
+
+![img_220](./images/img_220.png)
+
+Code auto-completion works better in Visual Code than in the other IDEs with an out of the way popup balloon displaying a list of identifiers with the prefix typed:
+
+![img_221](./images/img_221.png)
+
+A docstring popup balloon also displays when a function is input with open parenthesis:
+
+![img_222](./images/img_222.png)
+
+A script file can be run by selecting the run script button:
+
+![img_223](./images/img_223.png)
+
+To the bottom a Terminal should display. Note there is a Python Terminal and a Linux bash Terminal. In the Python Terminal, Hello World displays. The Terminal can be resized vertically using the horizontal slider.
+
+![img_224](./images/img_224.png)
+
+The Code completion works for Python and inbuilt Python modules:
+
+![img_225](./images/img_225.png)
+
+![img_226](./images/img_226.png)
+
+In addition to the most commonly used datascience libraries such as numpy, pandas, matplotlib and seaborn:
+
+![img_227](./images/img_227.png)
+
+![img_228](./images/img_228.png)
+
+For an automatic plot to display when executing a script, the script must include the function 
+
+```
+plt.show
+```
+
+![img_229](./images/img_229.png)
+
+It is also possible to run cells with a script file which opens an interactive window to the right hand side:
+
+![img_230](./images/img_230.png)
+
+![img_231](./images/img_231.png)
+
+Visual Studio Code also has a Variables tab. This is unfortunately only available when the script file is ran using Interactive Mode:
+
+![img_232](./images/img_232.png)
+
+The Variables can be cliecked into to be explored in more detail:
+
+![img_233](./images/img_233.png)
+
+Plots display inline in the interactive mode:
+
+![img_234](./images/img_234.png)
+
+Visual Studio Code can also be used to work with an Interactive Python Notebook. Select New File and create an Interactive Python Notebook file with the ```.ipynb``` file extension:
+
+![img_235](./images/img_235.png)
+
+![img_236](./images/img_236.png)
+
 Return to:
 
 [Home](../../../../)
