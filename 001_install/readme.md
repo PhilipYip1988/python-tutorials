@@ -11,17 +11,17 @@ Python has numerous IDEs which offer additional features such as code-completion
 * JupyterLab
 * Visual Studio Code
 
-Detailed installation guides for these four IDEs are available for Windows and Ubuntu Linux using the ```mamba``` package manager. For other Linux distributions and Mac OS, use the Ubuntu Linux guide as the procedure is essentially identical:
+Detailed installation guides for these four IDEs using the ```mamba``` package manager are available for Windows and Linux. For other Linux distributions and Mac OS, use the Ubuntu Linux guide as the procedure is essentially identical:
 
 [Mambaforge Install on Windows](./001_windows_install/)
 
 [Mambaforge Install on Ubuntu](./002_ubuntu_install/)
 
-Brief installation instructions and a comparison of the package managers are available for those already experienced with Python below. It is recommended for begineers to glance through the comparison of the package managers below and essentially ensure they use and stick to the ```mamba``` package manager.
+Brief installation instructions and a comparison of the package managers are available for those already experienced with Python below. It is recommended for begineers to glance through the comparison of the package managers below and then ensure they use and stick to the ```mamba``` package manager.
 
 ## Package Manager
 
-Before going ahead with the install, it is worthwhile taking the time to understand the differences in the five package managers that are commonly used to install Python and Python packages:
+There are three package managers commonly used to install Python and Python packages. One of the package managers is included in three slightly different Python distributions:
 
 |Installer Name|Package Manager|Python Base Environment|Python Base Environment Channel|
 |:-:|:-:|:-:|:-:|
@@ -40,6 +40,7 @@ In short you can install anything but there is a good chance that a beginner wil
 ### conda 
 
 The next package manager is ```conda``` which performs a number of dependency checks and looks for compatibility between packages. The ```conda``` package manager uses two main channels:
+
 * ```conda``` the channel maintained by the Anaconda Company
 * ```conda-forge``` the community channel
 
@@ -57,7 +58,7 @@ Finally, the Anaconda Python Datascience Distribution and packages in Anacondas 
 
 ### mamba
 
-The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager. The [Mambaforge installer](https://github.com/conda-forge/miniforge#mambaforge) is essentially the same as the Miniforge installer but includes the ```mamba``` package manager. The rest of this guide will focus only on Mambaforge which is the most reliable solution and include detailed installation instructions for both Windows and Ubuntu Linux (Mac Installation should be very similar to Ubuntu). 
+The ```mamba``` package manager has been developed by the Python community to address many of the issues behind the ```conda``` package manager. The [Mambaforge installer](https://github.com/conda-forge/miniforge#mambaforge) is essentially the same as the Miniforge installer but includes the ```mamba``` package manager. The rest of this guide will focus only on Mambaforge. 
 
 ### Package Managers Syntax:
 
@@ -85,13 +86,15 @@ To update the Python base environment using packages from the ```conda-forge``` 
 mamba update -c conda-forge --all
 ```
 
-To launch IDLE. In Windows use:
+The Python base environment includes IDLE. 
+
+To launch IDLE in Windows use:
 
 ```
 idle
 ```
 
-In Ubuntu Linux use:
+To launch IDLE in Ubuntu Linux use:
 
 ```
 idle3
@@ -149,10 +152,16 @@ mamba install -c conda-forge plotly dash
 mamba install -c conda-forge notebook vscode-python
 ```
 
-Visual Studio Code needs to be installed seperately using the Windows ```.exe``` or Ubuntu ```.deb```. The Python extension should be installed in Visual Studio Code. Then press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode-cf mamba``` environment.
+Visual Studio Code needs to be installed seperately using the Windows ```.exe``` or Ubuntu ```.deb```. 
+
+The Python extension should be installed in Visual Studio Code. 
+
+In Visual Studio Code press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode-cf mamba``` environment.
 
 To launch Visual Studio Code use:
 
 ```
 code
 ```
+
+[Home](../../../)
