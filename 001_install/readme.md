@@ -17,7 +17,7 @@ Detailed installation guides for these four IDEs using the ```mamba``` package m
 
 [Mambaforge Install on Ubuntu](./002_ubuntu_install/)
 
-Brief installation instructions and a comparison of the package managers are available for those already experienced with Python below. It is recommended for begineers to glance through the comparison of the package managers below and then ensure they use and stick to the ```mamba``` package manager.
+Brief installation instructions and a comparison of the package managers are available for those already experienced with Python below. It is recommended for begineers to glance through the comparison of the package managers below and take steps to ensure they use and stick to only using the ```mamba``` package manager.
 
 ## Package Manager
 
