@@ -161,6 +161,7 @@ In Visual Studio Code press ```ctrl```, ```⇧``` and ```p``` to open up the com
 To launch Visual Studio Code use:
 
 ```
+mamba activate vscode-cf
 code
 ```
 
