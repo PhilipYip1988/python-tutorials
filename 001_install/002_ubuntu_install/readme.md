@@ -1132,14 +1132,21 @@ mamba activate vscode-cf
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 mamba install -c conda-forge nodejs ipywidgets 
 mamba install -c conda-forge plotly dash
-mamba install -c conda-forge notebook vscode-python
+mamba install -c conda-forge notebook 
 ```
 
 Visual Studio Code can then be installed either from the deb package (Ubuntu), the rpm package (Fedora) or the Mac package (Mac) available on the [Visual Studio Code website](https://code.visualstudio.com/download). It is also available as a snap package in the Ubuntu Store:
 
 ![img_211](./images/img_211.png)
 
-Once installed, launch Visual Studio Code from the Start Screen. Select your desired colour scheme:
+Once installed, launch Visual Studio Code from the Start Screen or open up a terminal and input:
+
+```
+mamba activate vscode-cf
+code
+```
+
+Select your desired colour scheme:
 
 ![img_212](./images/img_212.png)
 
