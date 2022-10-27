@@ -2,7 +2,7 @@
 
 The Python ecosystem is pretty vast and a consequence there are a multitude of ways to install and use Python, offering great flexibility. On the other hand due to this flexibility, the process of installation appears fragmented and can become very confusing for a begineer. 
 
-Once Python is installed, it can be used with the Windows/Linux Terminal, a text editor and a file explorer and these three components are inbuilt into the Operating System. These three components also form the basis of a Python Integrated Development Environment often abbreviated as IDE.
+Once Python is installed, it can be used with the Windows/Linux Terminal, a text editor and a file explorer and these three components are inbuilt into the Operating System. These three components also form the basis of a Python Integrated Development Environment often abbreviated as an IDE.
 
 Python has numerous IDEs which offer additional features such as code-completion. Four of the most common IDEs are:
 
