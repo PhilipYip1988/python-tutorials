@@ -154,15 +154,15 @@ mamba install -c conda-forge notebook
 
 Visual Studio Code needs to be installed seperately using the Windows ```.exe``` or Ubuntu ```.deb``` or Ubuntu ```.snap``` package. 
 
-To launch Visual Studio Code use:
+Once installed, launch Visual Studio Code using:
 
 ```
 mamba activate vscode-cf
 code
 ```
 
-The Python extension should be installed in Visual Studio Code. 
+The Python extension should be installed within Visual Studio Code. 
 
-In Visual Studio Code press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode-cf``` ```mamba``` environment.
+The Python Interpretter should be selected. In Visual Studio Code press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode-cf``` ```mamba``` environment.
 
 [Home](../../../)
