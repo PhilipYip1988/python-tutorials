@@ -345,7 +345,7 @@ By default this is empty:
 
 ![026_envs](./images/026_envs.png)
 
-## Installing the Spyder IDE
+# The Spyder IDE
 
 To create a Python Environment use the command:
 
@@ -459,8 +459,6 @@ There is also a site-packages folder which is the location for data-science libr
 
 ![042_envs](./images/042_envs.png)
 
-## Installing the Data Science Libraries
-
 Currently the installation contains only mandatory dependencies, allowing Spyder to work with Python and lacks the data science libraries which are commonly used with Spyder. These can be installed using:
 
 ```
@@ -483,8 +481,6 @@ These data science libaries will now be installed:
 
 ![045_envs](./images/045_envs.png)
 
-## Launching the Spyder IDE
-
 To launch spyder, ensure the ```spyder-cf``` Python environment is activated and use the command:
 
 ```
@@ -502,8 +498,6 @@ In the bottom right of the Spyder IDE is the console, where an individual comman
 Before starting with a script file, it is recommended to save it using file save as:
 
 ![048_envs](./images/048_envs.png)
-
-# Understanding Datascience Library Imports
 
 Script files should use the Python rules of variable names, using lower case characters and no special characters with exception to the underscore. 
 
@@ -619,8 +613,6 @@ It is this file that is referenced with the import command above.
 
 Note that file extensions (```.py```) are not specified when using the import command.
 
-# The Spyder IDE Overview
-
 In Python prefixing a line with a ```#``` turns it into a comment. In Spyder prefixing a line with ```#%%``` turns it into a new cell. A script file can be run using the run button or each cell can be run individually using the run cell or run cell and move onto the next cell button:
 
 ![059_envs](./images/059_envs.png)
@@ -691,7 +683,7 @@ The docstring popup balloon also looks slightly different between the console an
 
 ![150_img](./images/150_img.png)
 
-# JupyterLab IDE Overview
+# The JupyterLab IDE
 
 Another Python environment will be created for the JupyterLab IDE. The JupyterLab IDE is a browser based IDE and has the same optional dependencies as Spyder. because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. These extensions require ```nodejs```. An optional variable inspector is also available however is limited in comparison to Spyder.
 
@@ -912,7 +904,164 @@ If the ```.ipynb``` file is opened in notepad. The nodejs script can be viewed d
 
 The nodejs code can be seen to enclose the Python code. Plotting libraries such as plotly take Python syntax from the user and output nodejs code which is used to display the interactive plot.
 
-# Python Environments Continued
+# The Visual Studio Code IDE
+
+A similar Python environment can be setup for Visual Studio Code:
+
+
+```
+mamba create -n vscode-cf
+mamba activate vscode-cf
+mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install -c conda-forge nodejs ipywidgets 
+mamba install -c conda-forge plotly dash
+mamba install -c conda-forge notebook
+```
+
+Visual Studio Code can then be installed either from the Windows Application (```.exe```) available on the [Visual Studio Code website](https://code.visualstudio.com/download). It is also available as a snap package in the Ubuntu Store:
+
+![155_img](./images/155_img.png)
+
+Launch the Windows Installer:
+
+![156_img](./images/156_img.png)
+
+Accept the License Agreement and select Next:
+
+![157_img](./images/157_img.png)
+
+Install in the default location and select Next:
+
+![158_img](./images/158_img.png)
+
+Select Next:
+
+![159_img](./images/159_img.png)
+
+Select Next:
+
+![160_img](./images/160_img.png)
+
+Select Install:
+
+![161_img](./images/161_img.png)
+
+Select Finish:
+
+![162_img](./images/162_img.png)
+
+Once installed, launch Visual Studio Code from the Start Screen or the mambaforge prompt by inputting:
+
+```
+mamba activate vscode-cf
+code
+```
+
+![163_img](./images/163_img.png)
+
+Select your desired colour scheme:
+
+![164_img](./images/164_img.png)
+
+To the left select extensions and then select the Python Extension and select Install:
+
+![165_img](./images/165_img.png)
+
+![166_img](./images/166_img.png)
+
+Visual Studio Code requires a folder for each project. Open file explorer and create a new folder:
+
+![167_img](./images/167_img.png)
+
+In Visual Studio Code, select the files tab and select Open Folder. Select the folder just created:
+
+![168_img](./images/168_img.png)
+
+![169_img](./images/169_img.png)
+
+You will be asked for permissions. Select Yes, I trust the authors:
+
+![170_img](./images/170_img.png)
+
+Select New File and create a Python Script file with the ```.py``` file extension:
+
+![171_img](./images/171_img.png)
+
+Open the file. To the bottom right you will see your Python interpretter. In this case the correct Python interpretter was selected.
+
+![172_img](./images/172_img.png)
+
+In other cases you may need to change the Python interpretter. To change this to the ```vscode-cf``` press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter:
+
+![173_img](./images/173_img.png)
+
+Select the ```vscode-cf``` mamba environment:
+
+![174_img](./images/174_img.png)
+
+Code auto-completion works better in Visual Code than in the other IDEs with an out of the way popup balloon displaying a list of identifiers with the prefix typed:
+
+![175_img](./images/175_img.png)
+
+A docstring popup balloon also displays when a function is input with open parenthesis:
+
+![176_img](./images/176_img.png)
+
+This also works correctly with Python inbuilt modules:
+
+![177_img](./images/177_img.png)
+
+![178_img](./images/178_img.png)
+
+And third-party datascience libraries:
+
+![179_img](./images/179_img.png)
+
+![180_img](./images/180_img.png)
+
+A script file can be run by selecting the run script button:
+
+![181_img](./images/181_img.png)
+
+To the bottom a Terminal should display. In the Python Terminal, Hello World displays. Multiple Terminals can be opened for Windows PowerShell and other programming languages. The Terminal can be resized vertically using the horizontal slider.
+
+![182_img](./images/182_img.png)
+
+For an automatic plot to display when executing a script, the script must include the function 
+
+```
+plt.show
+```
+
+![183_img](./images/183_img.png)
+
+Visual Studio Code also has a Variables tab. This is unfortunately only available when the script file is ran using Interactive Mode:
+
+![184_img](./images/184_img.png)
+
+Selecting run cells within a script file opens an interactive window to the right hand side:
+
+![185_img](./images/185_img.png)
+
+Plots display inline in the interactive mode:
+
+![186_img](./images/186_img.png)
+
+The Variables can be clicked into to be explored in more detail:
+
+![187_img](./images/187_img.png)
+
+Visual Studio Code can also be used to work with an Interactive Python Notebook. Select New File and create an Interactive Python Notebook file with the ```.ipynb``` file extension:
+
+![188_img](./images/188_img.png)
+
+![189_img](./images/189_img.png)
+
+![190_img](./images/190_img.png)
+
+![191_img](./images/191_img.png)
+
+# Removing a Python Environment
 
 Now multiple Python environments have been created. They can be listed using:
 
