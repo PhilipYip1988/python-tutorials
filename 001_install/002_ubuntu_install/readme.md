@@ -874,8 +874,8 @@ A similar Python environment can be setup for JupyterLab, the browser based IDE 
 ```
 mamba create -n jupyterlab-cf
 mamba activate jupyterlab-cf
-mamba install -c conda-forge jupyterlab
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install -c conda-forge jupyterlab
 mamba install -c conda-forge nodejs ipywidgets 
 mamba install -c conda-forge plotly dash jupyter-dash
 mamba install -c conda-forge jupyterlab-variableinspector
