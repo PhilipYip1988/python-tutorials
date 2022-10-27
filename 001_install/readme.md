@@ -1,6 +1,27 @@
-# The Python Ecosystem
+# Python Integrated Development Environments (IDEs)
 
-The Python ecosystem is pretty vast and a consequence there are numerous ways to install and use Python. There are five common ways:
+The Python ecosystem is pretty vast and a consequence there are a multitude of ways to install and use Python, offering great flexibility. On the other hand due to this flexibility, the process of installation appears fragmented and can become very confusing for a begineer. 
+
+Once Python is installed, it can be used with the Windows/Linux Terminal, a text editor and a file explorer and these three components are inbuilt into the Operating System. These three components also form the basis of a Python Integrated Development Environment often abbreviated as IDE.
+
+Python has numerous IDEs which offer additional features such as code-completion. Four of the most common IDEs are:
+
+* IDLE
+* Spyder
+* JupyterLab
+* Visual Studio Code
+
+Detailed installation guides for these four IDEs are available for Windows and Ubuntu Linux using the ```mamba``` package manager. For other Linux distributions and Mac OS, use the Ubuntu Linux guide as the procedure is essentially identical:
+
+[Mambaforge Install on Windows](./001_windows_install/)
+
+[Mambaforge Install on Ubuntu](./002_ubuntu_install/)
+
+Brief installation instructions and a comparison of the package managers are available for those already experienced with Python below. It is recommended for begineers to glance through the comparison of the package managers below and essentially ensure they use and stick to the ```mamba``` package manager.
+
+## Package Manager
+
+Before going ahead with the install, it is worthwhile taking the time to understand the differences in the five package managers that are commonly used to install Python and Python packages:
 
 |Installer Name|Package Manager|Python Base Environment|Python Base Environment Channel|
 |:-:|:-:|:-:|:-:|
@@ -9,10 +30,6 @@ The Python ecosystem is pretty vast and a consequence there are numerous ways to
 |Miniconda|conda|minimal|conda|
 |Miniforge|conda|minimal|conda-forge|
 |Mambaforge|mamba|minimal|conda-forge|
-
-## Package Manager
-
-Before going ahead with the install, it is worthwhile taking the time to understand the differences in the above methods, which fundamentally relate to the package manager, which is the utility used to install Python Packages.
 
 ### pip
 
@@ -58,13 +75,29 @@ Replace them with:
 mamba install -c conda-forge packagename
 ```
 
-Where possible explicitly specify, the ```conda-forge``` channel opposed to the ```conda``` channel. Note some larger developers such as ```pytorch``` use their own channel and you should continue to use their channel when instructed.
+The default channel for mambaforge is ```conda-forge```. It is however good practice to explicitly specify, the ```conda-forge``` channel when installing packages. Where possible ensure that the ```conda-forge``` channel is used opposed to the ```conda``` channel. Note some larger developers such as ```pytorch``` use their own channel and you should continue to use their channel when instructed.
 
-For example, to update the Python base environment using packages from the ```conda-forge``` channel use:
+## base env
+
+To update the Python base environment using packages from the ```conda-forge``` channel use:
 
 ```
 mamba update -c conda-forge --all
 ```
+
+To launch IDLE. In Windows use:
+
+```
+idle
+```
+
+In Ubuntu Linux use:
+
+```
+idle3
+```
+
+## Spyder env
 
 To create a new Python environment for the latest version of the Spyder IDE including its optional dependencies use:
 
@@ -74,6 +107,15 @@ conda activate spyder-cf
 mamba install -c conda-forge spyder
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
+
+To launch Spyder use:
+
+```
+mamba activate spyder-cf
+spyder
+```
+
+## JupyterLab env
 
 To create a new Python environment for the latest version of the JupyterLab IDE including its optional dependencies use:
 
@@ -87,27 +129,30 @@ mamba install -c conda-forge plotly dash jupyter-dash
 mamba install -c conda-forge jupyterlab-variableinspector
 ```
 
-To launch Spyder use:
-
-```
-conda activate spyder-cf
-spyder
-```
-
 To launch JupyterLab use:
 
 ```
-conda activate jupyterlab-cf
+mamba activate jupyterlab-cf
 jupyter-lab
 ```
 
-For those unexperienced with Python environments, the installation guides below explain the use of the above commands in a lot more detail and reveal what is physically happening using the file explorer.
+## VSCode env
 
-# Installation
+To create a new Python environment for the latest version of the Visual Studio Code IDE use:
 
-In this set of tutorials Mambaforge will be used to create a new Python environment and install the latest version of the Spyder and JupyterLab IDE from the ```conda-forge``` channel, its dependencies and the most commonly used datascience libraries. Installation instructions are available for Windows and Ubuntu Linux. The Mac Installation procedure is almost identical to Ubuntu Linux installation because the Mac Terminal and File structure are based upon their Linux counterparts:
+```
+mamba create -n vscode-cf
+mamba activate vscode-cf
+mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install -c conda-forge nodejs ipywidgets 
+mamba install -c conda-forge plotly dash
+mamba install -c conda-forge notebook vscode-python
+```
 
-[Mambaforge Install on Windows](./001_windows_install/)
+Visual Studio Code needs to be installed seperately using the Windows ```.exe``` or Ubuntu ```.deb```. The Python extension should be installed in Visual Studio Code. Then press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode-cf mamba``` environment.
 
-[Mambaforge Install on Ubuntu](./002_ubuntu_install/)
+To launch Visual Studio Code use:
 
+```
+code
+```
