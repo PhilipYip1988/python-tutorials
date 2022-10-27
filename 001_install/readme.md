@@ -156,7 +156,7 @@ Visual Studio Code needs to be installed seperately using the Windows ```.exe```
 
 The Python extension should be installed in Visual Studio Code. 
 
-In Visual Studio Code press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode-cf mamba``` environment.
+In Visual Studio Code press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode-cf``` ```mamba``` environment.
 
 To launch Visual Studio Code use:
 
