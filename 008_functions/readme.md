@@ -307,7 +307,7 @@ word2s = make_plural(word2)
 
 ![img_026](./images/img_026.png)
 
-Another function can be defiend which coutns the number of vowels within a word. In this example the code block of the function body contains a nested for loop. The input argument ```word``` is a string and the return value ```vowel_count``` is an integer.
+Another function can be defined which coutns the number of vowels within a word. In this example the code block of the function body contains a nested for loop. The input argument ```word``` is a string and the return value ```vowel_count``` is an integer.
 
 ```
 def count_vowels(word):
@@ -682,7 +682,7 @@ assert condition, "optional message"
 
 ![img_052](./images/img_052.png)
 
-Thefunction above can be modified, to assert that each input is a string:
+The function above can be modified, to assert that each input is a string:
 
 ```
 def print_words(word1, word2, word3="Hello", word4="Goodbye"):
