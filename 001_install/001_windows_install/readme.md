@@ -266,7 +266,7 @@ Notice the prompt change back to ```(base) %UserProfile%``` from ```>>>```.
 
 Python has a large number of Integrated Development Environments often abbreivated as IDEs. These are essentially a GUI which includes a console, script editior and file explorer.
 
-# The IDLE IDE Overview
+# The IDLE IDE
 
 Python comes preinstalled with the Integrated Development Learner Environment (IDLE). IDLE is found in:
 
