@@ -149,7 +149,7 @@ mamba activate vscode-cf
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 mamba install -c conda-forge nodejs ipywidgets 
 mamba install -c conda-forge plotly dash
-mamba install -c conda-forge notebook vscode-python
+mamba install -c conda-forge notebook
 ```
 
 Visual Studio Code needs to be installed seperately using the Windows ```.exe``` or Ubuntu ```.deb```. 
