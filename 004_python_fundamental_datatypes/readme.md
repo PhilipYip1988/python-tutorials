@@ -16,17 +16,17 @@ For the text datatype there is the ```str``` class. ```str``` is an abbreviation
 Note that text contained as part of a ```str``` must be enclosed in either a set of double quotations ```" "``` or single quotations ```' '```. For example
 
 ```
-"Hello"
-'Hello'
+"hello"
+'hello'
 ```
 
-When text is not enclosed in quotations Python looks for an inbuilt object name, or an object assigned by the user. For example when we type:
+When text is not enclosed in quotations Python looks for an inbuilt object name, or an object assigned by the user. For example when:
 
 ```
-Hello
+hello
 ```
 
-We are informed that the object ```Hello``` does not exist. We can verify this by looking at the variable inspector which can be accessed by right clicking empty space within the notebook file (requires the JupyterLab variable inspector extension to be installed):
+is input. Python displays an error because the object ```hello``` does not exist. This can be verified by looking at the variable inspector which can be accessed by right clicking empty space within the JupyterLab notebook file. This requires the JupyterLab Variable Inspector extension to be installed:
 
 ![002_variable_inspector](./images/002_variable_inspector.PNG)
 
@@ -45,37 +45,59 @@ hello = "hi"
 Note that this operator has a different meaning to equals in mathematics:
 
 ```
-1+2=3
+1 + 2 = 3
 ```
 
-Notice that when we use:
+Notice that when the following is used:
 
 ```
 hello = "hi"
 ```
 
-that the output of the cell becomes blank. The value ```"hi"``` on the right hand side is stored inside the variable or object name ```hello```:
+that the output of the cell becomes blank. The value ```"hi"``` on the right hand side is instead stored inside the variable or object name ```hello``` and the values stored to variable names are not displayed as a cell output by default.
 
 ![004_variable_assignment](./images/004_variable_assignment.PNG)
 
-And if we view the Variable Inspector we can see, the variable name ```hello``` contains the content ```"hi"``` which is of the type ```str```:
+In the Variable Inspector, the variable name ```hello``` contains the content ```"hi"``` which is of the type ```str```:
 
 ![005_variable_inspector](./images/005_variable_inspector.PNG)
 
-Now notice, when we run the first cell again that we now do not get an error message. This is because the variable name ```hello``` now exists. The cell outputs the value that is stored within this variable:
+Now notice, when the first cell is run again that there is now no error message. This is because the variable name ```hello``` now exists. The cell outputs the value that is stored within this variable:
 
 ![006_variable_assignment](./images/006_variable_assignment.PNG)
 
-Notice that the ```[1]``` which was previously at the side of this cell has been updated to ```[5]``` indicating this is the 5th cell to be ran.
+Notice that the ```[1]``` which was previously at the side of this cell has been updated to ```[5]``` indicating this is the 5th cell to be ran. Note it is usually bad practice to run cells out of order in an interactive notebook file as it can result in confusion when the notebook file is closed and reopened. Typically when a notebook file is reopened, the kernel is restarted and the cells are ran in descending order.
 
-The assignment operator ```=``` is not to be confused with the is equal to operator ```==``` which checks to see if the value on the left is equal to the value on the right. The following will yield ```True``` and ```False``` respectively:
+The *assignment operator* ```=``` is not to be confused with the *is equal* to operator ```==``` which checks to see if the value on the left is equal to the value on the right. The following will yield ```True``` and ```False``` respectively:
 
 ```
 "hi" == "hi"
 "hi" == "bye"
 ``` 
 
-variable names and strings are case sensitive. However it is recommended to use variable names that are lower case in Python. Variable names should not contain special characters with the exception to the underscore ```_```. Variable names should be descriptive where possible.
+variable names and strings are case sensitive meaning the following condition is ```False```:
+
+```
+"hi" == "Hi"
+``` 
+
+In Python the convention is to use variable names that are only lower case. Variable names should not contain special characters with the exception to the underscore ```_```. Moreover variable names should be descriptive where possible so the user knows what each variable name corresponds to. For example:
+
+```
+greeting = "hi"
+```
+
+Note that the value in a variable can be reassigned at a latter date:
+
+```
+greeting = "hello"
+```
+
+A constant, is a variable which has an initial value that is never intended to be reassigned. To denote a constant, all capital letters are used. For example;
+
+```
+ALWAYS_HI = "hi"
+```
 
 ### the del function
 
@@ -93,7 +115,7 @@ Notice that the variable no longer displays in the variable inspector:
 
 ![008_variable_inspector](./images/008_variable_inspector.PNG)
 
-And if the first cell is ran again which tries to reference this variable, we once again get an error message:
+If the first cell is ran again which tries to reference this variable, once again get the ```hello is not found``` error message displays:
 
 ![009_variable_delete](./images/009_variable_delete.PNG)
 
@@ -151,7 +173,7 @@ print(f"He said {greeting}, she said {farewell}")
 
 ![15_formatted_string.PNG](./images/15_formatted_string.PNG)
 
-Notice the syntax highlighing on JupyterLab makes it clear that ```greeting``` and ```farewell``` are objects.
+Notice the syntax highlighting on JupyterLab makes it clear that ```greeting``` and ```farewell``` are objects.
 
 ### escape characters
 
