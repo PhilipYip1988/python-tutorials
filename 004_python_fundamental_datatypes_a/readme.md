@@ -382,8 +382,11 @@ The del function
 
 The dir function
 
+Datamodel methods
 
+Once ints are discussed.
 
+The input function
 
 
 
