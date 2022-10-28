@@ -1,6 +1,6 @@
 # Markdown
 
-A text file can only be used to store unformatted text. The markdown file is similar to the text file, however allows text to be formatted using very simple markdown syntax. The Markdown file can be editted in JupyterLab or VSCode or it can be uploaded on GitHub directly and uploaded (this document itself is a Markdown file hosted on GitHub):
+A text file can only be used to store unformatted text. The markdown file is similar to the text file, however allows text to be formatted using very simple markdown syntax. The Markdown file can be editted in JupyterLab or Visual Studio Code or it can be uploaded on GitHub directly and edited within GitHub. This document itself is a Markdown file hosted on GitHub:
 
 ![001_markdown_preview](./images/001_markdown_preview.PNG)
 
@@ -21,6 +21,7 @@ Then extract the downloaded ZIP file and copy it to your Documents folder. Launc
 ---
 
 ## Formatted Text
+
 Text can be enclosed in stars ```*``` or tildas ```~``` to format it. One set of stars ```*``` makes text italic, two sets of stars ```*``` makes it bold and three sets of stars ```*``` makes it bold-italic. Two sets of tildas ```~``` make it strike-through. 
 
 The following markdown:
@@ -125,7 +126,7 @@ seashore
 
 ## Bullet Points
 
-Bullet points can be created by prepending each line with a star```*``` (but not ending with a star as recall that would make the text bold) or prepending each line with ```1.```, ```2.``` and so on for a numbered list.
+Bullet points can be created by prepending each line with a star```*``` (but not ending with a star as recall that would make the text italic) or prepending each line with ```1.```, ```2.``` and so on for a numbered list.
 
 The following markdown:
 
