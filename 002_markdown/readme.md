@@ -1,10 +1,10 @@
 # Markdown
 
-A text file can only be used to store unformatted text. The markdown file is similar to the text file, however allows text to be formatted using very simple markdown syntax. The Markdown file can be editted in JupyterLab:
+A text file can only be used to store unformatted text. The markdown file is similar to the text file, however allows text to be formatted using very simple markdown syntax. The Markdown file can be editted in JupyterLab or VSCode or it can be uploaded on GitHub directly and uploaded (this document itself is a Markdown file hosted on GitHub):
 
 ![001_markdown_preview](./images/001_markdown_preview.PNG)
 
-And the Markdown Preview can be viewed in another pane:
+The Markdown Preview can be viewed in another pane:
 
 ![002_markdown_preview](./images/002_markdown_preview.PNG)
 
@@ -21,8 +21,7 @@ Then extract the downloaded ZIP file and copy it to your Documents folder. Launc
 ---
 
 ## Formatted Text
-
-We can enclose text in stard ```*``` or tildas ```~``` to format it. One set of stars ```*``` makes text italic, two sets of stars ```*``` makes it bold and three sets of stars ```*``` makes it bold-italic. Two sets of tildas ```~``` make it strike-through. 
+Text can be enclosed in stars ```*``` or tildas ```~``` to format it. One set of stars ```*``` makes text italic, two sets of stars ```*``` makes it bold and three sets of stars ```*``` makes it bold-italic. Two sets of tildas ```~``` make it strike-through. 
 
 The following markdown:
 
@@ -38,7 +37,7 @@ Let's make a sentence with *italic text*, **bold text**, ***bold-italic*** and ~
 
 ## Escape Characters
 
-When we don't one to use one of the formatting characters to format the text but rather include it in the text, we can prepend it with the left slash ```\``` to insert an escape character. If we want to insert the left slash itself, ```\``` we usetwo left slashes ```\\``` where the first left slash ```\``` denotes insertion of an escape character and the second left slash ```\``` denotes the escape character to be inserted is the left slash itself```\```. The following markdown:
+When one of the formatting characters is required in the text, it needs to be prepended with the left slash ```\``` to insert an escape character. For example to insert the left slash itself, ```\``` two left slashes are used ```\\``` where the first left slash ```\``` denotes insertion of an escape character and the second left slash ```\``` denotes the escape character to be inserted is the left slash itself```\```. The following markdown:
 
 ```
 Let's make a sentence with \*italic text\*, \*\*bold text\*\*, \*\*\*bold-italic\*\*\* and \~\~strike-through\~\~ text.
@@ -99,7 +98,7 @@ seashells
 on the
 seashore
 
-If we want to deliberately separate it out into different lines, we must doubly space it. The following markdown:
+If instead the sentance is to be deliberately separated out over different lines, doubly space it. The following markdown:
 
 ```
 She sells
@@ -126,7 +125,7 @@ seashore
 
 ## Bullet Points
 
-We can easily create bullet points by prepending each line with a star```*``` (buut not ending with a star) or ```1.```, ```2.``` and so on for a numbeed list.
+Bullet points can be created by prepending each line with a star```*``` (but not ending with a star as recall that would make the text bold) or prepending each line with ```1.```, ```2.``` and so on for a numbered list.
 
 The following markdown:
 
@@ -187,8 +186,9 @@ Numeric List (spaced)
 
 ## Tables
 
-We can use the pipe ```|``` to create a table, row by row. The first row is the column names and the second row is the column formats (which can be changed to normal ```---```, left aligned ```:-```, right aligned ```-:```, left-aligned with title centred ```:-:```). The following markdown:
+The pipe ```|``` is used to seperate columns out in a table. The table is constructed row by row. The first row consists of the column names and the second row is the column alignment format specification (which can be changed to normal ```---```, left aligned ```:-```, right aligned ```-:```, left-aligned with title centred ```:-:```). All subsequent rows are rows containing table data.
 
+The following markdown:
 
 ```
 |num|number|
@@ -267,8 +267,7 @@ Produces the seperator line between the two arrows:
 
 ## Code
 
-If we want to include code we can begin and end the code with 3 back-quotes 
-```` ``` ````. The following markdown:
+To include code in a markdown file begin and end the code with 3 back-quotes ```` ``` ````. The following markdown:
 
 ```
 The code is ```print("Hello World!")```
@@ -278,7 +277,7 @@ Produces:
 
 The code is ```print("Hello World!")```
 
-We can use 3 back quotes ```` ``` ```` on a new line to begin and end a code-block. The following markdown:
+3 back quotes ```` ``` ```` on a new line can be used to begin and end a code-block. The following markdown:
 
 ````
 ```
@@ -298,7 +297,9 @@ print("Hello World!")
 print("Goodbye World!")
 ```
 
-Note the backquote doesn't work with the left slash when it comes to inserting an escape character. The following markdown:
+Note the backquote doesn't work with the left slash when it comes to inserting an escape character. 
+
+To include the ```` ``` ```` themselves as part of the markdown text. Enclose the three back quotes ```` ``` ```` in four backquotes ````` ```` `````. To get 4 backquotes (enclose in 5 backquotes). The following markdown:
 
 `````
 ````
@@ -362,7 +363,7 @@ equalx
 
 Links can be inserted using the syntax ```[]()``` where the square brackets are used to enclose the link name and the parenthesis are used to enclose the link address.
 
-If the link is an image this may be prepended with an exclimation mark ```![]()``` which will display the image within the markdown file.
+If the link is an image this may be prepended with an exclamation mark ```![]()``` which will display the image within the markdown file.
 
 The following markdown:
 
@@ -388,7 +389,9 @@ If the image is in the same folder as the markdown file. The file name can be sp
 
 In the file path ```\.``` can be used to specify a subfolder and ```\..``` can be used to go up a level. The ```001_image_equation.PNG``` in the subfolder ```images``` can be selected for example using the following markdown:
 
-```![equation](./images/003_image_equation.PNG)```
+```
+![equation](./images/003_image_equation.PNG)
+```
 
 Producing:
 
