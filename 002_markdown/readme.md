@@ -297,8 +297,6 @@ print("Hello World!")
 print("Goodbye World!")
 ```
 
-Note the backquote doesn't work with the left slash when it comes to inserting an escape character. 
-
 To include the ```` ``` ```` themselves as part of the markdown text. Enclose the three back quotes ```` ``` ```` in four backquotes ````` ```` `````. To get 4 backquotes (enclose in 5 backquotes). The following markdown:
 
 `````
