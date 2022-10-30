@@ -22,7 +22,7 @@ These quotations can either be a set of double quotations ```" "``` or a set of 
 'hello'
 ```
 
-When text is not enclosed in quotations Python looks for an inbuilt object name, or an object that ha been assigned by the user.
+When text is not enclosed in quotations Python looks for an inbuilt object name, or an object that has been assigned by the user.
 
 ```
 hello
@@ -64,7 +64,7 @@ When this cell is run, no output displays. This is because the output isstored i
 
 ![img_009](./images/img_009.png)
 
-Now tha this object name is assigned, the top cell can be rerun.
+Now that this object name is assigned, the top cell can be rerun.
 
 ![img_010](./images/img_010.png)
 
@@ -74,7 +74,7 @@ Because this object ```hello``` is now assigned, Python looks up this object and
 
 Notice tat h top cellnow dislays ```[5]``` opposed to ```[1]``` which indicates the order each cell was run in the Python Kernel. This cell as ran twice at ```[1]``` and ```[5]``` but only the last run is displayed.
 
-It is really bad practice to place cells in an inteactive notebook out of order. Normally when a notebook is reopened, the user will for to Kernel → Restart Kernel and Run All Cells...
+It is really bad practice to place cells in an interactive notebook out of order. Normally when a notebook is reopened, the user will for to Kernel → Restart Kernel and Run All Cells...
 
 ![img_012](./images/img_012.png)
 
@@ -103,7 +103,7 @@ The *assignment operator* ```=``` should not be confused with the *is equal* to 
 
 ![img_018](./images/img_018.png)
 
-The following will yield ```True``` and ```False``` respectively. Notice that ```True``` and ```False``` do not include quottions as they are not strings but are another ata type known as a ```bool```. Notice that they and are also capitalised. 
+The following will yield ```True``` and ```False``` respectively. Notice that ```True``` and ```False``` do not include quottions as they are not strings but are another data type known as a ```bool```. Notice that they and are also capitalised. 
 
 Python is case sensitive, so the following strings are not equal:
 
@@ -654,7 +654,7 @@ A string is an iterable collection of discrete characters with each character in
 
 ![img_079](./images/img_079.png)
 
-The string has an associated index and each character can be accessed by referencing the string name followed by the index enclosed in square brackets ```[]```. This is known as indexing. In Python **zero-order*** indexing is used. The **first** index is **0** and is **inclusive**. Counting occurs **from 0** and up to but **excluding** the **length of the string**:
+The string has an associated index and each character can be accessed by referencing the string name followed by the index enclosed in square brackets ```[]```. This is known as indexing. In Python **zero-order** indexing is used. The **first** index is **0** and is **inclusive**. Counting occurs **from 0** and up to but **excluding** the **length of the string**:
 
 ```
 greeting = "hello"
@@ -675,7 +675,7 @@ The ```len``` function is an inbuilt function which returns the length of a coll
 
 The return value of this function is an integer.
 
-Care should be taken when working with different datatypes, esspecially when one datatype looks like another datatype. An example can be made comparing the function of the ```+``` operator with strings and integer data:
+Care should be taken when working with different datatypes, especially when one datatype looks like another datatype. An example can be made comparing the function of the ```+``` operator with strings and integer data:
 
 ```
 "hello" + "world"
@@ -895,7 +895,7 @@ num3 = 1.0
 num4 = 1.
 ```
 
-On the variable explorer ```num1``` is an ``int``` while ```num2```, ```num3``` and ```num4``` are the type ```float```. 
+On the variable explorer ```num1``` is an ```int``` while ```num2```, ```num3``` and ```num4``` are the type ```float```. 
 
 The list of identifiers from a ```int``` instance:
 
