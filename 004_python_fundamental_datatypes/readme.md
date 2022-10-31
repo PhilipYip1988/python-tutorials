@@ -311,11 +311,11 @@ This method essentially allows one to create a formatted string. Variables can b
 
 ![img_037](./images/img_037.png)
 
-Alternatively named placeholder can be created. The name of the placeholders are provided as keyword input arguments that are assigned to a value when calling the ```format``` method:
+Alternatively named placeholders can be created. The name of the placeholders are provided as keyword input arguments that are assigned to a value when calling the ```format``` method:
 
 ![img_038](./images/img_038.png)
 
-It is possible to create a formatted string suing the f-string syntax. The quotations in the string are prepended with f and the variable names are provided as variable names within the placeholder.
+It is possible to create a formatted string using the f-string syntax. The quotations in the string are prepended with f and the variable names are provided as variable names within the placeholder.
 
 Two variables can be created:
 
