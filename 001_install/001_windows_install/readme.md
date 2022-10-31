@@ -10,6 +10,8 @@ The PC should match or exceed the following system requirements:
 
 The performance for Python will be very poor if these system requirements are not satisfied.
 
+[YouTube Tutorial](https://www.youtube.com/watch?v=O-WZedLq_sE)
+
 # Mambaforge Install
 
 Mambaforge can be downloaded from the Mambaforge GitHub repository. Make sure to download Mambaforge and not Miniforge (which excludes the Mamba package manager):
