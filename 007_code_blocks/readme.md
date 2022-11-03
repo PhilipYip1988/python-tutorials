@@ -76,15 +76,15 @@ next(forward)
 next(forward)
 ```
 
-![img_078](./images/img_078.png)
+![078_img](./images/078_img.png)
 
 A ```StopIteration``` error message displays when all values of the iterator are exceeded.
 
 A list and tuple also have a numeric index:
 
-![img_079](./images/img_079.png)
+![079_img](./images/079_img.png)
 
-![img_084](./images/img_084.png)
+![084_img](./images/084_img.png)
 
 An iterator made from one of these collections has identical behaviour to an iterator created from a string:
 
@@ -99,7 +99,7 @@ next(forward)
 next(forward)
 ```
 
-![img_080](./images/img_080.png)
+![080_img](./images/080_img.png)
 
 ```
 greeting = tuple(greeting)
@@ -112,11 +112,11 @@ next(forward)
 next(forward)
 ```
 
-![img_083](./images/img_083.png)
+![083_img](./images/083_img.png)
 
 The set is an unordered collection that can only contain unique values.
 
-![img_081](./images/img_081.png)
+![081_img](./images/081_img.png)
 
 Because a set is unordered, everytime the ```next``` function is used on an iterator object created from a set, an arbitrary value of the set will be displayed:
 
@@ -130,11 +130,11 @@ next(forward)
 next(forward)
 ```
 
-![img_082](./images/img_082.png)
+![082_img](./images/082_img.png)
 
 A dictionary has ```key: value``` pairs known as an ```item```. An iterator used on a dictionary will behave as though the dictionary is just a list of keys.
 
-![img_085](./images/img_085.png)
+![085_img](./images/085_img.png)
 
 
 ```
@@ -148,7 +148,7 @@ next(forward)
 next(forward)
 ````
 
-![img_086](./images/img_086.png)
+![086_img](./images/086_img.png)
 
 The reason for this, is the value can be accessed using the key:
 
@@ -163,7 +163,7 @@ colors[next(forward)]
 colors[next(forward)]
 ````
 
-![img_087](./images/img_087.png)
+![087_img](./images/087_img.png)
 
 It is also possible to  use the dictionary method items. To create an items object which is essentially of the form of a list of ```(key, value)``` tuples:
 
@@ -174,7 +174,7 @@ colors = {"red": "#FF0000",
 colors.items()
 ```
 
-![img_088](./images/img_088.png)
+![088_img](./images/088_img.png)
 
 An iterator object can be created using the dictionary items instead of the dictionary itself and displays each tuple when stepping through the iterator:
 
@@ -190,7 +190,7 @@ next(forward)
 next(forward)
 ```
 
-![img_089](./images/img_089.png)
+![089_img](./images/089_img.png)
 
 The dicitonary items instance can be cast to a list, so the entire sequence can be viewed:
 
@@ -232,7 +232,7 @@ next(forward)
 next(forward)
 ```
 
-![img_091](./images/img_091.png)
+![091_img](./images/091_img.png)
 
 An enumerate instance can be cast into a list so the entire sequence of tuples can be viewed:
 
@@ -240,13 +240,13 @@ An enumerate instance can be cast into a list so the entire sequence of tuples c
 list(enumerate("hello"))
 ```
 
-![img_095](./images/img_095.png)
+![095_img](./images/095_img.png)
 
 ## The range class
 
 The ```range``` class is used to create a numerical sequence. The range object takes one to three positional input arguments and has a very similar notation to the ```slice``` function when integer input arguments are used. 
 
-![img_092](./images/img_092.png)
+![092_img](./images/092_img.png)
 
 Like ```slice```, zero-order indexing is used. When all three positional input arguments are supplied the first input argument is the start value (inclusive), the second input argument is the stop value (exclusive) and the third input argument is the ```step```. For example:
 
@@ -254,7 +254,7 @@ Like ```slice```, zero-order indexing is used. When all three positional input a
 range(0, 4, 1)
 ```
 
-![img_093](./images/img_093.png)
+![093_img](./images/093_img.png)
 
 The range instance can be cast to a list, so the entire numeric sequence can be viewed:
 
@@ -262,7 +262,7 @@ The range instance can be cast to a list, so the entire numeric sequence can be 
 list(range(0, 4, 1))
 ```
 
-![img_094](./images/img_094.png)
+![094_img](./images/094_img.png)
 
 If a single positional input argument is supplied it will be assigned to the stop value and the start value will default from 0 and the step size will default to 1.
 
@@ -270,7 +270,7 @@ If a single positional input argument is supplied it will be assigned to the sto
 list(range(4))
 ```
 
-![img_097](./images/img_097.png)
+![097_img](./images/097_img.png)
 
 If a two positional input arguments are supplied, the will eb assigned to the stop and the start and the step size will default to 1.
 
@@ -278,7 +278,7 @@ If a two positional input arguments are supplied, the will eb assigned to the st
 list(range(0, 4))
 ```
 
-![img_098](./images/img_098.png)
+![098_img](./images/098_img.png)
 
 If the range instance is assigned to an instance name, it displays on the variable inspector and the following identifiers display when inputting the instance name followed by a dot ```.``` and tab ```↹```:
 
@@ -286,7 +286,7 @@ If the range instance is assigned to an instance name, it displays on the variab
 nums = range(4)
 ```
 
-![img_099](./images/img_099.png)
+![099_img](./images/099_img.png)
 
 The ```start```, ```stop``` and ```step``` values are available as attributes and the ```start``` is 0 and ```step``` is 1 as expected.
 
@@ -297,7 +297,7 @@ nums.stop
 nums.step
 ```
 
-![img_100](./images/img_100.png)
+![100_img](./images/100_img.png)
 
 The ```count``` and ```index``` methods behave like their counterparts in a list or tuple.
 
@@ -308,7 +308,7 @@ nums = range(100)
 dir(nums)
 ```
 
-![img_101](./images/img_101.png)
+![101_img](./images/101_img.png)
 
 The ```__iter__``` and ```__reversed__``` datamodel methods are defned so an iterator instance can be constructed using the ```iter``` function:
 
@@ -323,7 +323,7 @@ list(forward)
 
 ```next``` can be used to step through the iterator and the ```list``` class can be used to cast all remaining elements of the iterator to a list:
 
-![img_102](./images/img_102.png)
+![102_img](./images/102_img.png)
 
 ## for loops
 
@@ -390,47 +390,47 @@ It is common to give the collection a plural name and the associated loop variab
 
 The mechanism of a for loop can be examined in more detail using the debugger in the JupyterLab IDE:
 
-![img_103](./images/img_103.png)
+![103_img](./images/103_img.png)
 
 To begin, select view and show line numbers:
 
-![img_104](./images/img_104.png)
+![104_img](./images/104_img.png)
 
 Select the debugger:
 
-![img_105](./images/img_105.png)
+![105_img](./images/105_img.png)
 
 Open the debug tab to the right:
 
-![img_106](./images/img_106.png)
+![106_img](./images/106_img.png)
 
 Click the lower and upper line numbers to debug between:
 
-![img_107](./images/img_107.png)
+![107_img](./images/107_img.png)
 
 Select run:
 
-![img_108](./images/img_108.png)
+![108_img](./images/108_img.png)
 
 To the right under callstack is the option to step through the code:
 
-![img_109](./images/img_109.png)
+![109_img](./images/109_img.png)
 
 Notice that the list ```fruits``` is instantiated. Stepping through goes to the for loop statement.
 
-![img_110](./images/img_110.png)
+![110_img](./images/110_img.png)
 
 In the for loop statement, ```fruits``` can be considered as an iterator and ```fruit``` can be considered as the current value returned from the iterator which is ```"apples"```. Conceptualise behind the scenes, ```next``` being applied to the iterator. Stepping through goes to the ```print``` statement within the code block:
 
-![img_111](./images/img_111.png)
+![111_img](./images/111_img.png)
 
 This value ```fruit``` which is ```"apples"``` is printed:
 
-![img_112](./images/img_112.png)
+![112_img](./images/112_img.png)
 
 As the iterator still has remaining values, the debugger revisits the for statement at the beginning of the code block. ```fruit``` is reassigned to the value ```"bananas"```. Once again behind the scenes conceptualise  ```next``` being called on the iterator. 
 
-![img_113](./images/img_113.png)
+![113_img](./images/113_img.png)
 
 Continuing to step through will take the debugger to the ```print``` statement and then back up to the for statement and then to the ```print``` statement before finally exiting the for loop as the iterator is exhausted and has no values left.
 
