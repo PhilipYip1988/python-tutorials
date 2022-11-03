@@ -1,158 +1,8 @@
 # Code Blocks
 
-## range and enumerate
+## Recap: Collections
 
-The previous tutorial looked at list and tuple collections. A string was also considered to be a collection of characters. Each of these collections have an index with the first number in the index being ```0``` as Python uses zero-order indexing.
-
-In addition to the above a ```range``` object can be created using the syntax:
-
-```
-range(start, stop, step)
-```
-
-For example:
-```
-range(0, 10, 1)
-```
-
-![001_range_object](./images/001_range_object.png)
-
-Because Python uses zero-order indexing, the ```range``` object is inclusive of the ```start``` bound and exclusive of the ```stop``` bound. The ```start``` value of 0 is included and the range object increases using a ```step``` of 1 until the ```stop``` of 10 is reached, however the final value 10 itself is excluded. This can be seen more clearly by assigning the range object to a variable:
-
-```
-ro = range(0, 10, 1)
-```
-
-![002_range_object](./images/002_range_object.png)
-
-![003_range_object](./images/003_range_object.png)
-
-And then casting it to a list:
-
-```
-rol = list(ro)
-```
-
-![004_range_object](./images/004_range_object.png)
-
-![005_range_object](./images/005_range_object.png)
-
-![009_range_object](./images/009_range_object.png)
-
-Or directly:
-
-```
-list(range(0, 10, 1))
-```
-
-![006_range_object](./images/006_range_object.png)
-
-The range object can be indexed in a similar manner to a list:
-
-```
-ro[0]
-ro[1]
-ro[2]
-ro[3]
-ro[4]
-```
-
-![007_range_object](./images/007_range_object.png)
-
-And if the final index of the range object is exceeded, an out of range error is displayed:
-
-```
-ro[11]
-```
-
-![008_range_object](./images/008_range_object.png)
-
-In the above as the ```start``` was 0 and the ```step``` was 1, therefore the index and the value for each item in the range object matched. ```0``` and ```1``` are the default values for ```start``` and ```step``` respectively.
-
-![009_range_object](./images/009_range_object.png)
-
-The range object can be created explicitly specifying 3 positional input arguments. When the ```step``` is 1, it does not have to be explicitly specified:
-
-```
-range(start, stop, step)
-range(start, stop, 1)
-range(start, stop)
-```
-
-When the ```step``` is 1, and the ```start``` is 0, only the ```stop``` value needs to be specified:
-
-```
-range(start, stop, step)
-range(0, stop, 1)
-range(0, stop)
-range(stop)
-```
-
-For clarity, a range object with a ```step``` of 2 will be created, which means the index and the value at the index now differ:
-
-```
-ro = range(0, 10, 2)
-rol = list(ro)
-```
-![010_range_object](./images/010_range_object.png)
-
-![011_range_object](./images/011_range_object.png)
-
-![012_range_object](./images/012_range_object.png)
-
-
-Sometimes it is useful to ```enumerate``` such a range object:
-
-```
-roe = enumerate(ro)
-```
-
-![013_range_object](./images/013_range_object.png)
-
-![014_range_object](./images/014_range_object.png)
-
-Enumeration creates a collection of tuple (index, value) pairs. This can be more clearly seen by casting the enumerate object to a list:
-
-```
-roel = list(roe)
-```
-
-![015_range_object](./images/015_range_object.png)
-
-![016_range_object](./images/016_range_object.png)
-
-![017_range_object](./images/017_range_object.png)
-
-A list object has an index for each value and like demonstrated above can also be enumerated:
-
-```
-lo = ["apples", "bananas", "grapes"]
-loel = list(enumerate(lo))
-```
-
-![018_enumerate_object](./images/018_enumerate_object.png)
-
-![019_enumerate_object](./images/019_enumerate_object.png)
-
-![020_enumerate_object](./images/020_enumerate_object.png)
-
-![021_enumerate_object](./images/021_enumerate_object.png)
-
-A string can also be regarded as a collection of characters, with each character having its own index and can also be enumerated:
-
-```
-s = "apples"
-sl = list(s)
-soel = list(enumerate(s))
-```
-
-![022_enumerate_object](./images/022_enumerate_object.png)
-
-![023_enumerate_object](./images/023_enumerate_object.png)
-
-![024_enumerate_object](./images/024_enumerate_object.png)
-
-![025_enumerate_object](./images/025_enumerate_object.png)
+The previous two tutorials looked at fundamental datatypes in Python including integers, floats, booleans and strings. It also looked at collections such as the list, tuple, set and dictionary and examined how the string had both characteristics of a fundamental datatype and a collection.
 
 ## Code Block Spacing
 
@@ -181,8 +31,6 @@ Usually there are two blank lines left at the end of the code block to make it c
 
 ![029_code_block](./images/029_code_block.png)
 
-Some code blocks can be more complicated and have nested statements. 
-
 ```
 statement:
     belong in block
@@ -194,7 +42,7 @@ outside block
 outside block
 ```
 
-Anything belonging to a nested statement is indented twice using 8 spaces (4 spaces for the outer statement and another 4 spaces for the inner statement).
+Code blocks can included statements with nested code blocks. Anything belonging to a nested statement is indented twice using 8 spaces (4 spaces for the outer statement and another 4 spaces for the inner statement).
 
 ```
 statement1:
@@ -213,6 +61,270 @@ outside block
 
 ![030_code_block](./images/030_code_block.png)
 
+## iter and reverse
+
+The ```iter``` function can be used to create an iterator object from a string. Recall that a string has a numeric index and everytime the ```next``` function is used on the iterator object, the iterator moves up one index of the string, returning the corresponding value at that index.
+
+```
+greeting = "hello"
+forward = iter(greeting)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![078_img](./images/078_img.png)
+
+A ```StopIteration``` error message displays when all values of the iterator are exceeded.
+
+A list and tuple also have a numeric index:
+
+![079_img](./images/079_img.png)
+
+![084_img](./images/084_img.png)
+
+An iterator made from one of these collections has identical behaviour to an iterator created from a string:
+
+```
+greeting = list(greeting)
+forward = iter(greeting)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![080_img](./images/080_img.png)
+
+```
+greeting = tuple(greeting)
+forward = iter(greeting)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![083_img](./images/083_img.png)
+
+The set is an unordered collection that can only contain unique values.
+
+![081_img](./images/081_img.png)
+
+Because a set is unordered, everytime the ```next``` function is used on an iterator object created from a set, an arbitrary value of the set will be displayed:
+
+```
+greeting = set(greeting)
+forward = iter(greeting)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![082_img](./images/082_img.png)
+
+A dictionary has ```key: value``` pairs known as an ```item```. An iterator used on a dictionary will behave as though the dictionary is just a list of keys.
+
+![085_img](./images/085_img.png)
+
+
+```
+colors = {"red": "#FF0000", 
+          "green": "#00B050", 
+          "blue": "#0070C0"}
+forward = iter(colors)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+````
+
+![086_img](./images/086_img.png)
+
+The reason for this, is the value can be accessed using the key:
+
+```
+colors = {"red": "#FF0000", 
+          "green": "#00B050", 
+          "blue": "#0070C0"}
+forward = iter(colors)
+colors[next(forward)]
+colors[next(forward)]
+colors[next(forward)]
+colors[next(forward)]
+````
+
+![087_img](./images/087_img.png)
+
+It is also possible to  use the dictionary method items. To create an items object which is essentially of the form of a list of ```(key, value)``` tuples:
+
+```
+colors = {"red": "#FF0000", 
+          "green": "#00B050", 
+          "blue": "#0070C0"}
+colors.items()
+```
+
+![088_img](./images/088_img.png)
+
+An iterator object can be created using the dictionary items instead of the dictionary itself and displays each tuple when stepping through the iterator:
+
+```
+colors = {"red": "#FF0000", 
+          "green": "#00B050", 
+          "blue": "#0070C0"}
+colors.items()
+forward = iter(colors.items())
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![089_img](./images/089_img.png)
+
+The dicitonary items instance can be cast to a list, so the entire sequence can be viewed:
+
+```
+colors = {"red": "#FF0000", 
+          "green": "#00B050", 
+          "blue": "#0070C0"}
+list(colors.items())
+```
+
+![096_img](./images/096_img.png)
+
+## The enumerate class
+
+The ```enumerate``` class creates an enumeration instance which like the dictionary items is a list of 2 value tuples. Instead of each tuple being a ```(key, value)``` pair, each tuple is a ```(index, value)``` pair. 
+
+```
+greeting = enumerate("hello")
+```
+
+The enumerate instance does not display on the variable inspector and no identifiers display when inputting the enumerate instance name followed by a dot ```.``` and tab ```↹```:
+
+![090_img](./images/090_img.png)
+
+The datamodel identifiers display when the directory function ```dir``` is used on the enumerator instance:
+
+```
+dir(greeting)
+```
+
+The enumerate instance can be converted to an iterator and each tuple is displayed as the iterator is stepped through:
+
+```
+greeting = enumerate("hello")
+forward = iter(greeting)
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![091_img](./images/091_img.png)
+
+An enumerate instance can be cast into a list so the entire sequence of tuples can be viewed:
+
+```
+list(enumerate("hello"))
+```
+
+![095_img](./images/095_img.png)
+
+## The range class
+
+The ```range``` class is used to create a numerical sequence. The range object takes one to three positional input arguments and has a very similar notation to the ```slice``` function when integer input arguments are used. 
+
+![092_img](./images/092_img.png)
+
+Like ```slice```, zero-order indexing is used. When all three positional input arguments are supplied the first input argument is the start value (inclusive), the second input argument is the stop value (exclusive) and the third input argument is the ```step```. For example:
+
+```
+range(0, 4, 1)
+```
+
+![093_img](./images/093_img.png)
+
+The range instance can be cast to a list, so the entire numeric sequence can be viewed:
+
+```
+list(range(0, 4, 1))
+```
+
+![094_img](./images/094_img.png)
+
+If a single positional input argument is supplied it will be assigned to the stop value and the start value will default from 0 and the step size will default to 1.
+
+```
+list(range(4))
+```
+
+![097_img](./images/097_img.png)
+
+If a two positional input arguments are supplied, the will eb assigned to the stop and the start and the step size will default to 1.
+
+```
+list(range(0, 4))
+```
+
+![098_img](./images/098_img.png)
+
+If the range instance is assigned to an instance name, it displays on the variable inspector and the following identifiers display when inputting the instance name followed by a dot ```.``` and tab ```↹```:
+
+```
+nums = range(4)
+```
+
+![099_img](./images/099_img.png)
+
+The ```start```, ```stop``` and ```step``` values are available as attributes and the ```start``` is 0 and ```step``` is 1 as expected.
+
+```
+nums = range(4)
+nums.start
+nums.stop
+nums.step
+```
+
+![100_img](./images/100_img.png)
+
+The ```count``` and ```index``` methods behave like their counterparts in a list or tuple.
+
+The directory of a range object can be examined using the ```dir``` function:
+
+```
+nums = range(100)
+dir(nums)
+```
+
+![101_img](./images/101_img.png)
+
+The ```__iter__``` and ```__reversed__``` datamodel methods are defned so an iterator instance can be constructed using the ```iter``` function:
+
+```
+nums = range(100)
+forward = iter(nums)
+next(forward)
+next(forward)
+next(forward)
+list(forward)
+```
+
+```next``` can be used to step through the iterator and the ```list``` class can be used to cast all remaining elements of the iterator to a list:
+
+![102_img](./images/102_img.png)
+
 ## for loops
 
 The ```for``` loop executes a code block for every item in a collection. The ```for``` loop uses the keywords ```for``` and ```in```. As an example, the collection can be a list of strings:
@@ -227,7 +339,9 @@ collection = ["apples", "bananas", "grapes"]
 
 ![033_for_loop](./images/033_for_loop.png)
 
-A ```loop_var``` can be assigned. This ```loop_var``` will take the value at index 0 ```"apples"``` during the first iteration of the for loop, it will then be reassigned the value at index 1 ```"bananas"``` during the second iteration of the for loop and then be reassigned the value at index 2 (also index -1) ```"grapes"``` during the final iteration of the for loop.
+The line ```for loop_var in collection``` essentially creates an iterator and assigns the current value of the iterator to ```loop_var``` during each iteration of the loop.
+
+This ```loop_var``` will take the value at index 0 ```"apples"``` during the first iteration of the for loop, it will then be reassigned the value at index 1 ```"bananas"``` during the second iteration of the for loop and then be reassigned the value at index 2 (also index -1) ```"grapes"``` during the final iteration of the for loop.
 
 This can be demonstrated by including a ```print``` statement in the code block.
 
@@ -272,50 +386,55 @@ for fruit in fruits:
 
 ![037_for_loop](./images/037_for_loop.png)
 
-Notice that the collection is plural and the loop variable is singular. 
+It is common to give the collection a plural name and the associated loop variable a singular name. 
 
-This can be examined in more detail using the debugger.
+The mechanism of a for loop can be examined in more detail using the debugger in the JupyterLab IDE:
 
-![038_debug_for_loop](./images/038_debug_for_loop.png)
+![103_img](./images/103_img.png)
 
-Executing the first line, creates the collection which displays on the variable explorer:
+To begin, select view and show line numbers:
 
-![039_debug_for_loop](./images/039_debug_for_loop.png)
+![104_img](./images/104_img.png)
 
-Executing the next line assigns the loop variable ```fruit``` to the value ```"apples"```:
+Select the debugger:
 
-![040_debug_for_loop](./images/040_debug_for_loop.png)
+![105_img](./images/105_img.png)
 
-Executing the next line prints ```"apples"```:
+Open the debug tab to the right:
 
-![041_debug_for_loop](./images/041_debug_for_loop.png)
+![106_img](./images/106_img.png)
 
-Executing the next line assigns the loop variable ```fruit``` to the value ```"bananas"```:
+Click the lower and upper line numbers to debug between:
 
-![042_debug_for_loop](./images/042_debug_for_loop.png)
+![107_img](./images/107_img.png)
 
-Executing the next line prints ```"bananas"```:
+Select run:
 
-![043_debug_for_loop](./images/043_debug_for_loop.png)
+![108_img](./images/108_img.png)
 
-Executing the next line assigns the loop variable ```fruit``` to the value ```"grapes"```:
+To the right under callstack is the option to step through the code:
 
-![044_debug_for_loop](./images/044_debug_for_loop.png)
+![109_img](./images/109_img.png)
 
-Executing the next line prints ```"grapes"```:
+Notice that the list ```fruits``` is instantiated. Stepping through goes to the for loop statement.
 
-![045_debug_for_loop](./images/045_debug_for_loop.png)
+![110_img](./images/110_img.png)
 
-Executing the next line, exits the local space of the code block, returning to the main space of the script.
+In the for loop statement, ```fruits``` can be considered as an iterator and ```fruit``` can be considered as the current value returned from the iterator which is ```"apples"```. Conceptualise behind the scenes, ```next``` being applied to the iterator. Stepping through goes to the ```print``` statement within the code block:
 
-![046_debug_for_loop](./images/046_debug_for_loop.png)
+![111_img](./images/111_img.png)
 
-Executing the next line, reaches the end of the script and exits:
+This value ```fruit``` which is ```"apples"``` is printed:
 
-![047_debug_for_loop](./images/047_debug_for_loop.png)
+![112_img](./images/112_img.png)
 
-Instead of printing the loop variable, a constant ```hello``` can be printed. This is printed for index 0, 1 and 2.
+As the iterator still has remaining values, the debugger revisits the for statement at the beginning of the code block. ```fruit``` is reassigned to the value ```"bananas"```. Once again behind the scenes conceptualise  ```next``` being called on the iterator. 
 
+![113_img](./images/113_img.png)
+
+Continuing to step through will take the debugger to the ```print``` statement and then back up to the for statement and then to the ```print``` statement before finally exiting the for loop as the iterator is exhausted and has no values left.
+
+Instead of printing the loop variable, a constant ```hello``` can be printed. This constant ```"hello"``` is printed for each value of the iterator (irrespective of what the value itself is) at index 0, 1 and 2.
 
 ![033_for_loop](./images/033_for_loop.png)
 
@@ -330,7 +449,7 @@ for loop_var in collection:
 
 ![048_for_loop](./images/048_for_loop.png)
 
-Notice in this case, ```loop_var``` was defined but never used. It is common convention to use ```_``` in such a scenario:
+Notice in this case, ```loop_var``` was defined but never used. Some IDEs will flag this up as a problem. It is a common convention to use ```_``` in such a scenario:
 
 ```
 collection = ["apples", "bananas", "grapes"]
@@ -343,7 +462,7 @@ for _ in collection:
 
 ![049_for_loop](./images/049_for_loop.png)
 
-A range object could also be used to reproduce this.
+A range object would be better suited to reproduce printing the static string ```"hello"``` three times:
 
 ```
 for _ in range(0, 3, 1):
@@ -365,7 +484,7 @@ for _ in range(3):
 
 ![051_for_loop](./images/051_for_loop.png)
 
-A range object can be enumerated as seen before.
+A range object with a step size of 2 can be enumerated:
 
 ```
 ro = range(0, 10, 2)
@@ -380,7 +499,7 @@ In this case, the loop variable ```loop_var``` is now a tuple with index 0 of th
 
 ![053_for_loop](./images/053_for_loop.png)
 
-We can view this by printing a formatted string.
+Each components of this tuple can be included within a formatted string and the print statement for this formatted string can be placed within the body of the for loop.
 
 ```
 ro = range(0, 10, 2)
