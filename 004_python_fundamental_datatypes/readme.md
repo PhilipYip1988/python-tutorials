@@ -7,7 +7,7 @@ In python consider the following fundamental types of data:
   * whole numbers
   * numbers with a decimal point
   
-[YoutTube Tutorial](https://www.youtube.com/watch?v=OlZ_jG6ZZy4)
+[YoutTube Tutorial](https://www.youtube.com/watch?v=hYQ_IHMYFy0)
 
 ## The string class
 
