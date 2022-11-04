@@ -6,6 +6,8 @@ In python consider the following fundamental types of data:
 * numeric data
   * whole numbers
   * numbers with a decimal point
+  
+[YoutTube Tutorial](https://www.youtube.com/watch?v=OlZ_jG6ZZy4)
 
 ## The string class
 
