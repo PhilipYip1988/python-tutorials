@@ -1,8 +1,14 @@
 # Working with Custom Modules
 
-## Script File
+The previous tutorials have looked at working with inbuilt datatypes such as the string, integer, boolean, floating point number, list, tuple, set and dictionary. These are all inbuilt datatypes found in the builtins module which is imported by default for every interactive Python ntoebook or Python Script file. 
 
-A python script file called ```script0.py``` will be created in the same folder otherwise known as directory as the interactive notebook file. For simplicity this script file will contain two lines of code to create a variable and a function:
+Outwith the general purpose builtins module, Python is compartmentalised into other modules. These modules are used to group variables and functions together that are tailored for a specific application area. 
+
+This guide will look at creating simple custom modules and importing objects from these modules, giving the perquisites required for using Pythons inbuilt modules, in addition to third-party datascience modules or libraries.
+
+## The Python Script File (.py Extension)
+
+A python script file called ```script0.py``` will be created in the same folder otherwise known as directory as the interactive notebook file. For simplicity this script file will contain two lines of code to create a variable and a function using a lambda expression:
 
 ```
 greeting = "Hello"
@@ -12,25 +18,25 @@ print(greeting)
 
 ![img_000](./images/img_000.png)
 
-### import
+## import
 
-The ```import``` command can be used to import the script. The import command is followed by the name of the script which acts as an input argument in this context:
+The ```import``` statement can be used to import the script. The import statement is followed by the name of the script:
 
 ```
 import script0
 ```
 
-Note when the import command is used, there is no ```.py``` file extension provided for the input script.
+Notice that when the import statement is used, there is no ```.py``` file extension provided for the input script.
 
 ![img_001](./images/img_001.png)
 
-Notice that when the ```script0``` is imported, the code within ```script0``` is executed. The variable ```greeting``` and the function ```row_number_to_str``` are defined within the namespace of the module and the print statement is executed which is why ```hello``` is shown in the cell output.
+Notice also when the ```script0``` is imported, the code within ```script0``` is executed. The variable ```greeting``` and the function ```row_number_to_str``` are defined within the namespace of the module and the print statement is executed which is why ```hello``` is shown in the cell output.
 
 The file extension is dropped because the dot ```.``` is used in Python to indicate that an object is contained within another object. Think of the syntax ```container.item``` as taking an ```item``` out of a ```container```. If ```script0.``` is typed followed by tab ```↹```:
 
 ![img_002](./images/img_002.png)
 
-then a list of all the objects contained within ```script0``` display. The variable and function contained in ```script0``` can be used by inputting:
+then a list of all the identifiers contained within ```script0``` display. The variable and function contained in ```script0``` can be used by inputting:
 
 ```
 script0.greeting
@@ -39,9 +45,9 @@ script0.row_number_to_str(100)
 
 ![img_003](./images/img_003.png)
 
-### import as alias
+## import as alias
 
-If a script file is widely used, throughout an interactive notebook, it can be useful to import the script file as an alias. Typically the alias is a shorter name than the name of the script file. For example the alias ```s0``` can be used:
+If a script file is widely used, throughout an interactive notebook, it can be useful to import the script file as an alias. Typically the alias is a shorter name than the original name of the script file. For example the alias ```s0``` can be used:
 
 ```
 import script0 as s0
@@ -49,7 +55,7 @@ import script0 as s0
 
 ![img_004](./images/img_004.png)
 
-If ```s0.``` is typed followed by tab ```↹```, a list of all the objects contained within ```s0``` display. The variable and function can be used by inputting:
+If ```s0.``` is typed followed by tab ```↹```, a list of all the identifiers contained within ```s0``` display. The variable and function can be used by inputting:
 
 ```
 script0.greeting
@@ -58,9 +64,9 @@ script0.row_number_to_str(100)
 
 ![img_005](./images/img_005.png)
 
-### from Script File import object
+## from Script File import object
 
-Alternatively an individual object can be directly imported from the script. Inputting:
+Alternatively an individual object can be directly imported from the script file. Inputting:
 
 ```
 from script0 import
@@ -70,7 +76,7 @@ followed by a tab ```↹``` reveals a list of all the objects that can be import
 
 ![img_006](./images/img_006.png)
 
-For example the object ```greeting``` can be imported using:
+For example the object ```greeting``` can be imported using the statement:
 
 ```
 from script0 import greeting
@@ -99,19 +105,19 @@ row_number_to_str(100)
 
 ![img_008](./images/img_008.png)
 
-It is possible to import all objects using a ```*```, although this practice is generally frowned upon as it makes it harder to diagnose where an object name came from when reading through the notebook.
+It is possible to import all objects using a ```*```, although this practice is generally frowned upon as it makes it harder to diagnose where an object name came from when reading through the notebook especially if all objects are impored from multiple modules.
 
 ```
 from script0 import *
 ```
 
-## Library (Directory)
+## A Python Library
 
-A collection of script files can be placed together in a folder (also known as a directory). A directory called ```directory``` will be created in the same parent folder as the interactive notebook:
+A Python Library is a folder otherwise known as a directory which usually contains multiple Python script files. A directory called ```directory``` will be created in the same parent folder as the interactive notebook:
 
 ![img_009](./images/img_009.png)
 
-Within this directory an **init**ialisation script file will be created with the file name ```__init__.py```. i.e. ```init``` is enclosed in a set of double underscores:
+Within this directory a datamodel script file should be created with the file name ```__init__.py```. This datamodel script file is the intialization script file and is the script file that is executed when a directory is imported.
 
 ![img_010](./images/img_010.png)
 
@@ -122,7 +128,7 @@ farewell = "Goodbye"
 col_number_to_str = lambda number: "c" + str(number)
 ```
 
-When the folder is imported, this initialisation script file ```__init__.py``` will be imported:
+When the directory is imported, this datamodel initialization script file ```__init__.py``` is imported:
 
 ```
 import directory
@@ -130,7 +136,7 @@ import directory
 
 ![img_011](./images/img_011.png)
 
-The contents can viewed by inputting the director name followed by a dot ```.``` and tab ```↹```:
+The contents can viewed by inputting the directory name followed by a dot ```.``` and tab ```↹```:
 
 ![img_012](./images/img_012.png)
 
@@ -143,7 +149,7 @@ directory.col_number_to_str(200)
 
 ![img_013](./images/img_013.png)
 
-## Module (Script File)
+## Module 
 
 Additional Python script files can be placed in the directory. Each individual script file in the directory is known as a Python ```module``` and the directory containing all the script files is known as a ```library```. A module can be accessed from the folder using the syntax ```library.module```.
 
@@ -180,30 +186,30 @@ m1.cr_number_to_str(300)
 ![img_017](./images/img_017.png)
 
 
-## Module (Directory)
+## Module (subdirectory)
 
-It is also possible in some cases, to create a module as a subdirectory (subfolder). In this example, a subdirectory (subfolder) called ```mod2``` is created:
+A subdirectory (subfolder) called ```mod2``` can be created:
 
 ![img_018](./images/img_018.png)
 
-Within this subdirectory (subfolder) another initialisation ```__init__.py``` script file is created and has the basic contents:
+Within this subdirectory (subfolder) another datamodel initialisation ```__init__.py``` script file is created with the basic contents: 
 
 ```
 word = "Python"
 x_number_to_str = lambda number: "x" + str(number)
 ```
 
-This initialisation script file will once again be referenced when this subdirectory (subfolder) is imported:
-
 ![img_019](./images/img_019.png)
 
-The subdirectory (subfolder) is also a module and can be imported using the same syntax as before:
+ the ```.``` syntax is also used to get to a subdirectory. This subdirectory is imported using:
 
 ```
 import directory.mod2 as m2
 ```
 
-Now if ```m2.``` is input, followed by a tab ```↹```, the list of objects that can be referenced from the module called ```mod``` with alias ```m2``` will display:
+When this subfolder is imported, the ```__init__.py``` datamodel initialiation script file found within this subdirectory is executed.
+
+Now if ```m2.``` is input, followed by a tab ```↹```, the list of objects that can be referenced from the module called ```mod2``` with alias ```m2``` will display:
 
 
 ![img_020](./images/img_020.png)
@@ -214,7 +220,7 @@ These objects can be used with:
 
 ```
 m2.word
-m1.x_number_to_str(500)
+m2.x_number_to_str(500)
 ```
 
 ![img_022](./images/img_022.png)
@@ -288,6 +294,8 @@ The else code block is carried out when the script file is not the main module:
 
 ![img_033](./images/img_033.png)
 
+This convention is quite commonly used when interacting with hardware that uses multiple components. Each component has its own script file with code for controlling that component and code to run that components hardware diagnostics. The diagnostics are not run by default when ```__name__``` is not equal to ```___main__``` and the script file is imported in a larger program. However if a user runs the particular components script file directly, the ```__name__``` becomes ```__main__``` and the associated hardware diagnostics are run.
+
 The ```__file__``` datamodel attribute gives the physical location of the file:
 
 ```
@@ -352,7 +360,7 @@ mod.__package__
 
 ![img_029](./images/img_029.png)
 
-The ```__init__.py``` within the folder directory can be modified to include a docstring and the datamodel attributes can be accessed as variables within the script file and printed using formatted strings:
+The datamodel initialisation script file ```__init__.py``` within the folder directory can be modified to include a docstring and the datamodel attributes can be accessed as variables within the script file and printed using formatted strings:
 
 ```
 """
