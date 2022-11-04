@@ -1,8 +1,8 @@
-# Objects
+# Functions
 
-Python is an object orientated programming language. This tutorial will briefly recap over the concept of variables and focus on custom functions.
+The previous tutorials have looked at using inbuilt functions with inbuilt datatypes such as strings, integers, floats, bools, lists, tuples, sets and dictionaries. When using a function, some concepts have already been explroed such a positional and keyword input arguments and referencing a function versus calling a function. In this guide, custom functions will be defined and called.
 
-## Variables
+## Variables Recap
 
 Variables can be created by assigning a value to an object name using the assignment operator ```=```.
 
@@ -15,16 +15,11 @@ var4 = ["apples", "bananas", "grapes"]
 
 Once created, these variables display on the variable explorer.
 
-![img_000](./images/img_000.png)
+![img_069](./images/img_069.png)
 
-![img_001](./images/img_001.png)
+## Function Definition
 
-
-## Functions
-
-### Function Definition
-
-Instead of using the assignment operator ```=```, a function is defined to an object name using the ```def``` keyword. Function definition is typically more complicated than variable assignment, as functions have input arguments and also include a function code block.
+Instead of using the assignment operator ```=```, a function is defined to an object name using the ```def``` keyword, an abbreviation for definition. Function definition is typically more complicated than variable assignment, as functions require an input arguments and also include a function code block. The cocept of code blocks has previously been explored.
 
 The form of a function is as follows.
 
@@ -62,16 +57,21 @@ The final line in the code block is the ```return``` statement, which can be use
 
 ![img_008](./images/img_008.png)
 
-When the function is defined, it does not display on the variable explorer. However beginning to type the functions name in a cell, will display the function name as a an object. The object displays as a function. 
+When the function is defined, it does not display on the variable inspector. 
 
-![img_001](./images/img_001.png)
+![img_070](./images/img_070.png)
 
-![img_009](./images/img_009.png)
+Using the function ```dir``` without any input arguments will look up the directory of the current interctive notebook file and the function ```fun_name``` displays:
 
+![img_071](./images/img_071.png)
 
-### Calling a Function
+Inputting a prefix of the functions name in a cell followed by a tab ```↹``` will show object names in the interactive notebooks name space that begin with the prefix. I this case the prefox is ```f``` and the function ```fun_name``` displays:
 
-If the function name is typed into a cell. The output of the cell states that the object is a function, giving some details about the location where the function is defined.
+![img_072](./images/img_072.png)
+
+## Calling a Function
+
+If the function name is typed into a cell. The output of the cell states that the object is a function, giving some details about the location where the function is defined. ```__main__``` is a datamodel identifier and in this case corresponds to the interactive notebook file itself which is directly running in Python. The reference essentially states ```fun_name``` is a function, defined in the current interactive notebook and has the name ```fun_name```.
 
 ```
 fun_name
@@ -87,21 +87,19 @@ fun_name()
 
 ![img_011](./images/img_011.png)
 
-Notice that the print statement in the functions code block is now executed.
-
-The output of a function call, can be assigned to a variable. For example.
+Notice that the print statement in the functions code block is now executed. The output of a function call, can be assigned to a variable. For example.
 
 ```
 fun_out = fun_name()
 ```
 
-![img_012](./images/img_012.png)
+![img_073](./images/img_073.png)
 
-![img_013](./images/img_013.png)
+Notice that the variable displays on the variable inspector with a value of ```NoneType```. This is because the last line in the functions code block is ```return None```. 
 
-Notice that the variable displays on the variable explorer as a ```NoneType``` object. This is because the last line in the functions code block is ```return None```.
+Note when the ```return``` statement is not included at the end of the function block ```return None``` is taken as the default. This is explicitly implied in this example for clarity. 
 
-### return Statement
+## return Statement
 
 Two subtly different functions will now be defined, ```print_hello``` which has a print statement printing the value ```"Hello"``` to the console and a ```return None``` return value. And the function ```return_hello``` which has no print statement but returns the value ```"Hello"```.
 
@@ -129,20 +127,20 @@ return_hello()
 
 ![img_014](./images/img_014.png)
 
-In the first case, a value is printed to the cell output. In the second case, the value returned is displayed at the cell output.
+In the first case, a value is printed to the cell output and because it is printed, the output is formatted, so ```Hello``` displays without any quotation marks. i.e. the print function is displaying text in the cell output using the ```__str__``` method of the string.
 
-The difference can be seen more clearly, when the functions are called and assigned to variables.
+In the second case, the value returned and not assigned to a variable name so the representation of the string is displayed in the cell output. i.e. the cell is displaying text which used the ```__repr__``` method of the string.
+
+The difference can be seen more clearly, when the two functions are called and assigned to variables.
 
 ```
 print_out = print_hello()
 return_out = return_hello()
 ```
 
-![img_015](./images/img_015.png)
+![img_074](./images/img_074.png)
 
-![img_016](./images/img_016.png)
-
-Notice that there is still a cell output when the ```print_hello``` function is used, because this function uses a print statement. The variable ```print_out``` has the value ```None``` because this function has a ```return None``` return statement.
+Notice that there is still a cell output when the ```print_hello``` function is used, because this function uses a print statement which always as the name suggests prints. The variable ```print_out``` has the value ```None``` because this function has a ```return None``` return statement.
 
 In constrast there is no cell output when the ```return_hello``` function is used, because this function has returned the value to the variable ```return_out```. ```return_out``` can be seen to have the value ```"Hello"``` on the variable explorer.
 
@@ -159,15 +157,13 @@ def print_hello():
 print_out = print_hello()
 ```
 
-![img_017](./images/img_017.png)
-
-![img_018](./images/img_018.png)
+![img_075](./images/img_075.png)
 
 This is because ```None``` is the default return value.
 
-### Input Arguments
+## Input Arguments
 
-A simple function can be defined which has a single input argument ```value```. This function will return this input argument ```value``` unaltered.
+A simple function can be defined which has a single input argument ```value```. This function will merely return this input argument ```value``` unaltered.
 
 ```
 def return_value(value):
@@ -188,23 +184,21 @@ If the function name is typed with open parenthesis followed by the shortcut key
 
 ![img_020](./images/img_020.png)
 
-If the function is called with an input argument, it will run as expected. The new variables ```var1``` and ```var2``` will display on the variable explorer.
+If the function is called with an input argument, it will run as expected. The new variables ```var1``` and ```var2``` will display on the variable inspector.
 
 ```
 var1 = return_value("Hello")
 var2 = return_value(value="Hello")
 ```
 
-![img_021](./images/img_021.png)
-
-![img_022](./images/img_022.png)
+![img_076](./images/img_076.png)
 
 In the above case, when assigning the output of the function to ```var1```, the function was called by providing a singular positional input argument. When using positional input arguments, they need to be provided in the correct order, matching the order of the function definition.
 
 When assigning the output of the function to ```var2```, the function was called by explicitly defining a variable name and assigning it to a value. In such a scenario, the order of the positional input arguments can be changed provided that all the positional input arguments are supplied. In general however it is recommended to maintain the order of the positional input arguments.
 
 
-### docstring
+## docstring
 
 When using shift ```⇧``` and tab ```↹```, details about the input arguments are supplied, alongside the functions docstring. A docstring can be provided by creating a multi-line comment at the top of the functions code block. 
 
@@ -303,11 +297,10 @@ word1s = make_plural(word1)
 word2s = make_plural(word2)
 ```
 
-![img_025](./images/img_025.png)
+![img_077](./images/img_077.png)
 
-![img_026](./images/img_026.png)
 
-Another function can be defined which coutns the number of vowels within a word. In this example the code block of the function body contains a nested for loop. The input argument ```word``` is a string and the return value ```vowel_count``` is an integer.
+Another function can be defined which counts the number of vowels within a word. In this example the code block of the function body contains a nested for loop. The input argument ```word``` is a string and the return value ```vowel_count``` is an integer.
 
 ```
 def count_vowels(word):
@@ -336,23 +329,23 @@ def count_vowels(word):
 
 ```
 
+This function can be tested using the input string ```"anaconda"```.
+
 ![img_027](./images/img_027.png)
 
-This function can be tested using the input string ```"anaconda"```.
+
+Since the function has a return statement, the value being returned can be assigned to a variable during the function call:
 
 ```
 word1 = "anaconda"
 vowel_n = count_vowels(word1)
 ```
 
-![img_028](./images/img_028.png)
+![img_078](./images/img_078.png)
 
-![img_029](./images/img_029.png)
-
-Each function can only have one return statement. However this return value can be a collection such as a list or a tuple. The function above can be midified to return a list containing two values, the vowel count and the consonant count. Once again the docstring should outline clearly what each input argument is and what each value in the return list is.
+Each function can only have one return statement. However this return value can be a collection such as a list or a tuple. The function above can be modified to return a list containing two values, the vowel count and the consonant count. Once again the docstring should outline clearly what each input argument is and what each value in the return list is.
 
 ```
-
 def count_vowels_cons(word):
     """
     This function takes in a word and returns the number of vowels 
@@ -383,17 +376,19 @@ def count_vowels_cons(word):
 
 ```
 
+This function can be once again be tested using the input string ```"anaconda"```. 
+
 ![img_030](./images/img_030.png)
 
-This function can be once again be tested using the input string ```"anaconda"```. 
+Since the function has a return statement, which returns a collection, each value in the collection can be assigned to a variable during the function call:
 
 ```
 word1 = "anaconda"
 [vowel_n, cons_n] = count_vowels_cons(word1)
 ```
-![img_031](./images/img_031.png)
 
-![img_032](./images/img_032.png)
+![img_079](./images/img_079.png)
+
 
 The list collection can also be unpacked using.
 
@@ -401,9 +396,9 @@ The list collection can also be unpacked using.
 vowel_n, cons_n = count_vowels_cons(word1)
 ```
 
-![img_033](./images/img_033.png)
+![img_080](./images/img_080.png)
 
-### Positional and Keyword Input Arguments
+## Positional and Keyword Input Arguments
 
 So far a function has been created with no positional input arguments and one positional input argument. It is possible to create a function with other combinations of positional and keyword input arguments. 
 
@@ -528,7 +523,7 @@ print_words(word4="mamba", word1="Python", word2="Anaconda", word3="pip")
 
 ![img_038](./images/img_038.png)
 
-**However this is generally bad practice*** and it is better practice to maintain the order of the positional input arguments to prevent any confusion. 
+**However this is generally bad practice** and it is better practice to maintain the order of the positional input arguments to prevent any confusion. 
 
 The more conventional syntax used to call the function above is of the form:
 
@@ -839,7 +834,7 @@ print_words("Python", "Anaconda", word3=2)
 
 ![img_059](./images/img_059.png)
 
-### Function Local Scope
+## Function Local Scope
 
 Two variables will be created ```x``` and ```y```, alongside a function ```add_numbers``` that takes two positional input arguments ```x``` and ```y```. **These should not be confused with one another and are not the same variable.**
 
@@ -872,16 +867,53 @@ result = add_numbers(x=3, y=4)
 
 
 ```
+Functions have their exclusive namespace. To explore this concept the debugger will be used. To use the debugger, all of the code, defining the function and calling the function will be input into the same cell. 
 
-When the code above is run:
+Under View, Show Line Numbers should be enabled:
 
-![img_060](./images/img_060.png)
+![img_081](./images/img_081.png)
 
-The internal function variable ```value``` is computed by summing the values of ```x``` and ```y``` that were supplied as the input arguments when the function was called. Notice that these had the values ```3``` and ```4``` respectively, meaning ```value``` has a value of ```7```. This variable ```value``` is assigned to the variable ```result```, as assignment to this variable name was made during the function call. Therefore ```result``` has a value of ```7``` and this is a variable that is outside the function.
+To the top select debug and then select the lower and upper line numbers to debug:
 
-After the function call, the values of ```x``` and ```y``` remain ```1``` and ```2``` as these variables are outside the function and independent of the input arguments of the function which had the same names but operated over a different scope.
+![img_082](./images/img_082.png)
 
-![img_061](./images/img_061.png)
+Expand the debug tab and run the cell:
+
+![img_083](./images/img_083.png)
+
+To the right a callstack displays. It has the following buttons Continue, Stop, Next, Step In and Step Out:
+
+![img_084](./images/img_084.png)
+
+Selecting Next twice will assign the variables ```x``` and ```y``` which belong to ```__main__``` the namespace of the Interactive Python Notebook file.
+
+![img_085](./images/img_085.png)
+
+Selecting Next again assigns the function to the object name ```add_numbers```. This is displayed as a function variable. The two variables ```x``` and ```y``` and the function ```add_numbers``` are objects within the ```__main___``` namespace (the namespace of the Interactive Python Notebook file).
+
+![img_086](./images/img_086.png)
+
+Now the function call is highlighted. The function has two input arguments ```x``` and ```y``` and data must be supplied to each of these during the function call. The data 3 and 4 is provided from the ```__main__``` namespace to the functions positional input arguments ```x``` and ```y```. These positional input arguments are independent of the variables ```x``` and ```y``` in the ```__main___``` namespace.
+
+Selecting Step In will step in to the local names space of the function ```add_numbers```:
+
+![img_087](./images/img_087.png)
+
+In the functions local name space these input arguments now display as local variables.
+
+Selecting Next runs the line of code and ```value``` is created as another local variable within the functions namespace and has the value of 7:
+
+![img_088](./images/img_088.png)
+
+Selecting either Next or Step Out will Step Out of this function. ```value``` (a variable in the functions local name space) which had a value of 7 is returned to the ```__main__``` namespace. If the function call was not assigned to a variable, its representation 7 would display. In this case however the function call is assigned to the variable ```result``` so ```result``` stores this value of 7.
+
+![img_089](./images/img_089.png)
+
+Selecting Continue steps out of the debugger and the variales ```x```, ```y``` and ```result``` which are all variables in the ```__main__``` namespace display in the variable inspector.
+
+![img_090](./images/img_090.png)
+
+The variables ```x``` and ```y``` in the ```__main__``` namespace remain ```1``` and ```2``` and operate over a different scope to the positional input arguments ```x``` and ```y``` in the function napespace.
 
 The ```x``` and ```y``` assigned outside the function are inaccessible within the local scope of the function. The only way to access variables within a function is to explicitly supply the values of the variables as input arguments when calling the function:
 
@@ -889,13 +921,19 @@ The ```x``` and ```y``` assigned outside the function are inaccessible within th
 result = add_numbers(x=x, y=y)
 ```
 
+The right hand side of the assignment operator are the variables ```x``` and ```y``` from the ```__main__``` namespace which have a value fo 1 and 2 respectively.
+
+The left hand side of the assignment operator is the name of the positional input arguments which become local variables within the function namespace.
+
 ![img_062](./images/img_062.png)
 
-The input arguments ```"x"``` and ```"y"``` become local function variables. These local function variables are not accessible outside the function, unless they are returned to an interactive notebook variable using the ```return``` statement.
+Data from the ```__main__``` namespace is not accessible to a function namespace unless provided as an input argument during the function call.
 
-To demonstrate, the value of the input arguments ```x``` and ```y``` can be reassigned within the code block of the function and a new variable ```z``` can also be created within the code block of the function. ```x```, ```y``` and ```z``` are local function variables and not accessible elsewhere.
+Data from the function namespace is not accessible to the ```__main__``` namespace unless provided in a return statement during the function call.
 
-The local function variable ```value``` on the other hand which was computed using the final values of ```x```, ```y``` and ```z``` is supplied via the ```return``` statement and assigned to the variable ```result```. Once again an assignment to this variable name was made during the function call.
+For example if the value of the input arguments ```x``` and ```y``` are reassigned within the code block of the function, and a new variable ```z``` is defined within the function namespace i.e. within the function code block. ```x```, ```y``` and ```z``` are local function variables and not accessible elsewhere.
+
+The local function variable ```value``` on the other hand which was computed using the final values of ```x```, ```y``` and ```z``` is supplied via the ```return``` statement and this value is assigned to the ```__main__``` variable ```result```. 
 
 ```
 x = 1
@@ -969,7 +1007,7 @@ result = add_numbers()
 
 ![img_064](./images/img_064.png)
 
-### *args and **kwargs
+## *args and **kwargs
 
 Up until this point, a specified number of positional and keyword input arguments have been used. 
 
