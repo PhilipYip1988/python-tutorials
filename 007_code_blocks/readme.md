@@ -1,8 +1,6 @@
 # Code Blocks
 
-## Recap: Collections
-
-The previous two tutorials looked at fundamental datatypes in Python including integers, floats, booleans and strings. It also looked at collections such as the list, tuple, set and dictionary and examined how the string had both characteristics of a fundamental datatype and a collection.
+This tutorial will look at the use of code blocks in the Python programming language. Code blocks can be used to repeat an operation multiple times, looping over a value in a collection or directing code in response to a condition.
 
 ## Code Block Spacing
 
@@ -60,6 +58,10 @@ outside block
 ```
 
 ![030_code_block](./images/030_code_block.png)
+
+## Recap: Collections
+
+The previous tutorials looked at fundamental datatypes in Python including integers, floats, booleans and strings. Collections such as the list, tuple, set and dictionary were also examined. The string in particular was noted to have both characteristics of a fundamental datatype and of a collection. Some properties of collections will be evisited and built upon, giving the perquisites for a for loop.
 
 ## iter and reverse
 
@@ -192,7 +194,7 @@ next(forward)
 
 ![089_img](./images/089_img.png)
 
-The dicitonary items instance can be cast to a list, so the entire sequence can be viewed:
+The dictionary items instance can be cast to a list, so the entire sequence can be viewed:
 
 ```
 colors = {"red": "#FF0000", 
@@ -205,7 +207,7 @@ list(colors.items())
 
 ## The enumerate class
 
-The ```enumerate``` class creates an enumeration instance which like the dictionary items is a list of 2 value tuples. Instead of each tuple being a ```(key, value)``` pair, each tuple is a ```(index, value)``` pair. 
+The ```enumerate``` class creates an enumerate instance which like the dictionary items is a list of 2 value tuples. Instead of each tuple being a ```(key, value)``` pair, each tuple is a ```(index, value)``` pair. 
 
 ```
 greeting = enumerate("hello")
@@ -234,7 +236,7 @@ next(forward)
 
 ![091_img](./images/091_img.png)
 
-An enumerate instance can be cast into a list so the entire sequence of tuples can be viewed:
+An enumerate instance can also be cast into a list so the entire sequence of tuples can be viewed:
 
 ```
 list(enumerate("hello"))
@@ -272,13 +274,15 @@ list(range(4))
 
 ![097_img](./images/097_img.png)
 
-If a two positional input arguments are supplied, the will eb assigned to the stop and the start and the step size will default to 1.
+If two positional input arguments are supplied, they will be assigned to the start and the stop respectively. The step size will default to 1.
 
 ```
 list(range(0, 4))
 ```
 
 ![098_img](./images/098_img.png)
+
+Although integer examples have been used for the start, stop and step and an analogy has been made with the previously used slice object. It is also possible to use floating point values for the input arguments to the range function returning a range object of floating point numbers.
 
 If the range instance is assigned to an instance name, it displays on the variable inspector and the following identifiers display when inputting the instance name followed by a dot ```.``` and tab ```↹```:
 
@@ -310,7 +314,7 @@ dir(nums)
 
 ![101_img](./images/101_img.png)
 
-The ```__iter__``` and ```__reversed__``` datamodel methods are defned so an iterator instance can be constructed using the ```iter``` function:
+The ```__iter__``` and ```__reversed__``` datamodel methods are defined so an iterator instance can be constructed using the ```iter``` function:
 
 ```
 nums = range(100)
@@ -356,11 +360,11 @@ for loop_var in collection:
 
 ![034_for_loop](./images/034_for_loop.png)
 
-Notice that the loop variable ```loop_var``` displays in the variable explorer and has its final value.
+Notice that the loop variable ```loop_var``` displays in the variable inspector and has its final value ```"grapes"``` which can be conceptualised as the last value of an iterator object.
 
-![035_for_loop](./images/035_for_loop.png)
+![114_img](./images/114_img.png)
 
-The loop variable ```loop_var``` is just a standard variable and follows the standard Python convention for object names. The above can be rewritten using.
+The loop variable ```loop_var``` can be considered as a variable name and can be renamed more appropriatelydepending on the context as long as it follows the standard Python convention for object names. The above for example can be rewritten using.
 
 ```
 collection = ["apples", "bananas", "grapes"]
@@ -373,7 +377,7 @@ for word in collection:
 
 ![036_for_loop](./images/036_for_loop.png)
 
-Or alternatively.
+In many cases it is common to give the collection a plural name and the associated loop variable a singular name.
 
 ```
 fruits = ["apples", "bananas", "grapes"]
@@ -385,8 +389,6 @@ for fruit in fruits:
 ```
 
 ![037_for_loop](./images/037_for_loop.png)
-
-It is common to give the collection a plural name and the associated loop variable a singular name. 
 
 The mechanism of a for loop can be examined in more detail using the debugger in the JupyterLab IDE:
 
