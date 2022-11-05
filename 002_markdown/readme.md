@@ -1,5 +1,7 @@
 # Markdown
 
+[YouTube Tutorial](https://www.youtube.com/watch?v=oB31JV27CnA)
+
 A text file can only be used to store unformatted text. The markdown file is similar to the text file, however allows text to be formatted using very simple markdown syntax. The Markdown file can be editted in JupyterLab or Visual Studio Code or it can be uploaded on GitHub directly and edited within GitHub. This document itself is a Markdown file hosted on GitHub:
 
 ![001_markdown_preview](./images/001_markdown_preview.PNG)
