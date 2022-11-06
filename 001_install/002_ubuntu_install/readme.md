@@ -1,3 +1,7 @@
+# Installing Python on Ubuntu Linux (Mambaforge, IDLE, Spyder, JupyterLab, VSCode)
+
+[YouTube Video](https://www.youtube.com/watch?v=BOTfBW3KQh8)
+
 ## System Requirements
 
 The PC should match or exceed the following system requirements:
