@@ -1,4 +1,8 @@
-# System Requirements
+# Installing Python on Windows 11 (Mambaforge, IDLE, Spyder, JupyterLab, VSCode)
+
+[YouTube Tutorial](https://www.youtube.com/watch?v=O-WZedLq_sE)
+
+## System Requirements
 
 The PC should match or exceed the following system requirements:
 
@@ -10,9 +14,7 @@ The PC should match or exceed the following system requirements:
 
 The performance for Python will be very poor if these system requirements are not satisfied.
 
-[YouTube Tutorial](https://www.youtube.com/watch?v=O-WZedLq_sE)
-
-# Mambaforge Install
+## Mambaforge Install
 
 Mambaforge can be downloaded from the Mambaforge GitHub repository. Make sure to download Mambaforge and not Miniforge (which excludes the Mamba package manager):
 
@@ -180,7 +182,7 @@ To install a package of specific version use the command:
 mamba install -c conda-forge packagename=1.2.3
 ```
 
-# Running Python from the Mambaforge Prompt
+## Running Python from the Mambaforge Prompt
 
 Python is now installed and it can be used to execute code in a Python Script File. Go to the Documents folder and right click the empty space and select New → Text Document:
 
@@ -264,11 +266,11 @@ exit()
 
 Notice the prompt change back to ```(base) %UserProfile%``` from ```>>>```. 
 
-# Integrated Development Environment
+## Integrated Development Environment
 
 Python has a large number of Integrated Development Environments often abbreivated as IDEs. These are essentially a GUI which includes a console, script editior and file explorer.
 
-# The IDLE IDE
+## The IDLE IDE
 
 Python comes preinstalled with the Integrated Development Learner Environment (IDLE). IDLE is found in:
 
@@ -331,7 +333,7 @@ The print statement is observed on the IDLE Shell as expected:
 
 ![108_img](./images/108_img.png)
 
-# Python Environments
+## Python Environments
 
 Other Python IDEs generally need to be installed. Because these IDEs are typically large programs, with a large number of dependencies, it is generally advised to create a seperate Python environment for each IDE. A Python environment is essentially a subinstallation. Up until this point the default Python environment has been used ```base```. 
 
@@ -347,7 +349,7 @@ By default this is empty:
 
 ![026_envs](./images/026_envs.png)
 
-# The Spyder IDE
+## The Spyder IDE
 
 To create a Python Environment use the command:
 
@@ -623,7 +625,7 @@ The variables created ```x``` and ```y``` are displayed in Spyders Variable Expl
 
 ![060_envs](./images/060_envs.png)
 
-A basic command can be used to create a plot. By default plots display in the Plots pane as a static image however the backend can be changed to Automatic to enable an itneractive plot in its own window. 
+A basic command can be used to create a plot. By default plots display in the Plots pane as a static image however the backend can be changed to Automatic to enable an interactive plot in its own window. 
 
 This can be done by going to Tools and Preferences:
 
@@ -685,7 +687,7 @@ The docstring popup balloon also looks slightly different between the console an
 
 ![150_img](./images/150_img.png)
 
-# The JupyterLab IDE
+## The JupyterLab IDE
 
 Another Python environment will be created for the JupyterLab IDE. The JupyterLab IDE is a browser based IDE and has the same optional dependencies as Spyder. because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. These extensions require ```nodejs```. An optional variable inspector is also available however is limited in comparison to Spyder.
 
@@ -906,7 +908,7 @@ If the ```.ipynb``` file is opened in notepad. The nodejs script can be viewed d
 
 The nodejs code can be seen to enclose the Python code. Plotting libraries such as plotly take Python syntax from the user and output nodejs code which is used to display the interactive plot.
 
-# The Visual Studio Code IDE
+## The Visual Studio Code IDE
 
 A similar Python environment can be setup for Visual Studio Code:
 
@@ -1063,7 +1065,7 @@ Visual Studio Code can also be used to work with an Interactive Python Notebook.
 
 ![191_img](./images/191_img.png)
 
-# Removing a Python Environment
+## Removing a Python Environment
 
 Now multiple Python environments have been created. They can be listed using:
 
