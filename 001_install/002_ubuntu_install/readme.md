@@ -891,10 +891,8 @@ JupyterLab is browser based and has a number of browser based extensions. Additi
 To launch JupyterLab, activate the ```jupyterlab-cf``` Python environment and use the command:
 
 ```
-jupyter-lab
+jupyter lab
 ```
-
-Note there is a dash here.
 
 ![img_118](./images/img_118.png)
 
