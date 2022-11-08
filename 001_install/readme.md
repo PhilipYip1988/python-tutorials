@@ -130,6 +130,7 @@ mamba install -c conda-forge jupyterlab
 mamba install -c conda-forge nodejs ipywidgets 
 mamba install -c conda-forge plotly dash jupyter-dash
 mamba install -c conda-forge jupyterlab-variableinspector
+jupyter lab build
 ```
 
 To launch JupyterLab use:
