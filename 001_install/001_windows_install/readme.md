@@ -705,10 +705,8 @@ jupyter lab build
 To launch JupyterLab, activate the Python environment and use:
 
 ```
-jupyter-lab
+jupyter lab
 ```
-
-Note this is the only place where a ```-``` is used between Jupyter and Lab:
 
 ![067_jupyterlab](./images/067_jupyterlab.png)
 
