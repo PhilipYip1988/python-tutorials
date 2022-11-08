@@ -282,8 +282,6 @@ list(range(0, 4))
 
 ![098_img](./images/098_img.png)
 
-Although integer examples have been used for the start, stop and step and an analogy has been made with the previously used slice object. It is also possible to use floating point values for the input arguments to the range function returning a range object of floating point numbers.
-
 If the range instance is assigned to an instance name, it displays on the variable inspector and the following identifiers display when inputting the instance name followed by a dot ```.``` and tab ```↹```:
 
 ```
