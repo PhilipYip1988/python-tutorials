@@ -137,7 +137,7 @@ To launch JupyterLab use:
 
 ```
 mamba activate jupyterlab-cf
-jupyter-lab
+jupyter lab
 ```
 
 ## VSCode env
