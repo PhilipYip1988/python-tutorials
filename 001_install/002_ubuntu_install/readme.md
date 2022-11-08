@@ -883,6 +883,7 @@ mamba install -c conda-forge jupyterlab
 mamba install -c conda-forge nodejs ipywidgets 
 mamba install -c conda-forge plotly dash jupyter-dash
 mamba install -c conda-forge jupyterlab-variableinspector
+jupyter lab build
 ```
 
 JupyterLab is browser based and has a number of browser based extensions. Additional HTML based plotting libraries such as plotly work particularly well with JupyterLab.
