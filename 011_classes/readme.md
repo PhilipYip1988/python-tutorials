@@ -1078,19 +1078,6 @@ class ModObj(object):
         self.text = text
         return None
 
-
-    def __repr__(self):
-        return f"ModObj: {self._text}"
-
-
-    def capitalize(self):
-        """
-        capitalizes text inplace
-        """
-        new_text = self._text.capitalize()
-        return ModObj(new_text)
-    
-    
     @property
     def text(self):
         return self._text
@@ -1102,6 +1089,16 @@ class ModObj(object):
         self._text = text
         return None
     
+    def __repr__(self):
+        return f"ModObj: {self.text}"
+
+
+    def capitalize(self):
+        """
+        capitalizes text inplace
+        """
+        new_text = self.text.capitalize()
+        return ModObj(new_text)
     
     
 ```    
