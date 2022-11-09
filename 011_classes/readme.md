@@ -899,7 +899,7 @@ one.capitalize()
 
 error ...
 
-The ```text``` attribute will be renamed ```_text```. The prefix of the attribute name with the underscore is a convention used to indicate that the attribute is designed to be used internally within a class. For comparison a second attribute ``text2``` will be created without the underscore.
+The ```text``` attribute will be renamed ```_text```. The prefix of the attribute name with the underscore is a convention used to indicate that the attribute is designed to be used internally within a class. For comparison a second attribute ```text2``` will be created without the underscore. Both these input arguments will need to be supplied when instantiating a new instance of ```ModObj```.
 
 ```
 class ModObj(object):
@@ -925,7 +925,7 @@ class ModObj(object):
         capitalizes text inplace
         """
         new_text = self._text.capitalize()
-        return ModObj(new_text)
+        return ModObj(new_text, self.text2)
    
    
 ```
@@ -997,7 +997,7 @@ class ModObj(object):
         capitalizes text inplace
         """
         new_text = self.text._capitalize()
-        return ModObj(new_text)
+        return ModObj(new_text, self.text2)
     
 
 ```    
@@ -1014,8 +1014,53 @@ If used with help ```? ModObj.text```, the docstring provided for the property d
 
 
 
+Because the ```text``` property is assigned using ```property``` with ```_get_text```, ```set_text``` and ```_del_text```, it can be accessed as ```text``` opposed to ```_text``` elsewhere within the class, for example in the methods ```__init__```, ```__repr__``` and ```capitalize```.
+
+```
+class ModObj(object):
+    """
+    modified text object
+    """
+    
+    def __init__(self, text, text2):
+        """
+        text : str
+        """
+        self.text = text
+        self.text2 = text2
+        return None
+    
+    def _get_text(self):
+        return self._text
+    
+    
+    def _set_text(self, text):
+        assert type(text) == str, "text must be str"
+        self._text = text
+        return None
+    
+    
+    def _del_text(self):
+        self._text = "empty"
+        return None   
+    
+    
+    text = property(fget=_get_text, fset=_set_text, fdel=_del_text, doc="The text property.")
 
 
+    def __repr__(self):
+        return f"ModObj: {self.text}"
+
+
+    def capitalize(self):
+        """
+        capitalizes text inplace
+        """
+        new_text = self.text.capitalize()
+        return ModObj(new_text, self.text2)
+    
+
+```
 
 
 
