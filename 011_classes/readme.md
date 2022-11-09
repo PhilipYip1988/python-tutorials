@@ -859,7 +859,9 @@ obj2.greeting("Sarah")
 
 ![img_047](./images/img_047.png)
 
-## get, set and del
+## Property Attribute
+
+If the following class is recreated:
 
 ```
 class ModObj(object):
@@ -885,21 +887,24 @@ class ModObj(object):
         """
         new_text = self.text.capitalize()
         return ModObj(new_text)
-    
 
-```
+
+```    
+
+The ```__init__``` signature expects a string as an input argument however appears to work if a numeric input is instead supplied:
 
 ```
 one = ModObj(1)
 ```
 
+This will be problematic later on when a method suchh as ```capitalize``` expects the datatype to be a string displaying an ```AttributeError: 'int' object has no attribute 'capitalize'```
+
 ```
 one.capitalize()
 ```
+![img_048](./images/img_048.png)
 
-error ...
-
-The ```text``` attribute will be renamed ```_text```. The prefix of the attribute name with the underscore is a convention used to indicate that the attribute is designed to be used internally within a class. For comparison a second attribute ```text2``` will be created without the underscore. Both these input arguments will need to be supplied when instantiating a new instance of ```ModObj```.
+The text attribute will be renamed ```_text```. The prefix of the attribute name with the underscore is a convention used to indicate that the attribute is designed to be used internally within a class. For comparison a second attribute ```text2``` will be created without the underscore. Both these input arguments will now need to be supplied when instantiating a new instance of ```ModObj```.
 
 ```
 class ModObj(object):
@@ -926,10 +931,10 @@ class ModObj(object):
         """
         new_text = self._text.capitalize()
         return ModObj(new_text, self.text2)
-   
-   
-```
 
+
+ ```  
+   
 Notice that when the instance is created:
 
 ```
@@ -938,6 +943,7 @@ greeting = ModObj("hello")
 
 Inputting ```greeting.``` followed by tab ```↹``` only displays the attribute ```text2``` and the method ```capitalize```:
 
+![img_049](./images/img_049.png)
 
 
 The internal attribute can still be seen when the directory is looked up using:
@@ -946,15 +952,13 @@ The internal attribute can still be seen when the directory is looked up using:
 dir(greeting)
 ```
 
+![img_050](./images/img_050.png)
 
+The ```property```function can be used to handle how an attribute or property is accessed, set and deleted. If ```property()``` is input followed by shift ```⇧``` and tab ```↹``` the docstring displays:
 
-The ```property``` function can be used to handle how an attribute or property is accessed, set and deleted. If ```property()``` is input followed by shift ```⇧``` and tab ```↹``` the docstring displays:
+![img_051](./images/img_051.png)
 
-
-
-Essentially a ```get```, ```set``` and ```del``` method are created and then linked using the function ```property```.
-
-
+Essentially a get, set and del method are created and then linked together using the ```property``` function.
 ```
 class ModObj(object):
     """
@@ -998,23 +1002,29 @@ class ModObj(object):
         """
         new_text = self.text._capitalize()
         return ModObj(new_text, self.text2)
-    
-
-```    
-
-Notice if ```ModObj.``` is input followed by a ```↹``` that the attribute ```text``` displays but the attribute ```text2``` does not display in the list of identifiers, because ```text2``` is only assigned within the ```__init__``` method and ```text``` is defined as a property.
 
 
+``` 
 
-If accessed using ```ModObj.text``` the output displays it is a property.
+![img_052](./images/img_052.png)
 
+Notice if ```ModObj.``` is input followed by a ```↹``` that the attribute ```text``` displays but the attribute ```text2``` does not display in the list of identifiers.
 
+![img_053](./images/img_053.png)
+
+This is expected as ```text2``` is only assigned as an attribute within the ```__init__``` method. The assignment to ```text``` on the other hand is analogous to the assignment of a class variable. Recall a class variable can be accessed by the class itself and any instance of the class.
+
+![img_054](./images/img_054.png)
+
+If accessed using the class, ```ModObj.text``` the output displays it is a property.
+
+![img_055](./images/img_055.png)
 
 If used with help ```? ModObj.text```, the docstring provided for the property displays.
 
+![img_056](./images/img_056.png)
 
-
-Because the ```text``` property is assigned using ```property``` with ```_get_text```, ```set_text``` and ```_del_text```, it can be accessed as ```text``` opposed to ```_text``` elsewhere within the class, for example in the methods ```__init__```, ```__repr__``` and ```capitalize```.
+The ```text``` property can now be accessed as ```text``` opposed to ```_text``` elsewhere within the class:
 
 ```
 class ModObj(object):
@@ -1058,14 +1068,39 @@ class ModObj(object):
         """
         new_text = self.text.capitalize()
         return ModObj(new_text, self.text2)
-    
+
+```    
+
+In red ```_get_text```, ```set_text``` and ```_del_text``` use the internal variable ```_text```. In green, the ```property``` function which groups the three functions above is assigned to the class variable ```text```.
+
+In orange, the methods ```__init__```, ```__repr__``` and ```capitalize``` can use this class variable ```text```.
+
+![img_057](./images/img_057.png)
+
+Standard Python syntax can be used to access the property, set a new value to the property and delete the property. The behaviour of all three operations is governed by the ```_get_text```, ```_set_text``` and ```_del_text``` methods and works as expected:
+
+```
+greeting = ModObj("hello", "bye")
+greeting.text
+greeting.text = "hi"
+greeting.text
+greeting.text = 1
+greeting.text
+del greeting.text
+greeting.text
 
 ```
 
+![img_058](./images/img_058.png)
 
+If the ```property()``` function is input followed by shift ```⇧``` and tab ```↹``` the docstring displays:
 
+![img_051](./images/img_051.png)
+
+At the bottom of the docstring are instructions for setting up a ```property``` using decorators.  
 
 ```
+
 class ModObj(object):
     """
     modified text object
@@ -1080,6 +1115,9 @@ class ModObj(object):
 
     @property
     def text(self):
+        """
+        The text property.
+        """
         return self._text
     
     
@@ -1089,6 +1127,13 @@ class ModObj(object):
         self._text = text
         return None
     
+
+    @text.deleter
+    def text(self):
+        self._text = "empty"
+        return None
+
+
     def __repr__(self):
         return f"ModObj: {self.text}"
 
@@ -1100,24 +1145,231 @@ class ModObj(object):
         new_text = self.text.capitalize()
         return ModObj(new_text)
     
+```
+
+The ```@property``` decorator is used on a method that has the name of the property being created. This method name will become the name of the class attribute in this case ```text``` and doesn't have an ```_``` prefix. This method acts as the get method and should have a return statement that accesses the internal attribute ```self._text``` which does have the ```_``` prefix. The docstring of this function also acts as the docstring of the property.
+
+Another decorator is used for the setter. This has an ```@``` followed by the name of the class attribute in this case ```text``` followed by a ```.setter```. The name of the method is once again the name of the class variable in this case ```text```. This method has no return statement but should reassign the internal attribute ```self._text``` to a value.
+
+Another decorator is used for the deleter. This has an ```@``` followed by the name of the class attribute in this case ```text``` followed by a ```.deleter```. The name of the method is once again the name of the class variable in this case ```text```. This method has no return statement but should delete the internal attribute ```self._text``` e.g. by assigning it to a default value or ```None```.
+
+![img_059](./images/img_059.png)
+
+This is seen to work in the same manner as before:
+
+```
+greeting = ModObj("hello")
+ModObj.text
+greeting.text = "hi"
+greeting.text
+greeting.text = 1
+greeting.text
+del greeting.text
+greeting.text
+```
+
+![img_060](./images/img_060.png)
+
+## Inheritance
+
+Inheritiance was mentioned briefly when creating a new class using ```object``` as a parent class. Let's explore this concept in more detail.
+
+A simple parent class ```ParentClass``` can be created with a single method ```greeting```:
+
+```
+class ParentClass(object):
+    def greeting(self, name):
+        print(f"hello {name}")
+        return None
     
-```    
+
+```
+
+A child class ```ChildClass``` can be created without any additional functionality:
+
+```
+class ChildClass(ParentClass):
+    pass
 
 
+```
+
+A instance of the ```ParentClass``` can be created and the method ```greeting``` called from it:
+
+```
+parent = ParentClass()
+parent.greeting("Philip")
+```
+
+A instance of the ```ChildClass``` can be created and the method ```greeting``` called from it. This method is not defined in the child class and the child class uses the method ```greeting``` inherited from the parent class:
+
+```
+child = ChildClass()
+child.greeting("Philip")
+```
+
+![img_061](./images/img_061.png)
+
+If the parent class is unmodified:
+
+```
+class ParentClass(object):
+    def greeting(self, name):
+        print(f"hello {name}")
+        return None
+    
+
+```
+
+And a seperate ```greeting``` function is defined in the child class:
+
+```
+class ChildClass(ParentClass):
+    def greeting(self, name):
+        print(f"bye {name}")
+        return None
 
 
+```
+
+A instance of the ```ParentClass``` can be created and the method ```greeting``` called from it and the behaviour is the same as before:
+
+```
+parent = ParentClass()
+parent.greeting("Philip")
+```
+
+A instance of the ```ChildClass``` can be created and the method ```greeting``` called from it. This method is defined in the child class and the child class uses its own method opposed to ```greeting``` inherited from the parent class:
+
+```
+child = ChildClass()
+child.greeting("Philip")
+```
+
+![img_062](./images/img_062.png)
+
+In other cases the functionality of a method within the parent class is required alongside additional functionality. In this example the parent class is unmodified:
+
+```
+class ParentClass(object):
+    def greeting(self, name):
+        print(f"hello {name}")
+        return None
+```
+
+The child class has its own ```greeting``` method and this calls the parent classes ```greeting``` method before adding additional functionality. To call the parent class a temporary instance of the parent class is created using ```super(ChildClass, self)```. Recall when a method is called from an instance, ```self``` is implied and therefore not provided explicitly as an input argument in the method call: 
+    
+```
+class ChildClass(ParentClass):
+    def greeting(self, name):
+        super(ChildClass, self).greeting(name)
+        print(f"have a nice day")
+        return None
 
 
+```
 
 
+```super(ChildClass, self)``` can also be written as ```super()``` because the method is being called from an instance of the ```ChildClass``` and therefore both ```ChildClass``` and instance ```self``` are implied:
+
+![img_063](./images/img_063.png)
+
+A instance of the ```ParentClass``` can be created and the method ```greeting``` called from it and the behaviour is the same as before:
+
+```
+parent = ParentClass()
+parent.greeting("Philip")
+```
+
+A instance of the ```ChildClass``` can be created and the method ```greeting``` called from it. This method is defined in the child class and also invokes the  ```greeting``` method inherited from the parent class:
+
+```
+child = ChildClass()
+child.greeting("Philip")
+```
+
+![img_064](./images/img_064.png)
+
+A method in a child class that calls its parents method must supply all the nput arguments the parent class asks for. In this example the parent class is unchanged:
+
+```
+class ParentClass(object):
+    def greeting(self, name):
+        print(f"hello {name}")
+        return None
+    
+    
+```
+
+The child class will have an additional input argument ```weather```:
+
+```
+class ChildClass(ParentClass):
+    def greeting(self, name, weather):
+        super(ChildClass, self).greeting(name)
+        print(f"it is {weather} today")
+        return None
+    
+    
+```
+
+A instance of the ```ParentClass``` can be created and the method ```greeting``` called from it and the behaviour is the same as before:
+
+```
+parent = ParentClass()
+parent.greeting("Philip")
+```
+
+A instance of the ```ChildClass``` can be created and the method ```greeting``` called from it. This method is defined in the child class and also invokes the  ```greeting``` method inherited from the parent class. The child class method supplies the parent class withall tis input arguments and has one additional input argument ```weather```:
+
+```
+child = ChildClass()
+child.greeting("Philip", "wet")
+```
+
+![img_065](./images/img_065.png)
+
+A method in a child class that calls its parents method must supply all the input arguments the parent class asks for. Sometimes it is more convenient to group the input arguments from the parent class together. In this example the parent class is unmodified:
+
+```
+class ParentClass(object):
+    def greeting(self, name):
+        print(f"hello {name}")
+        return None
+    
+    
+
+```
+
+Any input arguments required for the child class are supplied first. The input arguments for the parent class are grouped together using ```*args``` and ```**kwargs``` and the method from the parent class is called providing ```*args``` and ```kwargs```:
+
+```
+class ChildClass(ParentClass):
+    def greeting(self, weather, *args, **kwargs):
+        super(ChildClass, self).greeting(*args, **kwargs)
+        print(f"it is {weather} today")
+        return None
+
+    
+```
+
+A instance of the ```ParentClass``` can be created and the method ```greeting``` called from it and the behaviour is the same as before:
+
+```
+
+parent = ParentClass()
+parent.greeting("Philip")
 
 
+```
+
+A instance of the ```ChildClass``` can be created and the method ```greeting``` called from it. To call this method, the additional input argument ```weather``` of the child class must be supplied before providing any input arguments required to call the method ```greeting``` from the parent class, in this simple example just the positional input argument ```name```:
 
 
+```
+child = ChildClass()
+child.greeting("wet", "Philip")
 
+```
 
-
-
-
-
-
+![img_066](./images/img_066.png)
