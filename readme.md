@@ -26,7 +26,7 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Modules](./010_modules/)
 
-[Classes](./011_classes/) add getter setters note and inheritance note
+[Classes](./011_classes/)
 
 datetime module
 
