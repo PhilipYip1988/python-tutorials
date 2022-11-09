@@ -553,7 +553,7 @@ list(map((lambda num1, num2: num1 + num2), [1, 2, 3], [2, 4, 6]))
 Return to:
 [Home](../../../)
 
-## first class functions
+# first class functions
 
 ```
 def html_tag(tag):
