@@ -552,3 +552,23 @@ list(map((lambda num1, num2: num1 + num2), [1, 2, 3], [2, 4, 6]))
 
 Return to:
 [Home](../../../)
+
+## first class functions
+
+```
+def html_tag(tag):
+
+    def html_text(text):
+        return f"<{tag}{text</{tag}>"
+        
+    return html_test
+    
+
+```
+
+```
+h1 = html_tag("h1")
+p = html_tag("p")
+h1("hello world!")
+p("This Python Code prints hello world!")
+```
