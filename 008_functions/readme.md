@@ -1,6 +1,6 @@
 # Functions
 
-The previous tutorials have looked at using inbuilt functions with inbuilt datatypes such as strings, integers, floats, bools, lists, tuples, sets and dictionaries. When using a function, some concepts have already been explroed such a positional and keyword input arguments and referencing a function versus calling a function. In this guide, custom functions will be defined and called.
+The previous tutorials have looked at using inbuilt functions with inbuilt datatypes such as strings, integers, floats, bools, lists, tuples, sets and dictionaries. When using a function, some concepts have already been explored such a positional and keyword input arguments and referencing a function versus calling a function. In this guide, custom functions will be defined and called.
 
 ## Variables Recap
 
@@ -65,7 +65,7 @@ Using the function ```dir``` without any input arguments will look up the direct
 
 ![img_071](./images/img_071.png)
 
-Inputting a prefix of the functions name in a cell followed by a tab ```↹``` will show object names in the interactive notebooks name space that begin with the prefix. I this case the prefox is ```f``` and the function ```fun_name``` displays:
+Inputting a prefix of the functions name in a cell followed by a tab ```↹``` will show object names in the interactive notebooks name space that begin with the prefix. In this case the prefix is ```f``` and the function ```fun_name``` displays:
 
 ![img_072](./images/img_072.png)
 
