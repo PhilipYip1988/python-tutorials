@@ -106,7 +106,7 @@ To create a new Python environment for the latest version of the Spyder IDE incl
 
 ```
 mamba create -n spyder-cf
-conda activate spyder-cf
+mamba activate spyder-cf
 mamba install -c conda-forge spyder
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
