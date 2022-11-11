@@ -164,8 +164,38 @@ Also clears the Terminal:
 
 ## copy and paste
 
+The shortcut key for copy is ```Ctrl```, ```⇧``` and ```c```:
+
+![img_024](./images/img_024.png)
+
+The shortcut key for paste is ```Ctrl```, ```⇧``` and ```v```:
+
+![img_025](./images/img_025.png)
 
 ## close
+
+The shortcut key for closing a currently running process such as an infinite loop is ```Ctrl``` and ```c```.
+
+For example if the following is input:
+
+```
+while true; do echo "welcome"; done
+```
+
+![img_026](./images/img_026.png)
+
+The Terminal will be hung up in an infinite loop:
+
+![img_027](./images/img_027.png)
+
+Pressing ```Ctrl``` and ```c``` will exit this infinite loop:
+
+![img_028](./images/img_028.png)
+
+## echo
+
+
+
 
 
 
