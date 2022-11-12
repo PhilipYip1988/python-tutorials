@@ -10,6 +10,10 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Markdown Tutorial](./002_markdown/)
 
+## Terminal
+
+[Terminal Commands](./003_terminal/)
+
 ## Python
 
 [Fundamental Datatypes int, float, str, bool](./004_python_fundamental_datatypes/)
