@@ -896,7 +896,7 @@ sudo reboot
 
 ![img_136](./images/img_136.png)
 
-## reboot
+## quit
 
 To quit the Terminal, use:
 
