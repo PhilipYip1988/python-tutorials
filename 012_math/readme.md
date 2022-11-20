@@ -15,9 +15,13 @@ Most of the identifiers are functions but there are also instances which are mat
 
 ## Mathematical Constants
 
-There is the instance ```pi``` which is the ratio of the circumference (indicated in blue) to diameter of a circle (indicated in orange).
+A circle can be drawn in x, y co-ordinate space by assigning ```(0, 0)``` to be the centre of the circle and each value in the circle (because it is a circle) has a constant radius. In this depiction a value of ```1``` will be used: 
 
-![img_020](./images/img_020.png)
+![img_096](./images/img_096.png)
+
+$\pi$ is the ratio of the circumference (indicated in blue) to twice the radius of a circle (indicated in red):
+
+$$\pi=\frac{c}{2r}$$
 
 ```
 math.pi
@@ -25,9 +29,39 @@ math.pi
 
 ![img_002](./images/img_002.png)
 
-Or the related instance ```tau``` which is the ratio of the circumference (indicated in blue) to the radius of a circle (indicated in orange):
+Each angle in the circle can be measured using a ratio of the circumference and radius. The normalised unit is known as a radian and is divided through by $2\pi$:
 
-![img_021](./images/img_021.png)
+$$1\ radian=\frac{C}{2\pi r}$$
+
+The radian can be used as a unit of measure for angles in geometric shapes:
+
+|shape|number of sides|sum of all angles in radians|
+|---|---|---|
+|triangle|3|π|
+|square|4|2π|
+|pentagon|5|3π|
+|hexagon|6|4π|
+|heptagon|7|5π|
+
+The simplest geometric shape is the triangle which has 3 sides and the sum of all the angles in these 3 sides is $\left(3-2\right)\pi$ radians. 
+
+$\pi$ was originally defined as the ratio of the circumference to the diameter of a circle. However the radius is typically used much more in calculations than the diameter. For example the area of a circle:
+
+$$
+area=\frac{1}{2}\ast2\pi\ast r^2=\pi\ast r^2
+$$
+
+Or the volume of a sphere:
+
+$$
+volume=\frac{1}{3}\ast\frac{1}{2}\ast2\pi\ast r^3
+$$
+
+A single point is typically also referenced with respect to the centre of the circle using the radius and not the diameter. 
+
+Due to the definition of $\pi$ being associated with the diameter which is twice the radius, the term $2\pi$ is used frequently as a normalisation factor. In the circle above for example $\pi$ represents half a circle and $2\pi$ represents the full circle. 
+
+Some mathematicians and physicists argue that the term $2\pi$ is a better normalisation factor and this is therefore known as another constant $\tau$:
 
 ```
 math.tau
@@ -40,6 +74,27 @@ math.tau == 2 * math.pi
 ```
 
 ![img_003](./images/img_003.png)
+
+Using $\tau$ instead of $\pi$ more clearly depicts the use of integration to calculate the area of a circle instead of masking the division by 2 term:
+
+$$
+area=\frac{1}{2}\ast\tau\ast r^2
+$$
+
+Or the volume of a sphere:
+
+$$
+volume=\frac{1}{3}\ast\frac{1}{2}\ast\tau\ast r^3
+$$
+
+In addition, the following phase diagram is normalised correctly:
+
+![img_097](./images/img_097.png)
+
+Each angle in the circle can be measured using a ratio of the circumference and radius. The normalised unit is known as a radian and is divided through by $\tau$:
+
+$$1\ radian=\frac{C}{\tau}$$
+
 
 Another constant ```e``` is known as Euler's number and is an important constant when it comes to modelling exponential growth. 
 
@@ -62,18 +117,14 @@ e=\frac{1}{0!}+\frac{1}{1!}+\frac{1}{2!\ }+\frac{1}{3!}+\ldots,
 $$
 
 Where:
-$$
-0! = 1
-$$
-$$
-1! = 1
-$$
-$$
-2! = 1 * 2
-$$
-$$
-3! = 1 * 2 * 3
-$$
+
+$$0!\ =\ 1$$
+
+$$1!\ =\ 1$$
+
+$$2!=1\ast2$$
+
+$$3!=1\ast2\ast3$$
 
 A function can be made to calculate a factorial:
 
@@ -210,6 +261,28 @@ math.isqrt(17)
 
 ![img_016](./images/img_016.png)
 
+The number of combinations and number or permutations can be calculated using the ```comb``` or ```perm``` functions respectively:
+
+![img_071](./images/img_071.png)
+
+![img_072](./images/img_072.png)
+
+The docstrings are a bit confusing for these functions; ```n``` is a large number of items that can be placed into ```k``` containers. This is better visualised pictorially with an example. If there are three circles, a purple, green and red circle i.e. ```n=3``` and 2 containers for circles i.e. ```k=2```. Then the following combinations are possible:
+
+![img_069](./images/img_069.png)
+
+Each combination can be thought of as a subset of the items from ```k``` and the order doesn't matter. In a permutation, however the order does matter and in this example because there are 2 containers, there are 2 permutations for each color combination:
+
+![img_070](./images/img_070.png)
+
+The ```comb``` and ```perm``` functions can be used with the above examples and give the results ```3``` and ```6``` as expected:
+```
+math.comb(3, 2)
+math.perm(3, 2)
+```
+
+![img_073](./images/img_073.png)
+
 The ```floor``` and ceiling ```ceil``` functions can be used to find the largest integer less than or equal to the input argument or the smallest integer greater or equal to the input argument:
 
 ![img_017](./images/img_017.png)
@@ -225,11 +298,37 @@ math.ceil(pi)
 
 ![img_019](./images/img_019.png)
 
+Scientific notation allows numerical representation for very small and very large numbers. Under the hood a floating point number is stored in bits. Each bit can be conceptualised as a switch or an LED which can either be off (0) or on (1). The IEEE-754 floating point precision uses 32 bits (represented pictorally by 32 LEDs):
+
+![img_075](./images/img_075.png)
+
+The arrangement is:
+
+* mantissa sign: 1 bit (0 for a negative number and 1 for a positive number)
+* signed exponent: 8 bits (127 is the offset i.e. -127 is encoded as 0, -126 is encoded as 1,...)
+* mantissa modulus: 23 bits
+
+Due to there being a finite number of bits to store a number and only 2 characters (0 or 1) in the binary system to store a number, rounding errors, particularly rounding errors due to recursion occur far more frequently when dealing with floating point numbers.
+
+A rounding recursion error can be easily visualised in decimal by attempting to convert one third into decimal:
+
+$$\frac{1}{3}=0.3333\ldots$$
+
+If only a finite number of characters are shown after the decimal point for example 6 characters then the number is approximated:
+
+$$\frac{1}{3}=0.333333$$
+
+And the calculation:
+
+$$\frac{1}{3}+\frac{1}{3}+\frac{1}{3}=0.333333+0.333333+0.333333=0.999999$$
+
+This should be equal to unity however if a comparison operator is used to check whether this is exactly equal to 1, the result would be ```False```. This recursion rounding error depicted above occurs frequently with floating point numbers ebcause they are stored in binary.
+
 The ```isclose``` function can be used to check if a number is close to another number within a specified tolerance:
 
 ![img_022](./images/img_022.png)
 
-This can be a more useful when dealing with floats than traditional comparison operators due to rounding issues brought about from float precision. For example:
+This can be a more useful when dealing with floats than traditional comparison operators due to the recursion rounding errors. For example:
 
 ```
 0.3
@@ -245,14 +344,14 @@ math.isclose(0.3, 0.1 + 0.2, rel_tol=1e-9)
 The relative tolerance ```rel_tol``` of ```1e-9``` means the number lies between:
 
 ```
-print(f"{0.3 - 0.3*1e-9 :018.17f}")
-print(f"{0.3 + 0.3*1e-9 :018.17f}")
+f"{0.3 - 0.3*1e-9 :018.17f}"
+f"{0.3 + 0.3*1e-9 :018.17f}"
 ```
 
 The number can be seen to be between these bounds:
 
 ```
-print(f"{0.1 + 0.2 :018.17f}")
+f"{0.1 + 0.2 :018.17f}"
 ```
 
 ![img_024](./images/img_024.png)
@@ -266,8 +365,8 @@ math.isclose(0.3, 0.1 + 0.2, abs_tol=1e-6)
 The absolute tolerance ```abs_tol``` of ```1e-6``` means the number lies between:
 
 ```
-print(f"{0.3 - 1e-6 :018.17f}")
-print(f"{0.3 + 1e-6 :018.17f}")
+f"{0.3 - 1e-6 :018.17f}"
+f"{0.3 + 1e-6 :018.17f}"
 ```
 
 The number can be seen to be between these bounds:
@@ -277,6 +376,39 @@ print(f"{0.1 + 0.2 :018.17f}")
 ```
 
 ![img_025](./images/img_025.png)
+
+
+Because of the the physical arrangement to store floating point numbers seen above, large numbers are much more widely spaced apart from each other than smaller numbers. The unit in last place, is essentially the next step up or down:
+
+![img_074](./images/img_074.png)
+
+This can be demonstrated with a small and a large number:
+
+```
+f"{0.1 :018.17f}"
+f"{math.ulp(0.1) :018.17f}"
+f"{0.1 + math.ulp(0.1) :018.17f}"
+f"{1e18 :018.0f}"
+f"{math.ulp(1e18) :018.0f}"
+```
+
+For the small number, the number next up is a small step of ```0.00000000000000001``` and for the large number the step to the next number is ```128```:
+
+![img_076](./images/img_076.png)
+
+Calculations generally depend on the relative precision of each floating point number and either case the relative precision is approximately ```1e-16```:
+
+![img_077](./images/img_077.png)
+
+The related next after function ```nextafter``` will compute the number after ```x``` going towards ```y```:
+
+![img_078](./images/img_078.png)
+
+```
+f"{math.nextafter(1e18, 2e18):018.0f}"
+```
+
+![img_079](./images/img_079.png)
 
 The error due to float precision rounding can propogate when summing a sequence of floating point numbers. The float sum ```fsum``` function in the ```math``` module carries out additional checks to combat these rounding errors. 
 
@@ -405,8 +537,6 @@ The truncate function ```trunc``` will truncate the integer component of a float
 ![img_051](./images/img_051.png)
 
 Truncation (ignoring any fraction component taking the floor integer) should not be confused with rounding (which can round down to the floor integer or up to the ceiling integer):
-
-
 
 ```
 round(-10.5/3)
@@ -615,17 +745,467 @@ The reverse function logarithmic plus 1 ```logp1``` calculates the logarithmic o
 
 ![img_068](./images/img_068.png)
 
-Both of these 
+These functions can be seen to give similar behaviour to the regular versions of the function once the offset is applied:
 
 ```
 math.exp(1)
-math.expm1(1)
+math.expm1(1 + 1)
 math.log(e)
 math.log1p(e - 1)
 ```
 
+![img_080](./images/img_080.png)
+
+The ```factorial``` function operates on integers and therefore produces discrete integer values. The ```gamma``` function is related to the factorial however takes a ```n+1``` term opposed to a ```n``` term:
+
+$$n!=Γ(n+1)$$
+
+Therefore the following are equivalent:
 
 ```
-math.ulp(0.1)
-f"{0.1: 18.17f}"
+math.factorial(0)
+math.gamma(0 + 1)
+math.factorial(1)
+math.gamma(1 + 1)
+math.factorial(2)
+math.gamma(2 + 1)
+math.factorial(3)
+math.gamma(3 + 1)
 ```
+
+![img_081](./images/img_081.png)
+
+The ```gamma``` function can however take in floating point values as an input argument:
+
+```
+math.gamma(1.5 + 1)
+```
+
+![img_082](./images/img_082.png)
+
+Graphically a comparison of the ```gamma``` function and the discrete values from ```factorial``` looks like:
+
+![img_083](./images/img_083.png)
+
+For larger values of factorials, the magnitude on the y-axis changes drastically, making it difficult to see the magnitude of all previous numbers when scaled alongside the last number:
+
+![img_084](./images/img_084.png)
+
+As a consequence it is often plotted using a natural log scale:
+
+![img_085](./images/img_085.png)
+
+The ```lgamma``` function takes the log of the ```gamma``` function:
+
+$$log({\Gamma(n+1)})$$
+
+This can be seen by comparing:
+
+```
+math.factorial(10)
+math.gamma(10 + 1)
+math.log(math.factorial(10))
+math.log(math.gamma(10 + 1))
+math.lgamma(10 + 1)
+```
+
+![img_086](./images/img_086.png)
+
+The remaining functions in the math module are related to geometry. The function ```hypot``` is an application of Pythagoras theorem for right-angled triangles:
+
+![img_088](./images/img_088.png)
+
+$$a^2=b^2+c^2$$
+
+$$a=(b^2+c^2 )^{0.5}$$
+
+Where a is the length of the green side, b is the purple length and c is the orange length. The side a is known as the hypotenuse:
+
+![img_087](./images/img_087.png)
+
+In this example, b can be seen to be 4 units long and c can be seen to be 3 units long. Therefore a is:
+
+```
+math.hypot(4, 3)
+a = math.hypot(4, 3)
+```
+
+![img_089](./images/img_089.png)
+
+The distance formula which calculates the distance between two co-ordinates:
+
+![img_090](./images/img_090.png)
+
+The distance math function ```dist``` will calcuate the distance between two points:
+
+![img_092](./images/img_092.png)
+
+This distance is under the hood calculated using Pythagoras theorem and conceptually a vertical line can be drawn from the top co-ordinate and a horizontal line can be drawn from the bottom co-ordinate to construct a right angle triangle:
+
+![img_091](./images/img_091.png)
+
+The co-ordinates in this case are ```p = (4, 1)``` and ```q = (1, 5)``` and the distance between them can be calculated using:
+
+```
+math.dist((4, 1), (1, 5))
+```
+
+![img_093](./images/img_093.png)
+
+The distance can also be projected to 3 dimensions (and higher). Essentially a component of the difference for each axis is calculated as depicted with the orange, purple and cyan lines. These components are squared and then summed. Finally the square root is taken to get the distance:
+
+![img_094](./images/img_094.png)
+
+The co-ordinates in this case are ```p=(1, 1, 1)``` and ```q=(3, 4, 7)``` and the distance between them can be calculated using:
+
+```
+math.dist((1, 1, 1), (3, 4, 7))
+((3 - 1) ** 2 + (4 - 1) ** 2 + (7 - 1) ** 2) ** 0.5
+```
+
+![img_095](./images/img_095.png)
+
+Pythagoras theorem has the formula:
+
+$$a^2=b^2+c^2$$
+
+On a 2D co-ordinate system, $b$ can be represented by $x$ and $c$ can be represented by $y$:
+
+$$a^2=x^2+y^2$$
+
+For a circle, centred about the origin, the hypotenuse $a$ has a constant value and is known as the radius $r$:
+
+![img_135](./images/img_135.png)
+
+This gives:
+
+$$r^2=x^2+y^2$$
+
+Or re-arranged:
+
+$$x^2+y^2=r^2$$
+
+The following phase diagram will be used as a basis for examining the trigonometry identities:
+
+![img_097](./images/img_097.png)
+
+The $\tau$ representation will be used as it is normalised correctly where a radian is:
+
+$$1\ radian=\frac{C}{\tau}$$
+
+Because this is a circle, each point in the circle has a constant. For simplicity a radius of 1 has been selected. Let's simplify the circle further by depicting just the first quarter of the circle:
+
+![img_098](./images/img_098.png)
+
+The point on the circle is depicted as a red dot and has a radius of 1. If a red line is drawn from the red dot to the centre of the circle, it makes an straight line that has an angle $\theta$. A cyan line can be drawn from the point to the horizontal axis and a magenta line can be drawn from here to the vertical axis forming a right angle triangle. Each side of the triangle is examined with respect to the angle $\theta$. The cyan line is opposite of $\theta$ and the magenta line is adjacent of $\theta$. The red line itself is known as the hypotenuse. 
+
+$$
+soh\ cah\ toa
+$$
+
+The sine function ```sin``` gives the ratio of opposite side to the hypotenuse side. Since the hypotenuse side is the radius of the circle which is 1, this will give the length of the opposite side in this case which is the y co-ordinate of the point on the circle.
+
+$$
+\sin{\left(\theta\right)}=\frac{opposite}{hypotenuse}
+$$
+
+![img_099](./images/img_099.png)
+
+The cos function ```cos``` gives the ratio of adjacent side to the hypotenuse side. Since the hypotenuse side is the radius of the circle which is 1, this will give the length of the adjacent side in this case which is the x co-ordinate of the point on the circle.
+
+$$
+\cos{\left(\theta\right)}=\frac{adjacent}{hypotenuse}
+$$
+
+![img_100](./images/img_100.png)
+
+The tan function ```tan``` gives the ratio of the opposite side to the adjacent side.
+
+$$
+\tan{\left(\theta\right)}=\frac{opposite}{adjacent}=\frac{\sin{\left(\theta\right)}}{\cos{(\theta)}}
+$$
+
+![img_101](./images/img_101.png)
+
+When $\theta=0\tau/16$ pictorally it can be observed that the opposite length is 0 and the adjacent length matches the side of the radius 1. 
+
+![img_102](./images/img_102.png)
+
+Therefore the ```sin``` function can be seen to be 0 and the ```cos``` function can be seen to be 1. The tan function is ```0/1``` which is ```0```:
+
+```
+math.sin(0*tau/16)
+math.cos(0*tau/16)
+math.cos(0*tau/16)
+```
+
+![img_107](./images/img_107.png)
+
+When $\theta=1\tau/16$ pictorally it can be observed that the opposite length has increased and the adjacent length has decreased slightly. 
+
+![img_103](./images/img_103.png)
+
+The values can be checked by:
+
+```
+math.sin(1*tau/16)
+math.cos(1*tau/16)
+math.cos(1*tau/16)
+```
+
+![img_108](./images/img_108.png)
+
+When $\theta=2\tau/16$ pictorally it can be observed that the opposite and the adjacent length are now the same size: 
+
+![img_104](./images/img_104.png)
+
+Therefore the sin and cos functions should have the same value and the tan function should have a value of 1. This can be checked by using:
+
+```
+math.sin(2*tau/16)
+math.cos(2*tau/16)
+math.cos(2*tau/16)
+```
+
+![img_109](./images/img_109.png)
+
+When $\theta=3\tau/16$ pictorally it can be observed that the opposite length has increased further and the adjacent length has decreased further. Moreover there is symmetry between the triangle at $\theta=1\tau/16$ where the opposite side was the short side of the triangle and the adjacent was the long side of the triangle and $\theta=3\tau/16$ which now has the opposite side being the longer side of the triangle and adjacent being the shorted side. 
+
+![img_105](./images/img_105.png)
+
+Therefore the values with the sine and cos functions should essentially switch. This can be confirmed using:
+
+```
+math.sin(3*tau/16)
+math.cos(3*tau/16)
+math.cos(3*tau/16)
+```
+
+![img_112](./images/img_112.png)
+
+When $\theta=4\tau/16$ pictorally it can be observed that the opposite length is matches the side of the radius 1 and the adjacent length is 0. This "triangle" or plane has symmetry when the angle was $\theta=0\tau/16$:
+
+![img_106](./images/img_106.png)
+
+Therefore the ```sin``` function can be seen to be 1 and the ```cos``` function can be seen to be 0. The tan fucntion is ```1/0``` which is ```inf```:
+
+```
+math.sin(4*tau/16)
+math.cos(4*tau/16)
+math.cos(4*tau/16)
+```
+
+![img_111](./images/img_111.png)
+
+In the case of the tan function, an extremely high float is output which differs to infinity only because of float precision.
+
+So far each of the functions looks like the following:
+
+![img_113](./images/img_113.png)
+
+A circle is an object that has symmetry around the x-axis. 
+
+![img_114](./images/img_114.png)
+
+The absolute lengths of the lines are going to be the same in the second quadrant of the circle. However the sign for the x-component is flipped:
+
+![img_115](./images/img_115.png)
+
+Therefore the plots for the 1st and 2nd quadrant look like:
+
+![img_116](./images/img_116.png)
+
+Notice that the ```cos``` plot has the same form as the ```sin``` plot but is delayed by $\tau/4$. The reason for this is due to the rotational symmetry of the circle through by  $\tau/4$. Rotating the circle by $\tau/4$ changes the horizontal axis to a vertical axis and the behaviour of the vertical axis is modelled on ```cos``` which is a delayed ```sin```
+
+![img_119](./images/img_119.png)
+
+![img_120](./images/img_120.png)
+
+A circle is an object that has symmetry around the x-axis and y-axis.
+
+![img_114](./images/img_114.png)
+
+The absolute lengths of the lines are going to be the same in the third quadrant of the circle. However the sign for the x-component and y-component are flipped:
+
+![img_117](./images/img_117.png)
+
+Therefore the plots for the 1st-3rd quadrants look like:
+
+![img_121](./images/img_121.png)
+
+A circle is an object that has symmetry around the x-axis and y-axis.
+
+![img_114](./images/img_114.png)
+
+The absolute lengths of the lines are going to be the same in the third quadrant of the circle. However the sign for the y-component is flipped:
+
+![img_122](./images/img_122.png)
+
+This gives the classic shape for a sine and cosine function. The tan function is discontinuous and has float precision errors. 
+
+![img_123](./images/img_123.png)
+
+Rescaling its axes to omit very large negative and positive values gives:
+
+![img_124](./images/img_124.png)
+
+Because a circle is continuous, the waveforms repeat themselves lapping round the circle:
+
+![img_125](./images/img_125.png)
+
+Sometimes it is more useful to look at the waveform with the origin centred:
+
+![img_137](./images/img_137.png)
+
+For a circle centred around the origin with a radius of 1, every point can be considered as a right angle triangle with a constant hypotenuse of 1 equal to the radius. Recall the circle equation is an application of Pythagoras equation:
+
+$$x^2+y^2=r^2$$
+
+In the case of $r=1$, $x=\cos{\left(\theta\right)}$ and $y=\sin{\left(\theta\right)}$, the circle equation becomes:
+
+$${\left(\cos{\left(\theta\right)}\right)^2+\left(\sin{\left(\theta\right)}\right)}^2=1^2$$
+
+Which simplifies down to:
+
+$$\cos^2{(\theta)}+\sin^2{(\theta)}=1$$
+
+The squared terms look like the following:
+
+![img_136](./images/img_136.png)
+
+The archsine, archcosine and arctangent functions ```asin```, ```acos``` and ```atan``` are inverse functions which return $\theta$ from the length ratios. Recall:
+
+$$
+soh\ cah\ toa
+$$
+
+![img_127](./images/img_127.png)
+
+$$\theta=\text{asin}{\left(\frac{opposite}{hypotenuse}\right)}$$
+
+![img_128](./images/img_128.png)
+
+$$\theta=\text{acos}{\left(\frac{adjacent}{hypotenuse}\right)}$$
+
+![img_129](./images/img_129.png)
+
+$$\theta=\text{atan}{\left(\frac{opposite}{adjacent}\right)}$$
+
+Due to the circles symmetry there are multiple angles that could correspond to a length ratio. If the waveform is centred around the origin the inverse ```asin```, function will output $\theta$ between $-4τ/16$ and $+4τ/16$ as shown:
+
+![img_126](./images/img_126.png)
+
+For example:
+
+```
+16 * math.asin(1) / tau
+16 * math.asin(0) / tau
+16 * math.asin(-1) / tau
+```
+
+The multiplication through by ```16``` and division by ```tau``` is used for convenience and is the values $-4τ/16$, $0$ and $+4τ/16$ depicted on the sin graph above respectively:
+
+![img_130](./images/img_130.png)
+
+In the case of the inverse ```acos```, the waveform is centred around $+4τ/16$ recalling that $+4τ/16$ is the delay between the sine and cosine waves:
+
+![img_131](./images/img_131.png)
+
+For example:
+
+```
+16 * math.acos(1) / tau
+16 * math.acos(0) / tau
+16 * math.acos(-1) / tau
+```
+
+![img_132](./images/img_132.png)
+
+Notice that in the range where the ```asin``` function operates, the ```sin``` function increases. Whereas in the range where the ```acos``` function operates, the ```cos``` function decreases.
+
+The ```atan``` function operates over the same range as the ```asin``` function.
+
+![img_126](./images/img_126.png)
+
+For example:
+
+```
+16 * math.atan(inf) / tau
+16 * math.atan(0) / tau
+16 * math.atan(-inf) / tau
+```
+
+![img_133](./images/img_133.png)
+
+The ```atan2``` function takes in two input arguments ```y``` (the opposite) and ```x``` (the adjacent) instead of the ratio $\frac{y}{x}$
+
+![img_138](./images/img_138.png)
+
+```
+16 * math.atan(0) / tau
+16 * math.atan(0, 1) / tau
+```
+
+![img_139](./images/img_139.png)
+
+For small values of $\theta$ around the origin, $\sin{\left(\theta\right)}\approx\theta$ and there is an approximately linear relationship:
+
+![img_134](./images/img_134.png)
+
+This relationship breaks down further and further away from the origin.
+
+The sine, cosine and tangent functions modelled the unit circle equation:
+
+$$x^2+y^2=1$$
+
+![img_098](./images/img_098.png)
+
+The unit parabola equation is similar to the unit circle equation:
+
+$$x^2-y^2=1$$
+
+A parabola strongly deviates from asymptotes at the origin and approaches them at very large absolute values of x and y. For the parabola equation $\tau/8$ and $-\tau/8$ are the asymptotes.
+
+![img_140](./images/img_140.png)
+
+The hyperbolic sine, hyperbolic cosine and hyperbolic tangent functions ```sinh```, ```cosh``` and ```tanh``` are the hyperbolic counterparts to the circular functions ```sin```, ```cos``` and ```tan```. Only focusing on the parabola on the right and the top half of this parabola. A right angle triangle can be constructed, however unlike the case of the circle, the magnitude of the hypotenuse will increase as the magnitude of the angle increases. The hyperbolic cosine can be used to calculate the length of the adjacent, i.e. the value of the x co-ordinate and the hyperbolic sine can be used to calculate the length of the adjacent, i.e. the value of the y co-ordinate. 
+
+```
+math.cosh(4*tau/16)
+math.sinh(4*tau/16)
+math.tanh(4*tau/16)
+math.cosh(4*tau/16) / math.sinh(4*tau/16)
+```
+
+![img_144](./images/img_144.png)
+
+The inverse functions ```acosh``` and ```asinh``` return the angle from the length of x and the length of y respectively. The multiplication through by ```16``` and division by ```tau``` is used for convenience, giving $+4τ/16$:
+
+```
+16 * math.acosh(2.5091784786580567) / tau
+16 * math.asinh(2.3012989023072947) / tau
+```
+
+![img_145](./images/img_145.png)
+
+
+
+Therefore:
+
+
+$$\cosh^2{(\theta)}-\sinh^2{(\theta)}=1$$
+
+on the parabola and the hyperbolic sine will give the y co-ordinate on the parabola.
+
+sine will give
+
+
+
+
+
+
+
+
+
+
+
