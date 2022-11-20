@@ -1,5 +1,5 @@
 import math
-from math import pi, tau
+from math import pi, tau, e
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -29,3 +29,22 @@ the error function erf(x) is the probability that a number drawn at random from 
 """
 https://mathworld.wolfram.com/Erf.html
 """
+
+def standard_normal(x):
+    return (math.exp(-(x**2)/2))/math.sqrt(tau)
+
+x = [num/10 for num in range(-40, 41, 1)]
+y = [standard_normal(num/10) for num in range(-40, 41, 1)]
+z = [math.erf(num/10) for num in range(-40, 41, 1)]
+z2 = [math.erfc(num/10) for num in range(-40, 41, 1)]
+
+fig, ax = plt.subplots(3, 1)
+ax[0].plot(x, y)
+ax[1].plot(x, z)
+ax[2].plot(x, z2)
+
+from statistics import NormalDist
+nd = NormalDist(mu=0, sigma=1)
+
+
+
