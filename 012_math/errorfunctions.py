@@ -21,3 +21,7 @@ a = error_function(2)
 a2 = math.erf(2)
 b = cerror_function(2)
 b2 = math.erfc(2)
+
+"""
+the error function erf(x) is the probability that a number drawn at random from the standard normal distribution (mean =0, standard deviation = 1) will be no greater than x.
+"""
