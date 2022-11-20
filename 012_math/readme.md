@@ -618,6 +618,8 @@ math.copysign(magnitude, direction)
 
 ![img_049](./images/img_049.png)
 
+## Exponential and Logarithmic Functions
+
 The ```math``` module has an inbuilt function ```factorial```. The concept of a factorial was explained when looking at the constant ```e```:
 
 ![img_009](./images/img_009.png)
@@ -811,6 +813,8 @@ math.lgamma(10 + 1)
 
 ![img_086](./images/img_086.png)
 
+## Triangle Equations
+
 The remaining functions in the math module are related to geometry. The function ```hypot``` is an application of Pythagoras theorem for right-angled triangles:
 
 ![img_088](./images/img_088.png)
@@ -865,6 +869,8 @@ math.dist((1, 1, 1), (3, 4, 7))
 
 ![img_095](./images/img_095.png)
 
+## Circle Equations
+
 Pythagoras theorem has the formula:
 
 $$a^2=b^2+c^2$$
@@ -903,7 +909,7 @@ $$
 soh\ cah\ toa
 $$
 
-The sine function ```sin``` gives the ratio of opposite side to the hypotenuse side. Since the hypotenuse side is the radius of the circle which is 1, this will give the length of the opposite side in this case which is the y co-ordinate of the point on the circle.
+In the general case, when used with a right angled triangle, the sine function ```sin``` gives the ratio of opposite side to the hypotenuse side. Since the hypotenuse for a unit circle has a fixed radius of 1, i.e. is normalised. The sine function will directly give the length of the opposite side in this case which is the y co-ordinate of the point on the circle.
 
 $$
 \sin{\left(\theta\right)}=\frac{opposite}{hypotenuse}
@@ -911,7 +917,8 @@ $$
 
 ![img_099](./images/img_099.png)
 
-The cos function ```cos``` gives the ratio of adjacent side to the hypotenuse side. Since the hypotenuse side is the radius of the circle which is 1, this will give the length of the adjacent side in this case which is the x co-ordinate of the point on the circle.
+The cos function ```cos``` gives the ratio of adjacent side to the hypotenuse side. Since the hypotenuse side is the radius of the circle which is 1, this will give the length of the adjacent side in this case which is the x co-ordinate of the point on the circle. Because the unit circle is normalised, the will directly give the length of the adjacent side which is the x co-ordinate of the point on the circle.
+
 
 $$
 \cos{\left(\theta\right)}=\frac{adjacent}{hypotenuse}
@@ -1154,6 +1161,8 @@ For small values of $\theta$ around the origin, $\sin{\left(\theta\right)}\appro
 
 This relationship breaks down further and further away from the origin.
 
+## Parabolic Equations
+
 The sine, cosine and tangent functions modelled the unit circle equation:
 
 $$x^2+y^2=1$$
@@ -1164,11 +1173,33 @@ The unit parabola equation is similar to the unit circle equation:
 
 $$x^2-y^2=1$$
 
-A parabola strongly deviates from asymptotes at the origin and approaches them at very large absolute values of x and y. For the parabola equation $\tau/8$ and $-\tau/8$ are the asymptotes.
+Values on a parabola approach asymptotes at very large absolute values of x and y and strongly deviates from the asymptotes at the origin. For the parabola equation $\tau/8$ and $-\tau/8$ are the asymptotes.
 
 ![img_140](./images/img_140.png)
 
-The hyperbolic sine, hyperbolic cosine and hyperbolic tangent functions ```sinh```, ```cosh``` and ```tanh``` are the hyperbolic counterparts to the circular functions ```sin```, ```cos``` and ```tan```. Only focusing on the parabola on the right and the top half of this parabola. A right angle triangle can be constructed, however unlike the case of the circle, the magnitude of the hypotenuse will increase as the magnitude of the angle increases. The hyperbolic cosine can be used to calculate the length of the adjacent, i.e. the value of the x co-ordinate and the hyperbolic sine can be used to calculate the length of the adjacent, i.e. the value of the y co-ordinate. 
+Because the equation above uses squared x and squared y terms, there is symmetry along the x and y axis and four solutions. Usually only the quadrant with positive $x$ and $y$ is considered:
+
+![img_146](./images/img_146.png)
+
+The hyperbolic sine, hyperbolic cosine and hyperbolic tangent functions ```sinh```, ```cosh``` and ```tanh``` are the hyperbolic counterparts to the circular functions ```sin```, ```cos``` and ```tan```. Only focusing on the parabola on the right and the top half of this parabola. A right angle triangle can be constructed, however unlike the case of the circle, the magnitude of the hypotenuse will increase as the magnitude of the angle increases. This can be seen visually as the angle increases:
+
+For $\theta=\tau/16$:
+
+![img_147](./images/img_147.png)
+
+For $\theta=2\tau/16$:
+
+![img_148](./images/img_148.png)
+
+For $\theta=3\tau/16$:
+
+![img_149](./images/img_149.png)
+
+For $\theta=4\tau/16$:
+
+![img_150](./images/img_150.png)
+
+Since this is a unit parabola. The hyperbolic cosine can be used to calculate the length of the adjacent length, i.e. the value of the x co-ordinate and the hyperbolic sine can be used to calculate the length of the opposite length, i.e. the value of the y co-ordinate. 
 
 ```
 math.cosh(4*tau/16)
@@ -1179,21 +1210,61 @@ math.cosh(4*tau/16) / math.sinh(4*tau/16)
 
 ![img_144](./images/img_144.png)
 
-The inverse functions ```acosh``` and ```asinh``` return the angle from the length of x and the length of y respectively. The multiplication through by ```16``` and division by ```tau``` is used for convenience, giving $+4τ/16$:
+The inverse functions ```acosh``` and ```asinh``` return the angle from the length of x and the length of y respectively. The multiplication through by ```16``` and division by ```tau``` is used for convenience, giving the correct angle $+4τ/16$ as expected:
 
 ```
 16 * math.acosh(2.5091784786580567) / tau
 16 * math.asinh(2.3012989023072947) / tau
+16 * math.atanh(2.3012989023072947/2.5091784786580567) / tau
 ```
 
 ![img_145](./images/img_145.png)
 
+The ```cosh``` and ```sinh``` equations are  related to the exponential which previously some intuition was built up upon:
 
+$$\cosh{\left(\theta\right)}=\frac{e^{\theta}+e^{-\theta}}{2}$$
 
-Therefore:
+$$\sinh{\left(\theta\right)}=\frac{e^{\theta}-e^{-{\theta}}}{2}$$
 
+At an $\theta$ value of 0:
+
+$$\cosh⁡{(θ)}=(e^{0}+e^{-0})/2=(1+1)/2=1$$
+
+$$\sinh⁡{(θ)}=(e^{0}-e^{-0})/2=(1-1)/2=0$$
+
+This gives the co-ordinate $x=1, y=0$ as expected.
+
+![img_151](./images/img_151.png)
+
+For larger values it is insightful to plot out the positive exponential and negative exponential components. At larger values the positive exponent dominates:
+
+![img_152](./images/img_152.png)
+
+The ```cosh``` and ```sinh``` look as follows:
+
+![img_153](./images/img_153.png)
+
+The sum of both of these terms is equal to the exponential function itself:
+
+$$\cosh{\left(\theta\right)}+\sinh{\left(\theta\right)}=\frac{e^\theta+e^{-\theta}}{2}+\frac{e^\theta-e^{-\theta}}{2}=\frac{2e^\theta}{2}=e^\theta$$
+
+The unit parabola equation was seen to be:
+
+$$x^2-y^2=1$$
+
+And since $x=\cosh{(\theta)}$ and $y=\sinh{(\theta)}$ the unit parabola equation can be rewritten as:
 
 $$\cosh^2{(\theta)}-\sinh^2{(\theta)}=1$$
+
+The offset of 1 can be seen when these squared functions are plotted:
+
+![img_154](./images/img_154.png)
+
+## Error Function
+
+
+
+
 
 on the parabola and the hyperbolic sine will give the y co-ordinate on the parabola.
 
