@@ -34,11 +34,21 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Math Module](./012_math/)
 
+[File and Directory Operations with the os and shutil modules](./014_os_module/)
+
+Work in progress:
+
+collections module
+
+cmath module
+
 datetime module
 
-fraction, random, statistics module
+random module
 
-[File and Directory Operations with the os and shutil modules](./014_os_module/)
+fraction module
+
+statistics module
 
 sys module
 
