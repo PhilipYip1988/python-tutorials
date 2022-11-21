@@ -32,9 +32,11 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Classes](./011_classes/)
 
+[Math Module](./012_math/)
+
 datetime module
 
-math, fraction, random, statistics module
+fraction, random, statistics module
 
 [File and Directory Operations with the os and shutil modules](./014_os_module/)
 
