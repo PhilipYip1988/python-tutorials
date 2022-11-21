@@ -1,6 +1,7 @@
 # math
 
 The math module is an inbuilt Python module that contains the most commonly used mathematical constants and functions typically found on a standard scientific calculator.
+
 To use the module it must be imported. Since the module name is relatively small, it is usually imported using the module name and is not commonly imported using an alias:
 
 ```
@@ -29,11 +30,54 @@ math.pi
 
 ![img_002](./images/img_002.png)
 
-Each angle in the circle can be measured using a ratio of the circumference and radius. The normalised unit is known as a radian and is divided through by $2\pi$:
+Re-arranging the above equation:
 
-$$1\ radian=\frac{C}{2\pi r}$$
+$$c=2\pi r$$
 
-The radian can be used as a unit of measure for angles in geometric shapes:
+To get $r$ on its own division by $2\pi$ gives:
+
+$$\frac{c}{2\pi}=\frac{2\pi r}{2\pi}$$
+
+Setting $r$ to the left hand side gives:
+
+$$r=\frac{c}{2\pi}$$
+
+This $r$ is known as a radian and is a normalised unit, that gives an indication of the arc length of the circle.
+
+The circle contant $\pi$ and by extension the normalised unit known as the radian conceptually make sense when considering the circle as a whole however these units have the drawback that they aren't very human readible in decimal form, which is why all the angles in the above diagram were expressed as fractions of $\pi$. Another unit that was traditionally used to measure angles is the degree. A right angle is split into 90 degrees and a circle which conceptually consists of four right angles is therefore split into 360 degrees. 
+
+![img_155](./images/img_155.png)
+
+The function ```radians``` converts an angle from degrees to radians and the function ```degrees``` converts an angle from radians to degrees:
+
+![img_158](./images/img_158.png)
+
+![img_159](./images/img_159.png)
+
+These functions can be tested using:
+
+```
+math.radians(1)
+math.degrees(1)
+math.degrees(2*pi)
+```
+
+![img_157](./images/img_157.png)
+
+Conceptually it can be seen that a radian is approximately 57.3 degrees. This is to be expected as 360 degrees/6 is 60 degrees. The denominator 6 is just slightly smaller than $2\pi$ so 360 degrees/$2\pi$ is 57.3 degrees which is just slightyl smaller than 60 degrees.
+
+There was also an attempt to decimalise the degree making another unit known as a grad where 100 grads make a right angle. The grad was never commonly employed as 90 is more divisible than 100 for example by 3 and 6:
+
+```
+90 / 3
+100 / 3
+90 / 6
+100 / 6
+```
+
+![img_156](./images/img_156.png)
+
+**In the math module (and scientific computing packages in general) the radian is used as a unit of measure for angles in geometric shapes.** Conversions from degrees to radians have to be made on angles before using the angle as an input argument for any of the trigonmetric functions.
 
 |shape|number of sides|sum of all angles in radians|
 |---|---|---|
@@ -45,7 +89,7 @@ The radian can be used as a unit of measure for angles in geometric shapes:
 
 The simplest geometric shape is the triangle which has 3 sides and the sum of all the angles in these 3 sides is $\left(3-2\right)\pi$ radians. 
 
-$\pi$ was originally defined as the ratio of the circumference to the diameter of a circle. However the radius is typically used much more in calculations than the diameter. For example the area of a circle:
+$\pi$ can be defined as the ratio of the circumference to the **diameter** of a circle. However the **radius** is typically used much more in calculations than the diameter. For example the area of a circle:
 
 $$
 area=\frac{1}{2}\ast2\pi\ast r^2=\pi\ast r^2
@@ -59,9 +103,9 @@ $$
 
 A single point is typically also referenced with respect to the centre of the circle using the radius and not the diameter. 
 
-Due to the definition of $\pi$ being associated with the diameter which is twice the radius, the term $2\pi$ is used frequently as a normalisation factor. In the circle above for example $\pi$ represents half a circle and $2\pi$ represents the full circle. 
+Due to $\pi$ being associated with the diameter which is twice the radius, the term $2\pi$ is used frequently as a normalisation factor. In the circle above for example $\pi$ represents half a circle and $2\pi$ represents the full circle. 
 
-Some mathematicians and physicists argue that the term $2\pi$ is a better normalisation factor and this is therefore known as another constant $\tau$:
+Some mathematicians and physicists argue that the term $2\pi$ is a better normalisation factor and this is therefore known as another circle constant $\tau$:
 
 ```
 math.tau
@@ -91,10 +135,9 @@ In addition, the following phase diagram is normalised correctly:
 
 ![img_097](./images/img_097.png)
 
-Each angle in the circle can be measured using a ratio of the circumference and radius. The normalised unit is known as a radian and is divided through by $\tau$:
+The radian has the following relationship with $\tau$:
 
-$$1\ radian=\frac{C}{\tau}$$
-
+$$r=\frac{c}{2\pi}=\frac{c}{\tau}$$
 
 Another constant ```e``` is known as Euler's number and is an important constant when it comes to modelling exponential growth. 
 
@@ -267,11 +310,11 @@ The number of combinations and number or permutations can be calculated using th
 
 ![img_072](./images/img_072.png)
 
-The docstrings are a bit confusing for these functions; ```n``` is a large number of items that can be placed into ```k``` containers. This is better visualised pictorially with an example. If there are three circles, a purple, green and red circle i.e. ```n=3``` and 2 containers for circles i.e. ```k=2```. Then the following combinations are possible:
+The docstrings are a bit confusing for these functions; ```n``` is a large number of items that can be placed into ```k``` containers. This is better visualised pictorially with an example. If there are three coloured circle items, a purple, green and red circle i.e. ```n=3``` and 2 circular containers on a table i.e. ```k=2```. Then the following combinations are possible:
 
 ![img_069](./images/img_069.png)
 
-Each combination can be thought of as a subset of the items from ```k``` and the order doesn't matter. In a permutation, however the order does matter and in this example because there are 2 containers, there are 2 permutations for each color combination:
+Each combination can be thought of as a set that is a subset of the items from ```k``` and like in the case of a set, the order doesn't matter. In a permutation, however the order does matter and in this example because there are 2 containers, there are 2 permutations for each color combination:
 
 ![img_070](./images/img_070.png)
 
@@ -322,7 +365,7 @@ And the calculation:
 
 $$\frac{1}{3}+\frac{1}{3}+\frac{1}{3}=0.333333+0.333333+0.333333=0.999999$$
 
-This should be equal to unity however if a comparison operator is used to check whether this is exactly equal to 1, the result would be ```False```. This recursion rounding error depicted above occurs frequently with floating point numbers ebcause they are stored in binary.
+This should be equal to unity however if a comparison operator is used to check whether this is exactly equal to 1, the result would be ```False```. This recursion rounding error depicted above occurs frequently with floating point numbers because they are stored in binary.
 
 The ```isclose``` function can be used to check if a number is close to another number within a specified tolerance:
 
@@ -1161,6 +1204,95 @@ For small values of $\theta$ around the origin, $\sin{\left(\theta\right)}\appro
 
 This relationship breaks down further and further away from the origin.
 
+## Error Function
+
+If a set of measurement values have an average value of $x=\mu$ of $0$ and a standard deviation $\sigma$ of 1 i.e. $x=\mu±\sigma$ in this case $x=0±1$. The measurements will follow the standard normal distribution which is as follows:
+
+$$\frac{1}{\sqrt\tau}\exp{\left(-\frac{x^2}{2}\right)}$$
+
+The $\frac{1}{\sqrt\tau}$ is a normalisation factor. Recall that $\exp{(0)}=1$, so the value at the origin will be this normalisation factor multiplied by 1. The $-x^{2}$ term in the exponential will rapidly dimish the value of $y$ as the value of $x$ becomes further and further away from the origin.
+
+There is no inbuilt function for the normal distribution in the math module but it is easy to construct using:
+
+```
+def standard_normal(x):
+    return (math.exp(-(x**2)/2))/math.sqrt(tau)
+```    
+
+The following test cases can be checked:
+
+```
+standard_normal(0)
+standard_normal(1)
+standard_normal(2)
+standard_normal(-1)
+standard_normal(-2)
+```
+
+![img_160](./images/img_160.png)
+
+A plot of the normal distribution is as follows:
+
+![img_161](./images/img_161.png)
+
+Visually the number of boxes under the graph can be counted. Each box has an x length of 1 and a y length of 0.05 giving an area of 0.05. There are approximately 20 boxes and therefore the total area is 1.00 i.e. is normalised. The area under the curve of a normal distribution and the probability of all outcomes should be certain and therefore sum up to 1.00.
+
+The normal distribution is commonly plotted with the x-axis shown in units of standard deviations. Each standard deviation is $\frac{1}{\sqrt2}$ in terms of x-units.
+
+![img_162](./images/img_162.png)
+
+The 1st, 2nd and 3rd standard deviation are shown. 
+
+A measurement value of $x$ choosen at random has a 0.6827 chance of lying within 1 standard deviations. Pictorally this can be seen as the 1st green line past the origin encloses about 6.5 boxes. The negative bound encloses about 6.5 other boxes. Recall there were 20 boxes in total and 13/20 is 0.65.
+
+A measurement value of $x$ choosen at random has a 0.9545 chance of lying within 2 standard deviations. Pictorally this can be seen as the 2nd green line past the origin encloses about 3 boxes. The negative bound encloses about 3 other boxes. Recall the first bound enclosed about 13 boxes and 19/20 is 0.95.
+
+A measurement value of $x$ choosen at random has a 0.9973 chance of lying within 3 standard deviations. Pictorally this can be seen as the 3nd green line past the origin encloses just under 0.5 of a box. The negative bound also encloses just under 0.5 of a box. This gives just under 20/20 which is just under 1.00 and there is a small fraction of area under the curve visibly outside the third standard deviation.
+
+The error function has the formula:
+
+$$ \frac{2}{\sqrt{\frac{\tau}{2}}}\int_{0}^{x}{e^{-\theta^2}d\theta} $$
+
+This may initially look complicated but it is a formula that is essentially finding the area under the curve of the normal distribution aboven using integration. The formula takes in $x$ as an input argument and returns twice the area under the curve between $x$ and $0$ (which accounts for the positive and negative bound).
+
+![img_163](./images/img_163.png)
+
+The error function can be evaluated at 1, 2 and 3 standard deviations using:
+```
+math.erf(1/2**0.5)
+math.erf(2/2**0.5)
+math.erf(3/2**0.5)
+```
+
+![img_164](./images/img_164.png)
+
+Visually it is worthwhile plottng out the error function with respect to the normal distribution:
+
+![img_165](./images/img_165.png)
+
+Notice the y axis for $\text{erf}{(x)}$ is a probability. 
+
+In the normal distribution plotted above, probability was $xy$ i.e. an area.
+
+There is a complementary error function:
+
+$$1-\frac{2}{\sqrt{\frac{\tau}{2}}}\int_{0}^{x}{e^{-\theta^2}d\theta}$$
+
+This complementary error function ```erfc``` is normally used with positive values of $x$ and is essentially ```1 - erf``` which is the probability a value is a given value or higher.
+
+![img_166](./images/img_166.png)
+
+```
+1 - math.erf(1/2**0.5)
+math.erfc(1/2**0.5)
+1 - math.erf(2/2**0.5)
+math.erfc(2/2**0.5)
+1 - math.erf(3/2**0.5)
+math.erfc(3/2**0.5)
+```
+
+![img_167](./images/img_167.png)
+
 ## Parabolic Equations
 
 The sine, cosine and tangent functions modelled the unit circle equation:
@@ -1260,15 +1392,7 @@ The offset of 1 can be seen when these squared functions are plotted:
 
 ![img_154](./images/img_154.png)
 
-## Error Function
 
-
-
-
-
-on the parabola and the hyperbolic sine will give the y co-ordinate on the parabola.
-
-sine will give
 
 
 
