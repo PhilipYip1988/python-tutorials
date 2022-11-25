@@ -1,8 +1,11 @@
 # Numbering Systems
 
-## Fundamental Datatypes
+This guide will look into the decimal system humans use and compare it to the binary system that computers use.
 
-We have explored:
+## Fundamental Datatypes Recap
+
+The following datatypes have previously been explored:
+
 * text datatypes
     * str ("a", "hello world")
 * numeric datatypes
@@ -10,26 +13,41 @@ We have explored:
     * bool (False, True)
     * float (0.0, 0., 0.1, 3.14)
 
-And for a float, we have seen:
+## Decimal Notation
+
+Recall humans typically handle numbers using the decimal system which gives 10 unique characters to represent a number ```0```, ```1```, ```2```, ```3```, ```4```, ```5```, ```6```, ```7```, ```8``` and ```9```. The origin for this is the fact that a human possesses 10 fingers. With only 10 characters, there are sometimes some recurring rounding errors. This can be seen with the concept of cutting a cake equally into three components. In fraction form this is denoted as ```1/3``` and:
+
 ```
-0.1 + 0.2
+1/3 + 1/3 + 1/3 = 3/3 = 1
 ```
-giving ```0.30000000000000004``` which is an unexpected rounding errors for what should be a basic arithmetic operation:
+
+However in decimal form this recurs ```0.3333333...``` where the ```...``` indicates recursion. If the number is stored to a finite number of characters for example 6 digits past the decimal point then:
+
+```
+0.333333 + 0.333333 + 0.333333 = 0.999999
+```
+
+If an is equals ```=``` comparison operator is used between ```0.999999``` and ```1.0``` the result will be ```False```.
+
+## How a Computer Stores Data
+
+This section will further explore fundamentally how a computer stores data.
+
+### Binary
+
+Under the hood, a computer uses the binary system to represent a number which gives 2 unique characters ```0``` and ```1```. The computer also has a finite precision or number of digits which it can use to store floating point numbers making recurring rounding errors far more prevalent than in the case of decimal. For example:
+
+```
+0.1 + 0.2 = 0.30000000000000004```
+```
 
 ![003_float_precision](./images/003_float_precision.PNG)
 
-## Decimal Notation
-The rounding error shown above is similar to the concept of 1/3 which becomes 0.33333333333... due to limitations in the decimal system which only has ten unique characters. 
+Once again, if an is equals ```=``` comparison operator is used between ```0.1 + 0.2`` and ```0.3``` the result will be ```False```.
 
-The number of digits used in the decimal system is arbitrary and is only commonly used because we have ten fingers. For decimal we use the characters ```0```, ```1```, ```2```, ```3```, ```4```, ```5```, ```6```, ```7```, ```8``` and ```9``` and when we have numbers larger than ```9``` we use multiple digits such as ```10```
+### Bit
 
-# How a Computer Stores Data
-
-Let us now examine how a computer stores data.
-
-## Bit
-
-Under the hood, data is stored as a bit, which can be conceptualised as a switch. A switch has two positions:
+Under the hood, data in a computer is stored as a bit, which can be conceptualised as a digital light switch. A light switch has two positions:
 
 "off":
 
@@ -39,13 +57,13 @@ Under the hood, data is stored as a bit, which can be conceptualised as a switch
 
 ![002_bit_LED](./images/002_bit_LED.PNG)
 
-For visualisation we can use a switch with an LED that is "off" or "on" respectively. We can encode:
+For visualisation, a switch with an LED that is either "off" or "on" can be used. These are usually encoded numerically as:
 
 "off" : 0
 
 "on": 1
 
-A digital signal is of this form and sometimes also maps to:
+Or in electronics are mapped to a voltage that is either:
 
 "off" : "LOW"
 
@@ -53,21 +71,26 @@ A digital signal is of this form and sometimes also maps to:
 
 ### Bit and Boolean
 
-We can see that a bit (a single switch) can be used to represent a boolean value:
+Under the hood a boolean value is essentially a bit and maps:
 
 "off" : False
 
 "on": True
 
-## Byte
+### Byte
 
-The int datatype has numbers larger than 1 and therefore, we require a configuration of multiple bits (multiple switches) to represent larger numbers. The most common configuration is 8 bits (which we can visualise as 8 LEDs attached to 8 switches) which is known as a byte. We will use 8 LEDs attached to a virtual Arduino microcontroller to represent this.
+The int datatype has numbers larger than 1 and therefore, a configuration of multiple bits (multiple light switches) is required to represent these larger numbers. The most common configuration is 8 bits which can be visualised as 8 LEDs attached to 8 switches. This configuration is known as a byte.
+8 LEDs attached to a virtual Arduino microcontroller will be used to represent this.
 
 ![004_byte_LED](./images/004_byte_LED.PNG)
 
 ### Binary Notation
 
-The above configuration when all switches are off, represents the decimal number 0. We can also use the binary representation which uses the prefix ```0B``` or ```0b``` (**b**inary) followed by the configuration of each switch, in this case:
+The above configuration when all switches are off, represents the decimal number 0. This configuration can be represented using binary representation which adds the prefix ```0B``` or ```0b``` (**b**inary) to distinguish it from an ordinary number (which is in decimal).
+
+** All binary numbers will be prefixed. Decimal numbers will not be prefixed as they are commonly used.**
+
+The binary prefix is followed by the configuration of the LEDs and the normal convention is to group these in fours:
 
 ```0```
 
@@ -75,7 +98,7 @@ The above configuration when all switches are off, represents the decimal number
 
 ![005_byte_LED](./images/005_byte_LED.PNG)
 
-The decimal number 1 occurs when only, a single LED is on. This is the last LED from the left or alternatively the first LED from the right which represents the least significant digit:
+The decimal number 1 occurs when only, a single LED is on. In binary this is the last LED from the left or alternatively the first LED from the right which represents the least significant digit:
 
 ```1```
 
@@ -83,7 +106,9 @@ The decimal number 1 occurs when only, a single LED is on. This is the last LED 
 
 ![006_byte_LED](./images/006_byte_LED.PNG)
 
-In binary, as we only have two states for each LED ```0``` and ```1```, we require multiple digits to count to the next number. To count to the decimal number of 2, we require 2 digits:
+The binary and decimal notation are identical so far as both have the characters ```0``` and ```1```. The differences in the numbering systems will not become apparent as the decimal system has additional characters that the binary system doesn't have.
+
+In binary, as there are only two states for each LED ```0``` and ```1```, multiple digits are required to count to the next number. To count to the decimal number of 2, 2 digits are required:
 
 ```2```
 
@@ -91,7 +116,7 @@ In binary, as we only have two states for each LED ```0``` and ```1```, we requi
 
 ![007_byte_LED](./images/007_byte_LED.PNG)
 
-This is analogous to using two digits to represent the number 10 in decimal, as we run out of characters past the digit 9.
+This is analogous to using two digits to represent the number 10 in decimal, as there are no additional characters past the digit 9.
 
 **Be careful not to confuse the two number systems**
 
@@ -107,14 +132,65 @@ The decimal number 3 is therefore the next sequence:
 
 ![008_byte_LED](./images/008_byte_LED.PNG)
 
-Let's turn on half of the lights which gives the number:
+If half of the lights are turned on from the right. The binary number is:
+
 ```0B 0000 1111```
 
 ![010_byte_LED](./images/010_byte_LED.PNG)
 
-This represents starting from the least significant digit to the left hand side and working our way to the right:
+The first light from the right, or **zeroth** light from the right, counting using zero-order indexing represents ```2 ** 0``` and is on ```1``` so:
 
-```1*(2**0) + 1*(2**1) + 1*(2**2) + 1*(2**3)```
+```
+1 * (2 ** 0)
+```
+
+The first light from the right represents ```2 ** 1``` and is on ```1``` so:
+
+```
+1 * (2 ** 1)
+```
+
+The second light from the right represents ```2 ** 2``` and is on ```1``` so:
+
+```
+1 * (2 ** 2)
+```
+
+The third light from the right represents ```2 ** 3``` and is on ```1``` so:
+
+```
+1 * (2 ** 3)
+```
+
+The fourth light from the right represents ```2 ** 4``` and is off ```0``` so:
+
+```
+0 * (2 ** 4)
+```
+
+The fifth light from the right represents ```2 ** 5``` and is off ```0``` so:
+
+```
+0 * (2 ** 5)
+```
+
+The sixth light from the right represents ```2 ** 6``` and is off ```0``` so:
+
+```
+0 * (2 ** 6)
+```
+
+The seventh light from the right represents ```2 ** 7``` and is off ```0``` so:
+
+```
+0 * (2 ** 7)
+```
+
+The summation of the above is:
+
+```
+0 * (2 ** 7) + 0 * (2 ** 6) + 0 * (2 ** 5) + 0 * (2 ** 4) + 1 * (2 ** 3) + 1 * (2 ** 2) + 1 * (2 ** 1) + 1 * (2 ** 0)
+```
 
 ![011_byte](./images/011_byte.PNG)
 
