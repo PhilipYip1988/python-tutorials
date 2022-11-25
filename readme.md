@@ -14,7 +14,7 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Terminal Commands](./003_terminal/)
 
-## Python
+## Python Builtins
 
 [Fundamental Datatypes int, float, str, bool](./004_python_fundamental_datatypes/)
 
@@ -32,23 +32,24 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Classes](./011_classes/)
 
-[Math Module](./012_math/)
+# Python Standard Modules
+
+Collections 
 
 [File and Directory Operations with the os and shutil modules](./014_os_module/)
 
-Work in progress:
+Pickle, JSON and CSV
 
-collections module
+[Math Module](./012_math/)
 
-cmath module
+Complex Math Module
 
-datetime module
+Random Module
 
-random module
+DateTime module
 
-fraction module
+Fraction module
 
-statistics module
+Statistics module
 
-sys module
 
