@@ -34,7 +34,7 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 ## Python Standard Modules
 
-Collections 
+[Collections](./012_collections/) 
 
 [File and Directory Operations with the os and shutil modules](./014_os_module/)
 
