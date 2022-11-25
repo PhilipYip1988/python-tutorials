@@ -56,7 +56,9 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 ## Python Standard Modules
 
-Python standard modules are inbuilt modules included with the Python installation. Each module is 
+Python standard modules are inbuilt modules included with the Python installation. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used.
+
+The collections module includes a number of additional collections.
 
 [Collections Module](./012_collections/) 
 
