@@ -88,7 +88,7 @@ The int datatype has numbers larger than 1 and therefore, a configuration of mul
 
 The above configuration when all switches are off, represents the decimal number 0. This configuration can be represented using binary representation which adds the prefix ```0B``` or ```0b``` (**b**inary) to distinguish it from an ordinary number (which is in decimal).
 
-** All binary numbers will be prefixed. Decimal numbers will not be prefixed as they are commonly used.**
+**All binary numbers will be prefixed. Decimal numbers will not be prefixed as they are commonly used.**
 
 The binary prefix is followed by the configuration of the LEDs and the normal convention is to group these in fours:
 
@@ -138,49 +138,49 @@ If half of the lights are turned on from the right. The binary number is:
 
 ![010_byte_LED](./images/010_byte_LED.PNG)
 
-The first light from the right, or **zeroth** light from the right, counting using zero-order indexing represents ```2 ** 0``` and is on ```1``` so:
+The first LED from the right, or **zeroth** LED from the right, counting using zero-order indexing represents ```2 ** 0``` and is on ```1``` so:
 
 ```
 1 * (2 ** 0)
 ```
 
-The first light from the right represents ```2 ** 1``` and is on ```1``` so:
+The first LED from the right represents ```2 ** 1``` and is on ```1``` so:
 
 ```
 1 * (2 ** 1)
 ```
 
-The second light from the right represents ```2 ** 2``` and is on ```1``` so:
+The second LED from the right represents ```2 ** 2``` and is on ```1``` so:
 
 ```
 1 * (2 ** 2)
 ```
 
-The third light from the right represents ```2 ** 3``` and is on ```1``` so:
+The third LED from the right represents ```2 ** 3``` and is on ```1``` so:
 
 ```
 1 * (2 ** 3)
 ```
 
-The fourth light from the right represents ```2 ** 4``` and is off ```0``` so:
+The fourth LED from the right represents ```2 ** 4``` and is off ```0``` so:
 
 ```
 0 * (2 ** 4)
 ```
 
-The fifth light from the right represents ```2 ** 5``` and is off ```0``` so:
+The fifth LED from the right represents ```2 ** 5``` and is off ```0``` so:
 
 ```
 0 * (2 ** 5)
 ```
 
-The sixth light from the right represents ```2 ** 6``` and is off ```0``` so:
+The sixth LED from the right represents ```2 ** 6``` and is off ```0``` so:
 
 ```
 0 * (2 ** 6)
 ```
 
-The seventh light from the right represents ```2 ** 7``` and is off ```0``` so:
+The seventh LED from the right represents ```2 ** 7``` and is off ```0``` so:
 
 ```
 0 * (2 ** 7)
@@ -196,17 +196,23 @@ The summation of the above is:
 
 This gives a decimal value of ```15```. 
 
-With the combination of 4 LEDs or 4 Bits (half a byte), we can have ```2**4``` combinations:
+For simplicity, let's only examine the combination of 4 LED switches or 4 Bits (half a byte) in more detail. The highest number, when all 4 LEDs are on is ```15```. 
+
+**In zero-ordering indexing the lower bound is inclusive and the upper bound is exclusive.**
+
+So 0-4 means counting from 0 to 4 in steps of 1 but not reaching 4 itself. i.e. 0, 1, 2, 3.
+
+Therefore use of 4 LED switches allows counting from ```0``` - ```(2 ** 4)```, which is 0-16 (inclusive of 0 and exclusive of 16 giving a maximum value of 15):
+
+```
+1 * (2 ** 3) + 1 * (2 ** 2) + 1 * (2 ** 1) + 1 * (2 ** 0)
+```
 
 ![012_byte](./images/012_byte.PNG)
 
-One of these 16 combinations is used to represent the number ```0``` and therefore the maximum number is ```15```.
-
-A byte has ```2**8``` combinations of numbers.
+A byte has 8 binary switches, in this case 8 LED switches and therefore allows counting from ```0``` - ```(2 ** 8)```, which is 0-256 (inclusive of 0 and exclusive of 256 giving a maximum value of 255):
 
 ![009_byte](./images/009_byte.PNG)
-
-One of these 256 combinations is used to represent the number ```0``` and therefore the maximum number is ```255```:
 
 ```255```
 
@@ -224,9 +230,9 @@ are very easy for a computer to understand but are typically hard to transcribe 
 
 ![014_byte_LED](./images/014_byte_LED.PNG)
 
-To help alleviate this, the digits used in a binary number are grouped into fours, which recall is half a byte. For clarity we will use different colors of LEDs to group half a byte.
+To help alleviate this, the digits used in a binary number are grouped into fours, which recall is half a byte. For clarity different colors of LEDs will be used to group half a byte.
 
-Recall for four LEDs, we had ```2*4``` which equals ```16``` combinations. Of these 16 combinations, one of these is 0 giving the range 0 to 15 in decimal.
+Recall for four LEDs, there were ```2 ** 4``` combinations giving a range of 0-16 (inclusive of 0 and exclusive of 16).
 
 The hexadecimal numbering system uses a unique character for each of these combinations. It uses the first ten numbers from the decimal sysem:
 
@@ -236,7 +242,7 @@ And then to get to 16 combinations uses the first 6 letters of the alphabet:
 
 ```A```, ```B```, ```C```, ```D```, ```E``` and ```F```.
 
-To distinguish a hexadecimal number we use the prefix ```0X``` or ```0x``` (he**x**):
+To distinguish a hexadecimal number the prefix ```0X``` or ```0x``` (he**x**) is used:
 
 |decimal|binary|hex|
 |---|---|---|
@@ -269,19 +275,25 @@ Typically no space is added between each digit giving:
 
 ```0x 7B```
 
-And if we return to the binary representation:
+From the table above, the two characters correspond to:
+
+B: 1011
+
+7: 0111
+
+the binary representation for this is therefore:
 
 ```0B 0111 1011```
 
-We can calculate the decimal value using:
+and this can be calculated in decimal value using:
 
-```1*(2**0) + 1*(2**1) + 0*(2**2) + 1*(2**3) + 1*(2**4) + 1*(2**5) + 1*(2**6) + 0*(2**7)```
+```0 * (2 ** 7) + 1 * (2 ** 6) + 1 * (2 ** 5) + 1 * (2 ** 4) + 1 * (2 ** 3) + 0 * (2 ** 2) + 1 * (2 ** 1) + 0 * (2 ** 0)```
 
 ![015_byte](./images/015_byte.PNG)
 
 which gives ```123``` in decimal. 
 
-Therefore to recap, the following arrangement of LEDs is represented in the three numbering systems as:
+Therefore to recap, the following arrangement of LED switches is represented in the three numbering systems as:
 
 ![014_byte_LED](./images/014_byte_LED.PNG)
 
@@ -291,7 +303,7 @@ Therefore to recap, the following arrangement of LEDs is represented in the thre
 
 ```123```
 
-We can convert between these numbers using the ```int``` class, ```bin``` function and ```hex``` function:
+These numbers can be converted using the ```int``` class, ```bin``` function and ```hex``` function:
 
 ```
 int(0x7B)
@@ -304,7 +316,7 @@ hex(0B01111011)
 
 ### Characters
 
-Under the hood, each character on the keyboard is mapped to a binary number. We can use the ```chr``` function to convert a number to a character or the inverse ```ord``` function converts a number. Let's use a for loop to have a look at the mapping with a decimal number:
+Under the hood, each character on the keyboard is mapped to a binary number. The ```chr``` function can be used to convert a number to a character or the inverse ```ord``` function converts a character to a number. Let's use a for loop to have a look at the mapping with a decimal number:
 
 ```
 for idx in range(0, 256):
@@ -315,7 +327,7 @@ for idx in range(0, 256):
 
 Notice that the starting characters 0-31 tend to be hidden punctuation marks for example (8 backspace), (9 horizontal tab), (10 line feed), (11 vertical tab), (12 form feed), (13 carriage return), (14 shift out), (15 shift in).
 
-We can update the for loop to have a look at the binary number:
+The for loop can be updated to have a look at the binary number:
 
 ```
 for idx in range(0, 256):
@@ -324,7 +336,7 @@ for idx in range(0, 256):
 
 ![017_chr_function](./images/017_chr_function.PNG)
 
-And hexadecimal number respectively:
+and hexadecimal number respectively:
 
 ```
 for idx in range(0, 256):
@@ -333,13 +345,13 @@ for idx in range(0, 256):
 
 ![018_chr_function](./images/018_chr_function.PNG)
 
-## Images
+### Monochrome Images
 
 A very basic screen can be conceptualised as a matrix of white LEDs. In the simplest example below, each white LED in the matrix has its own digital signal that is either "off" or "on":
 
 ![020_screen](./images/020_screen.PNG)
 
-A monochrome image can be displayed on this screen by turning a subset of white LEDs "on", which recall is mapped to 1. The rest of the white LEDs are "off", which recall is mapped to 0. If we have a look in more detail at a single character on the screen, we see that each character has 40 pixels that are grouped into 5 columns and 8 rows:
+A monochrome image can be displayed on this screen by turning a subset of white LEDs "on", which recall is mapped to 1. The rest of the white LEDs are "off", which recall is mapped to 0. If a single character on the screen is examined in more detail, notice that each character has 40 pixels that are grouped into 5 columns and 8 rows:
 
 ![023_image](./images/023_image.PNG)
 
@@ -356,7 +368,7 @@ And the data depicting the character therefore looks like:
 0 0 0 0 0
 ```
 
-We can encode this using:
+This can be encoded using:
 
 ```
 import numpy as np
@@ -382,7 +394,9 @@ This is plotted as:
 
 ![027_image](./images/027_image.PNG)
 
-Let's now look at an analog white LED. The white LED is attached to a potentiometer which operates over 8 bits which is also known as a byte.Recall a byte has 256 levels ranging from 0-255. In this configuration at 0, the white LED has no emission and we perceive this absence of light as black. At 255 the white LED is on full brightness which we perceive as white. Any other level is a mixture of black and white which we perceive as some level of gray.
+### Greyscale Images
+
+Let's now look at an analog white LED. The white LED is attached to a potentiometer which operates over 8 bits which recall is also known as a byte. A byte has 256 levels ranging from 0-255. In this configuration at 0, the white LED has no emission and the absence of light is perceived as black. At 255 the white LED is on full brightness which is perceived as white. Any other level is a mixture of black and white which is perceived as some level of gray.
 
 ![030_analog_white_led](./images/030_analog_white_led.PNG)
 
@@ -414,7 +428,9 @@ This is plotted as:
 
 Because each level is a byte or 8 bit, this is known as an 8 bit greyscale image.
 
-To make a color, color mixing is performed using the three primary colors red, green and a blue, which can physically be achieved by using a red LED, green LED and blue LED or a combined RGB LED. 
+### Color Images
+
+To make a color, color mixing is performed. Color mixing uses the three primary colors red, green and a blue, which can physically be achieved by using a red LED, green LED and blue LED or a combined RGB LED. 
 
 ![021_RGB_LED](./images/021_RGB_LED.PNG)
 
@@ -427,7 +443,7 @@ The orange color displayed on the screen for example sets:
 * the green LED to an intensity of 192 (0xFC)
 * the blue LED to the minimum intensity of 0 (0x00).
 
-A color screen is a matrix of these RGB LEDs. We can create an image of random colors using:
+A color screen is a matrix of these RGB LEDs. An image of random colors can be created using:
 
 ```
 import numpy as np
