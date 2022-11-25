@@ -564,3 +564,6 @@ greeting
 This instance will possess all of the standard string methods inherited from ```UserString```:
 
 ![img_059](./images/img_059.png)
+
+Return to:
+[Home](../../../)
