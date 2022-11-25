@@ -38,17 +38,25 @@ Indentation and spacing is very important in Python and code is often grouped in
 
 [Code Blocks; for loops, if-elif-else, match-case, while loops, try-except-else-finally](./007_code_blocks/)
 
-The behaviour of functions in inbuilt identifiers has been explored. Functions have been observed to have no, one or multiple input arguments and to return or not return a value. To understand this syntax better, custom functions will be explored. Under the hood these use a code block and therefore this tutorial builds upon the previous tutorial. Custom functions are a very powerful tool.
+The behaviour of functions in inbuilt identifiers has been explored. Functions have been observed to have no, one or multiple input arguments and to return or not return a value. To understand this syntax better, custom functions will be explored. Under the hood these use a code block and therefore this tutorial builds upon the knowledge of previous tutorial. Custom functions are a very powerful tool.
 
 [Functions](./008_functions/)
 
+Previously for loops and functions were explored. A loop is commonly used to construct a new list or dictionary from an existing list or dictionary and Python has a very powerful one line convention known as a comprehension to carry this out. A simple function can also be created on a single line using a lambda expression. Use of comprehensions and lambda expressions can make the code more succinct and more readible.
+
 [Comprehensions (list and dict) and Lambda Functions](./009_comprehensions_and_lambda_expressions/)
 
+The concept of a Python Module was previously explored during installation. A Python Module is used to compartmentalise code into a seperate often reusable file. This tutorial looks at the creation of a custom Module or a group of custom Modules known as a library. 
+
 [Modules](./010_modules/)
+
+Previously inbuild classes such as the int, bool, float, str, list, tuple, set and dict were explored. Each instance of a class had instance data attributes and functions which were designed to operate on this instance data. The template for this data and the function definition for these definitions are given in the class itself. This tutorial looks at the concept of a Python object and the use of it to create a custom class.
 
 [Classes](./011_classes/)
 
 ## Python Standard Modules
+
+Python standard modules are inbuilt modules included with the Python installation. Each module is 
 
 [Collections Module](./012_collections/) 
 
