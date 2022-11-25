@@ -32,7 +32,7 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Classes](./011_classes/)
 
-# Python Standard Modules
+## Python Standard Modules
 
 Collections 
 
