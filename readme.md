@@ -36,9 +36,9 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 [Collections Module](./012_collections/) 
 
-[File and Directory Operations with the os and shutil modules](./014_os_module/)
+[File and Directory Operations with the os and shutil Modules](./013_os_module/)
 
-Pickle, JSON and CSV
+Pickle, JSON and CSV Modules
 
 [Math Module](./012_math/)
 
