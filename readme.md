@@ -40,7 +40,7 @@ This set of tutorials will look at the Python Programming Language using the mar
 
 Pickle, JSON and CSV Modules
 
-[Math Module](./012_math/)
+[Math Module](./015_math/)
 
 Complex Math Module
 
