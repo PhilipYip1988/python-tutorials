@@ -38,7 +38,7 @@ Indentation and spacing is very important in Python and code is often grouped in
 
 [Code Blocks; for loops, if-elif-else, match-case, while loops, try-except-else-finally](./007_code_blocks/)
 
-So
+The behaviour of functions in inbuilt identifiers has been explored. Functions have been observed to have no, one or multiple input arguments and to return or not return a value. To understand this syntax better, custom functions will be explored. Under the hood these use a code block and therefore this tutorial builds upon the previous tutorial. Custom functions are a very powerful tool.
 
 [Functions](./008_functions/)
 
