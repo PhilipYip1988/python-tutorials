@@ -46,10 +46,10 @@ Complex Math Module
 
 Random Module
 
-DateTime module
+DateTime Module
 
-Fraction module
+Fraction Module
 
-Statistics module
+Statistics Module
 
 
