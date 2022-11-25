@@ -87,11 +87,11 @@ The ```reader``` functions docstring can be viewed by typing in the function nam
 
 ![img_012](./images/img_012.png)
 
-The function takes in an iterable as an input argument which is usually an opened file. Recall a file can be opened and closed using:
+The function takes in an iterable as an input argument which is usually an opened file. Recall a file can be opened and closed using the inbuilt function ```open``` where the 2nd input argument in ```open``` is ```"r"``` indicating read only access. To encode a file properly, the follwoign keyword arguments must be assigned to the following values ```encoding="UTF-8-Sig"``` and ```newline=""```.
 
 ```
 import csv
-file = open("commaseperatedvalues.csv", "r")
+file = open("commaseparatedvalues.csv", "r", encoding="UTF-8-Sig", newline="")
 file.close()
 ```
 
@@ -101,8 +101,8 @@ The csv reader function should be used on the file after it is opened and before
 
 ```
 import csv
-file = open("commaseperatedvalues.csv", "r")
-csvreader = csv.reader(file)
+file = open("commaseparatedvalues.csv", "r", encoding="UTF-8-Sig", newline="")
+csvreader = csv.reader(file, delimiter=",")
 file.close()
 ```
 
@@ -143,7 +143,7 @@ csvreader.line_num
 
 ![img_018](./images/img_018.png)
 
-Each line is a single tab delimited string and that string is enclosed in an otherwise empty list.
+Notice that each line read is a list of strings.
 
 Recall that the class ```list``` can be used on an iterator to see all the available items left:
 
@@ -151,13 +151,11 @@ Recall that the class ```list``` can be used on an iterator to see all the avail
 
 This gives a list of lists.
 
-Notice in the above ```\t``` a tab delimiter displays inplace of the ```,``` comma  delimiter. This is to prevent confusion between the delimiter in a Python list and a delimiter in the csv file.
-
-As ```csvreader``` is an iterator, it can also be used with a for loop:
+As ```csvreader``` is an iterator, it can also be consumed by a for loop:
 
 ```
 import csv
-file = open("commaseperatedvalues.csv", "r")
+file = open("commaseparatedvalues.csv", "r", encoding="UTF-8-Sig", newline="")
 csvreader = csv.reader(file)
 for row in csvreader:
     print(row)
@@ -168,10 +166,10 @@ file.close()
 ![img_020](./images/img_020.png)
 
 
-Recall that it is more common to open a file within a ```with``` code block. This code block will automatically close the file, although the close command is shwon below for clarity:
+Recall that it is more common to open a file within a ```with``` code block. This code block will automatically close the file, although the close command is shown below for clarity:
 
 ```
-with open("commaseperatedvalues.csv", "r") as file:
+with open("commaseparatedvalues.csv", "r", encoding="UTF-8-Sig", newline="") as file:
     csvreader = csv.reader(file)
     for row in csvreader:
         print(row)
@@ -184,11 +182,10 @@ with open("commaseperatedvalues.csv", "r") as file:
 
 Instead of printing, the file contents can be saved to a list.
 
-
 ```
 file_contents = []
 
-with open("commaseperatedvalues.csv", "r") as file:
+with open("commaseparatedvalues.csv", "r", encoding="UTF-8-Sig", newline="") as file:
     csvreader = csv.reader(file)
     for row in csvreader:
         file_contents.append(row)
@@ -199,16 +196,93 @@ with open("commaseperatedvalues.csv", "r") as file:
 
 ![img_022](./images/img_022.png)
 
-```
-file_contents = []
+The workflow used for the csv writer function is quite similar to that of the csv reader function. 
 
-with open("commaseperatedvalues.csv", "r") as file:
-    csvreader = csv.reader(file)
-    for row in csvreader:
-        file_contents.append(row[0])
+![img_024](./images/img_024.png)
+
+The function also takes in an iterable as an input argument which is usually an opened file. Once again a file can be opened and closed using the inbuilt function ```open``` where in this case the 2nd input argument in ```open``` is ```"w"``` indicating write access:
+
+```
+import csv
+file = open("newfile.csv", "w", encoding="UTF-8-Sig", newline="")
+csvwriter = csv.writer(file)
+file.close()
+```
+
+![img_025](./images/img_025.png)
+
+The csvwriter instance has two methods ```writerow``` and ```writerows```:
+
+![img_026](./images/img_026.png)
+
+```writerow``` can be used to write an individual row. For example a file can be created one row at a time:
+
+```
+import csv
+file = open("newfile.csv", "w", encoding="UTF-8-Sig", newline="")
+csvwriter = csv.writer(file)
+csvwriter.writerow(["x", "y", "z"])
+csvwriter.writerow([1, 2, 3])
+csvwriter.writerow([2, 4, 6])
+csvwriter.writerow([3, 6, 9])
+file.close()
+```
+
+![img_029](./images/img_029.png)
+
+This file is now viewable in Windows File Explorer:
+
+![img_030](./images/img_030.png)
+
+And can be opened in Notepad++:
+
+![img_031](./images/img_031.png)
+
+Once again that it is more common to open a file within a ```with``` code block. This code block will automatically close the file, although the close command is shown below for clarity: 
+
+```
+import csv
+
+with open("newfile.csv", "w", encoding="UTF-8-Sig", newline="") as file:
+    csvwriter = csv.writer(file)
+    csvwriter.writerow(["x2", "y2", "z2"])
+    csvwriter.writerow([1, 2, 3])
+    csvwriter.writerow([2, 4, 6])
+    csvwriter.writerow([3, 6, 9])
     file.close()
 
 
-```
+```    
 
-![img_023](./images/img_023.png)
+![img_032](./images/img_032.png)
+
+Notice that the previous file that was created has now been overridden with the new data (there is a subtle difference in the headings ```x2, y2 and z2``` are used opposed to ```x, y and z``` in the original file):
+
+![img_033](./images/img_033.png)
+
+Use of ```writerows``` requires the data to be in the form of a list of lists. Once again, the same data is going to be written to a file, this time slightly different headings ```x3, y3, z3``` are going to be used and a new file name ```"newfile2.csv"``` will be used:
+
+```
+import csv
+
+data = [["x3", "y3", "z3"],
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]]
+
+with open("newfile2.csv", "w", encoding="UTF-8-Sig", newline="") as file:
+    csvwriter = csv.writer(file)
+    csvwriter.writerows(data)
+    file.close()
+    
+
+```        
+
+![img_034](./images/img_034.png)
+
+This new file can be opened and looks as expected:
+
+![img_035](./images/img_035.png)
+
+## Pickled Data
+
