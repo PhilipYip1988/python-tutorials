@@ -58,13 +58,19 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 Python standard modules are inbuilt modules included with the Python installation. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used.
 
-The collections module includes a number of additional collections.
+The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to python builtins.
 
 [Collections Module](./012_collections/) 
 
+This guide looks at the use of the Operating System module and the shell utilities shutil module. These modules are used to carry out file operations within Python and behave similar to the equivalent commands in bash. This tutorial will examine how to read and write data to a text file:
+
 [File and Directory Operations with the os and shutil Modules](./013_os_module/)
 
+The Pickle module can be used to pickle a variable into a byte stream or unpickle a variable into a Python object. This byte stream can for example be saved to file so a variable can be loaded in a later session opposed to being recreated. The JavaScript Object Notation (JSON) is a more complicated data stream but is more user readible than pickled data. The JSON syntax originates from JavaScript but is similar to a Python dictionary with some subtle differences. Despite originating from JavaScript, the JSON data stream originates has become a commonly used data stream used to store data for all programming languages and most data on a website is stored in JSON for example. The JSON Module can be used to convert between a JSON syntax and a Python dictionary. Another common data type is the Comma Seperated Values (CSV). The CSV Module can be used to read or write data from or to a CSV file.
+
 Pickle, JSON and CSV Modules
+
+The math module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks.
 
 [Math Module](./015_math/)
 
