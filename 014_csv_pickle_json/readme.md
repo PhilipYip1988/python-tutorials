@@ -505,3 +505,29 @@ x2
 ![img_054](./images/img_054.png)
 
 Notice that ```x2``` has the same value as the original variable ```x```.
+
+```
+pickle.dump()
+pickle.load()
+```
+
+
+```
+import pickle
+file = open("newfile.pkl", "wb")
+pickle.dump(11.5, file)
+pickle.dump("hello", file)
+pickle.dump([1, 2, 3, 4, 5], file)
+file.close()
+```
+
+```
+with open("newfile.pkl", "wb") as file:
+    pickle.dump(11.5, file)
+    pickle.dump("hello", file)
+    pickle.dump([1, 2, 3, 4, 5], file)
+    file.close()
+```    
+
+
+
