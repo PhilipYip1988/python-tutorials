@@ -529,5 +529,25 @@ with open("newfile.pkl", "wb") as file:
     file.close()
 ```    
 
+```
+with open("newfile.pkl", "rb") as file:
+    print(pickle.load(file))
+    print(pickle.load(file))
+    print(pickle.load(file))
+    file.close()
+```
+
+
+```
+with open("xdata.pkl", "wb") as file:
+    pickle.dump([1, 2, 3, 4, 5], file)
+    file.close()
+```  
+
+```
+with open("xdata.pkl", "rb") as file:
+    xdata = pickle.load([1, 2, 3, 4, 5])
+    file.close()
+```  
 
 
