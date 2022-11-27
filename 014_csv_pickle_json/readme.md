@@ -557,3 +557,59 @@ import json
 ```
 ? json
 ```
+
+```
+json.dumps(1)
+json.dumps(1.5)
+json.dumps(True)
+
+json.dumps(1 + 2j)
+
+json.dumps("apples")
+
+chr(0x394)
+json.dumps(chr(0x394))
+
+chr(0x394)+"t"
+json.dumps(chr(0x394)+"t")
+
+for num in range(0x0391, 0x03CA):
+    print(hex(num), chr(num))
+
+print(hex(0x00D7), chr(0x00D7))
+print(hex(0x00F7), chr(0x00F7))
+
+for num in range(0x02200, 0x02300):
+    print(hex(num), chr(num))
+    
+for num in range(0x02300, 0x02400):
+    print(hex(num), chr(num))    
+
+json.dumps(["Apples", "Bananas", "Grapes"])
+json.dumps(["Apples", "Bananas", "Grapes"])
+
+json.dumps({"Apples", "Bananas", "Grapes", "Grapes"})
+json.dumps(list({"Apples", "Bananas", "Grapes", "Grapes"}))
+
+json.dumps({"r": "red",
+            "g": "green",
+            "b": "blue"})
+            
+json.dumps({"r": [1, 0, 0],
+            "g": [0, 1, 0],
+            "b": [0, 0, 1]})  
+            
+json.dumps(range(0, 10))
+
+json.dumps(list(range(0, 10)))
+```
+
+
+
+
+
+
+
+
+
+
