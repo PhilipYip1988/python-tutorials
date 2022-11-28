@@ -1,6 +1,6 @@
 # Numbering Systems
 
-This guide will look into the decimal system humans use and compare it to the binary system that computers use.
+This guide will look into the decimal system humans use and compare it to the binary system that computers use for every day applications.
 
 ## Fundamental Datatypes Recap
 
@@ -472,17 +472,66 @@ The color mixing of the red LED matrix of values, the green LED matrix of values
 
 The data behind this image is a 3D array of integer values (which are recognised by the computer as binary values). Typical pictures are usually of much larger array sizes. A picture that is 8 MB will typically use 3264 rows by 2448 columns.
 
+### Digital and Analog Audio
+
 Other signals are generated using different output devices. For example a buzzer may be used to create an audio tone. This buzzer can be digital "on" or "off":
 
 ![031_buzzer](./images/031_buzzer.PNG)
 
 Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different tones of buzzer which are encoded from 0-255 and a tune can be made from a sequence of tones for specified durations.
 
+### Unicode Characters
+
+Unicode is the world standard for text and emoji. Unicode maps a character to a 16 bit hexadecimal number. The ```chr``` function can accept an integer decimal or hexadecimal number as an input argument, while the corresponding ```ord``` function returns a decimal integer. This decimal integer can be cast to hexadecimal using the ```hex``` function. For example:
+
+```
+0x0394
+chr(0x0394)
+ord("Δ")
+hex(ord("Δ"))
+```
+
+![img_025](./images/img_025.png)
+
+Unicode characters can be used for Greek characters:
+
+```
+for num in range(0x0391, 0x03CA):
+    print(hex(num), chr(num))
+```
+
+![img_026](./images/img_026.png)
+
+Mathematical Symbols:
+
+```
+print(hex(0x00D7), chr(0x00D7))
+print(hex(0x00F7), chr(0x00F7))
+
+for num in range(0x2200, 0x2300):
+    print(hex(num), chr(num))
+```
+
+![img_027](./images/img_027.png)
+
+And some miscellaneous symbols:
+
+```
+for num in range(0x2300, 0x2400):
+    print(hex(num), chr(num))    
+```
+
+![img_028](./images/img_028.png)
+
+which are commonly used in engineering and science.
+
 # Signed Numbers
 
-We have only considered only a byte of positive numbers, ranging from 0-255 which is known as an 8 bit **unsigned** integer because all the numbers are positive integers. Recall that 8 bit is 1 byte.
+So far only a byte of positive numbers has been considered. This is known as an **unsigned** integer because all the numbers are positive integers. An 8 bit unsigned integer ranges from 0-256 in steps of 1. Recall that Python uses zero-order indexing which is inclusive of the lower bound (0) and exclusive of the upper bound (256) meaning the maximum value is 255.
 
-There are other numbering systems which we can use that include negative numbers such as the 8 bit **signed** integer. This numbering system also spans over 8 bit or one byte. In this numbering system we have to use half the possible arrangement of bits in the byte to represent the negative numbers and the other half is used to represent the positive numbers. The binary representation therefore spans from:
+There are other numbering systems which include negative numbers such as the 8 bit **signed** integer. This numbering system also physically spans over 8 bit but is encoded differently.
+
+In this numbering system half the possible arrangement of bits is used to represent the negative numbers and the other half is used to represent the positive numbers. The binary representation therefore spans from:
 
 ![006_byte_LED](./images/006_byte_LED.PNG)
 
@@ -502,9 +551,9 @@ to:
 
 ```0X FF``` 
 
-Note as ```-0``` and ```+0``` are the same value, we only need one configuration for ```0``` and therefore a signed integer tends to have the modulus of the negative limit (-128) being one larger than the modulus of the positive limit (+127).
+Note as ```-0``` and ```+0``` are the same value, only one configuration for ```0``` is required and therefore a signed integer tends to have the modulus of the negative limit (-128) being one larger than the modulus of the positive limit (+127). This is denoted as (-128)-(+128) using zero-order indexing, inclusive of the lower bound and exclusive of the upper bound. Parenthesis are added for clarity.
 
-To count up to larger numbers we can use more computer memory to store the number i.e. a larger number of bits. The 32 bit signed integer, for example uses 32 bits as the name suggests (which is 8 bytes). In this numbering system the lower limit is:
+To count up to larger numbers more computer memory is required to store the number i.e. a larger number of bits. The 32 bit signed integer, as the name suggests uses 32 bits. In this numbering system the lower limit is:
 
 ```-2147483648```
 
@@ -520,9 +569,11 @@ And the upper limit is:
 
 ```0X FF FF FF FF FF FF FF FF```
 
+This is denoted as (-2147483648)-(+2147483648) using zero-order indexing.
+
 # Floating Point Numbers
 
-As we have seen earlier, the computer operates using a series of binary switches known as bits and 8 of these are grouped together to make a byte. 
+The computer operates using a series of binary switches known as bits and 8 of these are grouped together to make a byte. 
 
 Signals received or emitted from computer hardware itself can be digital:
 * "off" (0) 
@@ -537,7 +588,7 @@ In the cases discussed above, these numbers are quantised discrete values or int
 
 ## Scientific Notation in Decimal
 
-In real life however we have numbers which aren't integers and include a decimal point. Moreover these numbers typically range from extremely small to very large. For example:
+In real life however there are numbers which aren't integers and include a decimal point. Moreover these numbers typically range from extremely small to very large. For example:
 
 * the radius of a hydrogen atom = 0.000000000053 m 
 
@@ -548,12 +599,12 @@ In real life however we have numbers which aren't integers and include a decimal
 As very small and very large numbers have a large number of preceding zeros or trailing zeros they become difficult to transcribe and are therefore typically expressed in scientific notation. 
 
 To convert from a decimal number to a decimal number in scientific notation:
-* We take the order of magnitude of the highest significant digit which is shown depicted in red and this is the value of the exponent at -11 and 8 for the small and large number respectively. 
-* We take the remaining non-zero numbers highlighted in yellow and add the decimal point after the most digit giving the mantissa which is 5.3 and 6.957 for the small and large number respectively.
+* Take the order of magnitude of the highest significant digit. This is shown depicted in red which is the value of the exponent at -11 and 8 for the small and large number respectively. 
+* Take the remaining non-zero numbers highlighted in yellow and add the decimal point after the most digit giving the mantissa which is 5.3 and 6.957 for the small and large number respectively.
 
 ![033_scientificnotation](./images/033_scientificnotation.PNG)
 
-We then write the number using the form ```mantissa```e```exponent``` and therefore:
+Write the number using the form ```mantissa```e```exponent``` and therefore:
 
 * the radius of a hydrogen atom = 5.3e-11 m 
 
@@ -561,16 +612,16 @@ We then write the number using the form ```mantissa```e```exponent``` and theref
 
 * the radius of the sun = 9.57e8 m 
 
-From the length examples above, we can see approximately 20 of orders of magnitude and there are still smaller and larger objects. To map each possible value over this scale of magnitude directly as a binary value will require an unworkable amount of computer memory.
+The length examples above differ in approximately 20 of orders of magnitude and there are still smaller and larger objects. To map each possible value over this scale of magnitude directly as a binary value would require an unworkable amount of computer memory!!!
 
-If we assign:
+In practice, the interaction between these two numbers can be considered:
 
 ```
 m = 5.3e-11
 n = 6.9551e+8
 ```
 
-We can take advantage of the following operations. For ```n>>m``` where ```n``` is a large number and ```m``` is a small number, interactions involving addition or subtraction of the small number, leave the bigger number essentially unchanged:
+For ```n>>m``` where ```n``` is a large number and ```m``` is a small number, interactions involving addition or subtraction of the small number essentially leave the bigger number essentially unchanged:
 
 ```n + m ~ n``` 
 
@@ -598,7 +649,7 @@ Division can be calculated using division of the mantissa of the two numbers, co
 
 ![035_scientificnotation](./images/035_scientificnotation.PNG)
 
-Physically the sun is made up of a huge number of hydrogen atoms and the uncertainty of the suns radius is therefore much larger than the size of a single hydrogen atom itself which is why the addition and subtraction of the radius of a hydrogen atom from the sun is insignificant. When we use division of the radius of the sun by the radius of the hydrogen atom, we return the number of hydrogen atoms along the diameter of the sun. We can see this is a very large number of hydrogen atoms and therefore a difference of a single hydrogen atom is insignificant with respect to this very large number.
+Physically the sun is made up of a huge number of hydrogen atoms and the uncertainty of the suns radius is therefore much larger than the size of a single hydrogen atom itself which is why the addition and subtraction of the radius of a hydrogen atom from the sun is insignificant. When using division of the radius of the sun by the radius of the hydrogen atom, the approximate number of hydrogen atoms along the diameter of the sun is returned. This is a very large number of hydrogen atoms and therefore a difference of a single hydrogen atom is insignificant with respect to this very large number.
 
 ## Scientific Notation in Binary
 
@@ -612,7 +663,7 @@ Take:
 0.25 (base 10)
 ```
 
-Let's begin to convert this into binary. To do this we are going to multiply the number by 2 and divide it by 1 in a series of steps. If the value before the decimal point is 0 we will subtract 0, if the value before the decimal point is 1 we will subtract 1.
+Let's begin to convert this into binary. To do this multiply the number by 2 and divide it by 1 in a series of steps. If the value before the decimal point is 0 subtract 0, if the value before the decimal point is 1 subtract 1.
 
 
 (0.25 * 2 / 1 = 0.5) - ```0``` = 0.5 
@@ -623,7 +674,7 @@ Let's begin to convert this into binary. To do this we are going to multiply the
 
 ⋮
 
-To get the number in base 2, we place these numbers after the ~~decimal (base 10)~~ binary (base 2) point:
+To get the number in base 2, place these numbers after the ~~decimal (base 10)~~ binary (base 2) point:
 
 ```
 0.01 (base 2)
@@ -643,7 +694,7 @@ Let's look at another example:
 
 (0.6 * 2 / 1 = 1.2) - ```1``` = **0.2**
 
-Notice that we return to a value of 0.2. This means we will are effectively repeating the same operation, again and again and again...
+Notice that the above returns to a value of 0.2. This means the same operation is effectively repeating again and again and again...
 
 (**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
 
@@ -671,7 +722,7 @@ Notice that we return to a value of 0.2. This means we will are effectively repe
 
 ⋮
 
-The number in binary is therefore recurring:
+The number in binary is therefore recurring and will be truncated in line with the number of bits used to store the floating point number.
 
 ```
 0.001100110011... (base 2)
@@ -711,7 +762,7 @@ Let's also have a look at the example:
 
 ⋮
 
-Once again, we get a recurring operation:
+Once again, a recurring operation is observed:
 
 ```
 0.000110011001... (base 2)
@@ -773,7 +824,7 @@ An exponent of ```+1``` for example will be encoded as ```+1+15``` which is ```1
 
 ```0B``` ```?``` ```10000``` ```??????????```
 
-For scientific notation of the decimal system we placed the first non-zero value in front of the decimal point and because we had ten characters, this gave us the following nine possibilities where xxx is the rest of the mantissa and yyy is the exponent:
+For scientific notation of the decimal system the first non-zero value was placed in front of the decimal point and because there were ten characters, this gave unine possibilities where xxx is the rest of the mantissa and yyy is the exponent:
 
 * ```1.```xxx...eyyy...
 * ```2.```xxx...eyyy...
@@ -785,11 +836,11 @@ For scientific notation of the decimal system we placed the first non-zero value
 * ```8.```xxx...eyyy...
 * ```9.```xxx...eyyy...
 
-In binary, because we only have two characters, the only non-zero value in front of the binary point is of the form:
+In binary, because there are only have two characters, the only non-zero value in front of the binary point is of the form:
 
 * ```1.```xxx...eyyy...
 
-Therefore since all floating point numbers start with ```1.```, to conserve memory we don't encode this first digit and hence would just encode the trailing xxx... after the binary point:
+Therefore since all floating point numbers start with ```1.```, to conserve memory this first digit isn't encoded. Onl the trailing xxx... after the binary point is encoded:
 
 Let's have a look at the number:
 
@@ -797,7 +848,7 @@ Let's have a look at the number:
 0.2 (base 10)
 ```
 
-We have already seen that this is:
+From earlier this is:
 
 ```
 0.001100110011... (base 2)
@@ -807,7 +858,7 @@ The number is positive so the sign is 0:
 
 ```0B``` ```0``` ```?????``` ```??????????```
 
-We see that the most significant non-zero value:
+The most significant non-zero value:
 
 ```
 0.001100110011... (base 2)
@@ -817,7 +868,7 @@ Has the power -3 (base 10).
 
 ```1.```100110011... 
 
-If we add the exponent offset of 15, we get -3 + 15 which is 12 (base 10). In binary representation using 5 bits this is:
+Adding the exponent offset of 15, gives -3 + 15 which is 12 (base 10). In binary representation using 5 bits this is:
 
 ```01100 (base 2)```
 
@@ -825,7 +876,7 @@ The exponent therefore becomes:
 
 ```0B``` ```0``` ```01100``` ```??????????```
 
-As the first number before the decimal point is always 1, it is ignored and the preceding numbers after the decimal point are encoded. In this numbering system, we use 10 bits to store the number:
+As the first number before the decimal point is always 1, it is ignored and the preceding numbers after the decimal point are encoded. In this numbering system, 10 bits are used to store the number:
 
 1.```1001100110```... 
 
