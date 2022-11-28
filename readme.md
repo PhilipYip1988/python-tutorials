@@ -70,11 +70,9 @@ The previous guide looked at working with text data. Another common data type is
 
 [CSV, Pickle and JSON Modules](./014_csv_pickle_json/)
 
-The math module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks.
+The math module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks. There is an associated complex math module cmath which is designed to handle complex numbers.
 
-[Math Module](./015_math/)
-
-Complex Math Module
+[Math and Complex Math Modules](./015_math/)
 
 Random Module
 
