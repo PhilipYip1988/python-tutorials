@@ -1392,15 +1392,261 @@ The offset of 1 can be seen when these squared functions are plotted:
 
 ![img_154](./images/img_154.png)
 
+## Complex Numbers
+
+The square root of a negative number is indeterminate using standard real numbers: 
+
+```
+(-1) ** 0.5
+```
+
+![img_168](./images/img_168.png)
+
+The symbol of this indeterminate is ```j```. And the definition of ```j``` such that:
+
+```
+1j * 1j
+```
+
+is ```-1```.
+
+![img_169](./images/img_169.png)
+
+In physics and mathematics, the indeterminate is denoted with the symbol ```i``` and is known as an imaginary component. In electrical engineering, the symbol ```i``` is used to denote current and therefore the symbol ```j``` is used. Python follows the same syntax as electrical engineering.
+
+A number with a real and imaginary component can be created using:
+
+```
+cnum = 3 + 2j
+```
+
+![img_170](./images/img_170.png)
+
+A complex can be visualised on an xy grid with ```x``` representing the real axis and ```y``` representing the imaginary axis:
+
+![img_171](./images/img_171.png)
+
+The complex number has a ```real``` and ```imag``` attribute which can be visualised as the magnitude of the the x and y components on the axes above:
+
+![img_172](./images/img_172.png)
+
+```
+cnum.real
+cnum.imag
+```
+
+![img_173](./images/img_173.png)
+
+Addition of two complex numbers involves addition of the real components along the real axis and addition of the imaginary components along the imaginary axis, using similar mathematics to vectors.
+
+```
+cnum1 = 3 + 2j
+cnum2 = 4 + 1j
+cnum1 + cnum2
+```
+
+![img_174](./images/img_174.png)
+
+The blue indicates the components of ```cnum1``` and the orange indicates the components of ```cnum2```. The resultant complex number brought about by their addition is indicated by the red point. Similar arithmetic is carried out for subtraction:
+
+![img_175](./images/img_175.png)
+
+For multiplication of two complex numbers, $j$ should be treated as an algebraic variable and the brackets should be multiplied out:
+
+$$\left(3+2j\right)\ast\left(4+1j\right)$$
+
+This will give a real term, an imaginary term with $j$ and an imaginary square term $j**2$:
+
+$$3\ast4+3\ast1j+2j\ast4+2j\ast1j$$
+
+$$12+3j+8j+2(j\ast\ast2)$$
+
+Since the definition of $j**2=-1$ this becomes:
+
+$$12+11j+2(-1)$$
+
+Which finally becomes the complex number:
+
+$$10+11j$$
+
+This can be done easily in Python using the ```*``` operator:
+
+```
+cnum * cnum2
+```
+
+![img_176](./images/img_176.png)
+
+There is a special number that can be multiplied with the complex number to obtain only a real component. This number is known as the complex conjugate:
+
+![img_177](./images/img_177.png)
+
+The real component of the complex conjugate is unchanged and the magnitude of the complex component is unchanged however the sign of the imaginary component is changed.
+
+The complex number can be multiplied by its complex conjugate:
+
+$$\left(3+2j\right)\ast\left(3-2j\right)$$
+
+The imaginary components cancel out:
+
+$$3\ast3+2j\ast3-2j\ast3-4(j\ast\ast2)$$
+
+This leaves only the real component:
+
+$$9-4(-1)$$
+
+$$9+4$$
+
+$$13$$
+
+This can be done in Python using:
+
+```
+cnum1 * cnum1.conjugate()
+```
+
+![img_178](./images/img_178.png)
+
+A complex number $z$ can be considered tohave the general form:
+
+$$z=x+iy$$
+
+If ```x``` is ```1/(2 ** 0.5)``` and ```y``` is ```1/(2 ** 0.5)``` then the complex number can also be represented as a point on the circle.
+
+![img_179](./images/img_179.png)
+
+$r$ is the radius of the circle or more generally the magnitude of the complex number illustrated as a vector. $\varphi$ is the angle the vector makes with the origin. Recall from earlier that:
+
+$$x=r\cos{\left(\varphi\right)}$$
+
+$$y=r\sin(\varphi)$$
+
+Therefore:
+
+$$z=r(\sin{\left(\varphi\right)}+j\cos(\varphi))$$
+
+A complex number times its complex conjugate should square the magnitude of the complex number leaving only a real component:
+
+$$r\left(\sin{\left(\varphi\right)}+j\cos{\left(\varphi\right)}\right)\ast r\left(\sin{\left(\varphi\right)}-j\cos{\left(\varphi\right)}\right)$$
+
+$$r^2(\sin{\left(\varphi\right)}\ast-j\cos{\left(\varphi\right)}+\sin{\left(\varphi\right)j\cos{\left(\varphi\right)}}-j\cos{\left(\varphi\right)\sin{\left(\varphi\right)}}+j\cos{\left(\varphi\right)\ast-j\cos{\left(\varphi\right)}})$$
 
 
+$$r^2(\sin{\left(\varphi\right)}\ast\sin{\left(\varphi\right)}+\sin{\left(\varphi\right)}\ast-j\cos{\left(\varphi\right)}+j\cos{\left(\varphi\right)}\ast\sin{\left(\varphi\right)}+j\cos{\left(\varphi\right)\ast-j\cos{\left(\varphi\right)}})$$
 
+$$r^2(\sin^2{\left(\varphi\right)-j^2\cos^2{(\varphi))}}$$
 
+$$r^2(\sin^2{\left(\varphi\right)+\cos^2{(\varphi))}}$$
 
+$$r^2$$
 
+This condition is also satisfied with a complex exponential:
 
+$$r\exp{\left(j\varphi\right)}*r\exp{\left(-j\varphi\right)}$$
 
+$$r^2\exp{\left(j\varphi-j\varphi\right)}$$
 
+$$r^2\exp{\left(0\right)}$$
 
+$$r^2$$
 
+Eulers formula equates:
 
+$$\exp{\left(j\varphi\right)}=\sin(\varphi)+j\cos(\varphi)$$
+
+Therefore:
+
+$$z=r\exp(j\varphi)$$
+
+The complex math module ```cmath``` can be imported using:
+
+```
+import cmath
+```
+
+```cmath``` has a list of very similar identifiers to ```math``` giving a complex equivalent to the identifiers used in ```math```. 
+
+![img_180](./images/img_180.png)
+
+There are two more constants for not a complex number ```nanj``` and for an infinite complex number ```infj```:
+
+```
+cmath.nanj
+cmath.infj
+```
+
+![img_188](./images/img_188.png)
+
+Returning to the number:
+
+```
+cnum = 1/(2**0.5) + (1/(2**0.5))*1j
+cnum
+```
+
+![img_181](./images/img_181.png)
+
+Which is represented in the diagram below:
+
+![img_179](./images/img_179.png)
+
+The phase $\varphi$ can be obtained using the cmath function ```phase``` which takes in a complex number in rectangular co-ordinates as an input argument:
+
+![img_182](./images/img_182.png)
+
+The phase $\varphi$ in radians is:
+
+```
+cmath.phase(cnum)
+```
+
+Or in units of $\frac{\tau}{16}$ is:
+
+```
+16*cmath.phase(cnum)/tau
+```
+
+which gives ```2.0``` and matches the diagram as expected:
+
+![img_183](./images/img_183.png)
+
+The function polar will convert an angle from rectangular co-ordinates (real $x$, imag $y$) to polar co-ordinates ($r$ $\varphi$):
+
+![img_184](./images/img_184.png)
+
+```
+cmath.polar(cnum)
+```
+
+![img_185](./images/img_185.png)
+
+This means the complex number can be represented as:
+
+$$z=r\exp(j\varphi)$$
+
+In this case:
+
+$$z=r\exp\left(j\frac{\tau}{16}\right)$$
+
+And the function ```rect``` can be used to convert a complex number from polar co-ordinates ($r$ $\varphi$) to rectangular co-ordinates (real $x$, imag $y$):
+
+![img_186](./images/img_186.png)
+
+The complex number in polar co-ordinates can be converted back to rectangular units using:
+
+```
+cmath.rect(1, 2*tau/16)
+```
+
+![img_187](./images/img_187.png)
+
+Which is of the form: 
+
+$$r=x+iy$$
+
+In this case:
+
+$$r=\frac{1}{\sqrt2}+j\frac{1}{\sqrt2}$$
+
+Return to:
+[Home](../../../)
