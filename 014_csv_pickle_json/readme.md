@@ -506,11 +506,15 @@ x2
 
 Notice that ```x2``` has the same value as the original variable ```x```.
 
+The dump file ```dump``` method is similar to the dump string ```dumps``` method, except the pickled object is dumped to a file. This file must be provided as an input argument:
+
 ```
 pickle.dump()
-pickle.load()
 ```
 
+![img_055](./images/img_055.png)
+
+The file must be opened with write permissions ```"w"``` and be configured for binary ```"b"```:
 
 ```
 import pickle
@@ -521,13 +525,47 @@ pickle.dump([1, 2, 3, 4, 5], file)
 file.close()
 ```
 
+![img_056](./images/img_056.png)
+
+The file created can be viewed in Windows File Explorer:
+
+![img_057](./images/img_057.png)
+
+If the file is opened in Notepad or Notepad++, it will be viewed using ASCII encoding and won't make much sense:
+
+![img_058](./images/img_058.png)
+
+The text in Notepad++ can be highlighted and then converted to Hex using Plugins → Converter → ASCII -> Hex:
+
+![img_059](./images/img_059.png)
+
+The pickled content can then be viewed in Hex:
+
+![img_060](./images/img_060.png)
+
+A file is usually opened using a with code block which automaitcally closes the file when the code block terminates. For clarity the file is explicitly closed:
+
 ```
+import pickle
+
 with open("newfile.pkl", "wb") as file:
     pickle.dump(11.5, file)
     pickle.dump("hello", file)
     pickle.dump([1, 2, 3, 4, 5], file)
     file.close()
 ```    
+
+![img_061](./images/img_061.png)
+
+The load file ```load``` method is similar to the load string ```loads``` method, except the pickled object is loaded from a file opposed to a string. This file must be provided as an input argument:
+
+```
+pickle.load()
+```
+
+![img_062](./images/img_062.png)
+
+The file must be opened with read permissions ```"r"``` and be configured for binary ```"b"```. Each item can be unpickled and loaded using:
 
 ```
 with open("newfile.pkl", "rb") as file:
@@ -537,6 +575,9 @@ with open("newfile.pkl", "rb") as file:
     file.close()
 ```
 
+![img_063](./images/img_063.png)
+
+Notice that the object name or variable name itself is not saved to the pickled file. It is quite common to save a single pickled object to a file and save the file as the intended variable name for the object. For example:
 
 ```
 with open("xdata.pkl", "wb") as file:
@@ -546,70 +587,272 @@ with open("xdata.pkl", "wb") as file:
 
 ```
 with open("xdata.pkl", "rb") as file:
-    xdata = pickle.load([1, 2, 3, 4, 5])
+    xdata = pickle.load(file)
     file.close()
 ```  
+
+```
+xdata
+```
+
+![img_064](./images/img_064.png)
+
+## JSON Data
+
+pickle is Python specific and has support for pretty much all Python datatypes however has the disadvantage that it is Python specific and is not very user readible. 
+
+Another common datatype is the JavaScript Object Notation (JSON) that is more user readible than pickled data. The JSON syntax originated from JavaScript but has become a commonly used standard data stream and most data on a website is stored in JSON for example.
+
+Because it is in JavaScript, there are slight conversions between a JavaScript object and an equivalent Python object due to subtle differences in programming language syntax. Not all Python objects are supported as they do not have a JavaScript equivalent. The JSON module essentially carries out all the supported conversions. It can be imported using:
 
 ```
 import json
 ```
 
+Some details about the module can be seen by looking at the modules docstring:
+
 ```
 ? json
 ```
 
+![img_065](./images/img_065.png)
+
+There are four main functions, similar to pickle: 
+
+```dumps``` dump string which creates a json string from an object.
+
+```loads``` load string which unpickles a json string returning the object.
+
+And:
+
+```dump``` dump file which creates a json string from an object that is stored as a new row in a file.
+
+```load``` load file which unpickles a json string from the current row in a file returning the object.
+
+The ```dumps``` function can be used to examine the equivalent JavaScript notation for common Python objects:
+
+![img_066](./images/img_066.png)
+
+An integer gets converted into a string:
+
 ```
 json.dumps(1)
+```
+
+![img_067](./images/img_067.png)
+
+A float also gets converted into a string:
+
+```
 json.dumps(1.5)
+```
+
+![img_068](./images/img_068.png)
+
+A boolean value gets converted into a string that is lower case:
+
+```
 json.dumps(True)
+```
 
+![img_069](./images/img_069.png)
+
+A complex number is not supported, giving a ```TypeError``` because the Complex number is not JSON Serializable:
+
+```
 json.dumps(1 + 2j)
+```
 
+![img_070](./images/img_070.png)
+
+A string gets enclosed in a second set of quotations:
+
+```
 json.dumps("apples")
+json.dumps('apples')
+```
 
+![img_071](./images/img_071.png)
+
+Unicode characters can be created in Python using the ```chr``` function, usually with a hexadecimal number. These get converted into a unicode string in JSON:
+
+```
 chr(0x394)
 json.dumps(chr(0x394))
+```
 
+![img_072](./images/img_072.png)
+
+```
 chr(0x394)+"t"
 json.dumps(chr(0x394)+"t")
+```
 
-for num in range(0x0391, 0x03CA):
-    print(hex(num), chr(num))
+![img_073](./images/img_073.png)
 
-print(hex(0x00D7), chr(0x00D7))
-print(hex(0x00F7), chr(0x00F7))
+A Python list gets enclosed in quotations. Notice the strings contained within the list are not doubly quotated like they were when they were standalone strings. This is because the outer list collection containing them is cast into a string using single quotations and these single quotations denote the list which includes all the enclosed strings in double quotations are part of this list:
 
-for num in range(0x02200, 0x02300):
-    print(hex(num), chr(num))
-    
-for num in range(0x02300, 0x02400):
-    print(hex(num), chr(num))    
-
+```
 json.dumps(["Apples", "Bananas", "Grapes"])
-json.dumps(["Apples", "Bananas", "Grapes"])
+```
 
+![img_074](./images/img_074.png)
+
+There is no tuple counterpart in JSON, so a Python tuple gets cast to a list and gets enclosed in quotations:
+
+```
+json.dumps(("Apples", "Bananas", "Grapes"))
+```
+
+![img_075](./images/img_075.png)
+
+JSON is typically configured for Python dictionaries and a ```TypeError``` because the set is not JSON Serializable:
+
+```
 json.dumps({"Apples", "Bananas", "Grapes", "Grapes"})
-json.dumps(list({"Apples", "Bananas", "Grapes", "Grapes"}))
+```
 
+![img_076](./images/img_076.png)
+
+A set can be cast into a list and then converted:
+
+```
+json.dumps(list({"Apples", "Bananas", "Grapes", "Grapes"}))
+```
+
+![img_077](./images/img_077.png)
+
+A Python dictionary gets enclosed in quotations:
+
+```
 json.dumps({"r": "red",
             "g": "green",
             "b": "blue"})
-            
-json.dumps({"r": [1, 0, 0],
-            "g": [0, 1, 0],
-            "b": [0, 0, 1]})  
-            
-json.dumps(range(0, 10))
+```
 
+![img_078](./images/img_078.png)
+
+Other Python specific objects for example range objects are not serializable and generally have to be cast into another datatype such as a list:
+
+```
+json.dumps(range(0, 10))
 json.dumps(list(range(0, 10)))
 ```
 
+![img_079](./images/img_079.png)
 
+JSON data can be converted into a Python format using the function ```loads```:
 
+![img_080](./images/img_080.png)
 
+Normally when JSON data is extracted from websites it is highly nested. Example data can be taken from [MDN Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) and made it to a multiline JSON string assigned to the variable ```data```:
 
+```
+data = """
+{
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+      "secretIdentity": "Dan Jukes",
+      "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "age": 1000000,
+      "secretIdentity": "Unknown",
+      "powers": [
+        "Immortality",
+        "Heat Immunity",
+        "Inferno",
+        "Teleportation",
+        "Interdimensional travel"
+      ]
+    }
+  ]
+}
+"""
+```
 
+![img_081](./images/img_081.png)
 
+This json ```data``` can be converted into Python readible data using the function ```loads```:
 
+```
+pydata = json.loads(data)
+```
 
+![img_082](./images/img_082.png)
 
+An IDE like Spyder with a powerful variable explorer can be very helpful for navigating through the data:
+
+![img_083](./images/img_083.png)
+
+![img_084](./images/img_084.png)
+
+![img_085](./images/img_085.png)
+
+![img_086](./images/img_086.png)
+
+![img_087](./images/img_087.png)
+
+If the string ```"Turning tiny"``` is desired it can be accessed using:
+
+```
+pydata["members"][0]["powers"][1]
+```
+
+![img_088](./images/img_088.png)
+
+This dataset can be used for practicing indexing within nested collections. For example try to obtain the string ```"Superhuman reflexes"```.
+
+JSON is primarally used to extract data from websites and parse it through to Python or vice-versa. The method ```dump``` and ```load``` can however be ed to save JSON data to a file and to laod it from a file respectively. The ```dump``` method requires an object to dump and a file path:
+
+![img_089](./images/img_089.png)
+
+For example the following Python dictionary can be written to a Python file:
+
+```
+with open("json_data.txt", "w") as file:
+    json.dumps({"r": "red",
+                "g": "green",
+                "b": "blue"})
+    file.close()
+```  
+
+![img_090](./images/img_090.png)
+
+The text file can be opened in Windows Explorer:
+
+![img_091](./images/img_091.png)
+
+![img_092](./images/img_092.png)
+
+The data can be extracted from the file using the method ```load```:
+
+![img_093](./images/img_093.png)
+
+```
+with open("json_data.txt", "r") as file:
+    colors = json.load(file)
+    file.close()
+```  
+
+![img_094](./images/img_094.png)
+
+Normally, only a single JSON object is written to a file as complicated JSON objects are typically nested.
