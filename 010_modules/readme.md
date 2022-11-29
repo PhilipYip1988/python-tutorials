@@ -471,6 +471,61 @@ The attributes ```__name__``` and ```__doc__``` can be used with the builtins mo
 
 ![img_047](./images/img_047.png)
 
+The directory function ```dir``` can be used to view all the inbuilt identifiers. If assigned to an object it will be stored as a list:
+
+```
+import builtins
+builtin_identifiers = dir(builtins)
+```
+
+![img_069](./images/img_069.png)
+
+This list can be viewed and inspected using the Variable Explorer of the Spyder IDE:
+
+![img_070](./images/img_070.png)
+
+To the top in CamelCaseCapitlization are mainly error meesages:
+
+![img_071](./images/img_071.png)
+
+Then there are the datamodel methods which being and end with a double underscore:
+
+![img_072](./images/img_072.png)
+
+Then there are the inbuilt objects, many of which have been used in the previous tutorials:
+
+![img_073](./images/img_073.png)
+
+It is worthwhile examining the list of these inbuilt objects and familarising yourself with these object names. These object names should not be assigned to variables.
+
+## keyword
+
+Another module ```keyword``` as the name suggests lists all the Python keywords. The module can be imported using:
+
+```
+import keyword
+```
+
+Its list of identifiers can be seen by inputting ```keyword.``` followed by a tab ```↹```:
+
+![img_074](./images/img_074.png)
+
+There are two instances ```kwlist``` and ```softkwlist``` which are lists of keywords and soft keywords respectively. There are also two associated functions which will return a boolean value which is ```True``` if the string provided is in the respective list or ```False``` otherwise:
+
+```
+import keyword
+kw = keyword.kwlist
+softkw = keyword.softkwlist
+```
+
+![img_075](./images/img_075.png)
+
+Once again these can be visualised in the Spyder Variable Explorer:
+
+![img_076](./images/img_076.png)
+
+![img_077](./images/img_077.png)
+
 ## pprint
 
 The module ```pprint``` was used earlier. It can be imported and the attributes ```__name__``` and ```__file__``` can be used to access the name and file of the module.
