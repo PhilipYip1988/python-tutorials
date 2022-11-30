@@ -542,6 +542,49 @@ This script file can be opened and examined. The docstring can also be output us
 
 ![img_050](./images/img_050.png)
 
+## unicodedata
+
+```
+ord("£")
+hex(ord("£"))
+chr("0xa3")
+```
+
+The ```unicodedata``` module contains some supplementary functions for dealing with unicode.
+
+```
+import unicodedata
+unicodedata.name("£")
+unicodedata.lookup("POUND SIGN")
+unicodedata.category("£")
+```
+
+```
+? unicodedata
+```
+
+
+[Unicode Code Charts](https://www.unicode.org/Public/UCD/latest/charts/)
+
+```
+dir(unicodedata)
+```
+
+```
+unicodedata.__file__
+```
+
+```
+unicode.digit(1)
+unicode.decimal(1)
+unicode.numeric(1)
+```
+
+```
+unicode.mirrored("(")
+unicodedata.mirrored("→")
+```
+
 ## collections
 
 The module ```collections``` is used to supplement Python's inbuilt collections. It can be imported and the attributes ```__name__```, ```__doc__``` and ```__file__``` can be used to access the name and file of the module. The attribute ```__all__``` is also defined in the file as a list containing all the objects defined in the module:
