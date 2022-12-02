@@ -115,7 +115,7 @@ Python is case sensitive, so the following strings are not equal:
 
 ![img_019](./images/img_019.png)
 
-In addition if the variable ```hello``` is assgned but ```Hello``` is requested, a ```NameError``` will display:
+In addition if the variable ```hello``` is assigned but ```Hello``` is requested, a ```NameError``` will display:
 
 ```
 hello = "hi"
