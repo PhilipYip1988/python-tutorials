@@ -191,9 +191,9 @@ obj1 + obj2
 
 ![img_007](./images/img_007.png)
 
-## Class Names CamelCaseCapitalization
+## Class Names PascalCaseCapitalization
 
-The ```class``` keyword is used to create a new class. This is followed by the class name. For the class name ```CamelCaseCapitalization``` is typically used and this differenciates custom classes from inbuilt classes. The class name is followed by parenthesis and the parenthesis enclose the parent class. By default a child class will inherit all the properties of the parent class, unless they are redefined. If no parent class is given, the parent class will automatically be assumed to be an object. After the parenthesis a colon ```:``` is present indicating the beginning of a code block. This code block normally contains several functions which each have their own perspective code blocks.
+The ```class``` keyword is used to create a new class. This is followed by the class name. For the class name ```PascalCaseCapitalization``` is typically used and this differenciates custom classes from inbuilt classes. The class name is followed by parenthesis and the parenthesis enclose the parent class. By default a child class will inherit all the properties of the parent class, unless they are redefined. If no parent class is given, the parent class will automatically be assumed to be an object. After the parenthesis a colon ```:``` is present indicating the beginning of a code block. This code block normally contains several functions which each have their own perspective code blocks.
 
 A custom class called ```ModObj``` can be created.  for class names.
 
