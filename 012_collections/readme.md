@@ -32,8 +32,8 @@ alternatives to Python's general purpose built-in containers, ```dict```,
 |UserList|wrapper around list objects for easier list subclassing|
 |UserString|wrapper around string objects for easier string subclassing|
 
-Most of the identifiers above are classes and are therefore appropriatedly named using ```CamelCaseCapitalization```. The  ```deque``` and ```defaultdict``` were originally intended to be incorporated into Pythons ```builtins``` alongside ```dict```,
-```list```, ```set```, and ```tuple``` and therefore follow the naming conventions for built in classes i.e. all lower case. The ```namedtuple``` is a factory function used to create a custom subclass that the user names using ```CamelCaseCapitalization```.
+Most of the identifiers above are classes and are therefore appropriatedly named using ```PascalCaseCapitalisation```. The  ```deque``` and ```defaultdict``` were originally intended to be incorporated into Pythons ```builtins``` alongside ```dict```,
+```list```, ```set```, and ```tuple``` and therefore follow the naming conventions for built in classes i.e. all lower case. The ```namedtuple``` is a factory function used to create a custom subclass that the user names using ```PascalCaseCapitalization```.
 
 ## namedtuple
 
@@ -49,7 +49,7 @@ To view the docstring of the ```namedtuple``` factory function input the functio
 
 ![img_004](./images/img_004.png)
 
-The ```namedtuple``` factory function essentially creates a tuple subclass where each index of the tuple is also associated with a named attribute. The first positional input argument ```TypeName``` is the name of the tuple subclass in the form of a string. Because it is a subclass name ```TypeName``` is typically ```CamelCaseCapitalized```. The assignment operator has to be assigned to a new object that is a class. This tuple subclass name usually matches the string provided in ```TypeName``` however assignment should be made to an object name and not a string. 
+The ```namedtuple``` factory function essentially creates a tuple subclass where each index of the tuple is also associated with a named attribute. The first positional input argument ```TypeName``` is the name of the tuple subclass in the form of a string. Because it is a subclass name ```TypeName``` is typically ```PascalCaseCapitalised```. The assignment operator has to be assigned to a new object that is a class. This tuple subclass name usually matches the string provided in ```TypeName``` however assignment should be made to an object name and not a string. 
 
 The second positional input argument field names is a list of strings and each string will be the name of the field for the named tuple. The strings are usually lower case and without special characters with exception to the underscore, following Pythons rules for variable names. It is possible to also provide one string with commas seperating the field names.
 
