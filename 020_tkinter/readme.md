@@ -1,8 +1,14 @@
-# The tkinter GUI Module
+# The TK Interface General User Interface Module
 
 ## Getting Started
 
-It is recommended to work with tkinter in a Python Script file opposed to an Interactive Python Notebook using an IDE such as VSCode as code completion from Microsoft's Intellisense will help alot when working with TK objects.
+The ```tkinter``` module should be considered an intermediate module. Begineers should be comfortable with builtin Python and the modules mentioned in previous guides before beginning with tkinter. In general an intermediate IDE is also required. One of the considerations when considering an IDE and working with TkInter is how well the IDE carries out code completion and how well it displays docstrings.
+
+IDLE for example displays only brief docstrings which is generally insufficient for working with tkinter widgets. Spyder is a bit better but is sadly still limited in this aspect.
+
+For GUI development it becomes inconvenient to work across cells in an Interactive Python Notebook and more convenient to work using a Python Script file. Typically the workflow involves multiple revisions of a file and therefore multiple lines of code are copied and pasted from file to file to do this. In JuptyerLab code completion doesn't work well unless the Widget created is defined in a previous cell and the previous cell is ran.
+
+The VSCode IDE is one of the best IDEs to work with tkinter as code completion from Microsoft's Intellisense is a good bit smoother and this will assist greatly when it comes to working with TK objects.
 
 Create a new folder for your GUI project:
 
