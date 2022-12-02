@@ -442,6 +442,21 @@ type(greeting) == str
 
 ![img_052](./images/img_052.png)
 
+In Python the following syntax is used for object names:
+
+|case|object type|
+|---|---|
+|snake_case|variable|
+|UPPER_CASE|constant|
+|PascalCase|class|
+|camelCase|-|
+
+```snake_case``` is all in lower case and the ```_``` is used to seperate words in the object name.
+
+```UPPER_CASE``` is all in capitals case and the ```_``` is used to seperate words in the object name.
+
+Notice the subtle difference between ```PascalCase``` and ```camelCase```. In ```PascalCase``` a capital letter is used for each word including the starting word. In ```camelCase``` the starting word is all in lower case and each subsequent word is capitalised. Pascal is the name of a person and therefore always in upper case. In the case of a camel, its head is down and its humps are up. ```camelCase``` is used for variable names in other programming languages such as C++ but is not commonly used in Python.
+
 The ```del``` statement is an abbreviation for delete and can be used to delete object names. For example the variables ```greeting``` and ```farewell``` can be assigned and display on the variable inspector:
 
 ```
