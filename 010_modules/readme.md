@@ -484,7 +484,7 @@ This list can be viewed and inspected using the Variable Explorer of the Spyder 
 
 ![img_070](./images/img_070.png)
 
-To the top in CamelCaseCapitlization are mainly error meesages:
+To the top in Pascal Case Capitalisation are mainly error messages:
 
 ![img_071](./images/img_071.png)
 
