@@ -131,6 +131,39 @@ zip_long
 
 ![img_013](./images/img_013.png)
 
+```zip``` is commonly used to cast two lists into a dictionary:
+
+```
+letters = ["a", "b", "c", "d"]
+numbers = [1, 2, 3, 4]
+idata = zip(letters, numbers)
+idata
+data = dict(idata)
+data
+```
+
+![img_077](./images/img_077.png)
+
+The ```zip``` class can also be used to unzip data which is zipped. i.e. is an iterable of equally sized tuples. To demonstrate this two lists can be zipped together and then unzipped. When unzipping, a ```*``` is prefixed in front of the iterable of zipped values:
+
+```
+letters = ["a", "b", "c", "d"]
+numbers = [1, 2, 3, 4]
+idata = zip(letters, numbers)
+idata
+data = list(idata)
+data
+letters2, numbers2 = zip(*data)
+letters2
+numbers2
+```
+
+![img_078](./images/img_078.png)
+
+Although the traditional zip only zips two sides. The ```zip``` function can be used to zip multiple iterables together. The length of each tuple will correspond to the number of collections zipped together. For example:
+
+![img_079](./images/img_079.png)
+
 ## slice and islice
 
 The ```slice``` class from ```builtins``` is not explicitly used as slicing is typically done using square brackets: 
@@ -146,7 +179,7 @@ numbers[1:5:1]
 
 ![img_025](./images/img_025.png)
 
-An iterator is not scriptable using Pythons square brackets. An iterator slice ```islice``` class from ```iterators``` should istead be used. This class requires the iterator to be sliced as the first input argument but otherwise uses similar input argument(s) for the slicing:
+An iterator is not scriptable using Pythons square brackets. An iterator slice ```islice``` class from ```iterators``` should instead be used. This class requires the iterator to be sliced as the first input argument but otherwise uses similar input argument(s) for the slicing:
 
 ![img_024](./images/img_024.png)
 
@@ -158,6 +191,32 @@ numbers_slice
 ```
 
 ![img_026](./images/img_026.png)
+
+## pairwise
+
+The ```pairwise``` function can be used to return an iterator of overlapping pairs:
+
+![img_082](./images/img_082.png)
+
+```
+ipairs = itertools.pairwise([1, 3, 7, 22])
+ipairs
+pairs = list(ipairs)
+pairs
+```
+
+This can be useful if checks are to be made between neighbouring datapoints
+
+```
+diff = []
+
+for pair in pairs:
+    diff.append(pair[1] - pair[0])
+
+diff
+```
+
+![img_083](./images/img_083.png)
 
 ## filter, filterfalse, dropwhile and takewhile
 
@@ -556,6 +615,43 @@ itop == iorig
 ```
 
 ![img_059](./images/img_059.png)
+
+## compress
+
+The ```compress``` class from ```itertools``` can be used to compress an iterator using a selector. The selector is an iterator of boolean values. The output is an iterator where all the values in the selector are ```True```.
+
+![img_080](./images/img_080.png)
+
+An example is given below. An iterator of every minute is created:
+
+```
+iminutes = itertools.count(start=0, step=60)
+iminutes
+```
+
+The selector is going to by a cycle that is ```True``` twice and ```False``` once:
+
+```
+iselector = itertools.cycle([True, True, False])
+iselector
+```
+
+The original iterator can be compressed using this selector:
+
+```
+itimes = itertools.compress(iminutes, iselector)
+itimes
+```
+
+As this iterator is endless, it cannot be cast into a list as the lsit will require infinite memory. It can be sliced into a preview, which in turn can be cast into a list:
+
+```
+itimes_preview = itertools.islice(itimes, 0, 10, 1)
+itimes_preview
+times_preview = list(itimes_preview)
+times_preview
+```
+![img_081](./images/img_081.png)
 
 ## combinations, permutations and product
 
