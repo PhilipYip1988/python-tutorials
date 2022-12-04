@@ -58,13 +58,13 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 Python standard modules are inbuilt modules included with the Python installation. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used.
 
-The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to python builtins.
+The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python builtins.
 
 [Collections Module](./012_collections/) 
 
-The concept of an iterators was covered briefly when looking at inbuilt collections and constructing a for loop. The builtins module contains commonly used iterators such as the zip, filter and map iterator classes. Python also has an iterator module that contains zip_longest, filterfalse, and starmap iterator classes which complement their similar counterpart in builtins. The itertools module also has a cycle, repeat and count iterator classes which are endless iterators. The cycle iterator can be used to continuously index around a collection, returning to the top after reaching the bottom.
+The concept of an iterators was covered briefly when looking at inbuilt collections and constructing a for loop. The builtins module contains commonly used iterators such as the zip, filter and map iterator classes. Python also has an iterator module itertools that contains zip_longest, filterfalse, and starmap iterator classes which complement their similar counterpart in builtins. The itertools module also has a cycle, repeat and count iterator classes which are endless iterators. The cycle iterator can be used to continuously index around a collection, returning to the top after reaching the bottom. Like the collections module, the itertools module is one of the closest modules to Python builtins. Effective use of these two modules simplifies common programming tasks and generally makes the code more Pythonic and easier to read:
 
-[IterTools Module](./013_itertools/) 
+[Iterator Tools Module](./013_itertools/) 
 
 This guide looks at the use of the Operating System module and the shell utilities shutil module. These modules are used to carry out file operations within Python and behave similar to the equivalent commands in bash. This tutorial will examine how to read and write data to a text file.
 
