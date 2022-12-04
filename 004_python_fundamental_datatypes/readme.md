@@ -412,7 +412,7 @@ Because file paths are copied and pasted frequently, it becomes cumbersome to re
 "C:\\Windows\\System32"
 ```
 
-A relative string or rstring prepends the string with ```r``` and every ```\``` supplied is taken to be a ```\\```.
+A raw string can be used instead by prepending the string with ```r```. A raw string will include the ```\``` as part of the string and automatically update it so it to ```\\``` so it is inserted as an escape character.
 
 ```
 "C:\\Windows\\System32"
