@@ -2,52 +2,30 @@
 
 This guide will look into the decimal system humans use and compare it to the binary system that computers use for every day applications.
 
-## Fundamental Datatypes Recap
+## Decimal
 
-The following datatypes have previously been explored:
+Humans typically handle numbers using the decimal system which means ten in latin. The decimal system gives the characters ```0-10```. The origin for this is down to the fact that a human possesses ```10``` fingers. Note that Python uses zero-order indexing so the first finger is denoted ```0```. Zero-order indexing is inclusive of the lower bound ```0``` and exclusive of the upper bound ```10```. The last number in a set of hands is ```9``` shown below:
 
-* text datatypes
-    * str ("a", "hello world")
-* numeric datatypes
-    * int (0, 1, 2, 3, ...)
-    * bool (False, True)
-    * float (0.0, 0., 0.1, 3.14)
+![img_032](./images/img_032.png)
 
-## Decimal Notation
+Single digit counting gives ```0```, ```1```, ```2```, ```3```, ```4```, ```5```, ```6```, ```7```, ```8``` and ```9```. To count to a higher value such as ```10```, two people are required and each set of hands is known as a digit. This allows counting ```0-100``` (inclusive of ```0``` and exclusive of ```100```). The number ```99``` is shown below:
 
-Recall humans typically handle numbers using the decimal system which gives 10 unique characters to represent a number ```0```, ```1```, ```2```, ```3```, ```4```, ```5```, ```6```, ```7```, ```8``` and ```9```. The origin for this is the fact that a human possesses 10 fingers. With only 10 characters, there are sometimes some recurring rounding errors. This can be seen with the concept of cutting a cake equally into three components. In fraction form this is denoted as ```1/3``` and:
+![img_033](./images/img_033.png)
+
+Increasing the number of digits, exponentially increases the number of values that can be counted to:
 
 ```
-1/3 + 1/3 + 1/3 = 3/3 = 1
+values = {1: 10**1, 2: 10**2, 3: 10**3, 4: 10**4}
+values
 ```
 
-However in decimal form this recurs ```0.3333333...``` where the ```...``` indicates recursion. If the number is stored to a finite number of characters for example 6 digits past the decimal point then:
+![img_055](./images/img_055.png)
 
-```
-0.333333 + 0.333333 + 0.333333 = 0.999999
-```
+## Binary
 
-If an is equals ```=``` comparison operator is used between ```0.999999``` and ```1.0``` the result will be ```False```.
+Under the hood, a computer uses a bit to store data. A bit, can be conceptualised as a digital light switch. Binary means two in latin.
 
-## How a Computer Stores Data
-
-This section will further explore fundamentally how a computer stores data.
-
-### Binary
-
-Under the hood, a computer uses the binary system to represent a number which gives 2 unique characters ```0``` and ```1```. The computer also has a finite precision or number of digits which it can use to store floating point numbers making recurring rounding errors far more prevalent than in the case of decimal. For example:
-
-```
-0.1 + 0.2 = 0.30000000000000004```
-```
-
-![003_float_precision](./images/003_float_precision.PNG)
-
-Once again, if an is equals ```=``` comparison operator is used between ```0.1 + 0.2`` and ```0.3``` the result will be ```False```.
-
-### Bit
-
-Under the hood, data in a computer is stored as a bit, which can be conceptualised as a digital light switch. A light switch has two positions:
+A light switch has two positions:
 
 "off":
 
@@ -57,44 +35,49 @@ Under the hood, data in a computer is stored as a bit, which can be conceptualis
 
 ![002_bit_LED](./images/002_bit_LED.PNG)
 
-For visualisation, a switch with an LED that is either "off" or "on" can be used. These are usually encoded numerically as:
+These positions are encoded numerically as:
 
-"off" : 0
+```0```
 
-"on": 1
+```1```
 
-Or in electronics are mapped to a voltage that is either:
+Or in electronics are assigned to constants:
 
-"off" : "LOW"
+```LOW = 0```
 
-"on": "HIGH"
+```HIGH = 1```
 
-### Bit and Boolean
+The numeric representation for a digit is ```0-2``` using zero-order indexing. Recall that this is inclusive of ```0``` and exclusive of ```2```. 
 
-Under the hood a boolean value is essentially a bit and maps:
+A boolean can also be conceptualised as a binary switch as it has the discrete values:
 
-"off" : False
+```False```
 
-"on": True
+```True``` 
 
-### Byte
+which are also equal to ```0``` and ```1``` respectively.
 
-The int datatype has numbers larger than 1 and therefore, a configuration of multiple bits (multiple light switches) is required to represent these larger numbers. The most common configuration is 8 bits which can be visualised as 8 LEDs attached to 8 switches. This configuration is known as a byte.
+## Byte
+
+The integer datatype has numbers larger than 1 and therefore, a configuration of multiple bits (multiple light switches) is required to represent these larger numbers. The most common configuration is 8 bits which can be visualised as 8 LEDs attached to 8 switches. This configuration is known as a byte.
+
 8 LEDs attached to a virtual Arduino microcontroller will be used to represent this.
 
 ![004_byte_LED](./images/004_byte_LED.PNG)
 
-### Binary Notation
+## Binary Notation
 
-The above configuration when all switches are off, represents the decimal number 0. This configuration can be represented using binary representation which adds the prefix ```0B``` or ```0b``` (**b**inary) to distinguish it from an ordinary number (which is in decimal).
+The above configuration when all switches are off, represents the decimal number ```0```. This configuration can be represented using binary representation.
 
-**All binary numbers will be prefixed. Decimal numbers will not be prefixed as they are commonly used.**
+The prefix ```0b``` (**b**inary) is used to distinguish a binary value from a decimal value.
 
-The binary prefix is followed by the configuration of the LEDs and the normal convention is to group these in fours:
+**All binary numbers will be prefixed. Decimal numbers will not be prefixed.**
+
+The binary prefix is followed by the configuration of the LEDs.
 
 ```0```
 
-```0B 0000 0000```
+```0b00000000```
 
 ![005_byte_LED](./images/005_byte_LED.PNG)
 
@@ -102,17 +85,17 @@ The decimal number 1 occurs when only, a single LED is on. In binary this is the
 
 ```1```
 
-```0B 0000 0001```
+```0b00000001```
 
 ![006_byte_LED](./images/006_byte_LED.PNG)
 
-The binary and decimal notation are identical so far as both have the characters ```0``` and ```1```. The differences in the numbering systems will not become apparent as the decimal system has additional characters that the binary system doesn't have.
+The binary and decimal notation are identical so far as both have the characters ```0``` and ```1```. The differences in the numbering systems will not become apparent until the decimal system has additional characters that the binary system lacks.
 
 In binary, as there are only two states for each LED ```0``` and ```1```, multiple digits are required to count to the next number. To count to the decimal number of 2, 2 digits are required:
 
 ```2```
 
-```0B 0000 0010```
+```0b00000010```
 
 ![007_byte_LED](./images/007_byte_LED.PNG)
 
@@ -120,172 +103,146 @@ This is analogous to using two digits to represent the number 10 in decimal, as 
 
 **Be careful not to confuse the two number systems**
 
-The decimal number ```10``` (ten) is not equivalent to the binary number ```0B 0000 0010``` (two).
+The decimal number ```10``` (ten) is not equivalent to the binary number ```0b00000010``` (two).
 
-**Pay attention to the prefix of the number used for binary ```0B``` or ```0b```.**
+**Pay attention to the prefix of the number used for binary ```0b```.**
 
 The decimal number 3 is therefore the next sequence:
 
 ```3```
 
-```0B 0000 0011```
+```0b00000011```
 
 ![008_byte_LED](./images/008_byte_LED.PNG)
 
-If half of the lights are turned on from the right. The binary number is:
+The number of values that can be counted depends on the number of digits:
 
-```0B 0000 1111```
+```
+values = {1: 2**1, 2: 2**2, 3: 2**3, 4: 2**4}
+values
+```
+
+![img_056](./images/img_056.png)
+
+Because there are less individual characters in binary, the number of values does not scale as rapidly as the number of digits are increased and as a consequence mnore digits are required for a binary number:
+
+```
+values = {1: 10**1, 2: 10**2, 3: 10**3, 4: 10**4}
+values
+```
+
+![img_057](./images/img_057.png)
+
+In binary it is common to group 4 digits together and use of 4 digits in binary allows counting from ```0-16```, inclusivew of ```0``` and exclusive of ```16```. If half of the lights are turned on from the right. The binary number is:
+
+```0b00001111```
 
 ![010_byte_LED](./images/010_byte_LED.PNG)
 
-The first LED from the right, or **zeroth** LED from the right, counting using zero-order indexing represents ```2 ** 0``` and is on ```1``` so:
+The first LED from the right, or better put **zeroth** LED from the right, counting using zero-order indexing represents ```2 ** 0``` and is on ```1``` so has a value of:
 
 ```
 1 * (2 ** 0)
 ```
 
-The first LED from the right represents ```2 ** 1``` and is on ```1``` so:
+The first LED from the right represents ```2 ** 1``` and is on ```1``` so has a value of:
 
 ```
 1 * (2 ** 1)
 ```
 
-The second LED from the right represents ```2 ** 2``` and is on ```1``` so:
+The second LED from the right represents ```2 ** 2``` and is on ```1``` so has a value of:
 
 ```
 1 * (2 ** 2)
 ```
 
-The third LED from the right represents ```2 ** 3``` and is on ```1``` so:
+The third LED from the right represents ```2 ** 3``` and is on ```1``` so has a value of:
 
 ```
 1 * (2 ** 3)
 ```
 
-The fourth LED from the right represents ```2 ** 4``` and is off ```0``` so:
+The fourth LED from the right represents ```2 ** 4``` and is off ```0``` so has a value of:
 
 ```
 0 * (2 ** 4)
 ```
 
-The fifth LED from the right represents ```2 ** 5``` and is off ```0``` so:
-
-```
-0 * (2 ** 5)
-```
-
-The sixth LED from the right represents ```2 ** 6``` and is off ```0``` so:
-
-```
-0 * (2 ** 6)
-```
-
-The seventh LED from the right represents ```2 ** 7``` and is off ```0``` so:
-
-```
-0 * (2 ** 7)
-```
-
-The summation of the above is:
-
-```
-0 * (2 ** 7) + 0 * (2 ** 6) + 0 * (2 ** 5) + 0 * (2 ** 4) + 1 * (2 ** 3) + 1 * (2 ** 2) + 1 * (2 ** 1) + 1 * (2 ** 0)
-```
-
-![011_byte](./images/011_byte.PNG)
-
-This gives a decimal value of ```15```. 
-
-For simplicity, let's only examine the combination of 4 LED switches or 4 Bits (half a byte) in more detail. The highest number, when all 4 LEDs are on is ```15```. 
-
-**In zero-ordering indexing the lower bound is inclusive and the upper bound is exclusive.**
-
-So 0-4 means counting from 0 to 4 in steps of 1 but not reaching 4 itself. i.e. 0, 1, 2, 3.
-
-Therefore use of 4 LED switches allows counting from ```0``` - ```(2 ** 4)```, which is 0-16 (inclusive of 0 and exclusive of 16 giving a maximum value of 15):
+The summation of the above is ```15```:
 
 ```
 1 * (2 ** 3) + 1 * (2 ** 2) + 1 * (2 ** 1) + 1 * (2 ** 0)
 ```
 
-![012_byte](./images/012_byte.PNG)
+![img_058](./images/img_058.png)
 
-A byte has 8 binary switches, in this case 8 LED switches and therefore allows counting from ```0``` - ```(2 ** 8)```, which is 0-256 (inclusive of 0 and exclusive of 256 giving a maximum value of 255):
+A byte has 8 binary switches, in this case 8 LED switches and therefore allows counting to:
+
+```
+2 ** 8
+```
 
 ![009_byte](./images/009_byte.PNG)
 
+which is ```0-256``` (inclusive of ```0``` and exclusive of ```256```). The maximum value is therefore ```255```:
+
 ```255```
 
-```0B 1111 1111```
+```0b11111111```
 
 ![013_byte_LED](./images/013_byte_LED.PNG)
 
-### Hexadecimal Notation
+## Hexadecimal Notation
 
 Binary numbers such as:
 
-```0B 0111 1011```
+```0b01111011```
 
 are very easy for a computer to understand but are typically hard to transcribe as a human without making a mistake.
 
 ![014_byte_LED](./images/014_byte_LED.PNG)
 
-To help alleviate this, the digits used in a binary number are grouped into fours, which recall is half a byte. For clarity different colors of LEDs will be used to group half a byte.
+To help alleviate this, the digits used in a binary number are grouped into fours. For clarity different colors of LEDs will be used to group each half of the byte.
 
-Recall for four LEDs, there were ```2 ** 4``` combinations giving a range of 0-16 (inclusive of 0 and exclusive of 16).
+Recall with four LEDs, there were ```2 ** 4``` combinations giving a range of 0-16 (inclusive of 0 and exclusive of 16).
 
-The hexadecimal numbering system uses a unique character for each of these combinations. It uses the first ten numbers from the decimal sysem:
+The hexadecimal numbering system has a unique character for each of these combinations. Hexadecimal means 16 in latin and uses the first ten numbers from the decimal system:
 
 ```0```, ```1```, ```2```, ```3```, ```4```, ```5```, ```6```, ```7```, ```8``` and ```9```
 
-And then to get to 16 combinations uses the first 6 letters of the alphabet:
+And then to get to 16 combinations supplements these with the first 6 letters of the alphabet:
 
 ```A```, ```B```, ```C```, ```D```, ```E``` and ```F```.
 
-To distinguish a hexadecimal number the prefix ```0X``` or ```0x``` (he**x**) is used:
+To distinguish a hexadecimal number the prefix ```0x``` (he**x**) is used:
 
 |decimal|binary|hex|
 |---|---|---|
-|```0```|```0B 0000```|```0X 0```|
-|```1```|```0B 0001```|```0X 1```|
-|```2```|```0B 0010```|```0X 2```|
-|```3```|```0B 0011```|```0X 3```|
-|```4```|```0B 0100```|```0X 4```|
-|```5```|```0B 0101```|```0X 5```|
-|```6```|```0B 0110```|```0X 6```|
-|```7```|```0B 0111```|```0X 7```|
-|```8```|```0B 1000```|```0X 8```|
-|```9```|```0B 1001```|```0X 9```|
-|```10```|```0B 1010```|```0X A```|
-|```11```|```0B 1011```|```0X B```|
-|```12```|```0B 1100```|```0X C```|
-|```13```|```0B 1101```|```0X D```|
-|```14```|```0B 1110```|```0X E```|
-|```15```|```0B 1111```|```0X F```|
+|```0```|```0b0000```|```0x0```|
+|```1```|```0b0001```|```0x1```|
+|```2```|```0b0010```|```0x2```|
+|```3```|```0b0011```|```0x3```|
+|```4```|```0b0100```|```0x4```|
+|```5```|```0b0101```|```0x5```|
+|```6```|```0b0110```|```0x6```|
+|```7```|```0b0111```|```0x7```|
+|```8```|```0b1000```|```0x8```|
+|```9```|```0b1001```|```0x9```|
+|```10```|```0b1010```|```0xA```|
+|```11```|```0b1011```|```0xB```|
+|```12```|```0b1100```|```0xC```|
+|```13```|```0b1101```|```0xD```|
+|```14```|```0b1110```|```0xE```|
+|```15```|```0b1111```|```0xF```|
 
-And the binary number:
+And the 8 bit binary number:
 
-```0B 0111 1011```
+```0b01111011```
 
-Can be replaced by its Hexadecimal equivalent from the lookup table:
+Can be made into groupings of 4 characters ```0b0111``` and ```0b1011``` respectively. Once this grouping is made, each group can be replaced by their hexadecimal equivalent ```0x7``` and ```0xB```. Bringing this together gives the 8 bit binary number represented in hexadecimal ```0x7B```.
 
-```0x 7 B```
-
-Typically no space is added between each digit giving:
-
-```0x 7B```
-
-From the table above, the two characters correspond to:
-
-B: 1011
-
-7: 0111
-
-the binary representation for this is therefore:
-
-```0B 0111 1011```
-
-and this can be calculated in decimal value using:
+Recall to get from binary to decimal, each binary number can be taken to its respective power of 2:
 
 ```0 * (2 ** 7) + 1 * (2 ** 6) + 1 * (2 ** 5) + 1 * (2 ** 4) + 1 * (2 ** 3) + 0 * (2 ** 2) + 1 * (2 ** 1) + 0 * (2 ** 0)```
 
@@ -297,55 +254,110 @@ Therefore to recap, the following arrangement of LED switches is represented in 
 
 ![014_byte_LED](./images/014_byte_LED.PNG)
 
-```0B 0111 1011```
+```0b01111011```
 
-```0X 7B```
+```0x7B```
 
 ```123```
 
-These numbers can be converted using the ```int``` class, ```bin``` function and ```hex``` function:
+If the binary and hexadecimal numbers are input into Python, they are automatically converted into their decimal representation:
 
 ```
-int(0x7B)
-int(0B01111011)
+0b01111011
+0x7B
+```
+
+![img_047](./images/img_047.png)
+
+The ```bin``` and ```hex``` functions cast the number into binary and hexadecimal string representations respectively:
+
+```
 bin(0x7B)
-hex(0B01111011)
+bin(123)
+hex(0b01111011)
+hex(123)
 ```
 
-![019_conversions](./images/019_conversions.PNG)
+![img_048](./images/img_048.png)
 
-### Characters
+## ASCII Characters
 
-Under the hood, each character on the keyboard is mapped to a binary number. The ```chr``` function can be used to convert a number to a character or the inverse ```ord``` function converts a character to a number. Let's use a for loop to have a look at the mapping with a decimal number:
+Under the hood, each character on the keyboard is mapped to a 8 bit binary number which recall is 2 characters in hexadecimal. The hexadecimal number can be incorporated into a string. Recall in a string the ```\``` denotes insertion of an escape character. If ```\x``` is used, an instruction is given to insert a 2 digit hexadecimal number. This has the general form of:
 
 ```
-for idx in range(0, 256):
-    print("(", idx, ":", "\"", chr(idx), "\"", ")", sep="", end=" ")
+"\x00\x01\x02\x03\x04"
 ```
 
-![016_chr_function](./images/016_chr_function.PNG)
+Note the ```\x``` is used in front of each set of 2 hexadecimal digits (corresponding to one byte) as this gives an instruction to insert an individual character. The hexadecimal number ```7B``` can be input 5 times using:
+
+```
+"\x7B\x7B\x7B\x7B\x7B"
+```
+
+Or once using:
+
+```
+"\x7B"
+```
+
+![img_029](./images/img_029.png)
+
+Notice that the hexadecimal character ```7B``` displays as a left brace ```{```. The ```chr``` function can be used to convert a number to a character. It accepts a hexadecimal number using the prefix ```0x``` or a decimal number without any prefix:
+
+```
+chr(0x7B)
+chr(123)
+```
+
+![img_030](./images/img_030.png)
+
+The inverse ```ord``` function converts a character to a decimal number:
+
+```
+ord("{")
+```
+
+This decimal number can be cast into a hexadecimal string representation using the ```hex``` function:
+
+```
+ord("{")
+hex(ord("{"))
+```
+
+![img_031](./images/img_031.png)
+
+A for loop to have a look at the mapping with a decimal number:
+
+```
+for idx in range(256):
+    print(f"{idx}:{chr(idx)}", sep="", end=" ")
+```
+
+![img_049](./images/img_049.png)
 
 Notice that the starting characters 0-31 tend to be hidden punctuation marks for example (8 backspace), (9 horizontal tab), (10 line feed), (11 vertical tab), (12 form feed), (13 carriage return), (14 shift out), (15 shift in).
 
 The for loop can be updated to have a look at the binary number:
 
 ```
-for idx in range(0, 256):
-    print("(", bin(idx), ":", "\"", chr(idx), "\"", ")\n", sep="", end=" ")
+for idx in range(256):
+    print(f"{bin(idx)}:{chr(idx)}", sep="", end=" ")
 ```
 
-![017_chr_function](./images/017_chr_function.PNG)
+![img_050](./images/img_050.png)
 
 and hexadecimal number respectively:
 
 ```
-for idx in range(0, 256):
-    print("(", hex(idx), ":", "\"", chr(idx), "\"", ")\n", sep="", end=" ")
+for idx in range(256):
+    print(f"{hex(idx)}:{chr(idx)}", sep="", end=" ")
 ```
 
-![018_chr_function](./images/018_chr_function.PNG)
+![img_051](./images/img_051.png)
 
-### Monochrome Images
+This range of characters is known as ASCII, an abbreviation for the American Standard Code for Information Interchange.
+
+## Monochrome Images
 
 A very basic screen can be conceptualised as a matrix of white LEDs. In the simplest example below, each white LED in the matrix has its own digital signal that is either "off" or "on":
 
@@ -368,33 +380,15 @@ And the data depicting the character therefore looks like:
 0 0 0 0 0
 ```
 
-This can be encoded using:
-
-```
-import numpy as np
-import matplotlib.pyplot as plt
-
-h = np.array([[1, 0, 0, 0, 0],
-              [1, 0, 0, 0, 0],
-              [1, 0, 1, 1, 0],
-              [1, 1, 0, 0, 1],
-              [1, 0, 0, 0, 1],
-              [1, 0, 0, 0, 1],
-              [1, 0, 0, 0, 1],
-              [0, 0, 0, 0, 0]])
-
-plt.matshow(h, cmap="bone")
-```
-
-In the variable explorer of the Spyder IDE, the shape of the character can be seen if a (monochrome) background color is applied:
+In the variable explorer of the Spyder IDE, if the character is encoded as a numpy array, the shape of the character can be seen if a (monochrome) background color is applied:
 
 ![024_image](./images/024_image.PNG)
 
-This is plotted as:
+This can be plotted using matplotlib matshow using a colormap of bone:
 
 ![027_image](./images/027_image.PNG)
 
-### Greyscale Images
+## Greyscale Images
 
 Let's now look at an analog white LED. The white LED is attached to a potentiometer which operates over 8 bits which recall is also known as a byte. A byte has 256 levels ranging from 0-255. In this configuration at 0, the white LED has no emission and the absence of light is perceived as black. At 255 the white LED is on full brightness which is perceived as white. Any other level is a mixture of black and white which is perceived as some level of gray.
 
@@ -403,19 +397,14 @@ Let's now look at an analog white LED. The white LED is attached to a potentiome
 For a screen where each pixel is an analog white LED that can individually be varied from 0-255, a grayscale image can be generated. For example:
 
 ```
-import numpy as np
-import matplotlib.pyplot as plt
-
-img = np.array([[255, 255, 255, 255, 255],
-                [223, 223, 223, 223, 223],
-                [191, 191, 191, 191, 191],
-                [159, 159, 159, 159, 159],
-                [127, 127, 127, 127, 127],
-                [ 95,  95,  95,  95,  95],
-                [ 63,  63,  63,  63,  63],
-                [ 31,  31,  31,  31,  31]])
-              
-plt.matshow(img, cmap="bone")
+[[255, 255, 255, 255, 255],
+ [223, 223, 223, 223, 223],
+ [191, 191, 191, 191, 191],
+ [159, 159, 159, 159, 159],
+ [127, 127, 127, 127, 127],
+ [ 95,  95,  95,  95,  95],
+ [ 63,  63,  63,  63,  63],
+ [ 31,  31,  31,  31,  31]]
 ```
 
 In the variable explorer of the Spyder IDE, the shape of the grayscale pattern can be seen if a background color is applied:
@@ -428,7 +417,7 @@ This is plotted as:
 
 Because each level is a byte or 8 bit, this is known as an 8 bit greyscale image.
 
-### Color Images
+## Color Images
 
 To make a color, color mixing is performed. Color mixing uses the three primary colors red, green and a blue, which can physically be achieved by using a red LED, green LED and blue LED or a combined RGB LED. 
 
@@ -443,26 +432,7 @@ The orange color displayed on the screen for example sets:
 * the green LED to an intensity of 192 (0xFC)
 * the blue LED to the minimum intensity of 0 (0x00).
 
-A color screen is a matrix of these RGB LEDs. An image of random colors can be created using:
-
-```
-import numpy as np
-import numpy.random as random
-import matplotlib.pyplot as plt
-from PIL import Image
-random.seed(0)
-
-reds = random.randint(low=0, high=256, size=(8, 5))
-
-greens = random.randint(low=0, high=256, size=(8, 5))
-
-blues = random.randint(low=0, high=256, size=(8, 5))
-
-rgbimg = np.dstack((reds, greens, blues)) 
-
-plt.imshow(rgbimg)
-```
-In the variable explorer the matrix sent to each color of LED array looks like the following:
+A color screen is an array of these RGB LEDs. An image of random colors can be created using three equally sized numeric arrays of random integers spanning between ```0-256``` (1 byte). The red array is the color of the red LED for each pixel, the green array is the color of the green array for each pixel and the blue array is the color of the blue array for each pixel.
 
 ![028_image](./images/028_image.PNG)
 
@@ -470,9 +440,9 @@ The color mixing of the red LED matrix of values, the green LED matrix of values
 
 ![029_image](./images/029_image.PNG)
 
-The data behind this image is a 3D array of integer values (which are recognised by the computer as binary values). Typical pictures are usually of much larger array sizes. A picture that is 8 MB will typically use 3264 rows by 2448 columns.
+The data behind this image is a 3D array of integer values (which are recognised by the computer as binary values). Typical pictures are usually of much larger array sizes. A picture that is 8 MB will typically use 3264 rows by 2448 columns for example.
 
-### Digital and Analog Audio
+## Digital and Analog Audio
 
 Other signals are generated using different output devices. For example a buzzer may be used to create an audio tone. This buzzer can be digital "on" or "off":
 
@@ -480,18 +450,30 @@ Other signals are generated using different output devices. For example a buzzer
 
 Or can have an analog 8 bit audio. For 8 bit (1 byte) there are 256 different tones of buzzer which are encoded from 0-255 and a tune can be made from a sequence of tones for specified durations.
 
-### Unicode Characters
+## Unicode Characters
 
-Unicode is the world standard for text and emoji. Unicode maps a character to a 16 bit hexadecimal number. The ```chr``` function can accept an integer decimal or hexadecimal number as an input argument, while the corresponding ```ord``` function returns a decimal integer. This decimal integer can be cast to hexadecimal using the ```hex``` function. For example:
+ASCII is an 8 bit (1 byte) subset of characters. There is a much larger set of characters spanning over 16 bit (2 bytes) covering most mathematical operations and European languages. Later versions of unicode also have characters than span over 32 bit (4 bytes).
+
+```
+2 ** 16
+2 ** 32
+```
+
+![img_059](./images/img_059.png)
+
+The ```chr``` function can accept an integer decimal or hexadecimal number as an input argument, while the corresponding ```ord``` function returns a decimal integer. This decimal integer can be cast to hexadecimal using the ```hex``` function. For example:
 
 ```
 0x0394
+chr(916)
 chr(0x0394)
 ord("Δ")
 hex(ord("Δ"))
 ```
 
-![img_025](./images/img_025.png)
+![img_053](./images/img_052.png)
+
+Note the notation used before ```\x7B``` is configured only for a Hexadecimal number that spans over a byte i.e. an ASCII character. The escape character will not recognise any subsequent digit as part of the hexadecimal number.
 
 Unicode characters can be used for Greek characters:
 
@@ -512,7 +494,7 @@ for num in range(0x2200, 0x2300):
     print(hex(num), chr(num))
 ```
 
-![img_027](./images/img_027.png)
+![img_053](./images/img_053.png)
 
 And some miscellaneous symbols:
 
@@ -521,13 +503,13 @@ for num in range(0x2300, 0x2400):
     print(hex(num), chr(num))    
 ```
 
-![img_028](./images/img_028.png)
+![img_054](./images/img_054.png)
 
 which are commonly used in engineering and science.
 
-# Signed Numbers
+## Unsigned and Signed Numbers
 
-So far only a byte of positive numbers has been considered. This is known as an **unsigned** integer because all the numbers are positive integers. An 8 bit unsigned integer ranges from 0-256 in steps of 1. Recall that Python uses zero-order indexing which is inclusive of the lower bound (0) and exclusive of the upper bound (256) meaning the maximum value is 255.
+So far only positive numbers has been considered and ths grouping is known as **unsigned** integers. An 8 bit unsigned integer ranges from ```0-256``` in steps of 1. Recall that Python uses zero-order indexing which is inclusive of the lower bound ```0``` and exclusive of the upper bound ```256``` meaning the maximum value is ```255```.
 
 There are other numbering systems which include negative numbers such as the 8 bit **signed** integer. This numbering system also physically spans over 8 bit but is encoded differently.
 
@@ -537,9 +519,9 @@ In this numbering system half the possible arrangement of bits is used to repres
 
 ```-128```
 
-```0B 0000 0000```
+```0b00000000```
 
-```0X 00```
+```0x00```
 
 to:
 
@@ -547,48 +529,35 @@ to:
 
 ```+127```
 
-```0B 1111 1111```
+```0b11111111```
 
-```0X FF``` 
+```0xFF``` 
 
-Note as ```-0``` and ```+0``` are the same value, only one configuration for ```0``` is required and therefore a signed integer tends to have the modulus of the negative limit (-128) being one larger than the modulus of the positive limit (+127). This is denoted as (-128)-(+128) using zero-order indexing, inclusive of the lower bound and exclusive of the upper bound. Parenthesis are added for clarity.
+Note as ```-0``` and ```+0``` are the same value, only one configuration for ```0``` is required and therefore a signed integer tends to have the modulus of the negative limit ```(-128)``` being one larger than the modulus of the positive limit ```(+127)```. This is denoted as ```(-128)-(+128)``` using zero-order indexing, inclusive of the lower bound and exclusive of the upper bound. Parenthesis are added for clarity.
 
 To count up to larger numbers more computer memory is required to store the number i.e. a larger number of bits. The 32 bit signed integer, as the name suggests uses 32 bits. In this numbering system the lower limit is:
 
 ```-2147483648```
 
-```0B 0000 0000 0000 0000 0000 0000 0000 0000```
+```0b00000000000000000000000000000000```
 
-```0X 00 00 00 00 00 00 00 00```
+```0x0000000000000000```
 
 And the upper limit is:
 
 ```2147483647``` 
 
-```0B 1111 1111 1111 1111 1111 1111 1111 1111```
+```0b11111111111111111111111111111111```
 
-```0X FF FF FF FF FF FF FF FF```
+```0xFFFFFFFFFFFFFFFF```
 
-This is denoted as (-2147483648)-(+2147483648) using zero-order indexing.
+This is denoted as ```(-2147483648)-(+2147483648)``` using zero-order indexing.
 
-# Floating Point Numbers
+## The Decimal Point and Decimal Scientific Notation
 
-The computer operates using a series of binary switches known as bits and 8 of these are grouped together to make a byte. 
+So far only integer numbers have been considered. In physical applications there are numbers which scale really small or large with respect to each other. 
 
-Signals received or emitted from computer hardware itself can be digital:
-* "off" (0) 
-* "on" (1)
-
-Or analog, in the case of 8 bit analog: 
-* 0-255 
-* 0X 00 - 0X FF
-* 0B 00 00 00 00 - 0B 11 11 11 11
-
-In the cases discussed above, these numbers are quantised discrete values or integers.
-
-## Scientific Notation in Decimal
-
-In real life however there are numbers which aren't integers and include a decimal point. Moreover these numbers typically range from extremely small to very large. For example:
+These numbers are compared normally to some standard such as the metre which is used to compare lengths. For example:
 
 * the radius of a hydrogen atom = 0.000000000053 m 
 
@@ -596,9 +565,10 @@ In real life however there are numbers which aren't integers and include a decim
 
 * the radius of the sun = 95700000 m 
 
-As very small and very large numbers have a large number of preceding zeros or trailing zeros they become difficult to transcribe and are therefore typically expressed in scientific notation. 
+As these numbers may be fractional compared to the standard of measurement a decimal point ```.``` is used to seperate out the integer and fractional parts. As very small and very large numbers have a large number of preceding zeros or trailing zeros they become difficult to transcribe and are therefore typically expressed in scientific notation. 
 
 To convert from a decimal number to a decimal number in scientific notation:
+
 * Take the order of magnitude of the highest significant digit. This is shown depicted in red which is the value of the exponent at -11 and 8 for the small and large number respectively. 
 * Take the remaining non-zero numbers highlighted in yellow and add the decimal point after the most digit giving the mantissa which is 5.3 and 6.957 for the small and large number respectively.
 
@@ -651,16 +621,16 @@ Division can be calculated using division of the mantissa of the two numbers, co
 
 Physically the sun is made up of a huge number of hydrogen atoms and the uncertainty of the suns radius is therefore much larger than the size of a single hydrogen atom itself which is why the addition and subtraction of the radius of a hydrogen atom from the sun is insignificant. When using division of the radius of the sun by the radius of the hydrogen atom, the approximate number of hydrogen atoms along the diameter of the sun is returned. This is a very large number of hydrogen atoms and therefore a difference of a single hydrogen atom is insignificant with respect to this very large number.
 
-## Scientific Notation in Binary
+## The Binary Point and Binary Scientific Notation Modified by IEEE
 
-The above scientific notation uses the decimal system (base ten; characters 0-9), but as discussed earlier computers operate using binary switches known as bits (base two; characters 0-1). We must therefore look at a binary equivalent of scientific notation to representing a floating point number. 
+Scientific notation was discussed in decimal (10), which uses the decimal point, the base ten and the characters ```0-10```. A computer can only encode a number usign a series of binary (2) switches known as bits. A floating point number is stored on a computer using modified binary scientific notation.
 
-Let's explore converting a floating point decimal (base 10) into a floating point decimal (base 2).
+Let's explore converting a floating point decimal (10) into a floating point decimal (2).
 
 Take:
 
 ```
-0.25 (base 10)
+0.25
 ```
 
 Let's begin to convert this into binary. To do this multiply the number by 2 and divide it by 1 in a series of steps. If the value before the decimal point is 0 subtract 0, if the value before the decimal point is 1 subtract 1.
@@ -668,22 +638,33 @@ Let's begin to convert this into binary. To do this multiply the number by 2 and
 
 (0.25 * 2 / 1 = 0.5) - ```0``` = 0.5 
 
-(0.5 * 2 / 1 = 1.0) - ```1``` = 0
+(0.5 * 2 / 1 = 1.0) - ```1``` = 0.0
 
-(0 * 2 / 1 = 0.0) - ```0``` = 0
+(0 * 2 / 1 = 0.0) - ```0``` = 0.0
 
 ⋮
 
-To get the number in base 2, place these numbers after the ~~decimal (base 10)~~ binary (base 2) point:
+![img_060](./images/img_060.png)
+
+To get the number in base 2, transpose the column of subtracted numbers and place after the binary point:
 
 ```
 0.01 (base 2)
 ```
 
+To check multiply each value by its exponent.
+
+```
+0 * 2 ** 0 + 0 * 2 ** -1 + 1 * 2 ** -2
+```
+
+![img_061](./images/img_061.png)
+
+
 Let's look at another example:
 
 ```
-0.20 (base 10)
+0.20
 ```
 
 (**0.2** * 2 / 1 = 0.4) - ```0``` = 0.4
@@ -722,11 +703,21 @@ Notice that the above returns to a value of 0.2. This means the same operation i
 
 ⋮
 
+![img_062](./images/img_062.png)
+
 The number in binary is therefore recurring and will be truncated in line with the number of bits used to store the floating point number.
 
 ```
 0.001100110011... (base 2)
 ```
+
+To check multiply each value by its exponent. This won't be exact due to recursion but should be close.
+
+```
+0 * 2 ** 0 + 0 * 2 ** -1 + 0 * 2 ** -2 + 1 * 2 ** -3 + 1 * 2 ** -4 + 0 * 2 ** -5 + 0 * 2 ** -6 + 1 * 2 ** -7 + 1 * 2 ** -8
+```
+
+![img_063](./images/img_063.png)
 
 Let's also have a look at the example:
 
@@ -762,31 +753,41 @@ Let's also have a look at the example:
 
 ⋮
 
+![img_064](./images/img_064.png)
+
 Once again, a recurring operation is observed:
 
 ```
 0.000110011001... (base 2)
 ```
 
+To check multiply each value by its exponent. This won't be exact due to recursion but should be close.
+
+```
+0 * 2 ** 0 + 0 * 2 ** -1 + 0 * 2 ** -2 + 0 * 2 ** -3 + 1 * 2 ** -4 + 1 * 2 ** -5 + 0 * 2 ** -6 + 0 * 2 ** -7 + 1 * 2 ** -8
+```
+
+![img_065](./images/img_065.png)
+
 Both 0.1 (base 10) and 0.2 (base 10) are recurring when represented in base 2:
 
 ```
 0.1 (base 10)
 
-0.000110011001... (base 2)
+0.00110011001... (base 2)
 ```
 
 ```
 0.2 (base 10)
 
-0.001100110011... (base 2)
+0.0001100110011... (base 2)
 ```
 
-Recurring operations are more prevalent in the base 2 numbering system as there are less unique characters to represent a number than in decimal, making it even more limited. Physically a computer can only store numbers to a specified precision of physical bits and therefore rounding errors are observed when working with floating point numbers, with the last digit truncated. This is the reason for the rounding error observed at the beginning of this tutorial.
+Recurring operations are more prevalent in the base 2 numbering system as there are less unique characters to represent a number than in decimal, making it even more limited. 
 
-## IEEE Standard for Floating-Point Arithmetic 
+Physically a computer can only store numbers to a specified precision of physical bits and therefore rounding errors are observed when working with floating point numbers, with the last digit truncated. This is the reason for the rounding error observed at the beginning of this tutorial.
 
-Floating point arithmetic specified by the Institute of Electrical and Electronics Engineers (IEEE) is fundamentally a binary representation of scientific notation. For simplicity let's look at the floating-point format binary 16.
+Floating point arithmetic specified by the Institute of Electrical and Electronics Engineers (IEEE) is fundamentally a binary representation of scientific notation however some additional tricks are carried out to save memory. For simplicity let's look at the floating-point format binary 16.
 
 The floating-point format binary 16 has a similar form to binary scientific notation:
 
@@ -796,35 +797,33 @@ The floating-point format binary 16 has a similar form to binary scientific nota
 
 There are a number of optimisations used to efficiently store the numbers:
 
-```0B``` ```0``` ```00000``` ```0000000000```
+```0b``` ```0``` ```00000``` ```0000000000```
 
-The mantissa sign is split from the mantissa modulus. With ```0``` representing a positive number and:
+The mantissa sign is split from the mantissa modulus. With ```0``` representing a positive number:
 
-```0B``` ```0``` ```?????``` ```??????????```
+```0b``` ```0``` ```?????``` ```??????????```
 
 and ```1``` representing a negative number:
 
-```0B``` ```1``` ```?????``` ```??????????```
+```0b``` ```1``` ```?????``` ```??????????```
 
-The mantissa is split because explicitly specifying all combinations from a range of negative to positive numbers would take more memory.
+The mantissa sign is split from the reest of the mantissa because explicitly specifying all combinations from a range of negative to positive numbers would take more memory.
 
-In the case of the exponent, a biased exponent is used. For 5 bits, there are ```2**5``` combinations which is 32 (base 10). These range from the positive values 0 to 31. A offset of ```15``` is selected for 0 giving the range -15 to +16.
+In the case of the exponent, for 5 bits, there are ```2**5``` combinations which is 32 (base 10). These have to be split between negative and positive values which would give the range -15 to +16. To encode all these values as positive numbers, a biased exponent is used with an offset of ```15```. An exponent of ```0``` for example will be encoded as ```0+15``` which is ```15``` and 15 in binary is:
 
-An exponent of ```0``` for example will be encoded as ```0+15``` which is ```15``` and 15 in binary is:
-
-```0B``` ```?``` ```01111``` ```??????????```
+```0b``` ```?``` ```01111``` ```??????????```
 
 Confer with the hexadecimal and binary values corresponding to the numbers 0-15 when hexadecimal notation was discussed earlier in this tutorial.
 
 An exponent of ```-1``` for example will be encoded as ```-1+15``` which is ```14``` and 14 in binary is:
 
-```0B``` ```?``` ```01110``` ```??????????```
+```0b``` ```?``` ```01110``` ```??????????```
 
 An exponent of ```+1``` for example will be encoded as ```+1+15``` which is ```16``` and 16 in binary is:
 
 ```0B``` ```?``` ```10000``` ```??????????```
 
-For scientific notation of the decimal system the first non-zero value was placed in front of the decimal point and because there were ten characters, this gave unine possibilities where xxx is the rest of the mantissa and yyy is the exponent:
+For scientific notation of the decimal system the first non-zero value was placed in front of the decimal point and because there were ten characters, this gave nine possibilities where xxx is the rest of the mantissa and yyy is the exponent:
 
 * ```1.```xxx...eyyy...
 * ```2.```xxx...eyyy...
@@ -840,7 +839,7 @@ In binary, because there are only have two characters, the only non-zero value i
 
 * ```1.```xxx...eyyy...
 
-Therefore since all floating point numbers start with ```1.```, to conserve memory this first digit isn't encoded. Onl the trailing xxx... after the binary point is encoded:
+Therefore since all floating point numbers start with ```1.```, to conserve memory this first digit isn't encoded. Only the trailing xxx... after the binary point is encoded:
 
 Let's have a look at the number:
 
@@ -856,7 +855,7 @@ From earlier this is:
 
 The number is positive so the sign is 0:
 
-```0B``` ```0``` ```?????``` ```??????????```
+```0b``` ```0``` ```?????``` ```??????????```
 
 The most significant non-zero value:
 
@@ -868,13 +867,13 @@ Has the power -3 (base 10).
 
 ```1.```100110011... 
 
-Adding the exponent offset of 15, gives -3 + 15 which is 12 (base 10). In binary representation using 5 bits this is:
+Adding the exponent offset of ```15```, gives ```-3 + 15``` which is ```12``` (base 10). In binary representation using ```5``` bits this is:
 
 ```01100 (base 2)```
 
 The exponent therefore becomes:
 
-```0B``` ```0``` ```01100``` ```??????????```
+```0b``` ```0``` ```01100``` ```??????????```
 
 As the first number before the decimal point is always 1, it is ignored and the preceding numbers after the decimal point are encoded. In this numbering system, 10 bits are used to store the number:
 
@@ -882,9 +881,9 @@ As the first number before the decimal point is always 1, it is ignored and the 
 
 The number therefore is encoded as:
 
-```0B``` ```0``` ```01100``` ```1001100110```
+```0b``` ```0``` ```01100``` ```1001100110```
 
-The half-precision floating-point format binary 16 is the easiest to illustrate, however it is more typical for a double precision to be used in scientific applications where a greater range of values are required in the signed exponent and a higher precision is required.
+The half-precision floating-point format binary 16 is the easiest to illustrate, however it is more typical for a double precision to be used for a floating point number.
 
 The half-precision floating-point format binary 16 uses 16 bits:
 * mantissa sign: 1 bit 
@@ -900,6 +899,56 @@ The double floating-point format binary 64 uses 64 bits:
 * mantissa sign: 1 bit 
 * signed exponent: 11 bits (1023 is the offset)
 * mantissa modulus: 52 bits
+
+## Precision
+
+Recursion rounding errors occur in both decimal and binary and can be visualised using the concept of a third. 1/3 does not lie on any of the 10 unique digits in decimal:
+
+![img_037](./images/img_037.png)
+
+Long division which consists of a series of integer divisions and associated integer modulus operations illustrated below:
+
+![img_046](./images/img_046.png)
+
+This value has a recurring value in decimal: 
+
+```
+0.333333...
+```
+
+As the circle illustration in binary has even less divisions, recursion rounding errors will occur far more often. This was seen with the case of 0.1, 0.2 when encoding them as an IEEE half precision floating point number:
+
+![img_069](./images/img_069.png)
+
+Python floating point numbers can be used for the vast majority of calculations however care should be taken when using them with logical operators due to recursion rounding errors brought about due to the under the hood binary encoding. ```0.1 + 0.2``` for example can be compared with ```0.3```. 
+
+```
+0.3
+0.1 + 0.2
+```
+
+![img_066](./images/img_066.png)
+
+Note the slightly different value due to a recursion rounding errors in the storing of ```0.1``` and ```0.2``` and hence the calculation involving the summation. 
+
+A double floating-point is quoted up to a precision of 17 digits:
+
+```
+len("30000000000000004")
+```
+
+![img_067](./images/img_067.png)
+
+A format specifier in a fstring can however force a much longer display such as 100 characters:
+
+```
+print(f"{0.1 + 0.2: 0.100f}")
+len("3000000000000000444089209850062616169452667236328125")
+```
+
+![img_068](./images/img_068.png)
+
+After 52 characters, arbitrary zeros are added. 52 characters are expected for a double precision number. All of these additional digits past 17 should be considered as inaccurate and are more highly influenced by floating point recursion errors.
 
 Return to:
 
