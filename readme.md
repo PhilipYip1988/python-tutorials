@@ -89,3 +89,6 @@ Statistics Module
 The Tk Interface module is an inbuilt module for creating a Graphical User Interface (GUI). The module revolves around the Tk main window class which can be equipped with widgets to give the main window functionality. The main window can include Label, Entry (text entry), Button, Checkbutton, Radiobutton, Combobox, Listbox, Scale, Scrollbars, Frame, Canvas, Menu, Menubutton and Toplevel Widgets. These Widgets can be packed on the Tk main window or alternatively arranged in a grid on the Tk main window. It is useful to learn this module through starter projects which involve creation of asimple GUI with just a handful of these Widgets. One of the first projects to create with tkinter is a calculator which uses a Tk Main Window with Entry and Buttons arranged on a grid.
 
 [Tk Interface Module Calculator Project](./020_tkinter/)
+
+
+string module ad to modules
