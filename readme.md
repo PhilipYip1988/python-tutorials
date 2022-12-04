@@ -56,6 +56,12 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 ## Python Standard Modules
 
+mutability and copy
+
+decimal
+
+byte array and string module 
+
 Python standard modules are inbuilt modules included with the Python installation. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used.
 
 The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python builtins.
@@ -91,4 +97,3 @@ The Tk Interface module is an inbuilt module for creating a Graphical User Inter
 [Tk Interface Module Calculator Project](./020_tkinter/)
 
 
-string module ad to modules
