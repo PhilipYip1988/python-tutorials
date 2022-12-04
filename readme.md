@@ -56,6 +56,8 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 ## Python Standard Modules
 
+Generators (add beside functions)
+
 mutability and copy
 
 decimal
