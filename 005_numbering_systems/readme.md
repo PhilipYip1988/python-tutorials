@@ -1,6 +1,6 @@
 # Numbering Systems
 
-This guide will look into the decimal system humans use and compare it to the binary system that computers use for every day applications.
+This guide will look into the decimal system humans use and compare it to the binary system and hexadecimal system that computers use for every day applications.
 
 ## Decimal
 
