@@ -355,7 +355,7 @@ for idx in range(256):
 
 ![img_051](./images/img_051.png)
 
-This range of characters is known as ASCII, an abbreviation for the American Standard Code for Information Interchange.
+This range of characters from 0-127 is known as ASCII, an abbreviation for the American Standard Code for Information Interchange. The characters 128-255 are known as extended ASCII.
 
 ## Monochrome Images
 
