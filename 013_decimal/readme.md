@@ -63,7 +63,7 @@ num3
 
 ![img_008](./images/img_008.png)
 
-A number of methods are available:
+A number of methods are available, these include a number of ```is``` methods that perform a check that returns a bool. Most of the rest are less commonly used amthematical methods which act on the instance data:
 
 ![img_009](./images/img_009.png)
 
@@ -75,7 +75,7 @@ dir(num1)
 
 ![img_010](./images/img_010.png)
 
-The mathematics of ```Decimal``` instances behaves more similar to traditional mathematics:
+The behaviour of these has been explored in detail with the ```int``` and ```float``` classes. The behaviour of the mathematics of ```Decimal``` instances behaves more similar to traditional mathematics as the ```Decimal``` instance uses the decimal numbering system:
 
 ```
 Decimal("0.1") + Decimal("0.2")
@@ -257,112 +257,163 @@ num2
 ![img_028](./images/img_028.png)
 
 ```
-getcontext().rounding = ROUND_HALF_EVEN
+getcontext.rounding = ROUND_HALF_EVEN
 dec1 = Decimal(1) / Decimal(3)
 dec1
 dec2 = Decimal(2) * Decimal(1) / Decimal(3)
 dec2
 ```
 
+![img_029](./images/img_029.png)
 
 ## Exponent Min, Exponent Max and Exponent Format
 
+The exponent minimum, exponent maximum and exponent format (capital E or lowercase e) can be viewed using the attributes:
+
 ```
-getcontext().Emin
-getcontext().Emax
-getcontext().capitals
+context.Emin
+context.Emax
+context.capitals
 ```
+
+![img_030](./images/img_030.png)
+
+The ```MIN_EMIN``` and ```MAX_EMAX``` are constants which can be imported and examined:
 
 ```
 from decimal import MIN_EMIN, MAX_EMAX
+MIN_EMIN
+MAX_EMAX
 ```
 
+![img_031](./images/img_031.png)
+
+These are very large values. However like the case of assigning the ```prec``` attribute to ```MAX_PREC```, using the lower and upper bounds for ```EMIN``` and ```EMAX``` is generally unusable and will also display a memory error. A small ```Emin``` and small ```Emax``` can be examined and the formatting can be altered so it is in ```capital```:
+
 ```
-getcontext().Emin = -1000
-getcontext().Emax = 1000
+context.Emin = -1000
+context.Emax = 1000
+context.capitals = 1
 ```
+
+The effect of this can be seen when looking at the interaction between two numbers which falls out of the specified limits. The number is in this case computed to the value of the lower bound:
 
 ```
 Decimal("1.234e-1000") * Decimal("1.234e-1000")
 ```
 
+![img_032](./images/img_032.png)
+
+Increasing the limits and altering the formatting cso it is not in ```capital```:
+
 ```
-getcontext().Emin = -10000
-getcontext().Emax = 10000
-getcontext().capitals = 0
+context.Emin = -10000
+context.Emax = 10000
+context.capitals = 0
 ```
+
+Shows a different value, which is computed properly as the result is well within the lower and upper bound specified:
 
 ```
 Decimal("1.234e-1000") * Decimal("1.234e-1000")
 ```
 
+![img_033](./images/img_033.png)
 
 ## Overflow and Underflow
 
+The ```traps``` attribute returns a dictionary, where each key is essentially an error class:
+
 ```
-getcontext().traps
+context.traps
 ```
 
+![img_034](./images/img_034.png)
+
+These error classes are each assigned a boolean value. Notice that ```Underflow``` and ```Overflow``` are ```False``` and the effect of this was seen earlier when attempting to compute a number below the minimum specified ```Emin```
+
+to alter these traps, the respective error message needs to be imported:
 
 ```
 from decimal import Underflow, Overflow
 ```
 
+These can then be accessed as a key which can be used to index into the ```traps``` dictionary for assignment to a boolean value. Some other constrictions will be made for illustration:
+
 ```
-getcontext().traps[Underflow] = True
-getcontext().traps[Overflow] = True
-getcontext().prec = 6 
-getcontext().Emin=-999
-getcontext().Emax=999
-getcontext().clamp = 1
+context.traps[Underflow] = True
+context.traps[Overflow] = True
+context.prec = 6 
+context.Emin = -999
+context.Emax = 999
+context.clamp = 1
 ```
 
+Notice that now when attempting to compute a number below the minimum specified ```Emin``` or above the maximum specified ```Emax``` that an ```Underflow``` or ```Overflow``` error displays:
 
 ```
 Decimal("1.230000e999") * Decimal("10000")
 Decimal("1.230000e-999") / Decimal("10000")
 ```
 
+![img_035](./images/img_035.png)
+
+The number is not silenetly computed and restricted to the lower ```"Emin``` or upper ```Emax``` as seen before.
+
 ## Division by Zero and Invalid Operation
 
+Other error messages in traps are assigned to ```True``` by default such as ```DivisionByZero``` or ```InvalidOperation```. To change these, the error classes can be imported:
+
 ```
+from decimal import Decimal, getcontext
+from decimal import MAX_PREC
+from sys import getsizeof
 from decimal import DivisionByZero, InvalidOperation
 ```
 
-
-
-```
-Decimal("1") / Decimal("0")
-```
-
-
-```
-getcontext().traps[DivisionByZero] = False
-```
-
-
+The ```DivisionByZero``` error class can be seen when attempting to compute:
 
 ```
 Decimal("1") / Decimal("0")
 ```
 
+![img_036](./images/img_036.png)
 
+It can be useful to disable this error messages as the ```Decimal``` class knows about the concept of ```"Infinity"```:
+
+```
+context.traps[DivisionByZero] = False
+```
+
+Recomputing the calculation with the division by zero gives ```"Infinity"```:
+
+```
+Decimal("1") / Decimal("0")
+```
+
+![img_037](./images/img_037.png)
+
+The ```InvalidOperation``` error class can be seen to take effect when attempting to divide 0 by 0:
 
 ```
 Decimal("0") / Decimal("0")
 ```
 
+![img_038](./images/img_038.png)
 
+This error message can once again be disabled:
 
 ```
-getcontext().traps[InvalidOperation] = False
+context.traps[InvalidOperation] = False
 ```
 
-
+Now zero divided by zero gives ```"NaN"``` meaning Not a Number:
 
 ```
 Decimal("0") / Decimal("0")
 ```
 
+![img_038](./images/img_038.png)
 
-
+Return to:
+[Home](../../../)
