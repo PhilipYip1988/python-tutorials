@@ -473,7 +473,12 @@ hex(ord("Δ"))
 
 ![img_053](./images/img_052.png)
 
-Note the notation used before ```\x7B``` is configured only for a Hexadecimal number that spans over a byte i.e. an ASCII character. The escape character will not recognise any subsequent digit as part of the hexadecimal number.
+Note when ```\x``` is used as an escape character to insert a hexadecimal number as a character, it is configured to only accept a hexadecimal number with 2 digits, spanning over a byte for example ```\x7B``` which is an ASCII character. The escape character will not recognise any subsequent digit as part of the hexadecimal number. Unicode is an extension of ASCII which extends over two bytes, to insert a Unicode escape character, ```\u``` is used as an escape character and two bytes i.e. 4 hexadecimal digits are expected. For example:
+
+```
+"\u0394"
+"\u007B"
+```
 
 Unicode characters can be used for Greek characters:
 
