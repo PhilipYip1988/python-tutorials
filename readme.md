@@ -58,7 +58,7 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 Python standard modules are inbuilt modules included with the Python installation. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used.
 
-The decimal moduleis based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
+The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
 
 [Decimal Module](./013_decimal/) 
 
