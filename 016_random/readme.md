@@ -675,8 +675,23 @@ plt.setp(hist1[2], facecolor="#00b050",
          edgecolor="#000000", linewidth=1, hatch="o", alpha=0.35)
 ```
 
+```
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_style("whitegrid")
+import random
+import math
+random.seed(1)
+nums = [random.paretovariate(alpha=1.161) for num in range(100)]
+hist1 = plt.hist(nums, bins=100)
+plt.setp(hist1[2], facecolor="#00b050", 
+          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
 
+```
 
+counts - proportion of wealth 
+percentile
 
 
 A triangular ...
