@@ -693,5 +693,20 @@ plt.setp(hist1[2], facecolor="#00b050",
 counts - proportion of wealth 
 percentile
 
+```
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_style("whitegrid")
+import random
+import math
+random.seed(1)
+nums = [random.weibullvariate(alpha=3, beta=3) for num in range(100000)]
+hist1 = plt.hist(nums, bins=100)
+plt.setp(hist1[2], facecolor="#00b050", 
+          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
 
-A triangular ...
+#beta=0.5, 1, 2, 3
+#alpha=1, 2, 3
+
+```
