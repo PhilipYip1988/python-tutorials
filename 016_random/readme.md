@@ -327,7 +327,7 @@ nums
 
 ## randint
 
-The ```randint``` is used to return a random integer between a lower bound and upper bound of integers, inclusive of both bounds:
+The ```randint``` is used to return a random integer between a lower bound and upper bound of integers, inclusive of both bounds. All of the integers in the range are uniformly distributed, meaning no weighting is carried out in the ditribution:
 
 ![img_032](./images/img_032.png)
 
@@ -425,7 +425,7 @@ hex(ord("k"))
 
 ![img_040](./images/img_040.png)
 
-## uniform
+## The uniform Distribution
 
 The ```uniform``` function is used to generate a random ```float``` in the range ```a``` to ```b```:
 
@@ -439,6 +439,244 @@ random.uniform(0, 10)
 
 ![img_042](./images/img_042.png)
 
-At this stage it is useful to conceptualise what the distribution looks like in the form of a histogram of ```1000000``` values. A ```uniform``` distribution has an equal weighting for each value and looks like the following.
+Except for the case where weights were added, all the data seen so far is uniformly distributed meaning each value has the same weight. It is useful to conceptualise what the uniform distribution looks like in the form of a histogram of ```100000``` values. A uniform distribution has an equal weighting for each value and looks like the following.
+
+![img_043](./images/img_043.png)
+
+## The Triangular Distribution
+
+A triangular distribution has similar input arguments to a uniform distribution but the underlying distribution is different in the shape of a triangle. The peak of the triangle is in the centre of the selected range and falls to zero at the edges:
+
+![img_044](./images/img_044.png)
+
+```
+import random
+random.seed(0)
+random.triangular(low=0, high=10)
+```
+
+![img_045](./images/img_045.png)
+
+A triangular histogram of ```100000``` values depicts the triangular distribution:
+
+![img_046](./images/img_046.png)
+
+## The Normal Distribution
+
+The Normal Distribution also known as a Gaussian Distribution is centred around a mean ```mu``` and distributed using a standard deviation ```sigma```. There are two functions ```gauss``` and ```normalvariate``` which take in the same input arguments.
+
+![img_047](./images/img_047.png)
+
+![img_048](./images/img_048.png)
+
+The ```gauss``` distribution will be used to select a random point from a Gaussian distribution with a mean ```mu``` of ```0``` and a standard deviation of ```1```, this is known as the Standard Normal Distribution:
+
+```
+import random
+random.seed(0)
+random.gauss(mu=0, sigma=1)
+```
+
+![img_049](./images/img_049.png)
+
+A Gaussian histogram of ```100000``` values with a mean ```mu=0``` and standard deviation ```sigma=1``` looks like:
+
+![img_050](./images/img_050.png)
+
+The effect of increasing the standard deviation ```sigma=2``` or ```sigma=3``` can be seen to reduce the height of the peak and widen the distribution:
+
+![img_051](./images/img_051.png)
+
+The data plotted here of 1000000 values will give an area of 1000000. The real Gaussian distribution is a probability curve normalised to 1. 
+
+## The Log Normal Distribution
+
+The Log Normal distribution also takes in an input argument ```mu``` for the mean and ```sigma``` for the standard deviation:
+
+![img_053](./images/img_053.png)
+
+It can be tested with ```mu=0``` and            ```sigma=1```:
+
+```
+import random
+random.seed(0)
+random.lognormvariate(mu=0, sigma=1)
+```
+
+![img_054](./images/img_054.png)
+
+This is equivalent to:
+
+```
+import math
+import random
+random.seed(0)
+math.exp(random.gauss(mu=0, sigma=1))
+```
+
+![img_056](./images/img_056.png)
+
+And therefore taking the log of it will return the Normal distribution:
+
+```
+import math
+import random
+random.seed(0)
+math.log(math.exp(random.gauss(mu=0, sigma=1)))
+```
+
+![img_057](./images/img_057.png)
+
+The plot of the distribution looks like:
+
+![img_055](./images/img_055.png)
+
+### The Negative Exponential Distribution
+
+The Negative Exponential Distribution ```expovariate``` takes ```lambd``` as an input argument (```lambda``` is a reserved keyword in Python) which can be thought of as the inverse mean. The negative exponential begins falling from 0 as x is increased and is centred around the set mean.
+
+![img_058](./images/img_058.png)
+
+If for example ```lambd``` is taken as the inverse of ```5``` the mean of the exponential distribution will be centred around 5:
+
+```
+import random
+random.seed(0)
+random.expovariate(lamba=1/5)
+```
+
+![img_059](./images/img_059.png)
+
+A plot of ```100000``` values looks as follows:
+
+![img_060](./images/img_060.png)
+
+## The Gamma Distribution
+
+The Gamma Distribution ```gammaexpovariate``` takes in two input arguments, ```alpha``` and ```beta```.
+
+![img_061](./images/img_061.png)
+
+If ```alpha=1```, then this becomes the Negative Exponential distribution. This can be seen by setting ```beta=5```:
+
+```
+import random
+random.seed(0)
+random.gammavariate(alpha=1, beta=5)
+```
+
+![img_062](./images/img_062.png)
+
+A plot of ```100000``` values looks as follows which is the same as the Negative Exponential distribution:
+
+![img_063](./images/img_063.png)
+
+If ```alpha=2```, the distribution begins to change towards a bell shape:
+
+```
+import random
+random.seed(0)
+random.gammavariate(alpha=2, beta=5)
+```
+
+![img_065](./images/img_065.png)
+
+![img_064](./images/img_064.png)
+
+This trend continues with ```alpha=3```:
+
+```
+import random
+random.seed(0)
+random.gammavariate(alpha=3, beta=5)
+```
+
+![img_067](./images/img_067.png)
+
+![img_066](./images/img_066.png)
+
+If a very large value ```alpha=100000```. The plot is dominated by the bell shape with a mean of ```500000``` which is the product of ```alpha``` and ```beta```:
+
+```
+import random
+random.seed(0)
+random.gammavariate(alpha=100000, beta=5)
+```
+
+![img_069](./images/img_069.png)
+
+![img_068](./images/img_068.png)
+
+## The Beta Distribution
+
+The Beta distribution also takes in the input arguments ```alpha``` and ```beta```. Combinations of these create distributions similar in form to those previously explored. For example ```alpha=1``` and ```beta=1``` gives a distribution similar to a random uniform distribution:
+
+![img_070](./images/img_070.png)
+
+```
+import random
+random.seed(0)
+random.betavariate(alpha=1, beta=1)
+```
+
+![img_071](./images/img_071.png)
+
+![img_072](./images/img_072.png)
+
+```alpha=1``` and ```beta=5``` gives a distribution similar to a negative exponential distribution:
+
+```
+import random
+random.seed(0)
+random.betavariate(alpha=5, beta=1)
+```
+
+![img_073](./images/img_073.png)
+
+![img_074](./images/img_074.png)
+
+```alpha=1``` and ```beta=5``` gives a distribution similar to a positive exponential distribution:
+
+```
+import random
+random.seed(0)
+random.betavariate(alpha=1, beta=5)
+```
+
+![img_075](./images/img_075.png)
+
+![img_076](./images/img_076.png)
+
+```alpha=5``` and ```beta=5``` gives a distribution similar to a Gaussian bell shape distribution:
+
+```
+import random
+random.seed(0)
+random.betavariate(alpha=5, beta=5)
+```
+
+![img_077](./images/img_077.png)
+
+![img_078](./images/img_078.png)
+
+## other 
+
+```
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_style("whitegrid")
+import random
+import math
+random.seed(0)
+nums = [random.betavariate(alpha=0, beta=-5) for num in range(1000000)]
+hist1 = plt.hist(nums, bins=100)
+plt.setp(hist1[2], facecolor="#00b050", 
+         edgecolor="#000000", linewidth=1, hatch="o", alpha=0.35)
+```
+
+
+
+
 
 A triangular ...
