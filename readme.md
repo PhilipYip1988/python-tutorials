@@ -58,20 +58,13 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 Python standard modules are inbuilt modules included with the Python installation. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used.
 
+The string module contains strings which contain a number of useful character groupings. In addition to the str class, there are two supplementary text classes, the byte and the bytearray. These classes are in builtins however not as commonly used as the str which is the most widely used text class in Python. These two classes use a byte as a fundamental unit, opposed to a 1 str character in the case of a str. For English characters, a character maps to a byte making the classes behave similarly. The difference between the classes becomes more apparent when non-English characters are used which are encoded with additional encoding schemes which span over multiple bytes. The string and byte are immutable and behave similarly to a tuple. The bytearray is mutable and behaves more similarly to a list.
+
+[Strings, Byte and Byte Arrays and the String Module](.013_string_byte_bytearray)
+
 The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
 
 [Decimal Module](./013_decimal/) 
-
-byte array and string module 
-
-Generators (add beside functions)
-
-mutability and copy
-
-
-
-
-
 
 The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python builtins.
 
@@ -100,6 +93,11 @@ DateTime Module
 Fraction Module
 
 Statistics Module
+
+Generators (add beside functions)
+
+mutability and copy
+
 
 The Tk Interface module is an inbuilt module for creating a Graphical User Interface (GUI). The module revolves around the Tk main window class which can be equipped with widgets to give the main window functionality. The main window can include Label, Entry (text entry), Button, Checkbutton, Radiobutton, Combobox, Listbox, Scale, Scrollbars, Frame, Canvas, Menu, Menubutton and Toplevel Widgets. These Widgets can be packed on the Tk main window or alternatively arranged in a grid on the Tk main window. It is useful to learn this module through starter projects which involve creation of asimple GUI with just a handful of these Widgets. One of the first projects to create with tkinter is a calculator which uses a Tk Main Window with Entry and Buttons arranged on a grid.
 
