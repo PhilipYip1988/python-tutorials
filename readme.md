@@ -86,7 +86,9 @@ The math module is used to carry out common mathematical operations on scaler nu
 
 [Math and Complex Math Modules](./015_math/)
 
-Random Module
+The random module is a pseudo random number generator which can be used to select a choice or choices from a list which are operations done with replacement. Alternatively it may be used to select a sample from a list which is done without replacement or to mutate the existing list by shuffling it. There are also a number of statistical distributions that a number can be generated from including the commonly used uniform, normal and exponential distributions.
+
+[Random Module](./016_random/)
 
 DateTime Module
 
