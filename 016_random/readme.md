@@ -531,9 +531,9 @@ The plot of the distribution looks like:
 
 ![img_055](./images/img_055.png)
 
-### The Negative Exponential Distribution
+### The Exponential Distribution
 
-The Negative Exponential Distribution ```expovariate``` takes ```lambd``` as an input argument (```lambda``` is a reserved keyword in Python) which can be thought of as the inverse mean. The negative exponential begins falling from 0 as x is increased and is centred around the set mean.
+The Exponential Distribution ```expovariate``` takes ```lambd``` as an input argument (```lambda``` is a reserved keyword in Python) which can be thought of as the inverse mean. The negative exponential begins falling from 0 as x is increased and is centred around the set mean.
 
 ![img_058](./images/img_058.png)
 
@@ -542,7 +542,7 @@ If for example ```lambd``` is taken as the inverse of ```5``` the mean of the ex
 ```
 import random
 random.seed(0)
-random.expovariate(lamba=1/5)
+random.expovariate(lambd=1/5)
 ```
 
 ![img_059](./images/img_059.png)
@@ -550,6 +550,20 @@ random.expovariate(lamba=1/5)
 A plot of ```100000``` values looks as follows:
 
 ![img_060](./images/img_060.png)
+
+Because the value is falling as x increases, this is known as a negative exponential.
+
+The effect of changing sign can be seen giving a distribution that is mirrored in x about the origin:
+
+```
+import random
+random.seed(0)
+random.expovariate(lambd=-1/5)
+```
+
+![img_079](./images/img_079.png)
+
+![img_080](./images/img_080.png)
 
 ## The Gamma Distribution
 
@@ -623,7 +637,7 @@ random.betavariate(alpha=1, beta=1)
 
 ![img_072](./images/img_072.png)
 
-```alpha=1``` and ```beta=5``` gives a distribution similar to a negative exponential distribution:
+```alpha=5``` and ```beta=1``` gives a distribution similar to a positive exponential distribution:
 
 ```
 import random
@@ -635,7 +649,7 @@ random.betavariate(alpha=5, beta=1)
 
 ![img_074](./images/img_074.png)
 
-```alpha=1``` and ```beta=5``` gives a distribution similar to a positive exponential distribution:
+```alpha=1``` and ```beta=5``` gives a distribution similar to a negative exponential distribution:
 
 ```
 import random
@@ -659,134 +673,102 @@ random.betavariate(alpha=5, beta=5)
 
 ![img_078](./images/img_078.png)
 
-## other 
+## The Pareto Distribution
+
+The Parento Distribution is a power law probability statistical distribution with a sharp probability peak and symmetric long probability tail. It was originally 
+used by Pareto to model the distribution of wealth per percentile population, where it was found that 20 % of the population held 80 % of the wealth. 
+
+![img_081](./images/img_081.png)
+
+It has a shape parameter ```alpha``` which was empirically calculated to be $\log_4{(5)}=1.161$ for the so called 80-20 rule. 
 
 ```
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-sns.set_style("whitegrid")
 import random
-import math
 random.seed(0)
-nums = [random.betavariate(alpha=0, beta=-5) for num in range(1000000)]
-hist1 = plt.hist(nums, bins=100)
-plt.setp(hist1[2], facecolor="#00b050", 
-         edgecolor="#000000", linewidth=1, hatch="o", alpha=0.35)
+random.paretovariate(alpha=1.161)
 ```
 
+![img_082](./images/img_082.png)
+
+A histogram of 100 random values looks like:
+
+![img_083](./images/img_083.png)
+
+## The Weibull Distribution
+
+The Weibull distribution has a scale parameter ```alpha``` and a shape parameter ```beta```:
+
+![img_084](./images/img_084.png)
+
 ```
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-sns.set_style("whitegrid")
 import random
-import math
-random.seed(1)
-nums = [random.paretovariate(alpha=1.161) for num in range(100)]
-hist1 = plt.hist(nums, bins=100)
-plt.setp(hist1[2], facecolor="#00b050", 
-          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
-
+random.seed(0)
+random.paretovariate(alpha=1, beta=1)
 ```
 
-counts - proportion of wealth 
-percentile
+![img_085](./images/img_085.png)
+
+The influence of the shape parameter ```beta``` can be seen by leaving ```alpha``` aigned to ```1```:
+
+```alpha=1```, ```beta=0.5``` is similar to a Pareto distribution:
+
+![img_086](./images/img_086.png)
+
+```alpha=1```, ```beta=1``` move towards a negative exponential distribution:
+
+![img_087](./images/img_087.png)
+
+```alpha=1```, ```beta=2``` begins to move towards the normal distribution:
+
+![img_088](./images/img_088.png)
+
+```alpha=1```, ```beta=3``` is more similar to the normal distribution:
+
+![img_089](./images/img_089.png)
+
+The effect of changing the scale parameter ```alpha``` can be seen by setting ```beta=3```:
+
+![img_090](./images/img_090.png)
+
+
+## The Vonmises Distribution
+
+The Vonmises Distribution is a circular data distribution. It has two input arguments, the angle ```mu``` and the concentration parameter ```kappa```:
+
+![img_091](./images/img_091.png)
+
+When ```kappa=0``` the distribution generates a uniform random angle:
 
 ```
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-sns.set_style("whitegrid")
 import random
-import math
-random.seed(1)
-nums = [random.weibullvariate(alpha=3, beta=3) for num in range(100000)]
-hist1 = plt.hist(nums, bins=100)
-plt.setp(hist1[2], facecolor="#00b050", 
-          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
-
-#beta=0.5, 1, 2, 3
-#alpha=1, 2, 3
-
-```
-
-
-```
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-sns.set_style("whitegrid")
-import random
-import math
-random.seed(1)
-nums = [random.vonmisesvariate(mu=1, kappa=0) for num in range(100000)]
-hist1 = plt.hist(nums, bins=100)
-plt.setp(hist1[2], facecolor="#00b050", 
-          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
-
-```
-
-
-```
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-sns.set_style("whitegrid")
-import random
-import math
-
-random.seed(1)
-nums = [random.vonmisesvariate(mu=1, kappa=0) for num in range(100000)]
-fig, ax = plt.subplots()
-hist1 = ax.hist(nums, bins=100)
-plt.setp(hist1[2], facecolor="#00b050", 
-          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
-
-
-circle_data = [(patch.get_width(), patch.get_height()) for patch in ax.patches]
-circle_data2 = list(zip(*circle_data))
-
-x = np.cumsum(circle_data2[0])
-y = circle_data2[1]
-
-fig2 = plt.figure()
-ax2 = fig2.add_subplot(projection='polar')
-c = ax2.scatter(x, y, c="#00b050")
-
-ax2.set_xticklabels([r"0$\tau$/8", r"1$\tau$/8", r"2$\tau$/8", r"3$\tau$/8", r"4$\tau$/8", r"5$\tau$/8", r"6$\tau$/8", r"7$\tau$/8"])
-
-```
-
-
-```
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
-sns.set_style("whitegrid")
-import random
-import math
 from math import tau
-random.seed(1)
-nums = [random.vonmisesvariate(mu=1, kappa=3) for num in range(100000)]
-fig, ax = plt.subplots()
-hist1 = ax.hist(nums, bins=100)
-plt.setp(hist1[2], facecolor="#00b050", 
-          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
-ax.set_xticks([0, tau/8, 2*tau/8, 3*tau/8, 4*tau/8, 5*tau/8, 6*tau/8, 7*tau/8])
-ax.set_xticklabels([r"0$\tau$/8", r"1$\tau$/8", r"2$\tau$/8", r"3$\tau$/8", r"4$\tau$/8", r"5$\tau$/8", r"6$\tau$/8", r"7$\tau$/8"])
-
-
-circle_data = [(patch.get_width(), patch.get_height()) for patch in ax.patches]
-circle_data2 = list(zip(*circle_data))
-
-x = np.cumsum(circle_data2[0])
-y = circle_data2[1]
-
-fig2 = plt.figure()
-ax2 = fig2.add_subplot(projection='polar')
-c = ax2.scatter(x, y, c="#00b050")
-
-ax2.set_xticklabels([r"0$\tau$/8", r"1$\tau$/8", r"2$\tau$/8", r"3$\tau$/8", r"4$\tau$/8", r"5$\tau$/8", r"6$\tau$/8", r"7$\tau$/8"])
-
+random.seed(0)
+random.vonmisesvariate(mu=tau/4, kappa=0)
 ```
+
+![img_092](./images/img_092.png)
+
+This can be seen for ```mu=tau/4``` and ```kappa=0```:
+
+![img_093](./images/img_093.png)
+
+The xaxis can be expressed in units of ```tau``` and this can be plotted on a polar axis, showing a uniform circle:
+
+![img_094](./images/img_094.png)
+
+![img_095](./images/img_095.png)
+
+If the angle remains the same ```mu=tau/4``` and the concentration parameter is increased ```kappa=1```, the histogram and plot on a polar axis looks like:
+
+![img_096](./images/img_096.png)
+
+![img_097](./images/img_097.png)
+
+A higher degree of concentration can be seen when ```mu=tau/4``` and ```kappa=2```:
+
+![img_098](./images/img_098.png)
+
+![img_099](./images/img_099.png)
+
+Return to:
+[Home](../../../)
