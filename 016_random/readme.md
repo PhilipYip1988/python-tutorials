@@ -726,3 +726,34 @@ plt.setp(hist1[2], facecolor="#00b050",
           edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
 
 ```
+
+
+```
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set_style("whitegrid")
+import random
+import math
+
+random.seed(1)
+nums = [random.vonmisesvariate(mu=1, kappa=0) for num in range(100000)]
+fig, ax = plt.subplots()
+hist1 = ax.hist(nums, bins=100)
+plt.setp(hist1[2], facecolor="#00b050", 
+          edgecolor="#000000", linewidth=1, hatch="o", alpha=1)
+
+
+circle_data = [(patch.get_width(), patch.get_height()) for patch in ax.patches]
+circle_data2 = list(zip(*circle_data))
+
+x = np.cumsum(circle_data2[0])
+y = circle_data2[1]
+
+fig2 = plt.figure()
+ax2 = fig2.add_subplot(projection='polar')
+c = ax2.scatter(x, y, c="#00b050")
+
+ax2.set_xticklabels([r"0$\tau$/8", r"1$\tau$/8", r"2$\tau$/8", r"3$\tau$/8", r"4$\tau$/8", r"5$\tau$/8", r"6$\tau$/8", r"7$\tau$/8"])
+
+```
