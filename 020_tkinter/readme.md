@@ -691,7 +691,7 @@ Supposing a third middle close button was to be added. The grid layout would nee
 * on the second row 2 labels each spanning over 3 columns
 * on the third row 3 buttons each spanning over 2 columns
 
-The ```tk``` method ````destroy``` can be used to close the application and can be called using a lambda expression:
+The ```tk``` method ```destroy``` can be used to close the application and can be called using a lambda expression:
 
 ![img_057](./images/img_057.png)
 
