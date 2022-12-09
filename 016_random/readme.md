@@ -531,7 +531,7 @@ The plot of the distribution looks like:
 
 ![img_055](./images/img_055.png)
 
-### The Exponential Distribution
+## The Exponential Distribution
 
 The Exponential Distribution ```expovariate``` takes ```lambd``` as an input argument (```lambda``` is a reserved keyword in Python) which can be thought of as the inverse mean. The negative exponential begins falling from 0 as x is increased and is centred around the set mean.
 
