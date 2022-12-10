@@ -66,7 +66,7 @@ The decimal module is based around the Decimal class. The Decimal class is simil
 
 [Decimal Module](./013_decimal/) 
 
-The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong and use of the correct data type is also more memory efficient:
+The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
 
 [Array Module](./022_array/)
 
@@ -103,7 +103,6 @@ Statistics Module
 Generators (add beside functions)
 
 mutability and copy
-
 
 The Tk Interface module is an inbuilt module for creating a Graphical User Interface (GUI). The module revolves around the Tk main window class which can be equipped with widgets to give the main window functionality. The main window can include Label, Entry (text entry), Button, Checkbutton, Radiobutton, Combobox, Listbox, Scale, Scrollbars, Frame, Canvas, Menu, Menubutton and Toplevel Widgets. These Widgets can be packed on the Tk main window or alternatively arranged in a grid on the Tk main window. It is useful to learn this module through starter projects which involve creation of asimple GUI with just a handful of these Widgets. One of the first projects to create with tkinter is a calculator which uses a Tk Main Window with Entry and Buttons arranged on a grid.
 
