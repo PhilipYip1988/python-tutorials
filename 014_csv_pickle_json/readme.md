@@ -87,7 +87,7 @@ The ```reader``` functions docstring can be viewed by typing in the function nam
 
 ![img_012](./images/img_012.png)
 
-The function takes in an iterable as an input argument which is usually an opened file. Recall a file can be opened and closed using the inbuilt function ```open``` where the 2nd input argument in ```open``` is ```"r"``` indicating read only access. To encode a file properly, the follwoign keyword arguments must be assigned to the following values ```encoding="UTF-8-Sig"``` and ```newline=""```.
+The function takes in an iterable as an input argument which is usually an opened file. Recall a file can be opened and closed using the inbuilt function ```open``` where the 2nd input argument in ```open``` is ```"r"``` indicating read only access. To encode a file properly, the following keyword arguments must be assigned to the following values ```encoding="UTF-8-Sig"``` and ```newline=""```. "UTF-8-Sig" includes a signature otherwise known as a Byte Order Marker BOM. If "UTF-8" is used opposed to "UTF-8-Sig" the BOM will be read in as additional data:
 
 ```
 import csv
@@ -338,11 +338,11 @@ x_pickled = pickled.dumps(x)
 
 ![img_039](./images/img_039.png)
 
-The object ```x_pickled``` is a ```byte``` which is a number in binary. If ```x_pickled.``` is input followed by a tab ```↹``` a list of identifiers displays:
+The object ```x_pickled``` is a ```byte``` otherwise known as a byte string. If ```x_pickled.``` is input followed by a tab ```↹``` a list of identifiers displays:
 
 ![img_040](./images/img_040.png)
 
-The ```hex``` function can be used to display the byte array in hexadecimal which is slightly easier to read:
+The ```hex``` function can be used to display the byte string in hexadecimal which is slightly easier to read:
 
 ```
 x_pickled.hex()
