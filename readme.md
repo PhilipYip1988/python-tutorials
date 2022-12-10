@@ -108,4 +108,6 @@ The Tk Interface module is an inbuilt module for creating a Graphical User Inter
 
 [Tk Interface Module Calculator Project](./020_tkinter/)
 
+deque, maxsize
+namedtuple ._fields ._make ._asdict
 
