@@ -111,3 +111,6 @@ The Tk Interface module is an inbuilt module for creating a Graphical User Inter
 deque, maxsize
 namedtuple ._fields ._make ._asdict .__annotations__
 
+r open data in text mode as unicode str
+rb open data in byte mode you will get a bytes
+
