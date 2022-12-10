@@ -343,15 +343,20 @@ The method ```decode``` has an input argument ```encoding``` which has a default
 
 The following encoding schemes are most commonly used:
 
-|encoding|bit|bytes|byte order|
-|---|---|---|---|
-|ASCII|1|8| |
-|Latin1|1|8| |	
-|UTF-16-LE|2|16|little endian|
-|UTF-16-BE|2|16|big endian|
-|UTF-32-LE|4|32|little endian|
-|UTF-32-BE|4|32|big endian|
-|UTF-8|1-4|adaptive|1-4 adaptive|	
+|encoding|bit|bytes|byte order|BOM|
+|---|---|---|---|---|
+|ASCII|1|8| |---|
+|Latin1|1|8| | |
+|UTF-16-LE|2|16|little endian| |
+|UTF-16-BE|2|16|big endian| |
+|UTF-16|2|16| |BOM|
+|UTF-32-LE|4|32|little endian| |
+|UTF-32-BE|4|32|big endian| |
+UTF-32|4|32| |BOM|
+|UTF-8|1-4|adaptive|1-4 adaptive| |
+|UTF-8-Sig|1-4|adaptive|1-4 adaptive|BOM|
+
+A BOM is an abbreviation for a Byte Order Marker (BOM) which normally occurs at the start of the byte stream and is used in the case of UTF-16 and UTF-32 to denote whether the data is little endian or big endian. Some programs include a BOM otherwise known as a signature for all data encoded which is why there is UTF-8-Sig even though the UTF-8 encoding does not have the confusion between little endian and big endian.
 
 Because all of these characters are ASCII, spaning over 1 byte, the ASCII, Latin1 and UTF-8 encoding schemes all work:
 
