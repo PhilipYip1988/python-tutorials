@@ -60,7 +60,7 @@ Python standard modules are inbuilt modules included with the Python installatio
 
 The string module contains strings which contain a number of useful character groupings. In addition to the str class, there are two supplementary text classes, the byte and the bytearray. These classes are in builtins however not as commonly used as the str which is the most widely used text class in Python. These two classes use a byte as a fundamental unit, opposed to a 1 str character in the case of a str. For English characters, a character maps to a byte making the classes behave similarly. The difference between the classes becomes more apparent when non-English characters are used which are encoded with additional encoding schemes which span over multiple bytes. The string and byte are immutable and behave similarly to a tuple. The bytearray is mutable and behaves more similarly to a list.
 
-[Strings, Byte and Byte Arrays and the String Module](.013_string_byte_bytearray)
+[Strings, Byte and Byte Arrays and the String Module](./013_string_byte_bytearray/)
 
 The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
 
