@@ -112,5 +112,5 @@ deque, maxsize
 namedtuple ._fields ._make ._asdict .__annotations__
 
 r open data in text mode as unicode str
-rb open data in byte mode you will get a bytes
+rb open data in byte mode you will get a bytes string
 
