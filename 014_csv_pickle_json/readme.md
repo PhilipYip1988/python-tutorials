@@ -286,7 +286,7 @@ This new file can be opened and looks as expected:
 
 ## Pickled Data
 
-The ```pickle``` module can be used to create portable "pickled" serialised representations of Python objects. These "pickled" representations can be used to transfer Python objects for example over to simple hardware using a serial port or to a file which can be reopened in another Python session.
+The ```pickle``` module can be used to create portable "pickled" serialised representations of Python objects. Each "pickled" serialised representation is a byte string. These byte strings can be used to transfer Python objects for example over to simple hardware using a serial port or to a file which can be reopened in another Python session.
 
 It can be imported using:
 
@@ -359,13 +359,13 @@ len(x_pickled)
 
 ![img_042](./images/img_042.png)
 
-The type is a ```byte``` which is a large number in binary split into bytes. Recall a byte is 8 bits which gives ```2 ** 8``` combinations from ```0-256``` (inclusive of the lower bound zero and exclusive of the upper bound 256). These 256 combinations can be represented using 2 digits in hexadecimal. Hexadecimal has 16 characters ```0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F``` and with 2 digits ```16 ** 2``` is ```256```. The len of the byte array is 21 bytes and each byte is represented in Hexadecimal as 2 digits giving a total of 42 digits in the hexadecimal representation. If binary representation is used, the number will take up 168 digits.
+The type is ```bytes```  otherwise known as a byte string. 
 
 The ```int``` alternative constructor ```from_bytes``` can be used to convert this ```byte``` into an integer. Recall that an alterative constructor is a class method, called from the class. The docstring can be viewed by using Shift ```⇧``` and Tab ```↹```:
 
 ![img_043](./images/img_043.png)
 
-The alternative constructor needs two positional input arguments, the ```bytes``` object and the ```byteorder``` which is ```big``` for a pickled string. As an integer, this number can be cast into a hexadecimal and binary number using the ```hex``` and the ```bin``` functions respectively:
+The alternative constructor needs two positional input arguments, the ```bytes``` object and the ```byteorder``` which is ```big``` endian for a pickled string. As an integer, this number can be cast into a hexadecimal and binary number using the ```hex``` and the ```bin``` functions respectively:
 
 ```
 int.from_bytes(x_pickled, "big")
@@ -407,7 +407,7 @@ This gives the number:
 
 A serial port with a 9600 baud rate is setup to process 9600 bits per second. The serial port takes in a digital signal like the number above where ```1``` is a voltage of about 12 V (known as High) and ```0``` is a voltage around 0 V (known as Low). These 168 bits would therefore take 0.0175 s to transfer.
 
-The first and the last byte are instructions which indicate the start and the end of a transfer:
+The first and the last byte are Byte Order Markers (BOMs):
 
 0b**10000000**
 0x**80**
@@ -481,8 +481,6 @@ for num in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]:
 
 ![img_051](./images/img_051.png)
 
-Its not necessary to fully understand, how pickle encoding works around the data and understanding the above principles should suffice.
-
 Returning to the case where:
 
 ```
@@ -531,7 +529,7 @@ The file created can be viewed in Windows File Explorer:
 
 ![img_057](./images/img_057.png)
 
-If the file is opened in Notepad or Notepad++, it will be viewed using ASCII encoding and won't make much sense:
+If the file is opened in Notepad or Notepad++, it will be viewed using UTF-8 or ASCII encoding and won't make much sense:
 
 ![img_058](./images/img_058.png)
 
@@ -543,7 +541,7 @@ The pickled content can then be viewed in Hex:
 
 ![img_060](./images/img_060.png)
 
-A file is usually opened using a with code block which automaitcally closes the file when the code block terminates. For clarity the file is explicitly closed:
+A file is usually opened using a with code block which automatically closes the file when the code block terminates. For clarity the file is explicitly closed:
 
 ```
 import pickle
@@ -565,7 +563,7 @@ pickle.load()
 
 ![img_062](./images/img_062.png)
 
-The file must be opened with read permissions ```"r"``` and be configured for binary ```"b"```. Each item can be unpickled and loaded using:
+The file must be opened with read permissions ```"r"``` and be configured for a byte string ```"b"```. Each item can be unpickled and loaded using:
 
 ```
 with open("newfile.pkl", "rb") as file:
