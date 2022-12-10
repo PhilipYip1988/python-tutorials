@@ -32,7 +32,7 @@ file_object = open(file="text_file.txt", mode="r")
 
 Because ```text_file.txt``` is in the same folder as ```file_os_module.ipynb```. The file can be expressed implicitly without explicitly specifying the full path.
 
-The mode can be ```"r"``` for read, ```"w"``` for write and ```"a"``` for append.
+The mode can be ```"r"``` for read, ```"w"``` for write and ```"a"``` for append. ```"r"```, ```"w"``` and ```"a"``` are modes to read, write and append data as a unicode string. ```"rb"```, ```"wb"``` and ```"ab"```, are modes to read, write and append data as a byte string where ```"b"``` indicates the data is going to be in bytes.
 
 The file_object has a number of attributes and methods which can be accessed by typing in the file object names followed by a dot ```.``` and tab ```↹```:
 
