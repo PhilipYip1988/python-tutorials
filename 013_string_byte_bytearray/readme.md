@@ -1,6 +1,7 @@
 # Strings, Bytes and Byte Arrays
 
 ## ASCII and Latin1
+
 In Python a string is an immutable collection of characters. Under the hood each character is encoded numerically in bytes. Recall that a byte is a grouping of 8 binary boolean switches such as the depiction below which can each either be off with a value of ```0``` or on with a value of ```1```: 
 
 ![img_003](./images/img_003.png)
@@ -205,7 +206,7 @@ Counter(words)
 
  ## String Encoding
 
-In a Python string, a string is a collection of 1 letter characters. The string can be constructed by enclosing a string of characters in quotations:
+A Python  ```str``` is an abbreviation for a string of unicode characters and is sometimes known as a **unicode string**. The string of unicode characters can be constructed by enclosing the string of unicode characters in quotations:
      
 ```     
 greeting = "hello world!"
@@ -233,11 +234,11 @@ greeting = "\x68\x65\x6C\x6C\x6F\x20\x77\x6F\x72\x6C\x64\x21"
 greeting
 ```
 
-Notice the output fo the string remains the same, the length of the string remains the same and the first index at ```0``` remains the same:
+Notice the output of the string remains the same, the length of the string remains the same and the first index at ```0``` remains the same:
 
 ![img_024](./images/img_024.png)   
 
-If one of the characters in the string ```e``` ```\x65``` is changed to the ```£``` ```\A3``` a non-ASCII character that still smans over a byte within Latin1 the string still works as expected:
+If one of the characters in the string ```e``` ```\x65``` is changed to the ```£``` ```\A3```, the string still works as expected. This is a non-ASCII character that still spans over a single byte, within the character encoding known as Latin1 or extended ASCII:
 
 ```
 greeting = "\x68\xA3\x6C\x6C\x6F\x20\x77\x6F\x72\x6C\x64\x21"
@@ -248,11 +249,11 @@ greeting
 
 ## Unicode
 
-Outwith the most commonly used characters in the English language which are encoded over 1 byte in ASCII and Latin1, there are a huge number of supplementary characters for other languages and these are encoded in Unicode. These supplementary characters use 2 bytes. Recall ```2 ** 8``` gives 256 combinations and ```2 ** 16``` gives 65536 combinations:
+Outwith the most commonly used characters in the English language which are encoded over 1 byte in ASCII and Latin1, there are a huge number of supplementary characters for other languages and these are encoded in Unicode. These supplementary characters generally use 2 bytes. Recall ```2 ** 8``` gives 256 combinations and ```2 ** 16``` gives 65536 combinations:
 
 ![img_026](./images/img_026.png)   
 
-To insert a Unicode character the escape character is ```\u``` which expects 2 bytes which therefore requires 4 hexadecimal characters. The ASCII subset which span over a single byte have the same value in Unicode but the trailing zeros need to be included. For example:
+To insert a Unicode character the escape character is ```\u``` and this expects 2 bytes and therefore requires 4 hexadecimal characters. The ASCII subset which span over a single byte have the same value in Unicode but the trailing zeros need to be included. For example:
 
 ```
 greeting = "\u0068\u00A3\u006C\u006C\u006F\u0020\u0077\u006F\u0072\u006C\u0064\u0021"
@@ -296,7 +297,11 @@ greeting[0]
      
 ## The byte Class
 
-Python has another datatype which is ```bytes```. ```bytes``` is setup by default to be encoded in ASCII and a ```byte``` is constructed in an identical manner to a string with a prefix ```b```:
+Python has another datatype string datatype ```bytes``` which is an abbreviation for a string of bytes and is sometimes known as a **byte string**. 
+
+**The byte is the fundamental datatype that a computer uses to store data and a byte string is used for data transfer.** It is far easier for a human to work with a unicode string so conversion to a unicode string from a byte string should be made as soon as possible in a Python program after importing data. Likewise conversion to a byte string from a unicode string should be made as late as possible before exporting data.
+
+```bytes``` is setup by default to be encoded in ASCII and a ```byte``` is constructed in a similar manner to a ```str``` but includes the prefix ```b```:
 
 ```
 greeting = b"Hello World!"
@@ -306,7 +311,7 @@ greeting[0]
 greeting[:1]
 ```
 
-The length of the byte appears to be the same as before, this is only true when all of the characters are in the ASCII datraset and the length of each character is 1 byte. The length returned is the length in bytes and not the length in characters. Indexing the first value returns the numeric value of the first byte which is ```72```. However slicing displays the first character ```"H"```:
+The length of the byte appears to be the same as before. However, this is only true when all of the characters are in the ASCII dataset as the length of each character is 1 byte. The length returned is the length in bytes as the fundamental unit of a byte string is a **byte**. Indexing the first value returns the numeric value of the first byte which is ```72```. However slicing displays the first character ```"H"```:
 
 ![img_031](./images/img_031.png)  
 
@@ -348,7 +353,7 @@ The following encoding schemes are most commonly used:
 |UTF-32-BE|4|32|big endian|
 |UTF-8|1-4|adaptive|1-4 adaptive|	
 
-Becaue all of these characters are ASCII, spaning over 1 byte, the ASCII, Latin1 and UTF-8 encoding schemes all work:
+Because all of these characters are ASCII, spaning over 1 byte, the ASCII, Latin1 and UTF-8 encoding schemes all work:
 
 ```
 greeting.decode(encoding="ASCII")
@@ -429,7 +434,7 @@ greeting.decode(encoding="Latin1")
 
 ![img_042](./images/img_042.png) 
 
-Note as this byte contains a non-ASCII value, ASCII encoding givers a ```UnicodeError``` as does UTF-8:
+Note as this byte contains a non-ASCII value, ASCII encoding gives a ```UnicodeError``` as does UTF-8:
 
 ```
 greeting.decode(encoding="ASCII")
@@ -556,7 +561,7 @@ There is another class that is mutable, called a ```bytearray```.
 
 ![img_053](./images/img_053.png)
 
-Instanatiation of a ```bytearray``` requires use of the ```bytearray``` class and normally involves supplying a string or byte array and associated encoding. Notice now that the assignment of the byte takes place which replaced the first character ```"Γ"``` with ```"ϓ"```:
+Instantiation of a ```bytearray``` requires use of the ```bytearray``` class and normally involves supplying a string or byte array and associated encoding. Notice now that the assignment of the byte takes place which replaced the first character ```"Γ"``` with ```"ϓ"```:
 
 ```
 greeting = bytearray("Γειά σου Κόσμε!", encoding="UTF-8")
