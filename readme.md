@@ -66,6 +66,10 @@ The decimal module is based around the Decimal class. The Decimal class is simil
 
 [Decimal Module](./013_decimal/) 
 
+The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong and use of the correct data type is also more memory efficient:
+
+[Array Module](./022_array/)
+
 The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python builtins.
 
 [Collections Module](./012_collections/) 
