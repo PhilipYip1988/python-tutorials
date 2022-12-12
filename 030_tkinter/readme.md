@@ -1,5 +1,10 @@
 # The TK Interface General User Interface Module
 
+```
+import tkinter
+tkinter._test()
+```
+
 ## Getting Started
 
 The ```tkinter``` module should be considered an intermediate module. Begineers should be comfortable with builtin Python and the modules mentioned in previous guides before beginning with tkinter. In general an intermediate IDE is also required. One of the considerations when considering an IDE and working with TkInter is how well the IDE carries out code completion and how well it displays docstrings.
