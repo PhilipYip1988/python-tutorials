@@ -2,6 +2,14 @@
 
 ```
 import tkinter
+tkinter
+
+from tkinter import ttk
+from tkinter import constants
+```
+
+```
+import tkinter
 tkinter._test()
 ```
 
