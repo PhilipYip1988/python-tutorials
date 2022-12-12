@@ -58,9 +58,13 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 Python standard modules are inbuilt modules included with the Python installation. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used.
 
+The assignment operator ```=``` assigns a value to an object name. If the object is a collection such as a list, assignment results in an alias for the object i.e. one object with two object names and does not copy the object. The copy module contains two functions copy which performs a shallow copy and deepcopy which performs a deep copy:
+
+[Copy](./012_copy/)
+
 The string module contains strings which contain a number of useful character groupings. In addition to the str class, there are two supplementary text classes, the byte and the bytearray. These classes are in builtins however not as commonly used as the str which is the most widely used text class in Python. These two classes use a byte as a fundamental unit, opposed to a 1 str character in the case of a str. For English characters, a character maps to a byte making the classes behave similarly. The difference between the classes becomes more apparent when non-English characters are used which are encoded with additional encoding schemes which span over multiple bytes. The string and byte are immutable and behave similarly to a tuple. The bytearray is mutable and behaves more similarly to a list.
 
-[Strings, Byte and Byte Arrays and the String Module](./013_string_byte_bytearray/)
+[Strings, Byte and Byte Arrays and the String Module](./012_string_byte_bytearray/)
 
 The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
 
@@ -68,31 +72,36 @@ The decimal module is based around the Decimal class. The Decimal class is simil
 
 The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
 
-[Array Module](./022_array/)
+[Array Module](./014_array/)
+
+The queue module contains the SimpleQueue, Queue, LIFOQueue, PriorityQueue classes. These are used to create a queue or stack datastructure.
+
+[Queue Module](./015_queue/)
+
 
 The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python builtins.
 
-[Collections Module](./014_collections/) 
+[Collections Module](./016_collections/) 
 
 The concept of an iterators was covered briefly when looking at inbuilt collections and constructing a for loop. The builtins module contains commonly used iterators such as the zip, filter and map iterator classes. Python also has an iterator module itertools that contains zip_longest, filterfalse, and starmap iterator classes which complement their similar counterpart in builtins. The itertools module also has a cycle, repeat and count iterator classes which are endless iterators. The cycle iterator can be used to continuously index around a collection, returning to the top after reaching the bottom. Like the collections module, the itertools module is one of the closest modules to Python builtins. Effective use of these two modules simplifies common programming tasks and generally makes the code more Pythonic and easier to read:
 
-[Iterator Tools Module](./013_itertools/) 
+[Iterator Tools Module](./017_itertools/) 
 
 This guide looks at the use of the Operating System module and the shell utilities shutil module. These modules are used to carry out file operations within Python and behave similar to the equivalent commands in bash. This tutorial will examine how to read and write data to a text file.
 
-[File and Directory Operations with the os and shutil Modules](./013_os_module/)
+[File and Directory Operations with the os and shutil Modules](./018_os_module/)
 
 The previous guide looked at working with text data. Another common data type is the Comma Seperated Values (CSV) which as the name suggests uses a comma as a delimiter to seperate data into columns. The CSV Module can be used to read or write data from or to a CSV file. The Pickle module can be used to pickle a variable into a byte stream or unpickle a variable into a Python object which is useful for data tranfer over a serial port for example. This byte stream can also be saved to file so a variable can be loaded in a later session opposed to being recreated. The pickled data is easy for a computer to read but not very human readible. Another common datatype is the JavaScript Object Notation (JSON) which is a more complicated data stream that is more user readible than pickled data. The JSON syntax originated from JavaScript but is similar to a Python dictionary with some subtle differences. Despite originating from JavaScript, the JSON data stream has become a commonly used standard data stream used to store data for all programming languages and most data on a website is stored in JSON for example. The JSON Module can be used to convert between a JSON syntax and a Python dictionary. 
 
-[CSV, Pickle and JSON Modules](./014_csv_pickle_json/)
+[CSV, Pickle and JSON Modules](./019_csv_pickle_json/)
 
 The math module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks. There is an associated complex math module cmath which is designed to handle complex numbers.
 
-[Math and Complex Math Modules](./015_math/)
+[Math and Complex Math Modules](./020_math/)
 
 The random module is a pseudo random number generator which can be used to select a choice or choices from a list which are operations done with replacement. Alternatively it may be used to select a sample from a list which is done without replacement or to mutate the existing list by shuffling it. There are also a number of statistical distributions that a number can be generated from including the commonly used uniform, normal and exponential distributions.
 
-[Random Module](./016_random/)
+[Random Module](./021_random/)
 
 DateTime Module
 
@@ -102,8 +111,6 @@ Statistics Module
 
 Generators (add beside functions)
 
-mutability and copy
-
 The Tk Interface module is an inbuilt module for creating a Graphical User Interface (GUI). The module revolves around the Tk main window class which can be equipped with widgets to give the main window functionality. The main window can include Label, Entry (text entry), Button, Checkbutton, Radiobutton, Combobox, Listbox, Scale, Scrollbars, Frame, Canvas, Menu, Menubutton and Toplevel Widgets. These Widgets can be packed on the Tk main window or alternatively arranged in a grid on the Tk main window. It is useful to learn this module through starter projects which involve creation of asimple GUI with just a handful of these Widgets. One of the first projects to create with tkinter is a calculator which uses a Tk Main Window with Entry and Buttons arranged on a grid.
 
-[Tk Interface Module Calculator Project](./020_tkinter/)
+[Tk Interface Module Calculator Project](./030_tkinter/)
