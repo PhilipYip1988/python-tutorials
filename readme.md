@@ -62,7 +62,7 @@ The assignment operator ```=``` assigns a value to an object name. If the object
 
 [Copy](./012_copy/)
 
-The string module contains strings which contain a number of useful character groupings. In addition to the str class, there are two supplementary text classes, the byte and the bytearray. These classes are in builtins however not as commonly used as the str which is the most widely used text class in Python. These two classes use a byte as a fundamental unit, opposed to a 1 str character in the case of a str. For English characters, a character maps to a byte making the classes behave similarly. The difference between the classes becomes more apparent when non-English characters are used which are encoded with additional encoding schemes which span over multiple bytes. The string and byte are immutable and behave similarly to a tuple. The bytearray is mutable and behaves more similarly to a list.
+The string module contains strings which contain a number of useful character groupings. At this stage, it is worth comparing the three text base classes in builtins. The str class is the main text based class and has previously been examined. The str class uses a unicode character as a fundamental unit and is therefore sometimes referred to as a *unicode string*. The other two text based classes, the byte and byte array use a byte as a fundamental unit and are sometimes known as *byte strings*. For English characters, a character maps to a byte making a *unicode string* and *byte string* behave similarly. The difference becomes more apparent when non-English characters are used which are encoded with encoding schemes which span over multiple bytes. Generally the *unicode string* is used preferentially within a Python program but the *byte string* is used to stream data from and to hardware. It is good practice to decode any *byte string* to a *unicode string* as early as possible in a program and encode it to a *byte string* as late as possible in a program. The str class is immutable and therefore behaves like a tuple. Notice for example that all the str methods for example return a new str instance and do not change the original str instance because they cannot do so as the original instance is immutable. The difference between the two *byte strings* is bytes is immutable (like a tuple) and bytearray is mutable (like a list). The bytearray therefore has additional methods which update the original instance in place. i.e. mutate the original bytearray. 
 
 [Strings, Byte and Byte Arrays and the String Module](./012_string_byte_bytearray/)
 
@@ -102,6 +102,8 @@ The math module is used to carry out common mathematical operations on scaler nu
 The random module is a pseudo random number generator which can be used to select a choice or choices from a list which are operations done with replacement. Alternatively it may be used to select a sample from a list which is done without replacement or to mutate the existing list by shuffling it. There are also a number of statistical distributions that a number can be generated from including the commonly used uniform, normal and exponential distributions.
 
 [Random Module](./021_random/)
+
+Work in progress...
 
 DateTime Module
 
