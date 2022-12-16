@@ -148,9 +148,8 @@ To create a new Python environment for the latest version of the Visual Studio C
 mamba create -n vscode-cf
 mamba activate vscode-cf
 mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
-mamba install -c conda-forge nodejs ipywidgets 
+mamba install -c conda-forge notebook nodejs ipywidgets 
 mamba install -c conda-forge plotly dash
-mamba install -c conda-forge notebook
 ```
 
 Visual Studio Code needs to be installed seperately using the Windows ```.exe``` or Ubuntu ```.deb``` or Ubuntu ```.snap``` package. 
