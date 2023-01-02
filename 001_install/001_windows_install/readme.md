@@ -113,7 +113,7 @@ By default the ```base``` Python environment will be selected, this is minimal, 
 In Windows Explorer, navigate to:
 
 ```
-%UserProfile\mambaforge
+%UserProfile%\mambaforge
 ```
 
 Notice there is a python.exe in this folder. This is the default Python executable.
@@ -123,7 +123,7 @@ Notice there is a python.exe in this folder. This is the default Python executab
 Notice that there is also a Lib subfolder:
 
 ```
-%UserProfile\mambaforge\lib
+%UserProfile%\mambaforge\lib
 ```
 
 This is the folder where all the builtin Python Modules are installed, for example the datetime module (which exists as datetime.py) and email module (which exists as a subfolder called email, this subfolder contains a ```__init__.py``` file):
@@ -133,7 +133,7 @@ This is the folder where all the builtin Python Modules are installed, for examp
 In this Lib subfolder there is also a site-packages folder:
 
 ```
-%UserProfile\mambaforge\lib\site-packages
+%UserProfile%\mambaforge\lib\site-packages
 ```
 
 where third party data science libraries are installed (if they are installed to the base Python environment):
