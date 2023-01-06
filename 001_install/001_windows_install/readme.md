@@ -180,7 +180,7 @@ This folder contains all the third-party libraries. The Mambaforge ```base``` Py
 
 The third party libraries are the Python Package Managers ```mamba```, ```conda``` and ```pip```. This guide is focused only on the ```mamba``` package manager but ```mamba``` under the hood builds upon the other two package managers ```pip``` and ```conda```. Because ```pip``` and ```conda``` are required for ```mamba``` to run correctly, these are known as dependencies. There are additional dependencies such as ```requests``` which is used by the package manager to send HTTP requests to the ```conda-forge``` community channel to retrieve the packages. 
 
-# Listing Packages
+# List Packages
 
 Notice for each subfolder in site-packages, there is a corresponding folder with the version number. These versions can also be seen by inputting the following command in the Mambaforge Prompt:
 
@@ -1005,6 +1005,14 @@ mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl 
 jupyter lab build
 ```
 
+An older version of JupyterLab was installed in my case. Check for the latest version of JupyterLab by using:
+
+```
+mamba search jupyterlab
+```
+
+Assign the version to the latest version in the above command. 
+
 There is no Start Menu Shortcut for JupyterLab. To launch JupyterLab, use the Mambaforge Prompt, activate the Python environment and use:
 
 ```
@@ -1013,130 +1021,152 @@ jupyter lab
 
 ![img_146](./images/img_146.png)
 
-JupyterLab has a file explorer to the left hand side where you can navigate to your Documents folder. 
+JupyterLab launches in the browser. To the left hand side is a file explorer:
 
-![109_img](./images/109_img.png)
+![img_147](./images/img_147.png)
 
-The Terminal can be invoked to run an existing Python Script file:
+Compatible files can be opened by double clicking them. For example the ```script0.py``` file:
 
-![131_img](./images/131_img.png)
+![img_148](./images/img_148.png)
 
-Using the same command as before:
+To run a Python Script File, it will require an IPython Console. Right click the file and select Create Console for Editor:
+
+![img_149](./images/img_149.png)
+
+Select Python 3 (ipkernel) and select Select:
+
+![img_150](./images/img_150.png)
+
+The interactive Python Console Kernel will show in its own tab:
+
+![img_151](./images/img_151.png)
+
+Select Run and then Run All Code:
+
+![img_152](./images/img_152.png)
+
+It is also possible here to make a selection within the Python Script File and select Run.
+
+The code will run and the output from the script file will be shown in an IPython console cell:
+
+![img_153](./images/img_153.png)
+
+It is also possible to run a script file using a Terminal. Select Terminal from the launcher:
+
+![img_154](./images/img_154.png)
+
+The Terminal will show in the launchers tab:
+
+![img_155](./images/img_155.png)
+
+This tab can be repositioned:
+
+![img_156](./images/img_156.png)
+
+The code in the script file can be run by changing to the Documents folder and using Python to execute the script file:
 
 ```
+cd Documents
 python script0.py
 ```
 
-Displays Hello World on the Terminal.
+Note ```cd %UserProfile%\Documents``` did not work here as the Terminal is using an odler version of PowerShell to the Mambaforge Prompt.
 
-![132_img](./images/132_img.png)
+![img_157](./images/img_157.png)
 
-A Python file can be created from the launcher:
+If instead ```script2.py``` is opened alongside an IPython Console:
 
-![110_img](./images/110_img.png)
+![img_158](./images/img_158.png)
 
-The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the open tab at the top which displays the file name:
+When all the code is Run:
 
-![111_img](./images/111_img.png)
+![img_159](./images/img_159.png)
 
-![112_img](./images/112_img.png)
+The plot displays inline as an IPython cell output:
 
-To get code completion options to display while editing the file, right click blank space within the file and select Create Console for Editor:
+![img_160](./images/img_160.png)
 
-![113_img](./images/113_img.png)
+Although JupyterLab can be used with Python Script Files (```.py``` file extension). It is typicallyed used with Interactive Python Notebook Files (```.ipynb``` file extension). A new Notebook can be created in the Launcher:
 
-Select the default Kernel and select Select:
+![img_161](./images/img_161.png)
 
-![114_img](./images/114_img.png)
+It displays on the File Explorer and can be renamed by right clicking it:
 
-![115_img](./images/115_img.png)
+![img_162](./images/img_162.png)
 
-Code completion will work in a similar manner as IDLE. The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was ```p``` and the command ```print``` has this code prefix:
+And selecting Rename:
 
-![116_img](./images/116_img.png)
+![img_163](./images/img_163.png)
 
-A docstring will display if a function is input with open parenthesis and the shift ```⇧``` and tab ```↹``` are pressed:
+The notebook file consists of a series of cells. The default code, is a code cell:
 
-![117_img](./images/117_img.png)
+![img_164](./images/img_164.png)
 
-A list of all the identifiers within a standard Python module will be displayed after the module is imported and the module name is input followed by a dot ```.``` and ```↹```:
+It can be switched to a ```markdown``` cell. Markdown uses a simple syntax for formatting text:
 
-![119_img](./images/119_img.png)
+![img_165](./images/img_165.png)
 
-For a third-party module such as a datascience library, no code completion options display. 
+The syntax highlighting changes and running the markdown cell will display the formatted markdown text:
 
-![120_img](./images/120_img.png)
+![img_166](./images/img_166.png)
 
-The library generally needs to be imported into the console for its code completion to be recognised. The line of code (lines of code) with the data science library imports can be selected:
+The Code cells behave similar to an IPython Console:
 
-![121_img](./images/121_img.png)
+![img_167](./images/img_167.png)
 
-Then Run and Run Code can be selected:
+Existing cells can however be editted and then rerun:
 
-![122_img](./images/122_img.png)
+![img_168](./images/img_168.png)
 
-The list of all the identifiers within the numpy module should now display after the module is imported and the module name is input followed by a dot ```.``` and ```↹```. 
+JupyterLab has a basic Variable Inspector:
 
-This doesn't seem to work correctly in a script editor but works correctly in the Console.
+![img_169](./images/img_169.png)
 
-*This problem occurs on IDLE, Spyder and JupyterLab and is likely a bug in the IPython console that needs to be addressed.*
+It opens in a new tab, that can be repositioned:
 
-![123_img](./images/123_img.png)
+![img_170](./images/img_170.png)
 
-![154_img](./images/154_img.png)
+![img_171](./images/img_171.png)
 
-A docstring will display if a function is input with open parenthesis and the shift ```⇧``` and tab ```↹``` are pressed:
+The Variable Inspector is very basic compared to Spyders Variable Explorer. The cell output of an Interactive Notebook is more typically used to view a Variable in more detail.
 
-![124_img](./images/124_img.png)
+![img_172](./images/img_172.png)
 
-Additional test code can be added to make a plot:
+Matplotlib Plots use the inline backend by default and display as static images in the cell output.
 
-![125_img](./images/125_img.png)
+Markdown Headings act as bookmarks:
 
-Now all the code can be run by selecting Run→Run All Code:
+![img_173](./images/img_173.png)
 
-![126_img](./images/126_img.png)
+A list of identifiers can be seen from an object by typing in the objects name followed by a dot ```.``` and tab ```↹```:
 
-The script file is executed and the print statement and plot are displayed in the console:
+![img_174](./images/img_174.png)
 
-![127_img](./images/127_img.png)
+A functions docstring can be displayed in a popup balloon by typing in the functions name with open parenthesis and pressing the shift ```⇧``` and tab ```↹``` keys:
 
-The plot backend can be changed from the default inline to automatic using:
+![img_175](./images/img_175.png)
 
-![130_img](./images/130_img.png)
+The docstring can also be viewed as a cell output. If the cell output is long, the cell can be right clicked and Enabling Scrolling for Outputs can be selected.
 
-The JupyterLab IDE lacks some features available in Spyder when it comes to editting Python Script Files:
+![img_176](./images/img_176.png)
 
-* It has no Variable Inspector or Variable Explorer
-* It has no way of running cells within a Python Script File.
+Interactive plots cna be made using plotly:
 
-The JupyterLab IDE has more of a focus on Interactive Python Notebooks which have the ```.ipynb``` extension:
+![img_177](./images/img_177.png)
 
-![133_img](./images/133_img.png)
+The ```ipynb``` files are typically opened by JupyterLab after JupyterLab is launched by the Mambaforge prompt. However it is insightful to view a file in notepad:
 
-The notebook can be renamed using the file explorer or the top tab of the open notebook:
+![img_178](./images/img_178.png)
 
-![134_img](./images/134_img.png)
+The code is nodejs code. The nodejs code wraps around the Python or Markdown code for each cell:
+
+![img_179](./images/img_179.png)
 
 The notebook consists of cells. The cells can be:
 
 * markdown - for markdown syntax: The Markdown display will be shown when the code is run.
 * python - for Python code: Python code will be executed when the cell is run.
 * raw - The notebook itself is written in nodejs, another programming language used for web development. 
-
-![073_jupyterlab](./images/073_jupyterlab.png)
-
-A markdown heading can be created and then the cell can be run:
-
-![074_jupyterlab](./images/074_jupyterlab.png)
-
-The heading will now display under the notebooks bookmarks:
-
-![075_jupyterlab](./images/075_jupyterlab.png)
-
-A code cell can now be created:
-
-![076_jupyterlab](./images/076_jupyterlab.png)
 
 The shortcut key ```esc``` and ```m``` will change the current cell to a markdown cell.
 
@@ -1148,63 +1178,9 @@ The shortcut key ```alt``` and ```↵``` will run a cell and insert a blank cell
 
 To get to Keyboard Shortcuts. Select the Settings menu to the top and then select Advanced Settings Editor. To the left select Command Palette and then select keyboard shortcuts.
 
-Code completion works better in a notebook file. A third-party data science module needs to be imported in a previously cell. Once this cell is run typing in the module name or module alias followed by a ```.```, pressing the tab ```↹``` key will display the list of identifiers from the module:
-
-![139_img](./images/139_img.png)
-
-The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was np.a and the command np.array has this code prefix:
-
-![141_img](./images/141_img.png)
-
-Inputting a function name with open parenthesis and pressing shift ```⇧``` and the tab ```↹``` key will display the functions docstring as a popup balloon:
-
-![140_img](./images/140_img.png)
-
-When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the console when running Python code or a Python script file) and indicates the number of cells ran in the Python kernel:
-
-![077_jupyterlab](./images/077_jupyterlab.png)
-
-The Kernel can be restarted in an interactive notebok by selecting Kernel. Then Restart Kernel and Run All Cells:
-
-![151_img](./images/151_img.png)
-
-Then select Restart:
-
-![152_img](./images/152_img.png)
-
-Notice now each cell is ran in numeric order:
-
-![153_img](./images/153_img.png)
-
-JupyterLab has a Variable Inspector extension that can be viewed in an interactive notebook by right clicking blank space in the notebook file and selecting open Variable Inspector:
-
-![135_img](./images/135_img.png)
-
-This opens in a new tab which can be repositioned:
-
-![136_img](./images/136_img.png)
-
-![137_img](./images/137_img.png)
-
-This Variable Inspector is quite limited with respect to the Variable Explorer found within Spyder.
-
-To close JupyterLab, close the tab in the browser. In the mambaforge prompt you will notice that the server is still running.
-
-![078_jupyterlab](./images/078_jupyterlab.png)
-
-The server runs in an infinite loop. To end it press ```Ctrl``` + ```c```:
-
-![079_jupyterlab](./images/079_jupyterlab.png)
-
-If the ```.ipynb``` file is opened in notepad. The nodejs script can be viewed directly.
-
-![138_img](./images/138_img.png)
-
-The nodejs code can be seen to enclose the Python code. Plotting libraries such as plotly take Python syntax from the user and output nodejs code which is used to display the interactive plot.
-
 # Visual Studio Code
 
-Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Because it is a general puprose editor, a seperate Python environment needs to be created usign Mambaforge:
+Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Because it is a general purpose editor, a number of steps need to be made to configure it for Python use. A seperate Python environment needs to be created using Mambaforge:
 
 
 ```
