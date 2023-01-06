@@ -1,4 +1,4 @@
-# Installing Python on Windows 11 (Mambaforge, IDLE, Spyder, JupyterLab, VSCode)
+# Installing Python on Windows 11
 
 [YouTube Tutorial](https://www.youtube.com/watch?v=O-WZedLq_sE)
 
@@ -72,7 +72,7 @@ Select Next and Finish:
 
 ![img_011](./images/img_011.png)
 
-# The Windows Environment Variable Path
+## The Windows Environment Variable Path
 
 The Windows Environmental Varables Path can be checked by right clicking the Start Button and selecting System:
 
@@ -104,7 +104,7 @@ If Mambaforge has been added to the path the following 5 entries will display:
 
 Additional entries may be added for other programs and should be unmodfied.
 
-# Launching the Mambaforge Prompt
+## Launching the Mambaforge Prompt
 
 Launch the Mambaforge Prompt from the Start Menu. Unfortunately when initially installed, it may display as Miniforge, this is a bug which will be addressed when the installation is updated.
 
@@ -114,7 +114,7 @@ In the prompt you will see ```(base)``` which indicates the ```base``` Python en
 
 ![img_018](./images/img_018.png)
 
-# Exploring the base Python Environment
+## Exploring the base Python Environment
 
 The ```base``` Python environment is minimal, containing Python and the ```mamba``` package manager. Its contents can be viewed in Windows Explorer by navigating to:
 
@@ -180,7 +180,7 @@ This folder contains all the third-party libraries. The Mambaforge ```base``` Py
 
 The third party libraries are the Python Package Managers ```mamba```, ```conda``` and ```pip```. This guide is focused only on the ```mamba``` package manager but ```mamba``` under the hood builds upon the other two package managers ```pip``` and ```conda```. Because ```pip``` and ```conda``` are required for ```mamba``` to run correctly, these are known as dependencies. There are additional dependencies such as ```requests``` which is used by the package manager to send HTTP requests to the ```conda-forge``` community channel to retrieve the packages. 
 
-# List Packages
+## List Packages
 
 Notice for each subfolder in site-packages, there is a corresponding folder with the version number. These versions can also be seen by inputting the following command in the Mambaforge Prompt:
 
@@ -208,7 +208,7 @@ cls
 
 ![img_030](./images/img_030.png)
 
-# Updating the base Python Environment
+## Updating the base Python Environment
 
 Before making any changes to packages the ```base``` Python environment should be updated as this will make sure the latest version of the ```mamba``` package manager is installed. Use the command:
 
@@ -268,7 +268,7 @@ Mambaforge is now up to date and should show correctly in the Start Menu as Mamb
 
 ![img_040](./images/img_040.png)
 
-# Running Python from the Mambaforge Prompt
+## Running Python from the Mambaforge Prompt
 
 So far only the PowerShell Programming Language has been used in the Mambaforge Prompt. This is a scripting language inbuilt into the Windows Operating System optimised for file operations. Python is also a scripting language.
 
@@ -326,7 +326,7 @@ exit
 
 Both PowerShell and Python are scripting languages. They have some similarities in some of their commands but the syntax may differ slightly. This was demonstrated using the ```exit``` function in Python and the ```exit``` command in PowerShell.
 
-# Running Interactive Python from the Mambaforge Prompt
+## Running Interactive Python from the Mambaforge Prompt
 
 Interactive Python can also be ran in the Mambaforge Prompt by using:
 
@@ -404,7 +404,7 @@ The PowerShell Prompt reappears:
 
 ![img_061](./images/img_061.png)
 
-# Running a Python Script File from the Mambaforge Prompt
+## Running a Python Script File from the Mambaforge Prompt
 
 A Python Script File is essentially a text file with a ```.py``` file extension opposed to a ```.txt``` file extension. A new Python Script File can be created in the File Explorer, in the Documents folder by right clicking and selecting New and then New Text Document:
 
@@ -463,7 +463,7 @@ Swapping Notepad for Notepad++ will give some syntax highlighting as text is inp
 
 Code Completion options are one of the main reasons for using an IDE.
 
-# Integrated Development Learning Environment (IDLE)
+## Integrated Development Learning Environment (IDLE)
 
 The Integrated Development Learner Environment (IDLE) can be launched from the Mambaforge Prompt using:
 
@@ -537,7 +537,7 @@ The Code will be executed in the IDLE Shell:
 
 ![img_084](./images/img_084.png)
 
-# Python Environments
+## Python Environments
 
 As you become more proficient in Python, you will need the features and capabilities of other Python IDEs and need to use a number of third-party libraries. It is generally a good practice to install these IDEs in seperate Python environments. A Python Environment is essentially a subinstallation of Python. A Python Environment will be created for the Spyder IDE. This IDE is written in Python and Python Libraries and therefore has a large number of dependencies.
 
@@ -803,7 +803,7 @@ This Python environment is now removed:
 
 ![img_145](./images/img_145.png)
 
-# The Scientific Python Development Environment (SPYDER)
+## The Scientific Python Development Environment (SPYDER)
 
 To recap Spyder is installed in its own Python environment using:
 
@@ -992,7 +992,7 @@ This feature has in the past worked better for Python and Inbuilt Modules than S
 
 The code completion on the IPython console is more responsive but less detailed. In IPython Console press ```↹``` after the ```.``` to view the list of identifiers.
 
-# JupyterLab
+## JupyterLab
 
 Jupyter is a loose acronym meaning Julia, Python, and R. The JupyterLab IDE is a browser based IDE and for Python can be used with the same Scientific Libraries as Spyder. Because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. The browser based functionality is written in nodejs and extensions require ```nodejs``` as a dependency. An optional Variable Inspector is also available.
 
@@ -1001,19 +1001,24 @@ Another Python environment will be created for JupyterLab.  Open the Mambaforge 
 ```
 mamba create -n jupyterlab
 mamba activate jupyterlab
-mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector
-jupyter lab build
 ```
 
-An older version of JupyterLab was installed in my case. Check for the latest version of JupyterLab by using:
+Search for the latest version of JupyterLab using:
 
 ```
 mamba search jupyterlab
 ```
 
-Assign the version to the latest version in the above command. 
+Install JupyterLab using:
 
-There is no Start Menu Shortcut for JupyterLab. To launch JupyterLab, use the Mambaforge Prompt, activate the Python environment and use:
+```
+mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector
+jupyter lab build
+```
+
+Check the latest version of JupyterLab is being installed. If not cancel the opreration and assign JupyterLab to the latest version using a modifying the above command. 
+
+There is no Start Menu Shortcut for JupyterLab. To launch JupyterLab, use the Mambaforge Prompt, activate the ```jupyterlab``` Python environment and use:
 
 ```
 jupyter lab
@@ -1178,7 +1183,7 @@ The shortcut key ```alt``` and ```↵``` will run a cell and insert a blank cell
 
 To get to Keyboard Shortcuts. Select the Settings menu to the top and then select Advanced Settings Editor. To the left select Command Palette and then select keyboard shortcuts.
 
-# Visual Studio Code
+## Visual Studio Code
 
 Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Because it is a general purpose editor, a number of steps need to be made to configure it for Python use. A seperate Python environment needs to be created using Mambaforge:
 
@@ -1186,152 +1191,140 @@ Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Bec
 ```
 mamba create -n vscode
 mamba activate vscode
-mamba install notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly dash
+mamba install notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly
 ```
 
-Visual Studio Code can then be installed either from the Windows Application (```.exe```) available on the [Visual Studio Code website](https://code.visualstudio.com/download). 
+Visual Studio Code can then be installed from the Windows Application (```.exe```) available on the [Visual Studio Code website](https://code.visualstudio.com/download).
 
-![155_img](./images/155_img.png)
+Select Windows User Installer x64:
 
-Launch the Windows Installer:
+![img_180](./images/img_180.png)
 
-![156_img](./images/156_img.png)
+Launch the setup.exe:
+
+![img_181](./images/img_181.png)
 
 Accept the License Agreement and select Next:
 
-![157_img](./images/157_img.png)
+![img_182](./images/img_182.png)
 
-Install in the default location and select Next:
+Use the default location and select Next:
 
-![158_img](./images/158_img.png)
+![img_183](./images/img_183.png)
 
-Select Next:
+Use the default location and select Next:
 
-![159_img](./images/159_img.png)
+![img_184](./images/img_184.png)
 
-Select Next:
+Leave the defaults checked and select Next:
 
-![160_img](./images/160_img.png)
+![img_185](./images/img_185.png)
 
 Select Install:
 
-![161_img](./images/161_img.png)
+![img_186](./images/img_186.png)
 
 Select Finish:
 
-![162_img](./images/162_img.png)
+![img_187](./images/img_187.png)
 
-Once installed, launch Visual Studio Code from the Start Screen or the mambaforge prompt by inputting:
+Open VSCode. Select the Extension tab to the left aand select the Python Extension (it is the most popular extension, displayed at the top):
 
-```
-mamba activate vscode
-code
-```
+![img_188](./images/img_188.png)
 
-![163_img](./images/163_img.png)
+Select Install:
 
-Select your desired colour scheme:
+![img_189](./images/img_189.png)
 
-![164_img](./images/164_img.png)
+The extension is now installed, alongside other associated Python Extensions:
 
-To use Visual Code with a Programming Language, the extension(s) appropriate for that programming language need to be installed. To the left select extensions and then select the Python Extension and select Install:
+![img_190](./images/img_190.png)
 
-![165_img](./images/165_img.png)
+An optional Markdown Extension can also be installed:
 
-![166_img](./images/166_img.png)
+![img_191](./images/img_191.png)
 
-Visual Studio Code requires a folder for each project. Open file explorer and create a new folder:
+Visual Code encourages setup of a folder for each Python Project. In File Explorer, create a new folder:
 
-![167_img](./images/167_img.png)
+![img_192](./images/img_192.png)
 
-In Visual Studio Code, select the files tab and select Open Folder. Select the folder just created:
+This folder will be named ```project0```. It is good practice to not use any spaces or special characters for the folder name, following the same rules as Python object names:
 
-![168_img](./images/168_img.png)
+![img_193](./images/img_193.png)
 
-![169_img](./images/169_img.png)
+In Visual Studio Code, select the File Tab and then Open Folder. Select ```project0```:
 
-You will be asked for permissions. Select Yes, I trust the authors:
+![img_194](./images/img_194.png)
 
-![170_img](./images/170_img.png)
+Select New File:
 
-Select New File and create a Python Script file with the ```.py``` file extension:
+![img_195](./images/img_195.png)
 
-![171_img](./images/171_img.png)
+Name the file ```main.py```:
 
-Open the file. To the bottom right you will see your Python interpretter. In this case the correct Python interpretter was selected.
+![img_196](./images/img_196.png)
 
-![172_img](./images/172_img.png)
+Open up the ```main.py``` file. In the bottom right on the status bar. Python is shown alongside the Python Interpretter (Python Environment). In this example the wrong Python Environment is selected:
 
-In other cases you may need to change the Python interpretter. To change this to the ```vscode-cf``` press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter:
+![img_197](./images/img_197.png)
 
-![173_img](./images/173_img.png)
+Press ```Ctrl```, ```⇧``` and ```p``` to open the command palette and search for ```Python Select Intepreter```: 
 
-Select the ```vscode-cf``` mamba environment:
+![img_198](./images/img_198.png)
 
-![174_img](./images/174_img.png)
+Select the ```vscode``` Python Environment:
 
-Code auto-completion works better in Visual Code than in the other IDEs with an out of the way popup balloon displaying a list of identifiers with the prefix typed:
+![img_199](./images/img_199.png)
 
-![175_img](./images/175_img.png)
+Visual Code Studio uses Microsoft's IntelliSense giving code suggestions as you type:
 
-A docstring popup balloon also displays when a function is input with open parenthesis:
+![img_200](./images/img_200.png)
 
-![176_img](./images/176_img.png)
+And the functions docstrings display as popup balloons:
 
-This also works correctly with Python inbuilt modules:
+![img_201](./images/img_201.png)
 
-![177_img](./images/177_img.png)
+The Python Script file can be launched:
 
-![178_img](./images/178_img.png)
+![img_202](./images/img_202.png)
 
-And third-party datascience libraries:
+And the plot displays in a seperate Window:
 
-![179_img](./images/179_img.png)
+![img_203](./images/img_203.png)
 
-![180_img](./images/180_img.png)
+It is possible to run the script file using individual cells in an Ipython console:
 
-A script file can be run by selecting the run script button:
+![img_204](./images/img_204.png)
 
-![181_img](./images/181_img.png)
+![img_205](./images/img_205.png)
 
-To the bottom a Terminal should display. In the Python Terminal, Hello World displays. Multiple Terminals can be opened for Windows PowerShell and other programming languages. The Terminal can be resized vertically using the horizontal slider.
+Plots in this case display inline:
 
-![182_img](./images/182_img.png)
+![img_206](./images/img_206.png)
 
-For an automatic plot to display when executing a script, the script must include the function 
+VSCode can also work with Interactive Notebook files:
 
-```
-plt.show
-```
+![img_207](./images/img_207.png)
 
-![183_img](./images/183_img.png)
+Once again the cells can be Markdown or Code. VSCode can work with lots of other programming languages, so the cells also have the option to use other programming languages:
 
-Visual Studio Code also has a Variables tab. This is unfortunately only available when the script file is ran using Interactive Mode:
+![img_208](./images/img_208.png)
 
-![184_img](./images/184_img.png)
+The Interactive Python Notebook, also has a Variables button:
 
-Selecting run cells within a script file opens an interactive window to the right hand side:
+![img_209](./images/img_209.png)
 
-![185_img](./images/185_img.png)
+This displays a Variable Explorer:
 
-Plots display inline in the interactive mode:
+![img_210](./images/img_210.png)
 
-![186_img](./images/186_img.png)
+To view the data in the Variable, double click it. This will open the data viewer:
 
-The Variables can be clicked into to be explored in more detail:
+![img_211](./images/img_211.png)
 
-![187_img](./images/187_img.png)
+Beside the Variables button is the Outline button. This gives a table of contents of the markdown headings:
 
-Visual Studio Code can also be used to work with an Interactive Python Notebook. Select New File and create an Interactive Python Notebook file with the ```.ipynb``` file extension:
-
-![188_img](./images/188_img.png)
-
-![189_img](./images/189_img.png)
-
-![190_img](./images/190_img.png)
-
-![191_img](./images/191_img.png)
-
+![img_212](./images/img_212.png)
 
 Return to:
 
