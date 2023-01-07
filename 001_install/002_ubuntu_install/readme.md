@@ -1,4 +1,6 @@
-# Installing Python on Ubuntu Linux (Mambaforge, IDLE, Spyder, JupyterLab, VSCode)
+# Installing Python on Linux/Mac
+
+This tutorial will configure Python 3.11 on a Linux/Mac computer using Mambaforge.
 
 [YouTube Video](https://www.youtube.com/watch?v=BOTfBW3KQh8)
 
@@ -14,6 +16,10 @@ The PC should match or exceed the following system requirements:
 The performance will be very poor if these system requirements are not satisfied.
 
 Alternatively a Mac with equivalent hardware specifications can be used.
+
+## Uninstall
+
+Before proceeding uninstall any version of Python or Python distributions you may have previously installed such as Anaconda, Miniconda, Mambaforge or Miniforge. 
 
 ## Mambaforge Shell Script Install
 
@@ -456,10 +462,10 @@ There is an ```envs``` subfolder which is empty by default.
 A new environment can be created for the Spyder IDE using the command:
 
 ```
-mamba create spyder-cf
+mamba create spyder
 ```
 
-where ```spyder-cf``` is the name of the Python environment.
+where ```spyder``` is the name of the Python environment.
 
 ![img_045](./images/img_045.png)
 
@@ -470,7 +476,7 @@ The Python environment will now be created.
 Physically this displays as:
 
 ```
-~/mambaforge/envs/spyder-cf
+~/mambaforge/envs/spyder
 ```
 
 ![img_047](./images/img_047.png)
@@ -483,15 +489,15 @@ Currently the ```base``` Python environment is activated as indicated by the pro
 
 ![img_049](./images/img_049.png)
 
-To instead make changes to the Python environment ```spyder-cf```, the ```spyder-cf``` environment needs to be activated using the command:
+To instead make changes to the Python environment ```spyder```, the ```spyder``` environment needs to be activated using the command:
 
 ```
-mamba activate spyder-cf
+mamba activate spyder
 ```
 
 ![img_050](./images/img_050.png)
 
-Notice that the prompts prefix is now ```(spyder-cf)```. Now any package manipulation commands will change the packages in ```spyder-cf```.
+Notice that the prompts prefix is now ```(spyder)```. Now any package manipulation commands will change the packages in ```spyder```.
 
 ![img_051](./images/img_051.png)
 
@@ -500,16 +506,14 @@ Note when the Terminal is closed and reopened, the default Python environment ``
 A package can be searched for using the command:
 
 ```
-mamba search -c conda-forge packagename
+mamba search packagename
 ```
 
 For example, the Spyder IDE has the package name ```spyder```:
 
 ```
-mamba search -c conda-forge spyder
+mamba search spyder
 ```
-
-For the search, once again it is recommended to explicitly reference the community channel ```-c conda-forge```.
 
 ![img_052](./images/img_052.png)
 
@@ -521,27 +525,19 @@ The search results will display, from earliest to latest version:
 To install the package use the syntax:
 
 ```
-mamba install -c conda-forge packagename=x.x.x
-mamba install -c conda-forge packagename
+mamba install packagename=x.x.x
+mamba install packagename
 ```
 
 If the version number is not stated, the latest version will be installed.
 
-To install the latest version of Spyder use:
+To install the latest version of Spyder including its optional dependencies use:
 
 ```
-mamba install -c conda-forge spyder
+mamba install -c spyder python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 ![img_056](./images/img_056.png)
-
-Or to install specifically version 5.3.3 use:
-
-```
-mamba install -c conda-forge spyder=5.3.3
-```
-
-![img_055](./images/img_055.png)
 
 Since the Spyder IDE is written in Python and uses Python libraries, it requires a large number of mandatory dependencies to work and is why it is recommended to install an IDE in its own Python environment:
 
@@ -561,10 +557,10 @@ The cached libraries exist in the Python ```base``` environment and are copied a
 
 ![img_064](./images/img_064.png)
 
-Now the ```spyder-cf``` folder has its own ```lib``` subfolder.
+Now the ```spyder``` folder has its own ```lib``` subfolder.
 
 ```
-~/mambaforge/envs/spyder-cf/lib
+~/mambaforge/envs/spyder/lib
 ```
 
 ![img_065](./images/img_065.png)
@@ -572,7 +568,7 @@ Now the ```spyder-cf``` folder has its own ```lib``` subfolder.
 Which has its own ```pythonx.xx``` folder:
 
 ```
-~/mambaforge/envs/spyder-cf/lib/pythonx.xx
+~/mambaforge/envs/spyder/lib/pythonx.xx
 ```
 
 ![img_066](./images/img_066.png)
@@ -588,15 +584,15 @@ This Python installation and these inbuilt modules are selected when this Python
 This folder also has its own ```site-packages``` subfolder:
 
 ```
-~/mambaforge/envs/spyder-cf/lib/pythonx.xx/site-packages
+~/mambaforge/envs/spyder/lib/pythonx.xx/site-packages
 ```
 
 ![img_070](./images/img_070.png)
 
-The Spyder IDE and all of it's other third-party library dependencies are found within ```site-packages```. Specifically for the Spyder IDE, there is the folder
+The Spyder IDE is found in a ```spyder``` subfolder:
 
 ```
-~/mambaforge/envs/spyder-cf/lib/pythonx.xx/site-packages/spyder
+~/mambaforge/envs/spyder/lib/pythonx.xx/site-packages/spyder
 ```
 
 ![img_071](./images/img_071.png)
@@ -613,7 +609,7 @@ spyder
 Note the following script file is executed in the terminal when Spyder is run:
 
 ```
-~/mambaforge/envs/spyder-cf/pythonx.xx/site-packages/spyder/__init__.py
+~/mambaforge/envs/spyder/pythonx.xx/site-packages/spyder/__init__.py
 ```
 
 This file runs executes an infinite while loop within the terminal while the Spyder IDE runs. Another Terminal instance can be opened in order to carry out other commands simultaneously.
@@ -626,51 +622,7 @@ The Spyder IDE will open:
 
 ![img_076](./images/img_076.png)
 
-And you can take the optional tour to familarise yourself with the IDE:
-
-![img_075](./images/img_075.png)
-
-Spyder will display a module not found error if any of the data science libraries are attempted to be used. This is because only the mandatory dependencies are installed and none of the optional dependencies are. The dependencies can be checked by selecting Help → Dependencies
-
-![img_080](./images/img_080.png)
-
-The mandatory dependcies are all installed:
-
-![img_077](./images/img_077.png)
-
-But the optional ones are missing:
-
-![img_078](./images/img_078.png)
-
-Closing down Spyder will end, the infinite loop. If not the shortcut key ```Ctrl``` + ```c``` can be used to close any processes running in the Terminal:
-
-![img_081](./images/img_081.png)
-
-The optional dependencies can be installed using:
-
-```
-mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
-```
-
-Note multiple packages are being installed here and each package name is seperated by a space. seaborn will install a compatible version of numpy, pandas and matplotlib as dependencies. sympy openpyxl xlrd xlsxwriter lxml sqlachemy are file format converters commonly used by libraries such as pandas.
-
-
-![img_082](./images/img_082.png)
-
-Once again the ```mamba``` package manager will look for the packages.
-
-![img_083](./images/img_083.png)
-
-And display a number of proposed changes. Input ```y``` in order to proceed.
-
-![img_086](./images/img_086.png)
-![img_087](./images/img_087.png)
-
-The optional dependencies are now installed.
-
-![img_088](./images/img_088.png)
-
-Now there is a numpy, pandas, matplotlib and seaborn folder.
+Within ```site-packages``` there is a numpy, pandas, matplotlib and seaborn folder.
 
 ![img_089](./images/img_089.png)
 
@@ -820,17 +772,17 @@ Spyder now uses the light theme:
 When a terminal is opened, the default Python environment ```base``` is selected. If the following command is attempted, there is a search for:
 
 ```
-~/mambaforge/envs/spyder-cf/lib/pythonx.xx/site-packages/spyder/__init__.py
+~/mambaforge/envs/spyder/lib/pythonx.xx/site-packages/spyder/__init__.py
 ```
 
 This file does not exist, so the error message is displayed.
 
 ![img_117](./images/img_117.png)
 
-When instead, the ```spyder-cf``` environment is activated, the following file is searched for:
+When instead, the ```spyder``` environment is activated, the following file is searched for:
 
 ```
-~/mambaforge/envs/spyder-cf/lib/pythonx.xx/site-packages/spyder/__init__.py
+~/mambaforge/envs/spyder/lib/pythonx.xx/site-packages/spyder/__init__.py
 ```
 
 This file exists and therefore Spyder launches.
@@ -876,19 +828,15 @@ The docstring popup balloon also looks slightly different between the console an
 A similar Python environment can be setup for JupyterLab, the browser based IDE using:
 
 ```
-mamba create -n jupyterlab-cf
-mamba activate jupyterlab-cf
-mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
-mamba install -c conda-forge jupyterlab
-mamba install -c conda-forge nodejs ipywidgets 
-mamba install -c conda-forge plotly dash jupyter-dash
-mamba install -c conda-forge jupyterlab-variableinspector
+mamba create -n jupyterlab
+mamba activate jupyterlab
+mamba install jupyterlab cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector
 jupyter lab build
 ```
 
 JupyterLab is browser based and has a number of browser based extensions. Additional HTML based plotting libraries such as plotly work particularly well with JupyterLab.
 
-To launch JupyterLab, activate the ```jupyterlab-cf``` Python environment and use the command:
+To launch JupyterLab, activate the ```jupyterlab``` Python environment and use the command:
 
 ```
 jupyter lab
@@ -899,7 +847,7 @@ jupyter lab
 Similar to Spyder, the following script file is executed in the terminal when JupyterLab is run:
 
 ```
-~/mambaforge/envs/jupyterlab-cf/pythonx.xx/site-packages/jupyterlab/__init__.py
+~/mambaforge/envs/jupyterlab/pythonx.xx/site-packages/jupyterlab/__init__.py
 ```
 
 This file runs executes an infinite while loop within the terminal while the JupyterLab IDE runs. 
@@ -1130,12 +1078,9 @@ The nodejs code can be seen to enclose the Python code. Plotting libraries such 
 A similar Python environment can be setup for Visual Studio Code:
 
 ```
-mamba create -n vscode-cf
-mamba activate vscode-cf
-mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
-mamba install -c conda-forge nodejs ipywidgets 
-mamba install -c conda-forge plotly dash
-mamba install -c conda-forge notebook 
+mamba create -n vscode
+mamba activate vscode
+mamba install notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly
 ```
 
 Visual Studio Code can then be installed either from the deb package (Ubuntu), the rpm package (Fedora) or the Mac package (Mac) available on the [Visual Studio Code website](https://code.visualstudio.com/download). It is also available as a snap package in the Ubuntu Store:
@@ -1244,6 +1189,28 @@ Visual Studio Code can also be used to work with an Interactive Python Notebook.
 ![img_235](./images/img_235.png)
 
 ![img_236](./images/img_236.png)
+
+## mamba, conda and pip Package Managers
+
+**When using the ```mamba``` package manager, you should avoid use of commands which invoke the ```pip``` or ```conda``` package managers, as use of multiple package managers in a single Python environment can result in instability.**
+
+That being said the documentation for the ```conda``` package manager is much more widespread. If you are unsure how to install a package search for ```conda install packagename``` and you'll likely find installation instructions.
+
+The installation commands to install packages will be of the following form:
+
+```
+pip install packagename
+conda install packagename
+conda install -c conda-forge packagename
+```
+
+Modify them so they are instead:
+
+```
+mamba install packagename
+```
+
+The default channel for Mambaforge is the community ```conda-forge``` channel and the vast majority of the latest version of packages are available here.  You should avoid using the commercial ```conda``` channel which typically has older package versions. 
 
 ## Removing a Python Environment
 

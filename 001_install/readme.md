@@ -14,7 +14,7 @@ There are three package managers commonly used to install Python and Python pack
 |Miniforge|conda|minimal|conda-forge|
 |Mambaforge|mamba|minimal|conda-forge|
 
-**In this guide Mambaforge will be used as it is the most reliable package manager.**
+**In this guide Mambaforge will be used as it is the most reliable solution.**
 
 ## Integrated Development Environments (IDEs)
 
