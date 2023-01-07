@@ -1,5 +1,7 @@
 # Installing Python on Windows 11
 
+This tutorial will configure Python 3.11 on a Windows 11 computer using Mambaforge.
+
 [YouTube Tutorial](https://www.youtube.com/watch?v=O-WZedLq_sE)
 
 ## System Requirements
@@ -13,6 +15,12 @@ The PC should match or exceed the following system requirements:
 * Google Chrome or Microsoft Edge Browser
 
 The performance for Python will be very poor if these system requirements are not satisfied.
+
+## Uninstall
+
+Before proceeding uninstall any version of Python or Python distributions you may have previously installed such as Anaconda, Miniconda, Mambaforge or Miniforge. Uninstall any standalone Spyder and any other Python IDEs. This will clean up your computer and prevent any confusion.
+
+If you have two versions of one of these distributions installed and have uninstalled the latest version . The Windows 11 Installed Apps may still have the old version remaining but have problems removing it. In such a scenario you may get better results by accessing the older Windows 7 Programs and Features. This can be accessed by pressing ```⊞``` and ```r``` to open up a run dialog. Input ```appwiz.cpl```.
 
 ## Mambaforge Install
 
@@ -802,6 +810,28 @@ mamba env remove -n deleteme
 This Python environment is now removed:
 
 ![img_145](./images/img_145.png)
+
+## mamba, conda and pip Package Managers
+
+**When using the ```mamba``` package manager, you should avoid use of commands which invoke the ```pip``` or ```conda``` package managers, as use of multiple package managers in a single Python environment can result in instability.**
+
+That being said the documentation for the ```conda``` package manager is much more widespread. If you are unsure how to install a package search for ```conda install packagename``` and you'll likely find installation instructions.
+
+The installation commands to install packages will be of the following form:
+
+```
+pip install packagename
+conda install packagename
+conda install -c conda-forge packagename
+```
+
+Modify them so they are instead:
+
+```
+mamba install packagename
+```
+
+The default channel for Mambaforge is the community ```conda-forge``` channel and the vast majority of the latest version of packages are available here.  You should avoid using the commercial ```conda``` channel which typically has older package versions. 
 
 ## The Scientific Python Development Environment (SPYDER)
 
