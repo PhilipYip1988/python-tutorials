@@ -4,11 +4,11 @@
 
 A text file can only be used to store unformatted text. The markdown file is similar to the text file, however allows text to be formatted using very simple markdown syntax. The Markdown file can be editted in JupyterLab or Visual Studio Code or it can be uploaded on GitHub directly and edited within GitHub. This document itself is a Markdown file hosted on GitHub:
 
-![001_markdown_preview](./images/001_markdown_preview.PNG)
+![img_001](./images/img_001.png)
 
 The Markdown Preview can be viewed in another pane:
 
-![002_markdown_preview](./images/002_markdown_preview.PNG)
+![img_002](./images/img_002.png)
 
 To download the files, right click the following link and open in a new tab:
 
@@ -16,7 +16,7 @@ To download the files, right click the following link and open in a new tab:
 
 Select Code and Download Zip. 
 
-![001_download_zip](./images/001_download_zip.PNG)
+![img_003](./images/img_003.png)
 
 Then extract the downloaded ZIP file and copy it to your Documents folder. Launch JupyterLab and navigate to this directory and open this readme.md file.
 
@@ -342,7 +342,7 @@ $$ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\si
 
 Use of Latex is outwith the scope of this tutorial. Microsoft Word has a what you see is what you get WYSIWYG equation editor. The equation should be created using Unicode. Then a blank equation should be created and LaTeX selected. The equation can then be copied and pasted:
 
-![equation](./images/003_image_equation.PNG)
+![img_005](./images/img_005.png)
 
 On Ubuntu, EqualX can instead be used as a WYSIWYG equation editor which is a slightly less elegant solution. Open up a terminal and input:
 
@@ -357,7 +357,7 @@ To launch equalx input:
 equalx
 ```
 
-![004_equalx](./images/004_equalx.PNG)
+![img_004](./images/img_004.png)
 ---
 
 ## Links and Images
@@ -388,15 +388,17 @@ Produces:
 
 If the image is in the same folder as the markdown file. The file name can be specified directly.
 
-In the file path ```\.``` can be used to specify a subfolder and ```\..``` can be used to go up a level. The ```001_image_equation.PNG``` in the subfolder ```images``` can be selected for example using the following markdown:
+In the file path ```\.``` can be used to specify a subfolder and ```\..``` can be used to go up a level. The ```img_005.png``` in the subfolder ```images``` can be selected for example using the following markdown:
 
 ```
-![equation](./images/003_image_equation.PNG)
+![img_005](./images/img_005.png)
 ```
 
 Producing:
 
-![equation](./images/003_image_equation.PNG)
+![equation](./images/img_005.png)
+
+JupyterLab and VSCode are insenitive regarding the case of the file extension, for example ```.png``` versus ```.PNG```. Unfortunately GitHub seems to be sensitive regarding the file extension case, therefore it is good practice to ensure that all file extensions are lower case.
 
 ---
 

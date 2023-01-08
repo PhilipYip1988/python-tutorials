@@ -1,4 +1,6 @@
-# Installing Python on Windows 11 (Mambaforge, IDLE, Spyder, JupyterLab, VSCode)
+# Installing Python on Windows 11
+
+This tutorial will configure Python 3.11 on a Windows 11 computer using Mambaforge.
 
 [YouTube Tutorial](https://www.youtube.com/watch?v=O-WZedLq_sE)
 
@@ -14,6 +16,12 @@ The PC should match or exceed the following system requirements:
 
 The performance for Python will be very poor if these system requirements are not satisfied.
 
+## Uninstall
+
+Before proceeding uninstall any version of Python or Python distributions you may have previously installed such as Anaconda, Miniconda, Mambaforge or Miniforge. Uninstall any standalone Spyder and any other Python IDEs. This will clean up your computer and prevent any confusion.
+
+If you have two versions of one of these distributions installed and have uninstalled the latest version . The Windows 11 Installed Apps may still have the old version remaining but have problems removing it. In such a scenario you may get better results by accessing the older Windows 7 Programs and Features. This can be accessed by pressing ```⊞``` and ```r``` to open up a run dialog. Input ```appwiz.cpl```.
+
 ## Mambaforge Install
 
 Mambaforge can be downloaded from the Mambaforge GitHub repository. Make sure to download Mambaforge and not Miniforge (which excludes the Mamba package manager):
@@ -22,71 +30,73 @@ Mambaforge can be downloaded from the Mambaforge GitHub repository. Make sure to
 
 Double click to launch the installer:
 
-![001_mambaforge_install](./images/001_mambaforge_install.png)
+![img_001](./images/img_001.png)
 
 Select Next:
 
-![002_mambaforge_install](./images/002_mambaforge_install.png)
+![img_002](./images/img_002.png)
+
+Select Next:
+
+![img_003](./images/img_003.png)
 
 Select Just Me (recommended):
 
-![003_mambaforge_install](./images/003_mambaforge_install.png)
+![img_004](./images/img_004.png)
 
-Install in the default directory. In Windows this will be in 
+In the next screen you will be asked where you want to install Mambaforge. Install in the default directory. In Windows this will be in 
 
 ```
 %UserProfile%\mambaforge
 ``` 
 
+![img_005](./images/img_005.png)
+
 which in my case maps to 
 
 ```
-C:\Users\Philip\mambaforge
+C:\Users\Phili\mambaforge
 ```
 
-![004_mambaforge_install](./images/004_mambaforge_install.png)
+![img_006](./images/img_006.png)
 
 In the next screen, select the default options to register Mambaforge as my default Python and create start menu shortcuts.
 
-![005_mambaforge_install](./images/005_mambaforge_install.png)
+![img_007](./images/img_007.png)
 
 **Mambaforge can optionally be added to the Windows Environment Variable Path.** This makes the ```base``` Python environment accessible via the Windows Terminal. This allows third party applications to accessing Python from the Windows Terminal. Such a use case is normally more advanced, for example a C++ IDE that is configured by default to access the Windows Terminal will also be able to invoke a Python Script if Mambaforge is added to the Windows Environmental Variables Path.
 
 Note that in most regular use scenarios the Mambaforge Prompt should be preferentially used to interact with Python instead of the Windows Terminal. The Mambaforge Prompt is similar to the Windows Terminal but is optimised to work with multiple Python environments and not hard coded to the single base environment provided in the Windows Environmental Variables Path like in the case of the Windows Terminal. The Mambaforge Prompt can be used to install packages in Python environments and launch IDEs installed in the Python environments. 
 
-![006_mambaforge_install](./images/006_mambaforge_install.png)
-
-![007_mambaforge_install](./images/007_mambaforge_install.png)
+![img_008](./images/img_008.png)
 
 Once the decision to add Mambaforge to the Windows Environmental Path or not is configured. Select Install:
 
-![008_mambaforge_install](./images/008_mambaforge_install.png)
+![img_009](./images/img_009.png)
 
-Select Next:
+Select Next and Finish:
 
-![009_mambaforge_install](./images/009_mambaforge_install.png)
+![img_010](./images/img_010.png)
 
-Select Finish:
+![img_011](./images/img_011.png)
 
-![010_mambaforge_install](./images/010_mambaforge_install.png)
-
-# The Windows Environment Variable Path
+## The Windows Environment Variable Path
 
 The Windows Environmental Varables Path can be checked by right clicking the Start Button and selecting System:
 
-![011_path](./images/011_path.png)
+![img_012](./images/img_012.png)
 
 Then selecting Advanced System Settings:
 
-![012_path](./images/012_path.png)
+![img_013](./images/img_013.png)
 
-Then Advancd and Environmental variables:
+Then Advanced and Environmental variables:
 
-![013_path](./images/013_path.png)
+![img_014](./images/img_014.png)
 
 Select Path and then Edit:
 
-![014_path](./images/014_path.png)
+![img_015](./images/img_015.png)
 
 If Mambaforge has been added to the path the following 5 entries will display:
 
@@ -98,19 +108,23 @@ If Mambaforge has been added to the path the following 5 entries will display:
 %UserProfile%\mambaforge\Scripts
 ```
 
-![015_path](./images/015_path.png)
+![img_016](./images/img_016.png)
 
-# Launching the Mambaforge Prompt
+Additional entries may be added for other programs and should be unmodfied.
 
-Launch the Mambaforge prompt:
+## Launching the Mambaforge Prompt
 
-![016_miniforge_prompt](./images/016_miniforge_prompt.png)
+Launch the Mambaforge Prompt from the Start Menu. Unfortunately when initially installed, it may display as Miniforge, this is a bug which will be addressed when the installation is updated.
 
-By default the ```base``` Python environment will be selected, this is minimal, containing Python and the ```mamba``` package manager:
+![img_017](./images/img_017.png)
 
-![017_miniforge_prompt](./images/017_miniforge_prompt.png)
+In the prompt you will see ```(base)``` which indicates the ```base``` Python environment is selected. You will also see the current working directory and by default the mambaforge prompt opens in ```%UserProfile%```.
 
-In Windows Explorer, navigate to:
+![img_018](./images/img_018.png)
+
+## Exploring the base Python Environment
+
+The ```base``` Python environment is minimal, containing Python and the ```mamba``` package manager. Its contents can be viewed in Windows Explorer by navigating to:
 
 ```
 %UserProfile%\mambaforge
@@ -118,17 +132,47 @@ In Windows Explorer, navigate to:
 
 Notice there is a python.exe in this folder. This is the default Python executable.
 
-![018_miniforge_prompt](./images/018_miniforge_prompt.png)
+![img_019](./images/img_019.png)
 
-Notice that there is also a Lib subfolder:
+Notice that there is also a ```Lib``` subfolder:
 
 ```
-%UserProfile%\mambaforge\lib
+%UserProfile%\mambaforge\Lib
 ```
 
-This is the folder where all the builtin Python Modules are installed, for example the datetime module (which exists as datetime.py) and email module (which exists as a subfolder called email, this subfolder contains a ```__init__.py``` file):
+![img_020](./images/img_020.png)
 
-![019_miniforge_prompt](./images/019_miniforge_prompt.png)
+This is the folder where all the Standard Python Modules are installed (Modules preinstalled with Python). 
+
+For example the ```datetime``` module which exists as a single Python script file ```datetime.py```:
+
+![img_021](./images/img_021.png)
+
+When the following is input in a Python program:
+
+```
+import datetime
+```
+
+the contents of this ```datetime.py``` file are imported.
+
+Another example is the ```email``` module which exists as a folder of Python script files.
+
+![img_022](./images/img_022.png)
+
+![img_023](./images/img_023.png)
+
+One of the Python Script Files is called ```__init__.py```. When the following is input in a Python program:
+
+```
+import email
+```
+
+the contents of this ```__init__.py``` file are imported. The other Python Script files can be accessed from the folder using dot ```.``` notation. For example the Python Script File ```charset.py``` can be accessed using:
+
+```
+email.charset
+```
 
 In this Lib subfolder there is also a site-packages folder:
 
@@ -136,712 +180,1028 @@ In this Lib subfolder there is also a site-packages folder:
 %UserProfile%\mambaforge\lib\site-packages
 ```
 
-where third party data science libraries are installed (if they are installed to the base Python environment):
+![img_024](./images/img_024.png)
 
-![020_miniforge_prompt](./images/020_miniforge_prompt.png)
+This folder contains all the third-party libraries. The Mambaforge ```base``` Python environment is relatively clean and doesn't contain too many third-party libraries.
 
-# Updating the base Python Environment
+![img_025](./images/img_025.png)
 
-Before making any changes to packages the base conda environment should be updated as this will make sure the latest version of the ```mamba``` package manager is installed. Use the command:
+The third party libraries are the Python Package Managers ```mamba```, ```conda``` and ```pip```. This guide is focused only on the ```mamba``` package manager but ```mamba``` under the hood builds upon the other two package managers ```pip``` and ```conda```. Because ```pip``` and ```conda``` are required for ```mamba``` to run correctly, these are known as dependencies. There are additional dependencies such as ```requests``` which is used by the package manager to send HTTP requests to the ```conda-forge``` community channel to retrieve the packages. 
 
-```
-mamba update -c conda-forge --all
-```
+## List Packages
 
-Where ```-c``` is an abbreviation for channel and ```conda-forge``` is the community channel ```conda-forge```. ```--all``` instructs the ```mamba``` package manager to update all packages.
-
-![021_miniforge_prompt](./images/021_miniforge_prompt.png)
-
-Details will display outlining the proposed changes to the base Python environment:
-
-![022_miniforge_prompt](./images/022_miniforge_prompt.png)
-
-![023_miniforge_prompt](./images/023_miniforge_prompt.png)
-
-![024_miniforge_prompt](./images/024_miniforge_prompt.png)
-
-To proceed input:
-
-```y```
-
-The following command is used to search for a package:
-
-```
-mamba search -c conda-forge packagename
-```
-
-To install a package use the command:
-
-```
-mamba install -c conda-forge packagename
-```
-
-To install a package of specific version use the command:
-
-```
-mamba install -c conda-forge packagename=1.2.3
-```
-
-## Running Python from the Mambaforge Prompt
-
-Python is now installed and it can be used to execute code in a Python Script File. Go to the Documents folder and right click the empty space and select New → Text Document:
-
-![084_img](./images/084_img.png)
-
-Name the file ```script0.py``` changing the file extension from ```.txt``` to ```.py``` and select Yes at the warning to change the file extension:
-
-![085_img](./images/085_img.png)
-
-Right click the file and select Open With... and then select Notepad:
-
-![086_img](./images/086_img.png)
-
-Input:
-
-```
-print("Hello World!")
-```
-
-and save the file.
-
-![087_img](./images/087_img.png)
-
-Open the Mambaforge Prompt:
-
-![088_img](./images/088_img.png)
-
-Input:
-
-```
-cd Documents
-```
-
-cd is a PowerShell command which is an abbreviation for change directory (change folder). Because the MambaForge opened in ```%UserProfile```, ```Documents``` could directly be selected as a subfolder.
-
-![089_img](./images/089_img.png)
-
-To use Python to run the Python script file input python (lower case) followed by the name of the script file including the file extension:
-
-```
-python script0.py
-```
-
-![090_img](./images/090_img.png)
-
-The print statement included in the Python Script file will be displayed on the console:
-
-![091_img](./images/091_img.png)
-
-Bringing this together, there is a console (Mambaforge Prompt), a script file editor (Notepad) and the file explorer (Windows Explorer):
-
-![092_img](./images/092_img.png)
-
-If Notepad++ is used in place of Notepad as the script editor, there are some code completion options displayed as code is input:
-
-![093_img](./images/093_img.png)
-
-If ```python``` is input into the Mambaforge Prompt without any script file. The Python interpretter will display:
-
-```
-python
-```
-
-![094_img](./images/094_img.png)
-
-Notice the prompt change from ```(base) %UserProfile%``` to ```>>>```. When the Python interpretter is invoked, individual lines of Python can be executed. Input:
-
-```
-print("Hello World!")
-```
-
-![095_img](./images/095_img.png)
-
-To exit the Python interpretter type in the command:
-
-```
-exit()
-```
-
-![096_img](./images/096_img.png)
-
-Notice the prompt change back to ```(base) %UserProfile%``` from ```>>>```. 
-
-## Integrated Development Environment
-
-Python has a large number of Integrated Development Environments often abbreivated as IDEs. These are essentially a GUI which includes a console, script editior and file explorer.
-
-## The IDLE IDE
-
-Python comes preinstalled with the Integrated Development Learner Environment (IDLE). IDLE is found in:
-
-```
-%UserProfile%/mambaforge/Lib/idlelib
-```
-
-![097_img](./images/097_img.png)
-
-![098_img](./images/098_img.png)
-
-And can be launched using the ```idle.bat```:
-
-![099_img](./images/099_img.png)
-
-More commonly it is launched from the mabaforge prompt by inputting:
-
-```
-idle
-```
-
-The first component of IDLE is the IDLE Shell which is essentially a Console. The prompt displays ```>>>``` indicating the Python interpretter is invoked. Individual lines of Python can be input directly as seen before:
-
-![100_img](./images/100_img.png)
-
-The File menu can be used to create a new file or open an existing file:
-
-![101_img](./images/101_img.png)
-
-In this case a new file is selected and the script editor displays. Before adding contents to the file, select File → Save As...:
-
-![102_img](./images/102_img.png)
-
-Save the file with a ```.py``` extension:
-
-![103_img](./images/103_img.png)
-
-The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was ```p``` and the command ```print``` has this code prefix:
-
-![104_img](./images/104_img.png)
-
-When a function name is input with open parenthesis, a docstring popup balloon displays giving details about the functions input arguments. In this case the positional input ```value``` is going to be the string that is printed. 
-
-![105_img](./images/105_img.png)
-
-
-Once again input:
-
-```
-print("hello world!")
-```
-
-![106_img](./images/106_img.png)
-
-A Python Script File is also known as a Module. Once the Python Script File is saved, it can be run by selecting Run → Run Module:
-
-![107_img](./images/107_img.png)
-
-The print statement is observed on the IDLE Shell as expected:
-
-![108_img](./images/108_img.png)
-
-## Python Environments
-
-Other Python IDEs generally need to be installed. Because these IDEs are typically large programs, with a large number of dependencies, it is generally advised to create a seperate Python environment for each IDE. A Python environment is essentially a subinstallation. Up until this point the default Python environment has been used ```base```. 
-
-In the mambaforge folder, there is a subfolder called ```envs```:
-
-```
-%UserProfile\mambaforge\envs
-```
-
-![025_envs](./images/025_envs.png)
-
-By default this is empty:
-
-![026_envs](./images/026_envs.png)
-
-## The Spyder IDE
-
-To create a Python Environment use the command:
-
-```
-mamba create -n spyder-cf
-```
-
-![027_envs](./images/027_envs.png)
-
-Where ```-n``` is an abbreviation for name and ```spyder-cf``` is the name of the Python environment. In this case the name is spyder-cf denotes an install of the latest version of spyder from the ```conda-forge``` channel.
-
-The following folder appears:
-
-```
-%UserProfile\mambaforge\envs\spyder-cf
-```
-
-![028_envs](./images/028_envs.png)
-
-It is mainly empty by default:
-
-![029_envs](./images/029_envs.png)
-
-Notice the prompt is prefixed with ```(base)``` which means the ```base``` Python environment is selected and any commands to change packages will therefore operate on this environment. 
-
-![030_envs](./images/030_envs.png)
-
-To activate (select) the new environment use:
-
-```
-conda activate spyder-cf
-```
-
-![031_envs](./images/031_envs.png)
-
-Notice after activation (selection) the prompt now begins with ```spyder-cf``` indicating that any commands to change packages will operate on the ```spyder-cf``` Python environment (leaving the ```base``` Python environment untouched).
-
-![032_envs](./images/032_envs.png)
-
-**Closing the Mambaforge Prompt and relaunching will automatically reselect the ```base``` Python Environment. Reactivate the desired Python environment before amending packages or attempting to launch an IDE from the Python Environment.**
-
-To look at the packages installed in the Python environment use:
+Notice for each subfolder in site-packages, there is a corresponding folder with the version number. These versions can also be seen by inputting the following command in the Mambaforge Prompt:
 
 ```
 mamba list
 ```
 
-![033_envs](./images/033_envs.png)
+![img_026](./images/img_026.png)
 
-In this case, this is an empty Python environment as expected:
+The package Name, Version, Build and Channel will be shown:
 
-![034_envs](./images/034_envs.png)
+![img_027](./images/img_027.png)
 
-For other Python environments revisions made to the environment can be examined using:
+By default the Channel is ```conda-forge``` which is the community channel.
 
-```
-mamba list --revision
-```
+![img_028](./images/img_028.png)
 
-To search for spyder use:
+To clear this, use the command clear screen:
 
 ```
-mamba search -c conda-forge spyder
+cls
 ```
 
-![035_envs](./images/035_envs.png)
+![img_029](./images/img_029.png)
 
-Numerous versions of the Spyder IDE spyder package are listed:
+![img_030](./images/img_030.png)
 
-![036_envs](./images/036_envs.png)
+## Updating the base Python Environment
 
-Install the latest version using:
-
-```
-mamba install -c conda-forge spyder
-```
-
-![037_envs](./images/037_envs.png)
-
-Spyder is an Integrated Development Environment (IDE) which is a user interface for interacting with Python, as a result it has alot of mandatory dependencies including Python itself.
-
-![038_envs](./images/038_envs.png)
-
-To proceed input
+Before making any changes to packages the ```base``` Python environment should be updated as this will make sure the latest version of the ```mamba``` package manager is installed. Use the command:
 
 ```
-y
+mamba update --all
 ```
 
-Spyder will now be installed with its mandatory dependencies. 
+```--all``` instructs the ```mamba``` package manager to update all packages.
 
-![039_envs](./images/039_envs.png)
+![img_031](./images/img_031.png)
 
-The mandatory dependencies essentially only allow use of Spyder with the Python programing language itself and none of the commonly used data science libraries are available. Notice that in the folder there is now a python application, which is associated with this Python environment. This Python application will be launched when using a Python command while this Python environment is selected: 
+When looking for packages the following displays in the Mambaforge Prompt:
 
-```
-%UserProfile\mambaforge\envs\spyder-cf
-```
+![img_032](./images/img_032.png)
 
-![040_envs](./images/040_envs.png)
+```Looking for ['brotlipy', 'bzip2', 'ca-certificates', 'certifi', 'cffi', 'charset-normalizer', 'colorama', 'conda', 'conda-package-handling', 'cryptography', 'fmt', 'idna', 'krb5', 'libarchive', 'libcurl', 'libffi', 'libiconv', 'libmamba', 'libmambapy', 'libsolv', 'libsqlite', 'libssh2', 'libxml2', 'libzlib', 'lz4-c', 'lzo', 'mamba', 'menuinst', 'miniforge_console_shortcut', 'openssl', 'pip', 'pybind11-abi', 'pycosat', 'pycparser', 'pyopenssl', 'pysocks', 'python', 'python_abi', 'reproc', 'reproc-cpp', 'requests', 'ruamel_yaml', 'setuptools', 'tk', 'toolz', 'tqdm', 'tzdata', 'ucrt', 'urllib3', 'vc', 'vs2015_runtime', 'wheel', 'win_inet_pton', 'xz', 'yaml', 'yaml-cpp', 'zstd']```
 
-This Python environment also has a Lib subfolder containing the inbuilt python modules such as datetime and email. These will be used if these modules are imported within a Python script that is ran while this Python environment is selected:
+This means that the following:
 
 ```
-%UserProfile\mambaforge\envs\spyder-cf\Lib
+mamba update --all
 ```
 
-![041_envs](./images/041_envs.png)
-
-There is also a site-packages folder which is the location for data-science libraries to be installed:
-
-![042_envs](./images/042_envs.png)
-
-Currently the installation contains only mandatory dependencies, allowing Spyder to work with Python and lacks the data science libraries which are commonly used with Spyder. These can be installed using:
+Is an abbrevation for:
 
 ```
-mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba update brotlipy bzip2 ca-certificates certifi cffi charset-normalizer colorama conda conda-package-handling cryptography fmt idna krb5 libarchive, libcurl libffi libiconv libmamba libmambapy libsolv libsqlite libssh2 libxml2 libzlib lz4-c lzo mamba menuinst miniforge_console_shortcut openssl pip pybind11-abi pycosat pycparser pyopenssl pysocks python python_abi reproc, reproc-cpp requests ruamel_yaml setuptools tk toolz tqdm tzdata ucrt urllib3 vc, vs2015_runtime wheel win_inet_pton xz yaml yaml-cpp zstd
 ```
 
-Note multiple packages are being installed here and each package name is seperated by a space. seaborn will install a compatible version of numpy, pandas and matplotlib as dependencies. sympy openpyxl xlrd xlsxwriter lxml sqlachemy are file format converters commonly used by libraries such as pandas.
+Once the latest version of each of the libraries has been found, updating specs displays:
 
-![043_envs](./images/043_envs.png)
+![img_033](./images/img_033.png)
 
-To proceed input:
+Alongside details of new packages that will be installed, changed and updated. Usually the packages that change i.e. retain the same version have equivalent versions for different Python versions or different operating systems.
 
-```
-y
-```
+![img_034](./images/img_034.png)
 
-![044_envs](./images/044_envs.png)
+Input ```y``` in order to proceed with the changes:
 
-These data science libaries will now be installed:
+![img_035](./images/img_035.png)
 
-![045_envs](./images/045_envs.png)
+You will be informed when the transaction is done. This will take you to a new prompt:
 
-To launch spyder, ensure the ```spyder-cf``` Python environment is activated and use the command:
+![img_036](./images/img_036.png)
 
-```
-spyder
-```
+The changes will now be reflected in site-packages folder, for example the mamba folder with the old version is removed and replaced with an equivalent folder with the new version number:
 
-![046_envs](./images/046_envs.png)
+![img_037](./images/img_037.png)
 
-Spyder will now launch:
+```cls``` can be used to clear the screen and ```mamba list``` can be used to view the updated changes:
 
-![047_envs](./images/047_envs.png)
+![img_038](./images/img_038.png)
 
-In the bottom right of the Spyder IDE is the console, where an individual command can be executed. To the left is the script editor where a Python Script File ```.py``` extension can be created.
+![img_039](./images/img_039.png)
 
-Before starting with a script file, it is recommended to save it using file save as:
+Mambaforge is now up to date and should show correctly in the Start Menu as Mambaforge Prompt:
 
-![048_envs](./images/048_envs.png)
+![img_040](./images/img_040.png)
 
-Script files should use the Python rules of variable names, using lower case characters and no special characters with exception to the underscore. 
+## Running Python from the Mambaforge Prompt
 
-Numbers can be included in the file name but the file name should not begin with numbers. File names should not match inbuilt objects or the names of common Python libraries. 
+So far only the PowerShell Programming Language has been used in the Mambaforge Prompt. This is a scripting language inbuilt into the Windows Operating System optimised for file operations. Python is also a scripting language.
 
-Calling a script ```numpy.py``` for example will lead to errors as it will be imported instead of the ```numpy``` library. In this example, we will save the script file to documents and call it ```spyder_test.py```:
-
-![049_envs](./images/049_envs.png)
-
-Let's now ```import numpy```. This will first look for a script file in the current working directory which is the documents folder called ```numpy.py``` which it won't find:
-
-![050_envs](./images/050_envs.png)
-
-It will then look within:
+The programming language can be switched to Python by inputting:
 
 ```
-%UserProfile\mambaforge\envs\spyder-cf\Lib
+python
 ```
 
-And search for an inbuilt module called ```numpy.py``` or a subfolder called ```numpy``` which it won't find. 
+![img_041](./images/img_041.png)
 
-And then finally look within the site-packages subfolder:
+Notice the PowerShell Prompt ```(base) %UserProfile%``` change to the Python Prompt ```>>>```:
 
-```
-%UserProfile\mambaforge\envs\spyder-cf\Lib\site-packages
-```
+![img_042](./images/img_042.png)
 
-For a file called ```numpy.py``` (which it won't find) or a folder called ```numpy``` which it will find:
-
-![051_envs](./images/051_envs.png)
+A variable can be created using:
 
 ```
-%UserProfile\mambaforge\envs\spyder-cf\Lib\site-packages\numpy
+var = 'Hello World'
 ```
 
-A module is a Python Script file with a ```.py``` extension and follows Python naming conventions for objects. A library is a grouping of associated script files in a folder. The name of the folder once again follows Python naming conventions of objects and indicates the name of the library. Within the folder is a Python Script file called ```__init__.py``` and this file is selected if the folder is imported. Inputting:
+![img_043](./images/img_043.png)
+
+Once input a new Python Prompt ```>>>``` displays:
+
+![img_044](./images/img_044.png)
+
+The ```print``` function can be used to print the variable:
 
 ```
-import numpy
+print(var)
 ```
 
-references the folder ```numpy``` and specifically reads the contents of the ```__init__.py``` script file:
+![img_045](./images/img_045.png)
+
+To exit the Python Prompt and the Python Program, forgetting all variables. Use the Python function:
 
 ```
-%UserProfile\mambaforge\envs\spyder-cf\Lib\site-packages\numpy\__init__.py
+exit()
 ```
 
-```
-import numpy as np
-```
+![img_046](./images/img_046.png)
 
-The ```as np``` gives a 2 letter alias ```np```. This library is commonly used and the 2 letter alias is used to simplify the code made in the script editor as objects are continuously referenced from this library.
+The Python Prompt disappears now that Python is exited. The PowerShell Prompt now appears:
 
-Other modules can be imported using the dot ```.``` syntax. In the ```numpy``` folder there is a ```random``` folder which contains another grouping of associated Python script files. This module can be imported using:
+![img_047](./images/img_047.png)
 
-```
-import numpy.random as random
-```
-
-where once again the alias ```random``` is used to simplify imports from this module:
-
-![052_envs](./images/052_envs.png)
-
-Note within this random folder is another ```__init__.py``` and this is the specific script file being referenced in the line of code above. 
+To exit the PowerShell Prompt and close Mambaforge, use the command:
 
 ```
-%UserProfile\mambaforge\envs\spyder-cf\Lib\site-packages\numpy\random\__init__.py
+exit
 ```
 
-![053_envs](./images/053_envs.png)
+![img_048](./images/img_048.png)
 
-The next most commonly imported library is ```pandas``` which is imported using the alias ```pd```:
+Both PowerShell and Python are scripting languages. They have some similarities in some of their commands but the syntax may differ slightly. This was demonstrated using the ```exit``` function in Python and the ```exit``` command in PowerShell.
 
-```
-import pandas as pd
-```
+## Running Interactive Python from the Mambaforge Prompt
 
-![054_envs](./images/054_envs.png)
-
-This imports the objects defined in the file:
+Interactive Python can also be ran in the Mambaforge Prompt by using:
 
 ```
-%UserProfile\mambaforge\envs\spyder-cf\Lib\site-packages\pandas\__init__.py
+ipython
 ```
 
-![055_envs](./images/055_envs.png)
+![img_049](./images/img_049.png)
 
-The next most commonly used Python library is ```matplotlib```. It is more common to use a module within this library opposed to the entire library itself:
+If PowerShell does not recognise the command ```ipython``` it is because ```ipython``` is not installed:
 
-```
-import matplotlib.pyplot as plt
-```
+![img_050](./images/img_050.png)
 
-![056_envs](./images/056_envs.png)
-
-The matplotlib folder contains an ```__init__.py``` file:
-
-![057_envs](./images/057_envs.png)
+It can be installed using:
 
 ```
-%UserProfile\mambaforge\envs\spyder-cf\Lib\site-packages\matplotlib\__init__.py
+mamba install ipython
 ```
 
-And a ```pyplot.py``` file:
+![img_051](./images/img_051.png)
 
-![058_envs](./images/058_envs.png)
+Once again details about the packages being downloaded and installed will display. Input ```y``` in order to download the additional packages:
 
-```
-%UserProfile\mambaforge\envs\spyder-cf\Lib\site-packages\matplotlib\pyplot.py
-```
+![img_052](./images/img_052.png)
 
-It is this file that is referenced with the import command above.
+A new prompt will display after the packages are downloaded. To clear the screen use ```cls```:
 
-Note that file extensions (```.py```) are not specified when using the import command.
+![img_053](./images/img_053.png)
 
-In Python prefixing a line with a ```#``` turns it into a comment. In Spyder prefixing a line with ```#%%``` turns it into a new cell. A script file can be run using the run button or each cell can be run individually using the run cell or run cell and move onto the next cell button:
-
-![059_envs](./images/059_envs.png)
-
-The variables created ```x``` and ```y``` are displayed in Spyders Variable Explorer. The value can be double clicked and collections such as the arrays created above can be explored to view them in more detail.
-
-![060_envs](./images/060_envs.png)
-
-A basic command can be used to create a plot. By default plots display in the Plots pane as a static image however the backend can be changed to Automatic to enable an interactive plot in its own window. 
-
-This can be done by going to Tools and Preferences:
-
-![061_envs](./images/061_envs.png)
-
-Then IPython Console and Graphics and changing the Backend to Automatic.
-
-![062_envs](./images/062_envs.png)
-
-The change requires a restart of the kernel which will remove all objects created on the variable explorer and all other objects imported. To do this select Consoles and Restart Kernel. 
-
-![063_envs](./images/063_envs.png)
-
-Select Yes at the warning to proceed:
-
-![064_envs](./images/064_envs.png)
-
-Rerunning the script now displays an automatic plot:
-
-![065_envs](./images/065_envs.png)
-
-An individual line of code from a script can be highlighted and ran in the console by selecting run selection or current line:
-
-![066_envs](./images/066_envs.png)
-
-Similar to IDLE, the tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was p and the command print has this code prefix:
-
-![142_img](./images/142_img.png)
-
-When a function name is input with open parenthesis, a docstring popup balloon displays giving details about the functions input arguments. In this case the positional input value is going to be the string that is printed.
-
-![143_img](./images/143_img.png)
-
-The code-completion in Spyder works well with Python and Python Standard Modules. For example a list of identifiers displays when the standard module ```datetime``` is imported using the alias ```dt``` and ```dt.``` followed by a tab ```↹```:
-
-![144_img](./images/144_img.png)
-
-The code-completion on the script editor has some limitations when it comes to third-party modules such as the datascience libraries. For example the list of identifiers displays when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹```:
-
-![145_img](./images/145_img.png)
-
-Typically, the line of code importing the third party library needs to be run in the console:
-
-![146_img](./images/146_img.png)
-
-The list of identifiers still does not display when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹```:
-
-![147_img](./images/147_img.png)
-
-However if a function from the numpy library is input with open parenthesis, its docstring will display as a pop-up balloon:
-
-![148_img](./images/148_img.png)
-
-The console uses slightly different code completion to the script editor. The list of identifiers does displays when the ```numpy``` library is imported using the alias ```np``` and ```np.``` followed by a tab ```↹``` however there is no distinction to what each identifier is i.e. whether it is a variable, function or class.
-
-![149_img](./images/149_img.png)
-
-The docstring popup balloon also looks slightly different between the console and the editor:
-
-![150_img](./images/150_img.png)
-
-## The JupyterLab IDE
-
-Another Python environment will be created for the JupyterLab IDE. The JupyterLab IDE is a browser based IDE and has the same optional dependencies as Spyder. because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. These extensions require ```nodejs```. An optional variable inspector is also available however is limited in comparison to Spyder.
+Now input:
 
 ```
-mamba create -n jupyterlab-cf
-mamba activate jupyterlab-cf
-mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
-mamba install -c conda-forge jupyterlab
-mamba install -c conda-forge nodejs ipywidgets 
-mamba install -c conda-forge plotly dash jupyter-dash
-mamba install -c conda-forge jupyterlab-variableinspector
-jupyter lab build
+ipython
 ```
 
-To launch JupyterLab, activate the Python environment and use:
+![img_054](./images/img_054.png)
+
+Notice that the prompt changes to a numeric prompt:
+
+![img_055](./images/img_055.png)
+
+The Python code is color coded. This makes it easier to identify what text is part of the string and what text corresponds to the object name when inputting:
 
 ```
-jupyter lab
+var = 'Hello World'
 ```
 
-![067_jupyterlab](./images/067_jupyterlab.png)
+![img_056](./images/img_056.png)
 
-When first launched, there will be a prompt to build JupyterLab, select Build:
+If the string object ```var.``` is input followed by a tab ```↹```, a list of identifiers available from the object display:
 
-![068_jupyterlab](./images/068_jupyterlab.png)
+![img_057](./images/img_057.png)
 
-This will take a while. When finished select Save and Reload:
+A docstring of a function, for example the ```print``` function can be displayed using:
 
-![069_jupyterlab](./images/069_jupyterlab.png)
+```
+? print
+```
 
-JupyterLab has a file explorer to the left hand side where you can navigate to your Documents folder. 
+![img_058](./images/img_058.png)
 
-![109_img](./images/109_img.png)
+The ```print``` function can be used to print the variable ```var``` as before:
 
-The Terminal can be invoked to run an existing Python Script file:
+```
+print(var)
+```
 
-![131_img](./images/131_img.png)
+![img_059](./images/img_059.png)
 
-Using the same command as before:
+To exit the IPython Prompt and the Python Program, forgetting all variables. Use the Python function:
+
+![img_060](./images/img_060.png)
+
+The PowerShell Prompt reappears:
+
+![img_061](./images/img_061.png)
+
+## Running a Python Script File from the Mambaforge Prompt
+
+A Python Script File is essentially a text file with a ```.py``` file extension opposed to a ```.txt``` file extension. A new Python Script File can be created in the File Explorer, in the Documents folder by right clicking and selecting New and then New Text Document:
+
+![img_062](./images/img_062.png)
+
+It should be renamed ```script0.py``` noting the file extension. Accept Yes at the warning to change the file extension:
+
+![img_063](./images/img_063.png)
+
+Ensure the text file is ```script0.py``` and not ```script0.py.txt```. The view options may need to be changed to view hidden file extensions:
+
+![img_064](./images/img_064.png)
+
+Once the file is created, open it with Notepad:
+
+![img_065](./images/img_065.png)
+
+Input:
+
+```
+var = 'Hello World'
+print(var)
+```
+
+and save.
+
+![img_066](./images/img_066.png)
+
+In the Terminal, the directory needs to be changed to the location of the Script File. This can be done with the ```cd``` command followed by the folder. In this case to get to Documents:
+
+```
+cd %UserProfile%\Documents
+```
+
+![img_067](./images/img_067.png)
+
+The file path displayed alongside the next Prompt should now be in the Documents folder:
+
+![img_068](./images/img_068.png)
+
+To execute the Python Script file input:
 
 ```
 python script0.py
 ```
 
-Displays Hello World on the Terminal.
+![img_069](./images/img_069.png)
 
-![132_img](./images/132_img.png)
+The Notepad Text Editor, Windows File Explorer and Mambaforge Terminal are three components you'll find in almost every Python Integrated Development Environment (IDE):
 
-A Python file can be created from the launcher:
+![img_070](./images/img_070.png)
 
-![110_img](./images/110_img.png)
+Swapping Notepad for Notepad++ will give some syntax highlighting as text is input and give some basic coce completion suggestions as you type:
 
-The file can be renamed by right clicking it on the file explorer and selecting rename or right clicking on the open tab at the top which displays the file name:
+![img_071](./images/img_071.png)
 
-![111_img](./images/111_img.png)
+Code Completion options are one of the main reasons for using an IDE.
 
-![112_img](./images/112_img.png)
+## Integrated Development Learning Environment (IDLE)
 
-To get code completion options to display while editing the file, right click blank space within the file and select Create Console for Editor:
+The Integrated Development Learner Environment (IDLE) can be launched from the Mambaforge Prompt using:
 
-![113_img](./images/113_img.png)
+```
+idle
+```
 
-Select the default Kernel and select Select:
+![img_072](./images/img_072.png)
 
-![114_img](./images/114_img.png)
+Notice that the Mambaforge Prompt now is running IDLE. While IDLE is running, the Mambaforge Prompt is busy and cannot be used to input any other commands. An infinite loop is running to keep IDLE open:
 
-![115_img](./images/115_img.png)
+![img_073](./images/img_073.png)
 
-Code completion will work in a similar manner as IDLE. The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was ```p``` and the command ```print``` has this code prefix:
+The Mambaforge Prompt is running the IDLE Shell which displays in a seperate Window. Notice that it has a ```>>>``` Prompt similar to the Python sheel seen before:
 
-![116_img](./images/116_img.png)
+![img_074](./images/img_074.png)
 
-A docstring will display if a function is input with open parenthesis and the shift ```⇧``` and tab ```↹``` are pressed:
+The text is sometimes too small in IDLE, select Options → Configure IDLE:
 
-![117_img](./images/117_img.png)
+![img_075](./images/img_075.png)
 
-A list of all the identifiers within a standard Python module will be displayed after the module is imported and the module name is input followed by a dot ```.``` and ```↹```:
+Then change the size and select Apply until the sample is easy to read:
 
-![119_img](./images/119_img.png)
+![img_076](./images/img_076.png)
 
-For a third-party module such as a datascience library, no code completion options display. 
+Commands can be input in IDLE similar to the Python console. For example:
 
-![120_img](./images/120_img.png)
+```
+var = 'Hello World'
+```
 
-The library generally needs to be imported into the console for its code completion to be recognised. The line of code (lines of code) with the data science library imports can be selected:
+![img_077](./images/img_077.png)
 
-![121_img](./images/121_img.png)
+If the string object is input followed by a dot ```.``` and tab ```↹```, a list of identifiers which can be called from the object displays:
 
-Then Run and Run Code can be selected:
+![img_078](./images/img_078.png)
 
-![122_img](./images/122_img.png)
+If a function such as ```print``` is input with open parenthesis, the functions docstring, detailing the input arguments will display:
 
-The list of all the identifiers within the numpy module should now display after the module is imported and the module name is input followed by a dot ```.``` and ```↹```. 
+![img_079](./images/img_079.png)
 
-This doesn't seem to work correctly in a script editor but works correctly in the Console.
+Closing down IDLE using the x in the top right corner or the function ```exit()``` will release the Mambaforge Prompt.
 
-*This problem occurs on IDLE, Spyder and JupyterLab and is likely a bug in the IPython console that needs to be addressed.*
+![img_080](./images/img_080.png)
 
-![123_img](./images/123_img.png)
+If IDLE or any other process running in the Mambaforge Prompt is hung up. The keyboard shortcut ```Ctrl``` + ```c``` can be used to close any command.
 
-![154_img](./images/154_img.png)
+Copy uses the shortcut ```Ctrl``` + ```⇧``` + ```c``` and paste uses the shortcut
+```Ctrl``` + ```⇧``` + ```v```.
 
-A docstring will display if a function is input with open parenthesis and the shift ```⇧``` and tab ```↹``` are pressed:
+The IDLE shell can also be used to create a Python Script File and Run a Python Script File. Select File → New File:
 
-![124_img](./images/124_img.png)
+![img_081](./images/img_081.png)
 
-Additional test code can be added to make a plot:
+Then press ```Ctrl``` + ```s``` and save the script file in Documents with a ```.py``` extension. In this case the file will be called ```script1.py```:
 
-![125_img](./images/125_img.png)
+![img_082](./images/img_082.png)
 
-Now all the code can be run by selecting Run→Run All Code:
+Input the following code and save:
 
-![126_img](./images/126_img.png)
+```
+var = 'Hello World'
+print(var)
+```
 
-The script file is executed and the print statement and plot are displayed in the console:
+Select Run → Run Module:
 
-![127_img](./images/127_img.png)
+![img_083](./images/img_083.png)
 
-The plot backend can be changed from the default inline to automatic using:
+The Code will be executed in the IDLE Shell:
 
-![130_img](./images/130_img.png)
+![img_084](./images/img_084.png)
 
-The JupyterLab IDE lacks some features available in Spyder when it comes to editting Python Script Files:
+## Python Environments
 
-* It has no Variable Inspector or Variable Explorer
-* It has no way of running cells within a Python Script File.
+As you become more proficient in Python, you will need the features and capabilities of other Python IDEs and need to use a number of third-party libraries. It is generally a good practice to install these IDEs in seperate Python environments. A Python Environment is essentially a subinstallation of Python. A Python Environment will be created for the Spyder IDE. This IDE is written in Python and Python Libraries and therefore has a large number of dependencies.
 
-The JupyterLab IDE has more of a focus on Interactive Python Notebooks which have the ```.ipynb``` extension:
+In the mambaforge folder, there is a subfolder called ```envs```:
 
-![133_img](./images/133_img.png)
+```
+%UserProfile%\mambaforge\envs
+```
 
-The notebook can be renamed using the file explorer or the top tab of the open notebook:
+![img_085](./images/img_085.png)
 
-![134_img](./images/134_img.png)
+This folder is empty because no Python Environments have been created:
+
+![img_086](./images/img_086.png)
+
+To create a Python Environment open up the Mambaforge Prompt and use the command:
+
+```
+mamba create -n spyder
+```
+
+![img_087](./images/img_087.png)
+
+Details about the ```spyder``` Python Environment will display:
+
+![img_088](./images/img_088.png)
+
+The following folder will display:
+
+```
+%UserProfile%\mambaforge\envs\spyder
+```
+
+![img_089](./images/img_089.png)
+
+![img_090](./images/img_090.png)
+
+To change packages in the ```spyder``` Python environment activate the Python environment using the command:
+
+```
+mamba activate spyder
+```
+
+![img_091](./images/img_091.png)
+
+The prompt now begins with ```(spyder)``` opposed to ```(base)``` reflecting the change in the selected Python environment:
+
+![img_092](./images/img_092.png)
+
+The ```mamba``` package manager may be used to search for a package on the conda-forge channel such as ```spyder``` using:
+
+```
+mamba search spyder
+```
+
+![img_093](./images/img_093.png)
+
+Each version on the conda-forge channel will be displayed from earliest to newest:
+
+![img_094](./images/img_094.png)
+
+As multiple versions of Python are supported by Spyder, there are multiple listings for Spyder. These can be installed using the install command. A specific version can be specified using the assignment operator. 
+
+```
+mamba install python=3.11 spyder=5.4.1
+```
+
+If no version is selected, the latest version of Spyder is installed but you may get an older version of Python.
+
+Spyder will be installed with its mandatory dependencies however it is recommended to install it alongside its optional dependencies for complete functionality:
+
+```
+mamba install python=3.11 spyder=5.4.1 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+```
+
+Installing ```seaborn``` will give the other scientific libraries such as ```numpy```, ```pandas```, ```matplotlib``` and ```scipy```. The ```openpyxl```, ```xlrd```, ```xlsxwriter```, ```lxml``` and ```sqlalchemy``` are used by ```pandas``` to read and write to common file formats:
+
+![img_095](./images/img_095.png)
+
+A large number of libraries will be installed, select ```y``` in order to proceed:
+
+![img_096](./images/img_096.png)
+
+Spyder will now be installed:
+
+![img_097](./images/img_097.png)
+
+The Mambaforge Prompt will be found in a mambaforge folder alongside a start menu shortcut to Spyder:
+
+![img_098](./images/img_098.png)
+
+Spyder can be launched from this Start Menu shortcut or from the Mambforge Prompt. Using the command:
+
+```
+spyder
+```
+
+![img_099](./images/img_099.png)
+
+![img_100](./images/img_100.png)
+
+If the Mambaforge Prompt is closed and reopened, the default ```(base)``` Python environment will be selected. If ```spyder``` is input. The error message ```'spyder' is not recognized``` will display because the ```(base)``` environment has no Spyder installation:
+
+![img_101](./images/img_101.png)
+
+The Spyder Python Environment must be activated and then Spyder can be launched:
+
+```
+mamba activate spyder
+spyder
+```
+
+![img_102](./images/img_102.png)
+
+The Spyder environment folder has its own python.exe:
+
+```
+%UserProfile%\mambaforge\envs\spyder
+```
+
+![img_103](./images/img_103.png)
+
+This folder has its own ```lib``` subfolder:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib
+```
+
+![img_104](./images/img_104.png)
+
+This ```lib``` folder contains the Python standard modules for this version of Python. Recall:
+
+```
+import datetime
+```
+
+references this file:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib\datetime.py
+```
+
+![img_105](./images/img_105.png)
+
+There is an ```email``` subfolder. 
+
+![img_106](./images/img_106.png)
+
+Recall:
+
+```
+import email
+```
+
+references this file:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib\email\__init__.py
+```
+
+And
+
+```
+import email.charset
+```
+
+references this file:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib\email\charset.py
+```
+
+![img_107](./images/img_107.png)
+
+The commonly used third-party data science libraries are found in the ```site-packages``` folder:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib\site-packages
+```
+
+![img_108](./images/img_108.png)
+
+For example there is a ```numpy``` and ```matplotlib``` subfolder:
+
+![img_109](./images/img_109.png)
+
+Looking at the numpy folder:
+
+```
+import numpy as np
+```
+
+references this file:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib\site-packages\numpy\__init__.py
+```
+
+```numpy``` is a large library and has additional subfolders such as linalg:
+
+![img_101](./images/img_110.png)
+
+This ```linalg``` folder has its own Python Modules including a ```__init__.py```.
+
+![img_111](./images/img_111.png)
+
+```
+np.linalg
+```
+
+references this file:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib\site-packages\numpy\linalg\__init__.py
+```
+
+![img_112](./images/img_112.png)
+
+For ```matplotlib``` there is a ```__init__.py``` which would be referenced if ```import matplotlib``` was input:
+
+![img_113](./images/img_113.png)
+
+However it is more common to use the ```pyplot.py``` module opposed to the entire library:
+
+```
+import matplotlib.pyplot
+```
+
+references this file:
+
+```
+%UserProfile%\mambaforge\envs\spyder\lib\site-packages\matplotlib\pyplot.py
+```
+
+![img_114](./images/img_114.png)
+
+Once Python environments have been created. They can be listed using:
+
+```
+mamba env list
+```
+
+![img_143](./images/img_143.png)
+
+The environments will be listed and the currently selected one will be indicated with a ```*```. 
+
+For completeness, another Python Environment called ```deleteme``` will be created:
+
+```
+mamba create -n deleteme
+mamba env list
+```
+
+![img_144](./images/img_144.png)
+
+To remove this Python environment the following command can be used:
+
+```
+mamba env remove -n deleteme
+```
+
+This Python environment is now removed:
+
+![img_145](./images/img_145.png)
+
+## mamba, conda and pip Package Managers
+
+**When using the ```mamba``` package manager, you should avoid use of commands which invoke the ```pip``` or ```conda``` package managers, as use of multiple package managers in a single Python environment can result in instability.**
+
+That being said the documentation for the ```conda``` package manager is much more widespread. If you are unsure how to install a package search for ```conda install packagename``` and you'll likely find installation instructions.
+
+The installation commands to install packages will be of the following form:
+
+```
+pip install packagename
+conda install packagename
+conda install -c conda-forge packagename
+```
+
+Modify them so they are instead:
+
+```
+mamba install packagename
+```
+
+The default channel for Mambaforge is the community ```conda-forge``` channel and the vast majority of the latest version of packages are available here.  You should avoid using the commercial ```conda``` channel which typically has older package versions. 
+
+## The Scientific Python Development Environment (SPYDER)
+
+To recap Spyder is installed in its own Python environment using:
+
+```
+mamba create -n spyder
+mamba activate spyder
+mamba install python=3.11 spyder cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+```
+
+Spyder can be launched using:
+
+```
+spyder
+```
+
+The Spyder IDE looks like the following. To the left hand side is the Script Editor which is similar to Notepad.
+
+To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called ```spyder``` and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
+
+To the top right are 4 tabs Help, Variable Explorer, Plot and Files:
+
+![img_115](./images/img_115.png)
+
+The Spyder Dependencies can be checked using Help from the Menu Bar and then Dependencies:
+
+![img_116](./images/img_116.png)
+
+The mandatory and optional dependencies should be satisfied:
+
+![img_117](./images/img_117.png)
+
+To save the Python Script file select File → Save As or ```Ctrl```, ```⇧```  and ```s```. Select your Documents folder and save the file as ```script2.py```:
+
+![img_118](./images/img_118.png)
+
+The tab in the script editor will be updated to reflect the file name and the location of the file will be shown in the top left. The file location shown in the File tab to the right is the current working directory and will not update until the script is run:
+
+![img_119](./images/img_119.png)
+
+The script can be run using the run key:
+
+![img_120](./images/img_120.png)
+
+Now the Current Working Directory is updated to the location of the Main Script file.
+
+In Python ```#``` is used to denote that a line of code is a comment. In Spyder ```#%%``` can be used to compartmentalise a Python Script File into cells. This can be demonstrated with the example code:
+
+```
+#%% Cell0
+print('A')
+print('B')
+#%% Cell1
+print('C')
+print('D')
+#%% Cell2
+print('E')
+print('F')
+```
+
+![img_121](./images/img_121.png)
+
+The top cell can be highlighted and the Run Current Cell button can be selected. Its output shows in the IPython Console and this cell is still selected:
+
+![img_122](./images/img_122.png)
+
+The top cell can be highlighted and the Run Current Cell and Advance button can be selected. Its output shows in the IPython Console and the next cell is now selected:
+
+![img_123](./images/img_123.png)
+
+Alternately a line or multiple lines may be selected and the Run Selection button can be selected, their outyput show in the IPython Console:
+
+![img_124](./images/img_124.png)
+
+The Data Science libraries can be imported using:
+
+```
+#%% Importing Data Science Libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+#%% Builtin DataTypes
+str_1 = 'Hello'
+int_1 = 1
+float_1 = 3.14
+boot_1 = True
+list_1 = ['Hello', 'Hello', 1, 3.14, True]
+tuple_1 = ('Hello', 'Hello', 1, 3.14, True)
+set_1 = {'Hello', 'Hello', 1, 3.14, True}
+dict_1 = {'r': 'red', 'b': 'blue', 'g': 'green'}
+#%% Numeric Array
+list_x = [1, 2, 3, 4, 5]
+x = np.array(list_x)
+list_y = [2, 4, 6, 8, 10]
+y = np.array(list_y)
+#%% Pandas DataFrame
+data = pd.DataFrame({'x': x, 'y': y})
+```
+
+Builtin datatypes and Data Science datatypes can be seen on the variable explorer:
+
+![img_125](./images/img_125.png)
+
+Variables can be examined in more detail by clicking into them:
+
+![img_126](./images/img_126.png)
+
+The Kernel can be restarted by going to Consoles → Restart Kernel. 
+
+![img_127](./images/img_127.png)
+
+Accept the Warning to proceed:
+
+![img_128](./images/img_128.png)
+
+When the Kernel is Restarted the IPython Console reverteds back to 0, All Variables are erased and the imported libraries are no longer imported.
+
+![img_129](./images/img_129.png)
+
+Another test script can be made to test plotting:
+
+```
+#%% Importing Data Science Libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style("whitegrid")
+# %% Pandas DataFrame
+data = pd.DataFrame({"x": [1, 2, 3, 4, 5], 
+                     "y": [2, 4, 6, 8, 10]})
+# %% Plot
+plt.plot(data.x, data.y)
+plt.show()
+```
+
+Spyder can be configured to display plots as interactive plots or as static inline plots docked to the plots pane:
+
+![img_130](./images/img_130.png)
+
+To change the plot backend select Tools→Preferences:
+
+![img_131](./images/img_131.png)
+
+Then to the left select IPython Console. To the right select the Graphics Tab and select the desired Backend:
+
+![img_132](./images/img_132.png)
+
+The screenshots in this guide use Spyder with the Spyder (light) appearance. This can be selected from the Appearance Tab:
+
+![img_133](./images/img_133.png)
+
+The Editor settings can be changed to Show Indent Guides and Show Blank Spaces:
+
+![img_134](./images/img_134.png)
+
+The plot now displays as a static image in the plots pane:
+
+![img_135](./images/img_135.png)
+
+Spyder has a Help Pane. The documentation of a function can be viewed by selecting the object of interest and pressing ```Ctrl``` and ```i```. This feature works better for Python and Inbuilt Modules than Scientific Modules. If used on a Scientific Libraries, the docstring of the Library shows instead of the docstring of the object of interest:
+
+![img_136](./images/img_136.png)
+
+A brief docstring will also display as a popup balloon when typed with open parenthesis:
+
+![img_137](./images/img_137.png)
+
+The docstring can also be output to the IPython console using a ```?```. For example:
+
+```
+? print
+```
+
+![img_138](./images/img_138.png)
+
+![img_139](./images/img_139.png)
+
+Inputting an object name followed by a dot ```.```displays a list of identifiers that can be referenced from the object: 
+
+![img_140](./images/img_140.png)
+
+This feature has in the past worked better for Python and Inbuilt Modules than Scientific Modules which has a slower response time. The latest version made improvements in the response time but unfortunately there is a slight reversion and now one character needs to be typed past the ```.``` in order for any identifiers to display.
+
+![img_141](./images/img_141.png)
+
+The code completion on the IPython console is more responsive but less detailed. In IPython Console press ```↹``` after the ```.``` to view the list of identifiers.
+
+## JupyterLab
+
+Jupyter is a loose acronym meaning Julia, Python, and R. The JupyterLab IDE is a browser based IDE and for Python can be used with the same Scientific Libraries as Spyder. Because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. The browser based functionality is written in nodejs and extensions require ```nodejs``` as a dependency. An optional Variable Inspector is also available.
+
+Another Python environment will be created for JupyterLab.  Open the Mambaforge Prompt and input:
+
+```
+mamba create -n jupyterlab
+mamba activate jupyterlab
+```
+
+Search for the latest version of JupyterLab using:
+
+```
+mamba search jupyterlab
+```
+
+Install JupyterLab using:
+
+```
+mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector
+jupyter lab build
+```
+
+Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using a modifying the above command. 
+
+There is no Start Menu Shortcut for JupyterLab. To launch JupyterLab, use the Mambaforge Prompt, activate the ```jupyterlab``` Python environment and use:
+
+```
+jupyter lab
+```
+
+![img_146](./images/img_146.png)
+
+JupyterLab launches in the browser. To the left hand side is a file explorer:
+
+![img_147](./images/img_147.png)
+
+Compatible files can be opened by double clicking them. For example the ```script0.py``` file:
+
+![img_148](./images/img_148.png)
+
+To run a Python Script File, it will require an IPython Console. Right click the file and select Create Console for Editor:
+
+![img_149](./images/img_149.png)
+
+Select Python 3 (ipkernel) and select Select:
+
+![img_150](./images/img_150.png)
+
+The interactive Python Console Kernel will show in its own tab:
+
+![img_151](./images/img_151.png)
+
+Select Run and then Run All Code:
+
+![img_152](./images/img_152.png)
+
+It is also possible here to make a selection within the Python Script File and select Run.
+
+The code will run and the output from the script file will be shown in an IPython console cell:
+
+![img_153](./images/img_153.png)
+
+It is also possible to run a script file using a Terminal. Select Terminal from the launcher:
+
+![img_154](./images/img_154.png)
+
+The Terminal will show in the launchers tab:
+
+![img_155](./images/img_155.png)
+
+This tab can be repositioned:
+
+![img_156](./images/img_156.png)
+
+The code in the script file can be run by changing to the Documents folder and using Python to execute the script file:
+
+```
+cd Documents
+python script0.py
+```
+
+Note ```cd %UserProfile%\Documents``` did not work here as the Terminal is using an odler version of PowerShell to the Mambaforge Prompt.
+
+![img_157](./images/img_157.png)
+
+If instead ```script2.py``` is opened alongside an IPython Console:
+
+![img_158](./images/img_158.png)
+
+When all the code is Run:
+
+![img_159](./images/img_159.png)
+
+The plot displays inline as an IPython cell output:
+
+![img_160](./images/img_160.png)
+
+Although JupyterLab can be used with Python Script Files (```.py``` file extension). It is typically used with Interactive Python Notebook Files (```.ipynb``` file extension). A new Notebook can be created in the Launcher:
+
+![img_161](./images/img_161.png)
+
+It displays on the File Explorer and can be renamed by right clicking it:
+
+![img_162](./images/img_162.png)
+
+And selecting Rename:
+
+![img_163](./images/img_163.png)
+
+The notebook file consists of a series of cells. The default code, is a code cell:
+
+![img_164](./images/img_164.png)
+
+It can be switched to a ```markdown``` cell. Markdown uses a simple syntax for formatting text:
+
+![img_165](./images/img_165.png)
+
+The syntax highlighting changes and running the markdown cell will display the formatted markdown text:
+
+![img_166](./images/img_166.png)
+
+The Code cells behave similar to an IPython Console:
+
+![img_167](./images/img_167.png)
+
+Existing cells can however be edited and then rerun:
+
+![img_168](./images/img_168.png)
+
+JupyterLab has a basic Variable Inspector:
+
+![img_169](./images/img_169.png)
+
+It opens in a new tab, that can be repositioned:
+
+![img_170](./images/img_170.png)
+
+![img_171](./images/img_171.png)
+
+The Variable Inspector is very basic compared to Spyders Variable Explorer. The cell output of an Interactive Notebook is more typically used to view a Variable in more detail.
+
+![img_172](./images/img_172.png)
+
+Matplotlib Plots use the inline backend by default and display as static images in the cell output.
+
+Markdown Headings act as bookmarks:
+
+![img_173](./images/img_173.png)
+
+A list of identifiers can be seen from an object by typing in the objects name followed by a dot ```.``` and tab ```↹```:
+
+![img_174](./images/img_174.png)
+
+A functions docstring can be displayed in a popup balloon by typing in the functions name with open parenthesis and pressing the shift ```⇧``` and tab ```↹``` keys:
+
+![img_175](./images/img_175.png)
+
+The docstring can also be viewed as a cell output. If the cell output is long, the cell can be right clicked and Enabling Scrolling for Outputs can be selected.
+
+![img_176](./images/img_176.png)
+
+Interactive plots can be made using plotly:
+
+![img_177](./images/img_177.png)
+
+The ```ipynb``` files are typically opened by JupyterLab after JupyterLab is launched by the Mambaforge prompt. However it is insightful to view a file in notepad:
+
+![img_178](./images/img_178.png)
+
+The code is nodejs code. The nodejs code wraps around the Python or Markdown code for each cell:
+
+![img_179](./images/img_179.png)
 
 The notebook consists of cells. The cells can be:
 
 * markdown - for markdown syntax: The Markdown display will be shown when the code is run.
 * python - for Python code: Python code will be executed when the cell is run.
 * raw - The notebook itself is written in nodejs, another programming language used for web development. 
-
-![073_jupyterlab](./images/073_jupyterlab.png)
-
-A markdown heading can be created and then the cell can be run:
-
-![074_jupyterlab](./images/074_jupyterlab.png)
-
-The heading will now display under the notebooks bookmarks:
-
-![075_jupyterlab](./images/075_jupyterlab.png)
-
-A code cell can now be created:
-
-![076_jupyterlab](./images/076_jupyterlab.png)
 
 The shortcut key ```esc``` and ```m``` will change the current cell to a markdown cell.
 
@@ -853,249 +1213,150 @@ The shortcut key ```alt``` and ```↵``` will run a cell and insert a blank cell
 
 To get to Keyboard Shortcuts. Select the Settings menu to the top and then select Advanced Settings Editor. To the left select Command Palette and then select keyboard shortcuts.
 
-Code completion works better in a notebook file. A third-party data science module needs to be imported in a previously cell. Once this cell is run typing in the module name or module alias followed by a ```.```, pressing the tab ```↹``` key will display the list of identifiers from the module:
+## Visual Studio Code
 
-![139_img](./images/139_img.png)
-
-The tab ```↹``` key can be pressed after inputting some code prefix. This will display completion options available that have the code prefix. In this case the code prefix was np.a and the command np.array has this code prefix:
-
-![141_img](./images/141_img.png)
-
-Inputting a function name with open parenthesis and pressing shift ```⇧``` and the tab ```↹``` key will display the functions docstring as a popup balloon:
-
-![140_img](./images/140_img.png)
-
-When code cells are run, a number displays to the left hand side of the cell (this number is analogous to the numbers shown in the console when running Python code or a Python script file) and indicates the number of cells ran in the Python kernel:
-
-![077_jupyterlab](./images/077_jupyterlab.png)
-
-The Kernel can be restarted in an interactive notebok by selecting Kernel. Then Restart Kernel and Run All Cells:
-
-![151_img](./images/151_img.png)
-
-Then select Restart:
-
-![152_img](./images/152_img.png)
-
-Notice now each cell is ran in numeric order:
-
-![153_img](./images/153_img.png)
-
-JupyterLab has a Variable Inspector extension that can be viewed in an interactive notebook by right clicking blank space in the notebook file and selecting open Variable Inspector:
-
-![135_img](./images/135_img.png)
-
-This opens in a new tab which can be repositioned:
-
-![136_img](./images/136_img.png)
-
-![137_img](./images/137_img.png)
-
-This Variable Inspector is quite limited with respect to the Variable Explorer found within Spyder.
-
-To close JupyterLab, close the tab in the browser. In the mambaforge prompt you will notice that the server is still running.
-
-![078_jupyterlab](./images/078_jupyterlab.png)
-
-The server runs in an infinite loop. To end it press ```Ctrl``` + ```c```:
-
-![079_jupyterlab](./images/079_jupyterlab.png)
-
-If the ```.ipynb``` file is opened in notepad. The nodejs script can be viewed directly.
-
-![138_img](./images/138_img.png)
-
-The nodejs code can be seen to enclose the Python code. Plotting libraries such as plotly take Python syntax from the user and output nodejs code which is used to display the interactive plot.
-
-## The Visual Studio Code IDE
-
-A similar Python environment can be setup for Visual Studio Code:
+Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Because it is a general purpose editor, a number of steps need to be made to configure it for Python use. A seperate Python environment needs to be created using Mambaforge:
 
 
 ```
-mamba create -n vscode-cf
-mamba activate vscode-cf
-mamba install -c conda-forge cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
-mamba install -c conda-forge nodejs ipywidgets 
-mamba install -c conda-forge plotly dash
-mamba install -c conda-forge notebook
+mamba create -n vscode
+mamba activate vscode
+mamba install notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly
 ```
 
-Visual Studio Code can then be installed either from the Windows Application (```.exe```) available on the [Visual Studio Code website](https://code.visualstudio.com/download). It is also available as a snap package in the Ubuntu Store:
+Visual Studio Code can then be installed from the Windows Application (```.exe```) available on the [Visual Studio Code website](https://code.visualstudio.com/download).
 
-![155_img](./images/155_img.png)
+Select Windows User Installer x64:
 
-Launch the Windows Installer:
+![img_180](./images/img_180.png)
 
-![156_img](./images/156_img.png)
+Launch the setup.exe:
+
+![img_181](./images/img_181.png)
 
 Accept the License Agreement and select Next:
 
-![157_img](./images/157_img.png)
+![img_182](./images/img_182.png)
 
-Install in the default location and select Next:
+Use the default location and select Next:
 
-![158_img](./images/158_img.png)
+![img_183](./images/img_183.png)
 
-Select Next:
+Use the default location and select Next:
 
-![159_img](./images/159_img.png)
+![img_184](./images/img_184.png)
 
-Select Next:
+Leave the defaults checked and select Next:
 
-![160_img](./images/160_img.png)
+![img_185](./images/img_185.png)
 
 Select Install:
 
-![161_img](./images/161_img.png)
+![img_186](./images/img_186.png)
 
 Select Finish:
 
-![162_img](./images/162_img.png)
+![img_187](./images/img_187.png)
 
-Once installed, launch Visual Studio Code from the Start Screen or the mambaforge prompt by inputting:
+Open VSCode. Select the Extension tab to the left aand select the Python Extension (it is the most popular extension, displayed at the top):
 
-```
-mamba activate vscode-cf
-code
-```
+![img_188](./images/img_188.png)
 
-![163_img](./images/163_img.png)
+Select Install:
 
-Select your desired colour scheme:
+![img_189](./images/img_189.png)
 
-![164_img](./images/164_img.png)
+The extension is now installed, alongside other associated Python Extensions:
 
-To the left select extensions and then select the Python Extension and select Install:
+![img_190](./images/img_190.png)
 
-![165_img](./images/165_img.png)
+An optional Markdown Extension can also be installed:
 
-![166_img](./images/166_img.png)
+![img_191](./images/img_191.png)
 
-Visual Studio Code requires a folder for each project. Open file explorer and create a new folder:
+Visual Code encourages setup of a folder for each Python Project. In File Explorer, create a new folder:
 
-![167_img](./images/167_img.png)
+![img_192](./images/img_192.png)
 
-In Visual Studio Code, select the files tab and select Open Folder. Select the folder just created:
+This folder will be named ```project0```. It is good practice to not use any spaces or special characters for the folder name, following the same rules as Python object names:
 
-![168_img](./images/168_img.png)
+![img_193](./images/img_193.png)
 
-![169_img](./images/169_img.png)
+In Visual Studio Code, select the File Tab and then Open Folder. Select ```project0```:
 
-You will be asked for permissions. Select Yes, I trust the authors:
+![img_194](./images/img_194.png)
 
-![170_img](./images/170_img.png)
+Select New File:
 
-Select New File and create a Python Script file with the ```.py``` file extension:
+![img_195](./images/img_195.png)
 
-![171_img](./images/171_img.png)
+Name the file ```main.py```:
 
-Open the file. To the bottom right you will see your Python interpretter. In this case the correct Python interpretter was selected.
+![img_196](./images/img_196.png)
 
-![172_img](./images/172_img.png)
+Open up the ```main.py``` file. In the bottom right on the status bar. Python is shown alongside the Python Interpretter (Python Environment). In this example the wrong Python Environment is selected:
 
-In other cases you may need to change the Python interpretter. To change this to the ```vscode-cf``` press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter:
+![img_197](./images/img_197.png)
 
-![173_img](./images/173_img.png)
+Press ```Ctrl```, ```⇧``` and ```p``` to open the command palette and search for ```Python Select Intepreter```: 
 
-Select the ```vscode-cf``` mamba environment:
+![img_198](./images/img_198.png)
 
-![174_img](./images/174_img.png)
+Select the ```vscode``` Python Environment:
 
-Code auto-completion works better in Visual Code than in the other IDEs with an out of the way popup balloon displaying a list of identifiers with the prefix typed:
+![img_199](./images/img_199.png)
 
-![175_img](./images/175_img.png)
+The Current Working Directory in VSCode will be the folder that was opened in VSCode. There is a new folder icon which can be used to create subfolders. If subfolders are created with script files. When the script file is run, the Current Working Directory will be the folder opened within Visual Studio Code and not the subfolder. The subfolder can be opened directly within VSCode to set it as the Current Working Directory.
 
-A docstring popup balloon also displays when a function is input with open parenthesis:
+Visual Code Studio uses Microsoft's IntelliSense giving code suggestions as you type:
 
-![176_img](./images/176_img.png)
+![img_200](./images/img_200.png)
 
-This also works correctly with Python inbuilt modules:
+And the functions docstrings display as popup balloons:
 
-![177_img](./images/177_img.png)
+![img_201](./images/img_201.png)
 
-![178_img](./images/178_img.png)
+The Python Script file can be launched:
 
-And third-party datascience libraries:
+![img_202](./images/img_202.png)
 
-![179_img](./images/179_img.png)
+And the plot displays in a seperate Window:
 
-![180_img](./images/180_img.png)
+![img_203](./images/img_203.png)
 
-A script file can be run by selecting the run script button:
+It is possible to run the script file using individual cells in an IPython console:
 
-![181_img](./images/181_img.png)
+![img_204](./images/img_204.png)
 
-To the bottom a Terminal should display. In the Python Terminal, Hello World displays. Multiple Terminals can be opened for Windows PowerShell and other programming languages. The Terminal can be resized vertically using the horizontal slider.
+![img_205](./images/img_205.png)
 
-![182_img](./images/182_img.png)
+Plots in this case display inline:
 
-For an automatic plot to display when executing a script, the script must include the function 
+![img_206](./images/img_206.png)
 
-```
-plt.show
-```
+VSCode can also work with Interactive Notebook files:
 
-![183_img](./images/183_img.png)
+![img_207](./images/img_207.png)
 
-Visual Studio Code also has a Variables tab. This is unfortunately only available when the script file is ran using Interactive Mode:
+Once again the cells can be Markdown or Code. VSCode can work with lots of other programming languages, so the cells also have the option to use other programming languages:
 
-![184_img](./images/184_img.png)
+![img_208](./images/img_208.png)
 
-Selecting run cells within a script file opens an interactive window to the right hand side:
+The Interactive Python Notebook, also has a Variables button:
 
-![185_img](./images/185_img.png)
+![img_209](./images/img_209.png)
 
-Plots display inline in the interactive mode:
+This displays a Variable Explorer:
 
-![186_img](./images/186_img.png)
+![img_210](./images/img_210.png)
 
-The Variables can be clicked into to be explored in more detail:
+To view the data in the Variable, double click it. This will open the data viewer:
 
-![187_img](./images/187_img.png)
+![img_211](./images/img_211.png)
 
-Visual Studio Code can also be used to work with an Interactive Python Notebook. Select New File and create an Interactive Python Notebook file with the ```.ipynb``` file extension:
+Beside the Variables button is the Outline button. This gives a table of contents of the markdown headings:
 
-![188_img](./images/188_img.png)
-
-![189_img](./images/189_img.png)
-
-![190_img](./images/190_img.png)
-
-![191_img](./images/191_img.png)
-
-## Removing a Python Environment
-
-Now multiple Python environments have been created. They can be listed using:
-
-```
-mamba env list
-```
-
-The environments are listed and the currently selected one is indicated with a ```*```:
-
-![080_jupyterlab](./images/080_jupyterlab.png)
-
-Another environment called ```corrupted``` can be created and once it is created the Python environments can be relisted:
-
-```
-mamba create -n corrupted
-mamba env list
-```
-
-![081_jupyterlab](./images/081_jupyterlab.png)
-
-The corrupted environment can be removed using:
-
-```
-mamba env remove -n corrupted
-```
-
-![082_jupyterlab](./images/082_jupyterlab.png)
-
-This corrupted Python environment is now removed:
-
-![083_jupyterlab](./images/083_jupyterlab.png)
+![img_212](./images/img_212.png)
 
 Return to:
 

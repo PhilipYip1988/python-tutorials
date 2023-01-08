@@ -7,7 +7,140 @@ In python consider the following fundamental types of data:
   * whole numbers
   * numbers with a decimal point
   
-[YoutTube Tutorial](https://www.youtube.com/watch?v=hYQ_IHMYFy0)
+[YouTube Tutorial](https://www.youtube.com/watch?v=hYQ_IHMYFy0)
+
+## Object Orientated Programming
+
+Python is an Object Orientated Programming (OOP) language. To conceptualise some of the features of OOP. Consider a hypothetical ```Banana``` class. The ```Banana``` class itself can be considered as an abstract blueprint which under the hood contains instructions. These instructions tell Python how to construct a ```banana``` object. They also define the properties of a ```banana``` object and the behaviour behind a ```banana``` object can exhibit. 
+
+![img_142](./images/img_142.png)
+
+A banana object can be constructed by telling Python to use the hypothetical ```Banana``` class. The constructor has the form:
+
+```
+Banana()
+```
+
+![img_143](./images/img_143.png)
+
+The code above creates a ```banana``` object. This object has no reference because it was not assigned to an object name during instantiation. As it has no reference it cannot be accessed after it is created and is immediately removed by Pythons garbage collection.
+
+During construction, an object is typically assigned to an object name using the assignment operator ```=```, for example:
+
+```
+banana_1 = Banana()
+```
+
+![img_144](./images/img_144.png)
+
+Conceptualise the assignment operator as operating from the right to the left. To the right hand side of the assignment operator is the physical object being created. This physical object is assigned to an object name on the left hand side of the assignment operator. The object name can be conceptualised as a label.
+
+The object name acts as a reference to the object. Conceptually the banana now has an object name, that you and your friend the Python interpretter both know. 
+
+You can ask your friend to specify the ```color``` of ```banana_1```. To do so you can access the color attribute using the object name ```banana_1``` followed by a dot ```.``` and the attribute name in this case ```color```:
+
+```
+banana_1.color
+```
+
+When the banana is new, the color returned will be ```yellow``` as it is fresh: 
+
+![img_144](./images/img_144.png)
+
+If the banana object ```banana_1``` is older than a week, it will likely have aged and instead return the color ```brown```:
+
+![img_145](./images/img_145.png)
+
+Behind the scenes an attribute is a data variable and looking up an attribute is just instructing the Python interpretter to look up this attribute without further interaction with the ```banana``` object.
+
+Python objects also have methods. A method can be conceptualised as an action. For example you can ask the Python Interpretter to peel ```banana_1``` using:
+
+```
+banana_1.peel()
+```
+
+![img_146](./images/img_146.png)
+
+Notice that the method has ```( )```. This indicates that the method is under the hood calling a Python function. The purpose of the ```( )``` in a function call is to supply input arguments. Many methods do not require input arguments as they are acting internally upon the attributes of the object they are called from.
+
+Multiple objects can be constructed from a common class. For example:
+
+```
+banana_2 = Banana()
+banana_3 = Banana()
+```
+
+![img_147](./images/img_147.png)
+
+![img_148](./images/img_148.png)
+
+Although these objects are constructed from a common class and may have the same attributes:
+
+```
+banana_2.color
+```
+
+is ```yellow```.
+
+```
+banana_3.color
+```
+
+is ```yellow```.
+
+They are independent objects. Calling a method on one of these objects will not influence the other. For example using the ```peel``` method on ```banana_3``` will not change anything on ```banana_2```:
+
+```
+banana_3.peel()
+```
+
+![img_149](./images/img_149.png)
+
+In this case the three banana objects can visually be seen to be different:
+
+![img_146](./images/img_146.png)
+
+![img_147](./images/img_147.png)
+
+![img_149](./images/img_149.png)
+
+To recap, the assignment operator ```=``` is used to assign an object (right hand side of the assignment operator) to an object name (left hand side of the assignment operator). This object name becomes a reference to the object.
+
+The delete keyword ```del``` is used to delete the object name. This should be conceptualised as deleting the label. For example:
+
+![img_146](./images/img_146.png)
+
+```
+del banana_1
+```
+
+![img_150](./images/img_150.png)
+
+Now because this object has no references, it can no longer be accessed and is removed by Pythons garbage collection.
+
+If an object that exists is assigned to a new object name. For example:
+
+![img_147](./images/img_147.png)
+
+```
+fruit_2 = banana_2
+```
+
+The right hand side of the assignment operator is first examined. The object name ```banana_2``` is referenced and this reference takes us to the physical banana object. Then the new object name to the left hand side of the assignment operator is assigned to the object. The object now has two object names which can be conceptualised as two labels:
+
+![img_151](./images/img_151.png)
+
+If one of these object names are now deleted. It is the equivalent of removing one of these labels:
+
+```
+del banana_2
+```
+
+The other object name or label still remains for the object and as the object still has a reference, it can be accessed.
+
+![img_152](./images/img_152.png)
+
+An object is not removed by Pythons garbage collector untill all references to it are deleted.
 
 ## The string class
 

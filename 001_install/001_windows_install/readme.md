@@ -266,7 +266,7 @@ The changes will now be reflected in site-packages folder, for example the mamba
 
 ![img_037](./images/img_037.png)
 
-```cls``` can be sued to clear the screen and ```mamba list``` can be used to view the updated changes:
+```cls``` can be used to clear the screen and ```mamba list``` can be used to view the updated changes:
 
 ![img_038](./images/img_038.png)
 
@@ -561,7 +561,7 @@ This folder is empty because no Python Environments have been created:
 
 ![img_086](./images/img_086.png)
 
-To create a Python Environment open up the Mabaforge Prompt and use the command:
+To create a Python Environment open up the Mambaforge Prompt and use the command:
 
 ```
 mamba create -n spyder
@@ -591,7 +591,7 @@ mamba activate spyder
 
 ![img_091](./images/img_091.png)
 
-The prompt now begins with ```(spyder)``` opposed to ```(base)``` reflecdting the change in the selected Python environment:
+The prompt now begins with ```(spyder)``` opposed to ```(base)``` reflecting the change in the selected Python environment:
 
 ![img_092](./images/img_092.png)
 
@@ -851,7 +851,7 @@ spyder
 
 The Spyder IDE looks like the following. To the left hand side is the Script Editor which is similar to Notepad.
 
-To the bottom right there is an IpPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called ```spyder``` and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
+To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called ```spyder``` and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
 
 To the top right are 4 tabs Help, Variable Explorer, Plot and Files:
 
@@ -929,8 +929,8 @@ list_x = [1, 2, 3, 4, 5]
 x = np.array(list_x)
 list_y = [2, 4, 6, 8, 10]
 y = np.array(list_y)
-# %% Pandas DataFrame
-data = pd.DataFrame({"x": x, "y": y})
+#%% Pandas DataFrame
+data = pd.DataFrame({'x': x, 'y': y})
 ```
 
 Builtin datatypes and Data Science datatypes can be seen on the variable explorer:
@@ -945,7 +945,7 @@ The Kernel can be restarted by going to Consoles → Restart Kernel.
 
 ![img_127](./images/img_127.png)
 
-Accept the Waring to proceed:
+Accept the Warning to proceed:
 
 ![img_128](./images/img_128.png)
 
@@ -982,7 +982,7 @@ Then to the left select IPython Console. To the right select the Graphics Tab an
 
 ![img_132](./images/img_132.png)
 
-The screenshots in this guide use Spyder with the Spyder (light) appearance. This can beselected from the Appearance Tab:
+The screenshots in this guide use Spyder with the Spyder (light) appearance. This can be selected from the Appearance Tab:
 
 ![img_133](./images/img_133.png)
 
@@ -1046,7 +1046,7 @@ mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl 
 jupyter lab build
 ```
 
-Check the latest version of JupyterLab is being installed. If not cancel the opreration and assign JupyterLab to the latest version using a modifying the above command. 
+Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using a modifying the above command. 
 
 There is no Start Menu Shortcut for JupyterLab. To launch JupyterLab, use the Mambaforge Prompt, activate the ```jupyterlab``` Python environment and use:
 
@@ -1121,7 +1121,7 @@ The plot displays inline as an IPython cell output:
 
 ![img_160](./images/img_160.png)
 
-Although JupyterLab can be used with Python Script Files (```.py``` file extension). It is typicallyed used with Interactive Python Notebook Files (```.ipynb``` file extension). A new Notebook can be created in the Launcher:
+Although JupyterLab can be used with Python Script Files (```.py``` file extension). It is typically used with Interactive Python Notebook Files (```.ipynb``` file extension). A new Notebook can be created in the Launcher:
 
 ![img_161](./images/img_161.png)
 
@@ -1149,7 +1149,7 @@ The Code cells behave similar to an IPython Console:
 
 ![img_167](./images/img_167.png)
 
-Existing cells can however be editted and then rerun:
+Existing cells can however be edited and then rerun:
 
 ![img_168](./images/img_168.png)
 
@@ -1185,7 +1185,7 @@ The docstring can also be viewed as a cell output. If the cell output is long, t
 
 ![img_176](./images/img_176.png)
 
-Interactive plots cna be made using plotly:
+Interactive plots can be made using plotly:
 
 ![img_177](./images/img_177.png)
 
@@ -1306,6 +1306,8 @@ Select the ```vscode``` Python Environment:
 
 ![img_199](./images/img_199.png)
 
+The Current Working Directory in VSCode will be the folder that was opened in VSCode. There is a new folder icon which can be used to create subfolders. If subfolders are created with script files. When the script file is run, the Current Working Directory will be the folder opened within Visual Studio Code and not the subfolder. The subfolder can be opened directly within VSCode to set it as the Current Working Directory.
+
 Visual Code Studio uses Microsoft's IntelliSense giving code suggestions as you type:
 
 ![img_200](./images/img_200.png)
@@ -1322,7 +1324,7 @@ And the plot displays in a seperate Window:
 
 ![img_203](./images/img_203.png)
 
-It is possible to run the script file using individual cells in an Ipython console:
+It is possible to run the script file using individual cells in an IPython console:
 
 ![img_204](./images/img_204.png)
 
