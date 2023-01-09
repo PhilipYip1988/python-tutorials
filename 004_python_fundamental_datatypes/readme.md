@@ -146,7 +146,7 @@ An object is not removed by Pythons garbage collector untill all references to i
 
 ## The string class
 
-For the text datatype there is the ```str``` class. ```str``` is an abbreviation for a string of characters. The ```str``` class can be conceptualised as an abstract blueprint, which in the case of the ``str``` class is written in C. The initialization signature of the ```str``` has some similarities to the hypothetical ```Banana``` class examined earlier:
+For the text datatype there is the ```str``` class. ```str``` is an abbreviation for a string of characters. The ```str``` class can be conceptualised as an abstract blueprint, which in the case of the ```str``` class is written in C. The initialization signature of the ```str``` has some similarities to the hypothetical ```Banana``` class examined earlier:
 
 ```
 str_1 = str()
