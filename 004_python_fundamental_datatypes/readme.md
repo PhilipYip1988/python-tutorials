@@ -11,15 +11,17 @@ In python consider the following fundamental types of data:
 
 ## Object Orientated Programming
 
-Python is an Object Orientated Programming (OOP) language. To conceptualise some of the features of OOP. Consider a hypothetical ```Banana``` class. The ```Banana``` class itself can be considered as an abstract blueprint which under the hood contains instructions. These instructions tell Python how to construct a ```banana``` object. They also define the properties of a ```banana``` object and the behaviour behind a ```banana``` object can exhibit. 
+Python is an Object Orientated Programming (OOP) language. To conceptualise some of the features of OOP. Consider a hypothetical ```Banana``` class. The ```Banana``` class itself should be considered as an abstract blueprint which under the hood contains instructions. These instructions tell Python how to construct a ```banana``` object. They also define the properties of a ```banana``` object (these properties are known as attributes) and the behaviour that a ```banana``` object can exhibit (the behaviour is defined using methods). 
 
 ![img_142](./images/img_142.png)
 
-A banana object can be constructed by telling Python to use the hypothetical ```Banana``` class. The constructor has the form:
+A banana object can be constructed by telling Python to use the hypothetical ```Banana``` class. The initialization signature is a method that has the following form:
 
 ```
 Banana()
 ```
+
+A method is a function that belongs to a class and functions are called using parenthesis ```( )```. The parenthesis are also used to supply input arguments to a function during the function call. The purpose of the initialization signature is to initialize unique variables in an instance, instance variables which are known as instance attributes. For simplicity, the ```Banana``` classes initialization signature has no input arguments and there is therefore no unique instance variables:
 
 ![img_143](./images/img_143.png)
 
@@ -43,17 +45,17 @@ You can ask your friend to specify the ```color``` of ```banana_1```. To do so y
 banana_1.color
 ```
 
-When the banana is new, the color returned will be ```yellow``` as it is fresh: 
+When the banana is new, the color returned will be ```yellow``` as it is fresh. This attribute is an example of a class variable. The class variable is common to all ```Banana``` object instances during instantiation and therefore is not supplied in the classes initialization signature. It is instead hardcoded into the ```Banana``` class:
 
 ![img_144](./images/img_144.png)
 
-If the banana object ```banana_1``` is older than a week, it will likely have aged and instead return the color ```brown```:
+If the ```banana``` object with label ```banana_1``` is older than a week it will have aged, and the color returned will instead be ```brown```: 
 
 ![img_145](./images/img_145.png)
 
 Behind the scenes an attribute is a data variable and looking up an attribute is just instructing the Python interpretter to look up this attribute without further interaction with the ```banana``` object.
 
-Python objects also have methods. A method can be conceptualised as an action. For example you can ask the Python Interpretter to peel ```banana_1``` using:
+Python objects also have methods. A method can be conceptualised as an action, under the hood, the ```Banana``` class will use a method that defines how the banana object ages and in this simple example the method changes the value of the instance attribute color. Another method can be conceptualised as an action for example peeling the ```banana_1``` using:
 
 ```
 banana_1.peel()
@@ -61,9 +63,9 @@ banana_1.peel()
 
 ![img_146](./images/img_146.png)
 
-Notice that the method has ```( )```. This indicates that the method is under the hood calling a Python function. The purpose of the ```( )``` in a function call is to supply input arguments. Many methods do not require input arguments as they are acting internally upon the attributes of the object they are called from.
+Notice once again that the method is called using ```( )```. Many methods do not require input arguments as they are acting internally upon the attributes of the object they are called from. In this case the attributes of the instance that were defined in the ```Banana``` class or provided during inilization of the ```banana``` instance.
 
-Multiple objects can be constructed from a common class. For example:
+Multiple objects can be constructed from a common class, in the same way that multiple cars can be constructed from a common blueprint. In the case of the ```Banana``` class:
 
 ```
 banana_2 = Banana()
@@ -144,13 +146,36 @@ An object is not removed by Pythons garbage collector untill all references to i
 
 ## The string class
 
-For the text datatype there is the ```str``` class. ```str``` is an abbreviation for a string of characters.
+For the text datatype there is the ```str``` class. ```str``` is an abbreviation for a string of characters. The ```str`` class can be conceptualised as an abstract blueprint, which in the case of the ``str``` class is written in C. The initialization signature of the ```str``` has some similarities to the hypothetical ```Banana``` class examined earlier:
 
-Note that text contained as part of a string must be enclosed in quotations. 
+```
+str_1 = str()
+```
+
+```
+banana_1 = Banana()
+```
+
+By convention, inbuilt classes use ```snake_case``` and custom classes use ```PascalCase```. If the initialization signature of the ```str``` class has no input argument, then the instance ```str_1``` will be an empty string, that is a string of characters with no characters. Another instance can be created with the input argument assigned to ```'hello'```:
+
+```
+str_2 = str('hello')
+```
+
+Note that text provided in the input argument must be enclosed in quotations, in order for Python to recognise them as belonging to a string of characters. If these are excluded, Python will recognise the text as an object name i.e. as a label to another object and attempt to retrieve that object.
+
+As the ```str``` class is a fundamental datatype in Python, it can also be instantiated shorthand using:
+
+```
+str_3 = 'hello'
+```
+
+
+
 
 ![img_001](./images/img_001.png)
 
-These quotations can either be a set of double quotations ```" "``` or a set of single quotations ```' '```. For example:
+These quotations can either be a set of single quotations ```' '``` (used by default) or a set of double quotations ```" "```. For example:
 
 ```
 "hello"
