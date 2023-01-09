@@ -1,4 +1,4 @@
-# fundamental datatypes
+# Fundamental Datatypes
 
 In python consider the following fundamental types of data:
 
