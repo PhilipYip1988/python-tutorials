@@ -2,20 +2,17 @@
 
 This tutorial will configure Python 3.11 on a Linux/Mac computer using Mambaforge.
 
-[YouTube Video](https://www.youtube.com/watch?v=BOTfBW3KQh8)
-
 ## System Requirements
 
 The PC should match or exceed the following system requirements:
 
-* Modern Distribution e.g. Ubuntu 22.10, Fedora 37 or Ubuntu 22.04 LTS/Mint 21.1
+* Modern Linux Distribution e.g. Ubuntu 22.10, Fedora 37 or Ubuntu 22.04 LTS/Mint 21.1 or Mac OS X
 * 6th Generation Intel i5 Processor or Later
 * 8 GB RAM or Superior
 * 250 GB SSD or Superior
 * Chromium or Google Chrome Browser
-The performance will be very poor if these system requirements are not satisfied.
-
-Alternatively a Mac with equivalent hardware specifications can be used.
+  
+The performance for Python will be poor if these system requirements are not satisfied.
 
 ## Uninstall
 
