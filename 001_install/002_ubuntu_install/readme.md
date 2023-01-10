@@ -2,8 +2,6 @@
 
 This tutorial will configure Python 3.11 on a Linux/Mac computer using Mambaforge.
 
-[YouTube Video](https://www.youtube.com/watch?v=BOTfBW3KQh8)
-
 ## System Requirements
 
 The PC should match or exceed the following system requirements:

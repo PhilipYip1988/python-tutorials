@@ -2,8 +2,6 @@
 
 This tutorial will configure Python 3.11 on a Windows 11 computer using Mambaforge.
 
-[YouTube Tutorial](https://www.youtube.com/watch?v=O-WZedLq_sE)
-
 ## System Requirements
 
 The PC should match or exceed the following system requirements:
@@ -20,7 +18,7 @@ The performance for Python will be very poor if these system requirements are no
 
 Before proceeding uninstall any version of Python or Python distributions you may have previously installed such as Anaconda, Miniconda, Mambaforge or Miniforge. Uninstall any standalone Spyder and any other Python IDEs. This will clean up your computer and prevent any confusion.
 
-If you have two versions of one of these distributions installed and have uninstalled the latest version . The Windows 11 Installed Apps may still have the old version remaining but have problems removing it. In such a scenario you may get better results by accessing the older Windows 7 Programs and Features. This can be accessed by pressing ```⊞``` and ```r``` to open up a run dialog. Input ```appwiz.cpl```.
+If you have two versions of one of these distributions installed and have uninstalled the latest version... the Windows 11 Installed Apps may still list the old version but have problems removing it. In such a scenario you may get better results by accessing the older Programs and Features. This can be accessed by pressing ```⊞``` and ```r``` to open up a run dialog. Input ```appwiz.cpl```.
 
 ## Mambaforge Install
 
