@@ -119,11 +119,180 @@ weekday = {1: 'Monday',
 
 The four methods beginning with ```from```; ```fromisocalendar```, ```fromisoformat```, ```fromordinal```, ```fromtimestamp``` are alternative constructors. These alternative constructors are class methods and output a new ```date``` instance. ```today``` is also a class method which constructs a ```date``` instance from the date on the system clock.
 
-There are also ```isocalendar```, ```isoformat```, ```toordinal```
+```
+date.today()
+```
+
+The timestamp is a unit of measurement in seconds that begins from the Epoch Time ```1970, 1, 1``` is at ```0``` seconds. The Epoch timestamp is used by the ```time``` module:
+
+```
+import time
+time.time()
+```
+
+Recall that 1 day == 24 hours == 24 * 60 minutes == 24 * 60 * 60 seconds. For simplicity the following variable can be defined:
+
+```
+day = 24 * 60 * 60
+```
+
+As seen when ```dt.date.today()``` was used, it is ```2023, 1, 11``` and it is roughly midday.
+
+
+The number of years from 2023 to 1970 are:
+
+```
+2023 - 1970
+```
+
+Therefore the rough time in seconds is:
+
+```
+53 * 365.2425 * day + (11.5 - 1) * day
+```
+
+This gives a timestamp within the accuracy of a day.
+
+
+The following is therefore equivalent to ```dt.date.today()```:
+
+```
+dt.date.fromtimestamp(time.time())
+```
+
+And the following can be examined:
+
+```
+dt.date.fromtimestamp(0*day)
+dt.date.fromtimestamp(1*day)
+dt.date.fromtimestamp(10*day)
+```
+
+
+The ordinal date begins at:
+
+```
+dt.date.min
+```
+
+And 1 ordinal unit is 1 day.
+
+```
+dt.date.min.toordinal()
+```
+
+The ordinal time today can be measured using:
+
+```
+dt.date.today().toordinal()
+```
+
+As seen when ```dt.date.today()``` was used, it is ```2023, 1, 11``` and it is roughly midday. Therefore, the ordinal time can be calculated to be approximately:
+
+```
+int((2023 - 1) * 365.2425 * 1 + (11.5 - 1) * 1)
+```
+
+This gives an accuracy of a day, taking into account rounding.
+
+```
+dt.date.today().isoformat()
+```
+
+```
+dt.date.fromisoformat(dt.date.fromisoformat('2023-01-11'))
+```
+
+```
+dt.date.today().isocalendar()
+```
+
+```
+dt.date.today().isoweekday()
+```
+
+```
+dt.date.fromisocalendar(year=2023, week=2, weekday=3)
+```
+
+There is some inconsistency:
+
+```
+dt.date.fromisocalendar(year=2023, week=2, day=3)
+```
+
 
 ```ctime``` is a C style string.
 
-```strftime``` is like a formatted string for the time object.
+```
+dt.date.today().ctime()
+```
+
+```strftime``` is like a formatted string for the time object with its own associated format codes.
+
+In general lower case format codes are reserved for a date ```%y```, ```%m```, ```%d``` in a 2 digit format:
+
+```
+dt.date.today().strftime('%y')
+```
+
+```
+dt.date.today().strftime('%m')
+```
+
+```
+dt.date.today().strftime('%d')
+```
+
+Upper case codes are reserved for a time ```%H```, ```%M```, ```%S``` in a 2 digit format and the distinction is made because month and minute both start with m:
+
+```
+dt.date.today().strftime('%H')
+```
+
+```
+dt.date.today().strftime('%M')
+```
+
+```
+dt.date.today().strftime('%S')
+```
+
+The time component in microsecond uses a 6 digit format, and it also begins with a m. The microsecond component uses the code ```f```:
+
+```
+dt.date.today().strftime('%f')
+```
+
+These four time units have the value of 0 for a date. Recall that ```dt.date.resolution``` has an accuracy of 1 day.
+
+Because there is no confusion for year and day as no other date or time unit begin with y or d. The upper case versions of these formats give the year in a 4 digit format and the day in an American format ```MM/DD/YY```:
+
+```
+dt.date.today().strftime('%Y')
+```
+
+```
+dt.date.today().strftime('%D')
+```
+
+These can be combined to make a British format:
+
+```
+dt.date.today().strftime('%d/%m/%y')
+```
+
+Additional format codes are available https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
+
+
+If the directory of a ```date``` class is examined:
+
+```
+dir(dt.date)
+```
+
+Notice that the ```__add__``` and ```__sub__``` datamodel methods are defined alongside the 6 comparison operators ```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__```, and ```__le__```. This means the ```+``` and ```-``` operators can be used alongside the ```==```, ```!=```, ```>```, ```>=```, ```<``` and ```<=``` operators.
+
 
 
 ```dir```
