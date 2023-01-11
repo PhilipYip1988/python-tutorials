@@ -291,7 +291,7 @@ If the directory of a ```date``` class is examined:
 dir(dt.date)
 ```
 
-Notice that the ``__sub__``` and ```__add__``` datamodel methods are defined alongside the 6 comparison operators ```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__```, and ```__le__```. This means the ```-``` and ```+``` operators can be used alongside the ```==```, ```!=```, ```>```, ```>=```, ```<``` and ```<=``` operators.
+Notice that the ```__sub__``` and ```__add__``` datamodel methods are defined alongside the 6 comparison operators ```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__```, and ```__le__```. This means the ```-``` and ```+``` operators can be used alongside the ```==```, ```!=```, ```>```, ```>=```, ```<``` and ```<=``` operators.
 
 ```
 today = dt.date.today()
