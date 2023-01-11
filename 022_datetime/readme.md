@@ -291,7 +291,53 @@ If the directory of a ```date``` class is examined:
 dir(dt.date)
 ```
 
-Notice that the ```__add__``` and ```__sub__``` datamodel methods are defined alongside the 6 comparison operators ```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__```, and ```__le__```. This means the ```+``` and ```-``` operators can be used alongside the ```==```, ```!=```, ```>```, ```>=```, ```<``` and ```<=``` operators.
+Notice that the ``__sub__``` and ```__add__``` datamodel methods are defined alongside the 6 comparison operators ```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__```, and ```__le__```. This means the ```-``` and ```+``` operators can be used alongside the ```==```, ```!=```, ```>```, ```>=```, ```<``` and ```<=``` operators.
+
+```
+today = dt.date.today()
+yesterday = today.replace(day=today.day-1)
+```
+
+```
+today
+yesterday
+```
+
+The ```__sub__``` datamodel method is designed to compute the time difference between two ```date``` instances:
+
+
+```
+today - yesterday
+```
+
+This returns a ```timedelta``` with a resolution of a day, recall that ```dt.date.resolution``` has an accuracy of 1 day. The ```__add__``` datamodel method is configured to use a ```date``` instance and add a ```timedelta``` instance to it. 
+
+
+```
+tomorrow = today + dt.timedelta(days=1)
+```
+
+It will not work with two ```date``` instances as this does not make sense.
+
+
+This method can be thought of as being setup similar to the ```__mul__``` method on a string class:
+
+```
+'hello' * 3
+```
+
+```
+'hello' * 'hello'
+```
+
+```
+tomorrow > today
+```
+
+```
+yesterday < tomorrow
+```
+
 
 
 
