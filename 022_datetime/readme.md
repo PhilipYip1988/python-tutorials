@@ -1,6 +1,6 @@
 # DateTime and ZoneInfo Modules
 
-The datetime module contains classes for manipulating dates and times. The ```datetime``` module can be imported using the alias ```dt```:
+The ```datetime``` module contains classes for manipulating dates and times an is complemented by the ```zoneinfo``` module which has improvements on timezone implementations. The ```datetime``` module can be imported using the alias ```dt```:
 
 ```
 import datetime as dt
