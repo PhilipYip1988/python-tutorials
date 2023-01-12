@@ -389,7 +389,7 @@ Time Zones are however based on 15 degree intervals. There are 24 hours in a day
 
 Greenwich Mean Time was originally used as a Coordinated Time for Time Zones when Time standards were based upon Astronomy. Universal Coordinated Time (UTC) is a revised version of Greenwich Mean Time (GMT) which uses the more accurate Atomic Clock as a Time standard. Nowadays the two terms are used interchangeably. 
 
-In the United Kingdom, two time zones are used, depending on the time of the year. GMT (UTC) is used October - March and BST (UTC+1) is used March - October. The clocks go forward over the summer months and BST is an abbreviation for British Summer Time. The precise day the clocks change, varies from year to year.
+In the United Kingdom, two time zones are used, depending on the time of the year. GMT (UTC) is used October - March and BST (UTC+1) is used March - October. The clocks go forward over the summer months and BST is an abbreviation for British Summer Time. The clocks go forward 1 hour at 01:00:00 on the last Sunday in March, this clock change is known as daylight savings time as its purpose is to optimise the number of hours of daylight encountered during the working day over the summer months where the number of hours of daylight are longer. The clocks go back 1 hour at 02:00:00 on the last Sunday in October ending daylight savings time. 
 
 The ```datetime``` module has an abstract ```tzinfo``` class and ```timezone``` class that can be used to create a timezone with a constant offset from UTC. The initialization signature of the ```timezone``` class can be viewed by inputting ```dt.timezone()``` followed by inputing shift ```⇧``` and tab ```↹```:
 
@@ -426,12 +426,196 @@ The two identifiers of interest are the ```available_timezones``` function and t
 
 ![img_054](./images/img_054.png)
 
-Each string corresponds to a valid ```timezone```. 
+Each string corresponds to a valid ```timezone```. These strings can be used as input arguments to the ```ZoneInfo``` class to create a valid timezone:
+
+```
+london = zoneinfo.ZoneInfo('Europe/London')
+```
 
 
 ## time class
 
 The initialization signature of the ```time``` class can be viewed by inputting ```dt.time()``` followed by inputing shift ```⇧``` and tab ```↹```:
+
+```
+time1 = dt.time(hour=12, minute=45, second=30, microsecond=250000, tzinfo=london)
+```
+
+```
+midday.min
+midday.max
+midday.resolution
+```
+
+```
+midday.hour
+midday.minute
+midday.second
+midday.microsecond
+midday.tzinfo
+```
+
+The ```replace``` and ```strftime``` methods
+
+The ```isoformat``` and ```fromisoformat```.
+
+
+
+The ```fold``` attribute is ```0``` and the two functions ```tzname``` and ```utcoffset``` return ```None```. These are reserved for ```datetime``` instances which compose a date and time. They will be explored in the ```datetime``` class. 
+
+
+
+## The datetime class
+
+The initialization signature of the ```datetime``` class can be viewed by inputting ```dt.date()``` followed by inputing shift ```⇧``` and tab ```↹```. The initialization signature requires the input arguments of the ```date``` class and the input arguments of the ```time``` class:
+
+
+
+```
+python3releasedatemidday = dt.datetime(year=2008, month=12, day=3, 
+                                       hour=12, minute=0, second=0, 
+                                       microsecond=0, tzinfo=london)
+```
+
+
+The alternative constructor ```combine``` can be used to ```combine``` a ```date``` and a ```time```:
+
+
+
+
+```
+python3releasedatemidday = dt.datetime.combine(date=python3releasedate,
+                                               time=midday)
+```
+
+
+
+
+
+
+
+docstring
+
+```
+dt.datetime.utcnow()
+```
+
+
+docstring
+
+```
+dt.datetime.now(tz=london)
+dt.datetime.now()
+```
+
+
+now = dt.datetime.now(tz=london)
+now
+
+
+
+now.year
+now.month
+now.day
+now.hour
+now.minute
+now.second
+now.microsecond
+now.tzinfo
+
+now.min
+now.max
+now.resolution
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The ```fold``` attribute is ```0```. This parameter is used to distinguish between duplicate times when clocks go back.
+
+```
+now.fold
+```
+
+In the United Kingdom the clocks go forward 1 hour at 01:00:00 on the last Sunday in March, and back 1 hour at 02:00:00 on the last Sunday in October.
+
+|Clocks Go Forward|Clocks Go Back|
+|---|---|
+|2022-03-27|2022-10-30|
+|2023-03-26|2023-10-29|
+|2024-03-31|2024-10-27|
+|2025-03-30|2022-10-26|
+
+These means that there is an hour of duplication between 01:00:00 and 02:00:00 when the clocks go back known as an hour fold. The hour before the clock change has a fold value ```fold=0``` and the hour after the clock change has a fold value of ```fold=1```. Since no other times are duplicated, the fold value used is  typically ```fold=0```.
+
+```
+beforefold = dt.datetime(year=2023, month=10, day=29, 
+                         hour=1, minute=30, second=0, 
+                         microsecond=0, tzinfo=london,
+                         fold=0)
+```
+
+```
+afterfold = dt.datetime(year=2023, month=10, day=29, 
+                        hour=1, minute=30, second=0, 
+                        microsecond=0, tzinfo=london,
+                        fold=1)
+```
+
+```
+beforefold.dst()
+afterfold.dst()
+```
+
+```
+beforefold.tzname()
+afterfold.tzname()
+```
+
+```
+beforefold.utcoffset()
+afterfold.utcoffset()
+```
+
+
+```
+beforefold.astimezone()
+afterfold.astimezone()
+```
+
+
+```
+afterfold - beforefold
+```
+
+
+
+now.isoformat()
+
+dt.datetime.fromisoformat('2023-01-12T07:33:53.732782+00:00')
+
+Note
+
+dt.datetime.fromisoformat('2023-01-12T07:33:53.732782+00:00').replace(tzinfo=london)
 
 
 
