@@ -1,4 +1,4 @@
-# Datetime and TimeZone Information Modules
+# DateTime and ZoneInfo Modules
 
 The datetime module contains classes for manipulating dates and times. The ```datetime``` module can be imported using the alias ```dt```:
 
@@ -377,7 +377,7 @@ yesterday < tomorrow
 
 ![img_047](./images/img_047.png)
 
-## timezone class
+## timezone and tzinfo class
 
 Time Zones roughly correlate with the lines of longitude on the globe. The Prime Meridian is the line of longitude designated 0 degrees and runs through Greenwich, UK. Google Earth displays the lines of longitude in 10 degree intervals:
 
@@ -389,21 +389,21 @@ Time Zones are however based on 15 degree intervals. There are 24 hours in a day
 
 Greenwich Mean Time was originally used as a Coordinated Time for Time Zones when Time standards were based upon Astronomy. Universal Coordinated Time (UTC) is a revised version of Greenwich Mean Time (GMT) which uses the more accurate Atomic Clock as a Time standard. Nowadays the two terms are used interchangeably. 
 
-In the United Kingdom, two time zones are used, depending on the time of the year. GMT (UTC) is used October - March and BST (UTC+1) is used March - October. The clocks go forward over the summer months and BST is an abbreviation for British Summer Time. The clocks go forward 1 hour at 01:00:00 on the last Sunday in March, this clock change is known as daylight savings time as its purpose is to optimise the number of hours of daylight encountered during the working day over the summer months where the number of hours of daylight are longer. The clocks go back 1 hour at 02:00:00 on the last Sunday in October ending daylight savings time. 
+In the United Kingdom, two time zones are used, depending on the time of the year. GMT (UTC) is used October - March and BST (UTC+01:00:00) is used March - October. The clocks go forward over the summer months and BST is an abbreviation for British Summer Time. The clocks go forward 1 hour at 01:00:00 on the last Sunday in March, this clock change is known as daylight savings time as its purpose is to optimise the number of hours of daylight encountered during the working day over the summer months where the number of hours of daylight are longer. The clocks go back 1 hour at 02:00:00 on the last Sunday in October ending daylight savings time. 
 
-The ```datetime``` module has an abstract ```tzinfo``` class and ```timezone``` class that can be used to create a timezone with a constant offset from UTC. The initialization signature of the ```timezone``` class can be viewed by inputting ```dt.timezone()``` followed by inputing shift ```⇧``` and tab ```↹```:
+The ```datetime``` module has an abstract ```tzinfo``` class and a basic ```timezone``` class that can be used to create a timezone with a constant offset from UTC. The initialization signature of the ```timezone``` class can be viewed by inputting ```dt.timezone()``` followed by inputing shift ```⇧``` and tab ```↹```:
 
 ![img_050](./images/img_050.png)
 
-The initialization signature requires an instance of the ```timedelta``` class using the ```hours``` keyword input argument:
+The documentation of these two classes is sparse as they are being phased out, in favour of the ```ZoneInfo``` class which at this moment in time is contained within a seperate module ```zoneinfo```. The initialization signature requires an instance of the ```timedelta``` class using the ```hours``` keyword input argument:
 
 ![img_051](./images/img_051.png)
 
 The following implementations can be carried out:
 
 ```
-utc = dt.timezone(dt.timedelta(hours=0))
-gmt = dt.timezone(dt.timedelta(hours=1))
+gmt = dt.timezone(dt.timedelta(hours=0))
+bst = dt.timezone(dt.timedelta(hours=1))
 ```
 
 ![img_052](./images/img_052.png)
@@ -432,13 +432,14 @@ Each string corresponds to a valid ```timezone```. These strings can be used as 
 london = zoneinfo.ZoneInfo('Europe/London')
 ```
 
+I suspect at some point in the future, the ```tzinfo``` module will be merged into the ```datetime``` module and the classes ```tzinfo``` and ```timezone``` will be depreciated. However this will take a while as the ```datetime``` module is widely used and changing its functionality may introduce lots of problems in Python internally that need to be addressed.
 
 ## time class
 
 The initialization signature of the ```time``` class can be viewed by inputting ```dt.time()``` followed by inputing shift ```⇧``` and tab ```↹```:
 
 ```
-time1 = dt.time(hour=12, minute=45, second=30, microsecond=250000, tzinfo=london)
+midday = dt.time(hour=12, minute=0, second=0, microsecond=0, tzinfo=london)
 ```
 
 ```
