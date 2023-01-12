@@ -454,6 +454,22 @@ The initialization signature of the ```time``` class can be viewed by inputting 
 midday = dt.time(hour=12, minute=0, second=0, microsecond=0, tzinfo=london)
 ```
 
+
+
+Only the second and microsecond are in the International System of units which uses the decimal system. The Decimal system originates from the romans who based their numbering system on 10 due to the fact that humans possess 10 fingers.
+
+The way we compute times is grounded in history and has influences from the Babylonians who counted using the phalanxes on their fingers. They excluded the thumbs for counting.
+
+
+
+
+
+
+
+
+
+
+
 ```
 midday.min
 midday.max
