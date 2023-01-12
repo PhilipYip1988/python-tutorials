@@ -103,9 +103,9 @@ The random module is a pseudo random number generator which can be used to selec
 
 [Random Module](./021_random/)
 
-Work in progress...
+The datetime module is a module for working with dates and times. The associated zoneinfo module is for dealing with timezones. The time module is a module written in C and exists mainly for advanced use timing applications. There are a couple of the functions from the time module that are commonly used such as time which retrieved the time from the system hardware and sleep which is used to delay execution of a Python script. 
 
-DateTime Module
+[DateTime, ZoneInfo and Time Modules](./022_datetime/)
 
 Fraction Module
 

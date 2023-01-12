@@ -28,7 +28,7 @@ There are five main classes ```date``` for working with dates, ```time``` for wo
 
 ## date class
 
-The initialization signature of the ```date``` class can be viewed by inputting ```dt.date()``` followed by inputing shift ```⇧``` and tab ```↹```
+The initialization signature of the ```date``` class can be viewed by inputting ```dt.date()``` followed by inputting shift ```⇧``` and tab ```↹```
 
 ![img_003](./images/img_003.png)
 
@@ -298,7 +298,7 @@ dt.date.today().strftime('%S')
 
 ![img_036](./images/img_036.png)
 
-The time component in microsecond uses a 6 digit format, and it also begins with a m. The microsecond component uses the code ```f```:
+The time component in microsecond uses a 6 digit format, and it also begins with a m. The microsecond component uses the code ```%f```:
 
 ```
 dt.date.today().strftime('%f')
@@ -415,16 +415,18 @@ The following implementations can be carried out:
 
 ```
 gmt = dt.timezone(dt.timedelta(hours=0))
+gmt
 bst = dt.timezone(dt.timedelta(hours=1))
+bst
 ```
 
 ![img_052](./images/img_052.png)
 
-The crude implementation above is **not recommended** as it will not accomodate clock changes.
+The crude implementation above is **not recommended** as it will not accommodate clock changes. 
 
 ## ZoneInfo class
 
-A more through implementation is in the timezone information module ```tzinfo```. The ```tzinfo``` module is used to manage timezones by capital city location on the map. The ```zoneinfo``` can be imported using:
+A more through implementation is in the inbuilt timezone information module ```tzinfo```, this includes functionality that was previously used in the third-party module ```pytz```. The ```tzinfo``` module is used to manage timezones by capital city location on the map. The ```zoneinfo``` can be imported using:
 
 ```
 import zoneinfo
@@ -444,37 +446,37 @@ Each string corresponds to a valid ```timezone```. These strings can be used as 
 london = zoneinfo.ZoneInfo('Europe/London')
 ```
 
+![img_055](./images/img_055.png)
+
 I suspect at some point in the future, the ```tzinfo``` module will be merged into the ```datetime``` module and the classes ```tzinfo``` and ```timezone``` will be depreciated. However this will take a while as the ```datetime``` module is widely used and changing its functionality may introduce lots of problems in Python internally that need to be addressed.
+
+In the meantime it is more common to import the ```datetime``` module and setup the timezone using the following:
+
+```
+import datetime as dt
+from zoneinfo import ZoneInfo
+london = ZoneInfo('Europe/London')
+```
+
+![img_056](./images/img_056.png)
 
 ## time class
 
 The initialization signature of the ```time``` class can be viewed by inputting ```dt.time()``` followed by inputing shift ```⇧``` and tab ```↹```:
 
+![img_057](./images/img_057.png)
+
 ```
 midday = dt.time(hour=12, minute=0, second=0, microsecond=0, tzinfo=london)
 ```
 
+![img_058](./images/img_058.png)
 
+A list of identifiers that can be accessed from the ```time``` object ```midday``` can be accessed by inputting ```midday.``` followed by a tab ```↹```:
 
-Only the second and microsecond are in the International System of units which uses the decimal system. The Decimal system originates from the romans who based their numbering system on 10 due to the fact that humans possess 10 fingers.
+![img_059](./images/img_059.png)
 
-The way we compute times is grounded in history and has influences from the Babylonians who counted using the phalanxes on their fingers. They excluded the thumbs for counting.
-
-
-
-
-
-
-
-
-
-
-
-```
-midday.min
-midday.max
-midday.resolution
-```
+The attributes ```hour```, ```minute```, ```second``` and ```microsecond``` give the hour, minute, second and microsecond as integers which were provided during instantantiation. The attribute ```tzinfo``` gives the time zone which was provided during instantantiation:
 
 ```
 midday.hour
@@ -484,21 +486,62 @@ midday.microsecond
 midday.tzinfo
 ```
 
-The ```replace``` and ```strftime``` methods
+![img_060](./images/img_060.png)
 
-The ```isoformat``` and ```fromisoformat```.
+The attributes  ```max``` and ```min``` are class attributes and give the maximum and minimum possible ```date``` instance:
 
+```
+midday.max
+midday.min
+```
 
+![img_061](./images/img_061.png)
 
-The ```fold``` attribute is ```0``` and the two functions ```tzname``` and ```utcoffset``` return ```None```. These are reserved for ```datetime``` instances which compose a date and time. They will be explored in the ```datetime``` class. 
+The attribute resolution, gives the time resolution of the ```time``` instance, as a ```timedelta``` instance. This gives a resolution of a microsecond corresponding to the smallest time unit possible:
 
+```
+midday.resolution
+```
 
+![img_062](./images/img_062.png)
+
+This time limit is brought about hardware which use a microcontroller or processor with microsecond timing capability.
+
+Although the resolution returns a ```timedelta``` of 1 microsecond. The ```time``` class is not set up to compute time differences. If the directory of the ```time``` class is examined:
+
+```
+dir(dt.time)
+```
+
+![img_063](./images/img_063.png)
+
+Notice that the ```__sub__``` and ```__add__``` datamodel methods are not shown.
+
+![img_064](./images/img_064.png)
+
+Differences are instead computed with the ```datetime``` class. The ```replace``` and ```strftime``` methods behave in a similar manner to their counterparts seen in the ```date``` class.
+
+The ```isoformat``` displays the ```time``` instance as an isoformat string:
+
+![img_065](./images/img_065.png)
+
+The class method ```fromisoformat``` can be used to construct a ```time``` instance from an isoformat string:
+
+![img_066](./images/img_066.png)
+
+Note that doing so does not retain the ```timezone```, to supply this, the ```fromisoformat``` method can be used in conjunction to the ```replace``` method:
+
+```
+dt.time.fromisoformat('12:00:00').replace(tzinfo=london)
+```
+
+![img_067](./images/img_067.png)
 
 ## The datetime class
 
-The initialization signature of the ```datetime``` class can be viewed by inputting ```dt.date()``` followed by inputing shift ```⇧``` and tab ```↹```. The initialization signature requires the input arguments of the ```date``` class and the input arguments of the ```time``` class:
+The initialization signature of the ```datetime``` class can be viewed by inputting ```dt.datetime()``` followed by inputing shift ```⇧``` and tab ```↹```. The initialization signature requires the input arguments of the ```date``` class and the input arguments of the ```time``` class:
 
-
+![img_068](./images/img_068.png)
 
 ```
 python3releasedatemidday = dt.datetime(year=2008, month=12, day=3, 
@@ -506,43 +549,56 @@ python3releasedatemidday = dt.datetime(year=2008, month=12, day=3,
                                        microsecond=0, tzinfo=london)
 ```
 
+![img_069](./images/img_069.png)
+
 
 The alternative constructor ```combine``` can be used to ```combine``` a ```date``` and a ```time```:
 
-
-
+![img_070](./images/img_070.png)
 
 ```
-python3releasedatemidday = dt.datetime.combine(date=python3releasedate,
-                                               time=midday)
+python3releasedate = dt.date(year=2008, month=12, day=3)
+midday = dt.time(hour=12, minute=0, second=0, microsecond=0, tzinfo=london)
+
+python3releasedate_midday = dt.datetime.combine(date=python3releasedate, 
+                                                time=midday)
 ```
 
+![img_071](./images/img_071.png)
 
+There are two class methods that construct a ```datetime``` instance from the system clock. The first is ```utcnow``` which reads off the system clock and assigns the timezone to UTC automatically:
 
-
-
-
-
-docstring
+![img_072](./images/img_072.png)
 
 ```
 dt.datetime.utcnow()
 ```
 
+![img_073](./images/img_073.png)
 
-docstring
+The second is ```now``` which has an optional input argument ```tz```:
+
+![img_074](./images/img_074.png)
+
+It no ```tz``` is specified, the local timezone is used. However this is not specified in the instance. It is recommended to include this:
 
 ```
-dt.datetime.now(tz=london)
 dt.datetime.now()
+dt.datetime.now(tz=london)
 ```
 
+![img_075](./images/img_075.png)
 
+```
 now = dt.datetime.now(tz=london)
 now
+```
 
+![img_076](./images/img_076.png)
 
+The ```datetime``` class is a child class fot he ```date``` class and the ```time``` class, it therefore possess all the attributes and methods from either parent class. The ```now``` instance has the following attributes ```year```, ```month```, ```day``` which was seen in the ```date``` class and ```hour```, ```minute```, ```second```, ```microsecond``` and ```tzinfo``` which was seen in the ```time``` class respectively. These were all also seen in the initialization signature of the ```datetime``` class:
 
+```
 now.year
 now.month
 now.day
@@ -551,39 +607,156 @@ now.minute
 now.second
 now.microsecond
 now.tzinfo
+```
 
-now.min
+![img_077](./images/img_077.png)
+
+The attributes  ```max``` and ```min``` are class attributes and give the maximum and minimum possible ```datetime``` instance:
+
+```
 now.max
-now.resolution
+now.min
+```
 
+![img_078](./images/img_078.png)
 
+The attribute resolution, gives the time resolution of the ```datetime``` instance, as a ```timedelta``` instance. This gives a resolution of a microsecond corresponding to the smallest time unit possible:
 
+![img_079](./images/img_079.png)
 
+If the directory of the ```datetime``` class is examined using:
 
+```
+dir(dt.datetime)
+```
 
+![img_080](./images/img_080.png)
 
+Notice that the ```__sub__``` and ```__add__``` datamodel methods are defined alongside the 6 comparison operators ```__eq__```, ```__ne__```, ```__lt__```, ```__le__```, ```__gt__``` and ```__ge__```. This means the ```-``` and ```+``` operators can be used alongside the ```==```, ```!=```, ```<```, ```<=```, ```>``` and ```>=``` operators. these are inherited from the ```date``` class. The operaters therefore operate in a similar manner to their counterparts in the ```date``` class but have a higher microsecond time resolution in the ```datetime``` class:
 
+```
+dt.datetime.max - dt.datetime.min
+```
 
+![img_081](./images/img_081.png)
 
+The ```isoformat``` is a combination of the ```date``` and ```time``` isoformat string:
 
+```
+now.isoformat()
+```
 
+![img_082](./images/img_082.png)
 
+The ```fromisoformat``` class method is used as an alternative constructor to construct a ```datetime``` instance from an isoformat string:
 
+```
+dt.datetime.fromisoformat('2023-01-12T11:22:58.776083+00:00')
+```
 
+![img_083](./images/img_083.png)
 
+This does not retain the timezone information, so it is often complemented with the ```replace``` method as seen earlier:
 
+```
+dt.datetime.fromisoformat('2023-01-12T11:22:58.776083+00:00').replace(tzinfo=london)
+```
 
+![img_084](./images/img_084.png)
 
+The ```date``` and ```time``` methods will create a ```date``` and ```time``` instance from a```datetime``` instance:
 
+![img_096](./images/img_096.png)
 
+```
+now.date()
+now.time()
+```
 
+The ```timetz``` method will return a ```time``` instance with timezone information from the ```datetime``` instance:
 
+```
+now.timetz()
+```
 
-The ```fold``` attribute is ```0```. This parameter is used to distinguish between duplicate times when clocks go back.
+![img_095](./images/img_095.png)
+
+```strftime``` was seen for a ```date``` instance and behaves like a formatted string for the time object with its own associated format codes.
+
+Lower case format codes are used for a date ```%y```, ```%m```, ```%d``` in a 2 digit format:
+
+```
+now.strftime('%y')
+now.strftime('%m')
+now.strftime('%d')
+```
+
+![img_097](./images/img_097.png)
+
+Upper case codes are used for a time ```%H```, ```%M```, ```%S``` in a 2 digit format and the distinction is made because month and minute both start with m:
+
+```
+now.strftime('%H')
+now.strftime('%M')
+now.strftime('%S')
+```
+
+![img_098](./images/img_098.png)
+
+The time component in microsecond uses a 6 digit format, and it also begins with a m. The microsecond component uses the code ```%f```:
+
+```
+now.strftime('%f')
+```
+
+![img_099](./images/img_099.png)
+
+The capital ```%Y``` can be used to get the year in a 4 digit format:
+
+```
+now.strftime('%D')
+```
+
+![img_101](./images/img_101.png)
+
+The above can be combined to make a formatted string. For example:
+
+```
+now.strftime('%H:%M:%S %d/%m/%Y')
+```
+
+![img_100](./images/img_100.png)
+
+The ```strptime``` method is an alternative constructor that can be used to strip a strftime string to create a new ```datetime``` instance. It requires the strftime and the strftime format:
+
+![img_100](./images/img_100.png)
+
+For example:
+
+```
+now.strptime('11:22:58 12/01/2023', '%H:%M:%S %d/%m/%Y')
+```
+
+![img_103](./images/img_103.png)
+
+The ```timetuple``` method inherited from ```date``` returns an object similar to a namedtuple. There is a second method ```utctimetuple``` which returns a similar tuple using the UTC timezone. Since the first tuple is using the timezone of London which in winter is GMT which is effectively the same as UTC, both tuples are the same in this case:
+
+```
+now.timetuple()
+now.utctimetuple()
+```
+
+![img_104](./images/img_104.png)
+
+The ```time``` and ```datetime``` classes have an attribute ```fold``` and a handful of methods available ```dst```, ```tzname```, ```utcoffset``` and ```astimezone``` that are specialised for timezones. let's explore these. 
+
+The ```fold``` attribute is usually ```0```. This parameter is used to distinguish between duplicate times when clocks go back.
 
 ```
 now.fold
 ```
+
+![img_085](./images/img_085.png)
 
 In the United Kingdom the clocks go forward 1 hour at 01:00:00 on the last Sunday in March, and back 1 hour at 02:00:00 on the last Sunday in October.
 
@@ -610,41 +783,337 @@ afterfold = dt.datetime(year=2023, month=10, day=29,
                         fold=1)
 ```
 
+![img_086](./images/img_086.png)
+
+The function daylight savings time ```dst``` will show if daylight saving time is applied, returning a ```timedelta``` instance. In the UK, daylights savings time is an hour ahead before the clock change:
+
 ```
 beforefold.dst()
 afterfold.dst()
 ```
+
+![img_087](./images/img_087.png)
+
+The ```tzname``` function returns the name of the timezone:
 
 ```
 beforefold.tzname()
 afterfold.tzname()
 ```
 
+![img_088](./images/img_088.png)
+
+It is observed to change from British Summer Time ```'BST'``` to Greenwich Mean Time ```'GMT'``` during the clock change.
+
+The ```utcoffset``` will return a ```timedelta``` instance which shows the offset from UTC:
+
 ```
 beforefold.utcoffset()
 afterfold.utcoffset()
 ```
 
+![img_089](./images/img_089.png)
 
-```
-beforefold.astimezone()
-afterfold.astimezone()
-```
+```beforefold``` uses a British Summer Time which has a 1 hour offset from UTC and ```afterfold``` uses Greenwich Mean Time which is effectively the same as UTC:
 
+Unfortunately the difference between the two times returns a ```timedelta``` of ```0```... which is incorrect as these times are an hour apart. This means the calculation does not take into account the differences in the timezone or clock changes:
 
 ```
 afterfold - beforefold
 ```
 
+![img_091](./images/img_091.png)
 
+The ```astimezone``` method can be used to convert a time to another timezone:
 
-now.isoformat()
+![img_092](./images/img_092.png)
 
-dt.datetime.fromisoformat('2023-01-12T07:33:53.732782+00:00')
+```
+beforefold.astimezone(ZoneInfo('UTC'))
+afterfold.astimezone(ZoneInfo('UTC'))
+```
 
-Note
+![img_094](./images/img_094.png)
 
-dt.datetime.fromisoformat('2023-01-12T07:33:53.732782+00:00').replace(tzinfo=london)
+It is recommended to convert times to UTC before subtracting them:
 
+```
+afterfold.astimezone(ZoneInfo('UTC')) - beforefold.astimezone(ZoneInfo('UTC'))
+```
 
+![img_093](./images/img_093.png)
 
+This gives the correct result. Similar calculations will need to be made for flights between the United Kingdom and Czech Republic, for example which use different time zones. Hopefully in the future the ```__sub__``` method in the ```date``` and ```datetime``` classes will be updated to directly account for differences in timezones.
+
+## SI Units
+
+Only the second and microsecond are in the International System of units which uses the decimal system. 
+
+The Decimal system originates from the romans who based their numbering system on 10 due to the fact that humans possess 10 fingers and dates are first order indexed, unlike Python which is zero order indexed:
+
+![img_105](./images/img_105.png)
+
+Another counting system originates from the Babylonians who counted using the phalanxes on their fingers and excluded the thumbs for counting. The Babylonian system of counting gives 12 digits on 1 hand:
+
+![img_106](./images/img_106.png)
+
+And therefore with both hands, it is possible to count to 24 - which is the reason there are 24 hours in a day:
+
+![img_107](./images/img_107.png)
+
+The Babylonians also counted with two hands in the following manner 0-12 in the left and 0*12 on the right:
+
+![img_108](./images/img_108.png)
+
+The Babylonians also counted with two hands in the following manner 0-12 in the left and 1*12 on the right giving 13-24:
+
+![img_109](./images/img_109.png)
+
+The Babylonians also counted with two hands in the following manner 0-12 in the left and 2*12 on the right giving 25-36:
+
+![img_110](./images/img_110.png)
+
+The Babylonians also counted with two hands in the following manner 0-12 in the left and 3*12 on the right giving 37-48:
+
+![img_111](./images/img_111.png)
+
+The Babylonians also counted with two hands in the following manner 0-12 in the left and 4*12 on the right giving 49-60. This is the reason there are 60 minutes in an hour and 60 seconds in a minute:
+
+![img_112](./images/img_112.png)
+
+The day, hour and minute have been defined as exact values of seconds and use of these units will be to a microsecond accuracy:
+
+```
+day = 24 * 60 * 60
+hour = 60 * 60
+minute = 60
+```
+
+The week is define as 7 days and can trace back to the second as:
+
+```
+week = 7 * 24 * 60 * 60
+```
+
+The month is an awkward unit because it was based upon astronomy with the following assumption, the earth rotated around the sun in a year and the earth made a rotation about its own axis in a day. The assumption was that a year was a quantised number of days which was found to be incorrect and is the reason there is now a leap year:
+
+![img_113](./images/img_113.png)
+
+Originally the Romans had a 10 month calendar:
+
+||Month|Meaning|Number of Days|
+|---|---|---|---|
+|1|Martius|God of War|31|
+|2|Aprilis|Goddess of love|30|
+|3|Maius|Goddess of Spring|31|
+|4|Lunius|Goddess of Marriage and Childbirth|30|
+|5|**Quint**ilis|**5th** month|31|
+|6|**Sext**ilis|**6th** month|30|
+|7|**Sept**ember|**7th** month|30|
+|8|**Oct**ober|**8th** month|31|
+|9|**No**vember|**9th** month|30|
+|10|**Dec**ember|**10th** month|30|
+|Year|||304|
+
+The Romans then calculated (still incorrectly) that there are 355 days of the year and decided to add 2 additional months reinforcing the Babylonian system of 12. This unfortunately gives a mismatch to the ordinal names of the months.
+
+||Month|Meaning|Number of Days|
+|---|---|---|---|
+|1|Janurius|God of Beginning|29|
+|2|Februarius|Feast of Purification|28|
+|3|Martius|God of War|31|
+|4|Aprilis|Goddess of love|29|
+|5|Maius|Goddess of Spring|31|
+|6|Lunius|Goddess of Marriage and Childbirth|29|
+|7|**Quint**ilis|**5th** month|31|
+|8|**Sext**ilis|**6th** month|29|
+|9|**Sept**ember|**7th** month|29|
+|10|**Oct**ober|**8th** month|31|
+|11|**No**vember|**9th** month|29|
+|12|**Dec**ember|**10th** month|29|
+|Year|||355|
+
+The Romans then calculated that there were 365 days in a year with 1 additional day every 4 years constituting a leap year. This gives the current calendar. 
+
+||Month|Meaning|Number of Days|
+|---|---|---|---|
+|1|Janurius|God of Beginning|31|
+|2|Februarius|Feast of Purification|28, 29|
+|3|Martius|God of War|31|
+|4|Aprilis|Goddess of love|30|
+|5|Maius|Goddess of Spring|31|
+|6|Lunius|Goddess of Marriage and Childbirth|30|
+|7|**Quint**ilis|**5th** month|31|
+|8|**Sext**ilis|**6th** month|31|
+|9|**Sept**ember|**7th** month|30|
+|10|**Oct**ober|**8th** month|31|
+|11|**No**vember|**9th** month|30|
+|12|**Dec**ember|**10th** month|31|
+|Year|||365-366|
+
+The definition of a year is therefore loose as it can be 365-366 days introducing a 3 % error. The definition of a year is also loose as it can be 28-31 days introducing a 10 % error. Due to the ambiguity in these units, they are not used in ```timedelta``` calculations.
+
+## The timedelta class
+
+The initialization signature of the ```timedelta``` class can be viewed by inputting ```dt.timedelta()``` followed by inputting shift ```⇧``` and tab ```↹```:
+
+![img_114](./images/img_114.png)
+
+It is defined as the difference between two ```datetime``` values (millisecond precision) or two ```date``` values (day precision). Notice that the units for the ```timedelta``` in the initialization signature are plural unlike the singular units seen in the ```date```, ```time``` and ```datetime``` which correspond to a singular value in a date, time or datetime stamp.
+
+![img_115](./images/img_115.png)
+
+The three most common units in descending order are listed ```days```, ```seconds``` and ```microseconds``` (1 millionth of a second):
+
+```
+dt.timedelta(days=0, seconds=10.5, microseconds=500000)
+```
+
+Here the output is cleaned up and shows ```11 s``` which is the sum of the second comopnnt ```10.500000 s``` and microsecond component ```0.500000 s```:
+
+![img_116](./images/img_116.png)
+
+These units can also be supplied as positional arguments, although use of the keyword arguments is usually better for the sake of code readibility: 
+
+```
+dt.timedelta(0, 10.5, 500000)
+```
+
+![img_117](./images/img_117.png)
+
+Additional units are available as keyword input arguments for convenience such as ```milliseconds``` (1 thousandth of a second), ```minutes```, ```hours``` and ```weeks```.
+
+```
+timedifference = dt.timedelta(hours=1, seconds=1, microseconds=1)
+```
+
+![img_118](./images/img_118.png)
+
+A list of identifiers that can be accessed from the ```timedelta``` object ```timedifference``` can be accessed by inputting ```timedifference.``` followed by a tab ```↹```:
+
+![img_119](./images/img_119.png)
+
+The ```days```, ```seconds``` and ```microseconds``` give the days, seconds and microseconds which were provided during instantantiation (or the cleaned up version of these):
+
+```
+timedifference.days
+timedifference.seconds
+timedifference.microseconds
+```
+
+![img_120](./images/img_120.png)
+
+The ```max``` and ```min``` class attributes display the maximum and minimum possible values for a ```timedelta```. Notice it spans from a maximum large number to a minimum large number as time differences can be positive or negative:
+
+```
+dt.timedelta.max
+dt.timedelta.min
+```
+
+![img_121](./images/img_121.png)
+
+The ```total_seconds``` function returns the time difference as a second float:
+
+```
+timedifference.total_seconds()
+```
+
+![img_122](./images/img_122.png)
+
+If the directory of the ```timedelta``` class is examined using:
+
+```
+dir(dt.timedelta)
+```
+
+Most of the datamodel methods used for numeric operators are available, as the ```timedelta``` is configured like a float when interacting with another instance of itself or an int or a float:
+
+![img_123](./images/img_123.png)
+
+```
+timedifference
+-2 * timedifference
+```
+
+![img_124](./images/img_124.png)
+
+It is sometimes insightful to view the ```total_seconds``` function , particularly when swapping the sign:
+
+```
+timedifference.total_seconds()
+(-2 * timedifference).total_seconds()
+```
+
+![img_125](./images/img_125.png)
+
+The ```timedelta``` can be added or subtracted from a ```datetime``` or ```date``` instance:
+
+```
+now
+timedifference
+now + timedifference
+now - timedifference
+```
+
+![img_126](./images/img_126.png)
+
+# time module
+
+Python also has a ```time``` module which was mentioned briefly when a timestamp was discussed. The functions available in the ```time``` module are written in C and setup for receiving the current ```time``` from the system, operating slightly faster than counterparts in the ```datetime``` module.
+
+The ```time``` module is normally imported directly, an alias is not typically used as the word ```time``` is already brief:
+
+```
+import time
+```
+
+![img_127](./images/img_127.png)
+
+Once imported, the list of identifiers from the ```time``` module can be viewed by inputting ```dt.``` followed by a tab ```↹```:
+
+![img_128](./images/img_128.png)
+
+The most commonly function is:
+
+```
+time.time()
+```
+
+![img_129](./images/img_129.png)
+
+Recall this returns a timestamp that is a unit of measurement in seconds that begins from the Epoch Time ```1970, 1, 1``` is at ```0``` seconds. There is a float component to the umber received when can introduce floating point rounding errors. Sometimes this unit is instead returned as an integer nanosecond for more accuracy, there are 1000000000 nanoseconds in 1 second:
+
+```
+time.time_ns()
+```
+
+![img_130](./images/img_130.png)
+
+Another commonly used function is:
+
+```
+time.sleep()
+```
+
+![img_131](./images/img_131.png)
+
+This function is used to delay execution of Python code by the specified number of seconds. For example:
+
+```
+print(f"Hello World")
+time.sleep(5)
+print(f"Goodbye World")
+```
+
+The beginning executes:
+
+![img_132](./images/img_132.png)
+
+There is a pause for 5 seconds and the rest of the code executes:
+
+![img_133](./images/img_133.png)
+
+Most of the rest of the functionality of the ```time``` module is for advanced use cases such as timing events such as the ```process_time```, ```thread_time``` and ```perf_counter``` which are typically used to test the performance of Python modules and are is of scope of this tutorial. The associated standard module ```timeit``` is available for measuring the performance of small code snippets for simple timing use cases. 
+
+Return to:
+[Home](../../../)
