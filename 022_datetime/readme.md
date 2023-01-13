@@ -938,7 +938,7 @@ The Romans then calculated that there were 365 days in a year with 1 additional 
 ||Month|Meaning|Number of Days|
 |---|---|---|---|
 |1|Janurius|God of Beginning|31|
-|2|Februarius|Feast of Purification|28, 29|
+|2|Februarius|Feast of Purification|28-29|
 |3|Martius|God of War|31|
 |4|Aprilis|Goddess of love|30|
 |5|Maius|Goddess of Spring|31|
