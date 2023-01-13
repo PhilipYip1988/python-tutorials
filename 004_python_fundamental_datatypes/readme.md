@@ -755,7 +755,7 @@ These originate from the int class itself:
 
 ![img_071](./images/img_071.png)
 
-An attibute can be thought of as a property which is a piece of data that belongs to the instance i.e. is instance specific data while a method is generally a function that operates on such data.
+An attribute can be thought of as a property which is a piece of data that belongs to the instance i.e. is instance specific data while a method is generally a function that operates on such data.
 
 In mathematics the square root of ```-1``` is undefined using conventional real numbers so an imaginary component is added to account for this case. In Python the imaginary component is indicated with the symbol ```j``` and ```j``` multipled by ```j``` is equal to ```-1```.
 

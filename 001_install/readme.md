@@ -33,7 +33,7 @@ A begineer should install Mambaforge using the detailed guides:
 
 [Mambaforge Install on Windows](./001_windows_install/)
 
-[Mambaforge Install on Linux/Mac](./002_ubuntu_install/)
+[Mambaforge Install on Linux/Mac](./002_linux_install/)
 
 ## Brief Installation Instructions
 
