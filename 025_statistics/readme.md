@@ -49,17 +49,13 @@ These statistical averages can be examined from a very simple dataset:
 
 $$\text{data}=[\begin{matrix}7&5&3&1&2&4&6&4\end{matrix}]$$
 
-$$\text{data}=[\begin{matrix}7&5&3&1&2&4&6&4\\\end{matrix}]$$
-
-$$\text{data}=\left[ \begin{matrix}7&5&3&1&2&4&6&4\\\end{matrix} \right]$$
-
 ```
 data = [7, 5, 3, 1, 2, 4, 6, 4]
 ```
 
 This dataset can be sorted:
 
-$$\text{data}=\left[\begin{matrix}1&2&3&4&4&5&6&7\\\end{matrix}\right]$$
+$$\text{data}=\left[\begin{matrix}1&2&3&4&4&5&6&7\end{matrix}\right]$$
 
 ```
 data.sort()
@@ -69,7 +65,7 @@ data
 
 The index of each element in the dataset can be shown. The length has a value of 1 higher than the last index. The last index is 7 so the length is 8:
 
-$$\text{data}=\left[\begin{matrix}{\underset{0}{1}}&{\underset{1}{2}}&{\underset{2}{3}}&{\underset{3}{4}}&{\underset{4}{4}}&{\underset{5}{5}}&{\underset{6}{6}}&{\underset{7}{7}}\\\end{matrix}\right]$$
+$$\text{data}=\left[\begin{matrix}{\underset{0}{1}}&{\underset{1}{2}}&{\underset{2}{3}}&{\underset{3}{4}}&{\underset{4}{4}}&{\underset{5}{5}}&{\underset{6}{6}}&{\underset{7}{7}}\end{matrix}\right]$$
 
 ```
 lendata = len(data)
