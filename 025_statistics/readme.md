@@ -8,13 +8,17 @@ The statistics module is normally imported using a 2 letter alias:
 import statistics as st
 ```
 
+![img_001](./images/img_001.png)
+
 The docstring of the statistics module is pretty detailed can be examined by inputting:
 
 ```
 ? statistics
 ```
 
-As seen from the docmenation, the module contains a collection of functions for calculating averages and for calculating the associated varibility or spread. The most common are:
+![img_002](./images/img_002.png)
+
+As seen from the docmenation, the module contains a collection of functions for calculating averages:
 
 |function|description|
 |---|---|
@@ -24,6 +28,8 @@ As seen from the docmenation, the module contains a collection of functions for 
 |median_low|Low median of data.|
 |median_high|High median of data.|
 |mode|Mode (most common value) of data.|
+
+And for calculating the associated varibility or spread:
 
 |function|description|
 |---|---|
@@ -40,6 +46,8 @@ $$\text{data}=[\begin{matrix}7&5&3&1&2&4&6&4\end{matrix}]$$
 data = [7, 5, 3, 1, 2, 4, 6, 4]
 ```
 
+![img_003](./images/img_003.png)
+
 This dataset can be sorted:
 
 $$\text{data}=\left[\begin{matrix}1&2&3&4&4&5&6&7\end{matrix}\right]$$
@@ -49,6 +57,7 @@ data.sort()
 data
 ```
 
+![img_004](./images/img_004.png)
 
 The index of each element in the dataset can be shown. The length has a value of 1 higher than the last index. The last index is 7 so the length is 8:
 
@@ -59,7 +68,7 @@ lendata = len(data)
 lendata
 ```
 
-
+![img_005](./images/img_005.png)
 
 The sum of the data can be calculated using:
 
@@ -67,7 +76,10 @@ $$\text{sum}=1+2+3+4+4+5+6+7=32$$
 
 ```
 sumdata = sum(data)
+sumdata
 ```
+
+![img_006](./images/img_006.png)
 
 The integer mean can be calculated:
 
@@ -80,6 +92,7 @@ sum(data) // len(data)
 sum(data) % len(data)
 ```
 
+![img_007](./images/img_007.png)
 
 The floating point mean can be calculated:
 
@@ -89,17 +102,31 @@ $$\text{floatmean}=32/8=4.0$$
 sum(data) / len(data)
 ```
 
-The statistical function mean returns the integer mean for no modulus and the float mean, when a modulus is present:
+![img_008](./images/img_008.png)
+
+The function ```mean``` returns the integer mean for no modulus and the float mean, when a modulus is present. The docstring can be seen by inputting ```st.mean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_009](./images/img_009.png)
+
+The mean of the dataset can be calculated using:
 
 ```
 st.mean(data)
 ```
 
-The floating point mean, always returns the floating point mean:
+![img_010](./images/img_010.png)
+
+The function floating point mean, ```fmean``` on the other hand always returns the floating point mean. The docstring can be seen by inputting ```st.fmean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_011](./images/img_011.png)
+
+The floating point mean of the dataset can be calculated using:
 
 ```
 st.fmean(data)
 ```
+
+![img_012](./images/img_012.png)
 
 The median is the middle point of the data which can be selected directly when the data is odd. When the data has an even number of values it is the mean of these two middle values:
 
@@ -107,33 +134,65 @@ $$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&\textbf{4}&5&6&7\end{matrix}\
 
 $$\text{median}=\frac{4+4}{2}=4$$
 
+The docstring of the function ```median``` can be seen by inputting ```st.median()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_013](./images/img_013.png)
+
+The median of the dataset can be calculated using:
+
 ```
 st.median(data)
 ```
+
+![img_014](./images/img_014.png)
 
 Alternatively the value on the left is the median low value and can be read off directly:
 
 $$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&4&5&6&7\end{matrix}\right]$$
 
+The docstring of the function ```median_low``` can be seen by inputting ```st.median_low()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_015](./images/img_015.png)
+
+The median low of the dataset can be calculated using:
+
 ```
 st.median_low(data)
 ```
+
+![img_016](./images/img_016.png)
 
 And the value on the right is the median high value and can be read off directly:
 
 $$\text{data}=\left[\begin{matrix}1&2&3&4&\textbf{4}&5&6&7\end{matrix}\right]$$
 
+The docstring of the function ```median_high``` can be seen by inputting ```st.median_high()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_017](./images/img_017.png)
+
+The median high of the dataset can be calculated using:
+
 ```
 st.median_high(data)
 ```
+
+![img_018](./images/img_018.png)
 
 The mode is the most commonly occuring value:
 
 $$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&\textbf{4}&5&6&7\end{matrix}\right]$$
 
+The docstring of the function ```mode``` can be seen by inputting ```st.mode()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_019](./images/img_019.png)
+
+The mode of the dataset can be calculated using:
+
 ```
 st.mode(data)
 ```
+
+![img_020](./images/img_020.png)
 
 The concept of variance is to compute the average distance a datapoint differs from the mean.
 
