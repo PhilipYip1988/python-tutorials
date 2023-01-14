@@ -47,6 +47,8 @@ As seen from the docmenation, the module contains a collection of functions for 
 
 These statistical averages can be examined from a very simple dataset:
 
+$$\text{data}=[\begin{matrix}7&5&3&1&2&4&6&4\\\end{matrix}]$$
+
 $$\text{data}=\left[\begin{matrix}7&5&3&1&2&4&6&4\\\end{matrix}\right]$$
 
 ```
