@@ -325,7 +325,7 @@ f2 // f1
 
 The datamodel ```__mod__``` is setup so the modulus of two ```fraction``` or ```int``` instances  is calculated using the ```%``` operator. Note this is calculated using the following:
 
-$$\text{f2}\text{\%}\text{f1}=\frac{1}{2}\text{\%}\frac{3}{8}=\frac{1\ast8\\text{\%}3\ast2}{2\ast8}=\frac{8\text{\%}6}{16}=\frac{2}{16}=\frac{1}{8}$$
+$$\text{f2}\text{﹪}\text{f1}=\frac{1}{2}\text{﹪}\frac{3}{8}=\frac{1\ast8\\text{﹪}3\ast2}{2\ast8}=\frac{8\text{﹪}6}{16}=\frac{2}{16}=\frac{1}{8}$$
 
 $$\text{f2}\textbf{modulo}\text{f1}=\frac{1}{2}\textbf{modulo}\frac{3}{8}=\frac{1\ast8\textbf{modulo}3\ast2}{2\ast8}=\frac{8\textbf{modulo}6}{16}=\frac{2}{16}=\frac{1}{8}$$
 
