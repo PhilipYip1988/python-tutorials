@@ -72,7 +72,7 @@ The decimal module is based around the Decimal class. The Decimal class is simil
 
 The fractions module is based around the Fraction class. Use of fractions is sometimes more convenient than using numbers with a floating point or decimal point. The Fractions class is also a good example of implementing datamodel methods:
 
-[Fraction Module](./015_fractions/)
+[Fractions Module](./015_fractions/)
 
 The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
 
