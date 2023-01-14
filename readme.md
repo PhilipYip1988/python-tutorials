@@ -70,7 +70,7 @@ The decimal module is based around the Decimal class. The Decimal class is simil
 
 [Decimal Module](./014_decimal/) 
 
-**Incomplete** - The fractions module is based around the Fraction class. Use of fractions is sometimes more convenient than integer division and modulo or float precision:
+The fractions module is based around the Fraction class. Use of fractions is sometimes more convenient than using numbers with a floating point or decimal point. The Fractions class is also a good example of implementing datamodel methods:
 
 [Fraction Module](./015_fractions/)
 
