@@ -112,7 +112,7 @@ The datetime module is a module for working with dates and times. The associated
 
 **Incomplete** - The statistics module is a module for working with basic statistics.
 
-Statistics Module(./025_statistics/)
+[Statistics Module](./025_statistics/)
 
 
 
