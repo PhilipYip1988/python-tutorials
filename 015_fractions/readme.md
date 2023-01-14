@@ -325,7 +325,7 @@ f2 // f1
 
 The datamodel ```__mod__``` is setup so the modulus of two ```fraction``` or ```int``` instances  is calculated using the ```%``` operator. Note this is calculated using the following:
 
-$$\text{f2}\%\text{f1}=\frac{1}{2}\%\frac{3}{8}=\frac{1\ast8\%3\ast2}{2\ast8}=\frac{8\%6}{16}=\frac{2}{16}=\frac{1}{8}$$
+$$\text{f2}\text{\%}\text{f1}=\frac{1}{2}\text{\%}\frac{3}{8}=\frac{1\ast8\%3\ast2}{2\ast8}=\frac{8\text{\%}6}{16}=\frac{2}{16}=\frac{1}{8}$$
 
 The datamodel ```__divmod__``` is setup which means the ```divmod``` function can be used. ```divmod(f2, f1)``` gives a tuple of ```(f2 // f1, f2 % f1)```:
 
