@@ -49,7 +49,7 @@ These statistical averages can be examined from a very simple dataset:
 
 $$\text{data}=[\begin{matrix}7&5&3&1&2&4&6&4\\\end{matrix}]$$
 
-$$\text{data}=\left[\begin{matrix}7&5&3&1&2&4&6&4\\\end{matrix}\right]$$
+$$\text{data}=\left[ \begin{matrix}7&5&3&1&2&4&6&4\\\end{matrix} \right]$$
 
 ```
 data = [7, 5, 3, 1, 2, 4, 6, 4]
