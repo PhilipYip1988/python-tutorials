@@ -32,6 +32,7 @@ As seen from the docmenation, the module contains a collection of functions for 
 |quantiles|Divide data into intervals with equal probability.|
 |geometric_mean|Geometric mean of data.|
 |harmonic_mean|Harmonic mean of data.|
+|median_grouped|Median, or 50th percentile, of grouped data.|o
 
 And for calculating the associated variability or spread:
 
@@ -425,11 +426,52 @@ data
 
 ![img_039](./images/img_039.png)
 
+Supposing the following grouped data is obtained from a histogram of values:
 
-|function|description|
+$$\text{data4} = \left[\begin{matrix}2&2&3&3&3&4\end{matrix}\right]$$
+
+![img_040](./images/img_040.png)
+
+Then for each individual datapoint the range is between:
+
+|central value|range|
 |---|---|
-|median_grouped|Median, or 50th percentile, of grouped data.|
+|2|$1.5\text{ to } 2.5$|
+|2|$1.5\text{ to } 2.5$|
+|3|$2.5\text{ to } 3.5$|
+|3|$2.5\text{ to } 3.5$|
+|3|$2.5\text{ to } 3.5$|
+|4|$3.5\text{ to } 4.5$|
 
+There are 6 datapoints so $n=6$ and each datapoint spans an interval $i=1$.  
+
+The median range is $2.5\text{ to } 3.5$, this has a lower limit of $l=2.5$ and has a frequency $f=3$.
+
+There are 2 datapoints before the median range, so $b=2$.
+
+The median grouped is defined as:
+
+$$l+\frac{\left(\frac{n}{2}-b\right)}{f}\ast i$$
+
+$$2.5+\frac{\left(\frac{6}{2}-2\right)}{3}\ast1$$
+
+$$2.833$$
+
+The docstring of the function ```median_grouped``` can be seen by inputting ```st.median_grouped()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_041](./images/img_041.png)
+
+The only keyword argument is the ```interval``` which has a default value of 1.0. All the rest of the parameters can be inferred from the data. The median grouped of the data can be calculated using:
+
+```
+data4 = [2, 2, 3, 3, 3, 4]
+st.median_grouped(data4, interval=1)
+2.5 + (((6/2) - 2) / 3) * 1
+```
+
+![img_042](./images/img_042.png)
+
+To be added...
 
 |function|description|
 |---|---|
