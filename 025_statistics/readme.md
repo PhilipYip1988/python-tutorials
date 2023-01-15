@@ -34,7 +34,7 @@ As seen from the docmenation, the module contains a collection of functions for 
 |harmonic_mean|Harmonic mean of data.|
 |median_grouped|Median, or 50th percentile, of grouped data.|o
 
-And for calculating the associated variability or spread:
+And for calculating the associated variability or spread of one dataset:
 
 |function|description|
 |---|---|
@@ -42,6 +42,17 @@ And for calculating the associated variability or spread:
 |variance|Sample variance of data.|
 |stdev|Sample standard deviation of data.|
 |pstdev|Population standard deviation of data.|
+
+Or of two datasets:
+
+|function|description|
+|---|---|
+|covariance|Sample covariance for two variables.|
+|correlation|Pearson's correlation coefficient for two variables.|
+|linear_regression|Intercept and slope for simple linear regression.|
+
+
+
 
 These statistical averages can be examined from a very simple dataset:
 
@@ -473,8 +484,78 @@ st.median_grouped(data4, interval=1)
 
 To be added...
 
-|function|description|
-|---|---|
-|covariance|Sample covariance for two variables.|
-|correlation|Pearson's correlation coefficient for two variables.|
-|linear_regression|Intercept and slope for simple linear regression.|
+
+
+
+
+
+
+
+
+
+
+
+
+```
+data5 = [1, 2, 3, 4]
+
+mean_data5 = st.mean(data5)
+mean_data5
+
+var_data5 = st.variance(data5)
+var_data5
+
+data6 = [1, 2, 3, 2]
+
+mean_data6 = st.mean(data6)
+mean_data6
+
+var_data6 = st.variance(data6)
+var_data6
+
+```
+
+
+
+
+
+
+
+
+The covariance of two lists is similar to the variance of a single list. Instead of summing the squared differences from the mean, of a single list. The sum of the product of the difference from the mean of the first list is multiplied by the difference from the mean of the second list:
+
+$$\sum_{i=0}^{n}{\left(x_i-\mu_x\right)\ast(y_i-\mu_y)}=\left(1-2.5\right)\ast\left(1-2\right)+\left(2-2.5\right)\ast\left(2-2\right)+\left(3-2.5\right)\ast\left(3-2\right)+\left(4-2.5\right)\ast(2-2)=2.0$$
+
+The covariance takes into account a difference in the number of degrees of freedom and uses the number of datapoints minus one as a normalisation factor:
+
+$$\frac{2.0}{4-1}=\frac{2}{3}=0.667$$
+
+
+
+
+```
+((1 - 2.5) * (1 - 2) + (2 - 2.5) * (2 - 2) + (3 - 2.5) * (3 - 2) + (4 - 2.5) * (2 - 2)) / (4 - 1)
+st.covariance(data5, data6)
+```
+
+
+
+
+
+The correlation between two variables is the ratio of the covariance of the two variables divided by the square root of each of the individual variances: 
+
+
+$$\text{corr}\left(x,y\right)=\frac{\text{cov}\left(x,y\right)}{\sqrt{\text{var}\left(x\right)}\ast\sqrt{\text{var}\left(y\right)}}$$
+
+
+$$\frac{0.6667}{\sqrt{0.6667}\ast\sqrt{0.6667}}=0.6325$$
+
+```
+0.6667 / ((1.6667 ** 0.5) * (0.6667 ** 0.5))
+st.correlation(data5, data6)
+```
+
+
+R2 has to have graph ... 
+
+linear_regression
