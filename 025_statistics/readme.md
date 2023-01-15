@@ -28,8 +28,12 @@ As seen from the docmenation, the module contains a collection of functions for 
 |median_low|Low median of data.|
 |median_high|High median of data.|
 |mode|Mode (most common value) of data.|
+|multimode|List of modes (most common values of data).|
+|quantiles|Divide data into intervals with equal probability.|
+|geometric_mean|Geometric mean of data.|
+|harmonic_mean|Harmonic mean of data.|
 
-And for calculating the associated varibility or spread:
+And for calculating the associated variability or spread:
 
 |function|description|
 |---|---|
@@ -194,6 +198,36 @@ st.mode(data)
 
 ![img_020](./images/img_020.png)
 
+The mode can be an important metric in a trial run. For example if a fashion designer wants to issue a prototype design of clothe, they may simplify manufacturing by starting only with the mode cloth size, as it has the largest customer base. If the trial of the first cloth batch is successful, they may complicate the manufacturer process to accomodate other sizes. 
+
+Sometimes a dataset will have multiple mode values, using ```mode``` will only give one of these values:
+
+```
+data2 = [1, 2, 2, 2, 2, 3, 4, 4, 4, 4, 6, 6, 7]
+st.mode(data2)
+```
+
+![img_029](./images/img_029.png)
+
+There is an associated, multiple mode function. The docstring of the function ```multi_mode``` can be seen by inputting ```st.multi_mode()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_030](./images/img_030.png)
+
+```
+st.multimode(data2)
+```
+
+![img_031](./images/img_031.png)
+
+The multiple mode function only retrieves modes that have the highest number of counts. It will not show modes that have only a slightly lower number of counts. For this purpose, recall that the ```Counter``` class is used.
+
+```
+from collections import Counter
+Counter(data2).most_common()
+```
+
+![img_032](./images/img_032.png)
+
 The concept of variance is to compute the average distance a datapoint differs from the mean.
 
 Notice when when the sum of (each datapoint minus the mean) is calculated, the positive values and negative values cancel each other out and the result is 0:
@@ -224,10 +258,20 @@ The variance takes into account a difference in the number of degrees of freedom
 
 $$\frac{28}{(8-1)}=\frac{28}{7}=4.0$$
 
+The docstring of the function ```pvariance``` and ```variance``` can be seen by inputting the functions name followed by open parenthesis and by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_021](./images/img_021.png)
+
+![img_022](./images/img_022.png)
+
+The population variance and variance can be calculated using:
+
 ```
 st.pvariance(data)
 st.variance(data)
 ```
+
+![img_023](./images/img_023.png)
 
 Due to the squaring used when calculating the population variance or variance, these measurements have units of the mean squared. The standard deviation is the square root of the variance, which is measured in the same units as the mean:
 
@@ -235,14 +279,22 @@ $$\sqrt{3.5}=$$
 
 $$\sqrt{3.5}=1.8708$$
 
+The docstring of the function ```pstdev``` and ```stdev``` can be seen by inputting the functions name followed by open parenthesis and by pressing shift ```⇧ ``` and tab ```↹```:
 
+![img_024](./images/img_024.png)
+
+![img_025](./images/img_025.png)
+
+The population standard deviation and standard deviation can be calculated using:
 
 ```
 st.pstdev(data)
 st.stdev(data)
 ```
 
-A distribution is normally quoted using the mean and stdev in the form:
+![img_026](./images/img_026.png)
+
+A distribution is normally quoted using the mean and standard deviation in the form:
 
 $$4.0\pm2.0$$
 
@@ -256,8 +308,7 @@ st.median(data)
 st.stdev(data)
 ```
 
-The mode can be an important metric in a trial run. For example if a fashion designer wants to issue a prototype design of clothe, they may simplify manufacturing by starting only with the mode cloth size, as it has the largest customer base. If the cloth is successful, they may complicate the manufacturer process to accomodate other sizes.
-
+![img_027](./images/img_027.png)
 
 The outlier can be removed from the data:
 
@@ -266,24 +317,117 @@ data.pop()
 data
 ```
 
-Let's now examine the geometric mean.
+![img_028](./images/img_028.png)
 
+The quantiles function is used to group data into quantiles, that is quarters with equal proability. 
 
+The docstring of the function ```quantiles``` can be seen by inputting ```st.quantiles()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
 
+![img_033](./images/img_033.png)
 
+The quantile values can be calculated by:
 
+```
+data3 = [1, 1, 2, 2, 3, 4, 4, 4, 5, 6, 7, 8, 8, 8, 9, 9]
+data3
+quantiles(data3)
+```
 
+![img_034](./images/img_034.png)
 
+The quantile values can be used to cut the data into quantiles using:
 
+```
+q1 = []
+q2 = []
+q3 = []
+q4 = []
+for num in data3:
+    if(num < st.quantiles(data3)[0]):
+        q1.append(num)
+    elif (num < st.quantiles(data3)[1]):
+        q2.append(num)
+    elif (num < st.quantiles(data3)[2]):
+        q3.append(num)
+    else:
+        q4.append(num)
+q1
+q2
+q3
+q4
+```
 
+![img_035](./images/img_035.png)
+
+The mean is calculated using a normalised sum. The geometric mean instead uses a normalised product:
+
+$$\text{data}=\left[\begin{matrix}1&2&3&4&4&5&6&7\end{matrix}\right]$$
+
+$$\text{prod}=1\ast2\ast3\ast4\ast4\ast5\ast6\ast7=20160$$
+
+$$\text{len}=8$$
+
+To normalise the product the nth root is taken:
+
+$$\left(1\ast2\ast3\ast4\ast4\ast5\ast6\ast7\right)\ast\ast(1/8)=3.4519$$
+
+The docstring of the function ```geometric mean``` can be seen by inputting ```st.geometric_mean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_036](./images/img_036.png)
+
+The geometric mean can be calculated using:
+
+```
+st.geometric_mean(data)
+```
+
+For this dataset it can be manually calculated using:
+
+```
+data
+(1*2*3*4*4*5*6*7) ** (1/8)
+```
+
+![img_037](./images/img_037.png)
+
+The harmonic mean is calculated using the inverse sum. 
+
+$$\text{data}=\left[\begin{matrix}1&2&3&4&4&5&6&7\end{matrix}\right]$$
+
+$$\text{invsum}=\left(\frac{1}{1}+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}\right)$$
+
+This is normalised by the length:
+
+$$\text{len}=8$$
+
+$$\frac{\left(\frac{1}{1}+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}\right)}{8}$$
+
+Then finally the inverse of this is taken:
+
+$$\frac{8}{\left(\frac{1}{1}+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}\right)}$$
+
+The docstring of the function ```harmonic mean``` can be seen by inputting ```st.harmonic_mean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_038](./images/img_038.png)
+
+The harmonic mean can be calculated using:
+
+```
+st.harmonic_mean(data)
+```
+
+For this dataset it can be manually calculated using:
+
+```
+data
+8 / ((1/1)+(1/2)+(1/3)+(1/4)+(1/4)+(1/5)+(1/6)+(1/7))
+```
+
+![img_039](./images/img_039.png)
 
 
 |function|description|
 |---|---|
-|geometric_mean|Geometric mean of data.|
-|harmonic_mean|Harmonic mean of data.|
-|multimode|List of modes (most common values of data).|
-|quantiles|Divide data into intervals with equal probability.|
 |median_grouped|Median, or 50th percentile, of grouped data.|
 
 
