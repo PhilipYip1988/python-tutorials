@@ -620,5 +620,4 @@ greeting
 
 ![img_060](./images/img_060.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

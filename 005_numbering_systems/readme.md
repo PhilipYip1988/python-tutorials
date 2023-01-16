@@ -955,6 +955,4 @@ len("3000000000000000444089209850062616169452667236328125")
 
 After 52 characters, arbitrary zeros are added. 52 characters are expected for a double precision number. All of these additional digits past 17 should be considered as inaccurate and are more highly influenced by floating point recursion errors.
 
-Return to:
-
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

@@ -770,5 +770,4 @@ A higher degree of concentration can be seen when ```mu=tau/4``` and ```kappa=2`
 
 ![img_099](./images/img_099.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

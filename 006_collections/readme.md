@@ -1417,5 +1417,4 @@ counts = {"red": 2,
          "blue": 1}
 ```
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

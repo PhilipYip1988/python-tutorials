@@ -415,5 +415,4 @@ Decimal("0") / Decimal("0")
 
 ![img_038](./images/img_038.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

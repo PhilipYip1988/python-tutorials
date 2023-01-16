@@ -402,6 +402,4 @@ JupyterLab and VSCode are insenitive regarding the case of the file extension, f
 
 ---
 
-Return to:
-
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

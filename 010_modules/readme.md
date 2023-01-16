@@ -737,6 +737,4 @@ The module ```json``` is used to manipulate data which uses Javascript object no
 
 ![img_067](./images/img_067.png)
 
-
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

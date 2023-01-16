@@ -800,5 +800,4 @@ shutil.copy(src="text_file.txt", dst="text_file3.txt")
 
 ![119_img.png](./images/119_img.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

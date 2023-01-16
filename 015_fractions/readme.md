@@ -427,5 +427,4 @@ f1_dc
 
 ![img_047](./images/img_047.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

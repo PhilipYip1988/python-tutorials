@@ -1,6 +1,6 @@
 # Installing Python on Windows 11
 
-This tutorial will configure Python 3.11 on a Windows 11 computer using Mambaforge.
+This tutorial will configure Python 3.11 on a Windows 11 computer using Mambaforge. For Linux/Mac see [Linux/Mac Install](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/002_linux_install/readme.md)
 
 ## System Requirements
 
@@ -1356,6 +1356,4 @@ Beside the Variables button is the Outline button. This gives a table of content
 
 ![img_212](./images/img_212.png)
 
-Return to:
-
-[Home](../../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

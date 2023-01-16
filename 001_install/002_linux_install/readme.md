@@ -1,6 +1,6 @@
 # Installing Python on Linux/Mac
 
-This tutorial will configure Python 3.11 on a Linux/Mac computer using Mambaforge.
+This tutorial will configure Python 3.11 on a Linux/Mac computer using Mambaforge. For Windows see [Windows Install](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/001_windows_install/readme.md)
 
 ## System Requirements
 
@@ -1370,6 +1370,4 @@ The Outline button gives a table of contents of the markdown headings:
 
 ![img_218](./images/img_218.png)
 
-Return to:
-
-[Home](../../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

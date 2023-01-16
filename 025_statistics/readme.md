@@ -51,9 +51,6 @@ Or of two datasets:
 |correlation|Pearson's correlation coefficient for two variables.|
 |linear_regression|Intercept and slope for simple linear regression.|
 
-
-
-
 These statistical averages can be examined from a very simple dataset:
 
 $$\text{data}=[\begin{matrix}7&5&3&1&2&4&6&4\end{matrix}]$$
@@ -482,19 +479,7 @@ st.median_grouped(data4, interval=1)
 
 ![img_042](./images/img_042.png)
 
-To be added...
-
-
-
-
-
-
-
-
-
-
-
-
+The covariance is a measure of the joint variability of two datasets of the same size. To examine this the following lists will be created and their respective mean and variance will be calculated: 
 
 ```
 data5 = [1, 2, 3, 4]
@@ -512,17 +497,11 @@ mean_data6
 
 var_data6 = st.variance(data6)
 var_data6
-
 ```
 
+![img_043](./images/img_043.png)
 
-
-
-
-
-
-
-The covariance of two lists is similar to the variance of a single list. Instead of summing the squared differences from the mean, of a single list. The sum of the product of the difference from the mean of the first list is multiplied by the difference from the mean of the second list:
+The covariance of two datsets is similar to the variance of a single dataset. Instead of summing the squared differences from the mean, of a single dataset. The sum of the product of the difference from the mean of the first dataset is multiplied by the difference from the mean of the second dataset:
 
 $$\sum_{i=0}^{n}{\left(x_i-\mu_x\right)\ast(y_i-\mu_y)}=\left(1-2.5\right)\ast\left(1-2\right)+\left(2-2.5\right)\ast\left(2-2\right)+\left(3-2.5\right)\ast\left(3-2\right)+\left(4-2.5\right)\ast(2-2)=2.0$$
 
@@ -530,32 +509,101 @@ The covariance takes into account a difference in the number of degrees of freed
 
 $$\frac{2.0}{4-1}=\frac{2}{3}=0.667$$
 
+The docstring of the function ```covariance``` can be seen by inputting ```st.covariance()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
 
+![img_044](./images/img_044.png)
 
+The covariance of the two datasets can be calculated using:
 
 ```
-((1 - 2.5) * (1 - 2) + (2 - 2.5) * (2 - 2) + (3 - 2.5) * (3 - 2) + (4 - 2.5) * (2 - 2)) / (4 - 1)
 st.covariance(data5, data6)
 ```
 
+For these datasets it can be manually calculated using:
 
+```
+((1 - 2.5) * (1 - 2) + (2 - 2.5) * (2 - 2) + (3 - 2.5) * (3 - 2) + (4 - 2.5) * (2 - 2)) / (4 - 1)
+```
 
-
+![img_045](./images/img_045.png)
 
 The correlation between two variables is the ratio of the covariance of the two variables divided by the square root of each of the individual variances: 
-
 
 $$\text{corr}\left(x,y\right)=\frac{\text{cov}\left(x,y\right)}{\sqrt{\text{var}\left(x\right)}\ast\sqrt{\text{var}\left(y\right)}}$$
 
 
 $$\frac{0.6667}{\sqrt{0.6667}\ast\sqrt{0.6667}}=0.6325$$
 
+The docstring of the function ```correlation``` can be seen by inputting ```st.correlation()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_046](./images/img_046.png)
+
+The correlation of the two datasets can be calculated using:
+
 ```
-0.6667 / ((1.6667 ** 0.5) * (0.6667 ** 0.5))
 st.correlation(data5, data6)
 ```
 
+For these datasets it can be manually calculated using:
 
-R2 has to have graph ... 
+```
+0.6667 / ((1.6667 ** 0.5) * (0.6667 ** 0.5))
+```
 
-linear_regression
+![img_047](./images/img_047.png)
+
+The correlation values range between ```-1``` and ```1```. A correlation close to ```-1```, means a negative correlation and therefore the y variable decreases as the x value increases. A correlation close to ```0``` means no correlation and the y variable is uninfluenced when the x value increases. A correlation close to ```1```, means a positive correlation and therefore the y variable increases as the x value increases. 
+
+This dataset has a positive correlation of ```0.6324``` and the relationship can be seen in a plot:
+
+![img_048](./images/img_048.png)
+
+Linear Regression can be used to calculate the best straight line fit between these datapoints that has the form:
+
+$$y=\text{slope}*x+\text{intercept}+\text{noise}$$
+
+And the line of best fit, minimises the noise.
+
+The docstring of the function ```linear_regression``` can be seen by inputting ```st.correlation()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+
+![img_049](./images/img_049.png)
+
+The linear regression of the two datasets can be calculated using:
+
+```
+st.linear_regression(data5, data6)
+```
+
+![img_050](./images/img_050.png)
+
+If this is assigned to a variable:
+
+```
+lin_fit = st.linear_regression(data5, data6)
+```
+
+The slope and intercept are accessible as attributes:
+
+```
+lin_fit.slope
+lin_fit.intercept
+```
+
+They can eb used to calculated prediced y values:
+
+```
+yp = []
+
+for x in data5:
+    yp.append(lin_fit.slope * x + lin_fit.intercept)
+    
+yp
+```
+
+![img_051](./images/img_051.png)
+
+On a plot this looks like:
+
+![img_052](./images/img_052.png)
+
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

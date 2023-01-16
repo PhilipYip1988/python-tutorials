@@ -1569,5 +1569,4 @@ will implement the decorated version of ```greeting_function```:
 
 ![img_108](./images/img_108.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

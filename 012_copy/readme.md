@@ -158,6 +158,4 @@ l3[1][2] = "X"
 
 ![img_016](./images/img_016.png)
 
-Return to:
-
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

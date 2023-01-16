@@ -924,5 +924,4 @@ When the ```try``` code block does find a ```ValueError```, the code in the ```e
 
 ![077_try](./images/077_try.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

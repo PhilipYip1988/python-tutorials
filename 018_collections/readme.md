@@ -649,5 +649,4 @@ This instance will possess all of the standard string methods inherited from ```
 
 ![img_059](./images/img_059.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

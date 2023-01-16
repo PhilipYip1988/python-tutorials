@@ -1374,5 +1374,4 @@ child.greeting("wet", "Philip")
 
 ![img_066](./images/img_066.png)
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

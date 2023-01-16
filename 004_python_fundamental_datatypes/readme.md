@@ -1415,6 +1415,4 @@ f"The num is {num :010d}"
 
 ![img_141](./images/img_141.png)    
 
-Return to:
-
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

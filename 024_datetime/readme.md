@@ -1115,5 +1115,4 @@ There is a pause for 5 seconds and the rest of the code executes:
 
 Most of the rest of the functionality of the ```time``` module is for advanced use cases such as timing events such as the ```process_time```, ```thread_time``` and ```perf_counter``` which are typically used to test the performance of Python modules and are is of scope of this tutorial. The associated standard module ```timeit``` is available for measuring the performance of small code snippets for simple timing use cases. 
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

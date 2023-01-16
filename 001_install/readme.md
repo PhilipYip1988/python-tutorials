@@ -111,4 +111,4 @@ The Python extension should be installed within Visual Studio Code.
 
 The Python Interpretter should be selected. In Visual Studio Code press ```ctrl```, ```⇧``` and ```p``` to open up the command palette. Search for interpretter and select Python: Select Interpretter. Change the interpretter to the ```vscode``` Python environment.
 
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

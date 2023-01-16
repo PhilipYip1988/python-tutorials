@@ -855,6 +855,5 @@ with open("json_data.txt", "r") as file:
 
 Normally, only a single JSON object is written to a file as complicated JSON objects are typically nested.
 
-Return to:
-[Home](../../../)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
 
