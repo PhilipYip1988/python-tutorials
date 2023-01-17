@@ -340,7 +340,7 @@ Produces:
 
 $$ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $$
 
-Note GitHub has more issues rendering Latex than JupyterLab or VSCode. The equation above does not render properly as an inline equation but renders as a display equation on GitHub. On JupyterLab and VSCode the display equation rendes properly.
+Note GitHub has more issues rendering Latex than JupyterLab or VSCode. The equation above does not render properly as an inline equation but renders as a display equation on GitHub. On JupyterLab and VSCode the display equation renders properly.
 
 Use of Latex is outwith the scope of this tutorial. Microsoft Word has a what you see is what you get (WYSIWYG) equation editor. The equation should be created using Unicode. Then a blank equation should be created and LaTeX selected. The original equation typed with the Unicode setting can then be copied and pasted:
 
