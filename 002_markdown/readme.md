@@ -340,9 +340,31 @@ Produces:
 
 $$ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $$
 
-Use of Latex is outwith the scope of this tutorial. Microsoft Word has a what you see is what you get WYSIWYG equation editor. The equation should be created using Unicode. Then a blank equation should be created and LaTeX selected. The equation can then be copied and pasted:
+Note GitHub has more issues rendering Latex than JupyterLab or VSCode. The equation above displays as an inline and display equation on JupyterLab and VSCode. On GitHub the display equation is not rendered properly.
+
+Use of Latex is outwith the scope of this tutorial. Microsoft Word has a what you see is what you get WYSIWYG equation editor. The equation should be created using Unicode. Then a blank equation should be created and LaTeX selected. The original equation typed with the Unicode setting can then be copied and pasted:
 
 ![img_005](./images/img_005.png)
+
+In Word if Latex is selected while the equation is being typed, the equation may not display as intended. If an equation that is typed in Unicode is selected while the setting is changed from Unicode to Latex, the equation may change and not look as intended.
+
+There are some issues copying and pasting to Latex from Microsoft Word. For example ```y=sin(x)``` in the equation editor gives, the display equation:
+
+```
+$$y=\sin\funcapply(x)$$
+```
+
+The ```\funcapply``` is not recognised and the ```\sin``` should be converted to sin enclosed in ```\text{}``` to render correctly. The example should be changed to:
+
+```
+$$y=\text{sin}(x)$$
+```
+
+$$y=\text{sin}(x)$$
+
+The inline version can be written as $y=\text{sin}(x)$.
+
+On Linux, Microsoft Word is unavailable. Only Office Desktop Editors has a comparible Equation Editor. At current it only copies and pastes to Unicode and not LaTeX. This feature is to be added in a later release.
 
 On Ubuntu, EqualX can instead be used as a WYSIWYG equation editor which is a slightly less elegant solution. Open up a terminal and input:
 
