@@ -340,21 +340,21 @@ Produces:
 
 $$ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $$
 
-Note GitHub has more issues rendering Latex than JupyterLab or VSCode. The equation above displays as an inline and display equation on JupyterLab and VSCode. On GitHub the display equation is not rendered properly.
+Note GitHub has more issues rendering Latex than JupyterLab or VSCode. The equation above does not render properly as an inline equation but renders as a display equation on GitHub. On JupyterLab and VSCode the display equation rendes properly.
 
-Use of Latex is outwith the scope of this tutorial. Microsoft Word has a what you see is what you get WYSIWYG equation editor. The equation should be created using Unicode. Then a blank equation should be created and LaTeX selected. The original equation typed with the Unicode setting can then be copied and pasted:
+Use of Latex is outwith the scope of this tutorial. Microsoft Word has a what you see is what you get (WYSIWYG) equation editor. The equation should be created using Unicode. Then a blank equation should be created and LaTeX selected. The original equation typed with the Unicode setting can then be copied and pasted:
 
 ![img_005](./images/img_005.png)
 
-In Word if Latex is selected while the equation is being typed, the equation may not display as intended. If an equation that is typed in Unicode is selected while the setting is changed from Unicode to Latex, the equation may change and not look as intended.
+In Microsoft Word, if Latex is selected while the equation is being typed, the equation may not display as intended. If an equation that is typed in Unicode is selected while the setting is changed from Unicode to Latex, the equation may change and not look as intended.
 
-There are some issues copying and pasting to Latex from Microsoft Word. For example ```y=sin(x)``` in the equation editor gives, the display equation:
+There are some additional issues copying and pasting to LaTeX from Microsoft Word. For example when ```y=sin(x)``` is input in Microsoft Words equation editor and copied as LaTeX, the following is pasted as a display equation:
 
 ```
 $$y=\sin\funcapply(x)$$
 ```
 
-The ```\funcapply``` is not recognised and the ```\sin``` should be converted to sin enclosed in ```\text{}``` to render correctly. The example should be changed to:
+The ```\funcapply``` is not recognised and the equation does not render. The ```\sin``` should be converted to ```\text{sin}``` to render correctly:
 
 ```
 $$y=\text{sin}(x)$$
@@ -362,16 +362,15 @@ $$y=\text{sin}(x)$$
 
 $$y=\text{sin}(x)$$
 
-The inline version can be written as $y=\text{sin}(x)$.
+The inline version can be written as $y=\text{sin}(x)$. Use \text{} to enclose any text that is not to be formatted in italic. Otherwise copying and pasting from Microsoft Word seems to be reliable.
 
-On Linux, Microsoft Word is unavailable. Only Office Desktop Editors has a comparible Equation Editor. At current it only copies and pastes to Unicode and not LaTeX. This feature is to be added in a later release.
+On Linux, Microsoft Word is unavailable. The best equivalent Equation Editor is in Only Office Desktop Editors. At current Only Office Desktop Editors only copies and pastes to Unicode and not LaTeX. Only Office Desktop Editors Developers have said they intend to add pasting to LaTeX in a later release.
 
-On Ubuntu, EqualX can instead be used as a WYSIWYG equation editor which is a slightly less elegant solution. Open up a terminal and input:
+For now, on Ubuntu, EqualX can instead be used as a WYSIWYG equation editor which is a slightly less elegant solution. Open up a terminal and input:
 
 ```
 sudo apt-get install equalx
 ```
-
 
 To launch equalx input:
 
@@ -410,7 +409,7 @@ Produces:
 
 If the image is in the same folder as the markdown file. The file name can be specified directly.
 
-In the file path ```\.``` can be used to specify a subfolder and ```\..``` can be used to go up a level. The ```img_005.png``` in the subfolder ```images``` can be selected for example using the following markdown:
+In the file path ```./``` can be used to specify a subfolder and ```../``` can be used to go up a level. The ```img_005.png``` in the subfolder ```images``` can be selected for example using the following markdown:
 
 ```
 ![img_005](./images/img_005.png)
@@ -420,7 +419,7 @@ Producing:
 
 ![equation](./images/img_005.png)
 
-JupyterLab and VSCode are insenitive regarding the case of the file extension, for example ```.png``` versus ```.PNG```. Unfortunately GitHub seems to be sensitive regarding the file extension case, therefore it is good practice to ensure that all file extensions are lower case.
+It is recommended to enable file extensions for known file types and ensure all file extensions are lower case. GitHub seems to be sensitive regarding the case of the file extension and won't render properly if the file has a different case of file extension. Some programs will save to .PNG and others will save to .png by default. By enabling the file extension you will be able to see what case each file extension is using and can update them all to be lower case for the sake of being consistent. Note JupyterLab and VSCode are insenitive regarding extension case, so all may seem to be well until the folder with the markdown file and images are uploaded to GitHub.
 
 ---
 
