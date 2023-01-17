@@ -316,7 +316,7 @@ Produces:
 
 ---
 
-## Latex
+## LaTeX
 
 A single dollar sign ```$```  can be used to enclose an inline Latex equation. Two dollar signs ```$$``` can be used for a display equation.
 
