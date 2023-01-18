@@ -61,7 +61,7 @@ Once imported a large number of identifiers will be listed by inputting ```np.``
 
 ![img_004](./images/img_004.png)
 
-## ndarray factory functions
+## ndarray Factory Functions
 
 The n-dimensional array ```ndarray``` class is the data structure the ```numpy``` library is based around. The init signature is long and can be output into a cell using:
 
@@ -538,3 +538,541 @@ matrix1
 matrix1 = book1.reshape((4,3))
 matrix1
 ```
+
+![img_038](./images/img_038.png)
+
+## Indexing and Slicing
+
+The following matrix:
+
+$$\text{matrixlist1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+
+Can be represented as a list of lists:
+
+```
+matrixlist1 = [[1, 2, 3],
+               [4, 5, 6],
+               [7, 8, 9],
+               [10, 11, 12]]
+```
+
+And more explicitly as:
+
+```
+row0 = [1, 2, 3]
+row1 = [4, 5, 6]
+row2 = [7, 8, 9]
+row3 = [10, 11, 12]
+
+matrixlist1 = [row0,
+               row1,
+               row2,
+               row3]
+```
+
+Supposing the following ```2``` is a scalar value of interest:
+
+$$\text{matrixlist1}=\left[\begin{matrix}1&\textbf{2}&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+
+
+To retrieve this scalar value, ```matrixlist1``` must be indexed, and a square set of brackets is used to select the row, which is ```row0``` at index ```0```:
+
+```
+matrixlist1[0]
+```
+
+Now that this row is selected, it must also be indexed. A second set of square brackets is used to select the column, which is the column at index ```1```:
+
+```
+matrixlist1[0][1]
+```
+
+![img_039](./images/img_039.png)
+
+For an equivalent numpy array:
+
+```
+matrix1 = np.array([[1, 2, 3],
+                    [4, 5, 6],
+                    [7, 8, 9],
+                    [10, 11, 12]])
+```
+
+Indexing can be carried out in a similar manner:
+
+```
+matrix1[0][1]
+```
+
+However as the ```ndarray``` is setup to be a n dimensional structure, there is simpler syntax, which involves a single set of square brackets and use of a ```,``` as a delimiter. This simpler syntax does not work with a list of lists as the list data structure is not setup to be n dimensional:
+
+```
+matrix1[0, 1]
+```
+
+![img_040](./images/img_040.png)
+
+Notice that the form of the square bracket, has a similar form to the ```shape``` ```tuple```. Indexing a scalar value from a higher dimension array follows the same trend as the ```shape``` ```tuple```:
+
+|ndim|description|indexing|
+|---|---|---|
+|1|line vector|array1d[c, ]|
+|2|page consisting of rows of equal length line vectors|array2d[r, c]|
+|3|book of equally sized pages|array3d[b, r, c]|
+|4|shelf of equally sized books|array4d[s, b, r, c]|
+|5|wardrobe of equally sized shelves|array5d[w, s, b, r, c]|
+|6|library of equally sized wardrobes|array6d[l, w, s, b, r, c]|
+|7|group of equally sized libraries|array7d[g, l, w, s, b, r, c]|
+
+Multiple values can be selected from the array by indexing using a list. This outputs an ```ndarray```:
+
+$$\text{matrix1}=\left[\begin{matrix}1&\textbf{2}&3\\\textbf{4}&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+
+The scalar ```2``` is on row ```0``` and column ```1```.
+
+The scalar ```4``` is on row ```1``` and column ```0```.
+
+```
+matrix1[[0, 1], [1, 0]]
+```
+
+![img_041](./images/img_041.png)
+
+Supposing all of the items are along an axis, for example row 0, all columns:
+
+$$\text{matrix1}=\left[\begin{matrix}\textbf{1}&\textbf{2}&\textbf{3}\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+
+This can be indexed explicitly using two lists:
+
+```
+matrix1[[0, 0, 0], [0, 1, 2]]
+```
+
+For short hand, a scalar value can be used the row:
+
+```
+matrix1[0, [0, 1, 2]]
+```
+
+![img_042](./images/img_042.png)
+
+To select all columns slicing can be used. Recall that the ```colon``` is used for slicing. Specifically with the form ```start:stop:step```, the ```start``` ```stop``` and ```step``` values can explictly be specified:
+
+```
+matrix1[0, 0:matrix1.shape[1]:1]
+```
+
+If they are not, the default values will be taken, that is ```start=0```, ```stop=array.shape[n]``` where ```array``` is the array name and ```n``` is the dimension and ```step=1```:
+
+```
+matrix1[0, ::]
+```
+
+If the second colon is not specified, it is assumed ```step=1```:
+
+```
+matrix1[0, :]
+```
+
+![img_043](./images/img_043.png)
+
+Indexing is also possible using a negative step:
+
+```
+matrix1[0, -1:-matrix1.shape[1]-1:-1]
+```
+
+Use of a negative step will change the default ```start=-1``` and ```stop=-array.shape[n]-1``` where once again ```array``` is the array name and ```n``` is the dimension and ```step=1```.
+
+![img_044](./images/img_044.png)
+
+Since it is easier to conceptualise a matrix on a computer screen. Higher order arrays are often constructed using the zeros function and then populated by slicing and assigning the slice to a matrix. For example the following 3darray ```book``` can be created using:
+
+```
+book = np.zeros(shape=(3, 4, 3))
+book
+
+book.size
+book.ndim
+book.shape
+```
+
+![img_052](./images/img_052.png)
+
+The data for a single page can be constructed as a matrix:
+
+```
+page0 = np.array([[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9],
+                  [10, 11, 12]])
+page0
+
+page0.size
+page0.ndim
+page0.shape
+```
+
+![img_053](./images/img_053.png)
+
+Notice that ```book0.shape[-1]``` and ```page0.shape[-1]``` match meaning the number of columns is the same. Also ```book0.shape[-2]``` and ```page0.shape[-2]``` match meaning the number of rows is the same.
+
+The other two pages can be created using:
+
+```
+page1 = np.array([[13, 14, 15],
+                  [16, 17, 18],
+                  [19, 20, 21],
+                  [22, 23, 24]])
+page1
+page2 = np.array([[25, 26, 27],
+                  [28, 29, 30],
+                  [31, 32, 33],
+                  [34, 35, 36]])
+page2
+```
+
+![img_054](./images/img_054.png)
+
+Now ```page0``` can be added to ```book``` by slicing the ```book``` and assigning the value to the matrix ```page0```:
+
+```
+book[0, :, :] = page0
+book
+```
+
+![img_055](./images/img_055.png)
+
+This can be done for the other pages:
+
+```
+book[1, :, :] = page1
+book[2, :, :] = page2
+book
+```
+
+![img_056](./images/img_056.png)
+
+## axis, flip, fliplr, flipud
+
+A matrix can be left right flipped by indexing with rows=```:``` and columns=```::-1```
+
+$$\text{matrix1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+
+$$\text{matrix1\_lr}=\left[\begin{matrix}3&2&1\\6&5&4\\9&8&7\\12&11&10\end{matrix}\right]$$
+
+```
+matrix1_lr = matrix1[:, ::-1]
+matrix1_lr
+```
+
+![img_045](./images/img_045.png)
+
+There is an associated ```fliplr``` ```numpy``` function:
+
+```
+matrix1_lr = np.fliplr(m=matrix1)
+matrix1_lr
+```
+
+![img_046](./images/img_046.png)
+
+And there is an associated ```flip``` ```numpy``` function. This function has the keyword input argument ```axis``` which is a common parameter for ```numpy``` functions.
+
+When flipping left right using indexing, the following operation ```matrix1[:, ::-1]``` was carried out. All rows were selected and the flipping operation was carried out on the columns, therefore the column axis should be selected. Since a matrix is a 2darray the rows are ```axis=0``` and the columns are ```axis=1```.
+
+```
+matrix1_lr = np.flip(m=matrix1, axis=-1)
+matrix1_lr
+```
+
+![img_047](./images/img_047.png)
+
+Recall when the number of dimensions in the ```shape``` ```tuple``` were discussed, that the new dimension is left appended. This means the ```axis``` positive value of the columns will increase by 1 for each dimension. On the other hand the negative value will always be ```-1``` and it is therefore recommended to use the negative value for the sake of consistency.
+
+|ndim|description|indexing|
+|---|---|---|
+|1|line vector|array1d[c, ]|
+|2|page consisting of rows of equal length line vectors|array2d[r, c]|
+|3|book of equally sized pages|array3d[b, r, c]|
+|4|shelf of equally sized books|array4d[s, b, r, c]|
+|5|wardrobe of equally sized shelves|array5d[w, s, b, r, c]|
+|6|library of equally sized wardrobes|array6d[l, w, s, b, r, c]|
+|7|group of equally sized libraries|array7d[g, l, w, s, b, r, c]|
+
+![img_048](./images/img_048.png)
+
+A matrix can be up down flipped by indexing with rows=```::-1``` and columns=```:```. The flipping operation this time is carried out on the ```axis``` of the rows, therefore the ```numpy``` function ```flip``` can be used with ```axis=0``` in the case of a 2d array or more generally ```axis=-2``` for any dimension of array that has rows, to achieve the same operation. There is also the associated ```numpy``` function ```flipud```:
+
+$$\text{matrix1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+
+$$\text{matrix1\_ud}=\left[\begin{matrix}10&11&12\\7&8&9\\4&5&6\\1&2&3\end{matrix}\right]$$
+
+```
+matrix1_ud = matrix1[::-1, :]
+matrix1_ud
+
+matrix1_ud = np.flipud(m=matrix1)
+matrix1_ud
+
+matrix1_ud = np.flip(m=matrix1, axis=-2)
+matrix1_ud
+```
+
+![img_049](./images/img_049.png)
+
+## Transposing
+
+The ```T``` attribute and complementary ```numpy``` function ```transpose``` an be used to transpose an array. 
+
+This is typically used most for 2d arrays for example 2d row vectors can be transposed into 2d column vectors or vice versa: 
+
+$$\text{arrayr}=\left[\begin{matrix}1&2&3&4\end{matrix}\right]$$
+
+$$\text{arrayc}=\left[\begin{matrix}1\\2\\3\\4\end{matrix}\right]$$
+
+A row vector can be transposed into a column, which can be transposed back into a row. Transposing the 2d array 2 times, returns the original array:
+
+```
+arrayr = np.array([1, 2, 3, 4], ndmin=2)
+arrayr
+
+arrayc = arrayr.T
+arrayc
+
+arrayr = arrayc.T
+arrayr
+```
+
+The ```numpy``` function ```transpose``` behaves in a similar manner:
+
+```
+arrayc = np.transpose(arrayr)
+arrayc
+```
+
+![img_050](./images/img_050.png)
+
+This also works for matrices:
+
+$$\text{matrix1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+
+$$\text{matrix1\_t}=\left[\begin{matrix}1&4&7&9\\2&5&8&11\\3&6&9&12\end{matrix}\right]$$
+
+```
+matrix1
+matrix1_t = matrix1.T
+matrix1_t
+```
+
+![img_051](./images/img_051.png)
+
+## arange and linspace
+
+A numpy array can be created from a ```range``` object. Recall that the ```range``` object has a ```start```, ```stop``` and   ```step``` value and uses integer based zero-order indexing:
+
+```
+array1 = np.array(object=range(0, 10, 1))
+array1
+array1.ndim
+array1.size
+array1.dtype
+```
+
+![img_057](./images/img_057.png)
+
+Recall that the ```range``` class can be instantiated with a varying number of positional input arguments:
+
+|n|supplied|default|
+|---|---|---|
+|3|start, stop, step||
+|2|start, stop|step=1|
+|1|stop|start=0, step=1|
+
+Zero-order indexing is exclusive of the stop value. To get an array that is inclusive of the stop value ```10```. The following would have to be used:
+
+```
+array1 = np.array(object=range(0, 10+1, 1))
+array1
+array1.ndim
+array1.size
+array1.dtype
+```
+
+![img_058](./images/img_058.png)
+
+One limitation of the ```range``` class is confined to integers. 
+
+![img_059](./images/img_059.png)
+
+The ```numpy``` library includes the more powerful array range function ```arange```. This function behaves similar to the ```range``` class but can handle additional datatypes. Its docstring can be viewed as a pop up balloon by inputting ```np.arange()``` followed by shift ```⇧``` and tab ```↹```:
+
+![img_060](./images/img_060.png)
+
+The input arguments are similar to the ```range``` object hwoevder note inclusion of the optional keyword ```dtype```, indicating that this function can handle additional datatypes.The array created from the ```range``` object can be created with the array range function:
+
+```
+array1 = np.arange(start=0, stop=10, step=1)
+array1
+array1.ndim
+array1.size
+array1.dtype
+```
+
+![img_061](./images/img_061.png)
+
+Once again, this uses zero-order indexing and is exclusive of the stop value. To get an array that is inclusive of the stop value ```10```, the following would have to be used:
+
+```
+array1 = np.arange(start=0, stop=10+1, step=1)
+array1
+array1.ndim
+array1.size
+array1.dtype
+```
+
+![img_062](./images/img_062.png)
+
+The datatype is inferred by the input arguments. If the input arguments are floating point values, the datatype of the array will be ```float```. For example:
+
+```
+array1 = np.arange(start=0.0, stop=10.0+0.1, step=0.1)
+array1
+array1.ndim
+array1.size
+array1.dtype
+```
+
+![img_063](./images/img_063.png)
+
+The array range function can also be used with ```datetimes``` and ```timedeltas```:
+
+```
+import datetime as dt
+
+python3released = dt.datetime(year=2008, month=12, day=3, 
+                              hour=12, minute=0, second=0, 
+                              microsecond=0, tzinfo=london)
+python3released
+
+today = dt.datetime.now()
+today
+
+day = dt.timedelta(days=1)
+day
+
+python3birthdays = np.arange(start=python3released, stop=today+day, step=day)
+python3birthdays
+```
+
+![img_064](./images/img_064.png)
+
+Sadly at this moment, the array range function does not support timezone information, displaying a depreciation warning. This is because Python previously didn't handle timezones very well. Python 3.9 changed the way timezones were implemented using the ```zoneinfo``` standard module and depreciating the crude implementations in the ```datetime``` module. It is possible ```numpy``` will later be updated to use the features of this standard module to support timezone information:
+
+![img_065](./images/img_065.png)
+
+The ```numpy``` library converts instances of the ```datetime``` class to the ```np.datetime64``` class and instances of the ```timedelta``` class to the ```np.timedelta64``` class. The ```numpy``` implementations have higher precisions and can be constructed directly using the ```np.datetime64``` class and ```np.timedelta64``` class respectively: 
+
+![img_066](./images/img_066.png)
+
+![img_067](./images/img_067.png)
+
+The array range function ```arange``` is complementated by the linearly spaced array function ```linspace```. Its docstring can be viewed as a pop up balloon by inputting ```np.linspace()``` followed by shift ```⇧``` and tab ```↹```:
+
+![img_068](./images/img_068.png)
+
+The linearly spaced array function also has a ```start``` and ```stop``` value but is inclusive to both boundaries by default. Instead of a ```step```, it uses ```num``` to specify the number of evenly spaced datapoints:
+
+```
+array1 = np.linspace(start=0, stop=10, num=11)
+array1
+
+array1.ndim
+array1.size
+array1.dtype
+```
+
+![img_069](./images/img_069.png)
+
+Notice that the datetype is ```float``` by default, as the linear spaced function uses float division to calculate each datapoint. The lineart spaced function has the keyword input argument ```dtype``` which can be used to set a custom datatype such as ```int```.
+
+## Unitary Data model Methods
+
+A 2d array or matrix can be quickly generated using the ```arange``` function and ```reshape``` method:
+
+```
+matrix1 = np.arange(start=1, stop=17, step=1).reshape((4, 4))
+matrix1
+```
+
+![img_070](./images/img_070.png)
+
+If the directory function ```dir``` is used on the ndarray:
+
+```
+dir(matrix1)
+```
+
+A large list of identifiers displays including a larger list of datamodel identifiers:
+
+![img_071](./images/img_071.png)
+
+The unitary datamodel methods require only a single instance:
+
+|unitary datamodel method|use|description|
+|---|---|---|
+|array.\_\_dir\_\_|dir(array)|list directory for identifiers|
+|array.\_\_str\_\_|str(array)|informal representation|
+|array.\_\_repr\_\_|repr(array)|formal representation|
+|array.\_\_doc\_\_|? array|lookup docstring|
+|array.\_\_copy\_\_|copy.copy(array)|shallow copy of array|
+|array.\_\_deepcopy\_\_|copy.deepcopy(array)|deep copy of array|
+
+
+
+
+
+
+
+
+
+## Unitary Mathematical Data model Methods
+
+|unitary datamodel method|use|description|
+|---|---|---|
+|array.\_\_pos\_\_|+array|unitary positive operator|
+|array.\_\_neg\_\_|-array|unitary negative operator|
+|array.\_\_abs\_\_|abs(array)|absolute values of array|
+
+
+## Binary Mathematical Data model Methods
+
+|binary datamodel method|use|description|
+|---|---|---|
+|array1.\_\_add\_\_(array2)|array1 + array2|addition operator|
+|array1.\_\_radd\_\_(array2)|array2 + array1|reverse addition operator|
+|array1.\_\_iadd\_\_(array2)|array1 += array2|inplace addition operator|
+|array1.\_\_sub\_\_(array2)|array1 - array2|subtraction operator|
+|array1.\_\_rsub\_\_(array2)|array2 - array1|reverse subtraction operator|
+|array1.\_\_isub\_\_(array2)|array1 -= array2|inplace subtraction operator|
+|array1.\_\_mul\_\_(array2)|array1 * array2|multiplication operator|
+|array1.\_\_mul\_\_(array2)|array2 * array1|reverse multiplication operator|
+|array1.\_\_mul\_\_(array2)|array1 *= array2|inplace multiplication operator|
+|array1.\_\_pow\_\_(array2)|array1 ** array2|power operator|
+|array1.\_\_pow\_\_(array2)|array2 ** array1|reverse power operator|
+|array1.\_\_pow\_\_(array2)|array1 **= array2|inplace power operator|
+|array1.\_\_floordiv\_\_(array2)|array1 // array2|integer division operator|
+|array1.\_\_floordiv\_\_(array2)|array2 // array1|integer division operator|
+|array1.\_\_floordiv\_\_(array2)|array1 //= array2|integer division operator|
+|array1.\_\_mod\_\_(array2)|array1 % array2|modulus operator|
+|array1.\_\_floordiv\_\_(array2)|array2 % array1|modulus operator|
+|array1.\_\_floordiv\_\_(array2)|array1 %= array2|modulus operator|
+|array1.\_\_truediv\_\_(array2)|array1 / array2|float division operator|
+|array1.\_\_truediv\_\_(array2)|array2 / array1|float division operator|
+|array1.\_\_truediv\_\_(array2)|array1 /= array2|float division operator|
+|array1.\_\_and\_\_(array2)|array1 & array2|and operator|
+|array1.\_\_rand\_\_(array2)|array2 & array1|reverse and operator|
+|array1.\_\_iand\_\_(array2)|array1 &= array2|inplace and operator|
+|array1.\_\_or\_\_(array2)|array1 | array2|or operator|
+|array1.\_\_ror\_\_(array2)|array2 | array1|reverse or operator|
+|array1.\_\_ior\_\_(array2)|array1 |= array2|inplace or operator|
