@@ -1028,7 +1028,7 @@ The unitary datamodel methods require only a single instance:
 |array.\_\_copy\_\_|copy.copy(array)|shallow copy of array|
 |array.\_\_deepcopy\_\_|copy.deepcopy(array)|deep copy of array|
 
-
+|array.\_\_len\_\_|len(array)|len of array, treated as ensted list of lists...|
 
 
 
@@ -1073,6 +1073,14 @@ The unitary datamodel methods require only a single instance:
 |array1.\_\_and\_\_(array2)|array1 & array2|and operator|
 |array1.\_\_rand\_\_(array2)|array2 & array1|reverse and operator|
 |array1.\_\_iand\_\_(array2)|array1 &= array2|inplace and operator|
-|array1.\_\_or\_\_(array2)|array1 | array2|or operator|
-|array1.\_\_ror\_\_(array2)|array2 | array1|reverse or operator|
-|array1.\_\_ior\_\_(array2)|array1 |= array2|inplace or operator|
+|array1.\_\_or\_\_(array2)|array1 \| array2|or operator|
+|array1.\_\_ror\_\_(array2)|array2 \| array1|reverse or operator|
+|array1.\_\_ior\_\_(array2)|array1 \|= array2|inplace or operator|
+|array1.\_\_xor\_\_(array2)|array1 ^ array2|xor operator|
+|array1.\_\_rxor\_\_(array2)|array2 ^ array1|reverse xor operator|
+|array1.\_\_ior\_\_(array2)|array1 ^= array2|inplace xor operator|
+|array1.\_\_lshift\_\_(array2)|array1 << array2|leftshift operator|
+|array1.\_\_rlshift\_\_(array2)|array2 << array1|reverse leftshift operator|
+|array1.\_\_ilshift\_\_(array2)|array1 << array2|inplace leftshift operator|
+
+conditional operators
