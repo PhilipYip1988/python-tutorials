@@ -996,7 +996,32 @@ array1.dtype
 
 Notice that the datetype is ```float``` by default, as the linear spaced function uses float division to calculate each datapoint. The lineart spaced function has the keyword input argument ```dtype``` which can be used to set a custom datatype such as ```int```.
 
-## Unitary Data model Methods
+The functions ```arange``` and ```linspace``` have no shape parameter and will by default create a 1d array:
+
+```
+vec = np.arange(start=0, stop=4, step=1)
+vec
+```
+
+Sometimes it is desired to use these functions to create a row vector or column vector. This can be done by indexing using ```np.newaxis``` to create a new axis alongside ```:``` to indicate all elements. For example in the case of a row vector, all the elements will be in different columns and a new axis will be inserted for the 1 row:
+
+```
+rowvec = np.arange(start=0, stop=4, step=1)[np.newaxis, :]
+rowvec
+```
+
+Likewise in the case of a column vector, a new axis will be inserted for the 1 column and all the elements will be in different rows:
+
+```
+colvec = np.arange(start=0, stop=4, step=1)[:, np.newaxis]
+colvec
+```
+
+Recall it is useful to conceptualise the dimensions from right to left when examining the ```shape``` ```tuple``` or indexing.
+
+![img_088](./images/img_088.png)
+
+## Data Model Methods
 
 A 2d array or matrix can be quickly generated using the ```arange``` function and ```reshape``` method:
 
@@ -1013,30 +1038,208 @@ If the directory function ```dir``` is used on the ndarray:
 dir(matrix1)
 ```
 
-A large list of identifiers displays including a larger list of datamodel identifiers:
+A large list of identifiers displays including a larger list of data model identifiers:
 
 ![img_071](./images/img_071.png)
 
-The unitary datamodel methods require only a single instance:
+The unitary data model methods require only a single instance:
 
-|unitary datamodel method|use|description|
+|unitary data model method|use|description|
 |---|---|---|
 |array.\_\_dir\_\_|dir(array)|list directory for identifiers|
 |array.\_\_str\_\_|str(array)|informal representation|
 |array.\_\_repr\_\_|repr(array)|formal representation|
 |array.\_\_doc\_\_|? array|lookup docstring|
+|array.\_\_len\_\_|len(array)|len of array|
 |array.\_\_copy\_\_|copy.copy(array)|shallow copy of array|
 |array.\_\_deepcopy\_\_|copy.deepcopy(array)|deep copy of array|
 
-|array.\_\_len\_\_|len(array)|len of array, treated as ensted list of lists...|
+The data model method ```__str__``` maps to the builtin string ```str``` class and displays the informal representation, similar to how a matrix is displayed in a word processor:
 
+```
+str(matrix1)
+```
 
+Use of the ```print``` funtion also prints this informal representation:
 
+```
+print(matrix1)
+```
 
+The data model method ```__repr__``` maps to the builtin representation ```repr``` function and displays the formal representation which is what is input to instantiate the ndarray:
 
+```
+repr(matrix1)
+```
 
+This displays in the cell output of Jupyterlab:
 
-## Unitary Mathematical Data model Methods
+```
+matrix1
+```
+
+![img_072](./images/img_072.png)
+
+The data model method ```__doc__``` maps to the builtin ```?``` statement and displays the docstring:
+
+```
+? matrix1
+```
+
+![img_073](./images/img_073.png)
+
+The ```__len__``` data model method maps to the builtin ```len``` function. This treats the array as a list of lists and returns only the length of the outer dimension. It may be mroe appropriate to use the attributes ```size```, ```ndim```, and ```shape```:
+
+![img_074](./images/img_074.png)
+
+The ndarray is mutable:
+
+```
+matrix1
+```
+
+If ```matrix1``` is assigned to ```matrix2``` then ```matrix2``` becomes an alias for ```matrix1```:
+
+```
+matrix2 = matrix1
+```
+
+Mutating ```matrix2```:
+
+```
+matrix2[3, 3] = 25
+matrix2
+```
+
+Mutates, ```matrix1``` as they are the same object:
+
+```
+matrix1
+```
+
+![img_075](./images/img_075.png)
+
+Returning ```matrix1``` back to the values before:
+
+```
+matrix1 = np.arange(start=1, stop=17, step=1).reshape((4, 4))
+matrix1
+```
+
+The ```copy``` function can be used instead to make a shallow copy:
+
+```
+from copy import copy
+matrix2 = copy(matrix1)
+```
+
+When the copy is mutated:
+
+```
+matrix2[3, 3] = 25
+matrix2
+```
+
+The original remains unchanged:
+
+```
+matrix1
+```
+
+![img_076](./images/img_076.png)
+
+For convenience the ```numpy``` library also has the function ```copy```, and the ```ndarray``` has the associated method ```copy```. Their docstings can be viewed by inputting the function or method name followed by open parenthesis and pressing shift ```⇧``` and tab ```↹```:
+
+![img_077](./images/img_077.png)
+
+![img_078](./images/img_078.png)
+
+They can be used:
+
+```
+matrix3 = np.copy(matrix1)
+matrix4 = matrix1.copy()
+```
+
+![img_079](./images/img_079.png)
+
+For numeric ndarrays like the above, the shallow copy suffices.
+
+Supposing the following Python ```objects``` are created:
+
+```
+list1 = [1, 'hello', 3.14]
+dict1 = {'r': 'red', 'g': 'green', 'b': 'blue'}
+```
+
+It is however possible to make a ndarray of the datatype ```object```:
+
+```
+mixed_array= np.array([list1, dict1, 'world', 2, 6.28], dtype=object)
+mixed_array
+```
+
+If a copy of this array is made using a shallow copy:
+
+```
+mixed_array2 = mixed_array.copy()
+```
+
+And one of the mutable Python objects is mutated by indexing into the shallow copy:
+
+```
+mixed_array2[0][0] = 4
+mixed_array2
+```
+
+Notice that:
+
+```
+mixed_array
+```
+
+And:
+
+```
+list1
+```
+
+are also mutated.
+
+![img_080](./images/img_080.png)
+
+In such a case, it may be preferable to make a deep copy. Returning back to the values before:
+
+```
+list1 = [1, 'hello', 3.14]
+dict1 = {'r': 'red', 'g': 'green', 'b': 'blue'}
+mixed_array= np.array([list1, dict1, 'world', 2, 6.28], dtype=object)
+mixed_array
+```
+
+If instead a deep copy is made and mutated:
+
+```
+from copy import deepcopy
+mixed_array2 = deepcopy(mixed_array1)
+mixed_array2[0][0] = 4
+mixed_array2
+```
+
+The original ndarray and Python objects are not mutated:
+
+```
+mixed_array
+list1
+```
+
+![img_081](./images/img_081.png)
+
+Recall when copy is made a copy of the object references is made. When deepcopy is used a copy of the objects themselves are made.
+
+## Unitary Mathematical Data Model Methods
+
+The unitary (operate on a single array) mathematical data model methods are setup for an array: 
 
 |unitary datamodel method|use|description|
 |---|---|---|
@@ -1044,8 +1247,42 @@ The unitary datamodel methods require only a single instance:
 |array.\_\_neg\_\_|-array|unitary negative operator|
 |array.\_\_abs\_\_|abs(array)|absolute values of array|
 
+Supposing the following ndarray is created:
 
-## Binary Mathematical Data model Methods
+```
+matrix1 = np.array([[1, 2, 3, 4],
+                    [-5, -6, -7, -8],
+                    [9, 10, 11, 12],
+                    [-13, -14, -15, -16]])
+matrix1
+```
+
+Use of the unitary ```+``` operator leaves the array unchanged:
+
+```
+matrix2 = +matrix1
+matrix2
+```
+
+Use of the unitary ```-``` operator reverses the sign of each element, applying negation to each element:
+
+```
+matrix3 = -matrix1
+matrix3
+```
+
+Use of the unitary absolute function ```abs``` strips the sign of each element:
+
+```
+matrix4 = abs(matrix1)
+matrix4
+```
+
+![img_082](./images/img_082.png)
+
+## Binary Mathematical Data Model Methods
+
+The binary (operate on a pair of arrays) mathematical data model methods are setup for an array: 
 
 |binary datamodel method|use|description|
 |---|---|---|
@@ -1091,3 +1328,106 @@ The unitary datamodel methods require only a single instance:
 |array1.\_\_rshift\_\_(array2)|array1 >> array2|rightshift operator|
 |array1.\_\_rrshift\_\_(array2)||reverse rightshift operator|
 |array1.\_\_irshift\_\_(array2)|array1 >>= array2|inplace rightshift operator|
+
+The instance ```array1``` is referred to as ```self``` in the data model method and the instance ```array2``` is referred to as ```other``` in the data model method. There a large number of binary data model methods however most of these will be familar as they behave the same way as their counterparts in the builtins ```int```, ```float``` and ```bool``` classes.
+
+If ```array1``` is a matrix. An ```array2``` can be added provided the shape of both arrays are the same:
+
+```
+matrix1 = np.array([[1, 2, 3, 4],
+                    [-5, -6, -7, -8],
+                    [9, 10, 11, 12],
+                    [-13, -14, -15, -16]])
+matrix1
+
+matrix2 = abs(matrix1)
+matrix2
+
+matrix3 = matrix1 + matrix2
+matrix3
+```
+
+![img_084](./images/img_084.png)
+
+Alternatively scalar expansion of a scalar integer, float or tuple can be used. This expands the scalar across all dimensions of the array:
+
+```
+matrix1 = np.array([[1, 2, 3, 4],
+                    [-5, -6, -7, -8],
+                    [9, 10, 11, 12],
+                    [-13, -14, -15, -16]])
+matrix1
+
+matrix2 = matrix1 + 4
+matrix2
+```
+
+![img_085](./images/img_085.png)
+
+Vector expansion can also be used. However the vector needs to be implictly specified as either a row or a column. 
+
+Vector expansion of a row, expands the row across all other dimensions of the matrix:
+
+```
+matrix1 = np.array([[1, 2, 3, 4],
+                    [-5, -6, -7, -8],
+                    [9, 10, 11, 12],
+                    [-13, -14, -15, -16]])
+matrix1
+
+row = np.arange(start=0, stop=4, step=1)[np.newaxis, :]
+row
+
+matrix2 = matrix1 + row
+matrix2
+```
+
+![img_086](./images/img_086.png)
+
+Vector expansion of a column, expands the column across all other dimensions of the matrix:
+
+```
+matrix1 = np.array([[1, 2, 3, 4],
+                    [-5, -6, -7, -8],
+                    [9, 10, 11, 12],
+                    [-13, -14, -15, -16]])
+matrix1
+
+col = np.arange(start=0, stop=4, step=1)[:, np.newaxis]
+col
+
+matrix2 = matrix1 + col
+matrix2
+```
+
+![img_087](./images/img_087.png)
+
+## Array Multiplication and Array Division
+
+All the operations seen above are carried out element by element. 
+
+For the case of multiplication, it is possible to carry out element by element multiplication or array multiplication.
+
+|datamodel method|use|description|
+|---|---|---|
+|array1.\_\_matmul\_\_(array2)|array1 @ array2|array multiplication operator|
+|array1.\_\_rmatmul\_\_(array2)||array multiplication operator|
+|array1.\_\_imatmul\_\_(array2)|array1 @ array2|array multiplication operator|
+
+$$\left[\begin{matrix}5&6\end{matrix}\right]@\left[\begin{matrix}7\\\8\end{matrix}\right]=\left[5\ast7+6\ast8\right]=\left[328\right]$$
+
+$$\left(2,\ 1\right)@\left(1,2\right)=\left(1,1\right)=(1,1)$$
+
+
+
+
+
+There are some other mathematical operations that are carried out array wide.
+
+
+
+dot
+
+inner
+
+outer
