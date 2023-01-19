@@ -806,7 +806,7 @@ A matrix can be up down flipped by indexing with rows=```::-1``` and columns=```
 
 $$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
-$$text{matrix1} \textunderscore \text{ud}=\left[\begin{matrix}10&11&12\\\7&8&9\\\4&5&6\\\1&2&3\end{matrix}\right]$$
+$$\text{matrix1} \textunderscore \text{ud}=\left[\begin{matrix}10&11&12\\\7&8&9\\\4&5&6\\\1&2&3\end{matrix}\right]$$
 
 ```
 matrix1_ud = matrix1[::-1, :]
