@@ -1055,12 +1055,12 @@ The unitary datamodel methods require only a single instance:
 |array1.\_\_sub\_\_(array2)|array1 - array2|subtraction operator|
 |array1.\_\_rsub\_\_(array2)|array2 - array1|reverse subtraction operator|
 |array1.\_\_isub\_\_(array2)|array1 -= array2|inplace subtraction operator|
-|array1.\_\_mul\_\_(array2)|array1 * array2|multiplication operator|
-|array1.\_\_mul\_\_(array2)|array2 * array1|reverse multiplication operator|
-|array1.\_\_mul\_\_(array2)|array1 *= array2|inplace multiplication operator|
-|array1.\_\_pow\_\_(array2)|array1 ** array2|power operator|
-|array1.\_\_pow\_\_(array2)|array2 ** array1|reverse power operator|
-|array1.\_\_pow\_\_(array2)|array1 **= array2|inplace power operator|
+|array1.\_\_mul\_\_(array2)|array1 \* array2|multiplication operator|
+|array1.\_\_mul\_\_(array2)|array2 \* array1|reverse multiplication operator|
+|array1.\_\_mul\_\_(array2)|array1 \*= array2|inplace multiplication operator|
+|array1.\_\_pow\_\_(array2)|array1 \*\* array2|power operator|
+|array1.\_\_pow\_\_(array2)|array2 \*\* array1|reverse power operator|
+|array1.\_\_pow\_\_(array2)|array1 \*\*= array2|inplace power operator|
 |array1.\_\_floordiv\_\_(array2)|array1 // array2|integer division operator|
 |array1.\_\_floordiv\_\_(array2)|array2 // array1|integer division operator|
 |array1.\_\_floordiv\_\_(array2)|array1 //= array2|integer division operator|
@@ -1087,4 +1087,7 @@ The unitary datamodel methods require only a single instance:
 |array1.\_\_ge\_\_(array2)|array1 >= array2|greater than or equal to operator|
 |array1.\_\_lshift\_\_(array2)|array1 << array2|leftshift operator|
 |array1.\_\_rlshift\_\_(array2)|array2 << array1|reverse leftshift operator|
-|array1.\_\_ilshift\_\_(array2)|array1 << array2|inplace leftshift operator|
+|array1.\_\_ilshift\_\_(array2)|array1 <<= array2|inplace leftshift operator|
+|array1.\_\_rshift\_\_(array2)|array1 >> array2|rightshift operator|
+|array1.\_\_rrshift\_\_(array2)|array2 >> array1|reverse rightshift operator|
+|array1.\_\_irshift\_\_(array2)|array1 >>= array2|inplace rightshift operator|
