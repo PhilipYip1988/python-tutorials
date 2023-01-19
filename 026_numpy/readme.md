@@ -626,7 +626,7 @@ Notice that the form of the square bracket, has a similar form to the ```shape``
 
 Multiple values can be selected from the array by indexing using a list. This outputs an ```ndarray```:
 
-$$\text{matrix1}=\left[\begin{matrix}1&\textbf{2}&3\\\textbf{4}&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
+$$\text{matrix1}=\left[\begin{matrix}1&\textbf{2}&3\\\ \textbf{4}&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
 The scalar ```2``` is on row ```0``` and column ```1```.
 
@@ -759,7 +759,7 @@ A matrix can be left right flipped by indexing with rows=```:``` and columns=```
 
 $$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
-$$\text{matrix1\_lr}=\left[\begin{matrix}3&2&1\\\6&5&4\\\9&8&7\\\12&11&10\end{matrix}\right]$$
+$$\text{matrix1} \textunderscore \text{lr}=\left[\begin{matrix}3&2&1\\\6&5&4\\\9&8&7\\\12&11&10\end{matrix}\right]$$
 
 ```
 matrix1_lr = matrix1[:, ::-1]
@@ -806,7 +806,7 @@ A matrix can be up down flipped by indexing with rows=```::-1``` and columns=```
 
 $$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
-$$\text{matrix1\_ud}=\left[\begin{matrix}10&11&12\\\7&8&9\\\4&5&6\\\1&2&3\end{matrix}\right]$$
+$$text{matrix1} \textunderscore \text{ud}=\left[\begin{matrix}10&11&12\\\7&8&9\\\4&5&6\\\1&2&3\end{matrix}\right]$$
 
 ```
 matrix1_ud = matrix1[::-1, :]
@@ -857,7 +857,7 @@ This also works for matrices:
 
 $$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
-$$\text{matrix1\_t}=\left[\begin{matrix}1&4&7&9\\\2&5&8&11\\\3&6&9&12\end{matrix}\right]$$
+$$\text{matrix1} \textunderscore \text{t}=\left[\begin{matrix}1&4&7&9\\\2&5&8&11\\\3&6&9&12\end{matrix}\right]$$
 
 ```
 matrix1
