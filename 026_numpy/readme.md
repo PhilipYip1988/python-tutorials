@@ -545,7 +545,7 @@ matrix1
 
 The following matrix:
 
-$$\text{matrixlist1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+$$\text{matrixlist1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
 Can be represented as a list of lists:
 
@@ -572,7 +572,7 @@ matrixlist1 = [row0,
 
 Supposing the following ```2``` is a scalar value of interest:
 
-$$\text{matrixlist1}=\left[\begin{matrix}1&\textbf{2}&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+$$\text{matrixlist1}=\left[\begin{matrix}1&\textbf{2}&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
 
 To retrieve this scalar value, ```matrixlist1``` must be indexed, and a square set of brackets is used to select the row, which is ```row0``` at index ```0```:
@@ -626,7 +626,7 @@ Notice that the form of the square bracket, has a similar form to the ```shape``
 
 Multiple values can be selected from the array by indexing using a list. This outputs an ```ndarray```:
 
-$$\text{matrix1}=\left[\begin{matrix}1&\textbf{2}&3\\\textbf{4}&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+$$\text{matrix1}=\left[\begin{matrix}1&\textbf{2}&3\\\textbf{4}&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
 The scalar ```2``` is on row ```0``` and column ```1```.
 
@@ -640,7 +640,7 @@ matrix1[[0, 1], [1, 0]]
 
 Supposing all of the items are along an axis, for example row 0, all columns:
 
-$$\text{matrix1}=\left[\begin{matrix}\textbf{1}&\textbf{2}&\textbf{3}\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+$$\text{matrix1}=\left[\begin{matrix}\textbf{1}&\textbf{2}&\textbf{3}\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
 This can be indexed explicitly using two lists:
 
@@ -757,9 +757,9 @@ book
 
 A matrix can be left right flipped by indexing with rows=```:``` and columns=```::-1```
 
-$$\text{matrix1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+$$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
-$$\text{matrix1\_lr}=\left[\begin{matrix}3&2&1\\6&5&4\\9&8&7\\12&11&10\end{matrix}\right]$$
+$$\text{matrix1\_lr}=\left[\begin{matrix}3&2&1\\\6&5&4\\\9&8&7\\\12&11&10\end{matrix}\right]$$
 
 ```
 matrix1_lr = matrix1[:, ::-1]
@@ -804,9 +804,9 @@ Recall when the number of dimensions in the ```shape``` ```tuple``` were discuss
 
 A matrix can be up down flipped by indexing with rows=```::-1``` and columns=```:```. The flipping operation this time is carried out on the ```axis``` of the rows, therefore the ```numpy``` function ```flip``` can be used with ```axis=0``` in the case of a 2d array or more generally ```axis=-2``` for any dimension of array that has rows, to achieve the same operation. There is also the associated ```numpy``` function ```flipud```:
 
-$$\text{matrix1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+$$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
-$$\text{matrix1\_ud}=\left[\begin{matrix}10&11&12\\7&8&9\\4&5&6\\1&2&3\end{matrix}\right]$$
+$$\text{matrix1\_ud}=\left[\begin{matrix}10&11&12\\\7&8&9\\\4&5&6\\\1&2&3\end{matrix}\right]$$
 
 ```
 matrix1_ud = matrix1[::-1, :]
@@ -829,7 +829,7 @@ This is typically used most for 2d arrays for example 2d row vectors can be tran
 
 $$\text{arrayr}=\left[\begin{matrix}1&2&3&4\end{matrix}\right]$$
 
-$$\text{arrayc}=\left[\begin{matrix}1\\2\\3\\4\end{matrix}\right]$$
+$$\text{arrayc}=\left[\begin{matrix}1\\\2\\\3\\\4\end{matrix}\right]$$
 
 A row vector can be transposed into a column, which can be transposed back into a row. Transposing the 2d array 2 times, returns the original array:
 
@@ -855,9 +855,9 @@ arrayc
 
 This also works for matrices:
 
-$$\text{matrix1}=\left[\begin{matrix}1&2&3\\4&5&6\\7&8&9\\10&11&12\end{matrix}\right]$$
+$$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
 
-$$\text{matrix1\_t}=\left[\begin{matrix}1&4&7&9\\2&5&8&11\\3&6&9&12\end{matrix}\right]$$
+$$\text{matrix1\_t}=\left[\begin{matrix}1&4&7&9\\\2&5&8&11\\\3&6&9&12\end{matrix}\right]$$
 
 ```
 matrix1
@@ -1079,8 +1079,12 @@ The unitary datamodel methods require only a single instance:
 |array1.\_\_xor\_\_(array2)|array1 ^ array2|xor operator|
 |array1.\_\_rxor\_\_(array2)|array2 ^ array1|reverse xor operator|
 |array1.\_\_ior\_\_(array2)|array1 ^= array2|inplace xor operator|
+|array1.\_\_eq\_\_(array2)|array1 == array2|is equal to operator|
+|array1.\_\_ne\_\_(array2)|array1 != array2|not equal to operator|
+|array1.\_\_lt\_\_(array2)|array1 < array2|less than operator|
+|array1.\_\_gt\_\_(array2)|array1 > array2|greater than operator|
+|array1.\_\_le\_\_(array2)|array1 <= array2|less than or equal to operator|
+|array1.\_\_ge\_\_(array2)|array1 >= array2|greater than or equal to operator|
 |array1.\_\_lshift\_\_(array2)|array1 << array2|leftshift operator|
 |array1.\_\_rlshift\_\_(array2)|array2 << array1|reverse leftshift operator|
 |array1.\_\_ilshift\_\_(array2)|array1 << array2|inplace leftshift operator|
-
-conditional operators
