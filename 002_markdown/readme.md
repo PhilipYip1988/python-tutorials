@@ -318,7 +318,45 @@ Produces:
 
 ## LaTeX
 
-A single dollar sign ```$```  can be used to enclose an inline Latex equation. Two dollar signs ```$$``` can be used for a display equation.
+The markdown file supports LaTeX. Care needs to be taken as different IDEs use different engines to render LaTeX. In Visual Studio Code the extensions Markdown All in One and Markdown+Math use KaTeX as a powerful math renderer. GitHub uses the more limited MathJax as a math renderer because the math renderer is more limited it is more prone to rendering issues. Markdown files uploaded to GitHub with LaTeX should be checked on GitHub to see if equations render properly.
+
+[MathJax Issues](https://github.com/mathjax/MathJax/issues)
+
+[Markdown All in One VSCode Extension](https://github.com/yzhang-gh/vscode-markdown/issues)
+
+[Markdown + Math VSCode Extension](https://github.com/goessner/mdmath/issues)
+
+In this guide, Microsoft Word will be used as a what you see is what you get (WYSIWYG) equation editor. Once the equation is made it can be copied to LaTeX. Unfortunately due to the limitations of MathJax, some minor modifications need to be made, in order for the equation to render properly on GitHub.
+
+[LaTeX](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+
+A single dollar sign ```$```  can be used to enclose an inline Latex equation. 
+
+```
+The equation is $LaTex_equation$
+```
+
+Two dollar signs ```$$``` can be used for a display equation.
+
+```
+$$LaTeX_equation$$
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 The following markdown:
 
@@ -328,12 +366,12 @@ The equation is $ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\p
 
 Produces:
 
-The equation is $ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $
+The equation is $f(x) = a_0 + \sum_{n=1}^{\infty} \left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right)$
 
 The following markdown:
 
 ```
-$$ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $$
+$$ f\left(x\right)=a_0+ \sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $$
 ```
 
 Produces:
