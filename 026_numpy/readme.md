@@ -1050,34 +1050,34 @@ The unitary datamodel methods require only a single instance:
 |binary datamodel method|use|description|
 |---|---|---|
 |array1.\_\_add\_\_(array2)|array1 + array2|addition operator|
-|array1.\_\_radd\_\_(array2)|array2 + array1|reverse addition operator|
+|array1.\_\_radd\_\_(array2)||reverse addition operator|
 |array1.\_\_iadd\_\_(array2)|array1 += array2|inplace addition operator|
 |array1.\_\_sub\_\_(array2)|array1 - array2|subtraction operator|
-|array1.\_\_rsub\_\_(array2)|array2 - array1|reverse subtraction operator|
+|array1.\_\_rsub\_\_(array2)||reverse subtraction operator|
 |array1.\_\_isub\_\_(array2)|array1 -= array2|inplace subtraction operator|
 |array1.\_\_mul\_\_(array2)|array1 \* array2|multiplication operator|
-|array1.\_\_mul\_\_(array2)|array2 \* array1|reverse multiplication operator|
+|array1.\_\_mul\_\_(array2)||reverse multiplication operator|
 |array1.\_\_mul\_\_(array2)|array1 \*= array2|inplace multiplication operator|
 |array1.\_\_pow\_\_(array2)|array1 \*\* array2|power operator|
-|array1.\_\_pow\_\_(array2)|array2 \*\* array1|reverse power operator|
+|array1.\_\_pow\_\_(array2)||reverse power operator|
 |array1.\_\_pow\_\_(array2)|array1 \*\*= array2|inplace power operator|
 |array1.\_\_floordiv\_\_(array2)|array1 // array2|integer division operator|
-|array1.\_\_floordiv\_\_(array2)|array2 // array1|integer division operator|
-|array1.\_\_floordiv\_\_(array2)|array1 //= array2|integer division operator|
+|array1.\_\_rfloordiv\_\_(array2)||reverse integer division operator|
+|array1.\_\_ifloordiv\_\_(array2)|array1 //= array2|inplace integer division operator|
 |array1.\_\_mod\_\_(array2)|array1 % array2|modulus operator|
-|array1.\_\_floordiv\_\_(array2)|array2 % array1|modulus operator|
-|array1.\_\_floordiv\_\_(array2)|array1 %= array2|modulus operator|
+|array1.\_\_rmod\_\_(array2)||modulus operator|
+|array1.\_\_imod\_\_(array2)|array1 %= array2|modulus operator|
 |array1.\_\_truediv\_\_(array2)|array1 / array2|float division operator|
-|array1.\_\_truediv\_\_(array2)|array2 / array1|float division operator|
-|array1.\_\_truediv\_\_(array2)|array1 /= array2|float division operator|
+|array1.\_\_rtruediv\_\_(array2)||reverse float division operator|
+|array1.\_\_itruediv\_\_(array2)|array1 /= array2|inplace float division operator|
 |array1.\_\_and\_\_(array2)|array1 & array2|and operator|
-|array1.\_\_rand\_\_(array2)|array2 & array1|reverse and operator|
+|array1.\_\_rand\_\_(array2)||reverse and operator|
 |array1.\_\_iand\_\_(array2)|array1 &= array2|inplace and operator|
 |array1.\_\_or\_\_(array2)|array1 \| array2|or operator|
-|array1.\_\_ror\_\_(array2)|array2 \| array1|reverse or operator|
+|array1.\_\_ror\_\_(array2)||reverse or operator|
 |array1.\_\_ior\_\_(array2)|array1 \|= array2|inplace or operator|
 |array1.\_\_xor\_\_(array2)|array1 ^ array2|xor operator|
-|array1.\_\_rxor\_\_(array2)|array2 ^ array1|reverse xor operator|
+|array1.\_\_rxor\_\_(array2)||reverse xor operator|
 |array1.\_\_ior\_\_(array2)|array1 ^= array2|inplace xor operator|
 |array1.\_\_eq\_\_(array2)|array1 == array2|is equal to operator|
 |array1.\_\_ne\_\_(array2)|array1 != array2|not equal to operator|
@@ -1086,8 +1086,8 @@ The unitary datamodel methods require only a single instance:
 |array1.\_\_le\_\_(array2)|array1 <= array2|less than or equal to operator|
 |array1.\_\_ge\_\_(array2)|array1 >= array2|greater than or equal to operator|
 |array1.\_\_lshift\_\_(array2)|array1 << array2|leftshift operator|
-|array1.\_\_rlshift\_\_(array2)|array2 << array1|reverse leftshift operator|
+|array1.\_\_rlshift\_\_(array2)||reverse leftshift operator|
 |array1.\_\_ilshift\_\_(array2)|array1 <<= array2|inplace leftshift operator|
 |array1.\_\_rshift\_\_(array2)|array1 >> array2|rightshift operator|
-|array1.\_\_rrshift\_\_(array2)|array2 >> array1|reverse rightshift operator|
+|array1.\_\_rrshift\_\_(array2)||reverse rightshift operator|
 |array1.\_\_irshift\_\_(array2)|array1 >>= array2|inplace rightshift operator|
