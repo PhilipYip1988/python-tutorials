@@ -1402,7 +1402,7 @@ matrix2
 
 ![img_087](./images/img_087.png)
 
-## Array Multiplication and Array Division
+## Array Multiplication
 
 All the operations seen above are carried out element by element. 
 
@@ -1422,7 +1422,7 @@ Notice that the inner dimension of the two arrays surrounding the ```@``` operat
 
 $$\left(1,\ \textbf{2}\right)@\left(\textbf{2},1\right)=\left(1,1\right)=(1,1)$$
 
-In the above example, the largest dimension of each vector was placed in the inside, around the ```@``` operator resulting in a scalar output. This is known as the inner dot product of two vectors. In the above example, the leftarray can be conceptualised as the quantity of an item purchased and the rightarray can be conceptualised as the price of each unit item. The array returned is therefore the total price.
+In the above example, the largest dimension of each vector was placed in the inside, around the ```@``` operator resulting in a 2d array with a single scalar element. This is known as the inner dot product of two vectors. In the above example, the leftarray can be conceptualised as the quantity of an item purchased and the rightarray can be conceptualised as the price of each unit item. The array returned is therefore the total price.
 
 In contrast it is possible to place the largest dimension of each vector on the outside. This is known as the outer dot product. and will result in a matrix output.
 
@@ -1432,6 +1432,182 @@ $$\left(2,\ \textbf{1}\right)@\left(\textbf{1},2\right)=\left(2,2\right)=(2,2)$$
 
 In the above example, the leftarray can be conceptualised as the quantity of an item in a single storage locker and the rightarray can be conceptualised as the number of storage lockers in a room. The array returned is therefore the quantity of each item in each room.
 
+The two arrays can be created:
+
+```
+leftarray = np.array([5, 6], ndmin=2)
+leftarray
+
+rightarray = np.array([7, 8])[:, np.newaxis]
+rightarray
+```
+
+![img_088](./images/img_088.png)
+
+The dimensionality can be checked by examining their ```shape``` attribute:
+
+```
+leftarray.shape
+rightarray.shape
+```
+
+![img_089](./images/img_089.png)
+
+For array multiplication to be valid, the inner dimensions must match:
+
+```
+leftarray.shape[-1] == rightarray.shape[0]
+```
+
+![img_090](./images/img_090.png)
+
+The output array will have the following dimensions:
+
+```
+leftarray.shape[-1:] + rightarray.shape[:len(rightarray.shape)-1]
+```
+
+![img_091](./images/img_091.png)
+
+Array multiplication can be carried out using:
+
+```
+leftarray @ rightarray
+```
+
+![img_092](./images/img_092.png)
+
+The ```numpy``` library also has the function ```dot``` which carries out the same purpose. Its docstring can be viewed as a pop up balloon by inputting ```np.dot()``` followed by shift ```⇧``` and tab ```↹```:
+
+![img_093](./images/img_093.png)
+
+```
+np.dot(leftarray, rightarray)
+```
+
+![img_094](./images/img_094.png)
+
+If ```leftarray``` is instead a column vector and the ```rightarray``` is a row vector:
+
+```
+leftarray = np.array([5, 6])[:, np.newaxis]
+leftarray
+
+rightarray = np.array([7, 8], ndmin=2)
+rightarray
+```
+
+![img_095](./images/img_095.png)
+
+The outer dot product can be calculated using:
+
+```
+leftarray @ rightarray
+```
+
+![img_096](./images/img_096.png)
+
+The vectors above were explictly shaped for array multiplication. For convenience there are two additional ```numpy``` functions ```inner``` and ```outer``` which calcualte the inner and outer dot product of two vectors in the form of 1d arrays or lists:
+
+```
+leftlist = [5, 6]
+rightlist = [7, 8]
+np.inner(leftlist, rightlist)
+np.outer(leftlist, rightlist)
+```
+
+![img_097](./images/img_097.png)
+
+## Square Matrices
+
+Array division is not as straight-forward as array multiplication. Let's look at the example used earlier when the dot product of a row vector and a column vector was calculated:
+
+$$\left[\begin{matrix}5&6\end{matrix}\right]@\left[\begin{matrix}7\\\8\end{matrix}\right]=\left[5\ast7+6\ast8\right]=\left[83\right]$$
+
+$$\left(1,\ \textbf{2}\right)@\left(\textbf{2},1\right)=\left(1,1\right)=(1,1)$$
+
+Now supposing the values in the column vector are unknowns:
+
+$$\left[\begin{matrix}5&6\end{matrix}\right]@\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[5\ast x+6\ast y\right]=\left[83\right]$$
+
+This gives a single equation, with two unknowns and therefore there is not enough information to calculate these unknowns:
+
+$$5x+6y=83$$
+
+To find a solution for n unknowns, n unique equations are required:
+
+$$5x+6y=83$$
+
+$$3x+3y=42$$
+
+In matrix form this is:
+
+$$\left[\begin{matrix}5x+6y\\\3x+3y\end{matrix}\right]=\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+
+$$\left[\begin{matrix}5&6\\\3&3\end{matrix}\right]@\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+
+Where the known values are:
+
+$$\text{equations}=\left[\begin{matrix}5&6\\\3&3\end{matrix}\right]$$
+
+$$\text{results}=\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+
+And the unknown values are:
+
+$$\text{coefficients}=\left[\begin{matrix}x\\\y\end{matrix}\right]$$
+
+Notice equations is a square matrix and a square matrix typically has a inverse matrix. The inverse matrix for equations is:
+
+$$\text{invequations}=\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]$$
+
+Array multiplication between a square matrix and its inverse square matrix gives the identity matrix:
+
+$$\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]@\left[\begin{matrix}5&6\\\3&3\end{matrix}\right]=\left[\begin{matrix}-1\ast5+2\ast3&-1\ast6+2\ast3\\\1\ast5-1.6667\ast3&1\ast6-1.6667\ast3\end{matrix}\right]=\left[\begin{matrix}1&0\\\0&1\end{matrix}\right]$$
+
+And multiplication of an array by the identity matrix leaves it unchanged:
+
+$$\left[\begin{matrix}1&0\\\0&1\end{matrix}\right]@\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}1\ast x+0\ast y\\\0\ast x+1\ast y\end{matrix}\right]=\left[\begin{matrix}x\\\y\end{matrix}\right]$$
+
+This means array multiplication of the inverse equations matrix on both sides gives:
+
+$$\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]@\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+
+Which can be solved:
+
+$$\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]@\left[\begin{matrix}83\\\42\end{matrix}\right]=\left[\begin{matrix}-1\ast83+2\ast42\\\1\ast83-1.6667\ast42\end{matrix}\right]=\left[\begin{matrix}1\\\13\end{matrix}\right]$$
+
+Therefore:
+
+$$\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}1\\\13\end{matrix}\right]$$
+
+The ```equations``` square matrix and ```results``` column vector can be setup using:
+
+```
+equations = np.array([[5, 6],
+                      [3, 3]])
+equations
+
+results = np.array([83, 42])[:, np.newaxis]
+results
+```
+
+The ```numpy``` library has a linear algebra module, which contains additional linear algebra equations. The ```inv``` function can be sued to calcualte the inverse matrix:
+
+```
+inv_equations = np.linalg.inv(equations)
+inv_equations
+```
+
+Multiplication of a square matrix by its inverse square matrix gives the identity matrix:
+
+```
+inv_equations @ equations
+equations @ inv_equations
+```
+
+The ```numpy``` library has an ```identity``` function and related ```eye``` function which can be used to generate an identity matrix:
+
+The docstrings ...
 
 
 
@@ -1442,21 +1618,17 @@ In the above example, the leftarray can be conceptualised as the quantity of an 
 
 
 
-If ```arrayleft``` is the array on the left and ```arrayright``` is the array on the right.Recall that the attribute ```shape``` displays the array dimensions. 
 
-So ```arrayleft.shape[-1]``` and ```arrayright.shape[0]``` must match.
+The coefficients can be calculated using:
 
-The array returned has a shape which is a combination of the shape
+```
+coefficients = inv_equations @ results
+coefficients
+```
 
+These can also be calculated directly using the ```linalg``` function ```solve```:
 
-
-
-There are some other mathematical operations that are carried out array wide.
-
-
-
-dot
-
-inner
-
-outer
+```
+coefficients = np.linalg.solve(equations, results)
+coefficients
+```
