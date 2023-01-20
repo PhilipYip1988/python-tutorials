@@ -76,7 +76,6 @@
 |kappa|```$\kappa$```|$\kappa$|
 |Lambda|```$\Lamba$```|$\Lambda$|
 |mu|```$\mu$```|$\mu$|
-|Mu|```$\Mu$```|$\Mu$|
 |Xi|```$\Xi$```|$\Xi$|
 |xi|```$\xi$```|$\xi$|
 |Pi|```$\Pi$```|$\Pi$|
@@ -90,14 +89,13 @@
 |upsilon|```$\upsilon$```|$\upsilon$|
 |Phi|```$\Phi$```|$\Phi$|
 |phi|```$\phi$```|$\phi$|
-|Chi|```$\Chi$```|$\Chi$|
 |chi|```$\chi$```|$\chi$|
 |Psi|```$\Psi$```|$\Psi$|
 |psi|```$\psi$```|$\psi$|
 |Omega|```$\Omega$```|$\Omega$|
 |omega|```$\omega$```|$\omega$|
 
-
+Note the Greek letters A, B, E, Z, H, I, i, K, M, N, O, o and P that are the same as latin letters are just represented using the latin letters.
 
 
 
