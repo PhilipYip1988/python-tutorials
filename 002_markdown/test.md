@@ -30,6 +30,7 @@
 |times|```$\times$```|$\times$|
 |centre dot|```$\cdot$```|$\cdot$|
 |period|```$.$```|$.$|
+|bullet|```$\bullet$```|$\bullet$|
 |centre dots|```$\cdots$```|$\cdots$|
 |vertical dots|```$\vdots$```|$\vdots$|
 |therefore|```$\therefore$```|$\therefore$|
@@ -44,6 +45,13 @@
 |infinity|```$\infty$```|$\infty$|
 |proportional to|```$\propto$```|$\propto$|
 |partial|```$\partial$```|$\partial$|
+|cup|```$\cup$```|$\cup$|
+|cap|```$\cap$```|$\cap$|
+|emptyset|```$\emptyset$```|$\emptyset$|
+|exists|```$\exists$```|$\exists$|
+|in|```$\in$```|$\in$|
+|not in|```$\notin$```|$\notin$|
+|ni|```$\ni$```|$\ni$|
 |left arrow|```$\leftarrow$```|$\leftarrow$|
 |right arrow|```$\rightarrow$```|$\rightarrow$|
 |left right arrow|```$\leftrightarrow$```|$\leftrightarrow$|
@@ -51,18 +59,31 @@
 |down arrow|```$\uparrow$```|$\downarrow$|
 |up down arrow|```$\updownarrow$```|$\updownarrow$|
 
+The following don't render correctly:
+
+|description|text|output|
+|---|---|---|
+|percent|```$\percent$```|$\percent$|
+|right diagonal dots|```$\rddots$```|$\rddots$|
+|left diagonal dots|```$\lddots$```|$\lddots$|
+|not exists|```$\notexists$```|$\notexists$|
+
+The following need an argument:
+
 |description|text|output|
 |---|---|---|
 |square root|```$\sqrt{x}$```|$\sqrt{x}$|
+
+The following need an argument but don't render correctly:
+
+|description|text|output|
+|---|---|---|
 |cube root|```$\cbrt{x}$```|$\cbrt{x}$|
 |quad root|```$\qdrt{x}$```|$\qdrt{x}$|
 
 
 
 
-|right diagonal dots|```$\rddots$```|$\rddots$|
-|left diagonal dots|```$\lddots$```|$\lddots$|
-|percent|```$\percent$ or $\%$```|not rendering|
 
 
 
