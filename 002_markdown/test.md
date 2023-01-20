@@ -32,8 +32,6 @@
 |period|```$.$```|$.$|
 |centre dots|```$\cdots$```|$\cdots$|
 |vertical dots|```$\vdots$```|$\vdots$|
-|right diagonal dots|```$\rddots$```|$\rddots$|
-|left diagonal dots|```$\lddots$```|$\lddots$|
 |therefore|```$\therefore$```|$\therefore$|
 |division slash|```$/$```|$/$|
 |division sign|```$\div$```|$\div$|
@@ -46,8 +44,19 @@
 |infinity|```$\infty$```|$\infty$|
 |proportional to|```$\propto$```|$\propto$|
 |partial|```$\partial$```|$\partial$|
-|percent|```$\percent$ or $\%$```|not rendering|
 |left arrow|```$\leftarrow$```|$\leftarrow$|
+|right arrow|```$\rightarrow$```|$\rightarrow$|
+|left right arrow|```$\leftrightarrow$```|$\leftrightarrow$|
+|up arrow|```$\uparrow$```|$\uparrow$|
+|down arrow|```$\uparrow$```|$\downarrow$|
+|up down arrow|```$\updownarrow$```|$\updownarrow$|
+
+|right diagonal dots|```$\rddots$```|$\rddots$|
+|left diagonal dots|```$\lddots$```|$\lddots$|
+|percent|```$\percent$ or $\%$```|not rendering|
+
+
+
 
 ## LaTeX Greek Letters (MathJax)
 
