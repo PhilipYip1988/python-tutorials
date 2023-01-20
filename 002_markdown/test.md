@@ -1,17 +1,27 @@
 ## LateX Text (MathJax)
 
-|description|text|output|
+|description|LaTeX|output|
 |---|---|---|
 |math text|```$x$```|$x$|
 |normal text|```$\text{x}$```|$\text{x}$|
 |bold text|```$\textbf{x}$```|$\textbf{x}$|
 |math text with dot|```$\dot{x}$```|$\dot{x}$|
+|math text with double dot|```$\ddot{x}$```|$\ddot{x}$|
+|math text with triple dot|```$\dddot{x}$```|$\dddot{x}$|
+|math text with bar|```$\bar{x}$```|$\bar{x}$|
+|math text with hat|```$\hat{x}$```|$\hat{x}$|
+|math text with arrow vector|```$\vec{x}$```|$\vec{x}$|
 |math text with tilde|```$\tilde{x}$```|$\tilde{x}$|
 |math text with wide tilde|```$\widetilde{x}$```|$\widetilde{x}$|
+|math text with check|```$\check{x}$```|$\check{x}$|
+|math text with acute|```$\acute{x}$```|$\acute{x}$|
+|math text with grave|```$\grave{x}$```|$\grave{x}$|
+|math text with breve|```$\breve{x}$```|$\breve{x}$|
+|square root|```$\sqrt{x}$```|$\sqrt{x}$|
 
 ## LaTeX Mathematical Symbols (MathJax)
 
-|description|text|output|
+|description|LaTeX|output|
 |---|---|---|
 |equal to|```$=$```|$=$|
 |equivalent to|```$\equiv$```|$\equiv$|
@@ -25,6 +35,7 @@
 |plus minus|```$\pm$```|$\pm$|
 |minus plus|```$\mp$```|$\mp$|
 |dash|```$\text{-}$```|$\text{-}$|
+|circum|```$\textasciicircum$```|$\textasciicircum$|
 |asterisk|```$\ast$```|$\ast$|
 |star|```$\text{\*}$```|$\text{\*}$|
 |times|```$\times$```|$\times$|
@@ -45,6 +56,7 @@
 |infinity|```$\infty$```|$\infty$|
 |proportional to|```$\propto$```|$\propto$|
 |partial|```$\partial$```|$\partial$|
+|hbar|```$\hbar$```|$\hbar$|
 |cup|```$\cup$```|$\cup$|
 |cap|```$\cap$```|$\cap$|
 |emptyset|```$\emptyset$```|$\emptyset$|
@@ -61,7 +73,7 @@
 
 The following don't render correctly:
 
-|description|text|output|
+|description|LaTeX|output|
 |---|---|---|
 |percent|```$\percent$```|$\percent$|
 |right diagonal dots|```$\rddots$```|$\rddots$|
@@ -70,17 +82,17 @@ The following don't render correctly:
 
 The following need an argument:
 
-|description|text|output|
+|description|LaTeX|output|
 |---|---|---|
 |square root|```$\sqrt{x}$```|$\sqrt{x}$|
 
 The following need an argument but don't render correctly:
 
-|description|text|output|
+|description|LaTeX|output|
 |---|---|---|
 |cube root|```$\cbrt{x}$```|$\cbrt{x}$|
 |quad root|```$\qdrt{x}$```|$\qdrt{x}$|
-
+|real|```$\doubleR$```|$\doubleR$|
 
 
 
@@ -90,7 +102,7 @@ The following need an argument but don't render correctly:
 
 ## LaTeX Greek Letters (MathJax)
 
-|description|text|output|
+|description|LaTeX|output|
 |---|---|---|
 |alpha|```$\alpha$```|$\alpha$|
 |beta|```$\beta$```|$\beta$|
