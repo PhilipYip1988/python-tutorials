@@ -316,109 +316,6 @@ Produces:
 
 ---
 
-## LaTeX
-
-The markdown file supports LaTeX. Care needs to be taken as different IDEs use different engines to render LaTeX. In Visual Studio Code the extensions Markdown All in One and Markdown+Math use KaTeX as a powerful math renderer. GitHub uses the more limited MathJax as a math renderer because the math renderer is more limited it is more prone to rendering issues. Markdown files uploaded to GitHub with LaTeX should be checked on GitHub to see if equations render properly.
-
-[MathJax Issues](https://github.com/mathjax/MathJax/issues)
-
-[Markdown All in One VSCode Extension](https://github.com/yzhang-gh/vscode-markdown/issues)
-
-[Markdown + Math VSCode Extension](https://github.com/goessner/mdmath/issues)
-
-In this guide, Microsoft Word will be used as a what you see is what you get (WYSIWYG) equation editor. Once the equation is made it can be copied to LaTeX. Unfortunately due to the limitations of MathJax, some minor modifications need to be made, in order for the equation to render properly on GitHub.
-
-[LaTeX](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
-
-A single dollar sign ```$```  can be used to enclose an inline Latex equation. 
-
-```
-The equation is $LaTex_equation$
-```
-
-Two dollar signs ```$$``` can be used for a display equation.
-
-```
-$$LaTeX_equation$$
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The following markdown:
-
-```
-The equation is $ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $
-```
-
-Produces:
-
-The equation is $f(x) = a_0 + \sum_{n=1}^{\infty} \left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right)$
-
-The following markdown:
-
-```
-$$ f\left(x\right)=a_0+ \sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $$
-```
-
-Produces:
-
-$$ f\left(x\right)=a_0+\sum_{n=1}^{\infty}\left(a_n\cos{\frac{n\pi x}{L}}+b_n\sin{\frac{n\pi x}{L}}\right) $$
-
-Note GitHub has more issues rendering Latex than JupyterLab or VSCode. The equation above does not render properly as an inline equation but renders as a display equation on GitHub. On JupyterLab and VSCode the display equation renders properly.
-
-Use of Latex is outwith the scope of this tutorial. Microsoft Word has a what you see is what you get (WYSIWYG) equation editor. The equation should be created using Unicode. Then a blank equation should be created and LaTeX selected. The original equation typed with the Unicode setting can then be copied and pasted:
-
-![img_005](./images/img_005.png)
-
-In Microsoft Word, if Latex is selected while the equation is being typed, the equation may not display as intended. If an equation that is typed in Unicode is selected while the setting is changed from Unicode to Latex, the equation may change and not look as intended.
-
-There are some additional issues copying and pasting to LaTeX from Microsoft Word. For example when ```y=sin(x)``` is input in Microsoft Words equation editor and copied as LaTeX, the following is pasted as a display equation:
-
-```
-$$y=\sin\funcapply(x)$$
-```
-
-The ```\funcapply``` is not recognised and the equation does not render. The ```\sin``` should be converted to ```\text{sin}``` to render correctly:
-
-```
-$$y=\text{sin}(x)$$
-```
-
-$$y=\text{sin}(x)$$
-
-The inline version can be written as $y=\text{sin}(x)$. Use \text{} to enclose any text that is not to be formatted in italic. Otherwise copying and pasting from Microsoft Word seems to be reliable.
-
-On Linux, Microsoft Word is unavailable. The best equivalent Equation Editor is in Only Office Desktop Editors. At current Only Office Desktop Editors only copies and pastes to Unicode and not LaTeX. Only Office Desktop Editors Developers have said they intend to add pasting to LaTeX in a later release.
-
-For now, on Ubuntu, EqualX can instead be used as a WYSIWYG equation editor which is a slightly less elegant solution. Open up a terminal and input:
-
-```
-sudo apt-get install equalx
-```
-
-To launch equalx input:
-
-```
-equalx
-```
-
-![img_004](./images/img_004.png)
----
-
 ## Links and Images
 
 Links can be inserted using the syntax ```[]()``` where the square brackets are used to enclose the link name and the parenthesis are used to enclose the link address.
@@ -458,6 +355,361 @@ Producing:
 ![equation](./images/img_005.png)
 
 It is recommended to enable file extensions for known file types and ensure all file extensions are lower case. GitHub seems to be sensitive regarding the case of the file extension and won't render properly if the file has a different case of file extension. Some programs will save to .PNG and others will save to .png by default. By enabling the file extension you will be able to see what case each file extension is using and can update them all to be lower case for the sake of being consistent. Note JupyterLab and VSCode are insenitive regarding extension case, so all may seem to be well until the folder with the markdown file and images are uploaded to GitHub.
+
+## LaTeX (MathJax)
+
+The markdown file supports LaTeX. Care needs to be taken as Python IDEs and webservers may use different engines to render LaTeX. JupyterLab and GitHub use MathJax. In Visual Studio Code the extensions Markdown All in One and Markdown+Math use KaTeX. MathJax is more limited than KaTeX and is more prone to rendering issues. Markdown files uploaded to GitHub with LaTeX should be rechecked on GitHub to see if equations render properly. [MathJax GitHub](https://github.com/mathjax/MathJax/issues) can be used to discuss rendering issues.
+
+Microsoft Word has a What you see is what you get equation editor. Equations should be created in Unicode. After creating the equation, then create a blank equation created and changed the Unicode setting to LaTeX. Copy the equation you typed into Word into the Markdown file or Markdown cell. It may need to be modified slightly to render properly. Change the Microsoft WOrd Equation setting back to Unicode before typing a new equation.
+
+### Reserved Symbols (MathJax)
+
+In LaTeX there are a number of reserved symbols:
+
+|symbol|use|
+|---|---|
+|$|a single set are used to enclose LaTex denoting an inline equation|
+|$$|a double set are used to enclose LaTex denoting a display equation|
+|\\ |this is used to insert an escape character|
+|{}|used to enclose arguments|
+|\_|used for subscript|
+|^|used for superscript|
+|&|used as a delimiter|
+|\\\\ |used as a delimiter|
+|%|used to enclose comments|
+
+In LaTeX it is possible to insert some of these symbols in as escape characters, for example ```$\$$``` for $ and ```$\%$``` for %. These give $\$$ (3 dollar signs) and $\%$ (nothing) respectively. MathJax is not reliable for placing one of these reserved escape characters into the LaTeX equation.
+
+### LateX Text (MathJax)
+
+|description|LaTeX|output|
+|---|---|---|
+|math text|```$x$```|$x$|
+|normal text|```$\text{x}$```|$\text{x}$|
+|bold text|```$\textbf{x}$```|$\textbf{x}$|
+|math text with dot|```$\dot{x}$```|$\dot{x}$|
+|math text with double dot|```$\ddot{x}$```|$\ddot{x}$|
+|math text with triple dot|```$\dddot{x}$```|$\dddot{x}$|
+|math text with bar|```$\bar{x}$```|$\bar{x}$|
+|math text with hat|```$\hat{x}$```|$\hat{x}$|
+|math text with arrow vector|```$\vec{x}$```|$\vec{x}$|
+|math text with tilde|```$\tilde{x}$```|$\tilde{x}$|
+|math text with wide tilde|```$\widetilde{xx}$```|$\widetilde{xx}$|
+|math text with check|```$\check{x}$```|$\check{x}$|
+|math text with acute|```$\acute{x}$```|$\acute{x}$|
+|math text with grave|```$\grave{x}$```|$\grave{x}$|
+|math text with breve|```$\breve{x}$```|$\breve{x}$|
+|subscript|```$x_{2}$```|$x_{2}$|
+|superscript|```$x^{3}$```|$x^{3}$|
+|subscript and superscript|```$x_{2}^{3}$```|$x_{2}^{3}$|
+|square root|```$\sqrt{x}$```|$\sqrt{x}$|
+|sin|```$\sin{x}$```|$\sin{x}$|
+|cos|```$\cos{x}$```|$\cos{x}$|
+|tan|```$\tan{x}$```|$\tan{x}$|
+|log|```$\log{x}$```|$\log{x}$|
+|exp|```$\exp{x}$```|$\exp{x}$|
+
+### LaTeX Mathematical Symbols (MathJax)
+
+|description|LaTeX|output|
+|---|---|---|
+|equal to|```$=$```|$=$|
+|equivalent to|```$\equiv$```|$\equiv$|
+|not equal to|```$\ne$```|$\ne$|
+|similar to|```$\sim$```|$\sim$|
+|approximate to|```$\approx$```|$\approx$|
+|tilde|```$\textasciitilde$```|$\textasciitilde$|
+|approximately equal to|```$\cong$```|$\cong$|
+|plus|```$+$```|$+$|
+|minus|```$-$```|$-$|
+|plus minus|```$\pm$```|$\pm$|
+|minus plus|```$\mp$```|$\mp$|
+|dash|```$\text{-}$```|$\text{-}$|
+|circumflex|```$\textasciicircum$```|$\textasciicircum$|
+|asterisk|```$\ast$```|$\ast$|
+|star|```$\text{\*}$```|$\text{\*}$|
+|times|```$\times$```|$\times$|
+|centre dot|```$\cdot$```|$\cdot$|
+|period|```$.$```|$.$|
+|bullet|```$\bullet$```|$\bullet$|
+|colon|```$\colon$```|$\colon$|
+|centre dots|```$\cdots$```|$\cdots$|
+|vertical dots|```$\vdots$```|$\vdots$|
+|therefore|```$\therefore$```|$\therefore$|
+|division slash|```$/$```|$/$|
+|division sign|```$\div$```|$\div$|
+|less than|```$<$```|$<$|
+|less than or equal to|```$\leq$```|$\leq$|
+|greater than|```$>$```|$>$|
+|greater than or equal to|```$\geq$```|$\geq$|
+|factorial|```$!$```|$!$|
+|degree|```$\degree$```|$\degree$|
+|infinity|```$\infty$```|$\infty$|
+|proportional to|```$\propto$```|$\propto$|
+|partial|```$\partial$```|$\partial$|
+|hbar|```$\hbar$```|$\hbar$|
+|union|```$\cup$```|$\cup$|
+|intersection|```$\cap$```|$\cap$|
+|emptyset|```$\emptyset$```|$\emptyset$|
+|exists|```$\exists$```|$\exists$|
+|in|```$\in$```|$\in$|
+|not in|```$\notin$```|$\notin$|
+|ni|```$\ni$```|$\ni$|
+|left arrow|```$\leftarrow$```|$\leftarrow$|
+|right arrow|```$\rightarrow$```|$\rightarrow$|
+|left right arrow|```$\leftrightarrow$```|$\leftrightarrow$|
+|up arrow|```$\uparrow$```|$\uparrow$|
+|down arrow|```$\uparrow$```|$\downarrow$|
+|up down arrow|```$\updownarrow$```|$\updownarrow$|
+
+### LaTeX Greek Letters (MathJax)
+
+|description|LaTeX|output|
+|---|---|---|
+|alpha|```$\alpha$```|$\alpha$|
+|beta|```$\beta$```|$\beta$|
+|Gamma|```$\Gamma$```|$\Gamma$|
+|gamma|```$\gamma$```|$\gamma$|
+|Delta|```$\Delta$```|$\Delta$|
+|delta|```$\delta$```|$\delta$|
+|nabla|```$\nabla$```|$\nabla$|
+|epsilon|```$\epsilon$```|$\epsilon$|
+|epsilon|```$\varepsilon$```|$\varepsilon$|
+|zeta|```$\zeta$```|$\zeta$|
+|eta|```$\eta$```|$\eta$|
+|kappa|```$\kappa$```|$\kappa$|
+|Lambda|```$\Lamba$```|$\Lambda$|
+|mu|```$\mu$```|$\mu$|
+|Xi|```$\Xi$```|$\Xi$|
+|xi|```$\xi$```|$\xi$|
+|Pi|```$\Pi$```|$\Pi$|
+|pi|```$\pi$```|$\pi$|
+|rho|```$\rho$```|$\rho$|
+|Sigma|```$\Sigma$```|$\Sigma$|
+|sigma|```$\sigma$```|$\sigma$|
+|sigma|```$\varsigma$```|$\varsigma$|
+|tau|```$\tau$```|$\tau$|
+|Upsilon|```$\Upsilon$```|$\Upsilon$|
+|upsilon|```$\upsilon$```|$\upsilon$|
+|Phi|```$\Phi$```|$\Phi$|
+|phi|```$\phi$```|$\phi$|
+|chi|```$\chi$```|$\chi$|
+|Psi|```$\Psi$```|$\Psi$|
+|psi|```$\psi$```|$\psi$|
+|Omega|```$\Omega$```|$\Omega$|
+|omega|```$\omega$```|$\omega$|
+
+Note the Greek letters A, B, E, Z, H, I, i, K, M, N, O, o and P that are the same as Latin letters are therefore just represented using the Latin letters.
+
+### LaTeX Fractions (MathJax)
+
+|description|LaTeX|output|
+|---|---|---|
+|inline fraction|```$\frac{a}{b}$```|$\frac{a}{b}$|
+|display fraction|```$$\frac{a}{b}$$```|$$\frac{a}{b}$$|
+
+### LaTeX Brackets (MathJax)
+
+|description|LaTeX|output|
+|---|---|---|
+|inline fraction parenthesis|```$(\frac{a}{b})$```|$(\frac{a}{b})$|
+|display fraction parenthesis|```$$(\frac{a}{b})$$```|$$(\frac{a}{b})$$|
+|display fraction parenthesis automatic size|```$$\left(\frac{a}{b}\right)$$```|$$\left(\frac{a}{b}\right)$$|
+|inline fraction square|```$[\frac{a}{b}]$```|$[\frac{a}{b}]$|
+|display fraction square|```$$[\frac{a}{b}]$$```|$$[\frac{a}{b}]$$|
+|display fraction square automatic size|```$$\left[\frac{a}{b}\right]$$```|$$\left[\frac{a}{b}\right]$$|
+|inline fraction braces|```$\lbrace\frac{a}{b}\rbrace$```|$\lbrace\frac{a}{b} \rbrace$|
+|display fraction braces|```$$\lbrace\frac{a}{b}\rbrace$$```|$$\lbrace\frac{a}{b}\rbrace$$|
+|display fraction braces automatic size|```$$\left\lbrace\frac{a}{b}\right\lbrace$$```|$$\left\lbrace\frac{a}{b}\right\rbrace$$|
+
+Prefixing ```\left``` and ```\right``` to a set of brackets will automatically resize the brackets.
+
+The ```{``` and ```}``` are reserved so ```\lbrace``` and ```\rbrace``` need to be used.
+
+### LaTeX Vectors and Matrices (MathJax)
+
+Vectors and matrices only work as display equations. The ```\begin{}``` and ```\end{}``` are used to enclose the matrix with the braces containing the type of matrix, a ```bmatrix``` is used in this example.
+
+Row Vectors use ```&``` as a delimiter to move onto the new column and are typically input on a single line:
+
+```
+$$\begin{bmatrix}a&b&c\end{bmatrix}$$
+```
+
+$$\begin{bmatrix}a&b&c\end{bmatrix}$$
+
+Column Vectors use ```\\``` as a delimiter to move onto the next row and are input over multiple lines:
+
+```
+$$  \begin{bmatrix}
+    a \\
+    b \\
+    c \\
+    \end{bmatrix} $$ 
+```
+    
+$$  \begin{bmatrix}
+    a \\
+    b \\
+    c \\
+    \end{bmatrix} $$    
+
+Matrices use  ```&``` as a delimiter to move onto the new column and ```\\``` as a delimiter to move onto the next row and are input over multiple lines:
+
+```
+$$  \begin{bmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{bmatrix} $$
+```
+
+$$  \begin{bmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{bmatrix} $$
+
+There are four types of matrix, the:
+
+* ```matrix``` [no enclosing brackets]
+* ```bmatrix``` [square brackets]
+* ```pmatrix``` (parenthesis)
+* ```pvmatrix``` |vertical bars|
+
+$$  \begin{matrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{matrix} $$
+
+$$  \begin{bmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{bmatrix} $$
+
+$$  \begin{pmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{pmatrix} $$
+
+$$  \begin{vmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{vmatrix} $$
+
+### LaTeX Sum, Integral, Product and Union (MathJax)
+
+To make a sum use ```\sum```:
+
+```
+$\sum x$
+```
+
+$\sum x$
+
+An underscore can be used to add a subscript enclosed in braces:
+
+```
+$\sum_{\text{lower}} x$
+```
+
+$\sum_{\text{lower}} x$
+
+A hat can be used to add a subscript enclosed in braces:
+
+```
+$\sum^{\text{upper}} x$
+```
+
+$\sum^{\text{upper}} x$
+
+Use of both a subscript and superscript doesn't render well for inline equations. 
+
+```
+$\sum_{\text{lower}}^{\text{upper}} x$
+```
+
+$\sum_{\text{lower}}^{\text{upper}} x$
+
+A display equation should be used:
+
+```
+$$\sum_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\sum_{\text{lower}}^{\text{upper}} x$$
+
+To make an integral use ```\int```:
+
+```
+$\int$
+```
+
+$\int$
+
+A display equation should be used for an integral, if limits are added:
+
+```
+$$\int_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\int_{\text{lower}}^{\text{upper}} x$$
+
+For a double integral, use ```\iint``` and for a triple integral use ```\iiint```:
+
+```
+$$\iint_{\text{lower}}^{\text{upper}} x$$
+$$\iiint_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\iint_{\text{lower}}^{\text{upper}} x$$
+
+$$\iiint_{\text{lower}}^{\text{upper}} x$$
+
+For an integral over a closed line use ```\oint```:
+
+```
+$$\oint_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\oint_{\text{lower}}^{\text{upper}} x$$
+
+To make an product or coproduct use ```\prod``` or ```\amalg```:
+
+```
+$$\prod_{\text{lower}}^{\text{upper}} x$$
+$$\amalg_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\prod_{\text{lower}}^{\text{upper}} x$$
+
+$$\amalg_{\text{lower}}^{\text{upper}} x$$
+
+To make a Union or Intersection use ```\bigcup``` and ```\bigcap```:
+
+```
+$$\bigcup_{\text{lower}}^{\text{upper}} x$$
+$$\bigcap_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\bigcup_{\text{lower}}^{\text{upper}} x$$
+
+$$\bigcap_{\text{lower}}^{\text{upper}} x$$
+
+For a logical or and logical and use ```\bigvee``` and ```\bigwedge```:
+
+```
+$$\bigvee_{\text{lower}}^{\text{upper}} x$$
+$$\bigwedge_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\bigvee_{\text{lower}}^{\text{upper}} x$$
+
+$$\bigwedge_{\text{lower}}^{\text{upper}} x$$
 
 ---
 
