@@ -28,8 +28,13 @@
 |asterisk|```$\ast$```|$\ast$|
 |star|```$\text{\*}$```|$\text{\*}$|
 |times|```$\times$```|$\times$|
-|cdot|```$\cdot$```|$\cdot$|
+|centre dot|```$\cdot$```|$\cdot$|
 |period|```$.$```|$.$|
+|centre dots|```$\cdots$```|$\cdots$|
+|vertical dots|```$\vdots$```|$\vdots$|
+|right diagonal dots|```$\rddots$```|$\rddots$|
+|left diagonal dots|```$\lddots$```|$\lddots$|
+|therefore|```$\therefore$```|$\therefore$|
 |division slash|```$/$```|$/$|
 |division sign|```$\div$```|$\div$|
 |less than|```$<$```|$<$|
@@ -41,9 +46,10 @@
 |infinity|```$\infty$```|$\infty$|
 |proportional to|```$\propto$```|$\propto$|
 |partial|```$\partial$```|$\partial$|
-|percent|```$\percent$```|$\percent$|
+|percent|```$\percent$ or $\%$```|not rendering|
+|left arrow|```$\leftarrow$```|$\leftarrow$|
 
-
+## LaTeX Greek Letters (MathJax)
 
 |description|text|output|
 |---|---|---|
