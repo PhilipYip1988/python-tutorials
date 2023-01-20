@@ -1,3 +1,18 @@
+## Reserved Symbols (MathJax)
+
+In LaTeX there are a number of reserved symbols:
+
+|symbol|use|
+|---|---|
+|$|a single set are used to enclose LaTex denoting an inline equation|
+|$$|a double set are used to enclose LaTex denoting a display equation|
+|\\ |this is used to insert an escape character|
+|{}|used to enclose arguments|
+|\_|used for subscript|
+|^|used for superscript|
+|&|used as a delimiter|
+|\\\\ |used as a delimiter|
+|%|used to enclose comments|
 
 
 ## LateX Text (MathJax)
@@ -20,9 +35,9 @@
 |math text with grave|```$\grave{x}$```|$\grave{x}$|
 |math text with breve|```$\breve{x}$```|$\breve{x}$|
 |square root|```$\sqrt{x}$```|$\sqrt{x}$|
-|superscript|```$x^{2}$```|$x^{2}$|
-|subscript|```$x_{3}$```|$x_{3}$|
-|subscript|```$x_{2}^{3}$```|$x_{2}^{3}$|
+|subscript|```$x_{2}$```|$x_{2}$|
+|superscript|```$x^{3}$```|$x^{3}$|
+|subscript and superscript|```$x_{2}^{3}$```|$x_{2}^{3}$|
 
 ## LaTeX Mathematical Symbols (MathJax)
 
@@ -40,7 +55,7 @@
 |plus minus|```$\pm$```|$\pm$|
 |minus plus|```$\mp$```|$\mp$|
 |dash|```$\text{-}$```|$\text{-}$|
-|circum|```$\textasciicircum$```|$\textasciicircum$|
+|circumflex|```$\textasciicircum$```|$\textasciicircum$|
 |asterisk|```$\ast$```|$\ast$|
 |star|```$\text{\*}$```|$\text{\*}$|
 |times|```$\times$```|$\times$|
@@ -215,7 +230,47 @@ $$  \begin{vmatrix}
 	  e & f & g \\
 	  \end{vmatrix} $$
 
+## LaTeX Sum and Integral (MathJax)
 
+To make a sum use ```\sum```:
+
+```$\sum x$```
+
+$\sum x$
+
+An underscore can be used to add a subscript enclosed in braces:
+
+```$\sum_{\text{lower}} x$```
+
+$\sum_{\text{lower}} x$
+
+A hat can be used to add a subscript enclosed in braces:
+
+```$\sum^{\text{upper}} x$```
+
+$\sum^{\text{upper}} x$
+
+Use of both a subscript and superscript doesn't render well for inline equations. A display equation should be used:
+
+```$\sum_{\text{lower}}^{\text{upper}} x$```
+
+$\sum_{\text{lower}}^{\text{upper}} x$
+
+```$$\sum_{\text{lower}}^{\text{upper}} x$$```
+
+$$\sum_{\text{lower}}^{\text{upper}} x$$
+
+
+
+
+
+
+
+
+
+
+
+$\int$
 
 
 
