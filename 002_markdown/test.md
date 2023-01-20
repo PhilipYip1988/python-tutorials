@@ -133,8 +133,8 @@ Note the Greek letters A, B, E, Z, H, I, i, K, M, N, O, o and P that are the sam
 |display fraction square|```$$[\frac{a}{b}]$$```|$$[\frac{a}{b}]$$|
 |display fraction square automatic size|```$$\left[\frac{a}{b}\right]$$```|$$\left[\frac{a}{b}\right]$$|
 |inline fraction braces|```$\lbrace\frac{a}{b}\rbrace$```|$\lbrace\frac{a}{b} \rbrace$|
-|display fraction braces|```$$\{ \frac{a}{b} \}$$```|$$\{ \frac{a}{b} \}$$|
-|display fraction braces automatic size|```$$\left \{ \frac{a}{b}\right \}$$```|$$\left \{ \frac{a}{b}\right \}$$|
+|display fraction braces|```$$\lbrace\frac{a}{b}\rbrace$$```|$$\lbrace\frac{a}{b}\rbrace$$|
+|display fraction braces automatic size|```$$\left\lbrace\frac{a}{b}\right \lbrace$$```|$$\left\lbrace\frac{a}{b}\right\rbrace$$|
 
 ## LaTeX Vectors and Matrices (MathJax)
 
