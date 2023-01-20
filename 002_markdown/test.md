@@ -272,20 +272,21 @@ $$\sum_{\text{lower}}^{\text{upper}} x$$
 
 $$\sum_{\text{lower}}^{\text{upper}} x$$
 
+To make an integral use ```\int```:
 
-
-
-
-
-
-
-
-
+```
+$\int$
+```
 
 $\int$
 
+A display equation should be used for an integral, if limits are added:
 
+```
+$$\int_{\text{lower}}^{\text{upper}} x$$
+```
 
+$$\int_{\text{lower}}^{\text{upper}} x$$
 
 
 
