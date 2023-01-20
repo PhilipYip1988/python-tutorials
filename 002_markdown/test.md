@@ -234,29 +234,41 @@ $$  \begin{vmatrix}
 
 To make a sum use ```\sum```:
 
-```$\sum x$```
+```
+$\sum x$
+```
 
 $\sum x$
 
 An underscore can be used to add a subscript enclosed in braces:
 
-```$\sum_{\text{lower}} x$```
+```
+$\sum_{\text{lower}} x$
+```
 
 $\sum_{\text{lower}} x$
 
 A hat can be used to add a subscript enclosed in braces:
 
-```$\sum^{\text{upper}} x$```
+```
+$\sum^{\text{upper}} x$
+```
 
 $\sum^{\text{upper}} x$
 
-Use of both a subscript and superscript doesn't render well for inline equations. A display equation should be used:
+Use of both a subscript and superscript doesn't render well for inline equations. 
 
-```$\sum_{\text{lower}}^{\text{upper}} x$```
+```
+$\sum_{\text{lower}}^{\text{upper}} x$
+```
 
 $\sum_{\text{lower}}^{\text{upper}} x$
 
-```$$\sum_{\text{lower}}^{\text{upper}} x$$```
+A display equation should be used:
+
+```
+$$\sum_{\text{lower}}^{\text{upper}} x$$
+```
 
 $$\sum_{\text{lower}}^{\text{upper}} x$$
 
