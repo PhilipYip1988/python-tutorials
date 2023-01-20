@@ -647,7 +647,7 @@ Each version on the conda-forge channel will be displayed from earliest to newes
 As multiple versions of Python are supported by Spyder, there are multiple listings for Spyder. These can be installed using the install command. A specific version can be specified using the assignment operator. 
 
 ```
-mamba install python=3.11 spyder=5.4.1
+mamba install python=3.11 spyder=5.4.2
 ```
 
 If no version is selected, the latest version of Spyder is installed but you may get an older version of Python.
@@ -655,7 +655,7 @@ If no version is selected, the latest version of Spyder is installed but you may
 Spyder will be installed with its mandatory dependencies however it is recommended to install it alongside its optional dependencies for complete functionality:
 
 ```
-mamba install python=3.11 spyder=5.4.1 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install python=3.11 spyder=5.4.2 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 Installing ```seaborn``` will give the other scientific libraries such as ```numpy```, ```pandas```, ```matplotlib``` and ```scipy```. The ```openpyxl```, ```xlrd```, ```xlsxwriter```, ```lxml``` and ```sqlalchemy``` are used by ```pandas``` to read and write to common file formats:
