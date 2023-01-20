@@ -1,3 +1,5 @@
+
+
 ## LateX Text (MathJax)
 
 |description|LaTeX|output|
@@ -12,12 +14,15 @@
 |math text with hat|```$\hat{x}$```|$\hat{x}$|
 |math text with arrow vector|```$\vec{x}$```|$\vec{x}$|
 |math text with tilde|```$\tilde{x}$```|$\tilde{x}$|
-|math text with wide tilde|```$\widetilde{x}$```|$\widetilde{x}$|
+|math text with wide tilde|```$\widetilde{xx}$```|$\widetilde{xx}$|
 |math text with check|```$\check{x}$```|$\check{x}$|
 |math text with acute|```$\acute{x}$```|$\acute{x}$|
 |math text with grave|```$\grave{x}$```|$\grave{x}$|
 |math text with breve|```$\breve{x}$```|$\breve{x}$|
 |square root|```$\sqrt{x}$```|$\sqrt{x}$|
+|superscript|```$x^{2}$```|$x^{2}$|
+|subscript|```$x_{3}$```|$x_{3}$|
+|subscript|```$x_{2}^{3}$```|$x_{2}^{3}$|
 
 ## LaTeX Mathematical Symbols (MathJax)
 
@@ -71,35 +76,6 @@
 |down arrow|```$\uparrow$```|$\downarrow$|
 |up down arrow|```$\updownarrow$```|$\updownarrow$|
 
-The following don't render correctly:
-
-|description|LaTeX|output|
-|---|---|---|
-|percent|```$\percent$```|$\percent$|
-|right diagonal dots|```$\rddots$```|$\rddots$|
-|left diagonal dots|```$\lddots$```|$\lddots$|
-|not exists|```$\notexists$```|$\notexists$|
-
-The following need an argument:
-
-|description|LaTeX|output|
-|---|---|---|
-|square root|```$\sqrt{x}$```|$\sqrt{x}$|
-
-The following need an argument but don't render correctly:
-
-|description|LaTeX|output|
-|---|---|---|
-|cube root|```$\cbrt{x}$```|$\cbrt{x}$|
-|quad root|```$\qdrt{x}$```|$\qdrt{x}$|
-|real|```$\doubleR$```|$\doubleR$|
-
-
-
-
-
-
-
 ## LaTeX Greek Letters (MathJax)
 
 |description|LaTeX|output|
@@ -139,28 +115,74 @@ The following need an argument but don't render correctly:
 
 Note the Greek letters A, B, E, Z, H, I, i, K, M, N, O, o and P that are the same as latin letters are just represented using the latin letters.
 
+## LaTeX Fractions (MathJax)
+
+|description|LaTeX|output|
+|---|---|---|
+|inline fraction|```$\frac{a}{b}$```|$\frac{a}{b}$|
+|display fraction|```$$\frac{a}{b}$$```|$$\frac{a}{b}$$|
+
+## LaTeX Brackets (MathJax)
+
+|description|LaTeX|output|
+|---|---|---|
+|inline fraction parenthesis|```$(\frac{a}{b})$```|$(\frac{a}{b})$|
+|display fraction parenthesis|```$$(\frac{a}{b})$$```|$$(\frac{a}{b})$$|
+|display fraction parenthesis automatic size|```$$\left(\frac{a}{b}\right)$$```|$$\left(\frac{a}{b}\right)$$|
+|inline fraction square|```$[\frac{a}{b}]$```|$[\frac{a}{b}]$|
+|display fraction square|```$$[\frac{a}{b}]$$```|$$[\frac{a}{b}]$$|
+|display fraction square automatic size|```$$\left[\frac{a}{b}\right]$$```|$$\left[\frac{a}{b}\right]$$|
+|inline fraction braces|```$\{ \frac{a}{b} \}$```|$\{ \frac{a}{b} \}$|
+|display fraction braces|```$$\{ \frac{a}{b} \}$$```|$$\{ \frac{a}{b} \}$$|
+|display fraction braces automatic size|```$$\left \{ \frac{a}{b}\right \}$$```|$$\left \{ \frac{a}{b}\right \}$$|
+
+## LaTeX Vectors and Matrices (MathJax)
 
 
 
 
-|normal text|```$\text{x}$```|$\text{x}$|
-|bold text|```$\textbf{x}$```|$\textbf{x}$|
 
 
 
 
 
 
-$\text{x}$
 
-$\textbf{x}$
 
-$\alpha$
 
-$\text{\alpha}$
 
-$f(x) = 2x$
 
-$f \left (x \right ) = 2 x $
 
-$f \left [x \right ] = 2 x $
+The following don't render correctly:
+
+|description|LaTeX|output|
+|---|---|---|
+|GBP sign|```$£4$```|$£4$|
+|$ sign|```$ \$4 $```|$ \$4 $|
+|percent|```$4\%$```|$4\%$|
+|right diagonal dots|```$\rddots$```|$\rddots$|
+|left diagonal dots|```$\lddots$```|$\lddots$|
+|not exists|```$\notexists$```|$\notexists$|
+
+The following need an argument:
+
+|description|LaTeX|output|
+|---|---|---|
+|square root|```$\sqrt{x}$```|$\sqrt{x}$|
+
+The following need an argument but don't render correctly:
+
+|description|LaTeX|output|
+|---|---|---|
+|cube root|```$\cbrt{x}$```|$\cbrt{x}$|
+|quad root|```$\qdrt{x}$```|$\qdrt{x}$|
+|real|```$\doubleR$```|$\doubleR$|
+
+
+
+
+
+
+
+
+
