@@ -35,6 +35,8 @@
 |therefore|```$\therefore$```|$\therefore$|
 |division slash|```$/$```|$/$|
 |division sign|```$\div$```|$\div$|
+|square root|```$\sqrt$```|$\sqrt$|
+
 |less than|```$<$```|$<$|
 |less than or equal to|```$\leq$```|$\leq$|
 |greater than|```$>$```|$>$|
