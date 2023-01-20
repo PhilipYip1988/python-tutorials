@@ -60,7 +60,7 @@ To create a new Python environment for the latest version of the Spyder IDE incl
 ```
 mamba create -n spyder
 mamba activate spyder
-mamba install spyder python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install spyder=5.4.2 python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 To launch Spyder use:
