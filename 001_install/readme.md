@@ -77,7 +77,7 @@ To create a new Python environment for the latest version of the JupyterLab IDE 
 ```
 mamba create -n jupyterlab
 mamba activate jupyterlab
-mamba install jupyterlab cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector
+mamba install jupyterlab cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
 jupyter lab build
 ```
 
@@ -95,7 +95,7 @@ To create a new Python environment for the latest version of the Visual Studio C
 ```
 mamba create -n vscode
 mamba activate vscode
-mamba install -c notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly
+mamba install -c notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly ipympl pyqt
 ```
 
 [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) needs to be installed seperately using the appropriate package for your Operating System.
