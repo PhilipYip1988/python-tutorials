@@ -1062,7 +1062,7 @@ The code completion on the IPython console is more responsive but less detailed.
 
 ## JupyterLab
 
-Jupyter is a loose acronym meaning Julia, Python, and R. The JupyterLab IDE is a browser based IDE and for Python can be used with the same Scientific Libraries as Spyder. Because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. The browser based functionality is written in nodejs and extensions require ```nodejs``` as a dependency. An optional Variable Inspector is also available.
+Jupyter is a loose acronym meaning Julia, Python, and R. The JupyterLab IDE is a browser based IDE and for Python can be used with the same Scientific Libraries as Spyder. Because it is browser based, its functionality can be extended with interactive Python widgets ```ipywidgets``` and the browser based ```plotly``` plotting library. The browser based functionality is written in nodejs and extensions require ```nodejs``` as a dependency. An optional Variable Inspector is also available. The ```ipympl``` and ```pyqt5``` are required to enable other matplotlib plotting backends.
 
 Another Python environment will be created for JupyterLab.  Open the Terminal and input:
 
@@ -1080,7 +1080,7 @@ mamba search jupyterlab
 Install JupyterLab using:
 
 ```
-mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector
+mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt5
 jupyter lab build
 ```
 
@@ -1251,7 +1251,7 @@ Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Bec
 ```
 mamba create -n vscode
 mamba activate vscode
-mamba install notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly
+mamba install notebook python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly ipympl pyqt
 ```
 
 Visual Studio Code can then be installed from the appropriate software packages which are available of the [Visual Studio Code website](https://code.visualstudio.com/download).
