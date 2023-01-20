@@ -14,6 +14,7 @@ In LaTeX there are a number of reserved symbols:
 |\\\\ |used as a delimiter|
 |%|used to enclose comments|
 
+In LaTeX it is possible to insert some of these symbols in as escape characters, for example ```$\$$``` for $ and ```$\%$``` for %. These give $\$$ (3 dollar signs) and $\%$ (nothing) respectively. MathJax is not reliable for placing one of these reserved escape characters into the LaTeX equation.
 
 ## LateX Text (MathJax)
 
@@ -34,10 +35,15 @@ In LaTeX there are a number of reserved symbols:
 |math text with acute|```$\acute{x}$```|$\acute{x}$|
 |math text with grave|```$\grave{x}$```|$\grave{x}$|
 |math text with breve|```$\breve{x}$```|$\breve{x}$|
-|square root|```$\sqrt{x}$```|$\sqrt{x}$|
 |subscript|```$x_{2}$```|$x_{2}$|
 |superscript|```$x^{3}$```|$x^{3}$|
 |subscript and superscript|```$x_{2}^{3}$```|$x_{2}^{3}$|
+|square root|```$\sqrt{x}$```|$\sqrt{x}$|
+|sin|```$\sin{x}$```|$\sin{x}$|
+|cos|```$\cos{x}$```|$\cos{x}$|
+|tan|```$\tan{x}$```|$\tan{x}$|
+|log|```$\log{x}$```|$\log{x}$|
+|exp|```$\exp{x}$```|$\exp{x}$|
 
 ## LaTeX Mathematical Symbols (MathJax)
 
@@ -62,6 +68,7 @@ In LaTeX there are a number of reserved symbols:
 |centre dot|```$\cdot$```|$\cdot$|
 |period|```$.$```|$.$|
 |bullet|```$\bullet$```|$\bullet$|
+|colon|```$\colon$```|$\colon$|
 |centre dots|```$\cdots$```|$\cdots$|
 |vertical dots|```$\vdots$```|$\vdots$|
 |therefore|```$\therefore$```|$\therefore$|
@@ -128,7 +135,7 @@ In LaTeX there are a number of reserved symbols:
 |Omega|```$\Omega$```|$\Omega$|
 |omega|```$\omega$```|$\omega$|
 
-Note the Greek letters A, B, E, Z, H, I, i, K, M, N, O, o and P that are the same as latin letters are just represented using the latin letters.
+Note the Greek letters A, B, E, Z, H, I, i, K, M, N, O, o and P that are the same as Latin letters are therefore just represented using the Latin letters.
 
 ## LaTeX Fractions (MathJax)
 
@@ -230,7 +237,7 @@ $$  \begin{vmatrix}
 	  e & f & g \\
 	  \end{vmatrix} $$
 
-## LaTeX Sum and Integral (MathJax)
+## LaTeX Sum, Integral, Product and Union (MathJax)
 
 To make a sum use ```\sum```:
 
@@ -288,29 +295,66 @@ $$\int_{\text{lower}}^{\text{upper}} x$$
 
 $$\int_{\text{lower}}^{\text{upper}} x$$
 
+For a double integral, use ```\iint``` and for a triple integral use ```\iiint```:
+
+```
+$$\iint_{\text{lower}}^{\text{upper}} x$$
+$$\iiint_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\iint_{\text{lower}}^{\text{upper}} x$$
+
+$$\iiint_{\text{lower}}^{\text{upper}} x$$
+
+For an integral over a closed line use ```\oint```:
+
+```
+$$\oint_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\oint_{\text{lower}}^{\text{upper}} x$$
+
+To make an product or coproduct use ```\prod``` or ```\amalg```:
+
+```
+$$\prod_{\text{lower}}^{\text{upper}} x$$
+$$\amalg_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\prod_{\text{lower}}^{\text{upper}} x$$
+
+$$\amalg_{\text{lower}}^{\text{upper}} x$$
+
+To make a Union or Intersection use ```\bigcup``` and ```\bigcap```:
+
+```
+$$\bigcup_{\text{lower}}^{\text{upper}} x$$
+$$\bigcap_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\bigcup_{\text{lower}}^{\text{upper}} x$$
+
+$$\bigcap_{\text{lower}}^{\text{upper}} x$$
+
+For a logical or and logical and use ```\bigvee``` and ```\bigwedge```:
+
+```
+$$\bigvee_{\text{lower}}^{\text{upper}} x$$
+$$\bigwedge_{\text{lower}}^{\text{upper}} x$$
+```
+
+$$\bigvee_{\text{lower}}^{\text{upper}} x$$
+
+$$\bigwedge_{\text{lower}}^{\text{upper}} x$$
 
 
 The following don't render correctly:
 
 |description|LaTeX|output|
 |---|---|---|
-|GBP sign|```$£4$```|$£4$|
-|$ sign|```$ \$4 $```|$ \$4 $|
-|percent|```$4\%$```|$4\%$|
 |right diagonal dots|```$\rddots$```|$\rddots$|
 |left diagonal dots|```$\lddots$```|$\lddots$|
 |not exists|```$\notexists$```|$\notexists$|
-
-The following need an argument:
-
-|description|LaTeX|output|
-|---|---|---|
-|square root|```$\sqrt{x}$```|$\sqrt{x}$|
-
-The following need an argument but don't render correctly:
-
-|description|LaTeX|output|
-|---|---|---|
 |cube root|```$\cbrt{x}$```|$\cbrt{x}$|
 |quad root|```$\qdrt{x}$```|$\qdrt{x}$|
 |real|```$\doubleR$```|$\doubleR$|
