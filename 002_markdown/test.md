@@ -1,4 +1,4 @@
-
+## LateX Text (MathJax)
 
 |description|text|output|
 |---|---|---|
@@ -9,14 +9,17 @@
 |math text with tilde|```$\tilde{x}$```|$\tilde{x}$|
 |math text with wide tilde|```$\widetilde{x}$```|$\widetilde{x}$|
 
+## LaTeX Mathematical Symbols (MathJax)
 
 |description|text|output|
 |---|---|---|
 |equal to|```$=$```|$=$|
+|equivalent to|```$\equiv$```|$\equiv$|
 |not equal to|```$\ne$```|$\ne$|
-|similar|```$\sim$```|$\sim$|
-|approximately|```$\approx$```|$\approx$|
+|similar to|```$\sim$```|$\sim$|
+|approximate to|```$\approx$```|$\approx$|
 |tilde|```$\textasciitilde$```|$\textasciitilde$|
+|approximately equal to|```$\cong$```|$\cong$|
 |plus|```$+$```|$+$|
 |minus|```$-$```|$-$|
 |plus minus|```$\pm$```|$\pm$|
@@ -33,6 +36,12 @@
 |less than or equal to|```$\leq$```|$\leq$|
 |greater than|```$>$```|$>$|
 |greater than or equal to|```$\geq$```|$\geq$|
+|factorial|```$!$```|$!$|
+|degree|```$\degree$```|$\degree$|
+|infinity|```$\infty$```|$\infty$|
+|proportional to|```$\propto$```|$\propto$|
+|partial|```$\partial$```|$\partial$|
+|percent|```$\percent$```|$\percent$|
 
 
 
@@ -40,8 +49,11 @@
 |---|---|---|
 |alpha|```$\alpha$```|$\alpha$|
 |beta|```$\beta$```|$\beta$|
+|Gamma|```$\Gamma$```|$\Gamma$|
 |gamma|```$\gamma$```|$\gamma$|
+|Delta|```$\Delta$```|$\Delta$|
 |delta|```$\delta$```|$\delta$|
+|nabla|```$\nabla$```|$\nabla$|
 |epsilon|```$\epsilon$```|$\epsilon$|
 |zeta|```$\zeta$```|$\zeta$|
 
