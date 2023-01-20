@@ -84,8 +84,8 @@ In LaTeX it is possible to insert some of these symbols in as escape characters,
 |proportional to|```$\propto$```|$\propto$|
 |partial|```$\partial$```|$\partial$|
 |hbar|```$\hbar$```|$\hbar$|
-|cup|```$\cup$```|$\cup$|
-|cap|```$\cap$```|$\cap$|
+|union|```$\cup$```|$\cup$|
+|intersection|```$\cap$```|$\cap$|
 |emptyset|```$\emptyset$```|$\emptyset$|
 |exists|```$\exists$```|$\exists$|
 |in|```$\in$```|$\in$|
