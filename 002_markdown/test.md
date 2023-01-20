@@ -35,8 +35,6 @@
 |therefore|```$\therefore$```|$\therefore$|
 |division slash|```$/$```|$/$|
 |division sign|```$\div$```|$\div$|
-|square root|```$\sqrt$```|$\sqrt$|
-
 |less than|```$<$```|$<$|
 |less than or equal to|```$\leq$```|$\leq$|
 |greater than|```$>$```|$>$|
@@ -52,6 +50,15 @@
 |up arrow|```$\uparrow$```|$\uparrow$|
 |down arrow|```$\uparrow$```|$\downarrow$|
 |up down arrow|```$\updownarrow$```|$\updownarrow$|
+
+|description|text|output|
+|---|---|---|
+|square root|```$\sqrt{x}$```|$\sqrt{x}$|
+|cube root|```$\cbrt{x}$```|$\cbrt{x}$|
+|quad root|```$\qdrt{x}$```|$\qdrt{x}$|
+
+
+
 
 |right diagonal dots|```$\rddots$```|$\rddots$|
 |left diagonal dots|```$\lddots$```|$\lddots$|
