@@ -134,17 +134,86 @@ Note the Greek letters A, B, E, Z, H, I, i, K, M, N, O, o and P that are the sam
 |display fraction square automatic size|```$$\left[\frac{a}{b}\right]$$```|$$\left[\frac{a}{b}\right]$$|
 |inline fraction braces|```$\lbrace\frac{a}{b}\rbrace$```|$\lbrace\frac{a}{b} \rbrace$|
 |display fraction braces|```$$\lbrace\frac{a}{b}\rbrace$$```|$$\lbrace\frac{a}{b}\rbrace$$|
-|display fraction braces automatic size|```$$\left\lbrace\frac{a}{b}\right \lbrace$$```|$$\left\lbrace\frac{a}{b}\right\rbrace$$|
+|display fraction braces automatic size|```$$\left\lbrace\frac{a}{b}\right\lbrace$$```|$$\left\lbrace\frac{a}{b}\right\rbrace$$|
+
+Prefixing ```\left``` and ```\right``` to a set of brackets will automatically resize the brackets.
+
+The ```{``` and ```}``` are reserved so ```\lbrace``` and ```\rbrace``` need to be used.
 
 ## LaTeX Vectors and Matrices (MathJax)
 
+Vectors and matrices only work as display equations. The ```\begin{}``` and ```\end{}``` are used to enclose the matrix with the braces containing the type of matrix, a ```bmatrix``` is used in this example.
 
+Row Vectors use ```&``` as a delimiter to move onto the new column and are typically input on a single line:
 
+```
+$$\begin{bmatrix}a&b&c\end{bmatrix}$$
+```
 
+$$\begin{bmatrix}a&b&c\end{bmatrix}$$
 
+Column Vectors use ```\\``` as a delimiter to move onto the next row and are input over multiple lines:
 
+```
+$$  \begin{bmatrix}
+    a \\
+    b \\
+    c \\
+    \end{bmatrix} $$ 
+```
+    
+$$  \begin{bmatrix}
+    a \\
+    b \\
+    c \\
+    \end{bmatrix} $$    
 
+Matrices use  ```&``` as a delimiter to move onto the new column and ```\\``` as a delimiter to move onto the next row and are input over multiple lines:
 
+```
+$$  \begin{bmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{bmatrix} $$
+```
+
+$$  \begin{bmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{bmatrix} $$
+
+There are four types of matrix, the:
+
+* ```matrix``` [no enclosing brackets]
+* ```bmatrix``` [square brackets]
+* ```pmatrix``` (parenthesis)
+* ```pvmatrix``` |vertical bars|
+
+$$  \begin{matrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{matrix} $$
+
+$$  \begin{bmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{bmatrix} $$
+
+$$  \begin{pmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{pmatrix} $$
+
+$$  \begin{vmatrix} 
+    a & b & c \\
+	  c & d & d \\
+	  e & f & g \\
+	  \end{vmatrix} $$
 
 
 
