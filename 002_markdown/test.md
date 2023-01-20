@@ -70,15 +70,32 @@
 |delta|```$\delta$```|$\delta$|
 |nabla|```$\nabla$```|$\nabla$|
 |epsilon|```$\epsilon$```|$\epsilon$|
+|epsilon|```$\varepsilon$```|$\varepsilon$|
 |zeta|```$\zeta$```|$\zeta$|
-
-
-
-
-
-
-
-
+|eta|```$\eta$```|$\eta$|
+|kappa|```$\kappa$```|$\kappa$|
+|Lambda|```$\Lamba$```|$\Lambda$|
+|mu|```$\mu$```|$\mu$|
+|Mu|```$\Mu$```|$\Mu$|
+|Xi|```$\Xi$```|$\Xi$|
+|xi|```$\xi$```|$\xi$|
+|Pi|```$\Pi$```|$\Pi$|
+|pi|```$\pi$```|$\pi$|
+|rho|```$\rho$```|$\rho$|
+|Sigma|```$\Sigma$```|$\Sigma$|
+|sigma|```$\sigma$```|$\sigma$|
+|sigma|```$\varsigma$```|$\varsigma$|
+|tau|```$\tau$```|$\tau$|
+|Upsilon|```$\Upsilon$```|$\Upsilon$|
+|upsilon|```$\upsilon$```|$\upsilon$|
+|Phi|```$\Phi$```|$\Phi$|
+|phi|```$\phi$```|$\phi$|
+|Chi|```$\Chi$```|$\Chi$|
+|chi|```$\chi$```|$\chi$|
+|Psi|```$\Psi$```|$\Psi$|
+|psi|```$\psi$```|$\psi$|
+|Omega|```$\Omega$```|$\Omega$|
+|omega|```$\omega$```|$\omega$|
 
 
 
