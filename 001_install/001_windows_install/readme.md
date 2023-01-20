@@ -1040,7 +1040,7 @@ mamba search jupyterlab
 Install JupyterLab using:
 
 ```
-mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector
+mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
 jupyter lab build
 ```
 
@@ -1219,7 +1219,7 @@ Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Bec
 ```
 mamba create -n vscode
 mamba activate vscode
-mamba install notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly
+mamba install notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly ipympl pyqt
 ```
 
 Visual Studio Code can then be installed from the Windows Application (```.exe```) available on the [Visual Studio Code website](https://code.visualstudio.com/download).
