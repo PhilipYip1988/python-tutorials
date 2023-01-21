@@ -1486,11 +1486,9 @@ In contrast it is possible to place the largest dimension of each vector on the 
 
 $$\left[\begin{matrix} 5 \\ 
                        6 \\ 
-                       \end{matrix}\right]@ \left[\begin{matrix} 7 & 8 \end{matrix}\right] $$
-
-$$=$$
-
-$$ \left[\begin{matrix} 5 \ast 7 & 5 \ast8 \\ 6 \ast 7 & 6 \ast8 \\ \end{matrix}\right] $$
+                       \end{matrix}\right]@ \left[\begin{matrix} 7 & 8 \end{matrix}\right] = \left[\begin{matrix} 5 \ast 7 & 5 \ast8 \\ 
+                       6 \ast 7 & 6 \ast8 \\ 
+                       \end{matrix}\right] $$
 
 $$=$$
 
