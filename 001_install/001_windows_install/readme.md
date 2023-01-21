@@ -2,6 +2,10 @@
 
 This tutorial will configure Python 3.11 on a Windows 11 computer using Mambaforge. For Linux/Mac see [Linux/Mac Install](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/002_linux_install/readme.md)
 
+## Tutorial Video
+
+[Spyder IDE Setup Windows](https://www.youtube.com/watch?v=fvQX0wRExCI&ab_channel=PhilipYip)
+
 ## System Requirements
 
 The PC should match or exceed the following system requirements:
@@ -608,7 +612,7 @@ Each version on the conda-forge channel will be displayed from earliest to newes
 As multiple versions of Python are supported by Spyder, there are multiple listings for Spyder. These can be installed using the install command. A specific version can be specified using the assignment operator. 
 
 ```
-mamba install python=3.11 spyder=5.4.2
+mamba install spyder=5.4.2 python=3.11 
 ```
 
 If no version is selected, the latest version of Spyder is installed but you may get an older version of Python.
@@ -616,7 +620,7 @@ If no version is selected, the latest version of Spyder is installed but you may
 Spyder will be installed with its mandatory dependencies however it is recommended to install it alongside its optional dependencies for complete functionality:
 
 ```
-mamba install python=3.11 spyder=5.4.2 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install spyder=5.4.2 python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 Installing ```seaborn``` will give the other scientific libraries such as ```numpy```, ```pandas```, ```matplotlib``` and ```scipy```. The ```openpyxl```, ```xlrd```, ```xlsxwriter```, ```lxml``` and ```sqlalchemy``` are used by ```pandas``` to read and write to common file formats:
@@ -838,7 +842,7 @@ To recap Spyder is installed in its own Python environment using:
 ```
 mamba create -n spyder
 mamba activate spyder
-mamba install python=3.11 spyder cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install spyder=5.4.2 python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 Spyder can be launched using:
@@ -847,13 +851,35 @@ Spyder can be launched using:
 spyder
 ```
 
-The Spyder IDE looks like the following. To the left hand side is the Script Editor which is similar to Notepad.
+The Spyder IDE looks like the following:
+
+![img_213](./images/img_213.png)
+
+The preferences can be changed by selecting Tools → Preferences:
+
+![img_214](./images/img_214.png)
+
+The Appearance can be changed from Spyder Dark to Spyder:
+
+![img_215](./images/img_215.png)
+
+Applying will require a restart of Spyder:
+
+![img_216](./images/img_216.png)
+
+For a High DPI Screen, the High DPI Setting should be enabled. Select Tools → Preferences:
+
+![img_218](./images/img_218.png)
+
+Select Application and Enable Auto High DPI Setting:
+
+![img_219](./images/img_219.png)
+
+Spyder will relaunch with the light theme:
+
+![img_217](./images/img_217.png)
 
 To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called ```spyder``` and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
-
-To the top right are 4 tabs Help, Variable Explorer, Plot and Files:
-
-![img_115](./images/img_115.png)
 
 The Spyder Dependencies can be checked using Help from the Menu Bar and then Dependencies:
 
@@ -863,21 +889,109 @@ The mandatory and optional dependencies should be satisfied:
 
 ![img_117](./images/img_117.png)
 
-To save the Python Script file select File → Save As or ```Ctrl```, ```⇧```  and ```s```. Select your Documents folder and save the file as ```script2.py```:
+To the left is the script editor. By default a temporary script file in the location ```$UserProfile$/.spyder-py``` is open. To the top right, the files tab can be selected, this opens by default in ```$UserProfile$```:
 
-![img_118](./images/img_118.png)
+![img_220](./images/img_220.png)
 
-The tab in the script editor will be updated to reflect the file name and the location of the file will be shown in the top left. The file location shown in the File tab to the right is the current working directory and will not update until the script is run:
+The Script file can be saved using File → Save As:
 
-![img_119](./images/img_119.png)
+![img_221](./images/img_221.png)
 
-The script can be run using the run key:
+The Script File should be saved somewhere locally, normally within a subfolder within ```$UserProfile$/Documents```. In this example it will be saved directly within ```$UserProfile$/Documents``` as ```script1.py```:
 
-![img_120](./images/img_120.png)
+![img_222](./images/img_222.png)
 
-Now the Current Working Directory is updated to the location of the Main Script file.
+Notice the name of the tab updates, alongisde the file location on the left address bar. To run the script select run:
 
-In Python ```#``` is used to denote that a line of code is a comment. In Spyder ```#%%``` can be used to compartmentalise a Python Script File into cells. This can be demonstrated with the example code:
+![img_223](./images/img_223.png)
+
+Select Run with Default Configuration and Run:
+
+![img_224](./images/img_224.png)
+
+The current working directory changes on the right hand side, to the directory of the running script file:
+
+![img_225](./images/img_225.png)
+
+A list of builtin identifiers displays as code is input:
+
+![img_226](./images/img_226.png)
+
+If a function is selected, its docstring will display as a popup:
+
+![img_227](./images/img_227.png)
+
+If click anywhere on this tootip for additional help is clicked, the full docstring displays in the Help Pane:
+
+![img_228](./images/img_228.png)
+
+The docstring for the function can also be opened in the Help Pane by right clicking the object and selecting Inspect:
+
+![img_229](./images/img_229.png)
+
+The docstring also displays if the function name is followed by open parenthesis:
+
+![img_230](./images/img_230.png)
+
+All of the identifiers from the ```builtins``` module iare included within every Python script file. However for convenience they can be viewed by importing the ```builtins``` module explicitly using ```import builtins``` and inputting ```builtins.```
+
+![img_231](./images/img_231.png)
+
+This works for other Python standard modules:
+
+![img_232](./images/img_232.png)
+
+The docstring of the ```datetime``` class within the ```datetime``` module does not populate however. It can be inspected in the Help Pane by right clicking it and selecting Inspect:
+
+![img_233](./images/img_233.png)
+
+Alternatively it can be imported into the IPython Console by selecting run the current selection:
+
+![img_234](./images/img_234.png)
+
+The IPython uses slightly different code completion. To view a list of identifiers press tab ```↹``` after the dot ```.```
+
+![img_235](./images/img_235.png)
+
+To view the docstring, type in a function name with open parenthesis:
+
+![img_236](./images/img_236.png)
+
+The docstring can be outputted to the IPython Console by use of the ```?```
+
+![img_260](./images/img_260.png)
+
+A list of identifiers displays if an object name is input followed by a ```.```:
+
+![img_238](./images/img_238.png)
+
+The docstring displays if the name of a function is input:
+
+![img_239](./images/img_239.png)
+
+The code completion has improvements for Scientific Libraries:
+
+![img_237](./images/img_237.png)
+
+![img_240](./images/img_240.png)
+
+![img_241](./images/img_241.png)
+
+![img_243](./images/img_243.png)
+
+
+In Python ```#``` is used to denote that a line of code is a comment. 
+
+![img_244](./images/img_244.png)
+
+Lines of code can be selected and options from the Edit Menu can be selected such as Comment/Uncomment or Indent or Unindent:
+
+![img_245](./images/img_245.png)
+
+![img_246](./images/img_246.png)
+
+
+In Spyder ```#%%``` can be used to compartmentalise a Python Script File into cells. This can be demonstrated with the example code:
 
 ```
 #%% Cell0
@@ -905,39 +1019,68 @@ Alternately a line or multiple lines may be selected and the Run Selection butto
 
 ![img_124](./images/img_124.png)
 
-The Data Science libraries can be imported using:
+Instances of common builtin classes can be created in the script editor. When the script is run, they will populate in the Variable Explorer:
 
 ```
-#%% Importing Data Science Libraries
+str1 = 'Hello Worldd'
+int1 = 1
+float1 = 3.14
+boot1 = True
+list1 = ['Hello', 'Hello', 1, 3.14, True]
+tuple1 = ('Hello', 'Hello', 1, 3.14, True)
+set1 = {'Hello', 'Hello', 1, 3.14, True}
+dict1 = {'r': 'red', 'b': 'blue', 'g': 'green'}
+```
+
+![img_247](./images/img_247.png)
+
+A value can be double clicked to interact with the field. In this case, the following string of size 12, can be updated to remove the typo:
+
+![img_248](./images/img_248.png)
+
+It is now size 11:
+
+![img_249](./images/img_249.png)
+
+Collections, open up in another window. The list is mutable and all the fields are coloured. The tuple is immutable and is shown in grey. The set is also immutable and has no index as it is unordered. The dictionary is mutable and all the fields are coloured. It has keys opposed to a numeric index:
+
+![img_250](./images/img_250.png)
+
+![img_251](./images/img_251.png)
+
+![img_252](./images/img_252.png)
+
+![img_253](./images/img_253.png)
+
+The data types of the scientific libraries can also be explored. A numeric array is normally constructed from a list of numeric values or a list of equally sized lists of numeric values. The series is essentially a numeric array with a name (column name). The dataframe is a collection of series, that have a matching index, similar to an Excel spreadsheet. A dataframe can be constructed from a dictionary where the keys are the column names and the values are the corresponding vectors of data:
+
+```
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-#%% Builtin DataTypes
-str_1 = 'Hello'
-int_1 = 1
-float_1 = 3.14
-boot_1 = True
-list_1 = ['Hello', 'Hello', 1, 3.14, True]
-tuple_1 = ('Hello', 'Hello', 1, 3.14, True)
-set_1 = {'Hello', 'Hello', 1, 3.14, True}
-dict_1 = {'r': 'red', 'b': 'blue', 'g': 'green'}
-#%% Numeric Array
-list_x = [1, 2, 3, 4, 5]
-x = np.array(list_x)
-list_y = [2, 4, 6, 8, 10]
-y = np.array(list_y)
-#%% Pandas DataFrame
-data = pd.DataFrame({'x': x, 'y': y})
+
+x = np.array(object=[1, 2, 3, 4, 5])
+y = np.array([2, 4, 6, 8, 10])
+
+xy = np.array([[1, 2],
+               [2, 4],
+               [3, 6],
+               [4, 8],
+               [5, 10]])
+
+xs = pd.Series(data=x, name='x')
+ys = pd.Series(data=x, name='y')
+
+data = pd.DataFrame({'x': x,
+                     'y': y})
 ```
 
-Builtin datatypes and Data Science datatypes can be seen on the variable explorer:
+![img_254](./images/img_254.png)
 
-![img_125](./images/img_125.png)
+Spyder applies a heatmap to the numeric data so the data can easily be visualised:
 
-Variables can be examined in more detail by clicking into them:
+![img_255](./images/img_255.png)
 
-![img_126](./images/img_126.png)
+![img_256](./images/img_256.png)
 
 The Kernel can be restarted by going to Consoles → Restart Kernel. 
 
@@ -959,66 +1102,30 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set_style("whitegrid")
+sns.set_style('whitegrid')
 # %% Pandas DataFrame
-data = pd.DataFrame({"x": [1, 2, 3, 4, 5], 
-                     "y": [2, 4, 6, 8, 10]})
+data = pd.DataFrame({'x': [1, 2, 3, 4, 5], 
+                     'y': [2, 4, 6, 8, 10]})
 # %% Plot
 plt.plot(data.x, data.y)
 plt.show()
 ```
 
-Spyder can be configured to display plots as interactive plots or as static inline plots docked to the plots pane:
+Spyder can be configured to display plots as static ```inline``` plots (default). These are docked to the plots pane. Alternatively it can be set to output interactive plots which use the ```Qt5``` backed:
 
-![img_130](./images/img_130.png)
+![img_257](./images/img_257.png)
 
 To change the plot backend select Tools→Preferences:
 
 ![img_131](./images/img_131.png)
 
-Then to the left select IPython Console. To the right select the Graphics Tab and select the desired Backend:
+Then to the left select IPython Console. To the right select the Graphics Tab and select ```Qt5``` (```auto``` gives the same setting at ```Qt5```):
 
-![img_132](./images/img_132.png)
+![img_258](./images/img_258.png)
 
-The screenshots in this guide use Spyder with the Spyder (light) appearance. This can be selected from the Appearance Tab:
+The plot now displays as an interactive Window:
 
-![img_133](./images/img_133.png)
-
-The Editor settings can be changed to Show Indent Guides and Show Blank Spaces:
-
-![img_134](./images/img_134.png)
-
-The plot now displays as a static image in the plots pane:
-
-![img_135](./images/img_135.png)
-
-Spyder has a Help Pane. The documentation of a function can be viewed by selecting the object of interest and pressing ```Ctrl``` and ```i```. This feature works better for Python and Inbuilt Modules than Scientific Modules. If used on a Scientific Libraries, the docstring of the Library shows instead of the docstring of the object of interest:
-
-![img_136](./images/img_136.png)
-
-A brief docstring will also display as a popup balloon when typed with open parenthesis:
-
-![img_137](./images/img_137.png)
-
-The docstring can also be output to the IPython console using a ```?```. For example:
-
-```
-? print
-```
-
-![img_138](./images/img_138.png)
-
-![img_139](./images/img_139.png)
-
-Inputting an object name followed by a dot ```.```displays a list of identifiers that can be referenced from the object: 
-
-![img_140](./images/img_140.png)
-
-This feature has in the past worked better for Python and Inbuilt Modules than Scientific Modules which has a slower response time. The latest version made improvements in the response time but unfortunately there is a slight reversion and now one character needs to be typed past the ```.``` in order for any identifiers to display.
-
-![img_141](./images/img_141.png)
-
-The code completion on the IPython console is more responsive but less detailed. In IPython Console press ```↹``` after the ```.``` to view the list of identifiers.
+![img_259](./images/img_259.png)
 
 ## JupyterLab
 
@@ -1044,7 +1151,7 @@ mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl 
 jupyter lab build
 ```
 
-Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using a modifying the above command. 
+Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using modifying the above command. 
 
 There is no Start Menu Shortcut for JupyterLab. To launch JupyterLab, use the Mambaforge Prompt, activate the ```jupyterlab``` Python environment and use:
 
@@ -1117,7 +1224,29 @@ When all the code is Run:
 
 The plot displays inline as an IPython cell output:
 
-![img_160](./images/img_160.png)
+![img_261](./images/img_261.png)
+
+The available plot backend can be viewed using the JupyterLab magic command:
+
+```
+%matplotlib --list
+```
+
+![img_262](./images/img_262.png)
+
+The ```qt5``` backend will give an interactive plot, in a seperate window:
+
+```
+%matplotlib qt5
+```
+
+![img_263](./images/img_263.png)
+
+The default ```inline``` backend can be selected using:
+
+```
+%matplotlib inline
+```
 
 Although JupyterLab can be used with Python Script Files (```.py``` file extension). It is typically used with Interactive Python Notebook Files (```.ipynb``` file extension). A new Notebook can be created in the Launcher:
 
@@ -1165,8 +1294,6 @@ The Variable Inspector is very basic compared to Spyders Variable Explorer. The 
 
 ![img_172](./images/img_172.png)
 
-Matplotlib Plots use the inline backend by default and display as static images in the cell output.
-
 Markdown Headings act as bookmarks:
 
 ![img_173](./images/img_173.png)
@@ -1183,7 +1310,31 @@ The docstring can also be viewed as a cell output. If the cell output is long, t
 
 ![img_176](./images/img_176.png)
 
-Interactive plots can be made using plotly:
+For plotting the default plot backend is ```inline``` showing a static image in the cell output:
+
+```
+%matplotlib inline
+```
+
+![img_264](./images/img_264.png)
+
+The backend can also be set to ```qt5``` displaying an interactive plot in a seperate window:
+
+```
+%matplotlib qt5
+```
+
+![img_265](./images/img_265.png)
+
+It can also be set to ```ipympl``` which gives a limited interactive plot nested into the cell output:
+
+```
+%matplotlib ipympl
+```
+
+Unfortunately this didn't work on my Windows Install but works on my Linux Install.
+
+The alternative plotly library has wider support for this type of interactive plot:
 
 ![img_177](./images/img_177.png)
 
