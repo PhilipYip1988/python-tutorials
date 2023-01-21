@@ -545,7 +545,12 @@ matrix1
 
 The following matrix:
 
-$$\text{matrixlist1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
+$$ \text{matrixlist1} = \begin{bmatrix} 
+                        1 & 2 & 3 \\
+                        4 & 5 & 6 \\
+                        7 & 8 & 8 \\
+                        10 & 11 & 12 \\
+                        \end{bmatrix} $$
 
 Can be represented as a list of lists:
 
@@ -572,7 +577,12 @@ matrixlist1 = [row0,
 
 Supposing the following ```2``` is a scalar value of interest:
 
-$$\text{matrixlist1}=\left[\begin{matrix}1&\textbf{2}&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
+$$ \text{matrixlist1} = \begin{bmatrix} 
+                        1 & \textbf{2} & 3 \\
+                        4 & 5 & 6 \\
+                        7 & 8 & 8 \\
+                        10 & 11 & 12 \\
+                        \end{bmatrix} $$
 
 
 To retrieve this scalar value, ```matrixlist1``` must be indexed, and a square set of brackets is used to select the row, which is ```row0``` at index ```0```:
@@ -626,7 +636,12 @@ Notice that the form of the square bracket, has a similar form to the ```shape``
 
 Multiple values can be selected from the array by indexing using a list. This outputs an ```ndarray```:
 
-$$\text{matrix1}=\left[\begin{matrix}1&\textbf{2}&3\\\ \textbf{4}&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & \textbf{2} & 3 \\
+                    \textbf{4} & 5 & 6 \\
+                    7 & 8 & 8 \\
+                    10 & 11 & 12 \\
+                    \end{bmatrix} $$
 
 The scalar ```2``` is on row ```0``` and column ```1```.
 
@@ -757,7 +772,19 @@ book
 
 A matrix can be left right flipped by indexing with rows=```:``` and columns=```::-1```
 
-$$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & 2 & 3 \\
+                    4 & 5 & 6 \\
+                    7 & 8 & 8 \\
+                    10 & 11 & 12 \\
+                    \end{bmatrix} $$
+
+$$ \text{matrix1} \textunderscore \text{lr} = \begin{bmatrix} 
+                                            1 & 2 & 3 \\
+                                            4 & 5 & 6 \\
+                                            7 & 8 & 8 \\
+                                            10 & 11 & 12 \\
+                                            \end{bmatrix} $$
 
 $$\text{matrix1} \textunderscore \text{lr}=\left[\begin{matrix}3&2&1\\\6&5&4\\\9&8&7\\\12&11&10\end{matrix}\right]$$
 
