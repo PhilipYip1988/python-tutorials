@@ -1586,13 +1586,17 @@ np.outer(leftlist, rightlist)
 
 Array division is not as straight-forward as array multiplication. Let's look at the example used earlier when the dot product of a row vector and a column vector was calculated:
 
-$$\left[\begin{matrix} 5 & 6 \end{matrix}\right] @ \left[\begin{matrix}7 \\ 8 \\ \end{matrix}\right]=\left[ 5 \ast 7 + 6 \ast 8 \right]=\left[ 83 \right]$$
+$$\left[\begin{matrix} 5 & 6 \end{matrix}\right] @ \left[\begin{matrix} 7 \\ 
+                                                                        8 \\ 
+                                                                        \end{matrix}\right] = \left[ 5 \ast 7 + 6 \ast 8 \right] = \left[ 83 \right]$$
 
 $$\left(1,\ \textbf{2}\right)@\left(\textbf{2},1\right)=\left(1,1\right)=(1,1)$$
 
 Now supposing the values in the column vector are unknowns:
 
-$$\left[\begin{matrix} 5 & 6 \end{matrix}\right] @ \left[\begin{matrix} x \\ \ y \\ \end{matrix}\right]=\left[ 5 \ast x + 6 \ast y \right]=\left[83\right]$$
+$$\left[\begin{matrix} 5 & 6 \end{matrix}\right] @ \left[\begin{matrix} x \\ 
+                                                                        y \\ 
+                                                                        \end{matrix}\right] = \left[ 5 \ast x + 6 \ast y \right] = \left[83\right]$$
 
 This gives a single equation, with two unknowns and therefore there is not enough information to calculate these unknowns:
 
@@ -1606,27 +1610,53 @@ $$3x+3y=42$$
 
 In matrix form this is:
 
-$$\left[\begin{matrix} 5x+6y \\ 3x+3y\end{matrix}\right]=\left[\begin{matrix} 83 \\ 42\\ \end{matrix}\right]$$
+$$\left[\begin{matrix} 5x + 6y \\ 
+                       3x + 3y \\
+                       \end{matrix}\right] = \left[\begin{matrix} 83 \\
+                                                                  42 \\
+                                                                  \end{matrix}\right]$$
 
-$$\left[\begin{matrix} 5 & 6 \\ 3 & 3 \\ \end{matrix}\right]@\left[\begin{matrix} x \\ y \\ \end{matrix}\right]=\left[\begin{matrix} 83 \\ 42\\ \end{matrix}\right]$$
+$$\left[\begin{matrix} 5 & 6 \\ 
+                       3 & 3 \\ 
+                       \end{matrix}\right] @ \left[\begin{matrix} x \\ 
+                                                                  y \\ 
+                                                                  \end{matrix}\right] = \left[\begin{matrix} 83 \\
+                                                                                                             42 \\
+                                                                                                             \end{matrix}\right]$$
 
 Where the known values are:
 
-$$\text{equations}=\left[\begin{matrix} 5 & 6 \\ 3 & 3 \\ \end{matrix}\right]$$
+$$\text{equations}=\left[\begin{matrix} 5 & 6 \\ 
+                                        3 & 3 \\ 
+                                        \end{matrix}\right]$$
 
-$$\text{results}=\left[\begin{matrix}83 \\ 42 \\ \end{matrix}\right]$$
+$$\text{results}=\left[\begin{matrix}83 \\ 
+                                     42 \\ 
+                                     \end{matrix}\right]$$
 
 And the unknown values are:
 
-$$\text{coefficients}=\left[\begin{matrix} x \\ \ y \\ \end{matrix}\right]$$
+$$\text{coefficients}=\left[\begin{matrix} x \\ 
+                                           y \\ 
+                                           \end{matrix}\right]$$
 
 Notice equations is a square matrix and a square matrix typically has a inverse matrix. The inverse matrix for equations is:
 
-$$\text{INVequations}=\left[\begin{matrix} -1 & 2 \\ 1 & -1.6667 \\ \end{matrix}\right]$$
+$$\text{INVequations}=\left[\begin{matrix} -1 & 2 \\ 
+                                           1 & -1.6667 \\ 
+                                           \end{matrix}\right]$$
 
 Array multiplication between a square matrix and its inverse square matrix gives the identity matrix:
 
-$$\left[\begin{matrix} -1 & 2 \\ \ 1 & -1.6667 \\ \end{matrix}\right] @ \left[\begin{matrix} 5 & 6 \\ 3 & 3 \\ \end{matrix}\right]=\left[\begin{matrix} -1 \ast 5 + 2 \ast 3 & -1 \ast 6 + 2 \ast3 \\ 1 \ast5 - 1.6667 \ast3 &1 \ast 6 - 1.6667 \ast3 \\ \end{matrix}\right]=\left[\begin{matrix} 1 & 0 \\ 0 & 1 \\ \end{matrix}\right]$$
+$$\left[\begin{matrix} -1 & 2 \\
+                       1 & -1.6667 \\ 
+                       \end{matrix}\right] @ \left[\begin{matrix} 5 & 6 \\ 
+                                                                  3 & 3 \\ 
+                                                                  \end{matrix}\right]=\left[\begin{matrix} -1 \ast 5 + 2 \ast 3 & -1 \ast 6 + 2 \ast3 \\ 
+                                                                  1 \ast5 - 1.6667 \ast3 &1 \ast 6 - 1.6667 \ast3 \\
+                                                                  \end{matrix}\right] = \left[\begin{matrix} 1 & 0 \\
+                                                                  0 & 1 \\
+                                                                  \end{matrix}\right]$$
 
 And multiplication of an array by the identity matrix leaves it unchanged:
 
