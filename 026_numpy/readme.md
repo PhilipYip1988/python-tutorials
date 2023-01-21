@@ -548,7 +548,7 @@ The following matrix:
 $$ \text{matrixlist1} = \begin{bmatrix} 
                         1 & 2 & 3 \\
                         4 & 5 & 6 \\
-                        7 & 8 & 8 \\
+                        7 & 8 & 9 \\
                         10 & 11 & 12 \\
                         \end{bmatrix} $$
 
@@ -580,7 +580,7 @@ Supposing the following ```2``` is a scalar value of interest:
 $$ \text{matrixlist1} = \begin{bmatrix} 
                         1 & \textbf{2} & 3 \\
                         4 & 5 & 6 \\
-                        7 & 8 & 8 \\
+                        7 & 8 & 9 \\
                         10 & 11 & 12 \\
                         \end{bmatrix} $$
 
@@ -639,7 +639,7 @@ Multiple values can be selected from the array by indexing using a list. This ou
 $$ \text{matrix1} = \begin{bmatrix} 
                     1 & \textbf{2} & 3 \\
                     \textbf{4} & 5 & 6 \\
-                    7 & 8 & 8 \\
+                    7 & 8 & 9 \\
                     10 & 11 & 12 \\
                     \end{bmatrix} $$
 
@@ -655,7 +655,12 @@ matrix1[[0, 1], [1, 0]]
 
 Supposing all of the items are along an axis, for example row 0, all columns:
 
-$$\text{matrix1}=\left[\begin{matrix}\textbf{1}&\textbf{2}&\textbf{3}\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
+$$ \text{matrix1} = \begin{bmatrix} 
+                    \textbf{1} & \textbf{2} & \textbf{3} \\
+                    4 & 5 & 6 \\
+                    7 & 8 & 9 \\
+                    10 & 11 & 12 \\
+                    \end{bmatrix} $$
 
 This can be indexed explicitly using two lists:
 
@@ -775,18 +780,17 @@ A matrix can be left right flipped by indexing with rows=```:``` and columns=```
 $$ \text{matrix1} = \begin{bmatrix} 
                     1 & 2 & 3 \\
                     4 & 5 & 6 \\
-                    7 & 8 & 8 \\
+                    7 & 8 & 9 \\
                     10 & 11 & 12 \\
                     \end{bmatrix} $$
 
-$$ \text{matrix1} \textunderscore \text{lr} = \begin{bmatrix} 
-                                            1 & 2 & 3 \\
-                                            4 & 5 & 6 \\
-                                            7 & 8 & 8 \\
-                                            10 & 11 & 12 \\
-                                            \end{bmatrix} $$
+$$ \text{matrix1LR} = \begin{bmatrix} 
+                       3 & 2 & 1 \\
+                       6 & 5 & 4 \\
+                       9 & 8 & 7 \\
+                       12 & 11 & 10 \\
+                       \end{bmatrix} $$
 
-$$\text{matrix1} \textunderscore \text{lr}=\left[\begin{matrix}3&2&1\\\6&5&4\\\9&8&7\\\12&11&10\end{matrix}\right]$$
 
 ```
 matrix1_lr = matrix1[:, ::-1]
@@ -830,10 +834,19 @@ Recall when the number of dimensions in the ```shape``` ```tuple``` were discuss
 ![img_048](./images/img_048.png)
 
 A matrix can be up down flipped by indexing with rows=```::-1``` and columns=```:```. The flipping operation this time is carried out on the ```axis``` of the rows, therefore the ```numpy``` function ```flip``` can be used with ```axis=0``` in the case of a 2d array or more generally ```axis=-2``` for any dimension of array that has rows, to achieve the same operation. There is also the associated ```numpy``` function ```flipud```:
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & 2 & 3 \\
+                    4 & 5 & 6 \\
+                    7 & 8 & 9 \\
+                    10 & 11 & 12 \\
+                    \end{bmatrix} $$
 
-$$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
-
-$$\text{matrix1} \textunderscore \text{ud}=\left[\begin{matrix}10&11&12\\\7&8&9\\\4&5&6\\\1&2&3\end{matrix}\right]$$
+$$ \text{matrix1UD} = \begin{bmatrix} 
+                    10 & 11 & 12 \\
+                    7 & 8 & 9 \\
+                    4 & 5 & 6 \\
+                    1 & 2 & 3 \\
+                    \end{bmatrix} $$
 
 ```
 matrix1_ud = matrix1[::-1, :]
@@ -856,7 +869,12 @@ This is typically used most for 2d arrays for example 2d row vectors can be tran
 
 $$\text{arrayr}=\left[\begin{matrix}1&2&3&4\end{matrix}\right]$$
 
-$$\text{arrayc}=\left[\begin{matrix}1\\\2\\\3\\\4\end{matrix}\right]$$
+$$\text{arrayc}=\left[\begin{matrix}
+                     1\\
+                     2\\
+                     3\\
+                     4\\
+                     \end{matrix}\right]$$
 
 A row vector can be transposed into a column, which can be transposed back into a row. Transposing the 2d array 2 times, returns the original array:
 
@@ -882,9 +900,19 @@ arrayc
 
 This also works for matrices:
 
-$$\text{matrix1}=\left[\begin{matrix}1&2&3\\\4&5&6\\\7&8&9\\\10&11&12\end{matrix}\right]$$
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & 2 & 3 \\
+                    4 & 5 & 6 \\
+                    7 & 8 & 9 \\
+                    10 & 11 & 12 \\
+                    \end{bmatrix} $$
 
-$$\text{matrix1} \textunderscore \text{t}=\left[\begin{matrix}1&4&7&9\\\2&5&8&11\\\3&6&9&12\end{matrix}\right]$$
+$$ \text{matrix1T} = \begin{bmatrix} 
+                    1 & 4 & 7 & 9 \\
+                    2 & 5 & 8 & 11 \\
+                    3 & 6 & 9 & 12\\
+                    \end{bmatrix} $$
+
 
 ```
 matrix1
@@ -1443,7 +1471,10 @@ For the case of multiplication, it is possible to carry out element by element m
 
 For matrix multiplication, dimensionality is important and the inner dimensions must match for array multiplication to take place:
 
-$$\left[\begin{matrix}5&6\end{matrix}\right]@\left[\begin{matrix}7\\\8\end{matrix}\right]=\left[5\ast7+6\ast8\right]=\left[83\right]$$
+$$\left[\begin{matrix}5&6\end{matrix}\right]@\left[\begin{matrix}
+                                                   7\\
+                                                   8\\
+                                                   \end{matrix}\right]=\left[5\ast7+6\ast8\right]=\left[83\right]$$
 
 Notice that the inner dimension of the two arrays surrounding the ```@``` operator match and the return result has a ```shape``` ```tuple```, that is a combination of the original ```shape``` ```tuples``` with the inner dimension stripped:
 
@@ -1453,7 +1484,9 @@ In the above example, the largest dimension of each vector was placed in the ins
 
 In contrast it is possible to place the largest dimension of each vector on the outside. This is known as the outer dot product. and will result in a matrix output.
 
-$$\left[\begin{matrix}5\\\6\end{matrix}\right]@\left[\begin{matrix}7&8\end{matrix}\right]=\left[\begin{matrix}5\ast7&5\ast8\\\6\ast7&6\ast8\end{matrix}\right]=\left[\begin{matrix}35&40\\\42&48\end{matrix}\right]$$
+$$\left[\begin{matrix} 5 \\ 6 \\ \end{matrix}\right] @ \left[\begin{matrix} 7 & 8 \end{matrix}\right]=
+\left[\begin{matrix} 5 \ast 7 & 5 \ast8 \\ 6 \ast 7 & 6 \ast8 \\ \end{matrix}\right]
+=\left[\begin{matrix} 35 & 40 \\ 42 & 48 \\ \end{matrix}\right]$$
 
 $$\left(2,\ \textbf{1}\right)@\left(\textbf{1},2\right)=\left(2,2\right)=(2,2)$$
 
@@ -1549,13 +1582,13 @@ np.outer(leftlist, rightlist)
 
 Array division is not as straight-forward as array multiplication. Let's look at the example used earlier when the dot product of a row vector and a column vector was calculated:
 
-$$\left[\begin{matrix}5&6\end{matrix}\right]@\left[\begin{matrix}7\\\8\end{matrix}\right]=\left[5\ast7+6\ast8\right]=\left[83\right]$$
+$$\left[\begin{matrix} 5 & 6 \end{matrix}\right] @ \left[\begin{matrix}7 \\ 8 \\ \end{matrix}\right]=\left[ 5 \ast 7 + 6 \ast 8 \right]=\left[ 83 \right]$$
 
 $$\left(1,\ \textbf{2}\right)@\left(\textbf{2},1\right)=\left(1,1\right)=(1,1)$$
 
 Now supposing the values in the column vector are unknowns:
 
-$$\left[\begin{matrix}5&6\end{matrix}\right]@\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[5\ast x+6\ast y\right]=\left[83\right]$$
+$$\left[\begin{matrix} 5 & 6 \end{matrix}\right] @ \left[\begin{matrix} x \\ \ y \\ \end{matrix}\right]=\left[ 5 \ast x + 6 \ast y \right]=\left[83\right]$$
 
 This gives a single equation, with two unknowns and therefore there is not enough information to calculate these unknowns:
 
@@ -1569,43 +1602,43 @@ $$3x+3y=42$$
 
 In matrix form this is:
 
-$$\left[\begin{matrix}5x+6y\\\3x+3y\end{matrix}\right]=\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+$$\left[\begin{matrix} 5x+6y \\ 3x+3y\end{matrix}\right]=\left[\begin{matrix} 83 \\ 42\\ \end{matrix}\right]$$
 
-$$\left[\begin{matrix}5&6\\\3&3\end{matrix}\right]@\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+$$\left[\begin{matrix} 5 & 6 \\ 3 & 3 \\ \end{matrix}\right]@\left[\begin{matrix} x \\ y \\ \end{matrix}\right]=\left[\begin{matrix} 83 \\ 42\\ \end{matrix}\right]$$
 
 Where the known values are:
 
-$$\text{equations}=\left[\begin{matrix}5&6\\\3&3\end{matrix}\right]$$
+$$\text{equations}=\left[\begin{matrix} 5 & 6 \\ 3 & 3 \\ \end{matrix}\right]$$
 
-$$\text{results}=\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+$$\text{results}=\left[\begin{matrix}83 \\ 42 \\ \end{matrix}\right]$$
 
 And the unknown values are:
 
-$$\text{coefficients}=\left[\begin{matrix}x\\\y\end{matrix}\right]$$
+$$\text{coefficients}=\left[\begin{matrix} x \\ \ y \\ \end{matrix}\right]$$
 
 Notice equations is a square matrix and a square matrix typically has a inverse matrix. The inverse matrix for equations is:
 
-$$\text{invequations}=\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]$$
+$$\text{INVequations}=\left[\begin{matrix} -1 & 2 \\ 1 & -1.6667 \\ \end{matrix}\right]$$
 
 Array multiplication between a square matrix and its inverse square matrix gives the identity matrix:
 
-$$\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]@\left[\begin{matrix}5&6\\\3&3\end{matrix}\right]=\left[\begin{matrix}-1\ast5+2\ast3&-1\ast6+2\ast3\\\1\ast5-1.6667\ast3&1\ast6-1.6667\ast3\end{matrix}\right]=\left[\begin{matrix}1&0\\\0&1\end{matrix}\right]$$
+$$\left[\begin{matrix} -1 & 2 \\ \ 1 & -1.6667 \\ \end{matrix}\right] @ \left[\begin{matrix} 5 & 6 \\ 3 & 3 \\ \end{matrix}\right]=\left[\begin{matrix} -1 \ast 5 + 2 \ast 3 & -1 \ast 6 + 2 \ast3 \\ 1 \ast5 - 1.6667 \ast3 &1 \ast 6 - 1.6667 \ast3 \\ \end{matrix}\right]=\left[\begin{matrix} 1 & 0 \\ 0 & 1 \\ \end{matrix}\right]$$
 
 And multiplication of an array by the identity matrix leaves it unchanged:
 
-$$\left[\begin{matrix}1&0\\\0&1\end{matrix}\right]@\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}1\ast x+0\ast y\\\0\ast x+1\ast y\end{matrix}\right]=\left[\begin{matrix}x\\\y\end{matrix}\right]$$
+$$\left[\begin{matrix} 1 & 0 \\ 0 & 1 \\ \end{matrix}\right] @ \left[\begin{matrix} x \\ y \\ \end{matrix}\right]=\left[\begin{matrix} 1 \ast x + 0 \ast y\\ 0 \ast x + 1 \ast y \\ \end{matrix}\right]=\left[\begin{matrix}x \\ y \\ \end{matrix}\right]$$
 
 This means array multiplication of the inverse equations matrix on both sides gives:
 
-$$\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]@\left[\begin{matrix}83\\\42\end{matrix}\right]$$
+$$\left[\begin{matrix} x \\ y \\ \end{matrix}\right]=\left[\begin{matrix} -1 & 2 \\ 1 & -1.6667 \\ \end{matrix}\right] @ \left[\begin{matrix} 83 \\ 42 \\ \end{matrix}\right]$$
 
 Which can be solved:
 
-$$\left[\begin{matrix}-1&2\\\1&-1.6667\end{matrix}\right]@\left[\begin{matrix}83\\\42\end{matrix}\right]=\left[\begin{matrix}-1\ast83+2\ast42\\\1\ast83-1.6667\ast42\end{matrix}\right]=\left[\begin{matrix}1\\\13\end{matrix}\right]$$
+$$\left[\begin{matrix} -1 & 2 \\ 1 & -1.6667 \\ \end{matrix}\right] @ \left[\begin{matrix} 83 \\ 42 \\ \end{matrix}\right]=\left[\begin{matrix} -1 \ast 83 + 2 \ast42 \\ 1 \ast 83 - 1.6667 \ast 42 \\ \end{matrix}\right]=\left[\begin{matrix} 1 \\ 13 \\ \end{matrix}\right]$$
 
 Therefore:
 
-$$\left[\begin{matrix}x\\\y\end{matrix}\right]=\left[\begin{matrix}1\\\13\end{matrix}\right]$$
+$$\left[\begin{matrix}x \\ y \\ \end{matrix}\right] = \left[\begin{matrix} 1 \\ 13 \\ \end{matrix}\right]$$
 
 The ```equations``` square matrix and ```results``` column vector can be setup using:
 
