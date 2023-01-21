@@ -1660,7 +1660,15 @@ $$\left[\begin{matrix} -1 & 2 \\
 
 And multiplication of an array by the identity matrix leaves it unchanged:
 
-$$\left[\begin{matrix} 1 & 0 \\ 0 & 1 \\ \end{matrix}\right] @ \left[\begin{matrix} x \\ y \\ \end{matrix}\right]=\left[\begin{matrix} 1 \ast x + 0 \ast y\\ 0 \ast x + 1 \ast y \\ \end{matrix}\right]=\left[\begin{matrix}x \\ y \\ \end{matrix}\right]$$
+$$\left[\begin{matrix} 1 & 0 \\ 
+                       0 & 1 \\ 
+                       \end{matrix}\right] @ \left[\begin{matrix} x \\
+                                                                  y \\ 
+                                                                  \end{matrix}\right] = \left[\begin{matrix} 1 \ast x + 0 \ast y \\
+                                                                  0 \ast x + 1 \ast y \\
+                                                                  \end{matrix}\right]=\left[\begin{matrix}x \\
+                                                                  y \\
+                                                                  \end{matrix}\right]$$
 
 This means array multiplication of the inverse equations matrix on both sides gives:
 
@@ -1672,7 +1680,11 @@ $$\left[\begin{matrix} -1 & 2 \\ 1 & -1.6667 \\ \end{matrix}\right] @ \left[\beg
 
 Therefore:
 
-$$\left[\begin{matrix}x \\ y \\ \end{matrix}\right] = \left[\begin{matrix} 1 \\ 13 \\ \end{matrix}\right]$$
+$$\left[\begin{matrix} x \\ 
+                       y \\ 
+                       \end{matrix}\right] = \left[\begin{matrix} 1 \\ 
+                                                                  13 \\ 
+                                                                  \end{matrix}\right]$$
 
 The ```equations``` square matrix and ```results``` column vector can be setup using:
 
