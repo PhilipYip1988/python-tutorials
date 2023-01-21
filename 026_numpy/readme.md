@@ -1484,9 +1484,7 @@ In the above example, the largest dimension of each vector was placed in the ins
 
 In contrast it is possible to place the largest dimension of each vector on the outside. This is known as the outer dot product. and will result in a matrix output.
 
-$$\left[\begin{matrix} 5 \\ 6 \\ \end{matrix}\right] @ \left[\begin{matrix} 7 & 8 \end{matrix}\right]=
-\left[\begin{matrix} 5 \ast 7 & 5 \ast8 \\ 6 \ast 7 & 6 \ast8 \\ \end{matrix}\right]
-=\left[\begin{matrix} 35 & 40 \\ 42 & 48 \\ \end{matrix}\right]$$
+$$\left[\begin{matrix} 5 \\ 6 \\ \end{matrix}\right] @ \left[\begin{matrix} 7 & 8 \end{matrix}\right] = \left[\begin{matrix} 5 \ast 7 & 5 \ast8 \\ 6 \ast 7 & 6 \ast8 \\ \end{matrix}\right] = \left[\begin{matrix} 35 & 40 \\ 42 & 48 \\ \end{matrix}\right]$$
 
 $$\left(2,\ \textbf{1}\right)@\left(\textbf{1},2\right)=\left(2,2\right)=(2,2)$$
 
