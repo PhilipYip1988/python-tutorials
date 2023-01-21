@@ -77,7 +77,7 @@ To create a new Python environment for the latest version of the JupyterLab IDE 
 ```
 mamba create -n jupyterlab
 mamba activate jupyterlab
-mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
+mamba install jupyterlab=3.5.2 python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
 jupyter lab build
 ```
 
