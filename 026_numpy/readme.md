@@ -1672,11 +1672,24 @@ $$\left[\begin{matrix} 1 & 0 \\
 
 This means array multiplication of the inverse equations matrix on both sides gives:
 
-$$\left[\begin{matrix} x \\ y \\ \end{matrix}\right]=\left[\begin{matrix} -1 & 2 \\ 1 & -1.6667 \\ \end{matrix}\right] @ \left[\begin{matrix} 83 \\ 42 \\ \end{matrix}\right]$$
+$$\left[\begin{matrix} x \\ 
+                       y \\ 
+                       \end{matrix}\right] = \left[\begin{matrix} -1 & 2 \\
+                                                                  1 & -1.6667 \\ 
+                                                                  \end{matrix}\right] @ \left[\begin{matrix} 83 \\
+                                                                                                             42 \\
+                                                                                                             \end{matrix}\right]$$
 
 Which can be solved:
 
-$$\left[\begin{matrix} -1 & 2 \\ 1 & -1.6667 \\ \end{matrix}\right] @ \left[\begin{matrix} 83 \\ 42 \\ \end{matrix}\right]=\left[\begin{matrix} -1 \ast 83 + 2 \ast42 \\ 1 \ast 83 - 1.6667 \ast 42 \\ \end{matrix}\right]=\left[\begin{matrix} 1 \\ 13 \\ \end{matrix}\right]$$
+$$\left[\begin{matrix} -1 & 2 \\
+                       1 & -1.6667 \\ 
+                       \end{matrix}\right] @ \left[\begin{matrix} 83 \\
+                                                                  42 \\ \end{matrix}\right] = \left[\begin{matrix} -1 \ast 83 + 2 \ast42 \\ 
+                                                                  1 \ast 83 - 1.6667 \ast 42 \\ 
+                                                                  \end{matrix}\right] = \left[\begin{matrix} 1 \\
+                                                                                                             13 \\
+                                                                                                             \end{matrix}\right]$$
 
 Therefore:
 
