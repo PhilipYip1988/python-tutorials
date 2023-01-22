@@ -368,7 +368,7 @@ It is recommended to enable file extensions for known file types and ensure all 
 
 The markdown file supports LaTeX. Care needs to be taken as Python IDEs and webservers may use different engines to render LaTeX. JupyterLab and GitHub use MathJax. In Visual Studio Code the extensions Markdown All in One and Markdown+Math use KaTeX. MathJax is more limited than KaTeX and is more prone to rendering issues. Markdown files uploaded to GitHub with LaTeX should be rechecked on GitHub to see if equations render properly. [MathJax GitHub](https://github.com/mathjax/MathJax/issues) can be used to discuss rendering issues.
 
-Microsoft Word has a What you see is what you get equation editor. Equations should be created in Unicode. After creating the equation, then create a blank equation created and changed the Unicode setting to LaTeX. Copy the equation you typed into Word into the Markdown file or Markdown cell. It may need to be modified slightly to render properly. Change the Microsoft WOrd Equation setting back to Unicode before typing a new equation.
+Microsoft Word has a What you see is what you get equation editor. Equations should be created in Unicode. After creating the equation, then create a blank equation created and changed the Unicode setting to LaTeX. Copy the equation you typed into Word into the Markdown file or Markdown cell. It may need to be modified slightly to render properly. Change the Microsoft Word Equation setting back to Unicode before typing a new equation.
 
 ### Reserved Symbols (MathJax)
 
