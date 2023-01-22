@@ -325,22 +325,30 @@ If the link is an image this may be prepended with an exclamation mark ```![]()`
 The following markdown:
 
 ```
-[Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+[Mamba](https://mamba.readthedocs.io/en/latest/installation.html)
 ```
 
 Produces:
 
-[Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+[Mamba](https://mamba.readthedocs.io/en/latest/installation.html)
 
 The following markdown:
 
 ```
-![Anaconda](https://upload.wikimedia.org/wikipedia/commons/f/f4/Anaconda.Starting_page.png)
+![Mambaforge](https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_003.png)
 ```
 
 Produces:
 
-![Anaconda](https://upload.wikimedia.org/wikipedia/commons/f/f4/Anaconda.Starting_page.png)
+![Mambaforge](https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_003.png)
+
+If the Image can't be found, the information provided in the square brackets displays:
+
+```
+![Dont Exist](https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_dont_exist.png)
+```
+
+![Dont Exist](https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_dont_exist.png)
 
 If the image is in the same folder as the markdown file. The file name can be specified directly.
 
@@ -557,18 +565,18 @@ $$  \begin{bmatrix}
 Matrices use  ```&``` as a delimiter to move onto the new column and ```\\``` as a delimiter to move onto the next row and are input over multiple lines:
 
 ```
-$$  \begin{bmatrix} 
-    a & b & c \\
-	  c & d & d \\
-	  e & f & g \\
-	  \end{bmatrix} $$
+$$ \begin{bmatrix} 
+   a & b & c \\
+   c & d & d \\
+   e & f & g \\
+   \end{bmatrix} $$
 ```
 
-$$  \begin{bmatrix} 
-    a & b & c \\
-	  c & d & d \\
-	  e & f & g \\
-	  \end{bmatrix} $$
+$$ \begin{bmatrix} 
+   a & b & c \\
+   c & d & d \\
+   e & f & g \\
+   \end{bmatrix} $$
 
 There are four types of matrix, the:
 
@@ -577,29 +585,29 @@ There are four types of matrix, the:
 * ```pmatrix``` (parenthesis)
 * ```pvmatrix``` |vertical bars|
 
-$$  \begin{matrix} 
-    a & b & c \\
-	  c & d & d \\
-	  e & f & g \\
-	  \end{matrix} $$
+$$ \begin{matrix} 
+   a & b & c \\
+   c & d & d \\
+   e & f & g \\
+   \end{matrix} $$
 
-$$  \begin{bmatrix} 
-    a & b & c \\
-	  c & d & d \\
-	  e & f & g \\
-	  \end{bmatrix} $$
+$$ \begin{bmatrix} 
+   a & b & c \\
+   c & d & d \\
+   e & f & g \\
+   \end{bmatrix} $$
 
-$$  \begin{pmatrix} 
-    a & b & c \\
-	  c & d & d \\
-	  e & f & g \\
-	  \end{pmatrix} $$
+$$ \begin{pmatrix} 
+   a & b & c \\
+   c & d & d \\
+   e & f & g \\
+   \end{pmatrix} $$
 
-$$  \begin{vmatrix} 
-    a & b & c \\
-	  c & d & d \\
-	  e & f & g \\
-	  \end{vmatrix} $$
+$$ \begin{vmatrix} 
+   a & b & c \\
+   c & d & d \\
+   e & f & g \\
+   \end{vmatrix} $$
 
 ### LaTeX Sum, Integral, Product and Union (MathJax)
 
