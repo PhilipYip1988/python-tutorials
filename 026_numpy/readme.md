@@ -1640,7 +1640,7 @@ $$\text{coefficients}=\left[\begin{matrix} x \\
                                            y \\ 
                                            \end{matrix}\right]$$
 
-Notice equations is a square matrix and a square matrix typically has a inverse matrix. The inverse matrix for equations is:
+Notice equations is a square matrix. Square matrices are typically constructed from a system of linear equations due to the requirement of n equations for n unknown coefficients. A square matrix typically has a inverse matrix. The inverse matrix for equations is:
 
 $$\text{INVequations}=\left[\begin{matrix} -1 & 2 \\ 
                                            1 & -1.6667 \\ 
@@ -1751,3 +1751,69 @@ These can also be calculated directly using the ```linalg``` function ```solve``
 coefficients = np.linalg.solve(equations, results)
 coefficients
 ```
+
+
+This kind of calculation is carried out when interpolation of an unknown datapoint is carried out by use of its nearest neighbours to construct a linear system of equations.
+
+## Diagonal
+
+np.diag, diagonal, np.fill_diagonal
+
+## Statistics
+
+np.amax, np.amin, np.argmax, np.argmin, np.argsort, np.sort
+
+np.around
+
+np.sum, np.prod, np.average, np.mean, np.median, np.var, np.std
+
+np.any np.all
+
+np.cumprod, np.cumproduct, np.cumsum, np.diff
+
+## Mathematics
+
+The NumPy library includes an equivalent of every identifier in the ```math``` module it makes sense to extend its implementation to an array. These are extended to element by element functionality.
+
+Detailed information about all of these are given in [Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_math/readme.md). The equivalents in numpy are.
+
+The mathematical constants:
+
+```np.e```, ```np.pi```, ```np.tau```, ```np.inf```, ```np.nan```
+
+These can be made into arrays using the ```np.fill``` or scalar expansion can be used. The ```np.pi``` or ```np.tau``` is commonly used with ```np.linspace``` to create an array of circular angles.
+
+The angle conversion functions can be used to convert arrays of angles:
+
+```np.degrees```, ```np.radians```
+
+The following functions can be applied to arrays:
+
+```np.isfinite```, ```np.isnan```, ```np.pow```, ```np.sqrt```, ```np.floor```, ```np.ceil```, ```np.floor```, ```np.ceil```, ```np.isclose```, ```np.nextafter```, ```np.fabs```, ```np.fmod```, ```np.remainder```, ```np.modf```, ```np.trunc```, ```np.gcd```, ```np.lcm```, ```np.prod```, ```np.copysign```
+
+The following exponential and logarthmic function can be applied to arrays:
+
+```np.factorial```, ```np.exp```, ```np.log```, ```np.log10```, ```np.log2```, ```np.frexp```, ```np.ldexp```, ```np.expm1```, ```np.log1p```
+
+The functions used for the circle equations:
+
+```np.hypot```, ```np.sin```, ```np.cos```, ```np.tan```, ```np.asin```,```np.acos```, ```np.atan```
+
+The functions used for parabolic equations:
+
+```np.sinh```, ```np.cosh```, ```np.tanh```, ```np.acosh```, ```np.asinh```, ```np.atanh```
+
+The functions for complex numbers:
+
+```np.conjugate```
+
+
+
+
+## Random Module
+
+## DateTime and TimeDelta
+
+## Meshgrid
+
+np.meshgrid
