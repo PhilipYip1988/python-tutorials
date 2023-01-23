@@ -417,7 +417,7 @@ The contents of the ```str``` instance ```greeting``` i.e. ```'Hello World!'``` 
 
 Under the hood a computer stores data using binary switches known as bits. Each bit is a switch that is either Low or High. These binary switches are equivalent to the ```bool``` values ```False``` and ```True``` also represented using the digits ```0``` and ```1```. To store more than two values, a combination of switches are used and a common configuration is 8 known as a byte.
 
-ASCII stands for American Standard Code for Information Interchange (ASCII) and contains the most common non-printable computer commands and printable characters used in the English (American subset which excludes the £) language. These are numerically encoded and recognised by the computer as a byte.
+ASCII stands for American Standard Code for Information Interchange (ASCII) and contains the most common non-printable computer commands and printable characters used in the English language (American subset which excludes the £). These are numerically encoded and recognised by the computer as a byte.
 
 For example the integer value of the character ```'A'``` can be retrieved using the ordinal function ```ord```:
 
