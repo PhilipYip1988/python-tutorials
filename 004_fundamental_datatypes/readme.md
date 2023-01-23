@@ -1,6 +1,12 @@
-# Fundamental Datatypes
+# Fundamental Text Datatypes
 
-## Object Orientated Programming Fundamentals
+There are three fundamental text datatypes used in Python, the Unicode String ```str```, the Byte String ```bytes``` and the Mutable Byte String ```bytearray```. 
+
+In the Unicode String, each unit in the string is a Unicode text character, as a consequence it is the easiest text data type to manipulate, the most flexible and the most common text datatype employed in Python.
+
+In the Byte Strings, each unit in the string is instead a numeric configuration known as a byte. For a small subset of characters known as ASCII characters, one character corresponds to one byte and therefore the Unicode Strings and Byte Strings map consistently. Outwith this small subset of characters, things become a bit more messy. One-four Bytes may be used to represent a character and the configuration of bytes used to represent each character changes with the various different encoding schemes or translation maps. The Byte Strings are generally used more on the hardware level for purposes such as receiving and sending data along serial ports. In such an application, it is recommended to convert the receiving Byte String to a Unicode String as early as possible in the program and to convert the Unicode String to a Byte String as later as possible before sending it along a serial port.
+
+## Object Orientated Programming Conception
 
 Python is an Object Orientated Programming (OOP) language. Each *object* belongs to an associated *class*. The *class* can be conceptualised as a set of instructions, similar to the blueprint that has an associated label ```MobileSuit```. 
 
@@ -116,7 +122,7 @@ The class itself is an object, which is why it was depicted as a blueprint with 
 
 ## The Unicode String Class str
 
-### str Init Signature
+### Init Signature
 
 The ```str``` class is an abbreviation for a string of Unicode characters. Inputting ```str()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature of the string class.
 
@@ -178,7 +184,7 @@ The instance name or label ```farewell``` displays on the Variable Explorer. Onc
 
 As these are two unique instances, they store unique content.
 
-### str Identifiers
+### Identifiers
 
 If the instance name ```greeting``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
 
@@ -192,7 +198,7 @@ These identifiers come from the ```str``` class. Recall the class can be concept
 
 ![img_021](./images/img_021.png)
 
-### Str Methods
+### Methods
 
 All of these identifiers are functions. A function is also an object that can be referenced using its object name. When referenced the output shows that this function belongs to the ```str``` class. Notice the parenthesis ```()```, these are used to both provide input arguments to the function and to also call the function:
 
@@ -935,20 +941,13 @@ translate
 maketrans
 
 
+## The Byte String Class bytes
+
+### Decimal, Binary and Hexadecimal
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+## The Mutable Byte String Class bytearray
 
 
 
