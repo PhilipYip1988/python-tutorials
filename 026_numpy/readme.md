@@ -1710,33 +1710,51 @@ results = np.array([83, 42])[:, np.newaxis]
 results
 ```
 
-The ```numpy``` library has a linear algebra module, which contains additional linear algebra equations. The ```inv``` function can be sued to calcualte the inverse matrix:
+![img_098](./images/img_098.png)
+
+
+The ```numpy``` library has a linear algebra module, which contains additional linear algebra equations. The ```inv``` function can be used to calculate the inverse matrix:
 
 ```
 inv_equations = np.linalg.inv(equations)
 inv_equations
 ```
 
-Multiplication of a square matrix by its inverse square matrix gives the identity matrix:
+![img_099](./images/img_099.png)
+
+Multiplication of a square matrix by its inverse square matrix gives the identity matrix and is commutative unlike regular array multiplication:
 
 ```
 inv_equations @ equations
 equations @ inv_equations
 ```
 
-The ```numpy``` library has an ```identity``` function and related ```eye``` function which can be used to generate an identity matrix:
+![img_100](./images/img_100.png)
 
-The docstrings ...
+The ```numpy``` library has an ```identity``` function and related ```eye``` function which can be used to generate an identity matrix. The docstrings of these two functions can be seen by inputting in the function followed by open parenthesis followed by shift ```⇧``` and tab ```↹```:
 
+![img_101](./images/img_101.png)
 
+![img_102](./images/img_102.png)
 
+```np.identity``` has only the input argument ```n``` which is the number of rows. The matrix output is always square so the number of columns is equal to the number of rows. This function also has the optional keyword input argument ```dtype``` which can be used to specify the datatype, ```float``` is the default:
 
+```
+np.identity(n=2)
+```
 
+![img_103](./images/img_103.png)
 
+The ```np.eye``` function by default creates a square matrix using the input argument ```N``` which is the number of rows. By default it is square so the number of columns ```M``` is equal to the number of rows ```N```. ```M``` can be specified to get a rectangular matrix. There is also the keyword input argument ```k``` which is the index of the diagonal ```0``` refers to the main diagonal. ```k``` can be set to a positive or negative integer to offset to an upper or lower diagonal respectively. This function also has the optional keyword input argument ```dtype``` which can be used to specify the datatype, ```float``` is the default:
 
+```
+np.eye(N=2)
+np.eye(N=3, M=3, k=0)
+np.eye(N=3, M=3, k=1)
+np.eye(N=3, M=3, k=-1)
+```
 
-
-
+![img_104](./images/img_104.png)
 
 The coefficients can be calculated using:
 
@@ -1745,6 +1763,8 @@ coefficients = inv_equations @ results
 coefficients
 ```
 
+![img_105](./images/img_105.png)
+
 These can also be calculated directly using the ```linalg``` function ```solve```:
 
 ```
@@ -1752,14 +1772,190 @@ coefficients = np.linalg.solve(equations, results)
 coefficients
 ```
 
+![img_106](./images/img_106.png)
 
 This kind of calculation is carried out when interpolation of an unknown datapoint is carried out by use of its nearest neighbours to construct a linear system of equations.
 
 ## Diagonal
 
-np.diag, diagonal, np.fill_diagonal
+The main diagonal starts from the first element in the matrix and has an offset of ```0```:
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    \textbf{1} & 2 & 3 & 4 \\
+                    5 & \textbf{6} & 7 & 8 \\
+                    9 & 10 & \textbf{11} & 12 \\
+                    13 & 14 & 15 & \textbf{16} \\
+                    \end{bmatrix} $$
+
+An offset of ```1``` begins the diagonal from the next column, moving towards an upper diagonal:
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & \textbf{2} & 3 & 4 \\
+                    5 & 6 & \textbf{7} & 8 \\
+                    9 & 10 & 11 & \textbf{12} \\
+                    13 & 14 & 15 & 16 \\
+                    \end{bmatrix} $$
+
+An offset of ```-1``` begins the diagonal from the previous column, moving towards a lower diagonal:
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & 2 & 3 & 4 \\
+                    \textbf{5} & 6 & 7 & 8 \\
+                    9 & \textbf{10} & 11 & 12 \\
+                    13 & 14 & \textbf{15} & 16 \\
+                    \end{bmatrix} $$
+
+The view on the matrix is ```axis1=0``` (the columns) and ```axis2=1``` (the rows) by default. These can be changed but are normally on done so when selecting two axes of interest to form a matrix from a higher dimensional array and then computing the diagonal of this. For example $\text{book1}$ can have the followign pages:
+
+$$ \text{page0} = \begin{bmatrix} 
+                    1 & 2 & 3 & 4 \\
+                    5 & 6 & 7 & 8 \\
+                    9 & 10 & 11 & 12 \\
+                    13 & 14 & 15 & 16 \\
+                    \end{bmatrix} $$
+
+$$ \text{page1} = \begin{bmatrix} 
+                    17 & 18 & 19 & 20 \\
+                    21 & 22 & 23 & 24 \\
+                    25 & 26 & 27 & 28 \\
+                    29 & 30 & 31 & 32 \\
+                    \end{bmatrix} $$
+
+$$ \text{page2} = \begin{bmatrix} 
+                    33 & 34 & 35 & 36 \\
+                    37 & 38 & 39 & 40 \\
+                    41 & 42 & 43 & 44 \\
+                    45 & 46 & 47 & 48 \\
+                    \end{bmatrix} $$
+
+$$ \text{page3} = \begin{bmatrix} 
+                    49 & 50 & 51 & 52 \\
+                    53 & 54 & 55 & 56 \\
+                    57 & 58 & 59 & 60 \\
+                    61 & 62 & 63 & 64 \\
+                    \end{bmatrix} $$
+
+Recall the shape tuple is ```(4, 4, 4)``` with ```(4 pages, 4rows, 4 columns)```:
+
+If for example, the diagonal between the pages and the columns is of interest then ```axis0=-3``` and ```axis1=-1``` should be selected:
+
+$$ \text{page0} = \begin{bmatrix} 
+                    \textbf{1} & 2 & 3 & 4 \\
+                    \textbf{5} & 6 & 7 & 8 \\
+                    \textbf{9} & 10 & 11 & 12 \\
+                    \textbf{13} & 14 & 15 & 16 \\
+                    \end{bmatrix} $$
+
+$$ \text{page1} = \begin{bmatrix} 
+                    17 & \textbf{18} & 19 & 20 \\
+                    21 & \textbf{22} & 23 & 24 \\
+                    25 & \textbf{26} & 27 & 28 \\
+                    29 & \textbf{30} & 31 & 32 \\
+                    \end{bmatrix} $$
+
+$$ \text{page2} = \begin{bmatrix} 
+                    33 & 34 & \textbf{35} & 36 \\
+                    37 & 38 & \textbf{39} & 40 \\
+                    41 & 42 & \textbf{43} & 44 \\
+                    45 & 46 & \textbf{47} & 48 \\
+                    \end{bmatrix} $$
+
+$$ \text{page3} = \begin{bmatrix} 
+                    49 & 50 & 51 & \textbf{52} \\
+                    53 & 54 & 55 & \textbf{6} \\
+                    57 & 58 & 59 & \textbf{60} \\
+                    61 & 62 & 63 & \textbf{64} \\
+                    \end{bmatrix} $$
+
+```matrix1``` can be created using the following code:
+
+```
+matrix1 = np.arange(start=1, stop=17, step=1).reshape((4, 4))
+matrix1
+```
+
+![img_107](./images/img_107.png)
+
+An ndarray has the method ```diagonal``` and there is an associated ```numpy``` function ```diagonal```. The docstring of the function can be viewed by inputting inputting ```np.diagonal()``` followed by shift ```⇧``` and tab ```↹```. The function asks for an array ```a``` which is provided when ```diagonal``` is used as a method from an ```ndarray```. The keyword input arguments ```offset```, ```axis1``` and ```axis2``` are all configured with default values to view the main diagonal of a matrix:
+
+![img_108](./images/img_108.png)
+
+The main diagonal and the offset ```1``` and ```-1``` diagonals can be viewed using:
+
+```
+matrix1.diagonal()
+np.diagonal(a=matrix1)
+matrix1.diagonal(offset=1)
+matrix1.diagonal(offset=-1)
+```
+
+![img_109](./images/img_109.png)
+
+If the anti-diagonal is desired, the matrix can be left right flipped using the ```ndarray``` method ```fliplr``` before using the ```ndarray``` method ```diagonal```.
+
+A 3d array can be created using:
+
+```
+book1 = np.arange(start=1, stop=65, step=1).reshape((4, 4, 4))
+book1
+```
+
+![img_110](./images/img_110.png)
+
+The diagonal between the pages and the columns can be selected using ```axis0=-3``` and ```axis1=-1```:
+
+![img_111](./images/img_111.png)
+
+The ```numpy``` function ```fill_diagonal``` can be used to replace the values of the dagonal with a fill value:
+
+![img_112](./images/img_112.png)
+
+```matrix2``` can be be created using zeros:
+
+```
+matrix2 = np.zeros((4, 4))
+matrix2
+```
+
+Its diagonal can be filled with ```val=1```:
+
+```
+np.fill_diagonal(a=matrix2, val=1)
+```
+
+Notice that this method has no return value and the changes mutate ```matrix``` in place:
+
+```
+matrix2
+```
+
+![img_113](./images/img_113.png)
+
+The ```numpy``` function ```diag``` can be used to construct a diagonal array or extract a copy of a diagonal. The docstring of the function can be viewed by inputting inputting ```np.diag()``` followed by shift ```⇧``` and tab ```↹```. It has a keyword input argument ```k``` which is equivalent to ```offset``` seen in the ```numpy``` function ```diagonal```:
+
+![img_114](./images/img_114.png)
+
+```
+np.diag([1, 2, 3, 4])
+np.diag([1, 2, 3, 4], k=1)
+matrix1
+np.diag(matrix1)
+```
+
+![img_115](./images/img_115.png)
+
+The ```nupy``` fucntion ```diag``` does not extend to higher numbers of dimensions like the ```numpy``` function ```diagonal```.
 
 ## Statistics
+
+The ```ndarray``` includes a number of statistical methods and complementary ```numpy``` functions.
+
+The ```ndarray``` method ```max``` and associated ```numpy``` function array max ```amax``` are used to calculate the maximum value of an array, along an axis. The associated ```ndarray``` method ```argmax``` and associated ```numpy``` function argument max ```argmax``` can be used to get the associated index of the maximum value. These methods use the input argument ```axis``` which can be ```None``` which looks for the maximum value in a flattened view of the array. 
+
+![img_116](./images/img_116.png)
+
+![img_117](./images/img_117.png)
+
 
 np.amax, np.amin, np.argmax, np.argmin, np.argsort, np.sort
 
