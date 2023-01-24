@@ -516,26 +516,121 @@ Python can use single quotations ```' '``` or double quotations ```" "``` to enc
 'Hello World!'
 ```
 
-A multiline string can be constructed using three double quotations ```""" """``` or three single quotations ```''' '''```. For a multi-line string, the default is double quotations and all official Python documentation favours double quotations for this use case. 
+A multiline string can be constructed using three double quotations ```""" """``` or three single quotations ```''' '''```. For a multi-line string, the default is double quotations and all official Python documentation favours double quotations for this use case. This is also because a docstring is likely to include expanded details about input arguments and some will be assigned to strings that are enclosed in single parenthesis.
 
+```
 """
 This is a multi-line string.
 Hello World!
 Goodbye World!
 """
+```
 
 ![img_074](./images/img_074.png)
 
+The multiline string can be assigned to an object name, note the emission of the new line at the start and the end and the inclusion of two tabs:
 
-expandtabs
+```
+paragraph = """This is a multi-line string:
+\tHello World!
+\tGoodbye World!"""
+```
+
+The representation of this multiline string can be shown in the cell output or it can be printed:
+
+```
+paragraph
+print(paragraph)
+```
+
+![img_075](./images/img_075.png)
+
+In Python code, tabs aren't used and instead four spaces are used. The ```expandtabs``` method can be used to expand all tabs in a string to a set number of spaces. Inputting ```greeting.expandtabs()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of this function revealing the keyword input argument ```tabsize```, this has a default value of 8:
+
+![img_076](./images/img_076.png)
+
+The tabs can be expanded to 4 spaces and the returned string can be returned to a new object name ```paragraph2```. The cell representation of ```paragraph2``` can be shown in the output of a cell or alternatively ```paragraph2``` can be printed:
+
+```
+paragraph2 = paragraph.expandtabs(tabsize=4)
+paragraph2
+print(paragraph2)
+```
+
+![img_077](./images/img_077.png)
+
+### Print and Repr, Escape Characters and Raw Strings
+
+Going back to:
+
+```
+paragraph = """This is a multi-line string:
+\tHello World!
+\tGoodbye World!"""
+```
+
+![img_078](./images/img_078.png)
+
+And viewing the string representation in a cell output:
+
+![img_079](./images/img_079.png)
+
+Notice the string representation shown in the cell output uses ```\n``` to represent a new line and ```\t``` to represent a tab. 
+
+The string representation shown in the cell output is the best way to instantiate a new string using a single line. In a string, the ```\``` is used to insert an escape character. This is typically used for whitespace such as ```\n``` new line, ```\t``` tab and ```\r``` carriage return. 
+
+The representation can explicitly be shown using the representation function ```repr```. Inputting ```repr()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of this function revealing the only input argument is the object to be represented:
+
+![img_083](./images/img_083.png)
+
+If ```repr``` is used on ```paragraph```:
+
+![img_084](./images/img_084.png)
+
+Notice that the original swtring with single quotations is enclosed in double quotations. Everywhere there was a ```\``` in the string, there is now a double ```\\```. This is because in order to insert a ```\``` as an escape character ```\\``` is used, the first ```\``` denotes insertion of an escape character and the second ```\``` denotes that the escape character to be inserted is ```\``` itself. The effect of these escape characters is seen when the representation is printed:
+
+```
+print(repr(paragraph))
+```
+
+Which is the same as the default cell output:
+
+```
+paragraph
+```
+
+![img_085](./images/img_085.png)
+
+The ```print``` function displays the string with the formattign escape characters applied:
+
+```
+print(paragraph)
+```
+
+![img_080](./images/img_080.png)
+
+Inputting ```print()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of this function revealing the expected input arguments:
+
+![img_081](./images/img_081.png)
+
+Notice that there are a variable number of positional input arguments, meaning 1 or multiple objects may be supplied to the ```print``` function. There is the keyword input argument seperator ```sep``` which has the default value of a space and the keyword input argument ```end``` which has the default value of a new line. The behaviour of these input arguments can be examined using:
+
+```
+print('hello', 'world')
+print('hello', 'world')
+print('hello', 'world', sep='|', end='+')
+print('hello', 'world')
+print('hello', 'world')
+```
+
+![img_082](./images/img_082.png)
 
 
-### Escape Characters and Raw Strings
-
-Notice the string representation shown in the cell output uses ```\n``` to represent a new line. In a string, the ```\``` is used to insert an escape character. This is typically used for whitespace such as ```\n``` new line, ```\t``` tab and ```\r``` carriage return. To insert a ```\``` as an escape character ```\\``` is used, the first ```\``` denotes insertion of an escape character and the second ```\``` denotes that the escape character to be inserted is ```\``` itself.
 
 
-windows vs linux file pats
+
+
+windows vs linux file paths
 \ 
 
 

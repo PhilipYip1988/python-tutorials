@@ -188,7 +188,7 @@ list1
 
 A 1d array or *vector* should be distiguished from a 2d array known as a *2d row vector*, a *2d row vector* by definition has 1 row by multiple columns.
 
-Sometimes it is required to specifically create a *2d row vector* as dimensionality can be important in array operations. This can be done by providing the ```ndmin``` keyword input argument and assigning it to ```2``:
+Sometimes it is required to specifically create a *2d row vector* as dimensionality can be important in array operations. This can be done by providing the ```ndmin``` keyword input argument and assigning it to ```2```:
 
 ```
 arrayr = np.array([1, 2, 3, 4], ndmin=2)
@@ -431,7 +431,7 @@ book1.shape
 
 ## ravel and reshape
 
-An array has the attributes ```size```, ```ndim``` and ```shape```. The dimensionality of an array can be lost when the ```flat``` attribute is used. The ```flat``` attribute``` creates an iterator which has no dimensionality:
+An array has the attributes ```size```, ```ndim``` and ```shape```. The dimensionality of an array can be lost when the ```flat``` attribute is used. The ```flat``` attribute creates an iterator which has no dimensionality:
 
 ```
 it = book1.flat

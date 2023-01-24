@@ -901,7 +901,7 @@ The Script File should be saved somewhere locally, normally within a subfolder w
 
 ![img_222](./images/img_222.png)
 
-Notice the name of the tab updates, alongisde the file location on the left address bar. To run the script select run:
+Notice the name of the tab updates, alongside the file location on the left address bar. To run the script select run:
 
 ![img_223](./images/img_223.png)
 
@@ -1210,7 +1210,7 @@ cd Documents
 python script0.py
 ```
 
-Note ```cd %UserProfile%\Documents``` did not work here as the Terminal is using an odler version of PowerShell to the Mambaforge Prompt.
+Note ```cd %UserProfile%\Documents``` did not work here as the Terminal is using an older version of PowerShell to the Mambaforge Prompt.
 
 ![img_157](./images/img_157.png)
 
