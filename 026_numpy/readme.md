@@ -1950,22 +1950,265 @@ The ```nupy``` fucntion ```diag``` does not extend to higher numbers of dimensio
 
 The ```ndarray``` includes a number of statistical methods and complementary ```numpy``` functions.
 
-The ```ndarray``` method ```max``` and associated ```numpy``` function array max ```amax``` are used to calculate the maximum value of an array, along an axis. The associated ```ndarray``` method ```argmax``` and associated ```numpy``` function argument max ```argmax``` can be used to get the associated index of the maximum value. These methods use the input argument ```axis``` which can be ```None``` which looks for the maximum value in a flattened view of the array. 
+The ```ndarray``` method ```max``` and associated ```numpy``` function array max ```amax``` are used to calculate the maximum value of an array, along an axis. The associated ```ndarray``` method ```argmax``` and associated ```numpy``` function argument max ```argmax``` can be used to get the associated index of the maximum value. 
 
 ![img_116](./images/img_116.png)
 
 ![img_117](./images/img_117.png)
 
+These methods use the input argument ```axis```. The effct of ```axis``` can be seen by examining the following matrix:
 
-np.amax, np.amin, np.argmax, np.argmin, np.argsort, np.sort
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & 3 & -4 \\
+                    -5 & 6 & -7 & 8 \\
+                    9 & -10 & 11 & -12 \\
+                    \end{bmatrix} $$
+
+The shape tuple is ```(3, 4)``` that is ```(3 rows, 4 columns)``` and recall the columns are at index ```-1``` and the rows are at index ```-2```.
+
+When ```axis=0``` the matrix is flattened, so the maximum value of this flattened array is returned as the scalar ```11``` and the associated index of this value is ```10```:
+
+$$ \text{matrix1axisnone} = \begin{bmatrix} 1 & -2 & 3 & -4 & -5 & 6 & -7 & 8 & 9 & -10 & \textbf{11} & -12 \end{bmatrix} $$
+
+$$ \text{matrix1axisnoneindex} = \begin{bmatrix} 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \textbf{10} & 11 \end{bmatrix} $$
+
+When the ```axis=-1```, the method operates along columns. For example examining the four columns in the first row, the maximum value is ```3``` and it has a corresponding index of ```2```: 
+
+$$ \text{matrix1col} = \begin{bmatrix} 
+                     1 & -2 & \textbf{3} & -4 \\
+                     x & x & x & x \\
+                     y & y & y & y \\
+                     \end{bmatrix} $$
+
+$$ \text{matrix1colindex} = \begin{bmatrix} 
+                            0 & 1 & \textbf{2} & 3 \\
+                            x & x & x & x \\
+                            y & y & y & y \\
+                            \end{bmatrix} $$
+
+The maximum value of each column is found for each row:
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & \textbf{3} & -4 \\
+                    -5 & 6 & -7 & \textbf{8} \\
+                    9 & -10 & \textbf{11} & -12 \\
+                    \end{bmatrix} $$
+
+$$ \text{matrix1colindex} = \begin{bmatrix} 
+                            0 & 1 & \textbf{2} & 3 \\
+                            0 & 1 & 2 & \textbf{3} \\
+                            0 & 1 & \textbf{2} & 3 \\
+                            \end{bmatrix} $$
+
+Numpy will return these as flattened arrays:
+
+$$ \text{colmax} = \begin{bmatrix} 3 & 8 & 11 \end{bmatrix} $$
+
+$$ \text{colmaxindex} = \begin{bmatrix} 2 & 3 & 2 \end{bmatrix} $$
+
+However it can be easier to conceptualise these as column vectors:
+
+$$ \text{colmax} = \begin{bmatrix} 3 \\
+                                   8 \\ 
+                                   11 \\ 
+                                   \end{bmatrix} $$
+
+$$ \text{colmaxindex} = \begin{bmatrix} 2 \\ 
+                                        3 \\ 
+                                        2 \\ 
+                                        \end{bmatrix} $$
+
+When the ```axis=-2```, the method operates along rows: 
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & 3 & -4 \\
+                    -5 & \textbf{6} & -7 & \textbf{8} \\
+                    \textbf{9} & -10 & \textbf{11} & -12 \\
+                    \end{bmatrix} $$
+
+$$ \text{matrix1rowindex} = \begin{bmatrix} 
+                            0 & 0 & 0 & 0 \\
+                            1 & \textbf{1} & 1 & \textbf{1} \\
+                            \textbf{2} & 2 & \textbf{2} & 2 \\
+                            \end{bmatrix} $$
+
+Numpy will return these as flattened arrays. However it can be easier to conceptualise these as row vectors:
+
+$$ \text{rowmax} = \begin{bmatrix} 9 & 6 & 11 & 8 \end{bmatrix} $$
+
+$$ \text{rowmaxindex} = \begin{bmatrix} 2 & 1 & 2 & 2 \end{bmatrix} $$
+
+The following matrix can be created:
+
+```
+matrix1 = np.array([[1, -2, 3, -4],
+                    [-5, 6, -7, 8],
+                    [9, -10, 11, -12]])
+matrix1
+```
+
+![img_118](./images/img_118.png)
+
+The maximum and maximum index of the value in the flattened array is:
+
+```
+matrix1.max(axis=None)
+matrix1.argmax(axis=None)
+```
+
+![img_119](./images/img_119.png)
+
+Operating the ```max``` and ```argmax``` along columns (```axis=-1```) gives:
+
+```
+matrix1.max(axis=-1)
+matrix1.argmax(axis=-1)
+```
+
+To keep the dimensions, assign the keyword argument ```keepdims=True```. This will show the output as column vectors:
+
+```
+matrix1.max(axis=-1, keepdims=True)
+matrix1.argmax(axis=-1, keepdims=True)
+```
+
+![img_120](./images/img_120.png)
+
+Operating the ```max``` and ```argmax``` along rows (```axis=-2```) gives:
+
+```
+matrix1.max(axis=-2, keepdims=True)
+matrix1.argmax(axis=-2, keepdims=True)
+```
+
+To view these as row vectors:
+
+```
+matrix1.max(axis=-1)[:, np.newaxis]
+matrix1.argmax(axis=-1)[:, np.newaxis]
+```
+
+![img_121](./images/img_121.png)
+
+The complementary methods ```min``` and ```argmin``` operate in a similar manner, returning the value and index of the minimum value.
+
+The ndarray statistical methods and their complementary ```numpy``` functions ```sum```, ```prod```, ```mean```, ```var``` and ```std``` all operate using ```axis``` and ```keepdims``` as input arguments nd behave similarly to their equivalents in the statistics module. The ```var``` and ```std``` have a keyword input argument delta degrees of freedom ````ddof``` which has a default value of ```0``` and calculates the population variance or population standard deviation. This can be changed to ```1``` to calculate the sample variance or sample standard deviation. For more details about these calculations, see the [Statistics Module Tutorial](https://github.com/PhilipYip1988/python-tutorials/tree/main/025_statistics#readme):
+
+```
+matrix1.sum(axis=-1, keepdims=True)
+matrix1.prod(axis=-1, keepdims=True)
+matrix1.mean(axis=-1, keepdims=True)
+matrix1.var(axis=-1, keepdims=True, ddof=1)
+matrix1.std(axis=-1, keepdims=True, ddof=1)
+```
+
+There are some additional ```numpy``` functions such as the ```median``` (explored in the statistics module) and ```average```. The ```average``` is essentially a weighted mean. When each datapoint has a weight of ```1``` both are identical:
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & 3 & -4 \\
+                    -5 & 6 & -7 & 8 \\
+                    9 & -10 & 11 & -12 \\
+                    \end{bmatrix} $$
+
+$$ \text{weights} = \begin{bmatrix} 
+                    1 & 1 & 1 & 1 \\
+                    1 & 1 & 1 & 1 \\
+                    1 & 1 & 1 & 1 \\
+                    \end{bmatrix} $$
+
+The average can be calculated, for the first row using:
+
+$$\frac{1\ast1+1\ast-2+1\ast3+1\ast-4}{1+1+1+1}=\frac{-2}{4}=-0.5$$
+
+For non-uniform weights an array of weights with a matching shape has to be provided:
+
+$$ \text{weights} = \begin{bmatrix} 
+                    1 & 2 & 3 & 4 \\
+                    1 & 2 & 3 & 4 \\
+                    1 & 2 & 3 & 4 \\
+                    \end{bmatrix} $$
+
+The weighted average can be calculated, for the first row using:
+
+$$\frac{1\ast1+2\ast-2+3\ast3+4\ast-4}{1+2+3+4}=\frac{-10}{10}=-1$$
+
+The median and average (with and without weights) can be calculated using:
+
+```
+matrix1
+np.median(a=matrix1, axis=-1, keepdims=True)
+np.average(a=matrix1, axis=-1, keepdims=True)
+weights = np.array([[1, 2, 3, 4],
+                    [1, 2, 3, 4],
+                    [1, 2, 3, 4]])
+np.average(a=matrix1, axis=-1, keepdims=True, weights=weights)
+```
+
+![img_122](./images/img_122.png)
+
+The ndarray methods and associated ```numpy``` functions ```sort``` and ```argsort``` also operate along an ```axis``` however unlike the previous methods where the array was collapsed along the axis selected, the size of the array is maintained:
+
+When the ```sort``` method is used, it occurs in place, mutating the ```ndarray``` inplace, analogous to the list method ```sort```. 
+```
+matrix1
+matrix1.sort(axis=-1)
+matrix1
+```
+
+![img_123](./images/img_123.png)
+
+In contrast the ```numpy``` function ```sort``` returns a new ```ndarray```:
+
+```
+matrix1 = np.array([[1, -2, 3, -4],
+                    [-5, 6, -7, 8],
+                    [9, -10, 11, -12]])
+matrix1
+np.sort(matrix1, axis=-1)
+matrix1
+```
+
+![img_124](./images/img_124.png)
+
+For simplicity, examine only the first row, to sort it, the lowest value at ```-4``` is selected with index ```3```. The next lowest value is ```-2``` at index ```1```. The next lowest value is ```1``` at index ```0``` and the highest value is ```3``` at index ```2```.
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & 3 & -4 \\
+                    -5 & 6 & -7 & 8 \\
+                    9 & -10 & 11 & -12 \\
+                    \end{bmatrix} $$
+
+The argsort is the reordering of these indexes:
+
+$$ \text{matrix1colargsort} = \begin{bmatrix} 
+                              3 & 1 & 0 & 2 \\
+                              2 & 0 & 1 & 3 \\
+                              3 & 1 & 0 & 2 \\
+                              \end{bmatrix} $$
+
+These indexes can be used with the ```numpy``` function ```take_along_axis``` to sort the matrix indirectly:
+
+```
+matrix1.argsort(axis=-1)
+np.take_along_axis(matrix1, matrix1.argsort(axis=-1), axis=-1)
+```
+
+![img_125](./images/img_125.png)
+
+The ndarray array methods ```np.cumsum```, ```cumprod```, and ```diff``` also take the ekyword input argument ```axis``` and propogate alogn an axis:
+
+
+
+np.cumproduct
+
 
 np.around
 
-np.sum, np.prod, np.average, np.mean, np.median, np.var, np.std
+
 
 np.any np.all
 
-np.cumprod, np.cumproduct, np.cumsum, np.diff
+
 
 ## Mathematics
 
