@@ -490,19 +490,61 @@ The methods ```isdecimal```, ```isdigit``` and ```isnumeric``` closely resemble 
 
 ```isnumeric``` includes Vulgar Fractions ```'½⅓¼⅕⅙⅐⅛⅑⅒⅔¾⅖⅗⅘⅚⅜⅝⅞⅟↉'``` and numeric Unicode characters that represent digits outwith ```'➀➁➂➃➄➅➆➇➈'``` such as ```'➉'```.
 
-### Single vs Double Quotations
+### Single Quotations, Double Quotations and Multiline Strings
 
+If the following is input:
 
-### Multiline Strings
+```
+'Philip's Tutorial'
+```
 
+![img_072](./images/img_072.png)
 
-### Escape Characters
+Notice from the syntax highlighting that ```'Philip'``` is recognised as a string, ```s``` is recognised as an unassigned Python object name,  ```Tutorial``` is recognised as an unassigned object name and ```'``` indicates that a string is started but not closed. In other words the line above doesn't make sense to the Python Interpretter.
 
+Python can use double quotations ```" "``` to enclose string literals which incorporate ```'```. The following is recognised as a string:
+
+```
+"Philip's Tutorial"
+```
+
+![img_073](./images/img_073.png)
+
+Python can use single quotations ```' '``` or double quotations ```" "``` to enclose a string of Unicode characters. For a single line string the default is single quotations and all official Python documentation favours single quotations for this use case. 
+
+```
+'Hello World!'
+```
+
+A multiline string can be constructed using three double quotations ```""" """``` or three single quotations ```''' '''```. For a multi-line string, the default is double quotations and all official Python documentation favours double quotations for this use case. 
+
+"""
+This is a multi-line string.
+Hello World!
+Goodbye World!
+"""
+
+![img_074](./images/img_074.png)
 
 
 expandtabs
 
-### Raw Strings
+
+### Escape Characters and Raw Strings
+
+Notice the string representation shown in the cell output uses ```\n``` to represent a new line. In a string, the ```\``` is used to insert an escape character. This is typically used for whitespace such as ```\n``` new line, ```\t``` tab and ```\r``` carriage return. To insert a ```\``` as an escape character ```\\``` is used, the first ```\``` denotes insertion of an escape character and the second ```\``` denotes that the escape character to be inserted is ```\``` itself.
+
+
+windows vs linux file pats
+\ 
+
+
+file path and raw strings
+
+
+
+
+
 
 
 
@@ -806,11 +848,11 @@ greeting3.split('|')
 ```
 
 ```
-paragraph = '''Hello World!
+paragraph = """Hello World!
 Good Morning World!
 Good Evening World!
 Goodnight World!
-'''
+"""
 ```
 
 ```
