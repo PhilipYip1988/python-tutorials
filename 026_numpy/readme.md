@@ -1642,7 +1642,7 @@ $$\text{coefficients}=\left[\begin{matrix} x \\
 
 Notice equations is a square matrix. Square matrices are typically constructed from a system of linear equations due to the requirement of n equations for n unknown coefficients. A square matrix typically has a inverse matrix. The inverse matrix for equations is:
 
-$$\text{INVequations}=\left[\begin{matrix} -1 & 2 \\ 
+$$\text{equationsInv}=\left[\begin{matrix} -1 & 2 \\ 
                                            1 & -1.6667 \\ 
                                            \end{matrix}\right]$$
 
@@ -1944,7 +1944,7 @@ np.diag(matrix1)
 
 ![img_115](./images/img_115.png)
 
-The ```nupy``` fucntion ```diag``` does not extend to higher numbers of dimensions like the ```numpy``` function ```diagonal```.
+The ```numpy``` fucntion ```diag``` does not extend to higher numbers of dimensions like the ```numpy``` function ```diagonal```.
 
 ## Statistics
 
@@ -1974,13 +1974,13 @@ $$ \text{matrix1axisnoneindex} = \begin{bmatrix} 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 &
 
 When the ```axis=-1```, the method operates along columns. For example examining the four columns in the first row, the maximum value is ```3``` and it has a corresponding index of ```2```: 
 
-$$ \text{matrix1col} = \begin{bmatrix} 
+$$ \text{matrix1Col} = \begin{bmatrix} 
                      1 & -2 & \textbf{3} & -4 \\
                      x & x & x & x \\
                      y & y & y & y \\
                      \end{bmatrix} $$
 
-$$ \text{matrix1colindex} = \begin{bmatrix} 
+$$ \text{matrix1ColIndex} = \begin{bmatrix} 
                             0 & 1 & \textbf{2} & 3 \\
                             x & x & x & x \\
                             y & y & y & y \\
@@ -1994,7 +1994,7 @@ $$ \text{matrix1} = \begin{bmatrix}
                     9 & -10 & \textbf{11} & -12 \\
                     \end{bmatrix} $$
 
-$$ \text{matrix1colindex} = \begin{bmatrix} 
+$$ \text{matrix1ColIndex} = \begin{bmatrix} 
                             0 & 1 & \textbf{2} & 3 \\
                             0 & 1 & 2 & \textbf{3} \\
                             0 & 1 & \textbf{2} & 3 \\
@@ -2002,18 +2002,18 @@ $$ \text{matrix1colindex} = \begin{bmatrix}
 
 Numpy will return these as flattened arrays:
 
-$$ \text{colmax} = \begin{bmatrix} 3 & 8 & 11 \end{bmatrix} $$
+$$ \text{ColMax} = \begin{bmatrix} 3 & 8 & 11 \end{bmatrix} $$
 
-$$ \text{colmaxindex} = \begin{bmatrix} 2 & 3 & 2 \end{bmatrix} $$
+$$ \text{ColMaxIndex} = \begin{bmatrix} 2 & 3 & 2 \end{bmatrix} $$
 
 However it can be easier to conceptualise these as column vectors:
 
-$$ \text{colmax} = \begin{bmatrix} 3 \\
+$$ \text{ColMax} = \begin{bmatrix} 3 \\
                                    8 \\ 
                                    11 \\ 
                                    \end{bmatrix} $$
 
-$$ \text{colmaxindex} = \begin{bmatrix} 2 \\ 
+$$ \text{ColMaxIndex} = \begin{bmatrix} 2 \\ 
                                         3 \\ 
                                         2 \\ 
                                         \end{bmatrix} $$
@@ -2026,7 +2026,7 @@ $$ \text{matrix1} = \begin{bmatrix}
                     \textbf{9} & -10 & \textbf{11} & -12 \\
                     \end{bmatrix} $$
 
-$$ \text{matrix1rowindex} = \begin{bmatrix} 
+$$ \text{matrix1RowIndex} = \begin{bmatrix} 
                             0 & 0 & 0 & 0 \\
                             1 & \textbf{1} & 1 & \textbf{1} \\
                             \textbf{2} & 2 & \textbf{2} & 2 \\
@@ -2034,9 +2034,9 @@ $$ \text{matrix1rowindex} = \begin{bmatrix}
 
 Numpy will return these as flattened arrays. However it can be easier to conceptualise these as row vectors:
 
-$$ \text{rowmax} = \begin{bmatrix} 9 & 6 & 11 & 8 \end{bmatrix} $$
+$$ \text{RowMax} = \begin{bmatrix} 9 & 6 & 11 & 8 \end{bmatrix} $$
 
-$$ \text{rowmaxindex} = \begin{bmatrix} 2 & 1 & 2 & 2 \end{bmatrix} $$
+$$ \text{RowMaxIndex} = \begin{bmatrix} 2 & 1 & 2 & 2 \end{bmatrix} $$
 
 The following matrix can be created:
 
@@ -2146,6 +2146,20 @@ np.average(a=matrix1, axis=-1, keepdims=True, weights=weights)
 
 ![img_122](./images/img_122.png)
 
+The ndarray methods ```any``` and ```all``` work with an array of boolean values and operate along an ```axis```. The value returned for ```any``` will be ```True``` if any of the elements are ```True```, whereas the value returned for ```all``` will be ```true``` only is all the elements are ```True```:
+
+```
+matrix1 = np.array([[True, False, False, False],
+                    [True, True, True, True],
+                    [False, False, False, False]])
+matrix1
+
+matrix1.any(axis=-1, keepdims=True)
+matrix1.all(axis=-1, keepdims=True)
+```
+
+![img_131](./images/img_131.png)
+
 The ndarray methods and associated ```numpy``` functions ```sort``` and ```argsort``` also operate along an ```axis``` however unlike the previous methods where the array was collapsed along the axis selected, the size of the array is maintained:
 
 When the ```sort``` method is used, it occurs in place, mutating the ```ndarray``` inplace, analogous to the list method ```sort```. 
@@ -2180,7 +2194,7 @@ $$ \text{matrix1} = \begin{bmatrix}
 
 The argsort is the reordering of these indexes:
 
-$$ \text{matrix1colargsort} = \begin{bmatrix} 
+$$ \text{matrix1ColArgSort} = \begin{bmatrix} 
                               3 & 1 & 0 & 2 \\
                               2 & 0 & 1 & 3 \\
                               3 & 1 & 0 & 2 \\
@@ -2195,20 +2209,141 @@ np.take_along_axis(matrix1, matrix1.argsort(axis=-1), axis=-1)
 
 ![img_125](./images/img_125.png)
 
-The ndarray array methods ```np.cumsum```, ```cumprod```, and ```diff``` also take the ekyword input argument ```axis``` and propogate alogn an axis:
+The ndarray array method ```cumsum``` and its corresponding ```numpy``` function also take the keyword input argument ```axis``` and propogate along an axis. The cumulative sum propagated along the columns with ```axis=-1```:
 
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & 3 & -4 \\
+                    x & x & x & x \\
+                    y & y & y & y \\
+                    \end{bmatrix} $$
 
+$$ \text{matrix1CumSum} = \begin{bmatrix} 
+                          1 & 1 + (-2) & 1 + (-2) + 3 & 1 + (-2) + 3 + (-4) \\
+                          x & x & x & x \\
+                          y & y & y & y \\
+                          \end{bmatrix} $$
 
-np.cumproduct
+$$ \text{matrix1CumSum} = \begin{bmatrix} 
+                          1 & -1 & 2 + -2 \\
+                          -5 & 1 & -6 & 2 \\
+                          9 & -1 & 10 & -2 \\
+                          \end{bmatrix} $$
 
+```
+matrix1.cumsum(axis=-1)
+```
 
-np.around
+![img_126](./images/img_126.png)
 
+The ndarray array method ```cumprod``` and its corresponding ```numpy``` function (with alias ```np.cumproduct```) also take the keyword input argument ```axis``` and propogate along an axis. The cumulative product propagated along the columns with ```axis=-1```:
 
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & 3 & -4 \\
+                    x & x & x & x \\
+                    y & y & y & y \\
+                    \end{bmatrix} $$
 
-np.any np.all
+$$ \text{matrix1CumProduct} = \begin{bmatrix} 
+                              1 & 1 * (-2) & 1 * (-2) * 3 & 1 * (-2) + 3 * (-4) \\
+                              x & x & x & x \\
+                              y & y & y & y \\
+                              \end{bmatrix} $$
 
+$$ \text{matrix1CumProduct} = \begin{bmatrix} 
+                               1 & -2 & -6 + 24 \\
+                               -5 & -30 & 210 & 1680 \\
+                               9 & -90 & -990 & 11880 \\
+                               \end{bmatrix} $$
 
+```
+matrix1.cumprod(axis=-1)
+```
+
+![img_127](./images/img_127.png)
+
+The ```numpy``` function ```diff``` also take the keyword input argument ```axis``` and propogates along an axis. Two values need to be taken to compute a difference so the axis length will be contracted by the set ```n``` parameter:
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1 & -2 & 3 & -4 \\
+                    x & x & x & x \\
+                    y & y & y & y \\
+                    \end{bmatrix} $$
+
+For ```n=1```:
+
+$$ \text{matrix1Diff1} = \begin{bmatrix} 
+                          (-2) - 1 & 3 - (-2) & -4 - 3 \\
+                          x & x & x \\
+                          y & y & y \\
+                          \end{bmatrix} $$
+
+$$ \text{matrix1Diff1} = \begin{bmatrix} 
+                          -3 & 5 & -7 \\
+                          11 & -13 & 15 \\
+                          -19 & 21 & -23 \\
+                          \end{bmatrix} $$
+
+For ```n=2```, the difference of the ```n=1``` matrix is computed:
+
+$$ \text{matrix1Diff2} = \begin{bmatrix} 
+                          5 - (-3) & -7 - (-5) \\
+                          x & x \\
+                          y & y \\
+                          \end{bmatrix} $$
+
+$$ \text{matrix1Diff2} = \begin{bmatrix} 
+                          8 & -12 \\
+                          -24 & 28 \\
+                          40 & -44 \\
+                          \end{bmatrix} $$
+
+```
+np.diff(a=matrix1, n=1, axis=-1)
+np.diff(np.diff(a=matrix1, n=1, axis=-1))
+np.diff(a=matrix1, n=2, axis=-1)
+```
+
+![img_128](./images/img_128.png)
+
+The ```ndarray``` method ```round``` and associated ```numpy``` function array round ```np.around``` (alias ```np.round```) are used to round an array. Its docstring can be viewed as a pop up balloon by inputting ```np.around()``` followed by shift ```⇧``` and tab ```↹```:
+
+![img_129](./images/img_129.png)
+
+By default ```decimals=0``` so each floating point number is rounded to 0 decimal places:
+
+$$ \text{matrix1} = \begin{bmatrix} 
+                    1.12 & -2.12 & 3.12 & -4.12 \\
+                    -5.12 & 6.12 & -7.12 & 8.12 \\
+                    9.12 & -10.12 & 11.12 & -12.12 \\
+                    \end{bmatrix} $$
+
+Notice the inclusion of the decimal point after each number ```.```, indicating that the datatype is still a floating point number:
+
+$$ \text{matrix1Round0} = \begin{bmatrix} 
+                          1. & -2. & 3. & -4. \\
+                          -5. & 6. & -7. & 8. \\
+                          2. & -10. & 11. & -12. \\
+                          \end{bmatrix} $$
+
+If ```decimals=1```, each value is instead rounded to 1 decimal place:
+
+$$ \text{matrix1Round0} = \begin{bmatrix} 
+                          1.1 & -2.1 & 3.1 & -4.1 \\
+                          -5.1 & 6.1 & -7.1 & 8.1 \\
+                          9.1 & -10.1 & 11.1 & -12.1 \\
+                          \end{bmatrix} $$
+
+```
+matrix1 = np.array([[1.12, -2.12, 3.12, -4.12],
+                    [-5.12, 6.12, -7.12, 8.12],
+                    [9.12, -10.12, 11.12, -12.12]])
+matrix1
+
+matrix1.round()
+matrix1.round(decimals=1)
+```
+
+![img_130](./images/img_130.png)
 
 ## Mathematics
 
@@ -2246,12 +2381,89 @@ The functions for complex numbers:
 
 ```np.conjugate```
 
-
-
-
 ## Random Module
 
+The numpy library has a ```random``` module which is similar to the Python standard module ```random```. The workflow is similar, for example:
+
+```
+import random
+random.seed(0)
+random.randint(0, 11)
+```
+
+![img_132](./images/img_132.png)
+
+```
+import numpy as np
+np.random.seed(0)
+np.random.randint(low=0, high=11, size=(6, 5))
+```
+
+![img_133](./images/img_133.png)
+
+The ```np.random``` version expands distributions to ```ndarray``` opposed to returning a scalar. 
+
+
+More details are given about these functions in the [Random Module Tutorial](https://github.com/PhilipYip1988/python-tutorials/tree/main/023_random#readme)
+
+### Seed and State
+
+The seed and state functions work almost identically:
+
+|standard random module|numpy random module|
+|---|---|
+|seed(a=None)|seed(seed=None)|
+|getstate()|getstate()|
+|setstate(state)|setstate(state)|
+
+### Selections from Sequences
+
+The following functions are configured to work with a sequence such as a list in the standard ```random``` module. In the ```np.random``` module, ```choice``` is configured to work with a size parameter and has a ```replace``` keyword, therefore ```np.random.choice``` can mimic both the standard ```random.choice``` and ```random.choices```. ```np.random.sample``` is an alias of ```random.sample```. ```np.shuffle``` only shuffles along the first axis of a multi-dimensional array.
+
+|standard random module|numpy random module|
+|---|---|
+|choice(seq)|choice(a, size=None, replace=True, p=None)|
+|choices(population, weights=None, *, cum_weights=None, k=1)| |
+|sample(x)|sample(x)|
+|shuffle(x)|shuffle(x)|
+
+### Distributions
+
+The distributions have slightly different names and different names for equivalent input arguments. The distribution functions in the ```np.random``` module, typically include a ```size``` input argument that can be a ```size``` scalar for a 1darray or a ```shape tuple``` for a multidimensional array. There is normally for convenience some standard versions of statistical functions:
+
+|standard random module|numpy random module|
+|---|---|
+|randint(a, b)|randint(low, high=None, size=None, dtype=int)|
+|getrandbits(k)| |
+|randbytes(n)|bytes(length)|
+||random(size=None)|
+|uniform(a, b)|uniform(low=0.0, high=1.0, size=None)|
+|triangular(low=0.0, high=1.0, mode=None)|triangular(left, mode, right, size=None)|
+||randn(d0, d1, ..., dn)|
+||standard_normal(size=None)|
+|gauss(mu=0.0, sigma=1.0)||
+|normalvariate(mu=0.0, sigma=1.0)|normal(loc=0.0, scale=1.0, size=None)|
+|random.lognormvariate(mu, sigma)|lognormal(mean=0.0, sigma=1.0, size=None)|
+||standard_exponential(size=None)|
+|expovariate(lambd)exponential(scale=1.0, size=None)||
+||standard_gamma(shape, size=None)|
+|gammavariate(alpha, beta)|gamma(shape, scale=1.0, size=None)|
+|betavariate(alpha, beta)|beta(a, b, size=None)|
+|paretovariate(alpha)|pareto(a, size=None)|
+|weibullvariate(alpha, beta)|weibull(a, size=None)|
+
+The ```np.random``` has a handful of additional distributions not available in the ```random``` module. 
+
 ## DateTime and TimeDelta
+
+
+
+
+
+
+
+
+
 
 ## Meshgrid
 
