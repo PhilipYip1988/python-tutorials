@@ -4,7 +4,7 @@ This tutorial will configure Python 3.11 on a Windows 11 computer using Mambafor
 
 ## Tutorial Video
 
-[Spyder IDE Setup Windows](https://www.youtube.com/watch?v=fvQX0wRExCI&ab_channel=PhilipYip)
+[Spyder IDE Setup on Windows](https://www.youtube.com/watch?v=fvQX0wRExCI&ab_channel=PhilipYip)
 
 ## System Requirements
 
