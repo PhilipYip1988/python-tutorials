@@ -2457,7 +2457,7 @@ The distributions have slightly different names and different names for equivale
 |normalvariate(mu=0.0, sigma=1.0)|normal(loc=0.0, scale=1.0, size=None)|
 |random.lognormvariate(mu, sigma)|lognormal(mean=0.0, sigma=1.0, size=None)|
 ||standard_exponential(size=None)|
-|expovariate(lambd)exponential(scale=1.0, size=None)||
+|expovariate(lambd)|exponential(scale=1.0, size=None)|
 ||standard_gamma(shape, size=None)|
 |gammavariate(alpha, beta)|gamma(shape, scale=1.0, size=None)|
 |betavariate(alpha, beta)|beta(a, b, size=None)|
