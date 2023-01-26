@@ -2349,15 +2349,27 @@ matrix1.round(decimals=1)
 
 The NumPy library includes an equivalent of every identifier in the ```math``` module it makes sense to extend its implementation to an array. These are extended to element by element functionality.
 
-Detailed information about all of these are given in [Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_math/readme.md). The equivalents in numpy are.
+Detailed information about all of these are given in [Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_math/readme.md).
 
-The mathematical constants:
+The mathematical constants are the same:
 
-```np.e```, ```np.pi```, ```np.tau```, ```np.inf```, ```np.nan```
+|math module|numpy library|
+|---|---|
+|math.e|np.e|
+|math.pi|np.pi|
+|math.tau|np.tau|
+|math.inf|np.inf|
+|math.nan|np.nan|
 
 These can be made into arrays using the ```np.fill``` or scalar expansion can be used. The ```np.pi``` or ```np.tau``` is commonly used with ```np.linspace``` to create an array of circular angles.
 
 The angle conversion functions can be used to convert arrays of angles:
+
+|math module|numpy library|
+|---|---|
+|math.degrees()|np.degrees()|
+
+**update here**
 
 ```np.degrees```, ```np.radians```
 
