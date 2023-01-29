@@ -1570,7 +1570,20 @@ The behaviour of the inbuilt functions and operators on ```str``` instances are 
 
 But can be viewed alongside all other identifiers using the directory function ```dir```. This function treats each Python object as a directory or folder and lists all the other objects as files in this folder:
 
+```
+dir(greeting)
+```
+
 ![img_156](./images/img_156.png)
+
+To view this list horizontally pretty print can be used:
+
+```
+import pprint
+pprint.pprint(dir(greeting), compact=True)
+```
+
+![img_263](./images/img_263.png)
 
 The data model identifiers display at the top and begin and end with a **d**ouble **under**score. These data model identifiers are often colloquially known as dunder identifiers.
 
@@ -1606,6 +1619,7 @@ type(str)
 ![img_160](./images/img_160.png)
 
 The data model identifier ```__doc__``` is the document string for a string instance. Once again this is an attribute that is referenced:
+
 ```
 greeting.__doc__
 ```
@@ -2093,6 +2107,16 @@ dir(greeting)
 
 ![img_227](./images/img_227.png)
 
+
+To view this list horizontally, use:
+
+```
+import pprint
+pprint.pprint(dir(greeting), compact=True)
+```
+
+![img_242](./images/img_242.png)
+
 The data model identifiers are largely consistent with the ```str``` class. The only addition is the ```__bytes__``` data model identifier which casts one ```bytes``` instance into another ```bytes``` instance:
 
 ![img_228](./images/img_228.png)
@@ -2571,6 +2595,15 @@ dir(greeting)
 ```
 
 ![img_254](./images/img_254.png)
+
+To view the output horizontally use:
+
+```
+import pprint
+pprint.pprint(dir(greeting), compact=True)
+```
+
+![img_265](./images/img_265.png)
 
 Notice that the same immutable data model identifiers as seen in the other two classes are available. Since ```__getitem__``` is available, the ```bytearray``` can be indexed into:
 
