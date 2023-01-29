@@ -472,7 +472,7 @@ ord('\x0c') # form feed
 
 ![img_048](./images/img_048.png)
 
-The names fo most of these commands originate from a typewriter:
+The names of most of these commands originate from a typewriter:
 
 ![img_224](./images/img_224.png)
 
@@ -2284,7 +2284,7 @@ ord('!')
 
 ![img_238](./images/img_238.png)
 
-Inputting ```greeting.append()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The ```append``` method can be used with this number to *append* a single byte to the end of this ```bytearray```:
+Inputting ```greeting.append()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The ```append``` method can be used with this number (which corresponds to a single byte) to *append* a single byte to the end of this ```bytearray```:
 
 ![img_241](./images/img_241.png)
 
@@ -2294,7 +2294,7 @@ greeting.append(33)
 
 ![img_244](./images/img_244.png)
 
-Notice that there is no return value as this method mutates the instance ```greeting```. Examining
+Notice that there is no return value as this mutable method modifies the instance ```greeting``` in place. Using:
 
 ```
 greeting
@@ -2304,12 +2304,18 @@ shows it has been updated:
 
 ![img_239](./images/img_239.png)
 
-Inputting ```greeting.extend()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The ```extend``` method can be used with can be used to *extend* the ```bytearray``` by using a```bytes``` or ```bytearray``` instance:
+Inputting ```greeting.extend()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The ```extend``` method can be used with can be used to *extend* the ```bytearray``` by using a numeric sequence of bytes such as a ```bytes``` or ```bytearray```:
 
 ![img_242](./images/img_242.png)
 
 ```
 greeting.extend(b' Bye World!')
+```
+
+This mutable method occurs in place, to view the changes use:
+
+```
+greeting
 ```
 
 ![img_240](./images/img_240.png)
@@ -2332,7 +2338,7 @@ It can be inserted at index 6 using:
 greeting.insert(6, 63)
 ```
 
-This occurs in place, to view the changes use:
+This mutable method occurs in place, to view the changes use:
 
 ```
 greeting
@@ -2344,19 +2350,19 @@ Inputting ```greeting.pop()``` followed by shift ```⇧``` and tab ```↹``` wil
 
 ![img_247](./images/img_247.png)
 
-When the last value is popped, it is returned as a numeric value:
+When the last value is popped, it is returned as a numeric value. This is the only mutable method which also has a return value:
 
 ```
 greeting.pop()
 ```
 
-This can be seen to be the ```'!'``` using:
+This return value can be seen to be the ```'!'``` using:
 
 ```
 chr(33)
 ```
 
-Once again, the mutation occurs in place and can be seen looking at:
+This mutable method also carries out some in place changes, to view the changes use:
 
 ```
 greeting
@@ -2370,7 +2376,7 @@ The ```'?'``` at index 6 can be popped using:
 greeting.pop(6)
 ```
 
-Once again, the mutation occurs in place and can be seen looking at:
+This mutable method occurs in place, to view the changes use:
 
 ```
 greeting
@@ -2378,22 +2384,85 @@ greeting
 
 ![img_249](./images/img_249.png)
 
+Inputting ```greeting.remove()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The method ```remove``` by default *removes* the first occurance of an item in the bytearray:
 
-```remove``` and ```reverse```
+![img_250](./images/img_250.png)
 
-
-
-
-
-
-A
+The exclamation mark has an ordinal value of ```33```:
 
 ```
-greeting[7]
-chr(79)
-ord('o')
-greeting[7] = 111
+ord('!')
+```
+
+It can be removed using:
+
+```
+greeting.remove(33)
+```
+
+This mutable method occurs in place, to view the changes use:
+
+```
 greeting
 ```
 
-![img_230](./images/img_230.png)
+![img_251](./images/img_251.png)
+
+Inputting ```greeting.reverse()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The method ```reverse``` by default *reverses* the bytearray:
+
+![img_252](./images/img_252.png)
+
+```
+greeting.reverse()
+```
+
+This mutable method occurs in place, to view the changes use:
+
+```
+greeting
+```
+
+![img_253](./images/img_253.png)
+
+### Data Model Identifiers
+
+The directory of the ```bytearray``` instance ```greeting``` can be examined using the directory function ```dir```:
+
+```
+greeting = bytearray('Hello WOrld!', encoding='utf-8')
+dir(greeting)
+```
+
+![img_254](./images/img_254.png)
+
+Notice that the same immutable data model identifiers as seen in the other two classes are available. Since ```__getitem__``` is available, the ```bytearray``` can be indexed into:
+
+```
+greeting
+greeting[7]
+chr(79)
+```
+
+![img_255](./images/img_255.png)
+
+The mutable data model identifier ```__setitem__``` is also available. This means reassignment of an index can be carried out. This typo can be fixed. The ordinal value of lower case ```'o'``` is ```111```:
+
+```
+ord('o')
+```
+
+The value at index 7 can be reassigned to this:
+
+```
+greeting[7] = 111
+```
+
+There is no cell output, however ```greeting``` can be viewed using:
+
+```
+greeting
+```
+
+![img_256](./images/img_256.png)
+
+ [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

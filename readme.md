@@ -22,9 +22,21 @@ When running Python code from the Terminal, two programming languages are used. 
 
 ## Python Builtins
 
-Data is stored fundamentally as a text or as a number. This tutorial will examine the three types of number data types, boolean values which are True or False, whole numbers known as integers and floating point numbers in addition to the fundamental text data type, the string. The builtin identifiers for each of these datatypes will be examined:
+There are 3 fundamental text data types, the unicode string, the bytes string and the bytearray. The Unicode string is the most widely used text data type in Python, however it is useful to know about the other two data types and establish a concept behind encoding:
 
-[Fundamental Datatypes int, float, str, bool](https://github.com/PhilipYip1988/python-tutorials/blob/main/004_python_fundamental_datatypes/readme.md)
+[Text Data Types str, bytes, bytearray](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes#readme)
+
+There are 6 fundamental numeric data types in Python, the boolean value, the integer, the floating point number, the complex number, the decimal and the fraction:
+
+[Fundamental Datatypes int, float, bool](https://github.com/PhilipYip1988/python-tutorials/blob/main/004_python_fundamental_datatypes/readme.md)
+
+The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
+
+[Decimal Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_decimal/readme.md) 
+
+The fractions module is based around the Fraction class. Use of fractions is sometimes more convenient than using numbers with a floating point or decimal point. The Fractions class is also a good example of implementing datamodel methods:
+
+[Fractions Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_fractions/readme.md)
 
 This tutorial looks at the practical applications of using numeric and text data types. It also examines how these data types are used with hardware to communicate with a user and highlights the differences in numbering systems used by humans versus the numbering systems used by computers and some important consequences when dealing with both these numbering systems:
 
@@ -63,18 +75,6 @@ This guide selects some of the more commonly used modules and places them in a g
 The assignment operator ```=``` assigns a value to an object name. If the object is a collection such as a list, assignment results in an alias for the object i.e. one object with two object names and does not copy the object. The copy module contains two functions copy which performs a shallow copy and deepcopy which performs a deep copy:
 
 [Copy](https://github.com/PhilipYip1988/python-tutorials/blob/main/012_copy/readme.md)
-
-The string module contains strings which contain a number of useful character groupings. At this stage, it is worth comparing the three text base classes in builtins. The str class is the main text based class and has previously been examined. The str class uses a unicode character as a fundamental unit and is therefore sometimes referred to as a *unicode string*. The other two text based classes, the byte and byte array use a byte as a fundamental unit and are sometimes known as *byte strings*. For English characters, a character maps to a byte making a *unicode string* and *byte string* behave similarly. The difference becomes more apparent when non-English characters are used which are encoded with encoding schemes which span over multiple bytes. Generally the *unicode string* is used preferentially within a Python program but the *byte string* is used to stream data from and to hardware. It is good practice to decode any *byte string* to a *unicode string* as early as possible in a program and encode it to a *byte string* as late as possible in a program. The str class is immutable and therefore behaves like a tuple. Notice for example that all the str methods for example return a new str instance and do not change the original str instance because they cannot do so as the original instance is immutable. The difference between the two *byte strings* is bytes is immutable (like a tuple) and bytearray is mutable (like a list). The bytearray therefore has additional methods which update the original instance in place. i.e. mutate the original bytearray. 
-
-[Strings, Byte and Byte Arrays and the String Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/013_string_byte_bytearray/readme.md)
-
-The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
-
-[Decimal Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_decimal/readme.md) 
-
-The fractions module is based around the Fraction class. Use of fractions is sometimes more convenient than using numbers with a floating point or decimal point. The Fractions class is also a good example of implementing datamodel methods:
-
-[Fractions Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_fractions/readme.md)
 
 The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
 
