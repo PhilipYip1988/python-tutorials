@@ -1807,7 +1807,7 @@ Binary is not very human readible. It is easy to misread how many zeros are in t
 |1110|E|
 |1111|F|
 
-In the hexadecimal numbering system ```A```, ```B```, ```C```, ```D```, ```E``` and ```F``` are numeric digis and should not be conceptualised as letters or characters.
+In the hexadecimal numbering system ```A```, ```B```, ```C```, ```D```, ```E``` and ```F``` are numeric digits and should not be conceptualised as letters or characters.
 
 Recall that the character ```'A'``` is the ordinal integer ```65```:
 
@@ -1967,13 +1967,80 @@ greeting[0]
 
 ![img_203](./images/img_203.png)
 
+### Unicode String Recap
+
+To recap the Unicode String recognises 1 bit ASCII hexadecimal and 2 bit Unicode hexadecimal values. Recall most of the first 33 ASCII commands are non-printable and based on the commands of a type writter:
+
+![img_224](./images/img_224.png)
+
+the following 4 whitespace commands being particularly important:
+
+```
+chr(0x20) # space
+chr(0x09) # tab
+chr(0x0a) # new line
+chr(0x0d) # carriage return
+```
+
+![img_258](./images/img_258.png)
+
+These are recognised with or without the trailing zeros. 
+
+The English characters occupied the bytes ```'0x21':'0x80'```.
+
+```
+for num in range(0x21, 0x80):
+    print(f"'{hex(num)}' {chr(num)}", sep=' ', end='    ')
+```    
+
+![img_259](./images/img_259.png)
+
+The Greek letters for example are:
+
+```
+for num in range(0x0391, 0x03CA):
+    print(f"'{hex(num)}' {chr(num)}", sep=' ', end='   ')
+```
+
+![img_260](images/img_260.png)
+
+And mathematics and miscellaneous symbols are:
+
+```
+print(f"'{hex(0x00D7)}' {chr(0x00D7)}")
+print(f"'{hex(0x00F7)}' {chr(0x00F7)}")
+```
+
+```
+for num in range(0x2200, 0x2400):
+    print(f"'{hex(num)}' {chr(num)}", sep=' ', end='  ')
+```
+
+![img_261](images/img_261.png)
+
 ## The Byte String Class bytes
 
 Python has another text class called a ```bytes``` that is very similar to a string. This was the fundamental string used in Python 2 but still has some purposes particularly when it comes to data transfer from hardware. 
 
 ### Init Signature
 
-The ```bytes``` class is an abbreviation for a string of bytes, recall that each byte spans 2 hexadecimal characters. Inputting ```bytes()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature of the ```bytes``` class
+The ```bytes``` class is an abbreviation for a string of bytes. The fundamental unit is a byte. 
+
+Recall that a byte spans 8 bits and each bit corresponds to a power of 2. For convenience every byte is denoted using 2 hexadecimal characters. 
+
+![img_262](./images/img_262.png)
+
+```
+   2⁸  2⁷  2⁶  2⁵  2⁴  2³  2¹  2⁰
+   0   1   1   1   1   0   1   1
+ |       7       |       b        |
+```
+
+$$2⁷ + 2⁶ + 2⁵ + 2⁴ + 2¹ + 2⁰ = 123$$
+
+The above as a binary string is ```'0b01111011'```, as a hexadecimal string is ```'0x7b'``` and as a decimal integer is ```123```.
+
+Inputting ```bytes()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature of the ```bytes``` class
 
 ![img_204](./images/img_204.png)
 
@@ -2100,7 +2167,77 @@ The ```bytes``` class also has a method ```decode``` which decodes the ```bytes`
 
 To use ```decode``` an encoding system needs to be specified.
 
-The following encoding schemes are most commonly used:
+Before looking at a decoding in a bytes sequence it is worthwhile examining the concept of encoding using the more simple Morse Code. Morse Code was made when only basic digital signals were available. The message was conveyed using controlled durations of the digital signal such as a buzzer making sound or a LED blinking.
+
+![img_257](./images/img_257.png)
+
+The schematic above should be considered as a time trace for a single LED. Everywhere the LED is present indicates the LED is On. Everywhere the LED is absent indicates the LED is Off. The change in colour is used to help clearly distinguish each character. The white LED at the end is added to indicate the end of the message. When Morse Code was used the message typically repeated multiple times to increase its chance of being recieved and translated.
+
+Morse Code assigns a sequence of durations to a character. 
+
+* A dot ```.``` is one second high.
+* A dash ```-``` is three seconds high.
+* The spacing between dots and dashes in a character is one second low.
+* The spacing between one character and the next character is three seconds second low.
+* The spacing between words is seven seconds low.
+
+The translation instructions or translation table for Morse Code is as shown.
+
+|Character|Morse Code|
+|---|---|
+|'&nbsp;'|'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'|
+|'0'|'- - - - -&nbsp;&nbsp;&nbsp;'|
+|'1'|'. - - - -&nbsp;&nbsp;&nbsp;'|
+|'2'|'. . - - -&nbsp;&nbsp;&nbsp;'|
+|'3'|'. . . - -&nbsp;&nbsp;&nbsp;'|
+|'4'|'. . . . -&nbsp;&nbsp;&nbsp;'|
+|'5'|'. . . . .&nbsp;&nbsp;&nbsp;'|
+|'6'|'- . . . .&nbsp;&nbsp;&nbsp;'|
+|'7'|'- - . . .&nbsp;&nbsp;&nbsp;'|
+|'8'|'- - - . .&nbsp;&nbsp;&nbsp;'|
+|'9'|'- - - - .&nbsp;&nbsp;&nbsp;'|
+|'A'|'. -&nbsp;&nbsp;&nbsp;'|
+|'B'|'- . . .&nbsp;&nbsp;&nbsp;'|
+|'C'|'- . - .&nbsp;&nbsp;&nbsp;'|
+|'D'|'- . .&nbsp;&nbsp;&nbsp;'|
+|'E'|'. .&nbsp;&nbsp;&nbsp;'|
+|'G'|'- - .&nbsp;&nbsp;&nbsp;'|
+|'H'|'. . . .&nbsp;&nbsp;&nbsp;'|
+|'I'|'. .&nbsp;&nbsp;&nbsp;'|
+|'J'|'. - - -&nbsp;&nbsp;&nbsp;'|
+|'K'|'- . -&nbsp;&nbsp;&nbsp;'|
+|'L'|'. _ . .&nbsp;&nbsp;&nbsp;'|
+|'M'|'- -&nbsp;&nbsp;&nbsp;'|
+|'N'|'- .&nbsp;&nbsp;&nbsp;'|
+|'O'|'- - -&nbsp;&nbsp;&nbsp;'|
+|'P'|'. - - .&nbsp;&nbsp;&nbsp;'|
+|'Q'|'- - . -&nbsp;&nbsp;&nbsp;'|
+|'R'|'. - .&nbsp;&nbsp;&nbsp;'|
+|'S'|'. . .&nbsp;&nbsp;&nbsp;'|
+|'T'|'-&nbsp;&nbsp;&nbsp;'|
+|'U'|'. . -&nbsp;&nbsp;&nbsp;'|
+|'V'|'. . . -&nbsp;&nbsp;&nbsp;'|
+|'W'|'. - -&nbsp;&nbsp;&nbsp;'|
+|'X'|'- . . -&nbsp;&nbsp;&nbsp;'|
+|'Y'|'- . - -&nbsp;&nbsp;&nbsp;'|
+|'Z'|'- - . .&nbsp;&nbsp;&nbsp;'|
+
+From the translation table above:
+
+![img_257](./images/img_257.png)
+
+The red LED sequence is 'H'
+
+The blue LED sequence is 'E'
+
+The green LED sequence is 'L'
+
+The yellow LED sequence is 'L'
+
+The orange LED sequence is 'O'
+
+
+For a Bytes sequence the following translation tables are most commonly used. These should be conceptualised as very large dictionarys that map a byte sequence to a character:
 
 |encoding|bit|bytes|byte order|BOM|
 |---|---|---|---|---|
