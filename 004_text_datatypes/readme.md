@@ -1933,7 +1933,7 @@ Once a translation table is available, it can be used to create text that uses t
 
 In the past different translation tables were used regionally. Larger translation tables were used in countries such as Japan which have a completely different characterset to English. This became problematic when the world became more connected via the world wide web. Websites were shown in Mojibake, under the hood, there was a systematic replacement of symbols with completely unrelated ones due to the website being written with one translation table in mind and translated with a completely different translation table:
 
-![wikipedia_mojobake](https://upload.wikimedia.org/wikipedia/commons/1/19/Mojibakevector.png)
+![wikipedia_mojibake](https://upload.wikimedia.org/wikipedia/commons/1/19/Mojibakevector.png)
 
 ### Unicode
 
@@ -2291,7 +2291,7 @@ len(greeting) % 4
 
 ![img_211](./images/img_211.png)
 
-The correct encoding scheme ```'ASCII'``` can be used, alongside the incorrect encoding system ```'UTF-16'```. Notice the mojobake when the incorrect encoding scheme is used:
+The correct encoding scheme ```'ASCII'``` can be used, alongside the incorrect encoding system ```'UTF-16'```. Notice the mojibake when the incorrect encoding scheme is used:
 
 ```
 greeting = b'\x48\x65\x6c\x6c\x6f\x20\x57\x6f\x72\x6c\x64\x21'
@@ -2328,7 +2328,7 @@ bytes.fromhex('4865').decode(encoding='UTF-16-BE')
 
 ![img_213](./images/img_213.png)
 
-Encoding the ASCII string with ```'UTF-16'``` of either endian gives mojobake:
+Encoding the ASCII string with ```'UTF-16'``` of either endian gives mojibake:
 
 ```
 greeting.decode(encoding='UTF-16-LE')
@@ -2369,7 +2369,7 @@ greeting.decode(encoding='UTF-16-LE')
 
 Notice the BOM gets incorporated into the string as an unreadible Unicode character. 
 
-If however it is decoded into ```'Latin-1```, it undergoes mojobake and becomes 2 characters:
+If however it is decoded into ```'Latin-1```, it undergoes mojibake and becomes 2 characters:
 
 ```
 greeting.decode(encoding='Latin-1')
