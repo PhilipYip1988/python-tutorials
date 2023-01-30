@@ -114,7 +114,7 @@ If one of these instance names is deleted, for example:
 del white_instance
 ```
 
-Then the instance has a second instance name giving a single reference to the instance. Since this instance has a reference,, it is not deleted by Pythons garbage collection:
+Then the instance has a second instance name giving a single reference to the instance. Since this instance has a reference, it is not deleted by Pythons garbage collection:
 
 ![img_009](./images/img_009.png)
 
