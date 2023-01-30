@@ -490,7 +490,7 @@ The instance ```greeting``` returns the ```bool``` value ```True``` as each char
 
 The methods ```isdecimal```, ```isdigit``` and ```isnumeric``` closely resemble one another when it comes to ASCII characters. They handle non-ASCII numeric characters slightly differently. 
 
-```isdecimal``` is the most restrictive and only includes the numbers ```'0123456789'```. These can be different Unicode characters for example ```'𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿'```, ```'𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵'``` and ```'𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡'``` whih are the same characters with a different font.
+```isdecimal``` is the most restrictive and only includes the numbers ```'0123456789'```. These can be different Unicode characters for example ```'𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿'```, ```'𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵'``` and ```'𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡'``` which are the same characters with a different font.
 
 ```isdigit``` and ```isnumeric``` also include different Unicode characters that represent subscript ```'₀₁₂₃₄₅₆₇₈₉'``` and superscript ```'⁰¹²³⁴⁵⁶⁷⁸⁹'```, as well as circled digits ```'➀➁➂➃➄➅➆➇➈'```.
 
