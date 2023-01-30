@@ -1931,7 +1931,7 @@ Once a translation table is available, it can be used to create text that uses t
 
 ![img_201](./images/img_201.png)
 
-In the past different translation tables were used regionally. Larger translation tables were used in countries such as Japan which have a completely different characterset to English. This became problematic when the world became more connected via the world wide web. Websites were shown in Mojibake, under the hood, there was a systematic replacement of symbols with completely unrelated ones due to the website being written with one translation table in mind and translated with a compeltely different translation table:
+In the past different translation tables were used regionally. Larger translation tables were used in countries such as Japan which have a completely different characterset to English. This became problematic when the world became more connected via the world wide web. Websites were shown in Mojibake, under the hood, there was a systematic replacement of symbols with completely unrelated ones due to the website being written with one translation table in mind and translated with a completely different translation table:
 
 ![wikipedia_mojobake](https://upload.wikimedia.org/wikipedia/commons/1/19/Mojibakevector.png)
 
