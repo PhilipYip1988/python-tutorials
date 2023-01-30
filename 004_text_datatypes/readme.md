@@ -118,7 +118,7 @@ Then the instance has a second instance name giving a single reference to the in
 
 ![img_009](./images/img_009.png)
 
-The class itself is an object, which is why it was depicted as a blueprint with a label representing its object name.
+The class itself is an object, which is why it was depicted as a blueprint with a label representing its object name ```MobileSuit```.
 
 ## The Unicode String Class str
 
