@@ -2351,7 +2351,7 @@ greeting
 
 Notice the subtle difference between using ```UTF-16``` and ```'UTF-16-LE```. A Byte Order Marker ```'\xff\xfe'``` is placed in UTF-16.
 
-For each character the ASCII equivalent is shown beside  ```'\x00'``` for example ```'H\x00'```. The ```'H'``` is ```'\x48'``` and therefore these are comined to be read in as the two bytes ```'\48\00'``` which becomes the Unicode character ```U0048``` which is ```'H'```. This can be seen more clearly if converted to hex:
+For each character the ASCII equivalent is shown beside  ```'\x00'``` for example ```'H\x00'```. The ```'H'``` is ```'\x48'``` and therefore these are combined to be read in as the two bytes ```'\48\00'``` which becomes the Unicode character ```U0048``` which is ```'H'```. This can be seen more clearly if converted to hex:
 
 ```
 greeting.hex()
