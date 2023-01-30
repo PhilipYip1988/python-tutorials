@@ -176,6 +176,7 @@ repr(num1)
 str(num1)
 ```
 
+![img_019](./images/img_019.png)
 
 For the ```int``` class, the formal and informal representations are identical. Recall conventionally that ```print``` uses the informal ```str``` representation:
 
@@ -183,6 +184,7 @@ For the ```int``` class, the formal and informal representations are identical. 
 print(num1)
 ```
 
+![img_020](./images/img_020.png)
 
 And the cell output prints the formal representation:
 
@@ -191,7 +193,7 @@ print(repr(num1))
 num1
 ```
 
-
+![img_021](./images/img_021.png)
 
 The ```__format___``` identifier is typically used when an integer variable is placed in a formatted string. This was examined in detail when the string class was examined however to recap:
 
@@ -201,7 +203,7 @@ f'The number is {num1 :03d}'
 f'The number is {num1 :+04d}'
 ```
 
-
+![img_022](./images/img_022.png)
 
 The data model identifier ```__class__``` maps to the inbuilt class ```type``` which displays the class type of the object. 
 
@@ -209,10 +211,9 @@ The data model identifier ```__class__``` maps to the inbuilt class ```type``` w
 type(num1)
 ```
 
+![img_023](./images/img_023.png)
 
-
-This displays an ```int``` as expected.
-
+This displays ```int``` as expected.
 
 The data model identifier ```__doc__``` is the document string for a string instance. It is more commonly used with the ```?``` which includes some other information from the data model identifiers ```__type__```, ```__str__```, and ```__doc__```:
 
@@ -220,14 +221,16 @@ The data model identifier ```__doc__``` is the document string for a string inst
 ? num1
 ```
 
+![img_024](./images/img_024.png)
 
 The ```__index__``` method means that an ```int``` can be used for indexing:
 
 ```
 'hello'[0]
+b'hello'[0]
 ```
 
-
+![img_025](./images/img_025.png)
 
 The ```__hash__``` method means that an ```int``` is hashable. A hashable value is permissible as a key in a dictionary or mapping. 
 
@@ -236,7 +239,7 @@ num_dict = {1: 'one', 2: 'two', 3: 'three'}
 num_dict[1]
 ```
 
-
+![img_026](./images/img_026.png)
 
 Keys in the dictionary are normally strings but can be integers aswell. Note this dictionary has the numeric keys and these differ from the numeric index in other collections like a list. The numeric keys above for example lack the key ```0```.
 
@@ -247,7 +250,7 @@ Keys in the dictionary are normally strings but can be integers aswell. Note thi
 num1[0]
 ```
 
-
+![img_027](./images/img_027.png)
 
 This is setup to raise a ```TypeError``` as an ```int``` is not subscriptable.
 
@@ -258,7 +261,7 @@ import sys
 sys.getsizeof(num1)
 ```
 
-
+![img_028](./images/img_028.png)
 
 The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` methods are used to get, set and delete attributes. ```__getattribute__``` is used when:
 
@@ -266,6 +269,7 @@ The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` methods are 
 num1.real
 ```
 
+![img_029](./images/img_029.png)
 
 ```__setattr__``` is used when:
 
@@ -273,10 +277,9 @@ num1.real
 num1.real = 66
 ```
 
+![img_030](./images/img_030.png)
 
 Notice that this is not supported and the method is setup to invoke an ```AttributeError```.
-
-
 
 ```__delattr__``` is used when:
 
@@ -284,11 +287,15 @@ Notice that this is not supported and the method is setup to invoke an ```Attrib
 del num1.real
 ```
 
-
+![img_031](./images/img_031.png)
 
 This is not supported and the method is setup to invoke an ```AttributeError```.
 
-The ```__init__``` data model method is called when instantiating a string. When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance with the unique numeric data.
+The ```__init__``` data model method is called when instantiating a string. 
+
+![img_032](./images/img_032.png)
+
+When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance with the unique numeric data.
 
 The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise the ```str```.
 
@@ -301,20 +308,22 @@ The unitary data model identifiers allow use of a mathematical operator on a uni
 ```__pos__``` maps to the ```+``` operator:
 
 ```
+num1
 + num1
 ```
 
-
+![img_033](./images/img_033.png)
 
 This doesn't change the sign of the integer.
 
 ```__neg__``` maps to the ```-``` operator:
 
 ```
+num1
 - num1
 ```
 
-
+![img_034](./images/img_034.png)
 
 This changes the sign of the integer.
 
@@ -325,18 +334,21 @@ abs(num1)
 abs(- num1)
 ```
 
+![img_035](./images/img_035.png)
 
 Notice that both of these are positive, the signs have been stripped.
 
 ```__ceil__```, ```__floor__``` and ```__trunc__``` map to ```math.ceil```, ```math.floor``` and ```__trunc__```. These methods are designed to cast a non-integer number into an integer. When the number is already an integer, the result is unchanged:
 
 ```
+num1
 import math
 math.ceil(num1)
 math.floor(num1)
 math.trunc(num1)
 ```
 
+![img_036](./images/img_036.png)
 
 ```__round__``` maps to ```round``` which by default rounds to an integer. When the number is already an integer, the result is unchanged:
 
@@ -344,31 +356,38 @@ math.trunc(num1)
 round(num1)
 ```
 
-
+![img_037](./images/img_037.png)
 
 ```__int__``` maps to the ```int``` init signature to cast the number to an ```int```. When the number is already an integer, the result is unchanged:
 
 ```
+num1
 int(num1)
 ```
+
+![img_038](./images/img_038.png)
 
 ```__bool__``` maps to the ```bool``` init signature to cast the number to an ```bool```. Any ```int``` that is non-zero will map to a boolean value of ```True```, zero will map to ```False```:
 
 ```
+num1
 bool(num1)
 num2 = 0
 bool(num2)
+num3 = -1
+bool(num3)
 ```
 
-
+![img_039](./images/img_039.png)
 
 ```__float__``` maps to the ```float``` init signature to cast the number to a ```float```. Notice the subtle difference in the output, a decimal point is now included:
 
 ```
+num1
 float(num1)
 ```
 
-
+![img_040](./images/img_040.png)
 
 ## Binary Data Model Methods
 
@@ -379,16 +398,21 @@ num1 = 65
 num2 = 4
 ```
 
+![img_041](./images/img_041.png)
+
 If the docstring of the ```__add__``` binary data model method is examined, the numeric instance the data model method is being called from is referred to as self and the other instance is referred to as value:
 
-
+![img_042](./images/img_042.png)
 
 ```__add__``` maps to the addition operation ```+``` performing numeric addition:
 
 ```
+num1 = 65
+num2 = 4
 num1 + num2
 ```
 
+![img_043](./images/img_043.png)
 
 ```__radd__``` the reverse add data model method when called from ```num1``` carries out the operation:
 
@@ -396,36 +420,71 @@ num1 + num2
 num2 + num1
 ```
 
+![img_044](./images/img_044.png)
 
 The operation above is commutative and both instances are of the same int class so the result is the same. When the operator is used between different class types, there can be subtle differences. 
 
+The ```__add__``` method also controls the behaviour of the inplace addition ```+=``` operator:
 
+```
+num1 = 65
+num2 = 4
+num1 += num2
+```
+
+![img_045](./images/img_045.png)
+
+This is shorthand for:
+
+```
+num1 = 65
+num2 = 4
+num1 = num1 + num2
+```
+
+![img_046](./images/img_046.png)
+
+Recall the calculation on the right is carried out first using the original value of ```num1```. The object name or ```num1``` is then assigned to this new result.
 
 ```__mul__``` maps to the ```*``` operator:
 
 ```
+num1 = 65
+num2 = 4
 num1 * num2
 ```
 
-
+![img_047](./images/img_047.png)
 
 The ```*``` operator in the ```int``` class performs numeric multiplication as seen above. In the ```str``` class the ```*``` operator is defined to allow string replication with an ```int```.
 
-
-
-If the following is used, the ```__mul__``` method from the ```str``` class is used ```'hello'``` is the string instance self and ```num1``` is the int instance value.String replication occurs:
-
 ```
-'hello' * num1
+str1 = 'hello'
 ```
 
+![img_048](./images/img_048.png)
 
+If the following is used, the ```__mul__``` method from the ```str``` class is used ```'hello'``` is the string instance self and ```num1``` is the int instance value. String replication occurs:
+
+```
+num1 = 3
+str1 = 'hello'
+str1 * num1
+```
+
+![img_049](./images/img_049.png)
 
 When the following is carried out, the ```__mul__``` method from the ```int``` class is used ```num1``` is the int instance self and ```'hello'``` is the string instance value. As ```__mul__``` is setup in an integer for multiplication, the first operation fails:
 
+![img_050](./images/img_050.png)
+
 ```
-num1 * 'hello'
+num1 = 3
+str1 = 'hello'
+num1 * str1
 ```
+
+![img_051](./images/img_051.png)
 
 Behind the scenes the reverse multiplication ```__rmul__``` is attempted. The ```__rmul__``` sees that ```'hello'``` is a string and then calls the ```__mul__``` method of the string class, effectivelty computing:
 
@@ -433,29 +492,39 @@ Behind the scenes the reverse multiplication ```__rmul__``` is attempted. The ``
 'hello' * num1
 ```
 
+```__mul__``` also maps to the assignment multiplication operator ```*=```.
 
 ```__sub__``` maps to the subtraction operator ```-``` which carries out numeric subtraction:
 
 ```
+num1 = 65
+num2 = 4
 num1 - num2
 ```
 
+![img_052](./images/img_052.png)
 
-
-There is also the associated reverse subtraction ```__rsub__```.
-
-
-
+```__sub__``` also maps to the assignment multiplication operator ```-=```. There is also the associated reverse subtraction ```__rsub__```.
 
 ```__pow__``` maps to the power operator ```**``` which raises self to the power of the value:
 
 ```
+num1 = 65
+num2 = 4
 num1 ** num2
 ```
 
+![img_053](./images/img_053.png)
 
+Recall this is equivalent to:
 
-There is also the associated reverse subtraction ```__rpow__```.
+```
+65 * 65 * 65 * 65
+```
+
+![img_054](./images/img_054.png)
+
+```__pow__``` also maps to the assignment power operator ```**=```. There is also the associated reverse subtraction ```__rpow__```.
 
 
 
@@ -468,9 +537,7 @@ num1 % num2
 divmod(num1, num2)
 ```
 
-
-
-There is also the associated reverse versions ```__rfloordiv__```, ```__rmodulo__``` and ```__rdivmod__```.
+```__floordiv__``` and ```__mod__``` also maps to the assignment floor division operator ```//=``` and the assignment mudulo operator ```%=``` respectively. There is also the associated reverse versions ```__rfloordiv__```, ```__rmodulo__``` and ```__rdivmod__```.
 
 ```__truediv__``` maps to float division ```/``` operator which performs float division. The result will always be a float. Notice the inclusion of the decimal point:
 
