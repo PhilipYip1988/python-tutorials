@@ -190,7 +190,7 @@ To count to values higher than 10, 2 sets of hands, or 2 digits are required. Th
 
 With these two sets of hands or 2 digits it is possible to count from ```0:(10 ** 2)``` which is ```0:100``` exclusive of the value ```100``` which requires 3 sets of hands or 3 digits.
 
-## Integers Mapped to Bytes
+## Mapping Numeric Data to Bytes
 
 If 8 bits are used to store unsigned numbers. The maximum value that can be stored is $2⁸=256$. The arrangement of these bits for a series of decimal numbers is
 
