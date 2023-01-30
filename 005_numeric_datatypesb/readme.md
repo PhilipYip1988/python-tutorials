@@ -5,7 +5,8 @@
 ## int class
 
 An integer is a whole number. 
-Initialization Signature
+
+### Initialization Signature
 
 The init signature of the ```int``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
 
@@ -526,33 +527,38 @@ Recall this is equivalent to:
 
 ```__pow__``` also maps to the assignment power operator ```**=```. There is also the associated reverse subtraction ```__rpow__```.
 
-
-
-
-```__floordiv__``` maps the floor division ```//``` operator which performs floor division also known as integer division. The associated ```__modulo__``` maps the modulo operator ```%``` which calculates the modulo. ```__divmod__``` maps to the function ```divmod``` which returns the floor division and modulo as components of a tuple:
+```__floordiv__``` maps the floor division ```//``` operator which performs floor division also known as integer division. The associated ```__modulo__``` maps the modulo operator ```%``` which calculates the modulo. ```__divmod__``` maps to the function ```divmod``` which returns the floor division and modulo as components of a tuple. These are usually used with positive itneger values:
 
 ```
+num1 = 65
+num2 = 4
 num1 // num2
 num1 % num2
 divmod(num1, num2)
 ```
+
+![img_055](./images/img_055.png)
 
 ```__floordiv__``` and ```__mod__``` also maps to the assignment floor division operator ```//=``` and the assignment mudulo operator ```%=``` respectively. There is also the associated reverse versions ```__rfloordiv__```, ```__rmodulo__``` and ```__rdivmod__```.
 
 ```__truediv__``` maps to float division ```/``` operator which performs float division. The result will always be a float. Notice the inclusion of the decimal point:
 
 ```
+num1 = 65
+num2 = 4
 num1 / num2
 num1 / 1
 ```
 
+![img_056](./images/img_056.png)
 
-
-There is also the associated reverse float divide ```__rtruediv__```.
+```__truediv__``` also maps to the assignment floor division operator ```/=```. There is also the associated reverse float divide ```__rtruediv__```.
 
 The six comparison data model identifiers equals ```__eq```, not equals ```__ne__```, less than or equal to ```__le__```, less than ```__lt__```, greater than or equal to ```__ge__``` and greater than ```__gt__``` control the behaviour behind the 6 comparison operators ```==```, ```!=```, ```<=```, ```<```, ```>=``` and ```>``` respectively.
 
 ```
+num1 = 65
+num2 = 4
 num1 > num2
 num1 > num1
 num1 == num1
@@ -560,7 +566,7 @@ num1 >= num1
 num1 != num1
 ```
 
-
+![img_057](./images/img_057.png)
 
 ```__and__```, ```__or__``` and ```__xor__``` map to the and operator ```&```, or operator ```|```, xor operator ```^```. These are normally associated with ```boolean``` values recall any integer value that is non-zero is ```True``` and an integer equal to zero is ```False```.
 
@@ -572,7 +578,7 @@ True & False
 False & False
 ```
 
-
+![img_058](./images/img_058.png)
 
 ```|``` is ```True``` if one or both conditions are ```True```:
 
@@ -582,7 +588,7 @@ True | False
 False | False
 ```
 
-
+![img_059](./images/img_059.png)
 
 ```^``` is ```True``` if both conditions are different:
 
@@ -592,35 +598,39 @@ True ^ False
 False ^ False
 ```
 
+![img_060](./images/img_060.png)
 
-
-There is also the associated reverse versions ```__rand__```, ```__ror__```, ```__rxor__```
+```__and__```, ```__or__``` and ```__xor__``` also maps to the assignment and operator ```=&```, assignment or operator ```=|``` and assignment xor operator ```^=```. There is also the associated reverse versions ```__rand__```, ```__ror__```, ```__rxor__```.
 
 ```__lshift__``` maps to the binary left shift operator ```<<``` and ```__rshift__``` maps to the binary right shift operator ```>>```. These operate at the byte level. The ```bin``` function can be used to examine the change. 
 
 Notice that trailing zeros of the specified number have been added to the end shifting the existing byte sequence to the left:
 
 ```
-num1
+num1 = 65
 bin(num1)
-num1 << 1
 bin(num1 << 1)
+num1 << 1
+bin(num1)
 bin(num1 << 2)
 ```
 
+![img_061](./images/img_061.png)
 
 Notice the specified number of digits on the right have been stripped:
 
 ```
-num1
+num1 = 65
 bin(num1)
-num1 >> 1
 bin(num1 >> 1)
+num1 >> 1
+bin(num1)
 bin(num1 >> 2)
 ```
 
+![img_062](./images/img_062.png)
 
-There is the associated reverse versions ```__rlshift__``` and ```__rrshift__```.
+```__lshift__``` and ```__rshift__``` also map to the assignment binary left shift operator ```<<=``` and assignment binary right shift operator ```>>=```. There is the associated reverse versions ```__rlshift__``` and ```__rrshift__```.
 
 ## bool class
 
@@ -630,7 +640,7 @@ When the method resolution order for the ```int``` class is examined:
 int.mro()
 ```
 
-
+![img_063](./images/img_063.png)
 
 The output list displays ```int``` and then ```object```. This means the ```int``` (like everything else in Python is an object). The method resolution order means Python will first look for a method defined in the ```int``` class (blueprint) and then if it can't find the method there, take a second look in the ```object``` class (blueprint).
 
@@ -640,17 +650,88 @@ When the method resolution order for the ```bool``` class is examined:
 bool.mro()
 ```
 
+![img_064](./images/img_064.png)
 
 The output list displays ```bool```, ```int``` and then ```object```. The method resolution order means Python will first look for a method defined in the ```bool``` class (blueprint), then secondly look for a method in the ```int``` class (blueprint) and finally if it can't find the method there, take a third look in the ```object``` class (blueprint). The only major modification to the ```bool``` class is a restriction to only two possible values ```False``` and ```True```. Otherwise it behaves identically to the ```int``` class as most its methods are taken directly from the ```int``` class unmodified (i.e. accessed directly from the ```int``` blueprint).
 
 ### init signature
 
+The init signature of the ```bool``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
+
+![img_065](./images/img_065.png)
+
+The init signature states that the builtins ```False``` and ```True``` are the only two instances of the class ```bool``` and clarifies that the class ```bool``` is a subclass of the class ```int```, and cannot be subclassed.
+
+Recall casting an integer to a bool gives ```True``` for any non-zero integer and ```False``` for zero:
+
+```
+bool(0)
+bool(1)
+bool(-4)
+```
+
+![img_066](./images/img_066.png)
+
+Typically the inbuilts ```False``` and ```True``` are sued directly but they can be assigned to object names:
+
+```
+False
+True
+```
+
+![img_067](./images/img_067.png)
 
 ### identifiers
 
+A list of identifiers can be found by inputting one of these object names followed by a dot ```.``` and tab ```↹```:
+
+![img_068](./images/img_068.png)
+
+These methods are the same as their counterparts in the ```int``` class because this is a subclass and the methods are taken directly from the ```int``` classes blueprint.
+
 ### datamodel identifiers
 
-repr and str
+All the identifiers, including the data model identifiers can be viewed using:
+
+```
+pprint.pprint(dir(False), compact=True)
+```
+
+![img_069](./images/img_069.png)
+
+Most of these behave identically to the ```int``` class as they are taken directly from this blueprint. The two string related data model identifiers ```__repr__``` and ```__str__``` have been updated to display strigns of the two builtin identifiers ```'False'``` and ```'True'``` opposed to ```'0'``` and ```'1'```.
+
+```
+repr(False)
+str(False)
+```
+
+![img_070](./images/img_070.png)
+
+Notice the difference in syntax highlighting from the builtin bool instance ```False``` and the string ```'False'```. The inbuilt instance is case sensitive and if ```false``` is referenced, Python will look for an object ```false``` which won't have been created resulting in a ```NameError```.
+
+If the comparison operator is equal ```==``` is used:
+
+```
+False == 0
+True == 1
+True == 2
+```
+
+![img_071](./images/img_071.png)
+
+Numerically it can be seen that ```False``` is the same as ```0``` and ```True``` is the same as ```1```. 
+
+When boolean values are used with most of the mathematical operators, they take on these numeric values. This can be seen by use of the basic positive and negative unitary operators. Recall for a unitary ```+``` and unitary ```-```, the ```__pos__``` and ```__neg__``` data model identifiers are invoked and a change can be seen in the result when ```+``` is used:
+
+```
++ True
+- True
+```
+
+![img_072](./images/img_072.png)
+
+For most mathematical operations, it is more common to use the integers directly. However it is common to use boolean values with the and operator ```&```, or operator ```|```, xor operators ```^``` as these operators return a boolean value. This use case was explored when these methods were examined earlier.
 
 ## float class
 
@@ -660,15 +741,170 @@ When the method resolution order for the ```float``` class is examined:
 float.mro()
 ```
 
+![img_073](./images/img_073.png)
 
 This class inherits directly from ```object``` and is not a subclass of the ```int``` class.
 
 ### init signature
 
+The init signature of the ```float``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
+
+![img_074](./images/img_074.png)
+
+The initialization signature is only typically used when casting an existing number or a string of a number to a floating point number. For example:
+
+```
+float(10)
+float('10')
+```
+
+![img_075](./images/img_075.png)
+
+Notice the difference in the syntax highlighting for the input arguments which distinguish the numerical input argument from the text input argument. Notice the output in all cases includes the postfix ```.0```. The ```.``` in this case indicates a decimal point. This should not be confused with the other use of the ```.``` which is used to access identifiers from an object.
+
+Every day items are not measured in quantised units and the decimal point means it is possible to include an incomplete quantity. For example a human may have a height of 1.5 metres:
+
+```
+1.5
+```
+
+![img_076](./images/img_076.png)
+
+Floating point numbers are particularly common when the item size is extremely small or extremely large with respect to the unit of measurement. For example, the radius of a hydrogen atom is 0.000000000053 metres:
+
+```
+0.000000000053
+```
+
+![img_077](./images/img_077.png)
+
+Because this number is so small, it becomes difficult to transcribe and the output uses scientific notation. 
+
+The 0th position is the unit value which is to the left hand side of the decimal point:
+
+```
+5e0
+```
+
+![img_078](./images/img_078.png)
+
+The 1st position is the tens, which is one to the left hand side of the unit value:
+
+```
+5e1
+```
+
+![img_079](./images/img_079.png)
+
+The negative 1st position is the 10ths which is one to the right hand side of the unit. The decimal point itself is not counted as a numeric digit when using scientific notation:
+
+```
+5e-1
+```
+
+![img_080](./images/img_080.png)
+
+In the example above the first non-zero digit for the radius of the hydrogen atom was 5 which was at the 11th digit to the right hand side to the decimal point. This is why the power was -11.
+
+In scientific notation the mantissa is always expressed with the unit value occupied and the power uses is always an integer. 
+
+Scientific notation is typically used for very small and very large numbers to prevent transcription errors from leading or trailing zeros respectively. The radius of the sun is expressed as 696340 km where k means to the power of 3. This means the radius of the sun in metre is:
+
+```
+696340e3
+```
+
+Or with a proper mantissa as:
+
+```
+6.96340e8
+```
+
+![img_081](./images/img_081.png)
+
+Python will display scientific notation for numbers with an exponent less than ```-5``` and greter than ```16```. This behaviour can be seen using:
+
+```
+for i in range(-12, 25, 2):
+    print(float(5**i))
+```    
+
+![img_082](./images/img_082.png)
 
 ### identifiers
 
+The ```.``` is used as a decimal point for numeric data and therefore it is not possible to access identifiers from a number unless the number has an object name and the ```.``` is placed after the object name.
+
+For example if the instance is assigned to an object name ```num1```:
+
+```
+num1 = 0.5
+```
+
+Then pressing ```num1``` followed by a dot ```.``` and tab ```↹``` displays the identifiers:
+
+![img_083](./images/img_083.png)
+
+Although the ```float``` class is not a subclass of the ```int``` class, its identifiers are setup to be consistent with the ```int``` class.
+
+The ```real```, ```imag``` and ```conjugate``` methods are present in the ```int``` class and the ```float``` class as both classes are setup to be compatible with complex numbers. The ```real``` component is once again going to be the same as the original value and the ```imag``` component is going to be zero. The ```conjugate``` which returns the ```real``` component and switches the sign of the zero ```imag``` component is going to be identical to the existing instance:
+
+![img_084](./images/img_084.png)
+
+The ```float``` class is also setup to be compatible with the ```Fractions``` class, it does not have the attrbutes ```numerator``` or ```denominator``` as the values of these have to be calculated, opposed to being merely read off like in the case of the integer class. It does however have the method ```as_integer_ratio``` which calculates these and displays them in a tuple:
+
+```
+num1 = 0.5
+num1.as_integer_ratio()
+```
+
+![img_085](./images/img_085.png)
+
+Sometimes the results may be unexpected...
+
+```
+num2 = 0.1
+num2.as_integer_ratio()
+```
+
+![img_086](./images/img_086.png)
+
+A ```float``` is displayed using the 10 decimal characters but under the hood is stored using a finite number of binary bits. The binary system only uses 2 characters and recurring rounding errors are quite prevalent.
+
+Recurring rounding errors occur in decimal also. In decimal a recurring rounding error occurs with the concept of one third which is easy to represent as a fraction:
+
+$$\left(\frac{1}{3}\right)$$
+
+But cannot be represented cleanly as a decimal, essentially the same recurring operation occurs on and on and on ... forever.
+
+$$0.3333333333\cdots$$
+
+In real life the number will be written down using a finite number of characters:
+
+$$0.3333333333$$
+
+The concept of one third plus one third plus one third equalling unity is simple as a fraction:
+
+$$\left(\frac{1}{3}\right) + \left(\frac{1}{3}\right) + \left(\frac{1}{3}\right)$$
+
+However in decimal there will be a recurring rounding error for each third:
+
+$$0.3333333333 + 0.3333333333 + 0.3333333333$$
+
+As a result a very small proportion will be lost and the result will be just shy of unity:
+
+$$0.9999999999$$
+
+
+
+
+
+
+
+
+
 Notice however the consistency in the identifiers.
+
 
 
 Some of the identifiers in the ```int``` class are not available such as the fraction based identifiers and the byte based identifiers.
@@ -716,21 +952,7 @@ Notice when two floating points are added a rounding error displays. Although th
 num3 + num4
 ```
 
-These recurring rounding also occur in decimal. The concept of a fraction below is:
-
-$$\left(\frac{1}{3}\right)$$
-
-$$0.3333333333\cdots$$
-
-$$0.3333333333$$
-
-And supposing:
-
-$$\left(\frac{1}{3}\right) + \left(\frac{1}{3}\right) + \left(\frac{1}{3}\right)$$
-
-$$0.3333333333 + 0.3333333333 + 0.3333333333$$
-
-$$0.9999999999$$
+These recurring rounding also occur in decimal. 
 
 ```
 num6 = num3 + num4
