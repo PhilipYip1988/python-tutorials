@@ -1,7 +1,5 @@
 # Numeric Data Types
 
-
-
 ## int class
 
 An integer is a whole number. 
@@ -151,7 +149,7 @@ int.from_bytes(letter2)
 ![img_016](./images/img_016.png)
 
 
-## Data Model Identifiers
+### Data Model Identifiers
 
 If the directory function ```dir``` is used on an integer instance ```num1```, the last of identifiers displays alongside data model identifiers. 
 
@@ -302,7 +300,7 @@ The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex_
 
 The last data model identifier is ```init_subclass``` and ```__subclasshook__``` which is used for Abstract Base Classes.
 
-## Unitary Data Model Identifiers
+### Unitary Data Model Identifiers
 
 The unitary data model identifiers allow use of a mathematical operator on a unitary instance:
 
@@ -339,7 +337,7 @@ abs(- num1)
 
 Notice that both of these are positive, the signs have been stripped.
 
-```__ceil__```, ```__floor__``` and ```__trunc__``` map to ```math.ceil```, ```math.floor``` and ```__trunc__```. These methods are designed to cast a non-integer number into an integer. When the number is already an integer, the result is unchanged:
+```__ceil__```, ```__floor__``` and ```__trunc__``` map to ```math.ceil```, ```math.floor``` and ```math.trunc```. These methods are designed to cast a non-integer number into an integer. When the number is already an integer, the result is unchanged:
 
 ```
 num1
@@ -390,7 +388,7 @@ float(num1)
 
 ![img_040](./images/img_040.png)
 
-## Binary Data Model Methods
+### Binary Data Model Identifiers
 
 Binary data model methods require two numeric instances.
 
@@ -634,6 +632,8 @@ bin(num1 >> 2)
 
 ## bool class
 
+A boolean is a ```True``` or ```False``` value.
+
 When the method resolution order for the ```int``` class is examined:
 
 ```
@@ -654,7 +654,7 @@ bool.mro()
 
 The output list displays ```bool```, ```int``` and then ```object```. The method resolution order means Python will first look for a method defined in the ```bool``` class (blueprint), then secondly look for a method in the ```int``` class (blueprint) and finally if it can't find the method there, take a third look in the ```object``` class (blueprint). The only major modification to the ```bool``` class is a restriction to only two possible values ```False``` and ```True```. Otherwise it behaves identically to the ```int``` class as most its methods are taken directly from the ```int``` class unmodified (i.e. accessed directly from the ```int``` blueprint).
 
-### init signature
+### Initialization Signature
 
 The init signature of the ```bool``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
 
@@ -689,7 +689,7 @@ A list of identifiers can be found by inputting one of these object names follow
 
 These methods are the same as their counterparts in the ```int``` class because this is a subclass and the methods are taken directly from the ```int``` classes blueprint.
 
-### datamodel identifiers
+### Data Model Identifiers
 
 All the identifiers, including the data model identifiers can be viewed using:
 
@@ -735,6 +735,8 @@ For most mathematical operations, it is more common to use the integers directly
 
 ## float class
 
+A float is number that has an incomplete unit. This incomplete unit is normally expressed using a decimal point.
+
 When the method resolution order for the ```float``` class is examined:
 
 ```
@@ -745,7 +747,7 @@ float.mro()
 
 This class inherits directly from ```object``` and is not a subclass of the ```int``` class.
 
-### init signature
+### Initization Signature
 
 The init signature of the ```float``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
 
@@ -822,7 +824,7 @@ Or with a proper mantissa as:
 
 ![img_081](./images/img_081.png)
 
-Python will display scientific notation for numbers with an exponent less than ```-5``` and greter than ```16```. This behaviour can be seen using:
+Python will display scientific notation for numbers with an exponent less than ```-5``` and greater than ```16```. This behaviour can be seen using:
 
 ```
 for i in range(-12, 25, 2):
@@ -831,7 +833,7 @@ for i in range(-12, 25, 2):
 
 ![img_082](./images/img_082.png)
 
-### identifiers
+### Identifiers
 
 The ```.``` is used as a decimal point for numeric data and therefore it is not possible to access identifiers from a number unless the number has an object name and the ```.``` is placed after the object name.
 
@@ -851,7 +853,7 @@ The ```real```, ```imag``` and ```conjugate``` methods are present in the ```int
 
 ![img_084](./images/img_084.png)
 
-The ```float``` class is also setup to be compatible with the ```Fractions``` class, it does not have the attrbutes ```numerator``` or ```denominator``` as the values of these have to be calculated, opposed to being merely read off like in the case of the integer class. It does however have the method ```as_integer_ratio``` which calculates these and displays them in a tuple:
+The ```float``` class is also setup to be compatible with the ```Fractions``` class, it does not have the attributes ```numerator``` or ```denominator``` as the values of these have to be calculated, opposed to being merely read off like in the case of the integer class. It does however have the method ```as_integer_ratio``` which calculates these and displays them in a tuple:
 
 ```
 num1 = 0.5
@@ -895,119 +897,416 @@ As a result a very small proportion will be lost and the result will be just shy
 
 $$0.9999999999$$
 
+The ```hex``` method will convert a ```float``` instance to a hexadecimal string, more details can be seen by examining the docstring by inputting the method name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
+
+![img_087](./images/img_087.png)
+
+The format is best seen by an example:
+
+```
+num1 = 0.5
+num1.hex()
+```
+
+![img_088](./images/img_088.png)
+
+This gives ```'0x1.0000000000000p-1'```
+
+The general form is:
+
+```
+'[sign] [0x] integer [. fraction] [p exponent]'
+```
+
+```[sign]``` the sign is not shown so it is implied to be positive.
+
+```[0x]``` is a constant prefix denoting a hexadecimal number.
+
+```integer [. fraction]``` are in hexadecimal. To convert to decimal powers of 16 need to be used.
+
+The unit 1 and $1*16^{0}=1$
+
+The first value past the decimal point is 0 and $0*16^{-1}=0$
+
+The second value past the decimal point is 0 and $0*16^{-2}=0$
+
+The third value past the decimal point is 0 and $0*16^{-3}=0$
+
+The fourth value past the decimal point is 0 and $0*16^{-4}=0$
+
+$\vdots$
+
+Combining these together gives $1.00000$ in decimal.
+
+```[p exponent]``` indicates ```2``` to the power of a decimal exponent. In this example ```p-1``` means:
+
+$2^{-1}=0.5$
+
+Combining the above:
+
+$+1*0.5$
+
+which is the original value:
+
+$0.5$
+
+Let's look at a more complicated example:
+
+```
+num2 = 0.12
+num2.hex()
+```
+
+![img_089](./images/img_089.png)
+
+This gives ```'0x1.eb851eb851eb8p-4'```
+
+The general form is:
+
+```
+'[sign] [0x] integer [. fraction] [p exponent]'
+```
+
+```[sign]``` the sign is not shown so it is implied to be positive.
+
+```[0x]``` is a constant prefix denoting a hexadecimal number.
+
+```integer [. fraction]``` are in hexadecimal. To convert to decimal powers of 16 need to be used.
+
+The unit 1 and $1*16^{0}=1$
+
+The first value past the decimal point is e which is $14*16^{-1}=0.875$
+
+The second value past the decimal point is b and $11*16^{-2}=0.04296875$
+
+The third value past the decimal point is 8 and $8*16^{-3}=0.001953125$
+
+The fourth value past the decimal point is 5 and $5*16^{-4}=0.0000762939453125$
+
+$\vdots$
+
+Combining the 5 values above gives $1.9199981689453125$ in decimal.
+
+```[p exponent]``` indicates ```2``` to the power of a decimal exponent. In this example ```p-4``` means:
+
+$2^{-4}=0.0625$
+
+Combining the above:
+
+$+1.9199981689453125*0.0625$
+
+this is close to the original value:
+
+$0.11999988555908203$
+
+```
+((1 * 16 ** 0) 
+ + (14 * 16 ** -1) 
+ + (11 * 16 ** -2) 
+ + (8 * 16 ** -3) 
+ + (5 * 16 ** -4)) * (2 ** -4)
+```
+
+![img_090](./images/img_090.png)
+
+In the calculation above only the 4 most significant components of the fraction were used. A closer approximation will be made if all 14 are used. If the result ```'0x1.eb851eb851eb8p-4'``` is examined, notice that ```eb851``` is recurring which means there will be at least some rounding error when using a finite number of digits.
+
+The alternative constructor ```fromhex``` is a class method that is used to create a new float instance from a hexadecimal string. It can be used with the strings above:
+
+```
+float.fromhex('0x1.0000000000000p-1')
+float.fromhex('0x1.eb851eb851eb8p-4')
+```
+
+![img_091](./images/img_091.png)
+
+### Data Model Identifiers
+
+To view the data model identifiers, the directory function ```dir``` can be used:
+
+```
+num1 = 0.5
+pprint.pprint(dir(num1), compact=True)
+```
+
+![img_092](./images/img_092.png)
+
+Most of the numeric identifiers are available and the ```float``` class and the ```int``` class are setup to be consistent with one another. 
+
+The string identfiers ```__repr__``` and ```__str__``` are setup for the formal and informal string repreentations, which in the case of the ```float``` class match. The decimal point is always included in the representation. Scientific notation will display for numbers with an exponent less than ```-5``` and greater than ```16```.
+
+```
+num1 = 1.5
+num2 = 0.000000000053
+num3 = 6.96340e8
+repr(num1)
+str(num1)
+repr(num2)
+str(num2)
+repr(num3)
+str(num3)
+```
+
+![img_093](./images/img_093.png)
+
+The ```float``` class has the  ```__hash__``` data model identifier but lacks the ```__index__``` data model identifier. 
+
+This means the dictionary can be used as a key in a mapping:
+
+```
+num1
+hash(num1)
+num_dict = {1.5: 'one and a half', 2.5: 'two and a half'}
+num_dict[1.5]
+```
+
+![img_094](./images/img_094.png)
+
+But it does not make sense to try and index an ordered collection using a floating point number, there is an ambiguity whena floating point number of 1.5 is used for example and a ```TypeError``` displays:
+
+![img_095](./images/img_095.png)
+
+### Unitary Data Model Identifiers
+
+Casting a float to an integer using the ```int``` init signature wuill truncate the non-integer component of the number:
+
+```
+num1 = 1.5
+int(num1)
+```
+
+![img_096](./images/img_096.png)
+
+Recall that the ```__ceil__```, ```__floor__``` and ```__trunc__``` map to ```math.ceil```, ```math.floor``` and ```math.trunc```. These methods are designed to cast a non-integer number into an integer. The subtle differences between these methods can be seen with  positive and a negative number:
+
+```
+import math
+num1 = 1.5
+```
+
+![img_097](./images/img_097.png)
 
 
+The closest two integers to ```1.5``` are ```1``` and ```2```. The lower number ```1``` is known as the floor and the higher number ```2``` is known as the ceiling. Truncating the number just removes the non-integer value andis identical to using the init signature of the ```int``` class.
 
+```
+math.floor(num1)
+math.ceil(num1)
+math.trunc(num1)
+```
 
+![img_098](./images/img_098.png)
 
+```
+num2 = -1.5
+math.floor(num2)
+math.ceil(num2)
+math.trunc(num2)
+```
 
+![img_099](./images/img_099.png)
 
+```__round__``` maps to ```round``` function. The docstring of the ```round``` function can be examined in more detail by inputting it with open parentheis and pressing shift ```⇧``` and tab ```↹```:
 
-Notice however the consistency in the identifiers.
+![img_100](./images/img_100.png)
 
+The ```round``` function by default rounds to the nearest integer however the keyword argument ```ndigits``` can be used to specify the number of digits after the decimal point to round to. For example:
 
+```
+num1 = 1.234
+round(num1)
+round(num1, ndigits=2)
+```
 
-Some of the identifiers in the ```int``` class are not available such as the fraction based identifiers and the byte based identifiers.
+![img_101](./images/img_101.png)
 
+### Binary Data Model Identifiers
 
-
-There are two hexadecimal additions ```hex``` and ```fromhex```.
-
-
-
-
-### datamodel identifiers
-
-repr and str
-
-Notice that these are consistent.
-
-
-### Unitary Data Model Methods
-With the float class a clear difference can be seen with the
-
-
-
-### Binary Data Model Methods
-
-These are consistent however
+Most of the binary data model identifiers are consistent and configured to work seamlessly between the integer and float classes. An integer is automatically cast to a floating point number when used in a calculation with a binary operator and a float. 
 
 ```
 num1 = 1
-num2 = 2
-num3 = 1.1
-num4 = 2.2
-num5 = 3.3
-```
-
-```
+num2 = 1.5
 num1 + num2
-num2 + num3
 ```
 
-
-Notice when two floating points are added a rounding error displays. Although the numbers are displayed using the decimal system (base 10), under the hood they are encoded in bytes (base 2) and stored to a finite precision of 8 bytes. Because there are only 2 digits in binary it is more common to have recurring rounding errors. 
-
-```
-num3 + num4
-```
-
-These recurring rounding also occur in decimal. 
+Explicitly this is the same as:
 
 ```
-num6 = num3 + num4
-num4 > num1
-num6 == num5
-num7 = -1.23456
+float(num1) + num2
 ```
 
-```
-int(num6)
-math.trunc(num6)
-math.floor(num6)
-math.ceil(num6)
-round(num6)
-round(num6, 2)
-```
+![img_102](./images/img_102.png)
+
+Some unexpected behaviour occurs with floating point numbers primarally due to the fact that they are under the hood stored in binary and there are recursive rounding errors:
 
 ```
-int(num7)
-math.trunc(num7)
-math.floor(num7)
-math.ceil(num7)
-round(num7)
-round(num7, 2)
+num1 = 0.1
+num2 = 0.2
+num1 + num2
 ```
+
+![img_103](./images/img_103.png)
+
+Particular care needs to be taken to ccount for rounding when using conditional operators:
+
+```
+round(num1 + num2, ndigits=6) == num3
+```
+
+![img_104](./images/img_104.png)
 
 ## complex class
+
+A complex number has a real and imaginary component. The imaginary component is a result of the square root of a negative number being undefined with only real components. The symbol $j$ is used to denote this imaginary component.
+
+$$j=\sqrt{-1}$$
+
+The algebra of complex numbers is similar to the algebra of vectors which have seperate $x$ and $y$ components and therefore the real axis is often visualised as $x$ and the imaginary access is visualised as $y$. In a complex number however any square term involving $j$ becomes real, taking on the original definition from above:
+
+$j^{2}=-1$
+
+When the method resolution order for the ```float``` class is examined, it is seen to be independent of the ```int``` class and ```float``` classes. As seen earlier however, these classes are configured to be consistent with each other to ensure compatibility:
 
 ```
 complex.mro()
 ```
 
+![img_105](./images/img_105.png)
+
 ### init signature
 
-```
-num8 = 1 + 2j
-num9 = 3 - 2j
-```
+The init signature of the ```complex``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
 
-### identifiers
+![img_106](./images/img_106.png)
 
+The init signaturehas two keyword arguments ```real``` and ```imag``` which each have a default value of ```0```.
 
-```
-num8.imag
-num8.real
-num8.conjugate()
-```
+![img_107](./images/img_107.png)
 
-### data model identifiers
-
+It is more common to use the shorthand notation to initiate a complex class as seen in the output:
 
 ```
-num8 + num9
-num8 + num1
+num1 = 2+1j
+num1
 ```
+
+![img_108](./images/img_108.png)
+
+### Identifiers
+
+For example if the instance is assigned to an object name ```num1```:
+
+```
+num1 = 2+1j
+```
+
+Then pressing ```num1``` followed by a dot ```.``` and tab ```↹``` displays the identifiers:
+
+![img_109](./images/img_109.png)
+
+The ```real``` attribute will read off the real component of the complex number and the ```imag``` component will read of the imaginary component, which is now non-zero:
+
+```
+num1 = 2+1j
+num1.real
+num1.imag
+```
+
+![img_110](./images/img_110.png)
+
+The complex conjugate can be calculated by using the ```conjugate``` method:
+
+```
+num1 = 2+1j
+num1.conjugate()
+```
+
+![img_111](./images/img_111.png)
+
+Notice the real component remains unchanged but the sign of the imaginary component is flipped. The consequence of this will be explored in a bit more detail in a moment.
+
+### Data Model Identifiers
+
+To view the data model identifiers, the directory function ```dir``` can be used:
+
+```
+num1 = 2+1j
+pprint.pprint(dir(num1), compact=True)
+```
+
+![img_112](./images/img_112.png)
+
+Notice that there are substantially less of the mathematical data model identifiers defined meaning the operators for ones that are not defined cannot be used. Dor example there is no ```__floordiv__``` or  ```__mod__``` meaning ```//``` and ```%``` cannot be used with a complex number:
+
+![img_113](./images/img_113.png)
+
+There is no ```__round__``` so the ```round``` function cannot be used. 
+
+![img_114](./images/img_114.png)
+
+Likewise there is no ```__floor__```, ```__ceil__``` or ```__trunc__``` so the math functions ```math.floor```, ```math.ceil``` and ```math.trunc``` cannot be used.
+
+For casting to other data types only ```__complex__``` and ```__bool__``` are defined. Using the ```complex``` initialization signature will instantiate the same complex number. Using the ```bool``` initialization signature will result in a ```True``` value for any non-zero real or imaginary component. 
+
+```
+num1 = 2+1j
+bool(num1)
+num2 = 0+1j
+bool(num2)
+num3 = 0+0j
+bool(num3)
+```
+
+![img_115](./images/img_115.png)
+
+A ```TypeError``` will display if attempting to cast to an ```int``` or a ```float```:
+
+![img_116](./images/img_116.png)
+
+### Unitary Data Model Identifiers
+
+The supported unitary data model identifiers will operate on both the real and imaginary component of the complex number. For example:
+
+```
+num1 = 2-1j
++num1
+-num1
+abs(num1)
+```
+
+![img_117](./images/img_117.png)
+
+## Binary Data Model Operators
+
+The binary operators will carry out the mathematical operation for there real components and imaginary components, treating the real and imaginary components as seperate variables. This canbe seen with addition and subtraction:
+
+$$(2+1j)+(3-2j)=(2+3)+(1-2)j=5-1j$$
+
+```
+num1 = 2+1j
+num2 = 3-2j
+num1 + num2
+```
+
+![img_118](./images/img_118.png)
+
+$$(2+1j)-(3-2j)=(2-3)+(1+2)j=-1+3j$$
+
+```
+num1 = 2+1j
+num2 = 3-2j
+num1 - num2
+```
+
+![img_119](./images/img_119.png)
+
+
+
+
+
+
+
 
 ## Decimal class
 
