@@ -1389,37 +1389,45 @@ Inputting ```decimal.``` and pressing tab ```↹``` will display a list of ident
 
 ![img_125](./images/img_125.png)
 
-The main item of interest is the ```Decimal``` class, most of the other identifers are related to the context. To examine the context, the ```getcontext``` function can be used:
+Most of the identifers are related to the context. To examine the context, the ```getcontext``` function can be used:
 
 ![img_126](./images/img_126.png)
 
 The context has a precision ```prec``` which has a default value of 28. The identifier ```MAX_PREC``` specifies the maximum precision possible on a supercomputer, although using this value will likely exceed your computer memory.
 
-The context has ```rounding``` which has a default value of ```ROUND_HALF_EVEN```. The other possibilities are all other identifiers ```ROUND_05UP```, ```ROUND_CEILING```, ```ROUND_DOWN```, ```ROUND_FLOOR```, ```ROUND_HALF_DOWN```, ```ROUND_HALF_EVEN```, ```ROUND_HALF_UP```, ```ROUND_UP```.
+The context has ```rounding``` which has a default value of ```ROUND_HALF_EVEN```. The other possible rounding modes are all other identifiers ```ROUND_05UP```, ```ROUND_CEILING```, ```ROUND_DOWN```, ```ROUND_FLOOR```, ```ROUND_HALF_DOWN```, ```ROUND_HALF_EVEN```, ```ROUND_HALF_UP```, ```ROUND_UP```.
 
-The context has ```Emin``` and ```Emax``` which are the minimum and maximum values of the exponent. The identifiers ```MIN_EMIN``` and ```MAX_EMAX``` specifies the minimum and maximum values for the exponent possible on a supercomputer, once again using these values will likely exceed your computer memory.
+The context has ```Emin``` and ```Emax``` which are the minimum and maximum values of the exponent. The identifiers ```MIN_EMIN``` and ```MAX_EMAX``` specifies the minimum and maximum values for the exponent possible on a supercomputer, once again using these values will likely exceed your computer memory. The context has ```capitals``` which is assigned to a boolean value. If capitals is enabled ```E``` will display in the exponent, otherwise ```e``` will display in the exponent.
 
+The ```Etiny``` is a value equal to ```Emin - prec + 1```. There is a corresponding minimum possible value ```MIN_ETINY``` possible on a supercomputer, once again using this value will likely exceed your computer memory.
 
-getcontext'
+Otherwise there are ```flags``` and ```traps```. A flag will flag up a warning but proceed with an operation while a trap will raise an error, halting any subsequent Python code execution. The signals available for flags and traps are ```Clamped```, ```DecimalException```, ```DivisionByZero```, ```Inexact```, ```InvalidOperation```, ```Overflow```, ```Rounderd```, ```Subnormal```, ``` Underflow```, ```FloatOperation```. Some other signals are available for traps ```DivisionImpossible```, ```DivisionUndefined```,  ```InvalidContext```, ```ConversionSyntax```.
 
-'localcontext', 'setcontext'
-'Context'
-'BasicContext',   'DefaultContext'
+Identifiers can be accessed from the ```getcontext``` function by inputting ```decimal.getcontext().``` and pressing tab ```↹ ```:
 
+![img_127](./images/img_127.png)
 
-'Rounded', 'Clamped', 'Subnormal', 'Underflow',  'Overflow','DivisionByZero', 'DivisionImpossible', 'DivisionUndefined', 'ExtendedContext', 'InvalidContext',  'HAVE_CONTEXTVAR', 'HAVE_THREADS', 'Inexact', 'InvalidOperation',  'DecimalException',  'FloatOperation', 'ConversionSyntax',
+The statements can be accessed, essentially as attributes and assigned to new values.
 
-'DecimalTuple', 
+It is also possible to instantiate one of the classes ```Context```, ```BasicContext```, ```DefaultContext``` and ```ExtendedContext``` to use with the function ```setcontext```. ```localcontext``` is an option to use a local context within a context manager, typically a ```with``` code block.
 
-'Decimal',
+The main item of interest is the ```Decimal``` class, there is alsp the ```DecimalTuple``` which is a named tuple repressentation.
 
- 'MIN_ETINY',
+This guide will use the default context and therefore just import the ```Decimal``` class directly.
 
+```
+from decimal import Decimal
+```
 
-
-
+![img_128](./images/img_128.png)
 
 ### Initialization Signature
+
+Once imported the docstring of the ```Decimal``` class can be viewed by inputting it with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
+
+![img_129](./images/img_129.png)
+
+
 
 ### Identifiers
 
