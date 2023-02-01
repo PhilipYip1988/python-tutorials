@@ -1634,7 +1634,7 @@ It is more commonly used with the ```?``` which includes some other information 
 
 ![img_161](./images/img_161.png)
 
-The ```__hash__``` method means that a string is hashable. Only immutable objects are hashable. A hashable value is permissible as a key in a dictionary or mapping. Each item that is hashable is assigned a unique hash value. This can be viewed using:
+The ```__hash__``` method means that a string is hashable. Only immutable objects are hashable. Each item that is hashable is assigned a unique hash value. This can be viewed using:
 
 ```
 hash(greeting)
@@ -1642,7 +1642,31 @@ hash(greeting)
 
 ![img_167](./images/img_167.png)
 
-This shouldn't be confused with the ```id``` which is available for immutable objects that are not permissible as a key in a dicitonary or mapping:
+A hashable value is permissible as a key in a dictionary or mapping. For example, the three keys ```'red'```, ```'green'``` and ```'blue'``` are strings:
+
+```
+colors = {'red': [1, 0, 0], 
+          'green': [0, 1, 0], 
+          'blue': [0, 1, 1]}
+```
+
+Once the dictionary is made, the key may be used to index into the dictionary, returning the corresponding value:
+
+```
+colors['red']
+```
+
+The key can be assigned to an object name (a label can be added to it). Indexing can then be done with the label name:
+
+```
+key = 'green'
+colors[key]
+```
+
+![img_266](./images/img_266.png)
+
+
+This shouldn't be confused with the ```id``` which is a unique identifier available for all objects:
 
 ```
 id(greeting)

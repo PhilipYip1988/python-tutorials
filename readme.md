@@ -24,11 +24,11 @@ When running Python code from the Terminal, two programming languages are used. 
 
 There are 3 fundamental text data types, the unicode string, the bytes string and the bytearray. The Unicode string is the most widely used text data type in Python, however it is useful to know about the other two data types and establish a concept behind encoding:
 
-[Text Data Types str, bytes, bytearray](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes#readme)
+[Text Data Types: str, bytes, bytearray](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes#readme)
 
-There are 6 fundamental numeric data types in Python, the boolean value, the integer, the floating point number, the complex number, the decimal and the fraction:
+There are six fundamental numeric datatypes used in Python. The ```int``` class (whole number), ```bool``` class (```True``` or ```False```), the ```float``` class (number with a decimal point), the ```complex``` class (number with imaginary component $j=\sqrt{-1}$), the ```float``` class (number displayed with a decimal point but encoded in binary), ```Decimal``` class (higher accuracy number with decimal point encoded in decimal) and the ```Fraction``` class:
 
-[Fundamental Datatypes int, float, bool](https://github.com/PhilipYip1988/python-tutorials/blob/main/004_python_fundamental_datatypes/readme.md)
+[Fundamental Numeric Datatypes: int, bool, float, complex, Decimal, Fraction](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numeric_datatypes/readme.md)
 
 The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
 
