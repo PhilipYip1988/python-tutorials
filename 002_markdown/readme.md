@@ -366,7 +366,7 @@ It is recommended to enable file extensions for known file types and ensure all 
 
 ## LaTeX (MathJax)
 
-The markdown file supports LaTeX. Care needs to be taken as Python IDEs and webservers may use different engines to render LaTeX. JupyterLab and GitHub use MathJax. In Visual Studio Code the extensions Markdown All in One and Markdown+Math use KaTeX. MathJax is more limited than KaTeX and is more prone to rendering issues. Markdown files uploaded to GitHub with LaTeX should be rechecked on GitHub to see if equations render properly. [MathJax GitHub](https://github.com/mathjax/MathJax/issues) can be used to discuss rendering issues.
+The markdown file supports LaTeX. Care needs to be taken as Python IDEs and webservers may use different engines to render LaTeX. JupyterLab and GitHub use MathJax but the MathJax on GitHub is a bit more picky and equations may render properly on JupyterLab but not in GitHub. In Visual Studio Code the extensions Markdown All in One and Markdown+Math use KaTeX. MathJax is more limited than KaTeX and is more prone to rendering issues. Markdown files uploaded to GitHub with LaTeX should be rechecked on GitHub to see if equations render properly. [MathJax GitHub](https://github.com/mathjax/MathJax/issues) can be used to discuss rendering issues.
 
 Only Office Desktop Editors is a cross-platform free office suite. Its Document has a powerful Equation Editor, that can be used as a What You See Is What You Get WYSIWYG LaTeX editor. Create your equation:
 
@@ -390,9 +390,9 @@ The equation is now in LaTeX format which you can copy and paste into a set of s
 
 ![img_010](./images/img_010.png)
 
-Only Office Desktop Editors seems to work well, with the exception of Column Vectors and Matrices due to some limitations in MathJaxs rendering. A column vector comes out as ```[\matrix{a\\b\\c}]``` and does not render properly. To render properly modifications need to be made to the prefix and suffix and spacing needs to be added, see below for more details.
+Only Office Desktop Editors seems to work well, with the exception of Column Vectors and Matrices due to some limitations in MathJaxs rendering. A Column Vector comes out as ```[\matrix{a\\b\\c}]``` and does not render properly. To render properly modifications need to be made to the prefix and suffix and spacing needs to be added, see below for more details.
 
-Microsoft Word also has an Equation Editor with a similar user interface that seems to work well. A column vector comes out as ```\left[\begin{matrix}a\\b\\c\\\end{matrix}\right]``` but spacing needs to be added for MathJax to render it. Similar changes need to be made to a matrix, see below for more details. Also the ```\funcapply``` prefix does not render properly and should be removed as a prefix from trigonmetric functions.
+Microsoft Word also has an Equation Editor with a similar user interface. Once again Column Vectors and Matrices don't render correctly although the output is closer to what MathJaxs accepts. A Column Vector comes out as ```\left[\begin{matrix}a\\b\\c\\\end{matrix}\right]``` but spacing needs to be added for MathJax to render it. Similar changes need to be made to a matrix. The LaTeX output for many trigonmetic functions has a ```\funcapply``` prefix that does not render properly and should be removed.
 
 ### Reserved Symbols (MathJax)
 
