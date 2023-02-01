@@ -355,12 +355,12 @@ If the image is in the same folder as the markdown file. The file name can be sp
 In the file path ```./``` can be used to specify a subfolder and ```../``` can be used to go up a level. The ```img_005.png``` in the subfolder ```images``` can be selected for example using the following markdown:
 
 ```
-![img_005](./images/img_005.png)
+![img_008](./images/img_008.png)
 ```
 
 Producing:
 
-![equation](./images/img_005.png)
+![equation](./images/img_008.png)
 
 It is recommended to enable file extensions for known file types and ensure all file extensions are lower case. GitHub seems to be sensitive regarding the case of the file extension and won't render properly if the file has a different case of file extension. Some programs will save to .PNG and others will save to .png by default. By enabling the file extension you will be able to see what case each file extension is using and can update them all to be lower case for the sake of being consistent. Note JupyterLab and VSCode are insenitive regarding extension case, so all may seem to be well until the folder with the markdown file and images are uploaded to GitHub.
 
@@ -368,7 +368,31 @@ It is recommended to enable file extensions for known file types and ensure all 
 
 The markdown file supports LaTeX. Care needs to be taken as Python IDEs and webservers may use different engines to render LaTeX. JupyterLab and GitHub use MathJax. In Visual Studio Code the extensions Markdown All in One and Markdown+Math use KaTeX. MathJax is more limited than KaTeX and is more prone to rendering issues. Markdown files uploaded to GitHub with LaTeX should be rechecked on GitHub to see if equations render properly. [MathJax GitHub](https://github.com/mathjax/MathJax/issues) can be used to discuss rendering issues.
 
-Microsoft Word has a What you see is what you get equation editor. Equations should be created in Unicode. After creating the equation, then create a blank equation created and changed the Unicode setting to LaTeX. Copy the equation you typed into Word into the Markdown file or Markdown cell. It may need to be modified slightly to render properly. Change the Microsoft Word Equation setting back to Unicode before typing a new equation.
+Only Office Desktop Editors is a cross-platform free office suite. Its Document has a powerful Equation Editor, that can be used as a What You See Is What You Get WYSIWYG LaTeX editor. Create your equation:
+
+![img_004](./images/img_004.png)
+
+![img_005](./images/img_005.png)
+
+![img_006](./images/img_006.png)
+
+![img_007](./images/img_007.png)
+
+Select LaTeX:
+
+![img_008](./images/img_008.png)
+
+Select Current (Linear):
+
+![img_009](./images/img_009.png)
+
+The equation is now in LaTeX format which you can copy and paste into a set of single \$ for an inline equation or double \$\$  for a display equation:
+
+![img_010](./images/img_010.png)
+
+Only Office Desktop Editors seems to work well, with the exception of Column Vectors and Matrices due to some limitations in MathJaxs rendering. A column vector comes out as ```[\matrix{a\\b\\c}]``` and does not render properly. To render properly modifications need to be made to the prefix and suffix and spacing needs to be added, see below for more details.
+
+Microsoft Word also has an Equation Editor with a similar user interface that seems to work well. A column vector comes out as ```\left[\begin{matrix}a\\b\\c\\\end{matrix}\right]``` but spacing needs to be added for MathJax to render it. Similar changes need to be made to a matrix, see below for more details. Also the ```\funcapply``` prefix does not render properly and should be removed as a prefix from trigonmetric functions.
 
 ### Reserved Symbols (MathJax)
 
