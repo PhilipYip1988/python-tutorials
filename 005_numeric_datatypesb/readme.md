@@ -53,7 +53,7 @@ The datatype is ```int``` as expected:
 
 ### Identifiers
 
-Inputting ```num1.``` and pressing tab ```↹``` will displa a list of identifiers:
+Inputting ```num1.``` and pressing tab ```↹``` will display a list of identifiers:
 
 ![img_007](./images/img_007.png)
 
@@ -1174,7 +1174,7 @@ complex.mro()
 
 ![img_105](./images/img_105.png)
 
-### init signature
+### Initialization Signature
 
 The init signature of the ```complex``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
 
@@ -1279,7 +1279,7 @@ abs(num1)
 
 ## Binary Data Model Operators
 
-The binary operators will carry out the mathematical operation for there real components and imaginary components, treating the real and imaginary components as seperate variables. This canbe seen with addition and subtraction:
+The binary operators will carry out the mathematical operation for there real components and imaginary components, treating the real and imaginary components as seperate variables. This can be seen with addition and subtraction:
 
 $$(2+1j)+(3-2j)=(2+3)+(1-2)j=5-1j$$
 
@@ -1301,23 +1301,130 @@ num1 - num2
 
 ![img_119](./images/img_119.png)
 
+In multiplication, the individual terms are algebraically calculated:
 
+$$(2+1j)\ast(3-2j)=2\ast3+1j\ast3+2j\ast-2j+1j\ast-2j=6+3j-4j-2j^{2}=6-j-2j^{2}$$
 
+However taking the original definition of $j^{2}=-1$, this can be simplified:
 
+$$6-j-2j^{2}=6-j-2\ast-1=6-j+2=8-j$$
 
+```
+num1 = 2+1j
+num2 = 3-2j
+num1 * num2
+```
 
+![img_120](./images/img_120.png)
 
+Now some properties of the complex conjugate can be explored. When a number is added to its complex conjugate, the real component doubles and the imaginary components cancel out. When a number is subtracted by its complex conjugate its real term cancels and its imaginary component doubles. 
+
+$$(2+1j)+(2-1j)=(4)+(1-1)j=4$$
+
+$$(2+1j)-(2-1j)=(2-2)+(1+1)j=2j$$
+
+Multiplication of a number by its complex conjugate yields the square magnitude of a complex number. This is real as the imaginary components cancel and $j^{2}=-1$:
+
+$$(2+1j)\ast(2-1j)=2\ast2+1j\ast2+2\ast-1j+1j\ast1j=4+2j-2j-1j^{2}=4-j^{2}=5$$
+
+```
+num1 = 2+1j
+num2 = num1.conjugate()
+num2
+num1 + num2
+num1 - num2
+num1 * num2
+```
+
+![img_121](./images/img_121.png)
+
+Float division of a complex number uses the complex conjugate of the denominator. This is multiplied to the top and bottom:
+
+$$\frac{\left(2+1j\right)}{\left(2-2j\right)}=\frac{\left(2+1j\right)}{\left(2-2j\right)}\ast\frac{\left(2+2j\right)}{\left(2+2j\right)}=\frac{\left(2+1j\right)\ast\left(2+2j\right)}{\left(2-2j\right)\ast\left(2+2j\right)}$$
+
+This means the denominator can be evaluated down to a real number:
+
+$$\frac{\left(2+1j\right)\ast\left(2+2j\right)}{\left(4-4j+4j-4j^2\right)}=\frac{\left(2+1j\right)\ast\left(2+2j\right)}{8}$$
+
+The numerator can then be evaluated to get the result:
+
+$$\frac{4+2j+4j+2j^{2}}{8}=\frac{2+6j}{8}=\frac{1+3j}{4}=0.25+0.75j$$
+
+```
+num1 = 2+1j
+num2 = 2-2j
+num1 / num2
+```
+
+![img_122](./images/img_122.png)
+
+The equal to operator and the not equal to operator are setup for the ```complex``` class. These check if both the real components are equal and if both the iamginary components are equal:
+
+```
+num1 = 2+1j
+num2 = 3-3j
+num1 == num2
+num1 != num2
+```
+
+![img_123](./images/img_123.png)
+
+The other four conditional operators will give a ```TypeError``` not supported. This is because there are two seperate sets of numbers to compare. The real component of ```num2``` is higher but the imaginary component of ```num1``` is higher, making their comparison ambiguous:
+
+![img_124](./images/img_124.png)
 
 ## Decimal class
 
-### import
+Floating point arithmetic differs from the decimal arithmetic one is acustomed to being brought up with the decimal system. The recursive rounding errors seen with floating point numbers are because they are under the hood stored as a binary number. Python has a ```Decimal``` class which is more precise than the floating point numbers and used in physics or finicial application when more accurcy is required. The down side of using the ```Decimal``` class is it must be imported.
 
-### init signature
+### Importing Decimal
 
-### identifiers
+The ```Decimal``` class (PascalCase) is found within ```decimal``` module. The ```decimal``` module can be imported using:
+
+```
+import decimal
+```
+
+Inputting ```decimal.``` and pressing tab ```↹``` will display a list of identifiers:
+
+![img_125](./images/img_125.png)
+
+The main item of interest is the ```Decimal``` class, most of the other identifers are related to the context. To examine the context, the ```getcontext``` function can be used:
+
+![img_126](./images/img_126.png)
+
+The context has a precision ```prec``` which has a default value of 28. The identifier ```MAX_PREC``` specifies the maximum precision possible on a supercomputer, although using this value will likely exceed your computer memory.
+
+The context has ```rounding``` which has a default value of ```ROUND_HALF_EVEN```. The other possibilities are all other identifiers ```ROUND_05UP```, ```ROUND_CEILING```, ```ROUND_DOWN```, ```ROUND_FLOOR```, ```ROUND_HALF_DOWN```, ```ROUND_HALF_EVEN```, ```ROUND_HALF_UP```, ```ROUND_UP```.
+
+The context has ```Emin``` and ```Emax``` which are the minimum and maximum values of the exponent. The identifiers ```MIN_EMIN``` and ```MAX_EMAX``` specifies the minimum and maximum values for the exponent possible on a supercomputer, once again using these values will likely exceed your computer memory.
 
 
-### data model identifiers
+getcontext'
+
+'localcontext', 'setcontext'
+'Context'
+'BasicContext',   'DefaultContext'
+
+
+'Rounded', 'Clamped', 'Subnormal', 'Underflow',  'Overflow','DivisionByZero', 'DivisionImpossible', 'DivisionUndefined', 'ExtendedContext', 'InvalidContext',  'HAVE_CONTEXTVAR', 'HAVE_THREADS', 'Inexact', 'InvalidOperation',  'DecimalException',  'FloatOperation', 'ConversionSyntax',
+
+'DecimalTuple', 
+
+'Decimal',
+
+ 'MIN_ETINY',
+
+
+
+
+
+### Initialization Signature
+
+### Identifiers
+
+
+### Data Model Identifiers
 
 
 
