@@ -20,13 +20,13 @@ When running Python code from the Terminal, two programming languages are used. 
 
 [Terminal Commands](https://github.com/PhilipYip1988/python-tutorials/blob/main/003_terminal/readme.md)
 
-## Python Builtins
+## Fundamental Data Types
 
 There are 3 fundamental text data types, the unicode string, the bytes string and the bytearray. The Unicode string is the most widely used text data type in Python, however it is useful to know about the other two data types and establish a concept behind encoding:
 
 [Text Data Types: str, bytes, bytearray](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes#readme)
 
-There are six fundamental numeric datatypes used in Python. The ```int``` class (whole number), ```bool``` class (```True``` or ```False```), the ```float``` class (number with a decimal point), the ```complex``` class (number with imaginary component $j=\sqrt{-1}$), the ```float``` class (number displayed with a decimal point but encoded in binary), ```Decimal``` class (higher accuracy number with decimal point encoded in decimal) and the ```Fraction``` class:
+There are 6 fundamental numeric datatypes used in Python. The ```int``` class (whole number), ```bool``` class (```True``` or ```False```), the ```float``` class (number with a decimal point), the ```complex``` class (number with imaginary component $j=\sqrt{-1}$), the ```float``` class (number displayed with a decimal point but encoded in binary), ```Decimal``` class (higher accuracy number with decimal point encoded in decimal) and the ```Fraction``` class:
 
 [Fundamental Numeric Datatypes: int, bool, float, complex, Decimal, Fraction](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numeric_datatypes/readme.md)
 
@@ -41,6 +41,8 @@ The fractions module is based around the Fraction class. Use of fractions is som
 This tutorial looks at the practical applications of using numeric and text data types. It also examines how these data types are used with hardware to communicate with a user and highlights the differences in numbering systems used by humans versus the numbering systems used by computers and some important consequences when dealing with both these numbering systems:
 
 [Understanding Numbering Systems](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numbering_systems/readme.md)
+
+## Collections and Programming Constructs
 
 So far, only single text or numeric values have been considered. A collection can be used to group data. The string itself behaves as a collection as it is a collection of characters. This tutorial will examine the collection properties of the string, before moving onto the list, tuple, set and dictionary collections.
 
@@ -66,12 +68,6 @@ Previously inbuild classes such as the int, bool, float, str, list, tuple, set a
 
 [Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/011_classes/readme.md)
 
-## Python Standard Modules
-
-The Python Standard Modules are Modules that are included with the Python installation. There are approximately 200 standard modules in the [Python module Index](https://docs.python.org/3/py-modindex.html). The Python Module Index lists each module in alphabetical order and gives brief details about each module. It is possible to get overwhelmed when looking at this list for the first time. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used. Some of the modules are much more commonly used than others an some of the modules are designed more for advanced Python programmers and Python developers. It is not recommended to attempt to learn these in the alphabetical order listed.
-
-This guide selects some of the more commonly used modules and places them in a good order for the purpose of learning. Tackling the modules in this order will reinforce the programming concepts learned from the builtins Python Module and give a prequisite understanding of Python required for more specialised purposes such as Data Science or Web Development.
-
 The assignment operator ```=``` assigns a value to an object name. If the object is a collection such as a list, assignment results in an alias for the object i.e. one object with two object names and does not copy the object. The copy module contains two functions copy which performs a shallow copy and deepcopy which performs a deep copy:
 
 [Copy](https://github.com/PhilipYip1988/python-tutorials/blob/main/012_copy/readme.md)
@@ -91,6 +87,12 @@ The builtins module contains the str, list, tuple, set and dict collections. The
 The concept of an iterators was covered briefly when looking at inbuilt collections and constructing a for loop. The builtins module contains commonly used iterators such as the zip, filter and map iterator classes. Python also has an iterator module itertools that contains zip_longest, filterfalse, and starmap iterator classes which complement their similar counterpart in builtins. The itertools module also has a cycle, repeat and count iterator classes which are endless iterators. The cycle iterator can be used to continuously index around a collection, returning to the top after reaching the bottom. Like the collections module, the itertools module is one of the closest modules to Python builtins. Effective use of these two modules simplifies common programming tasks and generally makes the code more Pythonic and easier to read:
 
 [Iterator Tools Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/019_itertools/readme.md) 
+
+## Standard Modules
+
+The Python Standard Modules are Modules that are included with the Python installation. There are approximately 200 standard modules in the [Python module Index](https://docs.python.org/3/py-modindex.html). The Python Module Index lists each module in alphabetical order and gives brief details about each module. It is possible to get overwhelmed when looking at this list for the first time. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used. Some of the modules are much more commonly used than others an some of the modules are designed more for advanced Python programmers and Python developers. It is not recommended to attempt to learn these in the alphabetical order listed.
+
+This guide selects some of the more commonly used modules and places them in a good order for the purpose of learning. Tackling the modules in this order will reinforce the programming concepts learned from the builtins Python Module and give a prequisite understanding of Python required for more specialised purposes such as Data Science or Web Development.
 
 This guide looks at the use of the Operating System module and the shell utilities shutil module. These modules are used to carry out file operations within Python and behave similar to the equivalent commands in bash. This tutorial will examine how to read and write data to a text file.
 
