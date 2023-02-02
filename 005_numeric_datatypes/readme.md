@@ -1429,12 +1429,202 @@ Once imported the docstring of the ```Decimal``` class can be viewed by inputtin
 
 ![img_129](./images/img_129.png)
 
+The initialization signature has a keyword input argument which is normally a string:
+
+```
+num1 = Decimal(value='1')
+num1
+```
+
+
+
+Value can also be an integer. Notice that the representation defaults to a string:
+
+```
+num1 = Decimal(value=2)
+num1
+```
+
+
+
+When the value is not an integer, it should be supplied as a string:
+
+```
+num1 = Decimal(value='0.1')
+num1
+```
+
+
+
+Notice that if the value is supplied as a floating point number, the limited precision and recursive rounding errors due to float binary encoding carry over to the conversion:
+
+```
+num1 = Decimal(value=0.1)
+num1
+```
+
+
+
+For this reason it is preferable to use a string to instantiate a decimal opposed to another number.
+
+
+
+
+
+
+There are some more details about this in the alternative constructor ```from_float``` which is a class method. Its docstring can be viewed by inputting the method with open parenthesis followed with a shift ```⇧``` and tab ```↹```:
+
+
+
+
+```
+num1 = Decimal.from_float(0.1)
+num1
+```
+
+
+
+
+It is also possible to instantiate using a tuple of integers. This has the form: ```(sign, (digits), power)``` where the sign is ```0``` for positive values and ```1``` for negative values. The digits are each of the digits in the mantissa and the power is the power of the decimal exponent.
+
+```
+num1 = Decimal(value=(0, (1,), -1))
+num1
+```
+
+
+If using the tuple notation, it is often easier to use the named tuple class ```DecimalTuple```, which adds names to the fields in the tuple and therefore makes the code more readible:
+
+```
+from decimal import DecimalTuple
+dectuple1 = DecimalTuple(sign=0, digits=(1,), exponent=(-1))
+dectuple1
+num1 = Decimal(value=dectuple1)
+num1
+```
+
+
+Or more directly:
+
+```
+num1 = Decimal(value=DecimalTuple(sign=0, digits=(1,), exponent=(-1)))
+num1
+```
 
 
 ### Identifiers
 
+```
+num1 = Decimal(value='0.1')
+```
+
+```
+num1 = Decimal(value='0.1')
+num1.real
+num1.imag
+num1.complex()
+```
+
+```
+num1 = Decimal(value='0.1')
+num1.as_integer_ratio()
+```
+
+
+
+```
+num1.as_tuple()
+num1.to_eng_string()
+```
+
 
 ### Data Model Identifiers
+
+```
+num1 = Decimal(value='0.1')
+pprint.pprint(dir(num1), compact=True)
+```
+
+
+
+Differences between the formal string representation and informal string representation can be seen by comparing the output from the ```repr``` and ```str``` functions respectively:
+
+```
+repr(num1)
+str(num1)
+```
+
+
+```
+num1 = Decimal(value='0.1')
+num2 = Decimal(value='0.2')
+num1 + num2
+0.1 + 0.2
+```
+
+
+
+```
+num1 = Decimal(value='0.5')
+num2 = Decimal(value='0.4')
+num1 - num2
+0.5 - 0.4
+```
+
+
+
+```
+num1 = Decimal(value='0.1')
+num2 = Decimal(value='0.2')
+num3 = Decimal(value='0.3')
+num3 == num1 + num2
+```
+
+
+
+
+```
+num1 = Decimal(value='1')
+num2 = Decimal(value='3')
+onethird = num1 / num2
+```
+
+
+```
+onethird + onethird + onethird
+onethird * 3
+```
+
+
+```
+num1 == onethird + onethird + onethird
+num1 > onethird + onethird + onethird
+```
+
+### Traps
+
+```
+from decimal import Decimal, getcontext, DivisionByZero
+num1 = Decimal(value='1')
+num2 = Decimal(value='0')
+num1 / num2
+```
+
+
+
+
+```
+getcontext().traps
+getcontext().clear_traps()
+getcontext().traps
+num1 / num2
+```
+
+
+```
+getcontext().traps[DivisionByZero] = True
+num1 / num2
+```
 
 
 
@@ -1444,17 +1634,19 @@ Once imported the docstring of the ```Decimal``` class can be viewed by inputtin
 fractions.Fraction.mro()
 ```
 
-### import
+### Importing Fraction
 
-### init signature
+### Initialization Signature
 
-### identifiers
-
-
-### data model identifiers
+### Identifiers
 
 
+### Data Model Identifiers
 
 
+
+multiple cursors jupyterlab
+
+It's possible now: 'ctrl + mouse click'
 
 
