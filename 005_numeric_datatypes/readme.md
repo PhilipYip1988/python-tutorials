@@ -1436,16 +1436,16 @@ num1 = Decimal(value='1')
 num1
 ```
 
-
+![img_130](./images/img_130.png)
 
 Value can also be an integer. Notice that the representation defaults to a string:
 
 ```
-num1 = Decimal(value=2)
+num1 = Decimal(value=1)
 num1
 ```
 
-
+![img_131](./images/img_131.png)
 
 When the value is not an integer, it should be supplied as a string:
 
@@ -1454,7 +1454,7 @@ num1 = Decimal(value='0.1')
 num1
 ```
 
-
+![img_132](./images/img_132.png)
 
 Notice that if the value is supplied as a floating point number, the limited precision and recursive rounding errors due to float binary encoding carry over to the conversion:
 
@@ -1463,27 +1463,20 @@ num1 = Decimal(value=0.1)
 num1
 ```
 
+![img_133](./images/img_133.png)
 
+For this reason it is preferable to use a string to instantiate a decimal opposed to another number. There are some more details about this in the alternative constructor ```from_float``` which is a class method. Its docstring can be viewed by inputting the method with open parenthesis followed with a shift ```⇧``` and tab ```↹```:
 
-For this reason it is preferable to use a string to instantiate a decimal opposed to another number.
+![img_134](./images/img_134.png)
 
-
-
-
-
-
-There are some more details about this in the alternative constructor ```from_float``` which is a class method. Its docstring can be viewed by inputting the method with open parenthesis followed with a shift ```⇧``` and tab ```↹```:
-
-
-
+Using this alternative constructor, gives a similar result to providing a floating point number:
 
 ```
 num1 = Decimal.from_float(0.1)
 num1
 ```
 
-
-
+![img_135](./images/img_135.png)
 
 It is also possible to instantiate using a tuple of integers. This has the form: ```(sign, (digits), power)``` where the sign is ```0``` for positive values and ```1``` for negative values. The digits are each of the digits in the mantissa and the power is the power of the decimal exponent.
 
@@ -1492,6 +1485,7 @@ num1 = Decimal(value=(0, (1,), -1))
 num1
 ```
 
+![img_136](./images/img_136.png)
 
 If using the tuple notation, it is often easier to use the named tuple class ```DecimalTuple```, which adds names to the fields in the tuple and therefore makes the code more readible:
 
@@ -1503,6 +1497,7 @@ num1 = Decimal(value=dectuple1)
 num1
 ```
 
+![img_137](./images/img_137.png)
 
 Or more directly:
 
@@ -1511,19 +1506,46 @@ num1 = Decimal(value=DecimalTuple(sign=0, digits=(1,), exponent=(-1)))
 num1
 ```
 
+![img_138](./images/img_138.png)
 
 ### Identifiers
+
+For example if the instance is assigned to an object name ```num1```:
 
 ```
 num1 = Decimal(value='0.1')
 ```
+
+Then pressing ```num1``` followed by a dot ```.``` and tab ```↹``` displays the identifiers:
+
+![img_139](./images/img_139.png)
+
+There is a large number of identifiers available for the ```Decimal``` class. These identifiers include equivalents to mathematical functions that are compartmentalised into a seperate ```math``` module for the the other numeric datatypes an will be covered in the ```math``` module tutorial once some other basics have been established:
+
+The ```Decimal``` class is setup, like the other number types for acompatibility with the ```complex``` class. 
 
 ```
 num1 = Decimal(value='0.1')
 num1.real
 num1.imag
-num1.complex()
+num1.conjugate()
 ```
+
+![img_140](./images/img_140.png)
+
+Although there is some compatibility, the ```complex``` class only operates with floating point numbers and any decimal instances are cast to flaoting point approximations. This can be seen if the following is attempted:
+
+```
+num1 = Decimal(value='0.1')
+num2 = Decimal(value='0.2')
+num3 = complex(real=num1, imag=num2)
+num4 = complex(real=num2, imag=num1)
+num3 + num4
+```
+
+![img_141](./images/img_141.png)
+
+
 
 ```
 num1 = Decimal(value='0.1')
