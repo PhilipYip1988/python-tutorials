@@ -1162,7 +1162,7 @@ def fun(y):
     x = 4
     return x + y
 
-z = fun(y=y)
+z = fun(y=3)
 print('end')
 ```
 
