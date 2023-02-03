@@ -839,6 +839,8 @@ The default channel for Mambaforge is the community ```conda-forge``` channel an
 
 ## The Scientific Python Development Environment (SPYDER)
 
+### Install Summary
+
 To recap Spyder is installed in its own Python environment using:
 
 ```
@@ -852,6 +854,8 @@ Spyder can be launched using:
 ```
 spyder
 ```
+
+### Preferences
 
 The Spyder IDE looks like the following:
 
@@ -881,7 +885,11 @@ Spyder will relaunch with the light theme:
 
 ![img_217](./images/img_217.png)
 
+### IPython Console
+
 To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called ```spyder``` and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
+
+### Dependencies 
 
 The Spyder Dependencies can be checked using Help from the Menu Bar and then Dependencies:
 
@@ -890,6 +898,8 @@ The Spyder Dependencies can be checked using Help from the Menu Bar and then Dep
 The mandatory and optional dependencies should be satisfied:
 
 ![img_117](./images/img_117.png)
+
+### Script Editor
 
 To the left is the script editor. By default a temporary script file in the location ```$UserProfile$/.spyder-py``` is open. To the top right, the files tab can be selected, this opens by default in ```$UserProfile$```:
 
@@ -911,9 +921,13 @@ Select Run with Default Configuration and Run:
 
 ![img_224](./images/img_224.png)
 
+### Files Pane
+
 The current working directory changes on the right hand side, to the directory of the running script file:
 
 ![img_225](./images/img_225.png)
+
+### Identifiers, Docstrings and Help Pane
 
 A list of builtin identifiers displays as code is input:
 
@@ -981,6 +995,7 @@ The code completion has improvements for Scientific Libraries:
 
 ![img_243](./images/img_243.png)
 
+### Comments and Cells
 
 In Python ```#``` is used to denote that a line of code is a comment. 
 
@@ -991,7 +1006,6 @@ Lines of code can be selected and options from the Edit Menu can be selected suc
 ![img_245](./images/img_245.png)
 
 ![img_246](./images/img_246.png)
-
 
 In Spyder ```#%%``` can be used to compartmentalise a Python Script File into cells. This can be demonstrated with the example code:
 
@@ -1020,6 +1034,8 @@ The top cell can be highlighted and the Run Current Cell and Advance button can 
 Alternately a line or multiple lines may be selected and the Run Selection button can be selected, their outyput show in the IPython Console:
 
 ![img_124](./images/img_124.png)
+
+### Variable Explorer
 
 Instances of common builtin classes can be created in the script editor. When the script is run, they will populate in the Variable Explorer:
 
@@ -1084,6 +1100,8 @@ Spyder applies a heatmap to the numeric data so the data can easily be visualise
 
 ![img_256](./images/img_256.png)
 
+### Restarting the Kernel
+
 The Kernel can be restarted by going to Consoles → Restart Kernel. 
 
 ![img_127](./images/img_127.png)
@@ -1095,6 +1113,8 @@ Accept the Warning to proceed:
 When the Kernel is Restarted the IPython Console reverteds back to 0, All Variables are erased and the imported libraries are no longer imported.
 
 ![img_129](./images/img_129.png)
+
+### Plotting
 
 Another test script can be made to test plotting:
 
@@ -1128,6 +1148,91 @@ Then to the left select IPython Console. To the right select the Graphics Tab an
 The plot now displays as an interactive Window:
 
 ![img_259](./images/img_259.png)
+
+### Debugger
+
+Spyder has an inbuilt debugger. The simple code will be debugged:
+
+```
+x = 1
+y = 2
+
+def fun(y):
+    x = 3
+    x = 4
+    return x + y
+
+z = fun(y=y)
+print('end')
+```
+
+Breakpoints can be added to the line numbers on the left:
+
+![img_266](./images/img_266.png)
+
+Once the breakpoints have been selected, Debug FIle can be selected:
+
+![img_267](./images/img_267.png)
+
+The Run Current Line button can be pressed to run throught the script line by line and debug:
+
+![img_268](./images/img_268.png)
+
+The variable ```x``` is assigned and displays on the variable explorer:
+
+![img_269](./images/img_269.png)
+
+The variable ```y``` is assigned and displays on the variable explorer:
+
+![img_270](./images/img_270.png)
+
+The function ```fun``` is assigned. This does not display on the variable explorer:
+
+![img_271](./images/img_271.png)
+
+However is accessible in the IPython COnsole. This can be seen by looking at the identifiers which begin with f:
+
+![img_272](./images/img_272.png)
+
+Now the debugger is on the function call. Selecting Next will call the function. Alternatively selecting step into will step into the function:
+
+![img_273](./images/img_273.png)
+
+Notice the arrow to the left is now on the first line of the function. The variable explorer displays the variables the function has access to which are the main ```x``` and instead of the main ```y```, the functions local variable ```y``` displays. This was provided as ```3``` when the function was called. This local variable can be thought of as reassignment of ```y``` but only in the functions local namespace, the main ```y``` outside the function is unchanged:
+
+![img_274](./images/img_274.png)
+
+Run current line can be used to run the function as it is called, line by line:
+
+![img_275](./images/img_275.png)
+
+The function has access to the main variable ```x```:
+
+![img_276](./images/img_276.png)
+
+In the function the local function variable ```x``` is created. This reassigns the value of ```x``` but only within the functions local namespace, leaving the main ```x``` outside the function unchanged. This local function variable ```x``` is now ```3```:
+
+![img_277](./images/img_277.png)
+
+This local function variable ```x``` is now ```4```:
+
+![img_278](./images/img_278.png)
+
+The return statement will compute the calculation ```x + y``` using the functions local variables gives ```7```:
+
+![img_279](./images/img_279.png)
+
+This value of ```7``` is then assigned to the main variable ```z``` (the function call was assigned to ```z```). In addition, the arrow is now pointing on the last line which is in the main namespace. The main ```x``` and main ```y``` display as ```1``` and ```2```:
+
+![img_280](./images/img_280.png)
+
+```--Return--``` displays indicating the functions return statement was carried out:
+
+![img_281](./images/img_281.png)
+
+This is the last line before the end breakpoint and all the code between the breakpoints have been executed. The prompt in the IPython console now shows the next number indicateing that the debugging has finished:
+
+![img_282](./images/img_282.png)
 
 ## JupyterLab
 
