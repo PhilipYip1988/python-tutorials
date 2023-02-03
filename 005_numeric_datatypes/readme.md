@@ -1520,9 +1520,9 @@ Then pressing ```num1``` followed by a dot ```.``` and tab ```↹``` displays th
 
 ![img_139](./images/img_139.png)
 
-There is a large number of identifiers available for the ```Decimal``` class. These identifiers include equivalents to mathematical functions that are compartmentalised into a seperate ```math``` module for the the other numeric datatypes an will be covered in the ```math``` module tutorial once some other basics have been established:
+There is a large number of identifiers available for the ```Decimal``` class. These identifiers include equivalents to mathematical functions that are compartmentalised into a seperate ```math``` module for the the other numeric datatypes. These will be covered in the ```math``` module tutorial once some other basics have been established.
 
-The ```Decimal``` class is setup, like the other number types for acompatibility with the ```complex``` class. 
+The ```Decimal``` class is setup, like the other number types for compatibility with the ```complex``` class. 
 
 ```
 num1 = Decimal(value='0.1')
@@ -1533,7 +1533,7 @@ num1.conjugate()
 
 ![img_140](./images/img_140.png)
 
-Although there is some compatibility, the ```complex``` class only operates with floating point numbers and any decimal instances are cast to flaoting point approximations. This can be seen if the following is attempted:
+Although there is some compatibility, the ```complex``` class only operates with floating point numbers and any decimal instances are essentially cast to floating point approximations. This can be seen if the following is attempted:
 
 ```
 num1 = Decimal(value='0.1')
@@ -1545,37 +1545,73 @@ num3 + num4
 
 ![img_141](./images/img_141.png)
 
-
+There is also some compatibility with the ```Fraction``` class:
 
 ```
 num1 = Decimal(value='0.1')
 num1.as_integer_ratio()
 ```
 
+![img_142](./images/img_142.png)
 
+The ```as_tuple``` method and ```to_eng_string``` will display the decimal as ```DecimalTuple``` and engineering string respectively:
 
 ```
+num1 = Decimal(value='1.2345e8')
 num1.as_tuple()
+```
+
+The engineering generally uses three digits and then a power that is a multiple of three. 
+
+```
 num1.to_eng_string()
 ```
 
+![img_143](./images/img_143.png)
+
+In engineering and scientific applciations typically the power and the unit are combined into a unit with a prefix.
+
+|power|prefix name|prefix letter|
+|---|---|---|
+|$10^{24}$|yotta|Y|
+|$10^{21}$|zetta|z|
+|$10^{18}$|exa|E|
+|$10^{15}$|peta|P|
+|$10^{12}$|tera|T|
+|$10^{9}$|giga|G|
+|$10^{6}$|mega|M|
+|$10^{3}$|kilo|k|
+|$10^{-3}$|milli|m|
+|$10^{-6}$|micro|µ|
+|$10^{-9}$|nano|n|
+|$10^{-12}$|pico|p|
+|$10^{-15}$|femto|f|
+|$10^{-18}$|atto|a|
+|$10^{-21}$|zepto|z|
+|$10^{-24}$|yocto|y|
 
 ### Data Model Identifiers
+
+To view the data model identifiers, the directory function ```dir``` can be used:
 
 ```
 num1 = Decimal(value='0.1')
 pprint.pprint(dir(num1), compact=True)
 ```
 
-
+![img_144](./images/img_144.png)
 
 Differences between the formal string representation and informal string representation can be seen by comparing the output from the ```repr``` and ```str``` functions respectively:
 
 ```
+num1 = Decimal(value='0.1')
 repr(num1)
 str(num1)
 ```
 
+![img_145](./images/img_145.png)
+
+The data model identifiers in the Decimal class behave similarly to their counterparts in the float class. The recursive rounding issues prevalent due to binary encoding are not prevalent:
 
 ```
 num1 = Decimal(value='0.1')
@@ -1584,7 +1620,7 @@ num1 + num2
 0.1 + 0.2
 ```
 
-
+![img_146](./images/img_146.png)
 
 ```
 num1 = Decimal(value='0.5')
@@ -1593,7 +1629,7 @@ num1 - num2
 0.5 - 0.4
 ```
 
-
+![img_147](./images/img_147.png)
 
 ```
 num1 = Decimal(value='0.1')
@@ -1602,8 +1638,9 @@ num3 = Decimal(value='0.3')
 num3 == num1 + num2
 ```
 
+![img_148](./images/img_148.png)
 
-
+The recursive rounding issues prevalent due to decimal encoding are however prevalent:
 
 ```
 num1 = Decimal(value='1')
@@ -1611,44 +1648,86 @@ num2 = Decimal(value='3')
 onethird = num1 / num2
 ```
 
+![img_149](./images/img_149.png)
 
 ```
 onethird + onethird + onethird
 onethird * 3
 ```
 
+![img_150](./images/img_150.png)
+
+Care needs to be taken with comparison operators when decimal recursive rounding issues occur:
 
 ```
-num1 == onethird + onethird + onethird
+threethird = onethird + onethird + onethird
+threethird
+num1 == threethird
 num1 > onethird + onethird + onethird
 ```
 
+![img_151](./images/img_151.png)
+
 ### Traps
 
+The traps are configured, by default to match those of the float class:
+
 ```
-from decimal import Decimal, getcontext, DivisionByZero
-num1 = Decimal(value='1')
-num2 = Decimal(value='0')
+1.0 / 0.0
+```
+
+![img_152](./images/img_152.png)
+
+```
+num1 = Decimal(value='1.0')
+num2 = Decimal(value='0.0')
 num1 / num2
 ```
 
+![img_153](./images/img_153.png)
 
+This behaviour is defined in the context trap. To view the context, import the following:
 
+```
+from decimal import Decimal, getcontext, DivisionByZero
+```
+
+Then use the function ```getcontext```:
+
+![img_154](./images/img_154.png)
+
+If ```getcontext()``` is input followed by a dot ```.``` and tab ```↹``` a number of identifiers can be seen:
+
+![img_155](./images/img_155.png)
+
+The ```traps``` statement and ```clear_traps``` function can be used:
 
 ```
 getcontext().traps
 getcontext().clear_traps()
 getcontext().traps
+```
+
+![img_156](./images/img_156.png)
+
+Notice that the ```traps``` statement displays a dictionary. A dictionary has key value pairs. In this case the keys are the error classes and the values are boolean ```True``` or ```False```. When the traps are cleared these all have a value of ```False```. Now the following works:
+
+```
 num1 / num2
 ```
 
+![img_157](./images/img_157.png)
+
+Notice that the returned ```Decimal``` instance incorporates a string of ```'Infinity'```.
+
+The traps dicitionary can be indexed into with one of the error class signals and assigned a boolean value of ```True```. This enables the trap and the error class will display when division by zero is attempted:
 
 ```
 getcontext().traps[DivisionByZero] = True
 num1 / num2
 ```
 
-
+![img_158](./images/img_158.png)
 
 ## Fraction class
 
