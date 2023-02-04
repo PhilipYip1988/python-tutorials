@@ -1260,198 +1260,365 @@ jupyter lab build
 
 Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using modifying the above command. 
 
+### Launching JupyterLab
+
 There is no Start Menu Shortcut for JupyterLab. To launch JupyterLab, use the Mambaforge Prompt, activate the ```jupyterlab``` Python environment and use:
 
 ```
 jupyter lab
 ```
 
+Note the space.
+
 ![img_146](./images/img_146.png)
 
-JupyterLab launches in the browser. To the left hand side is a file explorer:
+### File Explorer
 
-![img_147](./images/img_147.png)
+The JupyterLab IDE is browser based and has its own file explorer. This will open in the default loaction ```%UserProfile%```. The Documents folder can be selected:
 
-Compatible files can be opened by double clicking them. For example the ```script0.py``` file:
+![img_283](./images/img_283.png)
 
-![img_148](./images/img_148.png)
+The Documents folder is now open:
 
-To run a Python Script File, it will require an IPython Console. Right click the file and select Create Console for Editor:
+![img_284](./images/img_284.png)
 
-![img_149](./images/img_149.png)
+The right click context menu can be used to create a new file or folder or to paste a file or folder:
 
-Select Python 3 (ipkernel) and select Select:
+![img_285](./images/img_285.png)
 
-![img_150](./images/img_150.png)
+### Launcher
 
-The interactive Python Console Kernel will show in its own tab:
+To the right hand side is the Launcher. It can be used to create new files. A text file will be selected:
 
-![img_151](./images/img_151.png)
+![img_286](./images/img_286.png)
 
-Select Run and then Run All Code:
+### Text File
 
-![img_152](./images/img_152.png)
+The text file displays in the file explorer. Its file name and extension (```.txt```) also display on the tab heading:
 
-It is also possible here to make a selection within the Python Script File and select Run.
+![img_287](./images/img_287.png)
 
-The code will run and the output from the script file will be shown in an IPython console cell:
+This file will also display in Windows File Explorer:
 
-![img_153](./images/img_153.png)
+![img_288](./images/img_288.png)
 
-It is also possible to run a script file using a Terminal. Select Terminal from the launcher:
+The File can be right clicked in the File Explorer and Renamed. This also works if the tab header is right clicked:
 
-![img_154](./images/img_154.png)
+![img_289](./images/img_289.png)
 
-The Terminal will show in the launchers tab:
+The file is going to be renamed ```textfile.txt```:
 
-![img_155](./images/img_155.png)
+![img_290](./images/img_290.png)
 
-This tab can be repositioned:
+The File Explorer and Tab Heading now show the new file name:
 
-![img_156](./images/img_156.png)
+![img_291](./images/img_291.png)
 
-The code in the script file can be run by changing to the Documents folder and using Python to execute the script file:
+The file name is now updated in the File Explorer:
+
+![img_292](./images/img_292.png)
+
+A text file only allows basic text input and has no formatting:
+
+![img_293](./images/img_293.png)
+
+To make the changes select File→Save: 
+
+![img_294](./images/img_294.png)
+
+This file can also be opened in Windows File Explorer using Notepad:
+
+![img_295](./images/img_295.png)
+![img_296](./images/img_296.png)
+
+### Markdown File
+
+A Markdown file (``.md``` file extension) incorporates simple text formatting using Markdown syntax. A new launcher can be opened by selecting the + button on the file explorer. It opens in a new tab. Select Markdown File:
+
+![img_297](./images/img_297.png)
+
+The file can be renamed as seen earlier:
+
+![img_298](./images/img_298.png)
+
+JupyterLab will apply some basic syntax highlighting to markdown:
+
+![img_299](./images/img_299.png)
+
+The formatted file can be viewed by right clicking some blank whitespace in the markdown file and selecting Show Markdown Preview:
+
+![img_300](./images/img_300.png)
+
+This opens the Markdown Preview in a new pane to the right. Notice that the navigation pane shows the headings. This act as itnernal hyperlinks:
+
+![img_301](./images/img_301.png)
+
+**Unfortunately the Left Markdown Pane and Right Markdown Preview Pane are not linked.** So the links will only act on the last pane selected which causes some usability issues. Editting the Markdown Pane also usually results in the Markdown Preview Pane automatically returning to the top which can be quite annoying. 
+
+The navigation pane can be colapsed for more screen space. As seen, the position of the Left Markdown Pane and Right Markdown Preview Pane are not linked:
+
+![img_302](./images/img_302.png)
+
+### Python Script File
+
+A new launcher can be launched and this time a Python Script file (```.py``` file extension) can be selected:
+
+![img_303](./images/img_303.png)
+
+The file can be renamed as seen earlier:
+
+![img_304](./images/img_304.png)
+
+Unfortunately JupytewrLab won't apply any syntax highlighting or display any identifiers by default. Inputting ```p``` and pressing tab ```↹``` for example does nothing:
+
+![img_305](./images/img_305.png)
+
+An IPython Console is required. Right click the file and select Create COnsole for Editor:
+
+![img_306](./images/img_306.png)
+
+Select Python 3 and then select Select:
+
+![img_307](./images/img_307.png)
+
+### Identifiers and Docstrings
+
+Inputting ```p``` and pressing tab ```↹``` now displays identifiers:
+
+![img_308](./images/img_308.png)
+
+To view the docstring of a function as a popup balloon, input the function with open parenthesis and then press shift ```⇧``` and tab ```↹```:
+
+![img_309](./images/img_309.png)
+
+The File Explorer can be minimised for more screen space. The IPython console displays in a new tab at the bottom, this can be repositioned:
+
+![img_310](./images/img_310.png)
+
+A list of inbuilt identifiers can be shown by inputting a character and pressing tab ```↹```. Alternatively builtins can be imported using:
 
 ```
-cd Documents
-python script0.py
+import builtins
 ```
 
-Note ```cd %UserProfile%\Documents``` did not work here as the Terminal is using an older version of PowerShell to the Mambaforge Prompt.
+And all the inbuilt identifiers can be viewed by inputting ```builtins.``` and pressing tab ```↹```:
 
-![img_157](./images/img_157.png)
+![img_311](./images/img_311.png)
 
-If instead ```script2.py``` is opened alongside an IPython Console:
+Note the identifiers will not display if there is not enough space. This can happen if the IPython Console window for example is expanded upwards.
 
-![img_158](./images/img_158.png)
+![img_312](./images/img_312.png)
 
-When all the code is Run:
+Identifier can also be viewed from Python Standard Modules:
 
-![img_159](./images/img_159.png)
+![img_313](./images/img_313.png)
 
-The plot displays inline as an IPython cell output:
+It is generally recommended to import the module into the IPython Console. To do this highlight the import lines and select Run → Run Code:
 
-![img_261](./images/img_261.png)
+![img_314](./images/img_314.png)
 
-The available plot backend can be viewed using the JupyterLab magic command:
+Doing so makes viewing a docstring from one of the modules identifiers easier. Recall to view the docstring of a function as a popup balloon, input the function with open parenthesis and then press shift ```⇧``` and tab ```↹```:
+
+![img_315](./images/img_315.png)
+
+The docstring can also be viewed in an IPython cell by inputting ```?``` followed by the functions object name. This is a reference to the function and should not include parenthesis which are used to call the function:
+
+![img_316](./images/img_316.png)
+
+JupyterLab also has Contextual Help. This can be launched from a new launcher:
+
+![img_317](./images/img_317.png)
+
+Unfortunately it does not work properly for a Python Script File:
+
+![img_318](./images/img_318.png)
+![img_319](./images/img_319.png)
+
+Identifiers can also be viewed from instances of builtin classes:
+
+![img_320](./images/img_320.png)
+
+Third party modules should be imported in the IPython Console in order for their identifiers to display:
+
+![img_321](./images/img_321.png)
+
+### Run Code and Run All Code
+
+The Python Script File only has the Run Code and Run All Code options. It does not recognise the ```#%%``` to create cells. A selection can be made and Run Code can be selected:
+
+![img_322](./images/img_322.png)
+![img_323](./images/img_323.png)
+
+Alternatively Run All Code can be selected:
+
+![img_324](./images/img_324.png)
+![img_325](./images/img_325.png)
+
+### Variable Inspector
+
+JupyterLab has a Variable Inspector. It can be accesed by right clicking some space in the IPython Console and selecting Open Variable Inspector:
+
+![img_326](./images/img_326.png)
+
+This opens in a new tab and can be repositioned.
+
+![img_327](./images/img_327.png)
+
+Unfortunately the Variable Inspector is very basic and Variables are not color-coded or itneractive like in SPyders Variable Explorer.
+
+Variables of the data science libraries can also be added:
+
+![img_328](./images/img_328.png)
+![img_329](./images/img_329.png)
+
+The IPython console can be used to address some of the shortcomings of the Variable Inspector:
+
+![img_330](./images/img_330.png)
+
+### Restarting the Kernel
+
+The IPython Kernel can be Restarted and Cleared by selecting Kernel → Restart Kernel and Clear Console:
+
+![img_331](./images/img_331.png)
+
+Select Restart:
+
+![img_332](./images/img_332.png)
+
+The IPython Console is cleared:
+
+![img_333](./images/img_333.png)
+
+And all Variables are removed from the Variable Inspector:
+
+![img_334](./images/img_334.png)
+
+### Plotting
+
+Plotting is by default inline. Which means a static image is output within the IPython Console:
+
+![img_335](./images/img_335.png)
+
+JupyterLab has so called magic commands which can be viewed by inputting % followed by a tab ```↹```: 
+
+![img_336](./images/img_336.png)
+
+The one that controls the plot backend is called ```%matplotlib``` and its options can be viewed by inputting the following into a IPython Console cell:
 
 ```
 %matplotlib --list
 ```
 
-![img_262](./images/img_262.png)
+![img_337](./images/img_337.png)
 
-The ```qt5``` backend will give an interactive plot, in a seperate window:
-
-```
-%matplotlib qt5
-```
-
-![img_263](./images/img_263.png)
-
-The default ```inline``` backend can be selected using:
-
-```
-%matplotlib inline
-```
-
-Although JupyterLab can be used with Python Script Files (```.py``` file extension). It is typically used with Interactive Python Notebook Files (```.ipynb``` file extension). A new Notebook can be created in the Launcher:
-
-![img_161](./images/img_161.png)
-
-It displays on the File Explorer and can be renamed by right clicking it:
-
-![img_162](./images/img_162.png)
-
-And selecting Rename:
-
-![img_163](./images/img_163.png)
-
-The notebook file consists of a series of cells. The default code, is a code cell:
-
-![img_164](./images/img_164.png)
-
-It can be switched to a ```markdown``` cell. Markdown uses a simple syntax for formatting text:
-
-![img_165](./images/img_165.png)
-
-The syntax highlighting changes and running the markdown cell will display the formatted markdown text:
-
-![img_166](./images/img_166.png)
-
-The Code cells behave similar to an IPython Console:
-
-![img_167](./images/img_167.png)
-
-Existing cells can however be edited and then rerun:
-
-![img_168](./images/img_168.png)
-
-JupyterLab has a basic Variable Inspector:
-
-![img_169](./images/img_169.png)
-
-It opens in a new tab, that can be repositioned:
-
-![img_170](./images/img_170.png)
-
-![img_171](./images/img_171.png)
-
-The Variable Inspector is very basic compared to Spyders Variable Explorer. The cell output of an Interactive Notebook is more typically used to view a Variable in more detail.
-
-![img_172](./images/img_172.png)
-
-Markdown Headings act as bookmarks:
-
-![img_173](./images/img_173.png)
-
-A list of identifiers can be seen from an object by typing in the objects name followed by a dot ```.``` and tab ```↹```:
-
-![img_174](./images/img_174.png)
-
-A functions docstring can be displayed in a popup balloon by typing in the functions name with open parenthesis and pressing the shift ```⇧``` and tab ```↹``` keys:
-
-![img_175](./images/img_175.png)
-
-The docstring can also be viewed as a cell output. If the cell output is long, the cell can be right clicked and Enabling Scrolling for Outputs can be selected.
-
-![img_176](./images/img_176.png)
-
-For plotting the default plot backend is ```inline``` showing a static image in the cell output:
-
-```
-%matplotlib inline
-```
-
-![img_264](./images/img_264.png)
-
-The backend can also be set to ```qt5``` displaying an interactive plot in a seperate window:
+The default plot backend is ```inline```. This can be switched to ```qt5``` using:
 
 ```
 %matplotlib qt5
 ```
 
-![img_265](./images/img_265.png)
+![img_338](./images/img_338.png)
 
-It can also be set to ```ipympl``` which gives a limited interactive plot nested into the cell output:
+### Terminal
+
+The magic commands are only recognised by IPython and not Python and should be commented out:
+
+![img_339](./images/img_339.png)
+
+Navigate to the folder you wish the Terminal to open in. Then select + to open a new launcher and then select Terminal:
+
+![img_340](./images/img_340.png)
+
+This is a PowerShell Terminal. Note the file path is shown in the Terminals Prompt:
+
+![img_341](./images/img_341.png)
+
+Input ```python``` followed by a sapce and then name of the script file with ```.py``` extension. In this case:
 
 ```
-%matplotlib ipympl
+python scriptfile.py
 ```
 
-Unfortunately this didn't work on my Windows Install but works on my Linux Install.
+The script file runs as expected and the plot displays as an interactive window:
 
-The alternative plotly library has wider support for this type of interactive plot:
+![img_342](./images/img_342.png)
 
-![img_177](./images/img_177.png)
+Note the Terminal will be running in an infinite loop while the plot is open:
 
-The ```ipynb``` files are typically opened by JupyterLab after JupyterLab is launched by the Mambaforge prompt. However it is insightful to view a file in notepad:
+![img_345](./images/img_345.png)
 
-![img_178](./images/img_178.png)
+Closing the plot ends the loop and the next prompt displays:
 
-The code is nodejs code. The nodejs code wraps around the Python or Markdown code for each cell:
+![img_346](./images/img_346.png)
 
-![img_179](./images/img_179.png)
+### Interactive Python Notebook
+
+# Update
+
+
+
+![img_347](./images/img_347.png)
+![img_348](./images/img_348.png)
+![img_349](./images/img_349.png)
+![img_350](./images/img_350.png)
+![img_351](./images/img_351.png)
+![img_352](./images/img_352.png)
+![img_353](./images/img_353.png)
+![img_354](./images/img_354.png)
+![img_355](./images/img_355.png)
+![img_356](./images/img_356.png)
+![img_357](./images/img_357.png)
+![img_358](./images/img_358.png)
+![img_359](./images/img_359.png)
+![img_360](./images/img_360.png)
+![img_361](./images/img_361.png)
+![img_362](./images/img_362.png)
+![img_363](./images/img_363.png)
+![img_364](./images/img_364.png)
+![img_365](./images/img_365.png)
+![img_366](./images/img_366.png)
+![img_367](./images/img_367.png)
+![img_368](./images/img_368.png)
+![img_369](./images/img_369.png)
+![img_370](./images/img_370.png)
+![img_371](./images/img_371.png)
+![img_372](./images/img_372.png)
+![img_373](./images/img_373.png)
+![img_374](./images/img_374.png)
+![img_375](./images/img_375.png)
+![img_376](./images/img_376.png)
+![img_377](./images/img_377.png)
+![img_378](./images/img_378.png)
+![img_379](./images/img_379.png)
+![img_380](./images/img_380.png)
+![img_381](./images/img_381.png)
+![img_382](./images/img_382.png)
+![img_383](./images/img_383.png)
+![img_384](./images/img_384.png)
+![img_385](./images/img_385.png)
+![img_386](./images/img_386.png)
+![img_387](./images/img_387.png)
+![img_388](./images/img_388.png)
+![img_389](./images/img_389.png)
+![img_390](./images/img_390.png)
+![img_391](./images/img_391.png)
+![img_392](./images/img_392.png)
+![img_393](./images/img_393.png)
+![img_394](./images/img_394.png)
+![img_395](./images/img_395.png)
+![img_396](./images/img_396.png)
+![img_397](./images/img_397.png)
+![img_398](./images/img_398.png)
+
+
+### Debugging
+
+![img_399](./images/img_399.png)
+![img_400](./images/img_400.png)
+![img_401](./images/img_401.png)
+![img_402](./images/img_402.png)
+![img_403](./images/img_403.png)
+![img_404](./images/img_404.png)
 
 The notebook consists of cells. The cells can be:
 
