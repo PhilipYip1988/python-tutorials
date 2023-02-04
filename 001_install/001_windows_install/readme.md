@@ -1763,24 +1763,89 @@ The file contents is in the Javascript Object Notation (JSON) format which is si
 
 ### Debugging
 
+JupyterLab has a debugger which seems to work bettewr with a Python Script File or all the code in a single Cell within a Python Interactive notebook:
+
 ![img_399](./images/img_399.png)
+
+Select the debug button on the IPython Console:
+
 ![img_400](./images/img_400.png)
+
+The debugger displays to the right. The breakpoints should be set on the script editor:
+
 ![img_401](./images/img_401.png)
+
+In my case, selecting Kernel → Restart Kernel and Debug:
+
 ![img_402](./images/img_402.png)
+
+Then Restart:
+
 ![img_403](./images/img_403.png)
+
+Did not enable any of the buttons on the Callstack:
+
 ![img_404](./images/img_404.png)
 
-The notebook consists of cells. The cells can be:
+Instead selecting Run → Run All Code:
 
-* markdown - for markdown syntax: The Markdown display will be shown when the code is run.
-* python - for Python code: Python code will be executed when the cell is run.
-* raw - The notebook itself is written in nodejs, another programming language used for web development. 
+![img_405](./images/img_405.png)
 
+Enabled the buttons on the Callstack:
 
+![img_406](./images/img_406.png)
 
+To the top is the option to view Local or Global Variables:
 
+![img_407](./images/img_407.png)
 
-To get to Keyboard Shortcuts. Select the Settings menu to the top and then select Advanced Settings Editor. To the left select Command Palette and then select keyboard shortcuts.
+The next button will be selected to run each line of code one by one:
+
+![img_408](./images/img_408.png)
+
+The variable ```x``` displays as a local variable. The local scope outwith any code block in the main script file is the global scope:
+
+![img_409](./images/img_409.png)
+
+The variable ```y``` is now displayed as a local variable:
+
+![img_410](./images/img_410.png)
+
+The function ```fun``` is displayed as a function variable:
+
+![img_411](./images/img_411.png)
+
+At the function call, there is an option to select next, which will perform the function call or step into, which will step into the function while its being called:
+
+![img_412](./images/img_412.png)
+
+WHen stepped into the functions own local scope is displayed. The local ```y``` is supplied as an input argument:
+
+![img_413](./images/img_413.png)
+
+The global scope has ```x``` and ```y``` which were assigned in the script file, outwith any code blocks:
+
+![img_414](./images/img_414.png)
+
+Selecting next, creates the local variable ```x```:
+
+![img_415](./images/img_415.png)
+
+Selecting next again updates the value of this local variable:
+
+![img_416](./images/img_416.png)
+
+Selecting next will use the return statement with the local variables ```x``` and ```y```:
+
+![img_417](./images/img_417.png)
+
+The result is returned to ```z``` which is shown in the global scope. The local scope is now the global scope as the line indicator is now in the main script file outwith the code block. The global variables ```x``` and ```y``` now display:
+
+![img_418](./images/img_418.png)
+
+Selecting next once again ends the debugging:
+
+![img_419](./images/img_419.png)
 
 ## Visual Studio Code
 
