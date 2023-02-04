@@ -1355,7 +1355,7 @@ This opens the Markdown Preview in a new pane to the right. Notice that the navi
 
 **Unfortunately the Left Markdown Pane and Right Markdown Preview Pane are not linked.** So the links will only act on the last pane selected which causes some usability issues. Editting the Markdown Pane also usually results in the Markdown Preview Pane automatically returning to the top which can be quite annoying. 
 
-The navigation pane can be colapsed for more screen space. As seen, the position of the Left Markdown Pane and Right Markdown Preview Pane are not linked:
+The navigation pane can be collapsed for more screen space. As seen, the position of the Left Markdown Pane and Right Markdown Preview Pane are not linked:
 
 ![img_302](./images/img_302.png)
 
@@ -1464,7 +1464,7 @@ This opens in a new tab and can be repositioned.
 
 ![img_327](./images/img_327.png)
 
-Unfortunately the Variable Inspector is very basic and Variables are not color-coded or itneractive like in SPyders Variable Explorer.
+Unfortunately the Variable Inspector is very basic and Variables are not color-coded or interactive like in Spyders Variable Explorer.
 
 Variables of the data science libraries can also be added:
 
@@ -1533,7 +1533,7 @@ This is a PowerShell Terminal. Note the file path is shown in the Terminals Prom
 
 ![img_341](./images/img_341.png)
 
-Input ```python``` followed by a sapce and then name of the script file with ```.py``` extension. In this case:
+Input ```python``` followed by a space and then name of the script file with ```.py``` extension. In this case:
 
 ```
 python scriptfile.py
@@ -1553,63 +1553,213 @@ Closing the plot ends the loop and the next prompt displays:
 
 ### Interactive Python Notebook
 
-# Update
-
-
+JupyterLab can be used to create an Interactive Python Notebook (```.ipynb``` file extension). Use the + to open a new launcher from the file explorer and then select Notebook:
 
 ![img_347](./images/img_347.png)
+
+The file can be renamed as seen earlier:
+
 ![img_348](./images/img_348.png)
+
+The Interactive Python Notebook is Cell based. Each Cell can be a Code Cell or a Markdown Cell:
+
 ![img_349](./images/img_349.png)
+
+The first cell can be set to Markdown:
+
 ![img_350](./images/img_350.png)
+
+A second cell can be added using the + Button. The default Cell Type is Code. Notice the difference in Syntax Highlighting for each cell:
+
 ![img_351](./images/img_351.png)
+
+When a markdown cell is selected and the run button is pressed, it will display the equivalent seen on the Markdown Preview. When the Code Cell is selected and the Run button is pressed, it will Run the Code. Each Code cell is part of the Notebooks IPython Console and the number displayed indicated the order the Cells were ran in the IPython Console:
+
 ![img_352](./images/img_352.png)
+
+The Navigation Pane can be opened:
+
 ![img_353](./images/img_353.png)
+
+Any Markdown Headings will appear as hyperlinks:
+
 ![img_354](./images/img_354.png)
+
+If a Markdown Cell that has been run, is double clicked, it will revert from the Markdown Preview to the Markdown Editor and can be modified. It is convenient to use shortcut keys for the Run button. The shortcut key ```⇧``` and ```↵``` will Run the Cell:
+
 ![img_355](./images/img_355.png)
+
+Notice the Markdown Preview once again displays. If this is once again double clicked:
+
 ![img_356](./images/img_356.png)
+
+The shortcut key ```Alt``` and ```↵``` will run a cell and insert a blank cell below it:
+
 ![img_357](./images/img_357.png)
+
+The new Cell is a Code Cell by default:
+
 ![img_358](./images/img_358.png)
+
+The shortcut key ```Esc``` and ```m``` will change the current cell to a markdown cell:
+
 ![img_359](./images/img_359.png)
+
+The shortcut key ```Esc``` and ```y``` will change the current cell to a code cell:
+
 ![img_360](./images/img_360.png)
+
+Supposing the following is input:
+
+```
+print('Hello')
+print('Hello')
+print('Hello')
+```
+
 ![img_361](./images/img_361.png)
+
+When it is executed the Cell now has a number of 2. This is the second cell in the IPython Console. This differs from the order of the Cells from top to bottom:
+
 ![img_362](./images/img_362.png)
+
+If the ```Ctrl``` key is held down, the cursor can be positioned in multiple places using the mouse and left clicking:
+
 ![img_363](./images/img_363.png)
+
+This allows multiple line editting and typing in ```World!``` will update the three print statements:
+
 ![img_364](./images/img_364.png)
+
+These can be ran again. Note the Cell is now displayed with a 3 as the Cell has been Run again and the 2 has been superseded:
+
 ![img_365](./images/img_365.png)
+
+If the Cell Output is right clicked, Enabling Scrolling for Outputs can be selected: 
+
 ![img_366](./images/img_366.png)
+
+This view can be particularly useful if wanting to include a long docstring in the notebook:
+
 ![img_367](./images/img_367.png)
+
+The up and down arrows can be used to reposition a cell to move the Cell up or down. If the blue bar to the left of the Cell is left clicked and the left click is held down, the Cell can be repositioned by dragging it up or down:
+
 ![img_368](./images/img_368.png)
+
+The New Cell Below and New Cell Above Buttons can be used to insert a new Cell below or above respectively:
+
 ![img_369](./images/img_369.png)
+
+The Delete Cell Button can be used to Delete a Cell:
+
 ![img_370](./images/img_370.png)
+
+There are also the standard Save, Cut, Copy and Paste Buttons to the top left. Beside the Run button is the Stop Button. There is also the button to Reset the Kernel:
+
 ![img_371](./images/img_371.png)
+
+Restarting the Kernel will restart the IPython Console and clear all Variables from the Variable Inspector. Select Restart:
+
 ![img_372](./images/img_372.png)
+
+The previous Cell Outputs wil remain. Running the top Cell will now display 1:
+
 ![img_373](./images/img_373.png)
+
+This can result in confusion as there are now 2 cells with 1. The Restart the Kernl and Run All Cells button can be pressed:
+
 ![img_374](./images/img_374.png)
+
+Select Restart:
+
 ![img_375](./images/img_375.png)
+
+Now all the Cells are ran from top to bottom:
+
 ![img_376](./images/img_376.png)
+
+All the Python Code in the Python Script File can be used in the notebook. Markdown Headings and text can be used to supplement Python comments:
+
 ![img_377](./images/img_377.png)
+
+The Cell Output can be sued to view a Variable or display a static inline Plot:
+
 ![img_378](./images/img_378.png)
+
+The possible matplotlib magic backends can be listed in a cell output and another cell can be used to configure the backend to qt5:
+
 ![img_379](./images/img_379.png)
+
+When the cell is ran with the plot, it now displays in its own iteractive window. The plot is tied to the cell it was Run from.Other Cells can be Run while this plot window is open:
+
 ![img_380](./images/img_380.png)
+
+The backend can be changed to ```ipympl```:
+
 ![img_381](./images/img_381.png)
+
+Doing so normally requires Restarting the Kernel:
+
 ![img_382](./images/img_382.png)
+
+Select Kernel → Restart Kernel and Clear All Outputs:
+
 ![img_383](./images/img_383.png)
+
+Select Restart:
+
 ![img_384](./images/img_384.png)
+
+Select Run All Cells:
+
 ![img_385](./images/img_385.png)
+
+The plot backend is now ```ipympl```:
+
 ![img_386](./images/img_386.png)
+
+This gives a nested interactive Python plot in the Cell Output. Unfortunately at this time of writing the interactivity of this nested plot is limited compared to the Qt5 plot backend:
+
 ![img_387](./images/img_387.png)
+
+The Interactive Python Notebook is browser based and can used browser based libraries such as plotly express. This can be imported:
+
 ![img_388](./images/img_388.png)
+
+Its identifiers can be seen by inputting ```px.``` and pressing tab ```↹```:
+
 ![img_389](./images/img_389.png)
+
+The docstring for the scatter function can be viewed in the Cell Output:
+
 ![img_390](./images/img_390.png)
+
+And Enabling Scrolling for Outputs can be selected:
+
 ![img_391](./images/img_391.png)
 ![img_392](./images/img_392.png)
+
+If the File Explorer is expanded. A new launcher can be made to Show Contextual Help:
+
 ![img_393](./images/img_393.png)
+
+The Contextual Help Pane opens in a new tab and can be used to view the docstring of the currently selected object:
+
 ![img_394](./images/img_394.png)
+
+The scatter plot can be used with the dataframe:
+
 ![img_395](./images/img_395.png)
+
+The Interactive Python Notebook can be saved with the Save button. It is worthwhile examining the file in file explorer. It can be opened with Notepad:
+
 ![img_396](./images/img_396.png)
 ![img_397](./images/img_397.png)
-![img_398](./images/img_398.png)
 
+The file contents is in the Javascript Object Notation (JSON) format which is similar to a Python dictionary:
+
+![img_398](./images/img_398.png)
 
 ### Debugging
 
@@ -1626,13 +1776,9 @@ The notebook consists of cells. The cells can be:
 * python - for Python code: Python code will be executed when the cell is run.
 * raw - The notebook itself is written in nodejs, another programming language used for web development. 
 
-The shortcut key ```esc``` and ```m``` will change the current cell to a markdown cell.
 
-The shortcut key ```esc``` and ```y``` will change the current cell to a code cell.
 
-The shortcut key ```⇧``` and ```↵``` will run a cell.
 
-The shortcut key ```alt``` and ```↵``` will run a cell and insert a blank cell below it.
 
 To get to Keyboard Shortcuts. Select the Settings menu to the top and then select Advanced Settings Editor. To the left select Command Palette and then select keyboard shortcuts.
 
