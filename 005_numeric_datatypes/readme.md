@@ -632,6 +632,41 @@ bin(num1 >> 2)
 
 ```__lshift__``` and ```__rshift__``` also map to the assignment binary left shift operator ```<<=``` and assignment binary right shift operator ```>>=```. There is the associated reverse versions ```__rlshift__``` and ```__rrshift__```.
 
+### PEDMAS
+
+PEDMAS is an abbreviation for order of operator precedence:
+
+|Letter|Meaning|Operator|
+|---|---|---|
+|P|Parenthesis|( )|
+|E|Exponentiation|\*\*|
+|D|Division (Floor, Float or Modulus)|\\ or \\\\ or %|
+|M|Multiplication|\*|
+|A|Addition or Positive|+|
+|S|Subtraction or Negative|-|
+
+D and M are of equal precedence.
+
+A and S are of equal precedence.
+
+Compare the expression:
+
+```
+-3 ** 2
+```
+
+With:
+
+```
+(-3) ** 2
+```
+
+![img_163](./images/img_163.png)
+
+The first expression has E and S. E occurs before S so the 3 is brought to the power of 2 and then the negative operator is applied.
+
+The second expression has P, E and S. P occurs first and within the parenthesis, the operation S is carried out. Once the operation in parenthesis is carried out, the final operation E is carried out.
+
 ## bool class
 
 A boolean is a ```True``` or ```False``` value.
@@ -683,7 +718,7 @@ True
 
 ![img_067](./images/img_067.png)
 
-### identifiers
+### Identifiers
 
 A list of identifiers can be found by inputting one of these object names followed by a dot ```.``` and tab ```↹```:
 
@@ -1413,7 +1448,7 @@ The statements can be accessed, essentially as attributes and assigned to new va
 
 It is also possible to instantiate one of the classes ```Context```, ```BasicContext```, ```DefaultContext``` and ```ExtendedContext``` to use with the function ```setcontext```. ```localcontext``` is an option to use a local context within a context manager, typically a ```with``` code block.
 
-The main item of interest is the ```Decimal``` class, there is alsp the ```DecimalTuple``` which is a named tuple repressentation.
+The main item of interest is the ```Decimal``` class, there is alsp the ```DecimalTuple``` which is a named tuple representation.
 
 This guide will use the default context and therefore just import the ```Decimal``` class directly.
 
@@ -1569,7 +1604,7 @@ num1.to_eng_string()
 
 ![img_143](./images/img_143.png)
 
-In engineering and scientific applciations typically the power and the unit are combined into a unit with a prefix.
+In engineering and scientific applciations typically the power and the unit are combined into a unit with a prefix. The above number if it was a length for example would be taken as 123.45 megametres or 123.45 Mm.
 
 |power|prefix name|prefix letter|
 |---|---|---|
@@ -1729,25 +1764,54 @@ num1 / num2
 
 ![img_158](./images/img_158.png)
 
+Other traps can be enabled or disabled in the context in a similar manner.
+
 ## Fraction class
+
+The ```Fraction``` class is used for fractions.
+
+### Importing Fraction
+
+The ```Fraction``` class (PascalCase and singular) is found within ```fractions``` module (snake_case and plural). The ```fractions``` module can be imported using:
+
+```
+import fractions
+```
+
+![img_159](./images/img_159.png)
+
+A list of identifiers can be seen by inputting ```fractions``` followed by a dot ```.``` and tab ```↹```:
+
+![img_160](./images/img_160.png)
+
+Most of the identifiers are modules or dependencies. The main identifier of interest is the ```Fractions``` class which is typically imported directly:
+
+```
+from fractions import Fraction
+```
+
+![img_161](./images/img_161.png)
+
+### Initialization Signature
+
+
+
+![img_162](./images/img_162.png)
 
 ```
 fractions.Fraction.mro()
 ```
 
-### Importing Fraction
 
-### Initialization Signature
+
+
+
+
+
 
 ### Identifiers
 
 
 ### Data Model Identifiers
-
-
-
-multiple cursors jupyterlab
-
-It's possible now: 'ctrl + mouse click'
 
 
