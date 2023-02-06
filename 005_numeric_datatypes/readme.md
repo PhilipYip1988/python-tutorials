@@ -1794,22 +1794,76 @@ from fractions import Fraction
 
 ### Initialization Signature
 
-
+The init signature of the ```Fraction``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
 
 ![img_162](./images/img_162.png)
+
+A Fraction is normally created with two integers. These can be supplied using the ```numerator``` and ```denominator``` keyword arguments. The default value for the ```numerator``` is ```0``` and for the ```denominator``` is ```None``` whch in this case is a value of ```1``` effectively creating a fraction that is an integer.
+
+The following fraction can be created:
+
+$\text{num1}=\frac{3}{8}$
+
+```
+num1 = Fraction(numerator=3, denominator=8)
+num1
+```
+
+![img_164](./images/img_164.png)
+
+```
+num1 = Fraction('3/8')
+num1
+```
+
+![img_165](./images/img_165.png)
+
+It is also possible to instantiate a Fraction using a ````Decimal``` or ```float``` instances for the numerator. 
+
+```
+num1 = Fraction(numerator=Decimal('0.2'))
+num1
+```
+
+![img_167](./images/img_167.png)
+
+Note the recursive rounding issues for floating point numbers will be carried over into the fraction:
+
+```
+num1 = Fraction(numerator=0.2)
+num1
+```
+
+![img_168](./images/img_168.png)
+
+A string of a number which incorporates a decimal point, will be assumed to be a ```Decimal```:
+
+```
+num1 = Fraction(numerator='0.2')
+num1
+```
+
+![img_169](./images/img_169.png)
+
+The method resolution order for the ```Fraction``` class can be examined using:
 
 ```
 fractions.Fraction.mro()
 ```
 
+![img_166](./images/img_166.png)
 
+Unlike the other data types examined so far which are written in C. The fractions module is available as a physical script file:
 
-
-
-
-
+![img_170](./images/img_170.png)
 
 ### Identifiers
+
+
+![img_171](./images/img_171.png)
+
+
+
 
 
 ### Data Model Identifiers
