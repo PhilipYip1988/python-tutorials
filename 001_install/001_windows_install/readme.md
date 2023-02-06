@@ -913,7 +913,7 @@ The Script File should be saved somewhere locally, normally within a subfolder w
 
 ![img_222](./images/img_222.png)
 
-Notice the name of the tab updates, alongside the file location on the left address bar. To run the script select run:
+Notice the name of the tab updates, alongside the file location on the left address bar. To run the script select Run:
 
 ![img_223](./images/img_223.png)
 
@@ -949,7 +949,7 @@ The docstring also displays if the function name is followed by open parenthesis
 
 ![img_230](./images/img_230.png)
 
-All of the identifiers from the ```builtins``` module iare included within every Python script file. However for convenience they can be viewed by importing the ```builtins``` module explicitly using ```import builtins``` and inputting ```builtins.```
+All of the identifiers from the ```builtins``` module are included within every Python script file. However for convenience they can be viewed by importing the ```builtins``` module explicitly using ```import builtins``` and inputting ```builtins.```
 
 ![img_231](./images/img_231.png)
 
@@ -1170,7 +1170,7 @@ Breakpoints can be added to the line numbers on the left:
 
 ![img_266](./images/img_266.png)
 
-Once the breakpoints have been selected, Debug FIle can be selected:
+Once the breakpoints have been selected, Debug File can be selected:
 
 ![img_267](./images/img_267.png)
 
@@ -1409,7 +1409,7 @@ Note the identifiers will not display if there is not enough space. This can hap
 
 ![img_312](./images/img_312.png)
 
-Identifier can also be viewed from Python Standard Modules:
+Identifiers can also be viewed from Python Standard Modules:
 
 ![img_313](./images/img_313.png)
 
@@ -1525,7 +1525,7 @@ The magic commands are only recognised by IPython and not Python and should be c
 
 ![img_339](./images/img_339.png)
 
-Navigate to the folder you wish the Terminal to open in. Then select + to open a new launcher and then select Terminal:
+Navigate to the folder desired for the Terminal to open in. Then select + to open a new launcher and then select Terminal:
 
 ![img_340](./images/img_340.png)
 
@@ -1667,7 +1667,7 @@ The previous Cell Outputs wil remain. Running the top Cell will now display 1:
 
 ![img_373](./images/img_373.png)
 
-This can result in confusion as there are now 2 cells with 1. The Restart the Kernl and Run All Cells button can be pressed:
+This can result in confusion as there are now 2 cells with 1. The Restart the Kernel and Run All Cells button can be pressed:
 
 ![img_374](./images/img_374.png)
 
@@ -1691,7 +1691,7 @@ The possible matplotlib magic backends can be listed in a cell output and anothe
 
 ![img_379](./images/img_379.png)
 
-When the cell is ran with the plot, it now displays in its own iteractive window. The plot is tied to the cell it was Run from.Other Cells can be Run while this plot window is open:
+When the cell is ran with the plot, it now displays in its own iteractive window. The plot is tied to the cell it was Run from. Other Cells can be Run while this plot window is open:
 
 ![img_380](./images/img_380.png)
 
@@ -1850,7 +1850,6 @@ Selecting next once again ends the debugging:
 ## Visual Studio Code
 
 Visual Studio Code is a general purpose Code Editor maintained by Microsoft. Because it is a general purpose editor, a number of steps need to be made to configure it for Python use. A seperate Python environment needs to be created using Mambaforge:
-
 
 ```
 mamba create -n vscode
