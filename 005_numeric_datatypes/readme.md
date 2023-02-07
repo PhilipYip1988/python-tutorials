@@ -59,7 +59,7 @@ Inputting ```num1.``` and pressing tab ```↹``` will display a list of identifi
 
 ![img_007](./images/img_007.png)
 
-The integer ```65``` is designed for interoperatability with the ```Fraction``` class and can be conceptualised as the fraction instance:
+The integer ```65``` is designed for interoperability with the ```Fraction``` class and can be conceptualised as the fraction instance:
 
 $$\left(\frac{65}{1}\right)$$
 
@@ -73,7 +73,7 @@ num1.as_integer_ratio()
 
 ![img_008](./images/img_008.png)
 
-The integer ```65``` is designed for interoperatability with the ```complex``` class and can be conceptualised as the complex number:
+The integer ```65``` is designed for interoperability with the ```complex``` class and can be conceptualised as the complex number:
 
 $$65+0j$$
 
@@ -89,7 +89,7 @@ num1.complex()
 
 ![img_009](./images/img_009.png)
 
-The remaining identifiers are for interoperatability with the ```bytes``` class. Details about ```bytes``` and encoding were given in the previous tutorial. The binary representation of the integer which can be viewed using:
+The remaining identifiers are for interoperability with the ```bytes``` class. Details about ```bytes``` and encoding were given in the previous tutorial. The binary representation of the integer which can be viewed using:
 
 ```
 bin(num1)
@@ -292,7 +292,7 @@ del num1.real
 
 This is not supported and the method is setup to invoke an ```AttributeError```.
 
-The ```__init__``` data model method is called when instantiating a string. 
+The ```__init__``` data model method is called when instantiating an integer. 
 
 ![img_032](./images/img_032.png)
 
@@ -1853,19 +1853,251 @@ fractions.Fraction.mro()
 
 ![img_166](./images/img_166.png)
 
-Unlike the other data types examined so far which are written in C. The fractions module is available as a physical script file:
+Unlike the other data types examined so far which are written in C. The fractions module is available as a physical script file which can be examined:
 
 ![img_170](./images/img_170.png)
 
 ### Identifiers
 
+For example if the instance is assigned to an object name ```num1```:
+
+```
+num1 = Fraction(numerator=3, denominator=8)
+num1
+```
+
+Then pressing ```num1``` followed by a dot ```.``` and tab ```↹``` displays the identifiers:
 
 ![img_171](./images/img_171.png)
 
+The ```Fraction``` class has limited interoperability with the ```complex``` class and can be conceptualised as the complex number:
 
+$$\frac{3}{8}+0j$$
 
+where $j = \sqrt{-1}$.
 
+The ```real``` attribute reads the real value will match the value of the fraction in this case £\frac{3}{8}$ and the ```imag``` will be ```0```. The associated method ```conjugate``` takes these two attributes and inverts the sign of the ```imag``` attribute, because this is ```0``` the complex conjugate matches the original Fraction:
+
+```
+num1 = Fraction(numerator=3, denominator=8)
+num1
+num1.real
+num1.imag
+num1.conjugate()
+```
+
+![img_172](./images/img_172.png)
+
+The ```complex``` class converts all components made with ```Fractions``` into a component of a floating point number:
+
+```
+num1 = Fraction(numerator=3, denominator=8)
+num1
+num2 = Fraction(numerator=5, denominator=8)
+num2
+complex(real=num1, imag=num2)
+```
+
+![img_173](./images/img_173.png)
+
+The ```numerator``` and the ```denominator``` attributes are accessible. The associated method ```as_integer_ratio``` returns these two attributes as a ```tuple```:
+
+```
+num1 = Fraction(numerator=3, denominator=8)
+num1
+num1.numerator
+num1.denominator
+num1.as_integer_ratio()
+```
+
+![img_174](./images/img_174.png)
+
+```from_decimal``` and ```from_float``` are class methods which can be used to construct a new instance from a ```Decimal``` or ```float```. These behave similarly to the initialization signature:
+
+```
+num1 = Fraction.from_decimal(Decimal('0.1'))
+num1
+num2 = Fraction.from_float(0.1)
+num2
+```
+
+![img_175](./images/img_175.png)
+
+Notice that ```num2``` has a huge numerator and huge denominator and this is due to the recirsvie rounding errors of the floating point number. The method ```limit_denominator``` can be used to limit the denominator and can be thought of a ```Fraction``` equivalent of rounding:
+
+```
+num2 = Fraction.from_float(0.1)
+num2
+num2.limit_denominator(max_denominator=1000)
+```
+
+![img_176](./images/img_176.png)
 
 ### Data Model Identifiers
 
+To view the data model identifiers, the directory function ```dir``` can be used:
 
+```
+num1 = Fraction(numerator=3, denominator=8)
+pprint.pprint(dir(num1), compact=True)
+```
+
+![img_177](./images/img_177.png)
+
+The identifiers beginning with a single underscore are used internally by the equivalent data model identifiers with the same name. Recall that the ```__init__``` data model method is called when instantiating a ```Fraction```. When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance with the unique numeric data. The ```__getattribute__``` data model identifier is used when an attribute is accessed.
+
+The Python functions ```repr``` and ```str``` use the data model identifiers ```__repr__``` and ```__str__```. Differences between the formal string representation and informal string representation can be seen by comparing the output from the ```repr``` and ```str``` functions respectively:
+
+```
+num1 = Fraction(numerator=3, denominator=8)
+repr(num1)
+str(num1)
+```
+
+![img_178](./images/img_178.png)
+
+Recall that the Python function ```dir``` uses the data model identifier ```__dir__``` to display the directory of the object as seen above. The Python ```type``` function uses the datamodel identifier ```__class__```:
+
+```
+type(num1)
+```
+
+![img_179](./images/img_179.png)
+
+The data model identifier ```__doc__``` is the document string for a string instance. It is more commonly used with the ```?``` which includes some other information from the data model identifiers ```__type__```, ```__str__```, and ```__doc__```:
+
+```
+? num1
+```
+
+![img_180](./images/img_180.png)
+
+The ```__format__``` data model identifier is typically used by a formatted string:
+
+```
+f'The fraction is {num1}.'
+```
+
+![img_181](./images/img_181.png)
+
+The ```copy.copy``` and ```copy.deepcopy``` functions use the data model identifiers ```__copy__``` and ```__deepcopy__```:
+
+```
+from copy import copy, deepcopy
+num2 = copy(num1)
+num2
+num3 = copy(num1)
+num3
+```
+
+![img_182](./images/img_182.png)
+
+### Unitary Data Model Identifiers
+
+The unitary operators ```+```, ```-``` and the function ```abs``` use the data model identifiers ```__pos__```, ```__neg__``` and ```__abs__```respectively:
+
+```
+num1 = Fraction(numerator=3, denominator=8)
++num1
+-num1
+abs(-num1)
+```
+
+![img_183](./images/img_183.png)
+
+Casting to ```int```, ```bool```, ```float``` or ```complex``` use the data model identifiers ```__int__```, ```bool```, ```__float__``` or ```__complex__```. When these are used the fraction is essentially handled intermediately as float instance and then cast into the other data types:
+
+```
+num1 = Fraction(numerator=11, denominator=8)
+num1
+float(num1)
+int(num1)
+bool(num1)
+complex(num1)
+```
+
+![img_184](./images/img_184.png)
+
+The ```math.trunc```, ```math.floor```, ```math.ceil``` and ```round``` use the data model identifiers ```__trunc__```, ```__floor__```, ```__math__``` and ```__round__``` respectively. When these are used the fraction is once again essentially handled intermediately as float instance and then handled like the ```float``` instance owuld be:
+
+```
+num1 = Fraction(numerator=11, denominator=8)
+num1
+float(num1)
+math.trunc(num1)
+math.floor(num1)
+math.ceil(num1)
+round(num1, ndigits=2)
+```
+
+
+
+### Binary Data Model Identifiers
+
+The binary data model methods require two numeric instances, for example:
+
+$$\text{num1} = \frac{3}{4}$$
+
+$$\text{num2} = \frac{1}{8}$$
+
+These can be isntantiated using:
+
+```
+num1 = Fraction(numerator=3, denominator=4)
+num2 = Fraction(numerator=1, denominator=8)
+```
+
+![img_186](./images/img_186.png)
+
+It is easier to thnk of the ```*``` operator first which uses the ```__mul__``` data model identifier. Multiplication of the fractions is the product of the numerators divided by the product of the denominators:
+
+$$\frac{3}{4} \ast \frac{1}{8} = \frac{3 \ast 1}{4 \ast 8} = \frac{3}{32}$$
+
+This can be calculated using:
+
+```
+num1 * num2
+```
+
+![img_187](./images/img_187.png)
+
+Division can be thought of multiplication of the inverse:
+
+$$\frac{1}{8} \div \frac{3}{4} = \frac{1}{8} \ast \frac{4}{3} = \frac{1 \ast 4}{8 \ast 3} = \frac{1}{6}$$
+
+This can be calculated using the ```/``` operator which uses the ```__truediv__``` data model identifier:
+
+```
+num2 / num1
+```
+
+![img_188](./images/img_188.png)
+
+The floor divide and modulo are ...
+
+
+
+![img_189](./images/img_189.png)
+
+
+
+
+
+
+mul
+
+floordiv
+
+mod
+
+divmod
+
+pow
+
+truediv
+
+add, 
+
+sub, 
+
+eq, ne, ge, gt, lt, le
