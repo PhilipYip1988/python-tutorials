@@ -2659,4 +2659,4 @@ greeting
 
 ![img_256](./images/img_256.png)
 
- [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
