@@ -2133,7 +2133,7 @@ num2 = Fraction(numerator=1, denominator=8)
 num2
 ```
 
-
+![img_193](./images/img_193.png)
 
 Sometimes for convenience the ```_normalize``` keyword input argument can be assigned to ```False```:
 
@@ -2142,7 +2142,7 @@ num1 = Fraction(numerator=6, denominator=8, _normalize=False)
 num1
 ```
 
-
+![img_194](./images/img_194.png)
 
 With a common denominator, addition and subtraction are straightforward:
 
@@ -2150,9 +2150,14 @@ $$\text{num1} + \text{num2} = \frac{6}{8} + \frac{1}{8} = \frac{6 + 1}{8} = \fra
 
 $$\text{num1} - \text{num2} = \frac{6}{8} - \frac{1}{8} = \frac{6 - 1}{8} = \frac{5}{8}$$
 
+```
+num1 + num2
+num1 - num2
+```
 
+![img_195](./images/img_195.png)
 
-The six equality operators equals to ```==```, not equals to ```!=```, less than ```<```, less than or equal to ```<=```, greater than ```>``` and greater than or equal to ```>=``` use the data model methods ```__eq__```, ```__ne__```, ```__lt__```, ```__le__```, ```__gt__``` and ```__ge__``` respectively. These operate in a similar manner to the ```int``` and ```float``` classes. The ```Fraction``` instances can be conceptualised as floats when using these operators however as the components of the ```Fraction``` i.e. the numerator and denominator are integers, these comparisons are without the recursive rounding errors:
+The six equality operators equals to ```==```, not equals to ```!=```, less than ```<```, less than or equal to ```<=```, greater than ```>``` and greater than or equal to ```>=``` use the data model methods ```__eq__```, ```__ne__```, ```__lt__```, ```__le__```, ```__gt__``` and ```__ge__``` respectively. These operate in a similar manner to the ```int``` and ```float``` classes. The ```Fraction``` instances can be conceptualised as floats when using these operators however as the components of the ```Fraction``` i.e. the numerator and denominator are integers, these comparisons are without the recursive rounding errors. For example, the following numbers can be created:
 
 ```
 num1 = Fraction(numerator=1, denominator=10)
@@ -2163,12 +2168,23 @@ num3 = Fraction(numerator=3, denominator=10)
 num3
 ```
 
+![img_196](./images/img_196.png)
+
+And the comparisons can be made. Notice the two sides of the is equal to operator ```==``` are equivalent in the case of the ```Fraction``` class:
+
 ```
 num3 == num1 + num2
 num3 != num1 + num2
 ```
 
+![img_197](./images/img_197.png)
 
+This is not the case when every numeric value is cast to a ```float```, as seen earlier:
 
+```
+float(num3) == float(num1) + float(num2)
+```
 
-eq, ne, ge, gt, lt, le
+![img_198](./images/img_198.png)
+
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
