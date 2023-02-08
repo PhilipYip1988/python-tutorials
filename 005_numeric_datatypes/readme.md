@@ -2088,7 +2088,7 @@ num2 % num1
 
 ![img_189](./images/img_189.png)
 
-The ```divmod``` fucntion returns these two values as a tuple and uses the ```divmod``` data model identifiers:
+The ```divmod``` function returns these two values as a tuple and uses the ```divmod``` data model identifiers:
 
 ```
 divmod(num2, num1)
@@ -2118,10 +2118,57 @@ num1 ** num2
 
 ![img_192](./images/img_192.png)
 
+Addition and subtraction require a common denominator. For example:
+
+$$\text{num1} = \frac{3}{4} = \frac{6}{8}$$
+
+$$\text{num2} = \frac{1}{8}$$
+
+The Fractions can be expressed as:
+
+```
+num1 = Fraction(numerator=3, denominator=4)
+num1
+num2 = Fraction(numerator=1, denominator=8)
+num2
+```
 
 
-add, 
 
-sub, 
+Sometimes for convenience the ```_normalize``` keyword input argument can be assigned to ```False```:
+
+```
+num1 = Fraction(numerator=6, denominator=8, _normalize=False)
+num1
+```
+
+
+
+With a common denominator, addition and subtraction are straightforward:
+
+$$\text{num1} + \text{num2} = \frac{6}{8} + \frac{1}{8} = \frac{6 + 1}{8} = \frac{7}{8}$$
+
+$$\text{num1} - \text{num2} = \frac{6}{8} - \frac{1}{8} = \frac{6 - 1}{8} = \frac{5}{8}$$
+
+
+
+The six equality operators equals to ```==```, not equals to ```!=```, less than ```<```, less than or equal to ```<=```, greater than ```>``` and greater than or equal to ```>=``` use the data model methods ```__eq__```, ```__ne__```, ```__lt__```, ```__le__```, ```__gt__``` and ```__ge__``` respectively. These operate in a similar manner to the ```int``` and ```float``` classes. The ```Fraction``` instances can be conceptualised as floats when using these operators however as the components of the ```Fraction``` i.e. the numerator and denominator are integers, these comparisons are without the recursive rounding errors:
+
+```
+num1 = Fraction(numerator=1, denominator=10)
+num1
+num2 = Fraction(numerator=2, denominator=10)
+num2
+num3 = Fraction(numerator=3, denominator=10)
+num3
+```
+
+```
+num3 == num1 + num2
+num3 != num1 + num2
+```
+
+
+
 
 eq, ne, ge, gt, lt, le
