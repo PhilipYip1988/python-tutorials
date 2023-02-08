@@ -2040,7 +2040,7 @@ $$\text{num1} = \frac{3}{4}$$
 
 $$\text{num2} = \frac{1}{8}$$
 
-These can be isntantiated using:
+These can be instantiated using:
 
 ```
 num1 = Fraction(numerator=3, denominator=4)
@@ -2051,7 +2051,7 @@ num2 = Fraction(numerator=1, denominator=8)
 
 It is easier to thnk of the ```*``` operator first which uses the ```__mul__``` data model identifier. Multiplication of the fractions is the product of the numerators divided by the product of the denominators:
 
-$$\frac{3}{4} \ast \frac{1}{8} = \frac{3 \ast 1}{4 \ast 8} = \frac{3}{32}$$
+$$\text{num1} \ast \text{num2} = \frac{3}{4} \ast \frac{1}{8} = \frac{3 \ast 1}{4 \ast 8} = \frac{3}{32}$$
 
 This can be calculated using:
 
@@ -2061,9 +2061,11 @@ num1 * num2
 
 ![img_187](./images/img_187.png)
 
-Division can be thought of multiplication of the inverse:
+Float division can be thought of multiplication of the inverse:
 
-$$\frac{1}{8} \div \frac{3}{4} = \frac{1}{8} \ast \frac{4}{3} = \frac{1 \ast 4}{8 \ast 3} = \frac{1}{6}$$
+$$\text{num1} / \text{num2} = \frac{3}{4} / \frac{1}{8} = \frac{3}{4} \ast \frac{8}{1} = \frac{3 \ast 4}{8 \ast 1} = \frac{6}{1} = 6$$
+
+$$\text{num2} / \text{num1} = \frac{1}{8} / \frac{3}{4} = \frac{1}{8} \ast \frac{4}{3} = \frac{1 \ast 4}{8 \ast 3} = \frac{1}{6}$$
 
 This can be calculated using the ```/``` operator which uses the ```__truediv__``` data model identifier:
 
@@ -2073,28 +2075,50 @@ num2 / num1
 
 ![img_188](./images/img_188.png)
 
-The floor divide and modulo are ...
+The floor division ```//``` and the modulus ```%``` operators use the ```__floordiv__``` and ```__mod__``` data model identifiers. For ```Fractions``` they are calculated using the following:
 
+$$\text{num2} // \text{num1} = \frac{1}{8} // \frac{3}{4} = \frac{1 \ast 4 // 3 \ast 2}{8 \ast 4} = \frac{4 // 6}{32} = \frac{0}{32} = 0$$
 
+$$\text{num2} \text{﹪} \text{num1} = \frac{1}{8} \text{﹪} \frac{3}{4} = \frac{1 \ast 4 \text{﹪} 3 \ast 2}{8 \ast 4} = \frac{4 \text{﹪} 6}{36} = \frac{4}{36} = \frac{1}{8}$$
+
+```
+num2 // num1
+num2 % num1
+```
 
 ![img_189](./images/img_189.png)
 
+The ```divmod``` fucntion returns these two values as a tuple and uses the ```divmod``` data model identifiers:
+
+```
+divmod(num2, num1)
+```
+
+![img_190](./images/img_190.png)
+
+The ```**``` operator can be used to calculate the power of a ```Fraction``` instance to another ```Fraction``` instance. For simplicity the two numbers will be used:
 
 
+$$\text{num1} = \frac{3}{4}$$
+
+$$\text{num2} = \frac{1}{8}$$
+
+```
+num1 = Fraction(numerator=1, denominator=4)
+num2 = Fraction(numerator=3, denominator=2)
+```
+
+![img_191](./images/img_191.png)
+
+$$\text{num1} ** \text{num2} = \frac{1}{4} ** \frac{3}{2} = \frac{1 ** \frac{3}{2}}{4 ** \frac{3}{2}} = \frac{1 ** {3} ** \frac{1}{2}}{4 ** 3 ** \frac{1}{2}} = \frac{1 ** \frac{1}{2}}{64 ** \frac{1}{2}} = \frac{1}{8} = 0.125$$
+
+```
+num1 ** num2
+```
+
+![img_192](./images/img_192.png)
 
 
-
-mul
-
-floordiv
-
-mod
-
-divmod
-
-pow
-
-truediv
 
 add, 
 
