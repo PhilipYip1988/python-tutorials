@@ -62,6 +62,7 @@ A ```tuple``` of these objects can be created:
 
 ```
 objects = (num1, num2, num3, word1, word2, word3)
+objects
 ```
 
 
@@ -75,6 +76,7 @@ objects = (num1,
            word1, 
            word2, 
            word3)
+objects
 ```
 
 
@@ -83,6 +85,7 @@ Python objects above can be directly placed into a tuple without privious assign
 
 ```
 objects = (1, True, 3.14, 'hello', 'hello', 'bye')
+objects
 ```
 
 
@@ -93,7 +96,9 @@ Therefore to create a ```tuple``` with a single item, a ```,``` delimiter must b
 
 ```
 pedmas = (1 + 2)
+pedmas
 single_object = (1 + 2,)
+single_object
 ```
 
 
@@ -102,11 +107,18 @@ To create an empty ```tuple```, the ```tuple``` class is used:
 
 ```
 no_object = tuple()
+no_object
 ```
 
 
 
 ### Identifiers
+
+Returning to:
+
+```
+objects = (1, True, 3.14, 'hello', 'hello', 'bye')
+```
 
 If the instance name ```objects``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
 
@@ -121,12 +133,52 @@ If ```objects.index()``` followed by shift ```⇧``` and tab ```↹``` is input,
 
 
 ```
+objects.index(3.14)
 objects.index(1)
+objects.index(1, 1, 6)
+```
+
+
+```
+objects.index(1, 2, 6)
 ```
 
 
 
 If ```objects.count()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
+
+
+
+
+```
+objects.count(3.14)
+objects.count(1)
+```
+
+
+## Data Model Identifiers
+
+Returning to:
+
+```
+objects = (1, True, 3.14, 'hello', 'hello', 'bye')
+```
+
+The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
+
+```
+from pprint import pprint
+pprint(dir(objects), compact=True)
+```
+
+
+
+
+```__repr__``` and ```__str__```
+
+
+
+```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__``` and ```__le__```
 
 
 
