@@ -28,19 +28,7 @@ There are 3 fundamental text data types, the unicode string, the bytes string an
 
 There are 6 fundamental numeric datatypes used in Python. The ```int``` class (whole number), ```bool``` class (```True``` or ```False```), the ```float``` class (number with a decimal point), the ```complex``` class (number with imaginary component $j=\sqrt{-1}$), the ```float``` class (number displayed with a decimal point but encoded in binary), ```Decimal``` class (higher accuracy number with decimal point encoded in decimal) and the ```Fraction``` class:
 
-[Fundamental Numeric Datatypes: int, bool, float, complex, Decimal, Fraction](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numeric_datatypes/readme.md)
-
-The decimal module is based around the Decimal class. The Decimal class is similar to the float class however is encoded using decimal opposed to binary. As a consequence each instance of the Decimal class takes up more memory than an instance of the float class however the precision is higher and Decimal class instances tend to behave more in line with traditional mathematics than the float class. This is because the float class has more recursive, rounding errors due to the underlying binary encoding.
-
-[Decimal Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_decimal/readme.md) 
-
-The fractions module is based around the Fraction class. Use of fractions is sometimes more convenient than using numbers with a floating point or decimal point. The Fractions class is also a good example of implementing datamodel methods:
-
-[Fractions Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_fractions/readme.md)
-
-This tutorial looks at the practical applications of using numeric and text data types. It also examines how these data types are used with hardware to communicate with a user and highlights the differences in numbering systems used by humans versus the numbering systems used by computers and some important consequences when dealing with both these numbering systems:
-
-[Understanding Numbering Systems](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numbering_systems/readme.md)
+[Numeric Datatypes: int, bool, float, complex, Decimal, Fraction](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numeric_datatypes/readme.md)
 
 ## Collections and Programming Constructs
 
