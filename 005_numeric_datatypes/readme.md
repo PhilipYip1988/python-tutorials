@@ -1,6 +1,6 @@
 # Numeric Data Types
 
-There are six fundamental numeric datatypes used in Python. The ```int``` class (whole number), ```bool``` class (```True``` or ```False```), the ```float``` class (number with a decimal point) and the ```complex``` class (number with imaginary component $j=\sqrt{-1}$) are all in ```builtins```. The ```float``` class is displayed as decimal but under the hood is encoded in binary. This results in recurring rounding problems making floating point arithmetric slightly different from traditional arithmetric. The ```Decimal``` class is contained in the ```decimal``` standard module is higher precision and behaves like traditional numbers which use the decimal system. The ```Fraction``` class is contained in the ```fraction``` standard module.
+There are six fundamental numeric datatypes used in Python. The ```int``` class (whole number), ```bool``` class (```True``` or ```False```), the ```float``` class (number with a decimal point) and the ```complex``` class (number with imaginary component $j=\sqrt{-1}$) are all in ```builtins```. The ```float``` class is displayed as decimal but under the hood is encoded in binary. This results in recurring rounding problems making floating point arithmetric slightly different from traditional arithmetric. The ```Decimal``` class is contained in the ```decimal``` standard module is higher precision and behaves like traditional numbers which use the decimal system. The ```Fraction``` class is contained in the ```fractions``` standard module.
 
 ## int class
 
