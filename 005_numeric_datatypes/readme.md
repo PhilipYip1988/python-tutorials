@@ -1314,7 +1314,7 @@ abs(num1)
 
 ![img_117](./images/img_117.png)
 
-## Binary Data Model Operators
+### Binary Data Model Operators
 
 The binary operators will carry out the mathematical operation for there real components and imaginary components, treating the real and imaginary components as seperate variables. This can be seen with addition and subtraction:
 
