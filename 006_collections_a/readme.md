@@ -156,7 +156,7 @@ archive.count(1)
 ```
 
 
-## Data Model Identifiers
+### Data Model Identifiers
 
 Returning to:
 
@@ -201,94 +201,114 @@ archive[0]
 
 The ```len``` function uses the data model identifier ```__len__``` to determine how many records are stored within the ```archive```.
 
+```
+len(archive)
+```
 
 
-, , ```__iter__```, ```__len__```, ```__contains__```
 
-
-
-
-iter(objects)
-
-reversed(objects)
-
-len(objects)
-
-3.14 in objects
-
-```__hash__```
-
-hash(objects)
+The ```in``` keyword uses the data model identifier ```__contains__``` to see if a record is in the archive:
 
 ```
-{(1, 0, 0): 'red', 
- (0, 1, 0): 'green',
- (0, 0, 1): 'blue'}
+record2 in archive
+3.14 in archive
+```
+
+
+
+The ```iter``` function and ```reversed``` function use the ```__iter__``` data model method to instantiate a forward or reverse iterator from the iterable ```tuple```:
+
+```
+forward_archive = iter(archive)
+```
+
+Recall that an iterator only displays a single element at a time. The ```next``` function moves onto the next element and any previous element is considered consumed:
+
+```
+next(forward_archive)
+next(forward_archive)
+next(forward_archive)
+```
+
+Use of ```tuple``` on the ```forward_archive``` consumes the remaining records:
+
+```
+tuple(forward_archive)
+```
+
+
+
+Alternatively:
+
+```
+backwards_archive = reversed(archive)
+next(backwards_archive)
+next(backwards_archive)
+tuple(backwards_archive)
+```
+
+
+
+The ```hash``` function uses the data model identifier ```__hash__```:
+
+```
+hash(archive)
+```
+
+
+
+Note ```hash``` only works when every record in the tuple is itself immutable. If a mutable ```bytearray``` instance is added to the ```tuple```, a ```TypeError```: unhashable type displays:
+
+```
+hash(('red', 'green', 'blue', bytearray('black', encoding='ASCII')))
+```
+
+
+
+Because a ```tuple``` containing only immutable items is itself hashable, it can be used as a key in a mapping such as the dictionary. For example:
+
+```
+colors = {(1, 0, 0): 'red', 
+          (0, 1, 0): 'green',
+          (0, 0, 1): 'blue'}
+```
+
+
+
 ``` 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+colors = {('red', 'green', 'blue'): ((1, 0, 0), (0, 1, 0), (0, 0, 1))}
+```
 
 
 
 The ```?``` uses the data model identifiers ```__class__``` to identify the class and ```__doc__``` to generate information about the ```tuple``` instance:
 
-
 ```
-? objects
+? archive
 ```
-
-
-
-```
-f'The tuple is {objects}'
-sys.sizeof(objects)
-```
-
-```__class__```, ```__format__```, ```__sizeof__```
-
-
-
-
-
-
-
-
 
 
 
 The formal and informal string representation of a ```tuple``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
 
 ```
-repr(objects)
-str(objects)
+repr(archive)
+str(archive)
 ```
 
 
-For a ```tuple``` these are the same even if the tuple cotnains string records that have escape characters. For example:
+For a ```tuple``` these are the same even if the tuple contains string records that have escape characters. For example:
 
 ```
 file = (r'C:\Users\Philip\Documents', 
         'script0.py')
-```        
-
-```
 str(file)
 repr(file)
 ```
+
+
+
+This can be contrasted to the equivalent string data model methods which show a clear difference:
 
 ```
 str(file[0])
@@ -297,70 +317,129 @@ repr(file[0])
 
 
 
+The ```__format__``` data model method is used by formatted strings when formatting a ```tuple```. There are no ```tuple``` specific format specifications:
+
+```
+f'The tuple is {archive}'
+```
 
 
 
+The memory size of a ```tuple``` in bytes can be measured using the function ```sys.getsize``` which uses the data model identifier ```__sizeof__```:
 
-
-
-
-
-
-
-
-
+```
+import sys
+sys.sizeof(archive)
+```
 
 
 
 The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` identifiers are used to get, set and delete attributes. A ```tuple``` has no attributes so these are not used by the end user.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```__add__```, ```__mul__```, ```__rmul__```
+The ```+``` operator is setup to perform concatenation using the data model identifier ```__add__```:
 
 ```
-colors = ('red', 'green', 'blue')
-objects + colors
-
-3 * objects
-objects * 3
+archive1 = ('hello', 1, True)
+archive2 = ('bye,' 2, False, 3.14)
+archive1 + archive2
 ```
 
 
 
-```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__``` and ```__le__```
+The ```*``` operator is setup to perform record replication with an integer. The ```*``` operator uses the data model identifier ```__mul__``` or the reverse data model idenfier ```__rmul__``` depending on whether the tuple is to the left hand side or right hand side of the ```*``` operator:
 
 ```
-('red', 'green', 'blue') > ('red', 'green', 'yellow')
-```
-
-```
-('red', 'green', 'blue') > ('red', 'green', 2)
+archive
+archive * 3
+3 * archive
 ```
 
 
 
-The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise the ```tuple```.
+The six equality operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=``` can be used with a ```tuple```. These use the data model identifiers ```__eq__```, ```__ne__```, ```__lt__``` and ```__le__```, ```__gt__``` and ```__ge__``` respectively. These operators operate along the index of each ```tuple``` archive comparing the records:
 
-
- 
-For subclassing:
-
-```__init_subclass__```
+```
+('red', 'green', 'blue') == ('red', 'green', 'yellow')
+```
 
 
 
+Conceptualise the above as:
+
+```
+('red' == 'red') #equal check next records
+('green' == 'green') #equal check next records
+('blue' == 'yellow') #different
+```
+
+
+
+The records at each correspond index are compared one by one. The following comparison is made at index 0 and index 1. There is a difference at index 1 and the right hand tuple is determined to be greater:
+
+```
+('red', 'green', 'blue') > ('red', 'yellow')
+```
+
+
+
+The following comparison is made at index 0 and index 1. The records for both archives at these indexes are the same. The left archive has an additional record and is determined to be greater:
+
+```
+('red', 'green', 'blue') > ('red', 'green')
+```
+
+
+
+Comparisons can be made with numeric tuples:
+
+```
+(1, 5, 9) > (1, 7)
+```
+
+
+
+However care needs to be made when a tuple archive contains records of mixed datatypes:
+
+```
+(1, 'hello', 2) > (1, 'hello', 3)
+```
+
+
+
+If records that are being comapred are of different data types, there will be a ```TypeError```, similar to the same comparison made outwith a ```tuple```:
+
+```
+(1, 'hello', 2) > (1, 'hello', 'three')
+```
+
+
+
+The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialize the ```tuple```. The ```__init_subclass__``` is used for subclassing.
+
+## The list class
+
+A list is an ordered finite **mutable** collection of references to Python objects. Think of the ```list``` as an ordered numeric *live register* and each reference to a Python object in the live register as a *live report*. In other words a list is a mutable tuple, that can be modified once created. 
+
+### The Initialization Signature
+
+Inputting ```list()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
+
+
+
+A list can be created from an iterable such as a ```tuple``` using the ```list``` class
+
+```
+register = list(archive)
+register
+```
+
+
+
+Notice the list is enclosed in square brackets opposed to parenthesis. It can be instantiated directly using:
+
+```
+register = [1, True, 3.14, 'hello', 'hello', 'bye']
+```
+
+
+### Identifiers
