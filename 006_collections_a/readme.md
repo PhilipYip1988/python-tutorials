@@ -418,15 +418,7 @@ The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex_
 
 ## The list class
 
-A list is an ordered finite **mutable** collection of references to Python objects. Think of the ```list``` as an ordered numeric *live register* and each reference to a Python object in the live register as a *live report*. In other words a list is a mutable tuple, that can be modified once created. 
-
-
-
-Active archive...
-
-
-
-act
+A list is an ordered finite **mutable** collection of references to Python objects. Think of the ```list``` as an ordered numeric active archive and each reference to a Python object in this active archive as a record. Because the active archive is mutable, the position of each record in the archive can be altered and items can be added or removed to the archive. In other words a list is a mutable tuple, that can be modified once created. 
 
 
 
@@ -439,8 +431,8 @@ Inputting ```list()``` followed by shift ```⇧``` and tab ```↹``` will displa
 A list can be created from an iterable such as a ```tuple``` using the ```list``` class
 
 ```
-register = list(archive)
-register
+active_archive = list(archive)
+active_archive
 ```
 
 
@@ -448,8 +440,40 @@ register
 Notice the list is enclosed in square brackets opposed to parenthesis. It can be instantiated directly using:
 
 ```
-register = [1, True, 3.14, 'hello', 'hello', 'bye']
+active_archive = [1, True, 3.14, 'hello', 'hello', 'bye']
 ```
 
 
 ### Identifiers
+
+Returning to:
+
+```
+active_archive = [1, True, 3.14, 'hello', 'hello', 'bye']
+```
+
+If the instance name ```active_archive``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
+
+
+
+For the ```list``` collection ```index``` and ```count``` display, these behave identically to their equivalents in the immutable ```tuple```. 
+
+
+
+'index', 'count'
+
+
+'copy'
+
+
+'sort'
+
+'reverse',
+
+'append', 'extend', 'insert',
+
+'pop', 'remove', 
+
+'clear',
+
+
