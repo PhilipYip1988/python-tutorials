@@ -31,9 +31,9 @@ These concepts will be explored with other inbuilt Python collections.
 
 ## The tuple Class (tuple)
 
-A tuple is a finite immutate ordered collection of Python objects. 
+A tuple is an ordered finite immutable collection of references to Python objects. Think of the ```tuple``` as an ordered numeric *archive* and each reference to a Python object in the archive as a *record*.
 
-There is similarities between a Unicode string ```str``` and a ```tuple```. Both are immutable collections, in the case of a ```str```, the individual unit is a Unicode character. In the case of a ```tuple```, each unit is a Python object.
+There are similarities between a Unicode string ```str``` and a ```tuple```. Both are immutable collections, in the case of a ```str```, the individual unit is a Unicode character. In the case of a ```tuple```, each unit is a reference to a Python object.
 
 
 
@@ -48,66 +48,66 @@ It has a single input argument which is an iterable.
 More conventionally the ```tuple``` uses parenthesis ```( )``` to enclose the collection and a comma ```,``` as a delimiter to seperate each individual items. A number of Python objects can be assigned:
 
 ```
-num1 = 1
-num2 = True
-num3 = 3.14
-word1 = 'hello'
-word2 = 'hello'
-word3 = 'goodbye'
+record0 = 1
+record1 = True
+record2 = 3.14
+record3 = 'hello'
+record4 = 'hello'
+record5 = 'goodbye'
 ```
 
 
 
-A ```tuple``` of these objects can be created:
+A ```tuple``` of records can be created:
 
 ```
-objects = (num1, num2, num3, word1, word2, word3)
-objects
-```
-
-
-
-Each object can also be placed on a seperate line:
-
-```
-objects = (num1, 
-           num2, 
-           num3, 
-           word1, 
-           word2, 
-           word3)
-objects
+archive = (record0, record1, record2, record3, record4, record5)
+archive
 ```
 
 
 
-Python objects above can be directly placed into a tuple without privious assignment to individual object names:
+Each record can also be placed on a seperate line:
 
 ```
-objects = (1, True, 3.14, 'hello', 'hello', 'bye')
-objects
+archive = (record0, 
+           record1, 
+           record2, 
+           record3, 
+           record4, 
+           record5)
+archive
+```
+
+
+
+Python objects do not require previous assignment to an individual object name. In the example below, the only record or reference to these objects is within the ```tuple``` ```archive```:
+
+```
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
+archive
 ```
 
 
 
 In the previous tutorials the parenthesis ```()``` were seen to be used in Python to call a function and enclose any input arguments and for order of precedence in numeric operations (PEDMAS). 
 
-Therefore to create a ```tuple``` with a single item, a ```,``` delimiter must be placed after the single item:
+Therefore to create an archive with a single item, a ```,``` delimiter must be placed after the single item:
 
 ```
 pedmas = (1 + 2)
 pedmas
-single_object = (1 + 2,)
-single_object
+single_archive = (1 + 2,)
+single_archive
 ```
 
 
 
-To create an empty ```tuple```, the ```tuple``` class is used:
+To create an empty archive, the ```tuple``` class is used:
 
 ```
-no_object = tuple()
-no_object
+empty_archive = tuple()
+empty_archive
 ```
 
 
@@ -117,10 +117,10 @@ no_object
 Returning to:
 
 ```
-objects = (1, True, 3.14, 'hello', 'hello', 'bye')
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
 ```
 
-If the instance name ```objects``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
+If the instance name ```archive``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
 
 
 
@@ -128,31 +128,31 @@ For the ```tuple``` collection only ```index``` and ```count``` display. These h
 
 
 
-If ```objects.index()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
+If ```archive.index()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
 
 
 
 ```
-objects.index(3.14)
-objects.index(1)
-objects.index(1, 1, 6)
+archive.index(3.14)
+archive.index(1)
+archive.index(1, 1, 6)
 ```
 
 
 ```
-objects.index(1, 2, 6)
+archive.index(1, 2, 6)
 ```
 
 
 
-If ```objects.count()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
+If ```archive.count()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
 
 
 
 
 ```
-objects.count(3.14)
-objects.count(1)
+archive.count(3.14)
+archive.count(1)
 ```
 
 
@@ -161,34 +161,206 @@ objects.count(1)
 Returning to:
 
 ```
-objects = (1, True, 3.14, 'hello', 'hello', 'bye')
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
 ```
 
 The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
 
 ```
 from pprint import pprint
-pprint(dir(objects), compact=True)
+pprint(dir(archive), compact=True)
+```
+
+
+
+The ```__init__``` data model method is called when instantiating a ```tuple```:
+
+
+
+When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name ```archive``` and then the initialization signature ```__init__``` is called to initialize the instance a record at each index of the tuple.
+
+
+
+The ```type``` class uses the data model identifier ```__class__``` to determine the class an instance belongs to:
+
+```
+type(archive)
+```
+
+
+
+The ```__getitem__```, ```__class_getitem__```, ```__len__```, ```__contains__``` and ```__iter__``` are data model identifiers are associated with immutable ordered collections.
+
+Indexing using square brackets uses the data model method ```__getitem__``` and there is an associated class method ```__class_getitem__```. Indexing with the numeric index ```0``` will look up the associated record at this index, recalling a record is a reference to a Python object and return the Python object:
+
+```
+archive[0]
+```
+
+
+
+The ```len``` function uses the data model identifier ```__len__``` to determine how many records are stored within the ```archive```.
+
+
+
+, , ```__iter__```, ```__len__```, ```__contains__```
+
+
+
+
+iter(objects)
+
+reversed(objects)
+
+len(objects)
+
+3.14 in objects
+
+```__hash__```
+
+hash(objects)
+
+```
+{(1, 0, 0): 'red', 
+ (0, 1, 0): 'green',
+ (0, 0, 1): 'blue'}
+``` 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The ```?``` uses the data model identifiers ```__class__``` to identify the class and ```__doc__``` to generate information about the ```tuple``` instance:
+
+
+```
+? objects
+```
+
+
+
+```
+f'The tuple is {objects}'
+sys.sizeof(objects)
+```
+
+```__class__```, ```__format__```, ```__sizeof__```
+
+
+
+
+
+
+
+
+
+
+
+The formal and informal string representation of a ```tuple``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
+
+```
+repr(objects)
+str(objects)
+```
+
+
+For a ```tuple``` these are the same even if the tuple cotnains string records that have escape characters. For example:
+
+```
+file = (r'C:\Users\Philip\Documents', 
+        'script0.py')
+```        
+
+```
+str(file)
+repr(file)
+```
+
+```
+str(file[0])
+repr(file[0])
 ```
 
 
 
 
-```__repr__``` and ```__str__```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` identifiers are used to get, set and delete attributes. A ```tuple``` has no attributes so these are not used by the end user.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```__add__```, ```__mul__```, ```__rmul__```
+
+```
+colors = ('red', 'green', 'blue')
+objects + colors
+
+3 * objects
+objects * 3
+```
 
 
 
 ```__eq__```, ```__ne__```, ```__gt__```, ```__ge__```, ```__lt__``` and ```__le__```
 
+```
+('red', 'green', 'blue') > ('red', 'green', 'yellow')
+```
+
+```
+('red', 'green', 'blue') > ('red', 'green', 2)
+```
 
 
 
+The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise the ```tuple```.
 
 
+ 
+For subclassing:
 
-
-
-
+```__init_subclass__```
 
 
 
