@@ -420,6 +420,16 @@ The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex_
 
 A list is an ordered finite **mutable** collection of references to Python objects. Think of the ```list``` as an ordered numeric *live register* and each reference to a Python object in the live register as a *live report*. In other words a list is a mutable tuple, that can be modified once created. 
 
+
+
+Active archive...
+
+
+
+act
+
+
+
 ### The Initialization Signature
 
 Inputting ```list()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
