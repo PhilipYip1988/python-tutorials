@@ -35,15 +35,11 @@ A tuple is an ordered finite immutable collection of references to Python object
 
 There are similarities between a Unicode string ```str``` and a ```tuple```. Both are immutable collections, in the case of a ```str```, the individual unit is a Unicode character. In the case of a ```tuple```, each unit is a reference to a Python object.
 
-
-
 ### The Initialization Signature
 
-Inputting ```tuple()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
+Inputting ```tuple()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature. It has a single input argument which is an iterable:
 
-
-
-It has a single input argument which is an iterable. 
+![img_001](images/img_001.png)
 
 More conventionally the ```tuple``` uses parenthesis ```( )``` to enclose the collection and a comma ```,``` as a delimiter to seperate each individual items. A number of Python objects can be assigned:
 
@@ -56,7 +52,7 @@ record4 = 'hello'
 record5 = 'goodbye'
 ```
 
-
+![img_002](images/img_002.png)
 
 A ```tuple``` of records can be created:
 
@@ -65,9 +61,9 @@ archive = (record0, record1, record2, record3, record4, record5)
 archive
 ```
 
+![img_003](images/img_003.png)
 
-
-Each record can also be placed on a seperate line:
+Each record can also be placed on a seperate line which can make it eaiser to visualise longer entries:
 
 ```
 archive = (record0, 
@@ -79,7 +75,7 @@ archive = (record0,
 archive
 ```
 
-
+![img_004](images/img_004.png)
 
 Python objects do not require previous assignment to an individual object name. In the example below, the only record or reference to these objects is within the ```tuple``` ```archive```:
 
@@ -88,7 +84,7 @@ archive = (1, True, 3.14, 'hello', 'hello', 'bye')
 archive
 ```
 
-
+![img_005](images/img_005.png)
 
 In the previous tutorials the parenthesis ```()``` were seen to be used in Python to call a function and enclose any input arguments and for order of precedence in numeric operations (PEDMAS). 
 
@@ -101,7 +97,7 @@ single_archive = (1 + 2,)
 single_archive
 ```
 
-
+![img_006](images/img_006.png)
 
 To create an empty archive, the ```tuple``` class is used:
 
@@ -110,7 +106,31 @@ empty_archive = tuple()
 empty_archive
 ```
 
+![img_007](images/img_006.png)
 
+Returning to:
+
+```
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
+```
+
+The JupyterLab Variable Inspector can be opened from the right click context menu:
+
+![img_008](images/img_008.png)
+
+Sadly this Variable Inspector is limited:
+
+![img_009](images/img_009.png)
+
+The Variable Explorer in the Spyder IDE is interactive and gives lots more information. Note the name, size and type on the Variable Explorer:
+
+![img_010](images/img_010.png)
+
+Double clicking the value on the Variable Explorer, opens it in its own window:
+
+![img_011](images/img_011.png)
+
+Note the numeric index starting at zero. For each index, there is a record which points to a value, this value also has a type and size. All the fields are highlighted in grey, because they cannot be editted in the immutable tuple.
 
 ### Identifiers
 
@@ -120,30 +140,59 @@ Returning to:
 archive = (1, True, 3.14, 'hello', 'hello', 'bye')
 ```
 
+![img_012](images/img_012.png)
+
 If the instance name ```archive``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
 
+For the ```tuple``` collection only ```index``` and ```count``` display. These have been seen on the ```str```, ```byte``` and ```bytearray``` class and behave similarly.
 
-
-For the ```tuple``` collection only ```index``` and ```count``` display. These have been seen on the ```str```, ```byte``` and ```bytearray``` class and behave similarly:
-
-
+![img_013](images/img_013.png)
 
 If ```archive.index()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
 
+![img_014](images/img_014.png)
 
+For example, the index of the value ```3.14``` can be determined:
 
 ```
 archive.index(3.14)
+```
+
+![img_015](images/img_015.png)
+
+![img_016](images/img_016.png)
+
+The index of the first occurance of the value ```1``` can be determined:
+
+```
 archive.index(1)
+```
+
+![img_017](images/img_017.png)
+
+![img_018](images/img_018.png)
+
+The index of the second occurance of the value ```1``` can be determined by restricting the search for the value between index 1 (inclusive) to index 6 (exclusive):
+
+![img_019](images/img_019.png)
+
+```
 archive.index(1, 1, 6)
 ```
 
+![img_020](images/img_020.png)
+
+![img_021](images/img_021.png)
+
+If the starting limit is restricted further, so that the reference to the value is not in the specified index range an ```IndexError``` displays:
+
+![img_022](images/img_022.png)
 
 ```
 archive.index(1, 2, 6)
 ```
 
-
+![img_023](images/img_023.png)
 
 If ```archive.count()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
 
@@ -418,7 +467,7 @@ The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex_
 
 ## The list Class
 
-A list is an ordered finite **mutable** collection of references to Python objects. Think of the ```list``` as an ordered numeric active archive and each reference to a Python object in this active archive as a record. Because the active archive is mutable, the position of each record in the archive can be altered and items can be added or removed to the archive. In other words a list is a mutable tuple, that can be modified once created. 
+A ```list``` is an ordered finite **mutable** collection of references to Python objects. Think of the ```list``` as an ordered numeric active archive and each reference to a Python object in this active archive as a record. Because the active archive is mutable, the position of each record in the archive can be altered and items can be added or removed to the archive. In other words a list is a mutable tuple, that can be modified once created. 
 
 
 
@@ -428,9 +477,10 @@ Inputting ```list()``` followed by shift ```⇧``` and tab ```↹``` will displa
 
 
 
-A list can be created from an iterable such as a ```tuple``` using the ```list``` class
+A list can be created from an iterable such as a ```tuple``` using the ```list``` class:
 
 ```
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
 active_archive = list(archive)
 active_archive
 ```
@@ -735,6 +785,72 @@ archive
 
 
 
+## The set Class
+
+A ```set``` is an unordered finite **mutable** collection of unique Python objects
+
+### The Initialization Signature
+
+Inputting ```set()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
+
+
+
+A ```set``` can be created from an iterable such as a ```tuple``` or ```list``` using the ```set``` class:
+
+```
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
+unique_archive = set(archive)
+unique_archive
+```
+
+
+
+Notice the ```set``` is enclosed in braces and all duplicates have been removed. By removing duplicates the numeric index has been lost, a ```set``` is unordered and has no index. It can be instantiated directly using:
+
+```
+unique_archive = {1, 3.14, 'hello', 'bye'}
+```
+
+
+```
+vowels = {'a', 'e', 'i', 'o', 'u'}
+vowels = set(('a', 'e', 'i', 'o', 'u'))
+vowels = set('aeiou')
+```
+
+
+### Identifiers
+
+```
+vowels = set('aeiou')
+abc123 = set('abc123')
+
+import string
+nums = set(string.digits)
+letters = set(string.ascii_letters[:26])
+```
+
+
+
+The ```set``` identifiers ```copy```, ```pop```, ```remove``` and ```clear``` which behave similarly to their counterpart ```list``` identifiers. The ```pop``` identifier does not have the keyword input argument ```index``` because a ```set``` is unordered and will always pop off an arbitary value.
+
+
+issubset
+issuperset
+isdisjoint
+
+add 
+difference
+symmetric_difference
+discard
+intersection
+union
+update
+
+
+difference_update
+intersection_update
+symmetric_difference_update
 
 
 
@@ -745,3 +861,40 @@ archive
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+statement.
+
+
+
+
+
+### Data Model Identifiers
+
+```
+unique_archive = {1, 3.14, 'hello', 'bye'}
+pprint(dir(unique_archive), compact=True)
+```
+
+```
+hash(unique_archive)
+```
+
+
+Notice there is no ```__getitem__```
+
+
+```__and__```, ```__or__```, ```__xor__```
+
+```__sub__```
+
+no ```__add__``` or ```__mul__``` (does not make sense to multiply a set to get duplicates because there is no duplicates in a set)
