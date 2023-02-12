@@ -196,14 +196,27 @@ archive.index(1, 2, 6)
 
 If ```archive.count()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
 
+![img_024](images/img_024.png)
 
-
+The count of ```3.14``` can be determined using:
 
 ```
 archive.count(3.14)
+```
+
+![img_025](images/img_025.png)
+
+![img_026](images/img_026.png)
+
+The count of ```1``` can be determined using:
+
+```
 archive.count(1)
 ```
 
+![img_027](images/img_027.png)
+
+![img_028](images/img_028.png)
 
 ### Data Model Identifiers
 
@@ -213,6 +226,8 @@ Returning to:
 archive = (1, True, 3.14, 'hello', 'hello', 'bye')
 ```
 
+![img_029](images/img_029.png)
+
 The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
 
 ```
@@ -220,15 +235,13 @@ from pprint import pprint
 pprint(dir(archive), compact=True)
 ```
 
-
+![img_030](images/img_030.png)
 
 The ```__init__``` data model method is called when instantiating a ```tuple```:
 
-
+![img_031](images/img_031.png)
 
 When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name ```archive``` and then the initialization signature ```__init__``` is called to initialize the instance a record at each index of the tuple.
-
-
 
 The ```type``` class uses the data model identifier ```__class__``` to determine the class an instance belongs to:
 
@@ -236,7 +249,9 @@ The ```type``` class uses the data model identifier ```__class__``` to determine
 type(archive)
 ```
 
+![img_032](images/img_032.png)
 
+![img_033](images/img_033.png)
 
 The ```__getitem__```, ```__class_getitem__```, ```__len__```, ```__contains__``` and ```__iter__``` are data model identifiers are associated with immutable ordered collections.
 
@@ -246,6 +261,19 @@ Indexing using square brackets uses the data model method ```__getitem__``` and 
 archive[0]
 ```
 
+![img_034](images/img_034.png)
+
+![img_035](images/img_035.png)
+
+Slicing can also be carried out using square brackets. Recall, zero-order indexing is used, which is inclusive of the lower bound and exclusive of the upper bound (goes up to but excludes the upper bound):
+
+```
+archive[1:4]
+```
+
+![img_036](images/img_036.png)
+
+![img_037](images/img_037.png)
 
 
 The ```len``` function uses the data model identifier ```__len__``` to determine how many records are stored within the ```archive```.
@@ -254,22 +282,30 @@ The ```len``` function uses the data model identifier ```__len__``` to determine
 len(archive)
 ```
 
+![img_038](images/img_038.png)
 
+![img_039](images/img_039.png)
+
+![img_040](images/img_040.png)
 
 The ```in``` keyword uses the data model identifier ```__contains__``` to see if a record is in the archive:
 
 ```
 record2 in archive
-3.14 in archive
 ```
 
+![img_041](images/img_041.png)
 
+![img_042](images/img_042.png)
 
 The ```iter``` function and ```reversed``` function use the ```__iter__``` data model method to instantiate a forward or reverse iterator from the iterable ```tuple```:
 
 ```
 forward_archive = iter(archive)
+forward_archive
 ```
+
+![img_043](images/img_043.png)
 
 Recall that an iterator only displays a single element at a time. The ```next``` function moves onto the next element and any previous element is considered consumed:
 
@@ -279,13 +315,29 @@ next(forward_archive)
 next(forward_archive)
 ```
 
+![img_044](images/img_044.png)
+
+The first next gives the iterator, the value at index 0:
+
+![img_045](images/img_045.png)
+
+The second next gives the iterator, the value at index 1 and the previous value is discarded:
+
+![img_046](images/img_046.png)
+
+The second next gives the iterator, the value at index 2 and the previous value is discarded:
+
+![img_047](images/img_047.png)
+
 Use of ```tuple``` on the ```forward_archive``` consumes the remaining records:
 
 ```
 tuple(forward_archive)
 ```
 
+![img_048](images/img_048.png)
 
+![img_049](images/img_049.png)
 
 Alternatively:
 
@@ -296,7 +348,13 @@ next(backwards_archive)
 tuple(backwards_archive)
 ```
 
+![img_050](images/img_050.png)
 
+![img_051](images/img_051.png)
+
+![img_052](images/img_052.png)
+
+![img_053](images/img_053.png)
 
 The ```hash``` function uses the data model identifier ```__hash__```:
 
