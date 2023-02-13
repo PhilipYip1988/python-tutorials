@@ -362,7 +362,7 @@ The ```hash``` function uses the data model identifier ```__hash__```:
 hash(archive)
 ```
 
-
+![img_054](images/img_054.png)
 
 Note ```hash``` only works when every record in the tuple is itself immutable. If a mutable ```bytearray``` instance is added to the ```tuple```, a ```TypeError```: unhashable type displays:
 
@@ -370,7 +370,7 @@ Note ```hash``` only works when every record in the tuple is itself immutable. I
 hash(('red', 'green', 'blue', bytearray('black', encoding='ASCII')))
 ```
 
-
+![img_055](images/img_055.png)
 
 Because a ```tuple``` containing only immutable items is itself hashable, it can be used as a key in a mapping such as the dictionary. For example:
 
@@ -378,15 +378,19 @@ Because a ```tuple``` containing only immutable items is itself hashable, it can
 colors = {(1, 0, 0): 'red', 
           (0, 1, 0): 'green',
           (0, 0, 1): 'blue'}
+
+colors[(1, 0, 0)]
 ```
 
-
+![img_056](images/img_056.png)
 
 ``` 
 colors = {('red', 'green', 'blue'): ((1, 0, 0), (0, 1, 0), (0, 0, 1))}
+
+colors[('red', 'green', 'blue')]
 ```
 
-
+![img_057](images/img_057.png)
 
 The ```?``` uses the data model identifiers ```__class__``` to identify the class and ```__doc__``` to generate information about the ```tuple``` instance:
 
@@ -394,7 +398,7 @@ The ```?``` uses the data model identifiers ```__class__``` to identify the clas
 ? archive
 ```
 
-
+![img_058](images/img_058.png)
 
 The formal and informal string representation of a ```tuple``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
 
@@ -403,6 +407,7 @@ repr(archive)
 str(archive)
 ```
 
+![img_059](images/img_059.png)
 
 For a ```tuple``` these are the same even if the tuple contains string records that have escape characters. For example:
 
@@ -413,7 +418,7 @@ str(file)
 repr(file)
 ```
 
-
+![img_060](images/img_060.png)
 
 This can be contrasted to the equivalent string data model methods which show a clear difference:
 
@@ -422,7 +427,7 @@ str(file[0])
 repr(file[0])
 ```
 
-
+![img_061](images/img_061.png)
 
 The ```__format__``` data model method is used by formatted strings when formatting a ```tuple```. There are no ```tuple``` specific format specifications:
 
@@ -430,16 +435,16 @@ The ```__format__``` data model method is used by formatted strings when formatt
 f'The tuple is {archive}'
 ```
 
+![img_062](images/img_062.png)
 
-
-The memory size of a ```tuple``` in bytes can be measured using the function ```sys.getsize``` which uses the data model identifier ```__sizeof__```:
+The memory size of a ```tuple``` in bytes can be measured using the function ```sys.getsizeof``` which uses the data model identifier ```__sizeof__```:
 
 ```
 import sys
-sys.sizeof(archive)
+sys.getsizeof(archive)
 ```
 
-
+![img_063](images/img_063.png)
 
 The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` identifiers are used to get, set and delete attributes. A ```tuple``` has no attributes so these are not used by the end user.
 
@@ -447,11 +452,13 @@ The ```+``` operator is setup to perform concatenation using the data model iden
 
 ```
 archive1 = ('hello', 1, True)
-archive2 = ('bye,' 2, False, 3.14)
+archive2 = ('bye', 2, False, 3.14)
 archive1 + archive2
 ```
 
-
+```
+![img_064](images/img_064.png)
+```
 
 The ```*``` operator is setup to perform record replication with an integer. The ```*``` operator uses the data model identifier ```__mul__``` or the reverse data model idenfier ```__rmul__``` depending on whether the tuple is to the left hand side or right hand side of the ```*``` operator:
 
@@ -461,7 +468,9 @@ archive * 3
 3 * archive
 ```
 
+![img_065](images/img_065.png)
 
+![img_066](images/img_066.png)
 
 The six equality operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=``` can be used with a ```tuple```. These use the data model identifiers ```__eq__```, ```__ne__```, ```__lt__``` and ```__le__```, ```__gt__``` and ```__ge__``` respectively. These operators operate along the index of each ```tuple``` archive comparing the records:
 
@@ -469,17 +478,17 @@ The six equality operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=
 ('red', 'green', 'blue') == ('red', 'green', 'yellow')
 ```
 
-
+![img_067](images/img_067.png)
 
 Conceptualise the above as:
 
 ```
-('red' == 'red') #equal check next records
-('green' == 'green') #equal check next records
-('blue' == 'yellow') #different
+('red' == 'red') #equal→check next records
+('green' == 'green') #equal→check next records
+('blue' == 'yellow') #different→not equal
 ```
 
-
+![img_068](images/img_068.png)
 
 The records at each correspond index are compared one by one. The following comparison is made at index 0 and index 1. There is a difference at index 1 and the right hand tuple is determined to be greater:
 
@@ -487,7 +496,7 @@ The records at each correspond index are compared one by one. The following comp
 ('red', 'green', 'blue') > ('red', 'yellow')
 ```
 
-
+![img_069](images/img_069.png)
 
 The following comparison is made at index 0 and index 1. The records for both archives at these indexes are the same. The left archive has an additional record and is determined to be greater:
 
@@ -495,7 +504,7 @@ The following comparison is made at index 0 and index 1. The records for both ar
 ('red', 'green', 'blue') > ('red', 'green')
 ```
 
-
+![img_070](images/img_070.png)
 
 Comparisons can be made with numeric tuples:
 
@@ -503,7 +512,7 @@ Comparisons can be made with numeric tuples:
 (1, 5, 9) > (1, 7)
 ```
 
-
+![img_071](images/img_071.png)
 
 However care needs to be made when a tuple archive contains records of mixed datatypes:
 
@@ -511,82 +520,276 @@ However care needs to be made when a tuple archive contains records of mixed dat
 (1, 'hello', 2) > (1, 'hello', 3)
 ```
 
+![img_072](images/img_072.png)
 
+Comparisons are normally made between tuples that have a similar form.
 
-If records that are being comapred are of different data types, there will be a ```TypeError```, similar to the same comparison made outwith a ```tuple```:
+```
+student1 = ('James', 'Smith', 31, 'M')
+student2 = ('Lucie', 'Brown', 32, 'F')
+student1 > student2
+```
+
+![img_073](images/img_073.png)
+
+The ```namedtuple``` in the ```collections``` module reinforces this use case. In the ```namedtuple```, each numeric index has a corresponding field name. The field names for the above examples could be ```forename```, ```sirname```, ```age``` and ```sex```.
+
+If records that are being compared are of different data types, there will be a ```TypeError```, similar to the same comparison made outwith a ```tuple```:
 
 ```
 (1, 'hello', 2) > (1, 'hello', 'three')
 ```
 
-
+![img_074](images/img_074.png)
 
 The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialize the ```tuple```. The ```__init_subclass__``` is used for subclassing.
 
+### tuple Unpacking
+
+Supposing the two immutable numeric variables are created:
+
+```
+x = 1
+y = 2
+```
+
+To swap the values of these variables, a temporary variable can be introduced:
+
+```
+xold = x
+```
+
+Then ```x``` can be assigned the value of ```y```:
+
+```
+x = y
+```
+
+And ```y``` can be assigned the value of ```xold```:
+
+```
+y = xold
+```
+
+Finally ```xold``` can be deleted:
+
+```
+del xold
+```
+
+And the changes are made:
+
+```
+x
+y
+```
+
+![img_075](images/img_075.png)
+
+Switching variables can also be carried out using ```tuple``` unpacking. The original values can be checked:
+
+```
+x
+y
+```
+
+And ```tuple``` unpacking can be explicitly used:
+
+```
+(x, y) = (y, x)
+```
+
+Then the changes can be checked:
+
+```
+x
+y
+```
+
+![img_076](images/img_076.png)
+
+```tuple``` unpacking is normally implicitly carried out. Notice that the tuples on the left hand side and right hand side are not enclosed in parenthesis:
+
+```
+x
+y
+x, y = y, x
+x
+y
+```
+
+![img_077](images/img_077.png)
+
+The Python interpretter recognises ```x, y``` as the ```tuple``` ```(x, y)```:
+
+```
+x
+y
+x, y
+```
+
+![img_078](images/img_078.png)
+
+```tuple``` unpacking is normally carried out in conjunction with functions. A simple function with no input arguments that explicitly returns a tuple of two values can be defined:
+
+```
+def fun():
+   return ('a', 'b')
+```
+
+Then called using:
+
+```
+fun()
+```
+
+To assign the returned values to variables, ```tuple``` unpacking can be explictly used:
+
+```
+(x, y) = fun()
+```
+
+These values can be checked:
+
+```
+x
+y
+```
+
+![img_079](images/img_079.png)
+
+It can also be implicitly used:
+
+```
+y, x = fun()
+```
+
+These values can be checked:
+
+```
+x
+y
+```
+
+![img_080](images/img_080.png)
+
+```tuple``` unpacking is normally implicitly used in the ```return``` statement of the function. The function can be redefined:
+
+```
+def fun():
+   return 'a', 'b'
+```
+
+And called:
+
+```
+x, y = fun()
+```
+
+The values of ```x``` and ```y``` can be checked:
+
+```
+x
+y
+```
+
+![img_081](images/img_081.png)
+
 ## The list Class
 
-A ```list``` is an ordered finite **mutable** collection of references to Python objects. Think of the ```list``` as an ordered numeric active archive and each reference to a Python object in this active archive as a record. Because the active archive is mutable, the position of each record in the archive can be altered and items can be added or removed to the archive. In other words a list is a mutable tuple, that can be modified once created. 
+To recap a ```tuple``` is an **immutable** collection of references to Python objects. It was conceptualised as an archive of records. Each record has an index and in the case of a ```namedtuple``` also has an associated field name.
 
-
+A ```list``` is an ordered finite **mutable** collection of references to Python objects. This means that unlike the ```tuple```, the list can be **modified** once it is created. A list can be conceptualised as an active list of records.
 
 ### The Initialization Signature
 
 Inputting ```list()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
 
-
+![img_082](images/img_082.png)
 
 A list can be created from an iterable such as a ```tuple``` using the ```list``` class:
 
 ```
 archive = (1, True, 3.14, 'hello', 'hello', 'bye')
-active_archive = list(archive)
-active_archive
+active = list(archive)
+active
 ```
 
-
+![img_083](images/img_083.png)
 
 Notice the list is enclosed in square brackets opposed to parenthesis. It can be instantiated directly using:
 
 ```
-active_archive = [1, True, 3.14, 'hello', 'hello', 'bye']
+active = [1, True, 3.14, 'hello', 'hello', 'bye']
 ```
 
+![img_084](images/img_084.png)
+
+Notice that both ```archive``` and ```active``` display in the Variable Explorer:
+
+![img_085](images/img_085.png)
+
+Recall that ```archive``` is greyed out because it is immutable (cannot be modified):
+
+![img_086](images/img_086.png)
+
+In contrast ```active``` is coloured as all the fields can be mutated (can be modified):
+
+![img_087](images/img_087.png)
+
+For example the value at index 0 can be clicked into and the integer number ```1``` can be replaced with the number ```123```:
+
+![img_088](images/img_088.png)
+
+The Spyder Variable Explorer, has an Insert Row above and Insert Row below button:
+
+![img_089](images/img_089.png)
+
+![img_090](images/img_090.png)
 
 ### Identifiers
 
 Returning to:
 
 ```
-active_archive = [1, True, 3.14, 'hello', 'hello', 'bye']
+active = [1, True, 3.14, 'hello', 'hello', 'bye']
 ```
 
-If the instance name ```active_archive``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
+![img_091](images/img_091.png)
 
+If the instance name ```active``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
 
+![img_092](images/img_092.png)
 
 For the ```list``` collection the ```index``` and ```count``` identifiers display, these behave identically to their equivalent identifiers in the immutable ```tuple``` and the identifier ```copy``` performs a shallow copy. The rest of the identifiers ```sort```, ```reverse```, ```append```, ```extend```, ```insert```, ```pop```, ```remove``` and ```clear``` are mutable methods which modify the list in place. ```pop``` is the only method to mutate the ```list``` and return a value (the popped value). The other mutable methods do not have a return statement.
 
-If ```active_archive.sort()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
+If ```active.sort()``` followed by shift ```⇧``` and tab ```↹``` is input, the docstring of the method will display:
 
-
+![img_093](images/img_093.png)
 
 By default ```sort``` will use the comparison operators to sort records in a ```list``` of all numeric values or all string values. In this case, sorting will fail showing a ```TypeError``` as this ```list``` has mixed data types:
 
 ```
-active_archive.sort()
+active.sort()
 ```
 
+![img_094](images/img_094.png)
 
+There is a keyword input argument ```key``` which can be assigned to a function. If assigned to the ```str```, class the initialization signature of the ```str``` class will be used on every record in a tuple as a key and these keys will be sorted alphabetically. Before running the next command, ```active``` will be opened in the Variable Explorer:
 
-There is a keyword input argument ```key``` which can be assigned to a function. If assigned to the ```str```, class the initialization signature of the ```str``` class will be used on every record in a tuple as a key and these keys will be sorted alphabetically:
+![img_095](images/img_095.png)
 
 ```
-active_archive.sort(key=str)
+active.sort(key=str)
 ```
 
-Notice that there is no return statement. Instead ```active_archive``` has been directly mutated (modified). This can be viewed on the Variable Inspector:
+Notice that there is no return statement.
 
+![img_096](images/img_096.png)
 
+This is because the ```list``` ```active``` has been directly mutated (modified) as seen in the Variable Explorer:
+
+![img_097](images/img_097.png)
 
 Recall that each character in a string is ordinal:
 
@@ -597,159 +800,278 @@ ord('T')
 ord('h')
 ```
 
-
+![img_098](images/img_098.png)
 
 The method ```reverse``` has no input arguments and will reverse the order of the items in the ```list```:
 
-```
-active_archive.reverse()
-```
-
-
-
-Once again there is no return value for the method and the changes can be vieweed in the Variable Inspector. Because ```sort``` was called before ```reverse```, ```active_archive``` is now reverse sorted.
-
-The ```append``` method is used to ```append``` a single item at the end of a ```list```. For example:
+![img_099](images/img_099.png)
 
 ```
-active_archive.append('world')
+active.reverse()
 ```
 
+![img_100](images/img_100.png)
 
+Once again there is no return value for the method and the changes can be vieweed in the Variable Explorer:
+
+![img_101](images/img_101.png)
+
+Because ```sort``` was called before ```reverse```, ```active``` is now reverse sorted.
+
+The ```append``` method is used to ```append``` a single item at the end of a ```list```. 
+
+![img_102](images/img_102.png)
+
+For example:
+
+```
+active.append('world')
+```
+
+![img_103](images/img_103.png)
+
+![img_104](images/img_104.png)
 
 Each record in a ```tuple``` or ```list``` is a Python object. This Python object can be another ```tuple``` or ```list``` for example: 
 
 ```
-nested_archive = ['a', 'b', 'c']
+active2 = ['a', 'b', 'c']
 ```
 
+![img_105](images/img_105.png)
 
+![img_106](images/img_106.png)
+
+![img_107](images/img_107.png)
 
 This can be appended:
 
 ```
-active_archive.append(nested_archive)
+active.append(active2)
 ```
 
+![img_108](images/img_108.png)
 
+Notice the change in the Variable Explorer:
 
-Notice that the ```nested_archive``` is a single record appended to ```active_archive```. A consequence of ```nested_archive``` being considered a single record can be seen when the ```in``` keyword is used. A record in the ```nested_archive``` is not considered being in the ```active_archive```. However ```nested_archive``` as a complete record is in ```active_archive```. This makes sense recalling that each record is a reference and a nested ```list``` or ```tuple``` is a reference to an object of references.
+![img_109](images/img_109.png)
 
-```
-'a' in active_archive
-['a', 'b', 'c'] in active_archive
-```
+The last index has a nested list:
 
+![img_110](images/img_110.png)
 
+This can be selected to view the nested list in more detail:
 
-In addition if the length of the ```active_archive``` is examined:
+![img_111](images/img_111.png)
 
-```
-len(active_archive)
-```
+![img_112](images/img_112.png)
 
-
-
-Notice that the ```nested_archive``` is considered to only be one record. If this record is indexed into, ```nested_list``` is returned. This can also be indexed into:
+Notice that ```active2``` is a single record appended to ```active```. Index 7 of ```active``` can be compared to ```active2```. Index 7 of ```active``` and ```active2``` are equal as expected:
 
 ```
-active_archive[7]
-active_archive[7][1]
-nested_archive[1]
+active[7] == active2
 ```
 
-
-
-If ```active_archive``` is examined, the nested archive can be clearly seen by the additional ```[]```:
+However they are also the same object:
 
 ```
-active_archive
+active[7] is active2
 ```
 
+![img_113](images/img_113.png)
 
+A consequence of ```active2``` being considered a single record can be seen when the ```in``` keyword is used. A record in the ```active2``` is not considered being in ```active``` as ```in``` only looks for a complete record:
+
+```
+'a' in active
+```
+
+![img_114](images/img_114.png)
+
+![img_115](images/img_115.png)
+
+```active2``` as a complete record is in ```active```:
+
+```
+active2 in active
+['a', 'b', 'c'] in active
+```
+
+![img_116](images/img_116.png)
+
+In addition if the length of the ```active``` is examined:
+
+```
+len(active)
+```
+
+![img_117](images/img_117.png)
+
+Notice that the ```active2``` is considered to only be one record. It can be accessed via ```active``` using indexing:
+
+```
+active[7]
+```
+
+![img_118](images/img_118.png)
+
+![img_119](images/img_119.png)
+
+Since ```active2``` is also a list. It can be indexed into:
+
+```
+active2[1]
+```
+
+![img_120](images/img_120.png)
+
+![img_121](images/img_121.png)
+
+Or from ```active``` using indexing twice:
+
+```
+active[7][1]
+```
+
+![img_122](images/img_122.png)
+
+![img_123](images/img_123.png)
+
+![img_124](images/img_124.png)
 
 The method ```extend``` can be used to extend a list using the contents of an iterable such as a ```tuple``` or ```list```:
 
-```
-active_archive.extend(nested_archive)
-```
+![img_125](images/img_125.png)
 
-
-
-Each record in the ```nested_list``` is now a seperate record in ```active_archive```.
+For example:
 
 ```
-'a' in active_archive
-len(active_archive)
+active.extend(active2)
 ```
 
+![img_126](images/img_126.png)
 
+![img_127](images/img_127.png)
+
+![img_128](images/img_128.png)
+
+Each record in ```active2``` is now a seperate record in ```active```.
+
+```
+'a' in active
+len(active)
+```
+
+![img_129](images/img_129.png)
 
 The ```insert``` method behaves similarly to ```append``` except takes in an numeric index input argument to insert a record. The record that was at that index and all subsequent records are increased by an index of one:
 
+![img_130](images/img_130.png)
+
+For example at index 1:
+
+![img_131](images/img_131.png)
+
+```active2``` can be inserted:
+
 ```
-active_archive.insert(1, nested_archive)
+active.insert(1, active2)
 ```
 
+![img_132](images/img_132.png)
+
+![img_133](images/img_133.png)
 
 The ```pop``` method by default pops off the record at the last index:
 
+![img_137](images/img_137.png)
+
+For example, the last item in ```active```:
+
+![img_134](images/img_134.png)
+
+Can be popped using:
+
 ```
-active_archive.pop()
-active_archive
-```
-
-
-
-Notice that this method has a return statement and returns the value that was popped but also mutates the list. This is the only ```list``` method that mutates the ```list``` and returns a value. ```pop``` by default pops off the last item, acting like an inverse of the ```append``` method. It can however be supplied a numeric index. Once this record is popped all subsequent records are decreased by an index of one:
-
-```
-active_archive.pop(2)
-active_archive
+active.pop()
 ```
 
+Notice the popped value is returned:
+
+![img_135](images/img_135.png)
+
+**And** the list is mutated:
+
+![img_136](images/img_136.png)
+
+This is the only ```list``` method that mutates the ```list``` and returns a value. 
+
+```pop``` by default pops off the last item, acting like an inverse of the ```append``` method. It can however be supplied a numeric index. Once this record is popped all subsequent records are decreased by an index of one. FOr example the value at index 2:
+
+![img_138](images/img_138.png)
+
+Can be popped:
+
+```
+active.pop(2)
+```
+
+![img_139](images/img_139.png)
+
+![img_140](images/img_140.png)
 
 The ```remove``` method, removes the first instance of a specified record. All records subsequent to that record are decreased by an index of one:
 
-```
-active_archive.remove(nested_archive)
-```
+![img_141](images/img_141.png)
 
+For example, the first occurance of ```active2```:
 
+![img_142](images/img_142.png)
 
-```
-active_archive.remove(nested_archive)
-```
-
-
-
-The method ```clear``` will clear all records:
+Can be removed using:
 
 ```
-active_archive.clear()
+active.remove(active2)
 ```
 
+![img_143](images/img_143.png)
+
+![img_144](images/img_144.png)
+
+The method ```clear``` will clear all records, resulting in an empty list:
+
+![img_146](images/img_146.png)
+
+For example:
+
+```
+active.clear()
+```
+
+![img_145](images/img_145.png)
+
+![img_147](images/img_147.png)
 
 ### Data Model Identifiers
 
 Returning to:
 
 ```
-active_archive = [1, True, 3.14, 'hello', 'hello', 'bye']
+active = [1, True, 3.14, 'hello', 'hello', 'bye']
 ```
 
 The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
 
 ```
 from pprint import pprint
-pprint(dir(active_archive), compact=True)
+pprint(dir(active), compact=True)
 ```
 
 
 ```__hash__```
 
 ```
-hash(active_archive)
+hash(active)
 ```
 
 
@@ -758,16 +1080,16 @@ hash(active_archive)
 ```__getitem__```, ```__setitem__```, ```__delitem__```
 
 ```
-active_archive[3]
+active[3]
 ```
 
 ```
-active_archive[3] = 'hi'
+active[3] = 'hi'
 ```
 
 
 ```
-del active_archive[3]
+del active[3]
 ```
 
 
