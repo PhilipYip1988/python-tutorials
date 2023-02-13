@@ -1097,40 +1097,40 @@ del active[3]
 ### Mutability
 
 ```
-archive1 = [1, 2, 3, 4]
-archive2 = ['a', 'b', 'c', archive1]
-archive3 = archive2
-archive4 = archive2.copy()
+active1 = [1, 2, 3, 4]
+active2 = ['a', 'b', 'c', archive1]
+active3 = active2
+active4 = active2.copy()
 ```
 
 
 
 ```
-archive4[1] = 'f'
+active4[1] = 'f'
 ```
 
 
 
 ```
-archive3[1] = 'g'
+active3[1] = 'g'
 ```
 
 
 
 ```
-archive2[3][1] = 6
+active2[3][1] = 6
 ```
 
 
 
 ```
 from copy import deepcopy
-archive5 = deepcopy(archive2)
+active5 = deepcopy(active2)
 ```
 
 
 ```
-archive5[3][1] = 8
+active5[3][1] = 8
 ```
 
 
@@ -1152,15 +1152,15 @@ y
 
 
 ```
-archive = ['a', 'b', 'c']
+active = ['a', 'b', 'c']
 
 def fun():
-    archive.append('d')
+    active.append('d')
     return None    
 
 fun()
 
-archive
+active
 ```
 
 
@@ -1179,8 +1179,8 @@ A ```set``` can be created from an iterable such as a ```tuple``` or ```list``` 
 
 ```
 archive = (1, True, 3.14, 'hello', 'hello', 'bye')
-unique_archive = set(archive)
-unique_archive
+unique = set(archive)
+unique
 ```
 
 
@@ -1188,71 +1188,125 @@ unique_archive
 Notice the ```set``` is enclosed in braces and all duplicates have been removed. By removing duplicates the numeric index has been lost, a ```set``` is unordered and has no index. It can be instantiated directly using:
 
 ```
-unique_archive = {1, 3.14, 'hello', 'bye'}
+unique = {1, 3.14, 'hello', 'bye'}
 ```
 
 
-```
-vowels = {'a', 'e', 'i', 'o', 'u'}
-vowels = set(('a', 'e', 'i', 'o', 'u'))
-vowels = set('aeiou')
-```
+
 
 
 ### Identifiers
 
 ```
-vowels = set('aeiou')
-abc123 = set('abc123')
-
-import string
-nums = set(string.digits)
-letters = set(string.ascii_letters[:26])
+unique = {'0', '1', '2'}
 ```
 
 
 
-The ```set``` identifiers ```copy```, ```pop```, ```remove``` and ```clear``` which behave similarly to their counterpart ```list``` identifiers. The ```pop``` identifier does not have the keyword input argument ```index``` because a ```set``` is unordered and will always pop off an arbitary value.
+The ```set``` identifier ```add``` is similar to the list method ```append```. The difference in the name indicates that there is no order in the set. Note this identifier should not be confused with the data model identifier ```__add__``` which isn't defined for a ```set```:
+
+```
+unique.add('3')
+```
 
 
-issubset
+
+Moreover if the value to be added to the set is already included in the set, it won't be added again as sets can't have duplicates:
+
+```
+unique.add('3')
+```
+
+
+
+The ```set``` identifier```remove``` operates analogously to the ```list``` counterpart identifier ```remove```. It is also supplemented by ```discard```. The difference between two methods is in error handling; ```remove``` raises an error if a value is not present and ```discard``` is silent:
+
+```
+unique.remove('3')
+unique.discard('4')
+unique.remove('5')
+unique.discard('5')
+```
+
+
+
+The ```pop``` identifier does not have the keyword input argument ```index``` because a ```set``` is unordered and will always pop off an arbitary value:
+
+
+
+```
+unique.pop()
+```
+
+The set identifier ```copy``` operates analogously to the ```list``` counterpart identifier ```copy``` and performs a shallow copy. A deep copy can be performed using the ```deepcopy``` function from the ```copy``` module:
+
+```
+unique2 = unique.copy()
+```
+
+
+The set identifier ```clear``` operates analogously to the ```list``` counterpart identifier  ```clear```, clearing all the items in the collection: 
+
+```
+unique.clear()
+```
+
+
+
+The ```issuperset``` identifier checks whether one ```set``` instance is a superset, that is a ```set``` that contains all the values of another ```set```: 
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6, 7, 8}
+unique2 = {0, 1, 2}
+unique3 = {7, 8, 9}
+unique4 = {'a', 'b', 'c'}
+```
+
+```
+unique1.issuperset(unique2)
+unique1.issuperset(unique3)
+```
+
+
+
+The ```issubset``` identifier checks whether one ```set``` instance is a subset, that is a ```set``` which all values are contained with the other ```set``` (superset): 
+
+```
+unique2.issubset(unique1)
+unique3.issubset(unique1)
+```
+
+
+
+The ```disjoint``` identifiers checks whether one set is disjoint with another, that is two sets which share no values in common:
+
+```
+unique4.isdisjoint(unique1)
+unique3.isdisjoint(unique1)
+```
+
+
 issuperset
+issubset
 isdisjoint
 
-add 
+union
 difference
 symmetric_difference
-discard
 intersection
-union
+
+
 update
-
-
 difference_update
-intersection_update
 symmetric_difference_update
+intersection_update
 
 
 
 
+and or
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-statement.
 
 
 
