@@ -1060,6 +1060,8 @@ Returning to:
 active = [1, True, 3.14, 'hello', 'hello', 'bye']
 ```
 
+![img_148](images/img_148.png)
+
 The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
 
 ```
@@ -1067,71 +1069,158 @@ from pprint import pprint
 pprint(dir(active), compact=True)
 ```
 
+![img_149](images/img_149.png)
 
-```__hash__```
+Most of the data model identifers listed are the same as the identifiers listed for the immutable ```tuple``` and the ```list``` identifiwers behave consistently with their ```tuple``` counterparts. 
+
+The ```hash``` function which uses the ```__hash__``` identifier will always give a ```TypeError``` for a ```list``` because it is immutable:
 
 ```
 hash(active)
 ```
 
+![img_150](images/img_150.png)
 
-
-
-```__getitem__```, ```__setitem__```, ```__delitem__```
+The **immutable** ```tuple``` only has ```__getitem__```.
+The **mutable** ```list``` has ```__getitem__```, ```__setitem__``` and ```__delitem__```. This means for both a ```tuple``` and a ```list```, the value at an index can be read using:
 
 ```
 active[3]
 ```
 
+![img_151](images/img_151.png)
+
+![img_152](images/img_152.png)
+
+For a ```list``` it can also be assigned a new value:
+
 ```
 active[3] = 'hi'
 ```
 
+![img_153](images/img_153.png)
+
+![img_154](images/img_154.png)
+
+For a ```list``` it can also be deleted. When a record is deleted, all subsequent records have their numeric index value lowered by 1:
 
 ```
 del active[3]
 ```
 
+![img_155](images/img_155.png)
 
+![img_156](images/img_156.png)
 
 ### Mutability
 
-```
-active1 = [1, 2, 3, 4]
-active2 = ['a', 'b', 'c', archive1]
-active3 = active2
-active4 = active2.copy()
-```
-
-
-
-```
-active4[1] = 'f'
-```
-
-
-
-```
-active3[1] = 'g'
-```
-
-
-
-```
-active2[3][1] = 6
-```
-
-
+Many begineer tutorials over-emphasis the use of lists and under-emphasise the use of tuples. Overuse of lists can result in unexpected behaviour due to mutability. If the four object names are assigned:
 
 ```
 from copy import deepcopy
+active1 = [1, 2, 3, 4]
+active2 = ['a', 'b', 'c', active1]
+active3 = active2
+active4 = active2.copy()
 active5 = deepcopy(active2)
 ```
 
+![img_157](images/img_157.png)
+
+![img_158](images/img_158.png)
+
+Notice that:
+
+* ```active1``` is a record in ```active2```
+* ```active3``` is an alias of ```active2```
+* ```active1``` is therefore a record in ```active3```
+* ```active4``` is a shallow copy of ```active2```
+* ```active1``` is therefore still a record in ```active4``````active5``` is a deep copy of ```active2```
+* a copy of ```active1``` is a record in ```active5```
+
+If ```active4``` is indexed into, to get to the nested list ```active1``` and this is in turn indexed and assigned a new value. The change will modify ```active1``` and ```active4```. Moreover because ```active1``` is included in ```active2``` and ```active3```, these in turn will be modified (think of all of these as four labels to the same object). The copy of ```active1``` in ```active5``` will not be changed:
 
 ```
-active5[3][1] = 8
+active4[3][1] = 'f'
 ```
+
+![img_159](images/img_159.png)
+
+![img_160](images/img_160.png)
+
+If another index in ```active4``` is modified, ```active2``` and ```active3``` will not be modified because it is a shallow copy:
+
+```
+active4[1] = 'g'
+```
+
+![img_161](images/img_161.png)
+
+![img_162](images/img_162.png)
+
+If another index in ```active3``` is modified, ```active2``` will be modified as they are an alias to the same object (think of it as the same object with two labels):
+
+```
+active3[2] = 'h'
+```
+
+![img_163](images/img_163.png)
+
+![img_164](images/img_164.png)
+
+Returning to:
+
+```
+active1 = [1, 2, 3, 4]
+active2 = ['a', 'b', 'c', active1]
+active3 = active2
+active4 = active2.copy()
+active5 = deepcopy(active2)
+```
+
+![img_165](images/img_165.png)
+
+It is worthwhile understanding the subtle difference between *is* and *is equal to*. When a label *is* another label it means they point to the same object, in other word act as alias. When a label *is equal to* another label, it means the objects, they point to have equal values, they can be different objects with the same values or the same object:
+
+```
+active1 is active2[3]
+active1 is active3[3]
+active1 is active4[3]
+active1 is active5[3]
+active1 == active5[3]
+```
+
+![img_166](images/img_166.png)
+
+```
+active2 is active3
+active2 is active4
+active2 == active4
+active2 is active5
+active2 == active5
+```
+
+![img_167](images/img_167.png)
+
+Create the 5 object names above in the Spyder IDE, take your time indexing into them and making mutations and view the changes on the Variable Explorer. This will give you a better understanding of the subtle concept of mutability, which when used incorrectly can become a minefield when used in larger more complicated nested lists.
+
+**Reassignment often gets confused with mutability.** If the following ```tuple``` is assigned to the object name or label ```archive1```:
+
+```
+archive1 = (1, 2, 3, 4, 5)
+archive1
+```
+
+And then later the following ```tuple``` is reassigned to the object name of label ```archive1```:
+
+```
+archive1 = ('a', 'b', 'c', 'd', 'e')
+archive1
+```
+
+The ```tuple``` ```(1, 2, 3, 4, 5)``` is **not modified**.
+Instead the label ```archive1``` now points to a completely independent object ```('a', 'b', 'c', 'd', 'e')```. If an object has no object names (which can be conceptualised as labels or references to the object), then it is cleaned up by Pythons garbage collection. This was discussed further in the [Text Data Types: Object Orientated Programming Conception](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes#object-orientated-programming-conception). It is worthwhile re-reading this section to ensure a solid understanding of object orientated prgoramming and mutability.
+
 
 
 

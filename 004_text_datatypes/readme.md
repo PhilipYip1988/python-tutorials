@@ -776,7 +776,7 @@ f'The string to {str0 :10s} is {str1 :6s} {str2 :6s}!'
 
 ![img_100](./images/img_100.png)
 
-It is commonly to include numeric variables into a formatted string.
+Numeric variables are commonly incorporated into a formatted string.
 
 ```
 num1 = 1
