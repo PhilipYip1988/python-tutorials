@@ -1287,7 +1287,7 @@ unique = {1, 3.14, 'hello', 'bye'}
 ### Identifiers
 
 ```
-unique = {'0', '1', '2'}
+unique = {0, 1, 2}
 ```
 
 
@@ -1295,7 +1295,7 @@ unique = {'0', '1', '2'}
 The ```set``` identifier ```add``` is similar to the list method ```append```. The difference in the name indicates that there is no order in the set. Note this identifier should not be confused with the data model identifier ```__add__``` which isn't defined for a ```set```:
 
 ```
-unique.add('3')
+unique.add(3)
 ```
 
 
@@ -1303,7 +1303,7 @@ unique.add('3')
 Moreover if the value to be added to the set is already included in the set, it won't be added again as sets can't have duplicates:
 
 ```
-unique.add('3')
+unique.add(2)
 ```
 
 
@@ -1311,10 +1311,10 @@ unique.add('3')
 The ```set``` identifier```remove``` operates analogously to the ```list``` counterpart identifier ```remove```. It is also supplemented by ```discard```. The difference between two methods is in error handling; ```remove``` raises an error if a value is not present and ```discard``` is silent:
 
 ```
-unique.remove('3')
-unique.discard('4')
-unique.remove('5')
-unique.discard('5')
+unique.remove(3)
+unique.discard(2)
+unique.remove(2)
+unique.discard(2)
 ```
 
 
@@ -1337,7 +1337,7 @@ unique2 = unique.copy()
 The set identifier ```clear``` operates analogously to the ```list``` counterpart identifier  ```clear```, clearing all the items in the collection: 
 
 ```
-unique.clear()
+unique2.clear()
 ```
 
 
@@ -1375,25 +1375,84 @@ unique3.isdisjoint(unique1)
 ```
 
 
-issuperset
-issubset
-isdisjoint
 
-union
-difference
-symmetric_difference
-intersection
+The ```union``` identifier makes a superset which contains all unique values of the set the method is called from *self* and the set the method is applied to *other*. This method has a return value producing a new set:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.union(unique2)
+```
+
+The ```update``` method can be thought of as *union_update* and behaves similarly to the method ```update```. The set the method is called from *self* is updated in place and there is no return value:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.update(unique2)
+```
 
 
-update
-difference_update
-symmetric_difference_update
-intersection_update
+
+The ```intersection``` identifier returns all unique values which occur both in *self* and *other*. This method has a return value producing a new set:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.intersection(unique2)
+```
+
+The ```intersection_update``` and behaves similarly to the method ```intersection```. The set the method is called from *self* is updated in place and there is no return value:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.intersection_update(unique2)
+```
+
+
+The ```difference``` identifier returns all unique values which occur both in *self* that do not occur *other*. This method has a return value producing a new set:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.difference(unique2)
+```
+
+The ```difference_update``` behaves similarly to the method ```difference```. The set the method is called from *self* is updated in place and there is no return value:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.difference_update(unique2)
+```
+
+
+The ```symmetric_difference``` identifier returns all unique values which occur both in *self* that do not occur *other* and all the unique values that occur in *other* but do not occur in *self*. This method has a return value producing a new set:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.symmetric_difference(unique2)
+```
+
+The ```symmetric_difference_update``` behaves similarly to the method ```symmetric_difference```. The set the method is called from *self* is updated in place and there is no return value:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+unique1.symmetric_difference_update(unique2)
+```
 
 
 
 
-and or
+
+
+
+
+
+
 
 
 
@@ -1404,8 +1463,8 @@ and or
 ### Data Model Identifiers
 
 ```
-unique_archive = {1, 3.14, 'hello', 'bye'}
-pprint(dir(unique_archive), compact=True)
+unique1 = {0, 1, 2, 3}
+pprint(dir(unique1), compact=True)
 ```
 
 ```
@@ -1416,8 +1475,38 @@ hash(unique_archive)
 Notice there is no ```__getitem__```
 
 
-```__and__```, ```__or__```, ```__xor__```
+```__sub__``` is similar to ```difference```
 
-```__sub__```
+```__isub__``` is similar to ```difference_update```.
+
+
+```difference``` can take any iterable as an input argument. The ```-``` operator requires two ```set``` instances.
 
 no ```__add__``` or ```__mul__``` (does not make sense to multiply a set to get duplicates because there is no duplicates in a set)
+
+
+The ```&``` operator returns the intersection.
+
+The ```|``` operator returns the union.
+
+The ```^``` operator returns the symmetric difference
+
+```__and__```, ```__or__```, ```__xor__```
+
+```__iand__```, ```__ior__```, ```__ixor__```.
+
+
+
+
+
+The six equality operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=``` can be used with a ```set```. These use the data model identifiers ```__eq__```, ```__ne__```, ```__lt__``` and ```__le__```, ```__gt__``` and ```__ge__``` respectively. 
+
+* A set is equal to another set if all the values are the same. 
+* A set is greater than another set, if it is a superset of the other set. 
+* A set is less than another set, if it is a subset.
+* If two sets have an intersection and a symmetric difference, they are not equal and all other comparison operators are ```False```.
+
+
+
+
+
