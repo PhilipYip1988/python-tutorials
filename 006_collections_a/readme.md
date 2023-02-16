@@ -1071,7 +1071,7 @@ pprint(dir(active), compact=True)
 
 ![img_149](images/img_149.png)
 
-Most of the data model identifers listed are the same as the identifiers listed for the immutable ```tuple``` and the ```list``` identifiwers behave consistently with their ```tuple``` counterparts. 
+Most of the data model identifiers listed are the same as the identifiers listed for the immutable ```tuple``` and the ```list``` identifiers behave consistently with their ```tuple``` counterparts. 
 
 The ```hash``` function which uses the ```__hash__``` identifier will always give a ```TypeError``` for a ```list``` because it is immutable:
 
@@ -1462,13 +1462,37 @@ unique1.symmetric_difference_update(unique2)
 
 ### Data Model Identifiers
 
+Returning to:
+
 ```
-unique1 = {0, 1, 2, 3}
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+```
+
+
+The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
+
+```
 pprint(dir(unique1), compact=True)
 ```
 
+
+
+The formal and informal string representation of a ```set``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
+
 ```
-hash(unique_archive)
+repr(unique1)
+str(unique1)
+```
+
+
+
+
+
+
+A set is mutatable, the ```hash``` function which uses the ```__hash__``` data model method:
+
+```
+hash(unique1)
 ```
 
 
