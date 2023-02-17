@@ -1218,11 +1218,11 @@ archive1 = ('a', 'b', 'c', 'd', 'e')
 archive1
 ```
 
-The ```tuple``` ```(1, 2, 3, 4, 5)``` is **not modified**.
-Instead the label ```archive1``` now points to a completely independent object ```('a', 'b', 'c', 'd', 'e')```. If an object has no object names (which can be conceptualised as labels or references to the object), then it is cleaned up by Pythons garbage collection. This was discussed further in the [Text Data Types: Object Orientated Programming Conception](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes#object-orientated-programming-conception). It is worthwhile re-reading this section to ensure a solid understanding of object orientated prgoramming and mutability.
+![img_168](images/img_168.png)
 
+The original ```tuple``` ```(1, 2, 3, 4, 5)``` is **not modified**. Instead the label ```archive1``` now points to a completely independent object ```('a', 'b', 'c', 'd', 'e')```. If an object has no object names (which can be conceptualised as labels or references to the object), then it is cleaned up by Pythons garbage collection. This was discussed further in the [Text Data Types: Object Orientated Programming Conception](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes#object-orientated-programming-conception). It is worthwhile re-reading this section to ensure a solid understanding of object orientated prgoramming and mutability.
 
-
+Functions have their own local scope. If the immutable integer variables ```x``` and ```y``` are assigned in the main scope and then reassigned in the functions local scope they will remain unchanged once the function has been called and the functions local scope has been exited:
 
 ```
 x = 1
@@ -1239,20 +1239,81 @@ x
 y
 ```
 
+![img_169](images/img_169.png)
+
+Care should be taken when using an immutable data type within a function. If a mutable method is used on a mutable object in the functions local scope, it will mutate the immutable data type in the global scope:
 
 ```
 active = ['a', 'b', 'c']
 
 def fun():
     active.append('d')
-    return None    
+    return None
+
+
+fun()
+
+active
 
 fun()
 
 active
 ```
 
+![img_170](images/img_170.png)
 
+If however reasignment of the mutable object is used within the functions local scope and then the object is mutated. Only the object within the functions local scope will be modified. The mutable object within the global scope will be unaltered:
+
+```
+active = ['a', 'b', 'c']
+
+def fun():
+    active = ['a', 'b', 'c']
+    active.append('d')
+    return None  
+
+
+fun()
+
+active
+```
+
+![img_171](images/img_171.png)
+
+Unintended mutability of an original object can occur when the object is supplied as an input argument to a function:
+
+```
+active = ['a', 'b', 'c']
+
+def fun(mutable):
+    mutable.append('d')
+    return None  
+
+
+fun(active)
+
+active
+```
+
+![img_172](images/img_172.png)
+
+When this is not desired, the ```copy``` method can be used to create a local copy of the variable within the functions local scope:
+
+```
+active = ['a', 'b', 'c']
+
+def fun(mutable):
+    mutable = mutable.copy()
+    mutable.append('d')
+    return None  
+
+
+fun(active)
+
+active
+```
+
+![img_173](images/img_173.png)
 
 ## The set Class
 
@@ -1262,7 +1323,7 @@ A ```set``` is an unordered finite **mutable** collection of unique Python objec
 
 Inputting ```set()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
 
-
+![img_174](images/img_174.png)
 
 A ```set``` can be created from an iterable such as a ```tuple``` or ```list``` using the ```set``` class:
 
@@ -1272,9 +1333,28 @@ unique = set(archive)
 unique
 ```
 
+![img_175](images/img_175.png)
+
+Notice the ```set``` is enclosed in braces and all duplicates have been removed. This can be seen in the Variable Explorer, the ```set``` ```unique``` has a size smaller than the ```tuple``` ```archive```:
+
+![img_176](images/img_176.png)
+
+By removing duplicates the numeric index has been lost, a ```set``` is unordered and has no index. The values are shown in the Variable Explorer in a random order.
+
+![img_177](images/img_177.png)
+
+Although the fields are greyed out in the Spyder Variable Explorer, a ```set``` is **mutable**. In this case being greyed out indicates that support for mutating a ```set``` via the Variable Explorer is not available. Since a ```set``` is unordered it is not possible to index into a ```set``` to select a value or mutate a value. In the case of the ```list```, the Spyder Variable Explorer under the hood uses the ```list``` data model method ```__setitem__``` to reassign a value. For a ```set``` it is not possible to modify a value directly. It is however possible to discard a value and to add a new value using mutable identifiers.
 
 
-Notice the ```set``` is enclosed in braces and all duplicates have been removed. By removing duplicates the numeric index has been lost, a ```set``` is unordered and has no index. It can be instantiated directly using:
+
+high dpi 1.5
+
+100 % zoom jupyterlab
+
+1920 1080 150 %
+
+
+It can be instantiated directly using:
 
 ```
 unique = {1, 3.14, 'hello', 'bye'}
