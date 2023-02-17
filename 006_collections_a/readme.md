@@ -1343,83 +1343,161 @@ By removing duplicates the numeric index has been lost, a ```set``` is unordered
 
 ![img_177](images/img_177.png)
 
-Although the fields are greyed out in the Spyder Variable Explorer, a ```set``` is **mutable**. In this case being greyed out indicates that support for mutating a ```set``` via the Variable Explorer is not available. Since a ```set``` is unordered it is not possible to index into a ```set``` to select a value or mutate a value. In the case of the ```list```, the Spyder Variable Explorer under the hood uses the ```list``` data model method ```__setitem__``` to reassign a value. For a ```set``` it is not possible to modify a value directly. It is however possible to discard a value and to add a new value using mutable identifiers.
+Although the fields are greyed out in the Spyder Variable Explorer, a ```set``` is **mutable**. In this case being greyed out indicates that support for mutating a ```set``` via the Variable Explorer is not available. The reason for this is a ```set``` is unordered and therefore it is not possible to index into a ```set``` to select a value or mutate a value. In the case of the ```list```, the Spyder Variable Explorer under the hood used the ```list``` data model method ```__setitem__``` to reassign a value. For a ```set``` it is not possible to modify a value directly in the same manner. It is however possible to discard a value and to add a new value using mutable identifiers.
 
-
-
-high dpi 1.5
-
-100 % zoom jupyterlab
-
-1920 1080 150 %
-
-
-It can be instantiated directly using:
+A ```set``` can be instantiated directly using:
 
 ```
 unique = {1, 3.14, 'hello', 'bye'}
 ```
 
+![img_178](images/img_178.png)
 
+A ```set``` with a single value can be created using:
 
+```
+unique = {1}
+```
 
+![img_204](images/img_204.png)
+
+For an empty ```set```, the ```{}``` cannot be used as they are used to enclose another collection, the ```dict```. Therefore the ```set``` initialization signature must be used directly to create an empty ```set```:
+
+```
+dictionary = {}
+unique = set()
+```
+
+![img_205](images/img_205.png)
+
+![img_206](images/img_206.png)
 
 ### Identifiers
 
+Supposing the simple instance is created:
+
 ```
-unique = {0, 1, 2}
+unique = {1, 2, 0}
 ```
 
+![img_179](images/img_179.png)
 
+![img_180](images/img_180.png)
 
-The ```set``` identifier ```add``` is similar to the list method ```append```. The difference in the name indicates that there is no order in the set. Note this identifier should not be confused with the data model identifier ```__add__``` which isn't defined for a ```set```:
+![img_181](images/img_181.png)
+
+If the instance name ```unique``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
+
+![img_182](images/img_182.png)
+
+The ```set``` identifier ```add``` is similar to the list method ```append```. The difference in the name indicates that there is no order in the set. 
+
+![img_187](images/img_187.png)
+
+Note this identifier should not be confused with the data model identifier ```__add__``` which isn't defined for a ```set```.
+
+The element ```3``` can be added using:
 
 ```
 unique.add(3)
 ```
 
+This identifier is a method that has no return value:
 
+![img_183](images/img_183.png)
 
-Moreover if the value to be added to the set is already included in the set, it won't be added again as sets can't have duplicates:
+This is a mutatable method and modifies the instance inplace:
+
+![img_184](images/img_184.png)
+
+If the value to be added to the set is already included in the set, it won't be added again as sets can't have duplicates:
 
 ```
 unique.add(2)
 ```
 
+![img_185](images/img_185.png)
 
+![img_186](images/img_186.png)
 
-The ```set``` identifier```remove``` operates analogously to the ```list``` counterpart identifier ```remove```. It is also supplemented by ```discard```. The difference between two methods is in error handling; ```remove``` raises an error if a value is not present and ```discard``` is silent:
+The ```set``` identifier```remove``` operates analogously to the ```list``` counterpart identifier ```remove```. It is also supplemented by ```discard```:
+
+![img_188](images/img_188.png)
+
+![img_189](images/img_189.png)
+
+For example:
 
 ```
 unique.remove(3)
+```
+
+![img_190](images/img_190.png)
+
+![img_191](images/img_191.png)
+
+```
 unique.discard(2)
+```
+
+![img_192](images/img_192.png)
+
+![img_193](images/img_193.png)
+
+Both identifiers are mutable methods that have no return value and mutate the ``set``` inplace.
+
+The difference between two methods is in error handling; ```remove``` raises an error if a value is not present and ```discard``` is silent:
+
+```
 unique.remove(2)
 unique.discard(2)
 ```
 
-
+![img_194](images/img_194.png)
 
 The ```pop``` identifier does not have the keyword input argument ```index``` because a ```set``` is unordered and will always pop off an arbitary value:
 
-
+![img_195](images/img_195.png)
 
 ```
 unique.pop()
 ```
 
+This identifier is a mutatable method that returns the popped value:
+
+![img_196](images/img_196.png)
+
+And mutates the ```set``` inplace:
+
+![img_197](images/img_197.png)
+
 The set identifier ```copy``` operates analogously to the ```list``` counterpart identifier ```copy``` and performs a shallow copy. A deep copy can be performed using the ```deepcopy``` function from the ```copy``` module:
+
+![img_200](images/img_200.png)
+
+For example the shallow copy ```unique2``` can be made using:
 
 ```
 unique2 = unique.copy()
 ```
 
+![img_198](images/img_198.png)
 
-The set identifier ```clear``` operates analogously to the ```list``` counterpart identifier  ```clear```, clearing all the items in the collection: 
+![img_199](images/img_199.png)
+
+The set identifier ```clear``` operates analogously to the ```list``` counterpart identifier  ```clear```. All of the items in the collection are cleared inplace and there is no return value:
+
+![img_201](images/img_201.png)
+
+The original instance ```unique``` can be cleared:
 
 ```
-unique2.clear()
+unique.clear()
 ```
 
+![img_202](images/img_202.png)
+
+![img_203](images/img_203.png)
 
 
 The ```issuperset``` identifier checks whether one ```set``` instance is a superset, that is a ```set``` that contains all the values of another ```set```: 
