@@ -1499,8 +1499,7 @@ unique.clear()
 
 ![img_203](images/img_203.png)
 
-
-The ```issuperset``` identifier checks whether one ```set``` instance is a superset, that is a ```set``` that contains all the values of another ```set```: 
+Supposing the four ```set``` instances are created:
 
 ```
 unique1 = {0, 1, 2, 3, 4, 5, 6, 7, 8}
@@ -1509,114 +1508,231 @@ unique3 = {7, 8, 9}
 unique4 = {'a', 'b', 'c'}
 ```
 
+![img_208](images/img_208.png)
+
+The ```issuperset``` identifier checks whether one ```set``` instance is a superset, that is a ```set``` that contains all the values of another ```set```: 
+
+![img_209](images/img_209.png)
+
+For example ```unique1``` contains all the elements in ```unique2``` and is a superset:
+
+![img_210](images/img_210.png)
+
 ```
 unique1.issuperset(unique2)
+```
+
+![img_211](images/img_211.png)
+
+```unique1``` does not contain all the elements in ```unique3``` and is not a superset:
+
+![img_212](images/img_212.png)
+
+```
 unique1.issuperset(unique3)
 ```
 
-
+![img_213](images/img_213.png)
 
 The ```issubset``` identifier checks whether one ```set``` instance is a subset, that is a ```set``` which all values are contained with the other ```set``` (superset): 
 
+![img_214](images/img_214.png)
+
+For example ```unique2``` is a subset of ```unique1```:
+
+![img_215](images/img_215.png)
+
 ```
 unique2.issubset(unique1)
+```
+
+![img_216](images/img_216.png)
+
+```unique3``` is not a subset of ```unique1``` as there is a value in ```unique3``` that is not in ```unique1```:
+
+![img_217](images/img_217.png)
+
+```
 unique3.issubset(unique1)
 ```
 
-
+![img_218](images/img_218.png)
 
 The ```disjoint``` identifiers checks whether one set is disjoint with another, that is two sets which share no values in common:
 
+![img_219](images/img_219.png)
+
+For example ```unique4``` is disjoint from ```unique1``` as they have no overlapping values:
+
+![img_220](images/img_220.png)
+
 ```
 unique4.isdisjoint(unique1)
+```
+
+![img_221](images/img_221.png)
+
+For example ```unique3``` is not disjoint from ```unique1``` as they have overlapping values:
+
+![img_222](images/img_222.png)
+
+```
 unique3.isdisjoint(unique1)
 ```
 
+![img_223](images/img_222.png)
 
-
-The ```union``` identifier makes a superset which contains all unique values of the set the method is called from *self* and the set the method is applied to *other*. This method has a return value producing a new set:
+Supposing now:
 
 ```
 unique1 = {0, 1, 2, 3, 4, 5, 6}
 unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_224](images/img_224.png)
+
+The ```union``` identifier makes a superset which contains all unique values of the set the method is called from *self* and the set or iterable the method is applied to *other*. This method has a return value producing a new set:
+
+![img_225](images/img_225.png)
+
+For example the ```union``` between ```unique1``` and ```unique2```:
+
+![img_226](images/img_226.png)
+
+```
 unique1.union(unique2)
 ```
 
-The ```update``` method can be thought of as *union_update* and behaves similarly to the method ```update```. The set the method is called from *self* is updated in place and there is no return value:
+![img_227](images/img_227.png)
+
+If the Variable Explorer is viewed:
+
+![img_228](images/img_228.png)
+
+The ```update``` method can be thought of as *union_update* and behaves similarly to the method ```union```. 
+
+![img_229](images/img_229.png)
 
 ```
-unique1 = {0, 1, 2, 3, 4, 5, 6}
-unique2 = {4, 5, 6, 7, 8, 9}
 unique1.update(unique2)
 ```
 
+The ```set``` method updates the instance *self* in place and there is no return value:
 
+![img_230](images/img_230.png)
+
+![img_231](images/img_231.png)
+
+Returning back to:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_232](images/img_232.png)
 
 The ```intersection``` identifier returns all unique values which occur both in *self* and *other*. This method has a return value producing a new set:
 
+![img_233](images/img_233.png)
+
+For example the intersection between ```unique1``` and ```unique2```:
+
+![img_234](images/img_234.png)
+
 ```
-unique1 = {0, 1, 2, 3, 4, 5, 6}
-unique2 = {4, 5, 6, 7, 8, 9}
 unique1.intersection(unique2)
 ```
 
-The ```intersection_update``` and behaves similarly to the method ```intersection```. The set the method is called from *self* is updated in place and there is no return value:
+![img_235](images/img_235.png)
+
+The ```intersection_update``` is the mutable method equivalent of ```intersection```:
+
+![img_248](images/img_248.png)
+
+![img_236](images/img_236.png)
 
 ```
-unique1 = {0, 1, 2, 3, 4, 5, 6}
-unique2 = {4, 5, 6, 7, 8, 9}
 unique1.intersection_update(unique2)
 ```
 
+![img_237](images/img_237.png)
+
+![img_238](images/img_238.png)
+
+Returning to:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_239](images/img_239.png)
 
 The ```difference``` identifier returns all unique values which occur both in *self* that do not occur *other*. This method has a return value producing a new set:
 
+![img_240](images/img_240.png)
+
+For example the difference between ```unique1``` and ```unique2```:
+
+![img_241](images/img_241.png)
+
 ```
-unique1 = {0, 1, 2, 3, 4, 5, 6}
-unique2 = {4, 5, 6, 7, 8, 9}
 unique1.difference(unique2)
 ```
 
-The ```difference_update``` behaves similarly to the method ```difference```. The set the method is called from *self* is updated in place and there is no return value:
+![img_242](images/img_242.png)
+
+The ```difference_update``` is the mutable method equivalent of ```difference``:
+
+![img_249](images/img_249.png)
+
+![img_243](images/img_243.png)
 
 ```
-unique1 = {0, 1, 2, 3, 4, 5, 6}
-unique2 = {4, 5, 6, 7, 8, 9}
 unique1.difference_update(unique2)
 ```
 
+![img_244](images/img_244.png)
+
+![img_245](images/img_245.png)
+
+Returning to:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_246](images/img_246.png)
 
 The ```symmetric_difference``` identifier returns all unique values which occur both in *self* that do not occur *other* and all the unique values that occur in *other* but do not occur in *self*. This method has a return value producing a new set:
 
+![img_247](images/img_247.png)
+
+For example the symmetric difference between ```unique1``` and ```unique2```:
+
+![img_250](images/img_250.png)
+
 ```
-unique1 = {0, 1, 2, 3, 4, 5, 6}
-unique2 = {4, 5, 6, 7, 8, 9}
 unique1.symmetric_difference(unique2)
 ```
 
-The ```symmetric_difference_update``` behaves similarly to the method ```symmetric_difference```. The set the method is called from *self* is updated in place and there is no return value:
+![img_251](images/img_251.png)
+
+The ```symmetric_difference_update``` is the mutable method equivalent of ```symmetric_difference``:
+
+![img_252](images/img_252.png)
+
+![img_253](images/img_253.png)
 
 ```
-unique1 = {0, 1, 2, 3, 4, 5, 6}
-unique2 = {4, 5, 6, 7, 8, 9}
 unique1.symmetric_difference_update(unique2)
 ```
 
+![img_254](images/img_254.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![img_255](images/img_255.png)
 
 ### Data Model Identifiers
 
@@ -1626,6 +1742,7 @@ Returning to:
 unique1 = {0, 1, 2, 3, 4, 5, 6}
 ```
 
+![img_256](images/img_256.png)
 
 The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
 
@@ -1633,7 +1750,7 @@ The directory function ```dir``` can be used to look at the data model identifie
 pprint(dir(unique1), compact=True)
 ```
 
-
+![img_257](images/img_257.png)
 
 The formal and informal string representation of a ```set``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
 
@@ -1642,10 +1759,7 @@ repr(unique1)
 str(unique1)
 ```
 
-
-
-
-
+![img_258](images/img_258.png)
 
 A set is mutatable, the ```hash``` function which uses the ```__hash__``` data model method:
 
@@ -1653,9 +1767,14 @@ A set is mutatable, the ```hash``` function which uses the ```__hash__``` data m
 hash(unique1)
 ```
 
+![img_259](images/img_259.png)
 
-Notice there is no ```__getitem__```
+Notice there is no ```__getitem__```, for this reason, the set is unordered and has no index:
 
+![img_260](images/img_260.png)
+
+
+Add init and new...
 
 ```__sub__``` is similar to ```difference```
 

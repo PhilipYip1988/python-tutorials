@@ -637,6 +637,12 @@ Spyder will now be installed:
 
 ![img_097](./images/img_097.png)
 
+It is recommended to periodically check for updates for all packages in the Python environment using:
+
+```
+mamba update --all
+```
+
 The Mambaforge Prompt will be found in a mambaforge folder alongside a start menu shortcut to Spyder:
 
 ![img_098](./images/img_098.png)
@@ -1110,7 +1116,7 @@ Accept the Warning to proceed:
 
 ![img_128](./images/img_128.png)
 
-When the Kernel is Restarted the IPython Console reverteds back to 0, All Variables are erased and the imported libraries are no longer imported.
+When the Kernel is Restarted the IPython Console reverts back to 0, all variables are erased and the imported libraries are no longer imported.
 
 ![img_129](./images/img_129.png)
 
