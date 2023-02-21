@@ -1972,16 +1972,141 @@ unique2 != unique3
 
 ## The dict Class
 
-The ```dict``` can be conceptualised as a dictionary which has a keyword and corresponding definition. In Python a ```dict``` is a mapping of **key**: **value** pairs. 
+The ```dict``` can be conceptualised as an English dictionary which has a keyword and corresponding definition. In Python a ```dict``` is a mapping of **key**: **value** pairs. 
 
-Each **key** in **keys** has to be unique and is therefore ```set``` like. For this reason, the ```dict``` shares the use of braces ```{ }``` to enclose the collection. 
+Each **key** in **keys** has to be unique and **keys** is therefore set-like. For this reason, the ```dict``` shares the use of braces ```{ }``` to enclose the collection. 
 
-The **value** in **values** does not have to be unique and is ```tuple``` like.
+The **value** in **values** does not have to be unique and **values** is tuple-like.
 
 The colon ```:``` is used to split each ```key: value``` and the ```,``` is used to split each key, value pair in the mapping.
 
 ### The Initialization Signature
 
+Inputting ```dict()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
+
+![img_289](images/img_289.png)
+
+A ```dict``` is normally  directly using:
+
+```
+mapping = {'red': '#FF0000', 
+           'green': '#00B050', 
+           'blue': '#0070C0'}
+```
+
+![img_290](images/img_290.png)
+
+Notice that in the dictionary above, the value of the key is obscure however the key itself is easy to remember. 
+
+The dictionary can be viewed in the Spyder Variable Explorer. Unlike sets which are unordered, dictionaries retain the order items (key: value pairs) were added to them. The mapping displays on the Variable Explorer with the order items were added to it:
+
+![img_291](images/img_291.png)
+
+When expanded however the items are listed by default using the alphabetical (ordinal) order of the keys:
+
+![img_292](images/img_292.png)
+
+An empty mapping can be made using:
+
 ```
 mapping = {}
 ```
+
+![img_294](images/img_294.png)
+
+This can be viewed in the Variable Explorer:
+
+![img_295](images/img_295.png)
+
+## Identifiers
+
+Returning to:
+
+```
+mapping = {'red': '#FF0000', 
+           'green': '#00B050', 
+           'blue': '#0070C0'}
+```
+
+![img_296](images/img_296.png)
+
+If the instance name ```mapping``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
+
+![img_293](images/img_293.png)
+
+The identifier ```keys``` retrieve the ```keys```:
+
+```
+mapping_keys = mapping.keys()
+```
+
+![img_299](images/img_299.png)
+
+The ```mapping_keys``` is a set-like object that has the identifier ```isdisjoint``` that behaves identically to the analogous ```isdisjoint``` ```set``` method:
+
+![img_297](images/img_297.png)
+
+![img_298](images/img_298.png)
+
+The ```mapping``` attribute retrieves the ```mapping_proxy``` which is essentially the dictionary:
+
+![img_298](images/img_298.png)
+
+The identifier ```values``` retrieve the ```values```:
+
+```
+mapping_values = mapping.values()
+```
+
+![img_301](images/img_301.png)
+
+The ```mapping_values``` is a tuple-like object that has the identifier. It only has the identifier ```mapping``` which once again retireves the ```mapping_proxy```:
+
+![img_302](images/img_302.png)
+
+The identifier ```items``` is a set-like object of nested tuples. Each nested tuple has two indexes, the key and value respectively:
+
+```
+mapping_items = mapping.items()
+```
+
+![img_303](images/img_303.png)
+
+![img_304](images/img_304.png)
+
+These can be cast into lists so their contents can be viewed on the Variable Explorer:
+
+```
+mapping_keys = list(mapping_keys)
+mapping_values = list(mapping_values)
+mapping_items = list(mapping_items)
+```
+
+![img_305](images/img_305.png)
+
+![img_306](images/img_306.png)
+
+copy
+
+get
+
+update
+
+pop 
+popitem
+
+setdefault
+
+clear
+
+fromkeys
+
+
+
+
+
+
+
+
+
+The value is retrieved by indexing using the key. Square brackets.
