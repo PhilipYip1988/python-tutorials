@@ -1379,7 +1379,7 @@ Unfortunately JupytewrLab won't apply any syntax highlighting or display any ide
 
 ![img_305](./images/img_305.png)
 
-An IPython Console is required. Right click the file and select Create COnsole for Editor:
+An IPython Console is required. Right click the file and select Create Console for Editor:
 
 ![img_306](./images/img_306.png)
 

@@ -1752,6 +1752,20 @@ pprint(dir(unique1), compact=True)
 
 ![img_257](images/img_257.png)
 
+The ```__init__``` data model method is called when instantiating a ```set```:
+
+![img_261](images/img_261.png)
+
+When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance data.
+
+The ```type``` class uses the data model identifier ```__class__``` to determine the class an instance belongs to:
+
+```
+type(unique1)
+```
+
+![img_262](images/img_262.png)
+
 The formal and informal string representation of a ```set``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
 
 ```
@@ -1773,41 +1787,201 @@ Notice there is no ```__getitem__```, for this reason, the set is unordered and 
 
 ![img_260](images/img_260.png)
 
+The ```__len__``` data model is available which means the ```len``` function can be used to determine the number of items in the ```set```:
 
-Add init and new...
+```
+len(unique1)
+```
 
-```__sub__``` is similar to ```difference```
+![img_263](images/img_263.png)
 
-```__isub__``` is similar to ```difference_update```.
+The ```__doc__``` data model method is defined, so the help operator ```?``` can be used:
 
+```
+? unique1
+```
 
-```difference``` can take any iterable as an input argument. The ```-``` operator requires two ```set``` instances.
+![img_264](images/img_264.png)
 
-no ```__add__``` or ```__mul__``` (does not make sense to multiply a set to get duplicates because there is no duplicates in a set)
+The binary data model identifiers are setup to carry out similar operations to the ```set``` identifiers seen above. Most of these carry out a similar functionality to the set identifiers.
 
+There is no ```__mul__``` identifier as it does not make sense to multiply a set to get duplicates because there is no duplicates in a set.
 
-The ```&``` operator returns the intersection.
+There is no ```__add__``` identifier so the ```+``` operator cannot be used. It does not make sense to have concatenation of two sets, as sets cannot have duplicates. Instead the ```union``` is used.
 
-The ```|``` operator returns the union.
+The ```|``` operator uses the ```__or__``` identifier which carries out similar functionality to the ```union``` identifier (values occur in ```unique1``` or ```unique2```):
 
-The ```^``` operator returns the symmetric difference
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
 
-```__and__```, ```__or__```, ```__xor__```
+![img_270](images/img_270.png)
 
-```__iand__```, ```__ior__```, ```__ixor__```.
+```
+unique1 | unique2
+```
 
+![img_271](images/img_271.png)
 
+The ```|=``` operator uses the ```__ior__``` identifier which is similar to the ```update``` (*union_update*) identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
 
+![img_272](images/img_272.png)
 
+![img_273](images/img_273.png)
 
-The six equality operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=``` can be used with a ```set```. These use the data model identifiers ```__eq__```, ```__ne__```, ```__lt__``` and ```__le__```, ```__gt__``` and ```__ge__``` respectively. 
+![img_274](images/img_274.png)
 
-* A set is equal to another set if all the values are the same. 
-* A set is greater than another set, if it is a superset of the other set. 
-* A set is less than another set, if it is a subset.
-* If two sets have an intersection and a symmetric difference, they are not equal and all other comparison operators are ```False```.
+The ```union``` and ```update``` identifiers  are more powerful and can take a sequence as an input argument, which will be cast into a ```set```. In contrast ```|``` and ```|=``` require two ```set``` instances. 
 
+Notice also the subtle difference when using the mutatable ```update``` method identifier and the ```|=``` operator within a function:
 
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
 
+def fun():
+    unique1.update(unique2)
 
+fun()
 
+unique1
+```
+
+![img_275](images/img_275.png)
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+
+def fun():
+    unique1 |= unique2
+
+fun()
+
+unique1
+```
+
+![img_276](images/img_276.png)
+
+The ```&``` operator uses the ```__and__``` identifier which carries out similar functionality to the ```intersection``` identifier (intersection values occur in ```unique1``` and ```unique2```):
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_277](images/img_277.png)
+
+```
+unique1 & unique2
+```
+
+![img_278](images/img_278.png)
+
+The ```&=``` operator uses the ```__iand__``` identifier which is similar to the ```intersection_update```  identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
+
+![img_279](images/img_279.png)
+
+```
+unique1 &= unique2
+```
+
+![img_280](images/img_280.png)
+
+![img_281](images/img_281.png)
+
+The ```-``` operator uses the ```__sub__``` identifier which carries out similar functionality to the ```difference``` identifier:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_265](images/img_265.png)
+
+```
+unique1 - unique2
+```
+
+![img_266](images/img_266.png)
+
+The ```-=``` operator uses the ```__isub__``` identifier which is similar to the ```difference_update```  identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
+
+![img_267](images/img_267.png)
+
+```
+unique1 -= unique2
+```
+
+![img_268](images/img_268.png)
+
+![img_269](images/img_269.png)
+
+The ```^``` operator uses the ```__xor__``` identifier which carries out similar functionality to the ```symmetric_difference``` identifier (symmetric difference values occur in ```unique1``` exclusive or ```unique2```):
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_282](images/img_282.png)
+
+```
+unique1 ^ unique2
+```
+
+![img_283](images/img_283.png)
+
+The ```^=``` operator uses the ```__ior__``` identifier which is similar to the ```symmetric_difference_update```  identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
+
+![img_284](images/img_284.png)
+
+```
+unique1 ^= unique2
+```
+
+![img_285](images/img_285.png)
+
+![img_286](images/img_286.png)
+
+The equality operators are setup using the logic of subsets and supersets. ```unique1``` is less than ```unique2``` if it is a subset of ```unique1```. ```unique1``` is greater than ```unique1``` if it is a superset of ```unique2```. ```unique1``` is equal to ```unique2``` if all values are the same, otherwise the sets are not equal. The six equality operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=``` use the data model identifiers ```__eq__```, ```__ne__```, ```__lt__``` and ```__le__```, ```__gt__``` and ```__ge__``` respectively. 
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6, 7, 8}
+unique2 = {0, 1, 2}
+unique3 = {7, 8, 9}
+unique4 = {'a', 'b', 'c'}
+
+unique1 > unique2
+unique2 < unique1
+```
+
+![img_287](images/img_287.png)
+
+Notice that ```unique2``` is not greater than, not less than and not equal to ```unique3``` sinnce they are neither supersets or subsets of one another:
+
+```
+unique2 > unique3
+unique2 < unique3
+unique2 == unique3
+unique2 != unique3
+```
+
+![img_288](images/img_288.png)
+
+## The dict Class
+
+The ```dict``` can be conceptualised as a dictionary which has a keyword and corresponding definition. In Python a ```dict``` is a mapping of **key**: **value** pairs. 
+
+Each **key** in **keys** has to be unique and is therefore ```set``` like. For this reason, the ```dict``` shares the use of braces ```{ }``` to enclose the collection. 
+
+The **value** in **values** does not have to be unique and is ```tuple``` like.
+
+The colon ```:``` is used to split each ```key: value``` and the ```,``` is used to split each key, value pair in the mapping.
+
+### The Initialization Signature
+
+```
+mapping = {}
+```
