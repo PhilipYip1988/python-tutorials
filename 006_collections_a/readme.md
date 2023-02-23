@@ -2018,7 +2018,7 @@ This can be viewed in the Variable Explorer:
 
 ![img_295](images/img_295.png)
 
-## Identifiers
+### Identifiers
 
 Returning to:
 
@@ -2086,27 +2086,330 @@ mapping_items = list(mapping_items)
 
 ![img_306](images/img_306.png)
 
-copy
+The method ```get``` can be used to retrieve a value using the key:
 
-get
+![img_307](images/img_307.png)
 
-update
+If the key exists:
 
-pop 
-popitem
+![img_308](images/img_308.png)
 
-setdefault
+The corresponding value will be shown:
 
-clear
+![img_309](images/img_309.png)
 
-fromkeys
+If there is no corresponding value ```None``` will be returned:
+
+![img_310](images/img_310.png)
+
+The method ```setdefault``` behaves similarly to ```get``` when a key exists. Instead of returning ```None``` when the key does not exist, a default key can be set:
+
+![img_311](images/img_311.png)
+
+For example:
+
+![img_312](images/img_312.png)
+
+```
+mapping.setdefault('red', '#000000')
+mapping.setdefault('yellow', '#000000')
+```
+
+![img_313](images/img_313.png)
+
+Notice the new new with the default value is included in the dictionary ```mapping``` which is mutated in place:
+
+![img_314](images/img_314.png)
+
+The ```update``` method can be used to update the value of existing keys or add new key: value pairs that don't already exist in ```mapping``` using another dictionary:
+
+![img_315](images/img_315.png)
+
+![img_316](images/img_316.png)
+
+For example the key ```'yellow'``` exists and the key ```'purple'``` doesn't exist:
+
+```
+mapping.update({'yellow': '#FF0000',
+               'purple': '#7030A0'})
+```               
+
+![img_317](images/img_317.png)
+
+This is a mutable method. Notice that existing items in the dictionary ```mapping``` retain their order within the dictionary and new keys are appended to the end:
+
+![img_318](images/img_318.png)
+
+The dictionary ```pop``` identifier works similarly to the list ```pop``` identifier. As the dictionary does not have a numeric index, a key needs to be supplied instead:
+
+![img_320](images/img_320.png)
+
+```
+mapping.pop('red')
+```
+
+The value of the popped key is returned:
+
+![img_322](images/img_322.png)
+
+And the dictionary ```mapping``` is mutated in place. Notice the order of all the other keys is maintained:
+
+![img_323](images/img_323.png)
+
+The method ```popitem``` identifier will pop an item from the dictionary, returning it as a tuple:
+
+![img_324](images/img_324.png)
+
+The item to be popped is the last item added:
+
+```
+mapping.popitem()
+```
+
+This was the key ```'purple'``` and the item ```tuple``` is returned:
+
+![img_325](images/img_325.png)
+
+The dictionary ```mapping``` is mutated in place:
+
+![img_326](images/img_326.png)
+
+The identifier ```copy``` can be used to perform a shallow copy of a dictionary:
+
+![img_327](images/img_327.png)
+
+This copy is returned and the return value can be assigned to a new value ```mapping2```
+
+```
+mapping2 = mapping.copy()
+```
+
+![img_328](images/img_328.png)
+
+This shallow copy ```mapping2``` displays on the variable explorer:
+
+![img_329](images/img_329.png)
+
+The ```clear``` identifier can now be used on ```mapping``` and ```mapping2``` will be uninfluenced:
+
+![img_330](images/img_330.png)
+
+![img_331](images/img_331.png)
+
+![img_332](images/img_332.png)
+
+A deep copy may be required when the values in a dictionary are mutable. Recall that the keys in a dictionary must be immutable. For example:
+
+```
+x = [0, 1, 2, 3, 4, 5]
+y = [0, 2, 4, 6, 8, 10]
+
+mapping = {'x': x,
+           'y': y}
+
+mapping2 = mapping.copy()
+mapping3 = deepcopy(mapping)
+```
+
+![img_333](images/img_333.png)
+
+![img_334](images/img_334.png)
+
+The difference in the Variable Explorer can be seen when one of the values in the ```list``` ```x``` is updated:
+
+```
+x[1] = 99
+```
+
+![img_335](images/img_335.png)
+
+![img_336](images/img_336.png)
+
+```fromkeys``` is a dictionary class method that can be used to create a dictionary from a key of iterables and a constant value:
+
+![img_337](images/img_337.png)
+
+```
+keys = ('a', 'b', 'c', 'd', 'e')
+value = 0
+
+dict.fromkeys(keys, value)
+```
+
+![img_338](images/img_338.png)
+
+The ```zip``` function can be used to zip two equally sized iterables:
+
+![img_339](images/img_339.png)
+
+```
+keys = ('a', 'b', 'c', 'd', 'e')
+values = (0, 1, 2, 3, 4)
+zip(keys, values)
+```
+
+![img_340](images/img_340.png)
+
+This creates a zipped object. This can be cast into a list:
+
+```
+list(zip(keys, values))
+```
+
+![img_341](images/img_341.png)
+
+Notice this is the form of a dictionary items and therefore can alternatively be cast into a dictionary using:
+
+```
+dict(zip(keys, values))
+```
+
+![img_342](images/img_342.png)
+
+### Data Model Identifiers
+
+Returning to:
+
+```
+mapping = {'red': '#FF0000', 
+           'green': '#00B050', 
+           'blue': '#0070C0'}
+```
+
+![img_343](images/img_343.png)
+
+The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
+
+```
+pprint(dir(mapping), compact=True)
+```
+
+![img_344](images/img_344.png)
+
+The ```__init__``` data model method is called when instantiating a ```dict```:
+
+![img_345](images/img_345.png)
+
+When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which then calls the initialization signature ```__init__``` to initialize the instance with instance items.
+
+The ```type``` class uses the data model identifier ```__class__``` to determine the class an instance belongs to:
+
+```
+type(mapping)
+```
+
+![img_346](images/img_346.png)
+
+The formal and informal string representation of a ```set``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
+
+```
+repr(mapping)
+str(mapping)
+```
+
+![img_347](images/img_347.png)
+
+The ```__format__``` data model method is used by formatted strings when formatting a ```dict```. There are no ```dict``` specific format specifications.
+
+The ```len``` function uses the data model identifier ```__len__``` to determine how many items are within the ```dict```:
+
+```
+len(mapping)
+```
+
+![img_348](images/img_348.png)
+
+![img_349](images/img_349.png)
+
+The ```hash``` function uses the data model identifier ```__hash__```:
+
+```
+hash(mapping)
+```
+
+Since the ```dict``` is mutable, a ```TypeError```: unhashable type displays:
+
+![img_350](images/img_350.png)
+
+The director function ```dir``` uses the data model identifier ```__dir__``` to display the directory of identifiers as seen earlier.
+
+The ```?``` uses the data model identifiers ```__class__```, ```__str__```, ```__len__``` and ```__doc__``` to generate information about the ```dict``` instance:
+
+```
+? mapping
+```
+
+![img_351](images/img_351.png)
+
+The ```iter``` function and ```reversed``` function use the ```__iter__``` and ```__reversed__``` data model identifiers to instantiate a forward or reverse iterator from the iterable ```dict```. Notice that the iterator is essentially equivalent to an iterator of the keys: 
+
+```
+forward = iter(mapping)
+forward
+next(forward)
+next(forward)
+next(forward)
+```
+
+![img_352](images/img_352.png)
+
+```
+reverse = reversed(mapping)
+reverse
+next(reverse)
+next(reverse)
+next(reverse)
+```
+
+![img_353](images/img_353.png)
+
+For the reason, the ```in``` operator which uses the data model ```__contains__``` also only works with the keys and not the values of the keys:
+
+![img_354](images/img_354.png)
+
+```
+'red' in mapping
+'#FF0000' in mapping
+```
+
+![img_355](images/img_355.png)
+
+The **mutable** ```dict``` has ```__getitem__```, ```__setitem__``` and ```__delitem__```. For a ```dict```, the keys are used instead of a numeric index:
+
+![img_356](images/img_356.png)
+
+```
+mapping['red']
+```
+
+![img_357](images/img_357.png)
+
+```
+mapping['yellow']
+```
+
+
+```
+mapping['red'] =
+```
+
+
+```
+mapping['yellow'] =
+```
+
+```
+del mapping['red']
+```
 
 
 
 
+__getitem__, __setitem__, __delitem__
+
+The six equality operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=``` use the data model identifiers ```__eq__```, ```__ne__```, ```__lt__``` and ```__le__```, ```__gt__``` and ```__ge__``` respectively. 
 
 
+__or__, __ror__, __ior__
 
-
-
-The value is retrieved by indexing using the key. Square brackets.
+{'a': 'hello'} | {'a': 'bye', 'b': 'bye'}
