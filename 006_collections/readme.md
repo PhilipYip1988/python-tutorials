@@ -2526,3 +2526,5 @@ mapping2.items() > mapping1.items()
 ```
 
 ![img_375](images/img_375.png)
+
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
