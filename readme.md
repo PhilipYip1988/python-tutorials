@@ -30,15 +30,17 @@ There are 6 fundamental numeric datatypes used in Python. The ```int``` class (w
 
 [Numeric Data Types: int, bool, float, complex, Decimal, Fraction](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numeric_datatypes/readme.md)
 
+## Collections
+
+Python has four collections the immutable tuple, which can be conceptualised as an archive of references. The mutable list, which can be conceptualised as being active current working directory of references. The set which can be conceptualised as a collection of unique references. And the dictionary which can be conceptualised as a mapping of immutable keys to values:
+
+[Collections; tuple, list, set, dict](./006_collections/)
+
 ---
 
-Update below
+Drafts below, to be updated.
 
-## Collections and Programming Constructs
-
-So far, only single text or numeric values have been considered. A collection can be used to group data. The string itself behaves as a collection as it is a collection of characters. This tutorial will examine the collection properties of the string, before moving onto the list, tuple, set and dictionary collections.
-
-[Collections; str, list, tuple, set, dict](./006_collections/)
+## Programming Constructs
 
 Indentation and spacing is very important in Python and code is often grouped into a code block. An analogy to not using indentation in Python, is not not use a steering wheel in a car. All the code so far has been run in a straight line going from start to finish. Indentation with a code block can be used to repeat code multiple times in a loop or to direct code in response to a condition. 
 
@@ -47,6 +49,8 @@ Indentation and spacing is very important in Python and code is often grouped in
 The behaviour of functions in inbuilt identifiers has been explored. Functions have been observed to have no, one or multiple input arguments and to return or not return a value. To understand this syntax better, custom functions will be explored. Under the hood these use a code block and therefore this tutorial builds upon the knowledge of previous tutorial. Custom functions are a very powerful tool.
 
 [Functions](./008_functions/)
+
+Add in onfo about yield...
 
 Previously for loops and functions were explored. A loop is commonly used to construct a new list or dictionary from an existing list or dictionary and Python has a very powerful one line convention known as a comprehension to carry this out. A simple function can also be created on a single line using a lambda expression. Use of comprehensions and lambda expressions can make the code more succinct and more readible.
 
@@ -59,10 +63,6 @@ The concept of a Python Module was previously explored during installation. A Py
 Previously inbuild classes such as the int, bool, float, str, list, tuple, set and dict were explored. Each instance of a class had instance data attributes and functions which were designed to operate on this instance data. The template for this data and the function definition for these definitions are given in the class itself. This tutorial looks at the concept of a Python object and the use of it to create a custom class.
 
 [Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/011_classes/readme.md)
-
-The assignment operator ```=``` assigns a value to an object name. If the object is a collection such as a list, assignment results in an alias for the object i.e. one object with two object names and does not copy the object. The copy module contains two functions copy which performs a shallow copy and deepcopy which performs a deep copy:
-
-[Copy](https://github.com/PhilipYip1988/python-tutorials/blob/main/012_copy/readme.md)
 
 The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
 
