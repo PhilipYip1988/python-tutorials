@@ -38,7 +38,7 @@ Python has four collections the immutable tuple, which can be conceptualised as 
 
 ---
 
-Drafts below, to be updated.
+Old versions/drafts below, to be updated.
 
 ## Programming Constructs
 
@@ -104,7 +104,7 @@ The random module is a pseudo random number generator which can be used to selec
 
 The datetime module is a module for working with dates and times. The associated zoneinfo module is for dealing with timezones. The time module is a module written in C and exists mainly for advanced use timing applications. There are a couple of the functions from the time module that are commonly used such as time which retrieved the time from the system hardware and sleep which is used to delay execution of a Python script. 
 
-[DateTime, ZoneInfo and Time Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/024_datetime/readme.d)
+[DateTime, ZoneInfo and Time Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/024_datetime/readme.md)
 
 The statistics module is a module for working with basic statistics.
 
@@ -124,12 +124,4 @@ The Matrix Plotting Library - matplotlib
 
 The DataFrame Visualisation Library - seaborn
 
-## Editing Remarks
 
-Generators (add beside functions)
-
-## GUI - Still a work in progress
-
-The Tk Interface module is an inbuilt module for creating a Graphical User Interface (GUI). The module revolves around the Tk main window class which can be equipped with widgets to give the main window functionality. The main window can include Label, Entry (text entry), Button, Checkbutton, Radiobutton, Combobox, Listbox, Scale, Scrollbars, Frame, Canvas, Menu, Menubutton and Toplevel Widgets. These Widgets can be packed on the Tk main window or alternatively arranged in a grid on the Tk main window. It is useful to learn this module through starter projects which involve creation of asimple GUI with just a handful of these Widgets. One of the first projects to create with tkinter is a calculator which uses a Tk Main Window with Entry and Buttons arranged on a grid.
-
-[Tk Interface Module Calculator Project](./030_tkinter/)
