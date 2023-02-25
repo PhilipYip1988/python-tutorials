@@ -34,7 +34,7 @@ There are 6 fundamental numeric datatypes used in Python. The ```int``` class (w
 
 Python has four collections the immutable tuple, which can be conceptualised as an archive of references. The mutable list, which can be conceptualised as being active current working directory of references. The set which can be conceptualised as a collection of unique references. And the dictionary which can be conceptualised as a mapping of immutable keys to values:
 
-[Collections; tuple, list, set, dict](./006_collections/)
+[Collections; tuple, list, set, dict](https://github.com/PhilipYip1988/python-tutorials/blob/main/006_collections/readme.md)
 
 ---
 
