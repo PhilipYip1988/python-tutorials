@@ -470,7 +470,7 @@ file_object.close()
 
 ![img_032](./images/img_032.png)
 
-This will release the physical file from Python, allowing it to be used by other programs in Windows. The ```file_object``` will still present in Python but no longer associated to the physical file. If the directory function ```dir``` is used a number of data model identifiers can be used:
+This will release the physical file from Python, allowing it to be used by other programs in Windows. The ```file_object``` will still present in Python but no longer associated to the physical file. If the directory function ```dir``` is used a number of data model identifiers can also be viewed:
 
 ```
 dir(file_object)
@@ -478,7 +478,7 @@ dir(file_object)
 
 ![img_033](./images/img_033.png)
 
-There are two data model identifiers of interest ```__enter__``` and ```__exit__``` which means the ```file_object``` can be entered and exited using a context manager. 
+There are two data model identifiers of particular interest ```__enter__``` and ```__exit__``` which means the ```file_object``` can be entered and exited using a context manager. 
 
 The context manager is essentially a code block, ```with``` is used to create the code block and has an associated colon ```:```. Instead of assignment to a variable using the assignment operator ```=```, the ```as``` keyword is used. The operations above with a context manager are:
 
@@ -496,32 +496,287 @@ remaining_lines
 
 The use of the ```with``` context manager opens, the physical file within the code block using the data model method ```__enter__``` and when the code block ends uses the data model method ```__exit__``` to release the physical file. This prevents a file from being opened in Python and not properly closed and the code is a bit cleaner to read grouping all the operations with that file together.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## The for Loop
+## The for loop
 
 The ```for``` loop can be used to carry out operations within a code block *for* a specified number of times.
 
-The for loop requires an iterator which comes from a collection.
+The for loop requires an iterator which comes from a collection. The following ```str``` can be used to examine the mechanics behind a ```for``` loop:
+
+```
+word = 'hello'
+'h' in 'hello'
+```
+
+![img_035](./images/img_035.png)
+
+The data model identifier can be viewed using:
+
+```
+dir(word)
+```
+
+![img_036](./images/img_036.png)
+
+Recall that use of ```in``` in the context above, uses the data model identifier ```__contains__```. There is also the ```__iter__``` data model method which can be used to create an iterator and the ```__len__``` data model method which specifies the number of Unicode characters in the Unicode string.
+
+An iterator can be created using:
+
+```
+letter = iter(word)
+letter
+```
+
+![img_037](./images/img_037.png)
+
+The ```next``` keyword can be used until the iterator is exhausted:
+
+```
+next(letter)
+next(letter)
+next(letter)
+next(letter)
+next(letter)
+```
+
+![img_038](./images/img_038.png)
+
+If the iterator is exhausted, a ```StopIteration``` error displays:
+
+```
+next(letter)
+```
+
+![img_039](./images/img_039.png)
+
+Recall to exhaust the iterator, ```next``` is called 5 times, which matches the length of the ```word```:
+
+```
+len(word)
+```
+
+![img_040](./images/img_040.png)
+
+The ```word``` can also be cast into a ```tuple``` and viewed on the Variable Explorer:
+
+```
+word_t = tuple(word)
+```
+
+![img_041](./images/img_041.png)
+
+![img_042](./images/img_042.png)
+
+![img_043](./images/img_043.png)
+
+If the directory function ```dir``` is used on ```word_t```:
+
+```
+dir(word_t)
+```
+
+![img_044](./images/img_044.png)
+
+Notice there are also the data model methods ```__contains__```, ```__iter__``` and ```__len__```. This means an iterator can be created. This iterator is a ```tuple``` iterator, where each item can be a Python object. Since this ```tuple``` was cast from a ```str``` each Python object is a one character Unicode ```str```:
+
+```
+letter_t = iter(word_t)
+letter_t
+```
+
+![img_045](./images/img_045.png)
+
+Therefore the following behaves similarly:
+
+```
+next(letter_t)
+next(letter_t)
+next(letter_t)
+next(letter_t)
+next(letter_t)
+```
+
+![img_046](./images/img_046.png)
+
+A ```list``` which is essentially a mutable ```tuple``` behaves similarly. 
+
+The ```word``` can also be cast into a ```set``` and viewed on the Variable Explorer:
+
+```
+word_s = set(word)
+```
+
+![img_047](./images/img_047.png)
+
+![img_048](./images/img_048.png)
+
+![img_049](./images/img_049.png)
+
+A ```set``` only contains unique values and is not ordered. If the directory function ```dir``` is used on ```word_s```:
+
+```
+dir(word_s)
+```
+
+![img_050](./images/img_050.png)
+
+The data model methods ```__contains__```, ```__iter__``` and ```__len__``` are still available. An iterator can be created:
+
+```
+letter_s = iter(word_s)
+letter_s
+```
+
+![img_051](./images/img_051.png)
+
+```
+next(letter_s)
+next(letter_s)
+next(letter_s)
+next(letter_s)
+```
+
+![img_052](./images/img_052.png)
+
+A ```for``` loop can be used to loop over each letter in each of the collections above. Returning to the Unicode string for example:
+
+```
+word = 'hello'
+
+for letter in word:
+    print(letter)
+    
+    
+```
+
+![img_053](./images/img_053.png)
+
+Under the hood, the ```for``` loop uses the ```__contains__```, ```__iter__``` and ```__len__``` data model methods to loop over each Unicode character in the string ```word```. 
+
+```letter``` is a loop variable which can be accessed in the loop and can be renamed using any variable name. When the variable is not referenced in the ```for``` loop, it is called ```_```. For example:
+
+```
+for _ in word:
+    print(word)
+    
+    
+```
+
+![img_054](./images/img_054.png)
+
+Notice that ```hello``` is printed out 5 times, because it has a length of 5.
+
+Another example can be given using qa ```tuple``` which recall can be conceptualised as an archive of records:
+
+```
+archive = (0, True, 3.14, 'hello')
+
+for record in archive:
+    print(record)
+    
+    
+```
+
+![img_055](./images/img_055.png)
+
+It is somewhat common to use a plural term for the collection being looped over and a singular term for the loop variable:
+
+```
+records = (0, True, 3.14, 'hello')
+
+for record in records:
+    print(record)
+    
+    
+```
+
+![img_056](./images/img_056.png)
+
+### Mutability
+
+Mutable methods such as the ```list``` method ```append``` are commonly used within ```for``` loops. 
+
+Care should be taken not to use a ```for``` loop to iterate over the mutable sequence itself, while mutating the same sequence, as an infinite loop can occur. For example:
+
+```
+active = [0, True, 3.14, 'hello']
+
+for record in active:
+    active.append('bye')
+    
+    
+```
+
+![img_057](./images/img_057.png)
+
+Instead a copy of the mutable sequence can be made to loop over, for example: 
+
+```
+active = [0, True, 3.14, 'hello']
+
+for record in active.copy():
+    active.append('bye')
+    
+
+active    
+```   
+
+![img_058](./images/img_058.png)
+
+### The range object
+
+A ```range``` object is commonly used within a loop. For example:
+
+```
+active = [0, True, 3.14, 'hello']
+
+for num in range(len(active)):
+    active.append('bye')
+    
+    
+active
+```
+
+![img_059](./images/img_059.png)
+
+This essentially gives access to the numeric index of the Unicode string being looped over:
+
+```
+active = [0, True, 3.14, 'hello']
+
+for num in range(len(active)):
+    active.append('bye')
+    print(num, active)
+    
+    
+```
+
+![img_060](./images/img_060.png)
+
+This can be used for the purposed of indexing:
+
+```
+word = 'hello'
+
+for num in range(len(word)):
+    print(word[num])
+
+
+```
+
+
+
+```
+word = 'hello'
+
+for num in range(len(word)):
+    print(num * word[num])
+
+
+```
+
+## The for Loop
+
+
 
 ### Collections Recap
 
