@@ -712,7 +712,7 @@ for record in active:
 
 ![img_057](./images/img_057.png)
 
-To exit an infinite loop, restart the Kernel in JupyterLab (and clear all outputs). In Spyder use the keyboard shortcut ```Ctrl``` + ```c```.
+To exit an infinite loop, use the keyboard shortcut ```Ctrl``` + ```c```.
 
 Instead a copy of the mutable sequence can be made to loop over, for example: 
 
@@ -1067,86 +1067,508 @@ for index, letter in enumerate(word):
 
 The ```while``` loop can be conceptualised as an ```if``` code block that is continually repeated *while* a condition is ```True```. Note when the condition is never updated in the code block, the ```while``` loop will never exit resulting in an infinite loop. 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The mechanism of a for loop can be examined in more detail using the debugger in the JupyterLab IDE:
+
+![103_img](./images/103_img.png)
+
+To begin, select view and show line numbers:
+
+![104_img](./images/104_img.png)
+
+Select the debugger:
+
+![105_img](./images/105_img.png)
+
+Open the debug tab to the right:
+
+![106_img](./images/106_img.png)
+
+Click the lower and upper line numbers to debug between:
+
+![107_img](./images/107_img.png)
+
+Select run:
+
+![108_img](./images/108_img.png)
+
+To the right under callstack is the option to step through the code:
+
+![109_img](./images/109_img.png)
+
+Notice that the list ```fruits``` is instantiated. Stepping through goes to the for loop statement.
+
+![110_img](./images/110_img.png)
+
+In the for loop statement, ```fruits``` can be considered as an iterator and ```fruit``` can be considered as the current value returned from the iterator which is ```"apples"```. Conceptualise behind the scenes, ```next``` being applied to the iterator. Stepping through goes to the ```print``` statement within the code block:
+
+![111_img](./images/111_img.png)
+
+This value ```fruit``` which is ```"apples"``` is printed:
+
+![112_img](./images/112_img.png)
+
+As the iterator still has remaining values, the debugger revisits the for statement at the beginning of the code block. ```fruit``` is reassigned to the value ```"bananas"```. Once again behind the scenes conceptualise  ```next``` being called on the iterator. 
+
+![113_img](./images/113_img.png)
+
+Continuing to step through will take the debugger to the ```print``` statement and then back up to the for statement and then to the ```print``` statement before finally exiting the for loop as the iterator is exhausted and has no values left.
+
+Instead of printing the loop variable, a constant ```hello``` can be printed. This constant ```"hello"``` is printed for each value of the iterator (irrespective of what the value itself is) at index 0, 1 and 2.
+
+![033_for_loop](./images/033_for_loop.png)
+
+```
+collection = ["apples", "bananas", "grapes"]
+
+for loop_var in collection:
+    print("hello")
+    
+    
+```
+
+![048_for_loop](./images/048_for_loop.png)
+
+Notice in this case, ```loop_var``` was defined but never used. Some IDEs will flag this up as a problem. It is a common convention to use ```_``` in such a scenario:
+
+```
+collection = ["apples", "bananas", "grapes"]
+
+for _ in collection:
+    print("hello")
+    
+    
+```
+
+![049_for_loop](./images/049_for_loop.png)
+
+A range object would be better suited to reproduce printing the static string ```"hello"``` three times:
+
+```
+for _ in range(0, 3, 1):
+    print("hello")
+    
+    
+```
+
+![050_for_loop](./images/050_for_loop.png)
+
+And simplified to
+
+```
+for _ in range(3):
+    print("hello")
+    
+    
+```
+
+![051_for_loop](./images/051_for_loop.png)
+
+A range object with a step size of 2 can be enumerated:
+
+```
+ro = range(0, 10, 2)
+rol = list(ro)
+roe = enumerate(ro)
+roel = list(roe)
+```
+
+![052_for_loop](./images/052_for_loop.png)
+
+In this case, the loop variable ```loop_var``` is now a tuple with index 0 of the tuple being the index of the range object and index 1 of the tuple being the value of the range object. 
+
+![053_for_loop](./images/053_for_loop.png)
+
+Each components of this tuple can be included within a formatted string and the print statement for this formatted string can be placed within the body of the for loop.
+
+```
+ro = range(0, 10, 2)
+roe = enumerate(ro)
+
+for loop_var in roe:
+    print(f"idx {loop_var[0]}, val {loop_var[1]}")
+    
+
+```
+
+![054_for_loop](./images/054_for_loop.png)
+
+The loop variable can also be explicitly specified as a tuple:
+
+```
+ro = range(0, 10, 2)
+roe = enumerate(ro)
+
+for (idx, val) in roe:
+    print(f"idx {idx}, val {val}")
+    
+
+```
+
+![055_for_loop](./images/055_for_loop.png)
+
+Or implicitly, the parenthesis around the tuple can be dropped (known as tuple unpacking).
+
+```
+ro = range(0, 10, 2)
+roe = enumerate(ro)
+
+for idx, val in roe:
+    print(f"idx {idx}, val {val}")
+    
+
+```
+
+![056_for_loop](./images/056_for_loop.png)
+
+## if, elif, else
+
+A number of code blocks can be made in response to a single condition.
+
+|Code Block|Purpose|
+|---|---|
+|if|Code block is carried out if condition is True|
+|else|Code block is carried out elsewise i.e. when the condition is False|
+
+Or setup in response to multiple conditions.
+
+|Code Block|Purpose|
+|---|---|
+|if|Code block is carried out if the first condition is True|
+|elif|Code block is carried out if the first condition is False and the second condition is True|
+|elif|Code block is carried out if the first and the second conditions are False and the third condition is True|
+|elif...|Each additional elif code block is carried out if all previous conditions are False and the current condition is True|
+|else|Code block is carried out elsewise i.e. all conditions above are False|
+
+
+Code in the ```if``` code block is only implemented if the condition is ```True```
+
+```
+condition = True
+
+if condition:
+    print("Hello")
+    
+    
+```
+
+```
+condition = False
+
+if condition:
+    print("Hello")
+    
+    
+```
+
+![057_if](./images/057_if.png)
+
+Code not belonging to the code block is implemented regardless of this condition.
+
+
+```
+condition = True
+
+if condition:
+    print("Inside Code Block")
+    
+
+print("Outside Code Block")
+```
+
+```
+condition = False
+
+if condition:
+    print("Inside Code Block")
+    
+
+print("Outside Code Block")
+```
+
+![058_if](./images/058_if.png)
+
+A condition involving the conditional operators ```>```, ```>=```, ```==```, ```!=```, ```<``` and ```<=``` is normally expressed within the ```if``` statement, enclosed in parenthesis, for example.
+
+```
+if (5>3):
+    print("Inside Code Block")
+    
+
+print("Outside Code Block")
+```
+
+![059_if](./images/059_if.png)
+
+An ```if``` statement can be matched with an ```else``` statement which is carried out when the ```if``` statement is ```False```.
+
+```
+condition = True
+if condition:
+    print("Do something")
+else:
+    print("Do something else")
+
+
+print("Outside")
+```
+
+```
+condition = False
+if condition:
+    print("Do something")
+else:
+    print("Do something else")
+
+
+print("Outside")
+```
+
+![060_if](./images/060_if.png)
+
+A series of linked conditions can be setup using the ```if```, ```elif``` (else if), ..., ```else```. In this case when ```num``` is 5, all the conditions are False so the else code block is executed:
+
+```
+num = 5
+
+if (num>10):
+    print("num is greater than 10")
+elif (num>5):
+    print("num is greater than 5")
+else:
+    print("num is lower than 5")
+
+    
+```
+
+![061_if](./images/061_if.png)
+
+In this case, when ```num``` is 8, the if condition is False and the elif condition is True so the elif code block is executed:
+
+```
+num = 8
+
+if (num>10):
+    print("num is greater than 10")
+elif (num>5):
+    print("num is greater than 5")
+else:
+    print("num is lower than 5")
+
+    
+```
+
+![062_if](./images/062_if.png)
+
+In the case where ```num``` is 100, the if condition is True and the if code block is executed. Because the if code block was executed, all subsequent code blocks below it are ignored. The elif code block is not executed despite this condition also being True. 
+
+```
+num = 100
+
+if (num>10):
+    print("num is greater than 10")
+elif (num>5):
+    print("num is greater than 5")
+else:
+    print("num is lower than 5")
+
+    
+```
+
+![063_if](./images/063_if.png)
+
+In order to execute the code blocks from both conditions, seperate unlinked if statements would need to instead be used.
+
+```
+num = 100
+
+if (num>10):
+    print("num is greater than 10")
+    
+    
+if (num>5):
+    print("num is greater than 5")
+    
+    
+```
+
+![064_if](./images/064_if.png)
+
+Multiple ```elif``` code blocks can be used. In this example, the ```if``` condition is False and the associated code block is ignored. Next the first ```elif``` condition is True so the code block belonging it is executed. All other code blocks are ignored as a linked code block is already executed.
+
+```
+num = 9
+
+if (num>10):
+    print("num is greater than 10")
+elif (num>8):
+    print("num is greater than 8")
+elif (num>7):
+    print("num is greater than 7")
+elif (num>5):
+    print("num is greater than 5")
+else:
+    print("num is lower than 5")
+
+    
+```
+
+![065_if](./images/065_if.png)
+
+## match, case
+
+An ```if```, multiple ```elif``` and an ```else``` code block can be setup to respond to a number of discrete values of a variable as shown. In this case as ```num``` is 1, the ```elif``` code block is executed.
+
+```
+num = 1
+
+if (num==0):
+    print("num is zero")
+elif (num==1):
+    print("num is one")
+elif (num==2):
+    print("num is two")
+else:
+   print("num is not zero, one or two")
+
+
+```
+
+![066_if](./images/066_if.png)
+
+It is however more clean to use an outer code block to ```match``` the variable and provide associated code blocks for each discrete ```case``` of possible variables. Since ```num``` is 1, ```case``` 1 is True and so only this code block is executed.
+
+```
+num = 1
+
+match num:
+    case 0:
+        print("num is zero")
+    case 1:
+        print("num is one")
+    case 2:
+        print("num is two")
+    case _:
+        print("num is not zero, one or two")
+
+
+```
+
+![067_if](./images/067_if.png)
+
+In the following example ```num``` is 9, and none of the above cases outlined are True, so the code in the case ```_``` code block is executed.
+
+```
+num = 9
+
+match num:
+    case 0:
+        print("num is zero")
+    case 1:
+        print("num is one")
+    case 2:
+        print("num is two")
+    case _:
+        print("num is not zero, one or two")
+
+
+```
+
+![068_if](./images/068_if.png)
+
+## while loops
+
+The code in an ```if``` code block only runs once if a condition is True. A ```while``` loop is similar to an ```if``` code block and the code in the code block will be executed when the condition is True. After the code block is executed however, the condition will be rechecked and the code block will run again if the condition is True. This will continue ```while``` the condition is True, until the condition is updated to be False. 
+
+If the condition is never False, the loop will run forever and may hang the Python Kernel.
+
 ```
 while True:
-    print('no changes')
+    print("spam my console")
     
     
 ```
 
-![img_101](./images/img_101.png)
+![069_while](./images/069_while.png)
 
-To exit an infinite loop, restart the Kernel in JupyterLab (and clear all outputs). In Spyder use the keyboard shortcut ```Ctrl``` + ```c```.
+Notice that the output of the cell continues indefinitely and the kernel gets hung on the cell output. The kernel typically needs to be restarted to exit out of the ```while``` loop.
 
-A variable can be initialised before entering a ```while``` loop. This variable is examined in the ```while``` loops condition and code within the ```while``` loop updates the value of this variable. Eventually the value of the variable will be updated to a value which makes the condition of the ```while``` loop untrue and therefore exists the ```while``` loop. For example:
+|Code Block|Purpose|
+|---|---|
+|for|Code block is carried out for each item in a known sequence|
+|while|Code block is carried out while a condition is True|
+
+```while``` loops are typically invoked when interacting with hardware. For example a bathroom light might be instructed to turn on in respond to the reading from a Near-Infrared motion sensor. In this example there is no set sequence or specified period of time until someone walks until the bathroom, making it unviable to work with only a ```for``` loop.
+
+```for``` loops are instead preferred when working over a known timeframe or sequence within a known collection. 
+
+Although there is a preference to use a ```for``` loop or a ```while``` loop, the ```while``` loop can be used in place of the ```for``` loop for all circumstances however the ```for``` loop cannot replace the ```while``` loop with an unknown sequence or timeframe. To understand how to use a ```while``` loop it is useful to recreate some of the ```for``` loops used above with a ```while``` loop.
+
+![033_for_loop](./images/033_for_loop.png)
+
+Starting out with the simple ```for``` loop which prints out the value of each item in the collection.
 
 ```
-loop_var = 0
-print(f'loop_var = {loop_var}')
-
-while loop_var < 5:
-    print(f'\tloop_var = {loop_var}')
-    loop_var += 1
+collection = ["apples", "bananas", "grapes"]
+for loop_var in collection:
+    print(loop_var)
     
     
-print(f'loop_var = {loop_var}')
 ```
 
-![img_102](./images/img_102.png)
+![070_while](./images/070_while.png)
 
-The initial unindented print statement shows the initial value of ```loop_var``` before the ```while``` loop. 
-
-The indented print statements shows the value of ```loop_var``` when the ```while``` condition is checked. For each of these values, the condition ```loop_var < 5``` is ```True``` and the value ```loop_var``` is incremented.
-
-The final unindented print statement shows the final value of ```5```. This value was incremented from ```4``` in the last iteration of the ```while``` loop. For this value of ```5```, the condition of the ```while``` loop ```loop_var < 5``` was ```False``` and therefore the ```while``` loop exited. 
-
-While loops are often used when interacting with hardware. An example is using the ```input``` function which waits for a response from a user that has to interact with a keyboard:
+The ```for``` loop will instead be updated to use a range object. In this case the stop value is ```len(collection)``` and the range object can be specified as ```range(0, len(collection), 1)``` or abbreviated as ```range(len(collection))```. The for loop has more cumbersome syntax but works as expected.
 
 ```
-user_message = input('Input some text: ')
+collection = ["apples", "bananas", "grapes"]
+for loop_idx in range(len(collection)):
+    print(collection[loop_idx])
+    
+    
 ```
 
-Under the hood, this uses a ```while``` loop and the Kernel will hang until a user optionally inputs some text in the box and presses enter ```↵```:
+![071_while](./images/071_while.png)
 
-![img_103](./images/img_103.png)
+For a ```while``` loop, a condition must be established. This condition typically involves a variable that must be defined before using the ```while``` loop. In this case, the variable is called ```loop_idx``` and is assigned to an initial value of 0. The condition of the ```while``` loop setup is that this variable ```loop_idx``` is less than the length of the collection ```len(collection)```. 
 
-![img_104](./images/img_104.png)
-
-![img_105](./images/img_105.png)
-
-A ```while``` loop can be used in place of any ```for``` loop although the syntax may not be as elegant. Compare the following for example:
+If there is no change made in the ```while``` loop involving ```loop_idx``` or the ```len(collection)```, the ```while``` loop will run forever. So the last line in the code block will increment ```loop_idx```. The string in the collection at the current index can be printed by indexing using ```loop_idx```, for clarity both the index and value will be printed. This syntax is more cumbersome but yields similar results to the ```for``` loop.
 
 ```
-index = 0
+collection = ["apples", "bananas", "grapes"]
 
-while index < len('hello'):
-    print('hello'[index])
-    index += 1
+loop_idx = 0
 
-
+while (loop_idx < len(collection)):
+    print(f"loop_idx {loop_idx}, {collection[loop_idx]}")
+    loop_idx += 1
+    
+    
 ```
 
-![img_106](./images/img_106.png)
-
-```
-for letter in 'hello':
-    print(letter)
+![072_while](./images/072_while.png)
 
 
-```
+Notice that the final value of ```loop_idx``` is 3, meaning the condition is the ```while``` loop is False and therefore the code block is not executed for a 4th time and the code block is exited.
 
-![img_107](./images/img_107.png
-
-A ```for``` loop cannot replace, all occurances of a ```while``` loop. In the above scenario for example, *while* waiting for user input there is no specified duration to wait for the user to input text. The user can input text quickly, slowly or not at all (resulting in an infinite loop). 
-
-```while``` loops are often employed in sensor feedback mechanisms. A central heating system may use a ```while``` loop to turn on a heater *while* the temperature is below a set point measured by a temperature sensor. It may also use a ```while``` loop to turn on air conditioning *while* the temperature is above the same set point. Both of these ```while``` loops may be contained within an infinite ```while``` loop which runs continuously to maintain the temperature.
-
-Demonstrate use of a debugger in a for loop.
-
-try, except, else and finally update.
-
-
-
+![073_while](./images/073_while.png)
 
 ## try, except, else, finally
 
