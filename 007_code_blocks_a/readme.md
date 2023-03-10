@@ -752,7 +752,7 @@ for num in range(len(active)):
 
 ![img_060](./images/img_060.png)
 
-This can be used for the purposed of indexing:
+This can be used for the purposes of indexing:
 
 ```
 word = 'hello'
@@ -763,7 +763,22 @@ for num in range(len(word)):
 
 ```
 
+![img_061](./images/img_061.png)
 
+Note that the above is not as readible as:
+
+```
+word = 'hello'
+
+for letter in word:
+    print(letter)
+
+
+```
+
+![img_062](./images/img_062.png)
+
+Howeveer having access to the index is sometimes useful for other purposes. For example string replication can be carried out using multiplication of the index:
 
 ```
 word = 'hello'
@@ -773,6 +788,142 @@ for num in range(len(word)):
 
 
 ```
+
+![img_063](./images/img_063.png)
+
+Or alternatively the index can be printed alongside the character:
+
+```
+word = 'hello'
+
+for num in range(len(word)):
+    print(num, word[num])
+
+
+```
+
+![img_064](./images/img_064.png)
+
+A ```range``` object has been created from the length of a collection. The docstring of the init signature of the ```range``` class can be examined by inputting ```range()``` and pressing shift ```⇧``` and tab ```↹```:
+
+![img_065](./images/img_065.png)
+
+A ```range``` object uses zero-order indexing and increments in integer steps of ```1``` up to but excluding the integer ```stop``` value. It has consistency to the ```slice``` object which was examined when indexing collections. If only an integer ```stop``` value is specified:
+
+```
+ro = range(5)
+ro
+```
+
+![img_066](./images/img_066.png)
+
+The integer ```start``` will assumed to be ```0```. The range object ```ro``` can be cast into a ```tuple``` and examined in the Variable Explorer:
+
+```
+ro_t = tuple(ro)
+```
+
+![img_067](./images/img_067.png)
+
+![img_068](./images/img_068.png)
+
+Notice in this scenario, the index and value of the ```tuple``` match:
+
+![img_069](./images/img_069.png)
+
+If a non-zero ```start``` value is also supplied. For example:
+
+```
+ro = range(1, 5)
+ro
+ro_t = tuple(ro)
+```
+
+![img_070](./images/img_070.png)
+
+![img_071](./images/img_071.png)
+
+Notice in this scenario, the index and value of the ```tuple``` do not match:
+
+![img_072](./images/img_072.png)
+
+Finally an integer ```step``` can be specified. When an integer ```step``` is specified, the integer ```start``` needs to also be specified even if it is ```0```:
+
+```
+ro = range(0, 6, 2)
+ro
+ro_t = tuple(ro)
+```
+
+![img_073](./images/img_073.png)
+
+![img_074](./images/img_074.png)
+
+Notice that once again zero-order indexing is used, going up to but not including the ```stop``` value of ```6```:
+
+![img_075](./images/img_075.png)
+
+Zero-order indexing needs to be addressed when using negative values. For example beginning at a negative value and counting up until ````0``` requires a ```stop``` value ```1``` past ```0``` which is ```1```:
+
+```
+ro = range(-5, 1, 1)
+ro
+ro_t = tuple(ro)
+```
+
+![img_076](./images/img_076.png)
+
+![img_077](./images/img_077.png)
+
+![img_078](./images/img_078.png)
+
+
+Or using a negative step of ```-1``` to count down from a positive integer value to ```0```, requires a ```stop``` value ```-1``` past ```0``` which is ```-1```:
+
+```
+ro = range(5, -1, -1)
+ro
+ro_t = tuple(ro)
+```
+
+![img_079](./images/img_079.png)
+
+![img_080](./images/img_080.png)
+
+![img_081](./images/img_081.png)
+
+To check your understanding, create the following ```range``` objects:
+
+![img_082](./images/img_082.png)
+
+![img_083](./images/img_083.png)
+
+### dictionaries
+
+Recall that a dictionary has the form:
+
+```
+mapping = {'red': '#FF0000', 
+           'green': '#00B050', 
+           'blue': '#0070C0'}
+```
+
+![img_084](./images/img_084.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## The for Loop
 
