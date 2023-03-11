@@ -869,7 +869,7 @@ Notice that once again zero-order indexing is used, going up to but not includin
 
 ![img_075](./images/img_075.png)
 
-Zero-order indexing needs to be addressed when using negative values. For example beginning at a negative value and counting up until ````0``` requires a ```stop``` value ```1``` past ```0``` which is ```1```:
+Zero-order indexing needs to be addressed when using negative values. For example beginning at a negative value and counting up until ```0``` requires a ```stop``` value ```1``` past ```0``` which is ```1```:
 
 ```
 ro = range(-5, 1, 1)
@@ -1135,11 +1135,307 @@ for letter in 'hello':
 
 ```
 
-![img_107](./images/img_107.png
+![img_107](./images/img_107.png)
 
 A ```for``` loop cannot replace, all occurances of a ```while``` loop. In the above scenario for example, *while* waiting for user input there is no specified duration to wait for the user to input text. The user can input text quickly, slowly or not at all (resulting in an infinite loop). 
 
 ```while``` loops are often employed in sensor feedback mechanisms. A central heating system may use a ```while``` loop to turn on a heater *while* the temperature is below a set point measured by a temperature sensor. It may also use a ```while``` loop to turn on air conditioning *while* the temperature is above the same set point. Both of these ```while``` loops may be contained within an infinite ```while``` loop which runs continuously to maintain the temperature.
+
+## Comprehensions
+
+Supposing the following tuple is created:
+
+```
+nums = (0, 1, 2, 3, 4)
+```
+
+![img_108](./images/img_108.png)
+
+Supposing each number is to be doubled. Recall that multiplication of a collection by a scalar replicates the collection and therefore a for loop has to be made, so each number in num can be doubled.
+
+For example:
+
+```
+for num in nums:
+    print(2 * num)
+
+
+```
+
+![img_109](./images/img_109.png)
+
+Instead of printing the doubled values, each value can be appended to a mutable collection such as a ```list```. The collection needs to be mutable so the ```list``` identifier ```append``` can be used within the ```for``` loop:
+
+```
+nums = (0, 1, 2, 3, 4)
+doubled_nums = []
+
+for num in nums:
+    doubled_nums.append(2 * num)
+    
+    
+doubled_nums
+```
+
+![img_110](./images/img_110.png)
+
+And for clarity, a ```print``` statement can be added to the ```for``` loops code block to view ```doubled_nums``` during each iteration of the ```for``` loop.
+
+```
+nums = (0, 1, 2, 3, 4)
+doubled_nums = []
+
+for num in nums:
+    doubled_nums.append(2 * num)
+    print(doubled_nums)
+    
+    
+doubled_nums
+```
+
+![img_111](./images/img_111.png)
+
+The following lines of code and the code block can be collapsed down into a single line using list comprehension: 
+
+```
+doubled_nums = []
+for num in nums:
+    doubled_nums.append(2 * num)
+
+
+```
+
+![img_112](./images/img_112.png)
+
+```
+doubled_nums = [2 * num for num in nums]
+```
+
+list comprehension is typically used to create an output list from interaction with a collection via a for loop. The square brackets ```[]``` enclose the list and the list is assigned to the object name ```doubled_nums``` using the assignment operator ```=```:
+
+![img_113](./images/img_113.png)
+
+To the left hand side, the expression supplied to the ```list``` identifier ```append``` is used:
+
+![img_114](./images/img_114.png)
+
+To the right hand side the ```for``` loop is added. Note as the list comprehension has no code block there is no colon:
+
+![img_115](./images/img_115.png)
+
+![img_116](./images/img_116.png)
+
+list comprehension can also include a condition.
+
+```
+doubled_even_nums = [2 * num for num in nums if num % 2 == 0]
+
+doubled_even_nums
+```
+
+![img_117](./images/img_117.png)
+
+When the condition has an associated ```else```, the expression when the condition is ```True``` is specified, followed by the expression when the condition is ```False```. ```elif``` is not supported for list comprehension and code blocks should be used when multiple conditions are examined:
+
+```
+nums = (0, 1, 2, 3, 4)
+
+parity = ['even' if num % 2 == 0 else 'odd' for num in nums] 
+
+parity
+```
+
+![img_118](./images/img_118.png)
+
+If the square brackets ```[ ]``` are replaced by parenthesis ```( )```:
+
+```
+nums = (0, 1, 2, 3, 4)
+
+double_nums = (num * 2 for num in nums)
+double_nums
+```
+
+![img_119](./images/img_119.png)
+
+A generator is essentially an iterator that carries out an expression. In this case the expression ```2 * num``` for each ```num``` in ```nums``` when ```next``` is used:
+
+```
+next(double_nums)
+next(double_nums)
+next(double_nums)
+next(double_nums)
+next(double_nums)
+```
+
+![img_120](./images/img_120.png)
+
+If the generator is exhausted, a ```StopIteration``` error displays:
+
+![img_121](./images/img_121.png)
+
+If the square brackets ```[ ]``` are replaced by braces ```{ }```, a dictionary comprehension is used. Recall a dictionary has ```key: value``` pairs. The expression for the keys and the expression for the values is seperated out. 
+
+For example if the following list of ```colors``` is created: 
+
+```
+colors = ['red', 'green', 'blue']
+```
+
+A ```mapping``` which takes the first letter in the ```color``` as the key and the full ```color``` as the value can be created using:
+
+```
+mapping = {color[0]: color for color in colors}
+```
+
+![img_122](./images/img_122.png)
+
+The key expression is highlighted:
+
+![img_123](./images/img_123.png)
+
+This can be used in a list comprehension to get the keys:
+
+```
+keys = [color[0] for color in colors]
+```
+
+![img_124](./images/img_124.png)
+
+The colon ```:``` is highlighted. The colon in the dictionary seperates, the key expression from the value expression:
+
+![img_125](./images/img_125.png)
+
+The value expression is highlighted:
+
+![img_126](./images/img_126.png)
+
+This can be used in a list comprehension to get the values. In this case, ```values``` is essentially a copy of the original list:
+
+```
+values = [color for color in colors]
+```
+
+![img_127](./images/img_127.png)
+
+Dictionary comprehensions can also have a condition. If the one letter keys are looped through, the ordinal value of the key can be examined:
+
+```
+for key in keys:
+    print(ord(key))
+    
+    
+```
+
+![img_128](./images/img_128.png)
+
+This can be used to produce a dictionary of only the keys that have a positive ordinal value:
+
+```
+mapping = {color[0]: color for color in colors if ord(color[0]) % 2 == 0}
+```
+
+As the dictionary comprehension is quite long, it is easier to read if it is split over multiple lines:
+
+```
+mapping = {color[0]: 
+           color 
+           for color in colors
+           if ord(color[0]) % 2 == 0}
+```
+
+The first line is the key. The second line is the value. The third line is the iterable being looped over and the third line is the expression.
+
+![img_129](./images/img_129.png)
+
+The dictionary comprehension can also use an ```if``` and ```else``` expression. These statements can be set for both the keys and the values as shown in the example below. The if condition takes the first letter of the color for the key and the color for the value when the ordinal value of the first letter is even. The else condition takes the last letter of the color for the key and reverses the color for the value:
+
+```
+mapping = {color[0] if ord(color[0]) % 2 == 0 else color[-1]: 
+           color if ord(color[0]) % 2 == 0 else color[::-1]
+           for color in colors}
+```
+
+![img_130](./images/img_130.png)
+
+It is quite common to keep all keys and use only a condition for the values:
+
+```
+mapping = {color[0]: 
+           color if ord(color[0]) % 2 == 0 else color[::-1]
+           for color in colors}
+```
+
+![img_131](./images/img_131.png)
+
+A dictionary comprehension can use the ```items``` identifier of an existing dictionary giving access to the original dictionaries keys and values using tuple unpacking. For example, supposing the following dictionary of ```fruits``` is made:
+
+```
+fruits = {'apples': 2, 'bananas': 3, 'carrots': 5}
+```
+
+A dictionary ```fruits2``` which has the same keys and doubles the numeric values can be created using:
+
+```
+fruits2 = {key: 
+           2 * value 
+           for key, value in fruits.items()}
+```
+
+![img_132](./images/img_132.png)
+
+And in such a scenario it is common to include all keys and update the value in response to a condition. For example, the value can be doubled if it is odd and left alone if it is even. This creates a dictionary of even values:
+
+```
+fruits3 = {key: 
+           2 * value if value % 2 == 1 else value 
+           for key, value in fruits.items()}
+```
+
+![img_133](./images/img_133.png)
+
+## Functions
+
+
+ord
+
+print
+
+
+return
+
+yield
+
+
+def incrementer():
+    num = 0
+    while True:
+        yield num
+        num += 1
+
+
+map and filter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Demonstrate use of a debugger in a for loop.
 
