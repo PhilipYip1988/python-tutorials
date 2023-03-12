@@ -2138,7 +2138,7 @@ singular('bananas')
 
 ### Function Local Scope and Mutability
 
-Functions have their own local scope. This can be examined with the following. The local variable ```x``` assigned in the function does not alter the global variable ```x```:
+Functions have their own local scope. This can be examined with the following. The local variable ```x``` assigned in the function does not alter the global variable ```x``` (seen on the Variable Inspector, after the function call):
 
 ```
 x = 2
@@ -2151,36 +2151,50 @@ def localvariable():
 y = localvariable()
 ```
 
-
-
+![img_190](./images/img_190.png)
 
 Although a function has its own local variables, it can access global variables:
 
 ```
 x = 2
 
-def localvariable():
+def readglobalvariable():
     return x
 
 
-y = localvariable()
+y = readglobalvariable()
 ```
 
+![img_191](./images/img_191.png)
 
-If an immutable variable is accessed from the global namespace. It can be reassigned in the functions local namespace. This will not influence the variable in the global namespace:
+If an immutable variable is accessed from the global namespace and reassignment is attempted in the functions local namespace, an ```UnboundLocalError``` will display:
 
 ```
 x = 2
 
-def localvariable():
+def unboundlocal():
     x += 2
-    return x
 
 
-y = localvariable()
+unboundlocal()
 ```
 
+![img_192](./images/img_192.png)
 
+The ```global``` variable can be modified in the function by use of the ```global``` statement:
+
+```
+x = 2
+
+def updateglobalvariable():
+    global x
+    x += 2
+
+
+updateglobalvariable()
+```
+
+![img_193](./images/img_193.png)
 
 Care should be taken when the variable is mutable. If a mutable method is used, it will modify the global mutable variable. For example:
 
@@ -2195,84 +2209,765 @@ updateactive()
 active
 ```
 
-
+![img_194](./images/img_194.png)
 
 Note that when a mutable variable is returned to a new value using a function, that an alias of it is made:
 
 ```
 active = [1, 2, 3, 4]
 
-def returnactive():
-    return active
+def returnactive(data):
+    return data
     
 
-active2 = returnactive()    
+active2 = returnactive(active)    
 active2.append(5)
 ```
 
+![img_195](./images/img_195.png)
 
-
-Variables from the outside are normally assigned using input arguments. Once again for an immutable variable, a local copy of it is made in the function namespace:
-
-```
-x = 2
-
-def localvariable(num):
-    num += 2
-    return num
-
-
-y = localvariable(num=x)
-```
-
-
-
-For a mutable variable, an alias of it is made and a mutable method will update the global variable:
+This can be prevented by creating a copy or deepcopy as appropriate:
 
 ```
 active = [1, 2, 3, 4]
 
-def updatedata(data):
-    data.append(5)
+def returnactive(data):
+    return data.copy()
     
-    
-updatedata(data=active)
 
-active
+active2 = returnactive(active)    
+active2.append(5)
 ```
+
+![img_196](./images/img_196.png)
 
 ### *args and **kwargs
 
+Returning to the function:
 
+```
+def higher(num1, num2, /):
+    assert isinstance(num1, (int, float, bool))
+    assert isinstance(num2, (int, float, bool))
+    if num1 > num2:
+        return num1
+    return num2
+
+
+```
+
+Notice that there are two positional input arguments. These can be provided from a ```tuple``` of two numbers:
+
+```
+nums = (3, 2)
+```
+
+To unpack the ```tuple``` during the function call, it can be prefixed with a ```*```:
+
+```
+higher(*nums)
+```
+
+![img_197](./images/img_197.png)
+
+The function can be modified to take in keyword input arguments:
+
+```
+def higher(num1=1, num2=2):
+    assert isinstance(num1, (int, float, bool))
+    assert isinstance(num2, (int, float, bool))
+    if num1 > num2:
+        return num1
+    return num2
+
+
+```
+
+A dictionary with keys that match the keyword input arguments of the function can be used:
+
+```
+nums = {'num1': 3, 'num2': 1}
+```
+
+To unpack the ```dict``` during the function call, it can be prefixed with a ```**```:
+
+```
+higher(**nums)
+```
+
+![img_198](./images/img_198.png)
+
+This syntax can be used to create a function that has a variable number of input arguments. 
+
+```
+def customsum(*args):
+    """returns the sum of a variable number of 
+    input arguments."""
+    total = 0
+    for num in args:
+        assert isinstance(num, (int, float, bool))
+        total += num
+    return total
+        
+        
+```
+
+![img_199](./images/img_199.png)
+
+This can be called with a variable number of input arguments:
+
+```
+customsum()
+customsum(1)
+customsum(1, 2, 3, 4)
+```
+
+![img_200](./images/img_200.png)
+
+A similar implementation can be carried out using ```**kwargs```:
+
+```
+def customsum(**kwargs):
+    """returns the sum of a variable number of 
+    keyword input arguments."""
+    total = 0
+    for key in kwargs:
+        assert isinstance(kwargs[key], (int, float, bool))
+        total += kwargs[key]
+    return total
+        
+
+```
+
+![img_201](./images/img_201.png)
+
+```
+customsum(one=1, two=2, three=3, four=4)
+```
+
+![img_202](./images/img_202.png)
 
 ### Yield
 
+A function can use a ```yield``` statement instead of a ```return``` statement:
+
 ```
-def incrementer():
-    num = 0
-    while True:
+def incrementer(num=0):
+    yield num
+    
+    
+```
+
+![img_203](./images/img_203.png)
+
+This function can be referenced as normal:
+
+```
+incrementer
+```
+
+![img_204](./images/img_204.png)
+
+When called a generator is yielded opposed to a value returned. This is essentially an interator which evaluates the code in the function during each iteration:
+
+```
+incrementer()
+```
+
+![img_205](./images/img_205.png)
+
+If assigned to a variable:
+
+```
+count = incrementer()
+```
+
+![img_206](./images/img_206.png)
+
+It can be incremented using ```next```:
+
+```
+next(count)
+```
+
+![img_207](./images/img_207.png)
+
+This generator is exhausted after one iteration:
+
+![img_208](./images/img_208.png)
+
+Normally the ```yield``` statement is included in a loop:
+
+```
+def incrementer(num=0):
+    for index in range(5):
         yield num
         num += 1
+    
+
+clock = incrementer()
+```
+
+![img_209](./images/img_209.png)
+
+```
+next(clock)
+next(clock)
+next(clock)
+next(clock)
+next(clock)
+```
+
+![img_210](./images/img_210.png)
+
+From the above it can be seen that very time ```next(clock)``` is called, the code in the function executes until a ```yield``` statement is reached. The code execution is then paused until ```next(clock)``` is called again. This happens until all ```yield``` statements have been exhausted at which point the generator is exhausted. For simplicity this mechanism can be demonstrated without a ```loop``` using:
+
+```
+def generate():
+    yield 'a'
+    yield 'b'
+    yield 'c'
+    
+    
+gen = generate()
+next(gen)
+next(gen)
+next(gen)
+next(gen)
+```
+
+![img_211](./images/img_211.png)
+
+### First Order Function
+
+A function is a first order object. The following function can be defined:
+
+```
+def greeting(name):
+    """
+    prints a greeting
+    Parameters
+    ----------
+    name : str
+
+    Returns
+    -------
+    None
+    """
+    print(f"Hello {name}")
+    return None
 
 
 ```
 
 
 
-### Closure
+
+This function can be treated as a variable and assigned to any other variable name. For example:
+
+```
+f = greeting
+```
+
+
+
+To the right hand side of the assignment operator, the function is being referenced and not called. Therefore, there is no parenthesis following the function name. ```f``` is essentially a copy of the original function ```greeting```. If ```f``` is input followed by open parenthesis and shift ```⇧``` and the tab ```↹``` are input, details about the input argument displays alongside the docstring provided in greeting:
+
+
+
+```f``` can therefore be called using:
+
+```
+f('world')
+f('earth')
+```
+
+
+
+Note ```f``` is not an alias to ```greeting``` but a ```copy```. If ```greeting``` is deleted or reassigned, this will not change the functionality of ```f```:
+
+```
+del greeting
+f('world')
+```
+
+
+
+### Second-Order Function
+
+The function ```greeting_function``` can be defined and configured to take in an input argument ```name``` and to return a formatted string, greeting a user using the provided ```name```:
+
+```
+def greeting_function(name):
+    """
+    returns a greeting
+    Parameters
+    ----------
+    name : str
+   
+    Returns
+    -------
+    str
+    """
+    return f'Hello {name}'
+
+
+```
+
+A second order function ```format_greeting_function``` can be designed which takes in the first-order function ```greeting_function``` as the input argument ```welcome```. The input argument of the second order function ```welcome``` (which is a copy of the first order function ```greeting_function```) is called using the provided input argument ```user``` which is a local variable provided within the second order function. The function ```greeting_function``` has a return statement and when the copy of ```greeting_function``` is called as ```welcome```, the output is assigned to a variable ```text```. ```text``` is a local variable within the second order function ```format_greeting_function``` and is modified further before being returned by ```format_greeting_function```.
+
+```
+def format_greeting_function(welcome):
+    """
+    Takes in a greeting function and formats it to 
+    welcome Philip
+
+    Parameters
+    ----------
+    welcome : function
+
+    Returns
+    -------
+    text : str
+    """
+    user = "Philip"
+    text = welcome(user)
+    text = text.upper()
+    text = text.center(20, "*")
+    return text
+
+
+```
+
+The ```format_greeting_function``` can be called taking in the ```greeting_function``` as an input argument:
+
+```
+format_greeting_function(greeting_function)
+```
+
+![img_095](./images/img_095.png)
+
+
+### Closures
+
+In the above section it was seen that a function can be used as an input argument for another function. It is also possible to define a function wthin a function, to make a nested function or *second-order* function.
+
+An ```inner``` function can be defined within an ```outer``` function:
+
+```
+def outer():
+    def inner():
+        pass
+    pass
+
+
+```
+
+![img_096](./images/img_096.png)
+
+The return statement of a function can be used to return a function. In this example, the ```outer``` function can be used to return the ```inner``` function:
+
+```
+def outer():
+    def inner():
+        pass
+    return inner
+
+
+```
+
+![img_097](./images/img_097.png)
+
+Because the ```inner``` function is define within the local scope of the ```outer``` function it can access variables within the ```outer``` functions scope:
+
+```
+def outer():
+    name = "Philip"
+    def inner():
+        return f"hello {name}"
+    return inner
+
+
+```
+
+![img_099](./images/img_099.png)
+
+Notice the subtle difference between referencing ```outer```:
+
+```
+outer
+```
+
+Calling ```outer```:
+
+```
+outer()
+```
+
+Calling ```outer``` to get ```inner``` and then calling ```inner```:
+
+```
+outer()()
+```
+
+![img_100](./images/img_100.png)
+
+More generally, ```outer``` would be called and assigned to a variable name:
+
+```
+f_in = outer()
+```
+
+Then this variable name which is assigned to a function would be called:
+
+```
+f_in()
+```
+
+![img_101](./images/img_101.png)
+
+Let's modify the above code so an input argument ```name``` is requested by the ```outer``` function. This input argument is accessible by the ```inner``` function:
+
+```
+def outer(name):
+    def inner():
+        return f"hello {name}"
+    return inner
+
+
+```
+
+![img_102](./images/img_102.png)
+
+The ```outer``` function can be called and assigned to a variable name:
+
+```
+f_in = outer("Lucie")
+```
+
+The variable ```"Lucie"``` was provided by the ```outer``` function which has finished executing but is now **enclosed** within the ```inner``` function.
+
+```
+f_in()
+f_in()
+```
+
+![img_103](./images/img_103.png)
+
+For this reason, the configuration above is known as a **closure** as variables provided from the outer function can be enclosed within the inner function.
+
+In HTML the following tags ```<p>``` and ```<\p>``` are used to enclose a paragraph and ```<h1>``` and ```<\h1>``` are used to enclose a heading of level 1.
+
+A closure can be defined using:
+
+```
+def html_tag(tag):
+    def html_text(text):
+        return f"<{tag}>{text}</{tag}>"
+    return html_text
+
+
+```
+
+The outer ```html_tag``` function can be called using a provided tag.
+
+```
+para = html_tag("p")
+h1 = html_tag("h1")
+```
+
+This creates the inner function with an enclosed tag, which can be called providing text to format it using the enclosed tag:
+
+```
+h1("My First Program")
+para("prints")
+para("Hello World")
+para("Goodbye World")
+```
+
+![img_104](./images/img_104.png)
+
+### Decorators
+
+A decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it. 
+
+The ```decorator_function``` therefore is configured to take in an ```original_function``` as its input argument. To extend the behaviour of the ```original_function```, the ```decorator_function``` must include a nested ```wrapper_function``` which returns the ```original_function```. The ```wrapper_function``` will only include a simple print statement in this case for simplicity:
+
+```
+def decorator_function(original_function):
+    def wrapper_function():
+        print(f'calling the {original_function}')
+        return original_function
+    return wrapper_function
+
+
+```
+
+Let's use the above with a simple ```greeting_function```:
+
+```
+def greeting_function():
+    """
+    returns a greeting
+   
+    Returns
+    -------
+    str
+    """
+    return f'Hello'
+
+
+```
+
+The decorator function can be called and assigned to a variable name:
+
+```
+greeting_function_decorated = decorator_function(greeting_function)
+```
+
+The ```greeting_function_decorated``` can be referenced using:
+
+```
+greeting_function_decorated
+```
+
+It can be called using:
+
+```
+greeting_function_decorated()
+```
+
+```
+greeting_function_decorated()()
+```
 
 
 
 
+Now if instead of referencing the ```original_function``` within the return statement of the ```wrapper_function```, it is called:
 
+```
+def decorator_function(original_function):
+    def wrapper_function():
+        print(f'calling the {original_function}')
+        return original_function()
+    return wrapper_function
+
+
+```
+
+The function being decorated, ```greeting_function``` is unchanged:
+
+```
+def greeting_function():
+    """
+    returns a greeting
+   
+    Returns
+    -------
+    str
+    """
+    return f'Hello'
+
+
+```
+
+The decorator function can be called and assigned to a variable name:
+
+```
+greeting_function_decorated = decorator_function(greeting_function)
+```
+
+It can be referenced:
+
+```
+greeting_function_decorated
+```
+
+And called:
+
+```
+greeting_function_decorated()
+```
+
+
+
+In the above case, the ```greeting_function``` being decorated had no input arguments. In this example, an input argument ```name``` will be added:
+
+```
+def greeting_function(name):
+    """
+    returns a greeting
+    Parameters
+    ----------
+    name : str
+   
+    Returns
+    -------
+    str
+    """
+    return f'Hello {name}'
+
+
+```
+
+Now the return statement of the ```wrapper_function``` must call the function and provide the input argument ```name```.
+
+```
+def decorator_function(original_function):
+    def wrapper_function():
+        print(f'calling the {original_function}')
+        return original_function(name)
+    return wrapper_function
+
+
+```
+
+In order to do so, the wrapper function must supply the input argument ```name```:
+
+```
+def decorator_function(original_function):
+    def wrapper_function(name):
+        print(f'calling the {original_function}')
+        return original_function(name)
+    return wrapper_function
+
+
+```
+
+More generally ```*args``` and ```**kwargs``` will be used for the input arguments of the ```wrapper_function``` so that they can be supplied when calling the ```original_function``` within the return statement of the ```wrapper_function```
+
+```
+def decorator_function(original_function):
+    def wrapper_function(*args, **kwargs):
+        print(f'calling the {original_function}')
+        return original_function(*args, **kwargs)
+    return wrapper_function
+
+
+```
+
+The decorator function can be called and assigned to a variable name as before:
+
+```
+greeting_function_decorated = decorator_function(greeting_function)
+```
+
+It can be referenced:
+
+```
+greeting_function_decorated
+```
+
+And called using the input argument ```name```:
+
+```
+greeting_function_decorated('World')
+```
+
+
+
+Normally the decorator function ```decorator_function``` is previously defined:
+
+```
+def decorator_function(original_function):
+    def wrapper_function(*args, **kwargs):
+        print(f'calling the {original_function}')
+        return original_function(*args, **kwargs)
+    return wrapper_function
+
+
+```
+It can be used to decorate a function using the ```@decorator_function``` above the original function definition for example:
+
+```
+@decorator_function
+def greeting_function(name):
+    """
+    returns a greeting
+    Parameters
+    ----------
+    name : str
+   
+    Returns
+    -------
+    str
+    """
+    return f'Hello {name}'
+
+
+```
+
+The ```@``` syntax is shorthand for assignment of the original function decorated:
+
+```
+greeting_function_decorated = decorator_function(greeting_function)
+```
+
+When the ```@``` syntax is used reassignment of the original function is carried out to the original function decorated:
+
+```
+greeting_function = decorator_function(greeting_function)
+```
+
+Therefore in this case using:
+
+```
+greeting_function('World')
+```
+
+will implement the decorated version of ```greeting_function```:
 
 
 
 
 ## lambda Expression
 
+The keyword ```lambda``` is taken from the Greek alphabet and lacks description for its use case in Python. ```lambda``` should be conceptualised as *make function* and is used to create a simple anonymous function over a single line. Because it is anonymous and expressed over a single line, it does not have a docstring.
 
-map and filter
+
+
+
+
+
+
+## Map, Filter and Reduce
+
+
+
+map(func, *iterables) --> map object
+
+```
+nums = [1, 2, 3, 4, 5]
+map(lambda x: x**2, nums)
+squared = list(map(lambda x: x**2, nums))
+```
+
+
+
+filter(function, iterable)
+
+
+```
+nums = list(range(-5, 6))
+filter(lambda x: x > 0, nums)
+list(filter(lambda x: x > 0, nums))
+```
+
+
+
+
+reduce(function, iterable)
+
+```
+from functools import reduce
+reduce((lambda x, y: x + y), [1, 2, 3, 4])
+```
+
+Under the hood, conceptualise this as a ```for``` loop. In the first iteration. ```x``` is initially ```1``` the value at the 0th index and ```y``` is initially ```2``` the value of the 1st index. The result ```x + y``` is therefore ```3```. In the second iteration ```x``` is taken to be this value of ```3``` and ```y``` is taken to be the value at the 2nd index, which is also ```3```. ```x + y``` is therefore ```6```. In the third iteration, ```x``` is taken to be the value of ```6``` and ```y``` is taken to be the value at the last index. The final ```x + y``` calculation is therefore ```10``` which is returned.
+
+
+
 
 
 
