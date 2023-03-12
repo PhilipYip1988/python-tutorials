@@ -1782,7 +1782,6 @@ assert isinstance(2, str)
 
 ```
 def plural(word):
-    assert isinstance(word, str)
     """Takes a singular str word and returns its plural. 
     e.g. 'apple' becomes 'apples'.
 
@@ -1797,6 +1796,7 @@ def plural(word):
         plural str.
 
     """
+    assert isinstance(word, str)
     return word + 's'
 
 
@@ -1828,7 +1828,6 @@ If a ```/``` is added at the end of input arguments, it will make the input argu
 
 ```
 def plural(word, /):
-    assert isinstance(word, str)
     """Takes a singular word and returns its plural. 
     e.g. 'apple' becomes 'apples'.
 
@@ -1843,6 +1842,7 @@ def plural(word, /):
         plural str.
 
     """
+    assert isinstance(word, str)
     return word + 's'
 
 
@@ -1865,7 +1865,6 @@ Alternatively the input argument can be supplied as a keyword input argument. A 
 
 ```
 def plural(word='apple'):
-    assert isinstance(word, str)
     """Takes a singular word and returns its plural. 
     e.g. 'apple' becomes 'apples'.
 
@@ -1880,6 +1879,7 @@ def plural(word='apple'):
         plural str.
 
     """
+    assert isinstance(word, str)    
     return word + 's'
 
 
@@ -2104,7 +2104,6 @@ A function can return a collection. The most common collection to return is a tu
 
 ```
 def singular(word='apples'):
-    assert isinstance(word, str)
     """Takes a plural word and returns its singular value. 
     e.g. 'apple' becomes ('apple', 's').
 
@@ -2119,6 +2118,7 @@ def singular(word='apples'):
         tuple of singular str and value at last index.
 
     """
+    assert isinstance(word, str)
     return word[:-1], word[-1]
 
 
@@ -2440,49 +2440,49 @@ next(gen)
 
 ### First Order Function
 
-A function is a first order object. The following function can be defined:
+The following function, takes a ```name``` as an input argument and returns a formatted string including.
 
 ```
 def greeting(name):
-    """
-    prints a greeting
+    """prints greeting for supplied name
     Parameters
     ----------
     name : str
+        name supplied.
 
     Returns
     -------
-    None
+    str
+        greeting.
     """
-    print(f"Hello {name}")
-    return None
+    assert isinstance(name, str)
+    return f'Hello {name}'
 
 
 ```
 
+![img_212](./images/img_212.png)
 
-
-
-This function can be treated as a variable and assigned to any other variable name. For example:
+A function is a first order object. This means the function can be treated as a variable and assigned to any other variable name. For example:
 
 ```
 f = greeting
 ```
 
-
+![img_213](./images/img_213.png)
 
 To the right hand side of the assignment operator, the function is being referenced and not called. Therefore, there is no parenthesis following the function name. ```f``` is essentially a copy of the original function ```greeting```. If ```f``` is input followed by open parenthesis and shift ```⇧``` and the tab ```↹``` are input, details about the input argument displays alongside the docstring provided in greeting:
 
+![img_214](./images/img_214.png)
 
-
-```f``` can therefore be called using:
+```f``` can therefore be called and supplied an input argument ```name``` using:
 
 ```
 f('world')
 f('earth')
 ```
 
-
+![img_215](./images/img_215.png)
 
 Note ```f``` is not an alias to ```greeting``` but a ```copy```. If ```greeting``` is deleted or reassigned, this will not change the functionality of ```f```:
 
@@ -2491,168 +2491,213 @@ del greeting
 f('world')
 ```
 
-
+![img_216](./images/img_216.png)
 
 ### Second-Order Function
 
-The function ```greeting_function``` can be defined and configured to take in an input argument ```name``` and to return a formatted string, greeting a user using the provided ```name```:
+The first-order function ```greeting``` can be defined as before:
 
 ```
-def greeting_function(name):
-    """
-    returns a greeting
+def greeting(name):
+    """prints greeting for supplied name
     Parameters
     ----------
     name : str
-   
+        name supplied.
+
     Returns
     -------
     str
+        greeting.
     """
+    assert isinstance(name, str)
     return f'Hello {name}'
 
 
 ```
 
-A second order function ```format_greeting_function``` can be designed which takes in the first-order function ```greeting_function``` as the input argument ```welcome```. The input argument of the second order function ```welcome``` (which is a copy of the first order function ```greeting_function```) is called using the provided input argument ```user``` which is a local variable provided within the second order function. The function ```greeting_function``` has a return statement and when the copy of ```greeting_function``` is called as ```welcome```, the output is assigned to a variable ```text```. ```text``` is a local variable within the second order function ```format_greeting_function``` and is modified further before being returned by ```format_greeting_function```.
+![img_217](./images/img_217.png)
+
+A second order function either takes in a function as an input argument or returns a function. The second order function ```second_input``` can be designed which takes in a function ```fun``` as an input argument.
 
 ```
-def format_greeting_function(welcome):
-    """
-    Takes in a greeting function and formats it to 
-    welcome Philip
+def second_order(fun):
+    """Takes in a function as an input argument
+    and does nothing with it.
 
     Parameters
     ----------
-    welcome : function
+    fun : function
+        1st order function
 
     Returns
     -------
-    text : str
+    None.
+    
     """
-    user = "Philip"
-    text = welcome(user)
-    text = text.upper()
-    text = text.center(20, "*")
-    return text
+    assert callable(fun)
 
 
 ```
 
-The ```format_greeting_function``` can be called taking in the ```greeting_function``` as an input argument:
+![img_218](./images/img_218.png)
+
+If this ```second_order``` function is called and provided a function as an input argument, the code will run, doing nothing. If another data type is supplied, an ```AssertionError``` will display:
 
 ```
-format_greeting_function(greeting_function)
+second_order(greeting)
+second_order(1)
 ```
 
-![img_095](./images/img_095.png)
+![img_219](./images/img_219.png)
 
+Notice the function ```greeting``` is supplied as an input argument as a reference and is not called.
+
+The ```second_order``` function can be modified to return the function being supplied:
+
+```
+def second_order(fun):
+    """Takes in a function as an input argument
+    and does nothing with it.
+
+    Parameters
+    ----------
+    fun : function
+        1st order function
+
+    Returns
+    -------
+    fun: function
+        1st order function unmodified
+    
+    """
+    assert callable(fun)
+    return fun
+    
+    
+```
+
+![img_220](./images/img_220.png)
+
+If this ```second_order``` function is called and provided a function as an input argument, the code will run, returning the function as a reference:
+
+```
+second_order(greeting)
+```
+
+![img_221](./images/img_221.png)
+
+To call the returned function ```greeting```, a set of parenthesis enclosing an input argument can be supplied:
+
+```
+second_order(greeting)('world')
+```
+
+![img_222](./images/img_222.png)
 
 ### Closures
 
-In the above section it was seen that a function can be used as an input argument for another function. It is also possible to define a function wthin a function, to make a nested function or *second-order* function.
+In the above section it was seen that a function can be used as an input argument for another function. It is also possible to define a function wthin a function.
 
 An ```inner``` function can be defined within an ```outer``` function:
 
 ```
 def outer():
     def inner():
-        pass
-    pass
+        return
+    return
 
 
 ```
 
-![img_096](./images/img_096.png)
-
-The return statement of a function can be used to return a function. In this example, the ```outer``` function can be used to return the ```inner``` function:
+The return statement of the outer function can be used to return the function:
 
 ```
 def outer():
     def inner():
-        pass
+        return
     return inner
 
 
 ```
-
-![img_097](./images/img_097.png)
 
 Because the ```inner``` function is define within the local scope of the ```outer``` function it can access variables within the ```outer``` functions scope:
 
 ```
 def outer():
-    name = "Philip"
+    name = 'world'
     def inner():
-        return f"hello {name}"
+        return f'hello {name}'
     return inner
 
 
 ```
 
-![img_099](./images/img_099.png)
+![img_223](./images/img_223.png)
 
-Notice the subtle difference between referencing ```outer```:
+```outer``` can be referenced:
 
 ```
 outer
 ```
 
-Calling ```outer```:
+```outer``` can be called to return ```inner```:
 
 ```
 outer()
 ```
 
-Calling ```outer``` to get ```inner``` and then calling ```inner```:
+And ```inner``` can be called:
 
 ```
 outer()()
 ```
 
-![img_100](./images/img_100.png)
+![img_224](./images/img_224.png)
 
 More generally, ```outer``` would be called and assigned to a variable name:
 
 ```
-f_in = outer()
+fun_in = outer()
 ```
 
 Then this variable name which is assigned to a function would be called:
 
 ```
-f_in()
+fun_in()
 ```
 
-![img_101](./images/img_101.png)
+![img_225](./images/img_225.png)
 
 Let's modify the above code so an input argument ```name``` is requested by the ```outer``` function. This input argument is accessible by the ```inner``` function:
 
 ```
 def outer(name):
     def inner():
-        return f"hello {name}"
+        return f'hello {name}'
     return inner
 
 
 ```
 
-![img_102](./images/img_102.png)
+![img_226](./images/img_226.png)
 
 The ```outer``` function can be called and assigned to a variable name:
 
 ```
-f_in = outer("Lucie")
+fun_in = outer('world')
 ```
 
-The variable ```"Lucie"``` was provided by the ```outer``` function which has finished executing but is now **enclosed** within the ```inner``` function.
+![img_227](./images/img_227.png)
+
+The variable ```'world'``` was provided by the ```outer``` function which has finished executing but is now **enclosed** within the ```inner``` function.
 
 ```
-f_in()
-f_in()
+fun_in()
+fun_in()
 ```
 
-![img_103](./images/img_103.png)
+![img_228](./images/img_228.png)
 
 For this reason, the configuration above is known as a **closure** as variables provided from the outer function can be enclosed within the inner function.
 
@@ -2663,7 +2708,7 @@ A closure can be defined using:
 ```
 def html_tag(tag):
     def html_text(text):
-        return f"<{tag}>{text}</{tag}>"
+        return f'<{tag}>{text}</{tag}>'
     return html_text
 
 
@@ -2672,20 +2717,20 @@ def html_tag(tag):
 The outer ```html_tag``` function can be called using a provided tag.
 
 ```
-para = html_tag("p")
-h1 = html_tag("h1")
+para = html_tag('p')
+h1 = html_tag('h1')
 ```
 
 This creates the inner function with an enclosed tag, which can be called providing text to format it using the enclosed tag:
 
 ```
-h1("My First Program")
-para("prints")
-para("Hello World")
-para("Goodbye World")
+h1('Twinkle, Twinkle, Little Star')
+para('Twinkle, twinkle, little star,')
+para('How I wonder what you are!')
+para('Up above the world so high,')
 ```
 
-![img_104](./images/img_104.png)
+![img_229](./images/img_229.png)
 
 ### Decorators
 
