@@ -1396,8 +1396,413 @@ fruits3 = {key:
 
 ## Functions
 
+Many inbuilt functions have already been used. However before looking at creating a custom function, the ```ord``` function will be examined. Recall if the function ```ord``` is input without parenthesis that it is referenced:
 
+```
 ord
+```
+
+![img_134](./images/img_134.png)
+
+If the function ```ord``` is input followed by parenthesis and shift ```⇧``` and tab ```↹```, its docstring will display:
+
+![img_135](./images/img_135.png)
+
+From the docstring, it can be seen that the function has a single input argument denoted ```c```. This is positional only:
+
+```
+ord('a')
+```
+
+![img_136](./images/img_136.png)
+
+Any input argument coming before the ```, \``` is positional only. Therefore the following will not work:
+
+```
+ord(c='a')
+```
+
+![img_147](./images/img_147.png)
+
+The docstring also mentions a return value. When the function call is not assigned to a variable, it is returned to the cell output.
+
+When the function call is instead assigned to a variable, it is returned to the object name. Notice that the value no longer displays in the cell output:
+
+![img_137](./images/img_137.png)
+
+This return value can be examined when the variable is seen in the Variable Inspector:
+
+![img_138](./images/img_138.png)
+
+![img_139](./images/img_139.png)
+
+The ```ord``` function has one positional input argument and 1 return value.
+
+The ```print``` function can likewise be referenced:
+
+```
+print
+```
+
+![img_140](./images/img_140.png)
+
+If its docstring is examined, it can be seen that the print function has ```*args``` which means that it can take a variable number of input arguments. It also has the keyword input arguments ```sep```, ```end```, ```file``` and ```flush``` which all have default values. When these keyword input arguments are not specified the default values will be used. 
+
+Notice that there is no mention of a return statement in the print function, this is because the print function has no return value:
+
+![img_141](./images/img_141.png)
+
+```
+empty = print('hello', 'world')
+```
+
+Notice that the print function always prints. When it is assigned to a variable, text is printed to the cell output. Notice this text uses a space as a seperator ```sep=' '``` and ends on a new line ```end='\n'```. The variable ```empty``` has the value ```NoneType``` as the print function has no return statement.
+
+![img_142](./images/img_142.png)
+
+The effect of multiple input arguments can be seen:
+
+```
+print()
+print('hello')
+print('hello', 'world')
+print('good', 'morning', 'world')
+```
+
+![img_148](./images/img_148.png)
+
+Once again notice this text uses a space as a seperator ```sep=' '``` and ends on a new line ```end='\n'```.
+
+The effect of modifying the ```sep``` and ```end``` input arguments can be seen using multiple print statements:
+
+```
+print('hello', 'world')
+print('hello', 'world', sep=' ', end='\n')
+print('hello', 'world', sep='\t')
+print('hello', 'world', end='')
+print('hello', 'world')
+print('hello', 'world', end='\r')
+print('bye', 'world')
+```
+
+![img_143](./images/img_143.png)
+
+The ```file``` keyword input argument has a default value of ```None``` which means the output is printed to the cell output. A file can be opened and data can be saved to the file using:
+
+```
+textfile = open('text.txt', 'w')
+print('hello', 'world', file=textfile)
+textfile.close()
+```
+
+![img_144](./images/img_144.png)
+
+![img_145](./images/img_145.png)
+
+![img_146](./images/img_146.png)
+
+The effect of the keyword input argument ```flush``` can be seen when a small time delay is introduced:
+
+```
+from time import sleep
+```
+
+In the following, the printed ```0``` will appear to change to ```1``` once as the text isn't flushed and more slowly updated:
+
+```
+for index in range(10):
+    print(0, end='', flush=False)
+    print('\r', end='', flush=False)
+    sleep(0.1)
+    print(1, end='', flush=False)
+    print('\r', end='', flush=False)
+```
+
+In the following, the printed ```0``` and ```1``` will be observed to quickly toggle as the text has been flushed:
+
+```
+for index in range(10):
+    print(0, end='', flush=True)
+    print('\r', end='', flush=True)
+    sleep(0.1)
+    print(1, end='', flush=True)
+    print('\r', end='', flush=True)
+```
+
+Integer division and the associated modulus can be carried out using the ```//``` and ```%``` operators respectively:
+
+```
+3 // 2
+3 % 2
+```
+
+![img_149](./images/img_149.png)
+
+The ```divmod``` function can be referenced:
+
+![img_150](./images/img_150.png)
+
+Its docstring can be examined. Notice it has the two input arguments ```x``` and ```y``` that are once again positional only followed by ```, /```. The value returned is a ```tuple``` which has the form ```(x // y, x % y)```:
+
+![img_151](./images/img_151.png)
+
+```
+divmod(3, 2)
+```
+
+![img_152](./images/img_152.png)
+
+The function call can be assigned to a tuple of variables:
+
+```
+(quotient, remainder) = divmod(3, 2)
+```
+
+![img_153](./images/img_153.png)
+
+This is normally done shorthand using ```tuple``` unpacking:
+
+```
+quotient, remainder = divmod(3, 2)
+```
+
+![img_154](./images/img_154.png)
+
+The ```license``` function can be referenced using:
+
+```
+license
+```
+
+![img_155](./images/img_155.png)
+
+Its docstring can be examined and has no input arguments or return value:
+
+![img_156](./images/img_156.png)
+
+It can be called using:
+
+```
+license()
+```
+
+![img_157](./images/img_157.png)
+
+When the function is called and assigned to a variable, the variable has the value ```NoneType``` because this function has no return statement:
+
+```
+eula = license()
+```
+
+![img_158](./images/img_158.png)
+
+Under the hood, this function effectively uses the ```print``` function to print a constant string.
+
+Now that the features of inbuilt functions have been examined, a custom function can be explored. Instead of assignment, the ```def``` keyword is used followed by the functions name, in this case ```nothing```. The functions name is followed by parenthesis, and these parenthesis contain input arguments, when the function has input arguments. After the parenthesis is a colon ```:``` which is used to indicated the beginning of a code block. The functions code block usually ends in a ```return``` statement. The following function has no input arguments and no return statement:
+
+```
+def nothing():
+   return
+
+
+```
+
+![img_159](./images/img_159.png)
+
+It can be referenced using:
+
+```
+nothing
+```
+
+![img_160](./images/img_160.png)
+
+Its docstring can be examined:
+
+![img_161](./images/img_161.png)
+
+No docstring was supplied in the function, so none is shown. However the details show there is no input argument and no return statement. The function can be called using:
+
+```
+nothing()
+```
+
+![img_162](./images/img_162.png)
+
+Notice there is no cell output as there is no return statement. When the function call is assigned to a variable, its value will be ```NoneType```:
+
+```
+empty = nothing()
+```
+
+![img_163](./images/img_163.png)
+
+```
+def plural(word):
+   return word + 's'
+
+
+```
+
+```
+plural
+```
+
+```
+plural('apple')
+```
+
+```
+fruits = plural('apple')
+```
+
+
+
+```
+def plural(word):
+    """
+    
+
+    Parameters
+    ----------
+    word : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    """
+   return word + 's'
+
+
+```
+
+
+
+
+```
+def plural(word):
+    """
+    Takes a singular str word and returns its
+    plural. e.g. 'apple' becomes 'apples'.
+
+    Parameters
+    ----------
+    word : str
+        singular str.
+
+    Returns
+    -------
+    str
+        plural str.
+
+    """
+   return word + 's'
+
+
+```
+
+```
+plural('apple')
+plural(word='apple')
+```
+
+
+
+```
+def plural(word, /):
+   """
+    Takes a singular str word and returns its
+    plural. e.g. 'apple' becomes 'apples'.
+
+    Parameters
+    ----------
+    word : str
+        singular str.
+
+    Returns
+    -------
+    str
+        plural str.
+
+    """
+   return word + 's'
+
+
+```
+
+
+
+```
+plural('apple')
+plural(word='apple')
+```
+
+
+
+```
+def plural(word='apple'):
+    """
+    Takes a singular str word and returns its
+    plural. e.g. 'apple' becomes 'apples'.
+
+    Parameters
+    ----------
+    word : str
+        singular str. The default is 'apple'.
+
+    Returns
+    -------
+    str
+        plural str.
+
+    """
+   return word + 's'
+
+
+```
+
+
+
+```
+plural()
+plural(word='apple')
+plural(word='banana')
+```
+
+
+
+```
+def higher(num1, num2):
+    if num1 > num2:
+        return num1
+    else:
+        return num2
+
+
+```
+
+
+```
+def higher(num1, num2):
+    if num1 > num2:
+        return num1
+    return num2
+
+        
+```
+
+
+
+
+assert in plural
+
+
+
+
+
 
 print
 
