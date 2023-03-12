@@ -1195,7 +1195,7 @@ doubled_nums
 
 ![img_111](./images/img_111.png)
 
-The following lines of code and the code block can be collapsed down into a single line using list comprehension: 
+The following lines of code and the code block can be collapsed down into a single line using a list comprehension: 
 
 ```
 doubled_nums = []
@@ -1211,7 +1211,7 @@ for num in nums:
 doubled_nums = [2 * num for num in nums]
 ```
 
-list comprehension is typically used to create an output list from interaction with a collection via a for loop. The square brackets ```[]``` enclose the list and the list is assigned to the object name ```doubled_nums``` using the assignment operator ```=```:
+A list comprehension is typically used to create an output list from interaction with a collection via a for loop. The square brackets ```[]``` enclose the list and the list is assigned to the object name ```doubled_nums``` using the assignment operator ```=```:
 
 ![img_113](./images/img_113.png)
 

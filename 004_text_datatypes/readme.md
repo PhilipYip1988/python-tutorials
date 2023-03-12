@@ -8,7 +8,9 @@ In the Byte Strings, each unit in the string is instead a numeric configuration 
 
 ## Object Orientated Programming Conception
 
-Python is an Object Orientated Programming (OOP) language. Each *object* belongs to an associated *class*. The *class* can be conceptualised as a set of instructions, similar to the blueprint that has an associated label ```MobileSuit```. 
+Python is an Object Orientated Programming (OOP) language. Before delving into Python, its worthwhile exploring the general concept of OOP using physical objecgts.
+
+Each *object* belongs to an associated *class*. The *class* can be conceptualised as a set of instructions, similar to the blueprint shown that has an associated label ```MobileSuit```. 
 
 ![img_001](./images/img_001.png)
 
@@ -138,7 +140,7 @@ will output the docstring in the cell output.
 
 ![img_011](./images/img_011.png)
 
-From the ```str``` classes init signature, the input argument ```object``` should be assigned to instance text data. This text should be enclosed in single quotation marks ```''```. For example:
+The ```init``` signature shows three ways of constructing a string. Looking at the second way, the keyword input argument ```object``` should be assigned to instance text data. This text should be enclosed in single quotation marks ```''```. For example:
 
 ```
 str(object='Hello')
@@ -175,6 +177,34 @@ greeting = str(object='Hello')
 Notice again the color-coding of the instance name or label in black and without quotation compared to the string of characters enclosed in single quotations ```''``` shown in wine.
 
 The Variable Inspector displays the instance name or label ```greeting```, the instance type which is the builtin class ```str```, the memory size of the object in bytes and the content of the string without enclosure of quotations.
+
+If the ```str``` is not supplied a value.
+
+![img_010](./images/img_010.png)
+
+The default value of ```object=''``` is used which produces an empty string:
+
+![img_268](./images/img_268.png)
+
+The Unicode string can also be instantiated using the first way outlined in the docstring: 
+
+![img_267](./images/img_267.png)
+
+The ```self, /``` means that ```self``` is always provided as a positional input argument. So the following code is valid:
+
+```
+str('Bye')
+```
+
+![img_269](./images/img_269.png)
+
+And the following code instead gives a ```TypeError```:
+
+```
+str(self='Bye')
+```
+
+![img_270](./images/img_270.png)
 
 As the Unicode string is a fundamental datatype, it can be instantiated shorthand using text enclosed in single quotations:
 
@@ -476,6 +506,8 @@ The names of most of these commands originate from a typewriter:
 
 ![img_224](./images/img_224.png)
 
+In a typewriter, the form feed moves the piece of paper up by one line. A carriage return returns the ink cartridge to the left hand side of the sheet of paper. A new line is therefore equivalent to a carriage return and a form feed.
+
 The method ```isascii``` checks to see if every character is ASCII. The following ```str``` instances can be compared:
 
 ```
@@ -522,7 +554,7 @@ Python can use single quotations ```' '``` or double quotations ```" "``` to enc
 'Hello World!'
 ```
 
-A multiline string can be constructed using three double quotations ```""" """``` or three single quotations ```''' '''```. For a multi-line string, the default is double quotations and all official Python documentation favours double quotations for this use case. This is also because a docstring is likely to include expanded details about input arguments and some will be assigned to strings that are enclosed in single parenthesis.
+A multiline string can be constructed using three double quotations ```""" """``` or three single quotations ```''' '''```. For a multi-line string, the default is double quotations and all official Python documentation favours double quotations for this use case. This is also because a docstring is likely to include expanded details about input arguments and therefore likely to contain string literals that are enclosed in single parenthesis.
 
 ```
 """
@@ -589,11 +621,16 @@ The representation can explicitly be shown using the representation function ```
 
 ![img_083](./images/img_083.png)
 
-If ```repr``` is used on ```paragraph```:
+
+The docstring has the positional input argument ```obj```. This is positional only as its followed by a ```/```. If ```repr``` is used on ```paragraph```:
+
+```
+repr(paragraph)
+```
 
 ![img_084](./images/img_084.png)
 
-Notice that the original swtring with single quotations is enclosed in double quotations. Everywhere there was a ```\``` in the string, there is now a double ```\\```. This is because in order to insert a ```\``` as an escape character ```\\``` is used, the first ```\``` denotes insertion of an escape character and the second ```\``` denotes that the escape character to be inserted is ```\``` itself. The effect of these escape characters is seen when the representation is printed:
+Notice that the original string with single quotations is enclosed in double quotations. Everywhere there was a ```\``` in the string, there is now a double ```\\```. This is because in order to insert a ```\``` as an escape character ```\\``` is used, the first ```\``` denotes insertion of an escape character and the second ```\``` denotes that the escape character to be inserted is ```\``` itself. The effect of these escape characters is seen when the representation is printed:
 
 ```
 print(repr(paragraph))
@@ -607,7 +644,7 @@ paragraph
 
 ![img_085](./images/img_085.png)
 
-The ```print``` function displays the string with the formattign escape characters applied:
+The ```print``` function displays the string with the formatting escape characters applied:
 
 ```
 print(paragraph)
@@ -619,7 +656,7 @@ Inputting ```print()``` followed by shift ```⇧``` and tab ```↹``` will displ
 
 ![img_081](./images/img_081.png)
 
-Notice that there are a variable number of positional input arguments, meaning 1 or multiple objects may be supplied to the ```print``` function. There is the keyword input argument seperator ```sep``` which has the default value of a space and the keyword input argument ```end``` which has the default value of a new line. The behaviour of these input arguments can be examined using:
+Notice that there are a variable number of positional input arguments, meaning 1 or multiple objects may be supplied to the ```print``` function. There is the keyword input argument seperator ```sep``` which has the default value of a space and the keyword input argument ```end``` which has the default value of a new line. Notice that the docsting displays the default values using single quotations ```' '``` and ```'\n'``` respectively. The behaviour of these input arguments can be examined using:
 
 ```
 print('hello', 'world')
@@ -858,7 +895,7 @@ The ```center``` method can be used to center the text within a string. This met
 
 ![img_050](./images/img_050.png)
 
-There is the positional input argument ```width``` which must be supplied and the optional keyword input argument ```fillchar```. Notice ```fillchar``` has a default value, which is a space ```' '``` and this will be used if nothing else is provided:
+There is the input argument ```width``` which must be supplied and the input argument ```fillchar``` which has a default value. Although, ```fillchar``` is shown in the form of a keyword argument, assigned to a default value. These two input arguments are followed by a ```/``` which means they must be supplied as positional input arguments. If ```fillchar``` is not supplied as a second positional input argument, it will take on its default value, which is a space ```' '```:
 
 ```
 greeting.center(20)
@@ -897,7 +934,7 @@ upper_a.zfill(8)
 
 ### Strip and Remove Prefix or Suffix
 
-If a the centered string is assigned to a new object name:
+If a centered string is assigned to a new object name:
 
 ```
 greeting2 = greeting.center(20, '◯')
@@ -906,7 +943,7 @@ greeting2
 
 ![img_066](./images/img_066.png)
 
-The ```strip``` method can be used to remove fill characters. Inputting ```greeting2.strip()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of this function revealing the expected input argument ```chars```. If ```chars``` is not asigned, the method will remove whitespace:
+The ```strip``` method can be used to remove fill characters. Inputting ```greeting2.strip()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of this function revealing the expected input argument ```chars```. This once again has a default value which is ```None``` and the docstring states this default value will remove whitespace. It is followed by a ```/``` indicating it when it is provided, it must be provided as a positional input argument only:
 
 ![img_067](./images/img_067.png)
 
@@ -920,7 +957,7 @@ greeting2.rstrip('◯')
 
 ![img_068](./images/img_068.png)
 
-The method ```removeprefix``` removes a precise prefix. Inputting ```greeting2.removeprefix()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of this function revealing the expected input argument ```prefix```. Note that this has no default value and has to be provided:
+The method ```removeprefix``` removes a precise prefix. Inputting ```greeting2.removeprefix()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of this function revealing the expected input argument ```prefix```, followed by a ```/``` indicating the input argument is positional only. Note that this positional input argument has no default value and a value has to be provided:
 
 ![img_069](./images/img_069.png)
 
@@ -953,7 +990,7 @@ The ```in``` keyword returns a boolean value. Notice that it is case sensitive. 
 
 The methods ```find``` and ```index``` give more information. Instead of a boolean value ```True``` or ```False``` these functions return the numeric index when a substring is in a string. 
 
-The docstrings can be compared by typing in the methods with open parenthesis and pressing shift ```⇧``` and tab ```↹```. In both cases the input arguments are the same and the return value is the same when successful. The return value differs on failure with ```find``` returning ```-1``` and index returning a ```ValueError```:
+The docstrings can be compared by typing in the methods with open parenthesis and pressing shift ```⇧``` and tab ```↹```. In both cases the input arguments are the same ```sub[, start[, end]]```. This syntax indicates that the input arguments are positional only. The square brackets denote that the input argument is optional. Note the last term is also included in another set of square brackets. This means that ```sub``` can be provided as a single positional input argument, ```sub``` and ```start``` can be provided as positional input arguments and finally ```sub```, ```start``` and ```end``` can be provided as positional input arguments. The return value for both methods is the same when successful. The return value differs on failure with ```find``` returning ```-1``` and index returning a ```ValueError```:
 
 ![img_053](./images/img_053.png)
 
@@ -1084,7 +1121,7 @@ greeting.find('Hello', 13)
 
 ![img_120](./images/img_120.png)
 
-The ```replace``` method can be used to *replace* an old substring ```old``` with a new substring ```new```. Inputting the method followed by shift ```⇧``` and tab ```↹``` will display the docstrings. It has an optional argument ```count``` which allows for all replacements by default:
+The ```replace``` method can be used to *replace* an old substring ```old``` with a new substring ```new```. Inputting the method followed by shift ```⇧``` and tab ```↹``` will display the docstring. It has an optional argument ```count``` which has a default value of ```-1``` and this means it allows for all replacements by default. The ```/``` trailing the input arguments once again indicates that the input arguments are positional only:
 
 ![img_121](./images/img_121.png)
 
@@ -1375,7 +1412,7 @@ greeting = 'Hello| World| Goodbye'
 
 ![img_135](./images/img_135.png)
 
-The docstring can be examined by typing in the method with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
+The docstring can be examined by typing in the method with open parenthesis and pressing shift ```⇧``` and tab ```↹```. The keyword input arguments ```sep``` and ```maxsplit``` have default values. They are not trailed by a ```/``` so can be provided as keyword input arguments or positional input arguments:
 
 ![img_136](./images/img_136.png)
 
@@ -1433,7 +1470,7 @@ str.join(' ', greeting_lines)
 
 ![img_142](./images/img_142.png)
 
-A similar method to ```split``` is ```partition```. The docstring can be examined by typing in the method with open parenthesis and pressing shift ```⇧``` and tab ```↹```. This method only partitions the string once on the first occurance of the partition character ```sep``` and returns a tuple of size 3. The first value is the substring before the partition character, the second value is the partition character ```sep``` and the third value is the rest of the string:
+A similar method to ```split``` is ```partition```. The docstring can be examined by typing in the method with open parenthesis and pressing shift ```⇧``` and tab ```↹```. This method only partitions the string once on the first occurance of the partition character ```sep``` and returns a tuple of size 3. The first value is the substring before the partition character, the second value is the partition character ```sep``` and the third value is the rest of the string. The ```/``` trailing the input arguments indicates ```sep``` is positional only:
 
 ![img_143](./images/img_143.png)
 
@@ -2078,7 +2115,7 @@ $$2⁷ + 2⁶ + 2⁵ + 2⁴ + 2¹ + 2⁰ = 123$$
 
 The above as a binary string is ```'0b01111011'```, as a hexadecimal string is ```'0x7b'``` and as a decimal integer is ```123```.
 
-Inputting ```bytes()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature of the ```bytes``` class
+Inputting ```bytes()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature of the ```bytes``` class:
 
 ![img_204](./images/img_204.png)
 
@@ -2469,7 +2506,7 @@ ord('!')
 
 ![img_238](./images/img_238.png)
 
-Inputting ```greeting.append()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The ```append``` method can be used with this number (which corresponds to a single byte) to *append* a single byte to the end of this ```bytearray```:
+Inputting ```greeting.append()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The only input argument is ```item```, followed by a ```/``` indicating that it is provided as a positional input argument only. ```item``` is a number (which corresponds to a single byte). The method will *append* this single byte to the end of this ```bytearray```:
 
 ![img_241](./images/img_241.png)
 
@@ -2489,7 +2526,7 @@ shows it has been updated:
 
 ![img_239](./images/img_239.png)
 
-Inputting ```greeting.extend()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The ```extend``` method can be used with can be used to *extend* the ```bytearray``` by using a numeric sequence of bytes such as a ```bytes``` or ```bytearray```:
+Inputting ```greeting.extend()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The input argument ```iterable_of_bits``` is followed by a ```/``` indicating that the iterable of bits is to be provided as a positional input argument only. This method has no return value and is mutable meaning the ```bytearray``` will be modified in place:
 
 ![img_242](./images/img_242.png)
 
@@ -2497,7 +2534,7 @@ Inputting ```greeting.extend()``` followed by shift ```⇧``` and tab ```↹``` 
 greeting.extend(b' Bye World!')
 ```
 
-This mutable method occurs in place, to view the changes use:
+To view the changes use:
 
 ```
 greeting
@@ -2505,7 +2542,7 @@ greeting
 
 ![img_240](./images/img_240.png)
 
-Inputting ```greeting.insert()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The method ```insert``` requires an index to *insert* a single item, as well as the byte item itself. The index of all previous values at and higher than this index will be increased by 1:
+Inputting ```greeting.insert()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring and the input arguments ```index``` and ```item``` followed by ```/``` indicating they are to provided positionally only. The method ```insert``` requires an index to *insert* a single item, as well as the byte item itself. The index of all previous values at and higher than this index will be increased by 1. This method has no return value and is mutable meaning the ```bytearray``` will be modified in place:
 
 ![img_243](./images/img_243.png)
 
@@ -2523,7 +2560,7 @@ It can be inserted at index 6 using:
 greeting.insert(6, 63)
 ```
 
-This mutable method occurs in place, to view the changes use:
+To view the changes use:
 
 ```
 greeting
@@ -2531,7 +2568,7 @@ greeting
 
 ![img_246](./images/img_246.png)
 
-Inputting ```greeting.pop()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The method ```pop``` by default *pops* of the last item returning it as well as mutating the bytearray itself:
+Inputting ```greeting.pop()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. It has a single input argument ```index``` which has a default value of ```-1``` meaning the end of the ```bytearray```. This is trailed by a ```/``` indicating it should be supplied only as a positional input argument when its default value is to be overriden. The method ```pop``` by default *pops* off the last item returning it as well as mutating the ```bytearray``` in place:
 
 ![img_247](./images/img_247.png)
 
@@ -2569,7 +2606,7 @@ greeting
 
 ![img_249](./images/img_249.png)
 
-Inputting ```greeting.remove()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The method ```remove``` by default *removes* the first occurance of an item in the bytearray:
+Inputting ```greeting.remove()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. It has a single input argument ```value```, followed by a ```/``` indicating it is to be provided as a positional input argument. The method ```remove``` by default *removes* the first occurance of this value in the bytearray:
 
 ![img_250](./images/img_250.png)
 
@@ -2593,7 +2630,7 @@ greeting
 
 ![img_251](./images/img_251.png)
 
-Inputting ```greeting.reverse()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. The method ```reverse``` by default *reverses* the bytearray:
+Inputting ```greeting.reverse()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. It has no input arguments as it only needs the instance data. The method ```reverse``` by default *reverses* the bytearray:
 
 ![img_252](./images/img_252.png)
 
