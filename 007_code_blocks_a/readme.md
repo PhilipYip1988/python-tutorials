@@ -1396,6 +1396,8 @@ fruits3 = {key:
 
 ## Functions
 
+### Using Inbuilt Functions Recap
+
 Many inbuilt functions have already been used. However before looking at creating a custom function, the ```ord``` function will be examined. Recall if the function ```ord``` is input without parenthesis that it is referenced:
 
 ```
@@ -1598,6 +1600,8 @@ eula = license()
 
 Under the hood, this function effectively uses the ```print``` function to print a constant string.
 
+### Defining a custom function
+
 Now that the features of inbuilt functions have been examined, a custom function can be explored. Instead of assignment, the ```def``` keyword is used followed by the functions name, in this case ```nothing```. The functions name is followed by parenthesis, and these parenthesis contain input arguments, when the function has input arguments. After the parenthesis is a colon ```:``` which is used to indicated the beginning of a code block. The functions code block usually ends in a ```return``` statement. The following function has no input arguments and no return statement:
 
 ```
@@ -1637,6 +1641,10 @@ empty = nothing()
 
 ![img_163](./images/img_163.png)
 
+### Input Argument and Return Value
+
+Another function can be created, that takes in a singular ```word```, and returns the plural of it: 
+
 ```
 def plural(word):
    return word + 's'
@@ -1644,19 +1652,35 @@ def plural(word):
 
 ```
 
+![img_164](./images/img_164.png)
+
+This function can be referenced:
+
 ```
 plural
 ```
 
-```
-plural('apple')
-```
+![img_165](./images/img_165.png)
+
+And its docstring can be examined:
+
+![img_166](./images/img_166.png)
+
+This shows the expected input arguments. Once again, there is no docstring. 
+
+### Function docstring
+
+A docstring is included in triple double quotes. Triple double quotes are used even if it is a single line comment as docstrings are often written briefly during development and padded out later. having the triple quotations makes it easier to expand to a multi-line string and having triple double quotations makes it easier to include a string literal:
 
 ```
-fruits = plural('apple')
+def plural(word):
+    """Takes a singular str word and returns its plural."""
+    return word + 's'
+
+
 ```
 
-
+If triple double quotes are input, the Spyder IDE for example will produce a docstring template. Triple double quotes opposed to triple single quotes are normally used for docstrings, as they often contain string literals:
 
 ```
 def plural(word):
@@ -1679,14 +1703,12 @@ def plural(word):
 
 ```
 
-
-
+This can be filled in using:
 
 ```
 def plural(word):
-    """
-    Takes a singular str word and returns its
-    plural. e.g. 'apple' becomes 'apples'.
+    """Takes a singular str word and returns its plural. 
+    e.g. 'apple' becomes 'apples'.
 
     Parameters
     ----------
@@ -1704,18 +1726,111 @@ def plural(word):
 
 ```
 
+![img_167](./images/img_167.png)
+
+Now its docstring can be examined:
+
+![img_168](./images/img_168.png)
+
+The function can be run using:
+
 ```
 plural('apple')
+plural('banana')
 plural(word='apple')
+fruits = plural('apple')
 ```
 
+![img_169](./images/img_169.png)
 
+If no input arguments are supplied or too many, a ```TypeError``` will display:
+
+```
+plural()
+plural('apple', 'banana')
+```
+
+![img_170](./images/img_170.png)
+
+Another ```TypeError``` will display if the input argument is the wrong data type:
+
+![img_171](./images/img_171.png)
+
+### Asserting Input Argument Data Types
+
+In other cases, the wrong data types for input arguments may run but give an unexpected result. For this reason it is usually recommended to ```assert``` the data type of an input argument.
+
+The ```assert``` statement is normally used with the ```isinstance``` function which returns a ```bool```:
+
+![img_177](./images/img_177.png)
+
+```
+isinstance('hello', str)
+isinstance(2, str)
+```
+
+![img_178](./images/img_178.png)
+
+When the ```assert``` statement is used with a value that is ```True```, the code runs as normal. When it is used with a value that is ```False``` it raises an ```AssertionError```:
+
+```
+assert isinstance('hello', str)
+assert isinstance(2, str)
+```
+
+![img_179](./images/img_179.png)
+
+```
+def plural(word):
+    assert isinstance(word, str)
+    """Takes a singular str word and returns its plural. 
+    e.g. 'apple' becomes 'apples'.
+
+    Parameters
+    ----------
+    word : str
+        singular str.
+
+    Returns
+    -------
+    str
+        plural str.
+
+    """
+    return word + 's'
+
+
+```
+
+![img_172](./images/img_172.png)
+
+Now the function works as normal when the data type is as expected and raises an ```AssertionError``` when the data type is wrong:
+
+```
+plural('banana')
+plural(2)
+```
+
+![img_173](./images/img_173.png)
+
+The function can be called with a positional or keyword input argument:
+
+```
+plural('banana')
+plural(word='banana')
+```
+
+![img_174](./images/img_174.png)
+
+### Positional Argument Only
+
+If a ```/``` is added at the end of input arguments, it will make the input arguments positional only:
 
 ```
 def plural(word, /):
-   """
-    Takes a singular str word and returns its
-    plural. e.g. 'apple' becomes 'apples'.
+    assert isinstance(word, str)
+    """Takes a singular word and returns its plural. 
+    e.g. 'apple' becomes 'apples'.
 
     Parameters
     ----------
@@ -1728,25 +1843,31 @@ def plural(word, /):
         plural str.
 
     """
-   return word + 's'
+    return word + 's'
 
 
 ```
 
+![img_175](./images/img_175.png)
 
+The function will proceed as normal when a positional input argument is supplied but raise a ```TypeError``` when a keyword input argument is supplied:
 
 ```
-plural('apple')
-plural(word='apple')
+plural('banana')
+plural(word='banana')
 ```
 
+![img_176](./images/img_176.png)
 
+### Default Keyword Input Arguments
+
+Alternatively the input argument can be supplied as a keyword input argument. A keyword input argument has a default value:
 
 ```
 def plural(word='apple'):
-    """
-    Takes a singular str word and returns its
-    plural. e.g. 'apple' becomes 'apples'.
+    assert isinstance(word, str)
+    """Takes a singular word and returns its plural. 
+    e.g. 'apple' becomes 'apples'.
 
     Parameters
     ----------
@@ -1759,20 +1880,26 @@ def plural(word='apple'):
         plural str.
 
     """
-   return word + 's'
+    return word + 's'
 
 
 ```
 
+![img_186](./images/img_186.png)
 
+When called without any input arguments, the default value will be used, this can be overridden using the keyword input argument and assigning it to a new value. Alternatively the new value can be supplied positionally:
 
 ```
 plural()
-plural(word='apple')
 plural(word='banana')
+plural('banana')
 ```
 
+![img_187](./images/img_187.png)
 
+### The Return Value Continued
+
+Another function can be made that takes two numbers as input arguments and returns the highest number. This can have the form:
 
 ```
 def higher(num1, num2):
@@ -1784,6 +1911,7 @@ def higher(num1, num2):
 
 ```
 
+Which is normally simplified to:
 
 ```
 def higher(num1, num2):
@@ -1794,29 +1922,354 @@ def higher(num1, num2):
         
 ```
 
+Both input arguments should be asserted as numeric, this can be done by supplying a ```tuple``` of numeric datatypes to the ```isinstance``` function:
+
+```
+def higher(num1, num2):
+    assert isinstance(num1, (int, float, bool))
+    assert isinstance(num2, (int, float, bool))
+    if num1 > num2:
+        return num1
+    return num2
+
+        
+```
+
+A docstring template can be inserted:
+
+```
+def higher(num1, num2):
+    """
+    
+
+    Parameters
+    ----------
+    num1 : TYPE
+        DESCRIPTION.
+    num2 : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    """
+    assert isinstance(num1, (int, float, bool))
+    assert isinstance(num2, (int, float, bool))
+    if num1 > num2:
+        return num1
+    return num2
+
+
+```
+
+And the template can be filled in:
+
+```
+def higher(num1, num2):
+    """ Returns the highest numeric value.
+    Parameters
+    ----------
+    num1 : int, float or bool
+        numeric value.
+    num2 : int, float or bool
+        numeric value.
+
+    Returns
+    -------
+    int, float or bool
+        numeric value.
+
+    """
+    assert isinstance(num1, (int, float, bool))
+    assert isinstance(num2, (int, float, bool))
+    if num1 > num2:
+        return num1
+    return num2
+
+
+```
+
+![img_180](./images/img_180.png)
+
+The function can be referenced using:
+
+```
+higher
+```
+
+![img_181](./images/img_181.png)
+
+Its docstring can be examined:
+
+![img_182](./images/img_182.png)
+
+It can be called with the following numeric values:
+
+```
+higher(1, 2)
+higher(3.14, 2)
+```
+
+![img_183](./images/img_183.png)
+
+If an incorrect data type is supplied, there will be an ```AssertionError```. If the incorrect number of input arguments are supplied, there will be a ```TypeError```. This function can take in ```num1``` and ```num2``` as positional input arguments or keyword arguments. The input arguments could be made to be positional only by use of ```/```.
+
+```
+def higher(num1, num2, /):
+    """ Returns the highest numeric value.
+    Parameters
+    ----------
+    num1 : int, float or bool
+        numeric value.
+    num2 : int, float or bool
+        numeric value.
+
+    Returns
+    -------
+    int, float or bool
+        numeric value.
+
+    """
+    assert isinstance(num1, (int, float, bool))
+    assert isinstance(num2, (int, float, bool))
+    if num1 > num2:
+        return num1
+    return num2
+
+
+```
+
+A function terminates at its return statement. For example. Anything past the first executed return statement is ignored:
+
+```
+def one():
+    return 1
+    return 2
+    return 3
+
+
+```
+
+```
+one()
+```
+
+![img_184](./images/img_184.png)
+
+If no ```return``` statement is added:
+
+```
+def calcsomething():
+    1 + 2
+    
+    
+```
+
+```
+empty = calcsomething()
+```
+
+Then there is no ```return``` value:
+
+![img_185](./images/img_185.png)
+
+In other words, the following are equivalent:
+
+```
+def calcsomething():
+    1 + 2
+    
+    
+```
+
+```
+def calcsomething():
+    1 + 2
+    return
+
+    
+```
+
+```
+def calcsomething():
+    1 + 2
+    return None
+     
+    
+```
+
+A function can return a collection. The most common collection to return is a tuple because it is immutable:
+
+```
+def singular(word='apples'):
+    assert isinstance(word, str)
+    """Takes a plural word and returns its singular value. 
+    e.g. 'apple' becomes ('apple', 's').
+
+    Parameters
+    ----------
+    word : str
+        plural str. The default is 'apples'.
+
+    Returns
+    -------
+    tuple
+        tuple of singular str and value at last index.
+
+    """
+    return word[:-1], word[-1]
+
+
+```
+
+![img_188](./images/img_188.png)
+
+A tuple is normally returned using tuple unpacking. This means the return statement ```return word[:-1], word[-1]``` is simplified and the tuple is not explicitly specified ```return (word[:-1], word[-1])```.
+
+```
+singular()
+singular(word='bananas')
+singular('bananas')
+```
+
+![img_189](./images/img_189.png)
+
+### Function Local Scope and Mutability
+
+Functions have their own local scope. This can be examined with the following. The local variable ```x``` assigned in the function does not alter the global variable ```x```:
+
+```
+x = 2
+
+def localvariable():
+    x = 4
+    return x
+
+
+y = localvariable()
+```
 
 
 
-assert in plural
+
+Although a function has its own local variables, it can access global variables:
+
+```
+x = 2
+
+def localvariable():
+    return x
+
+
+y = localvariable()
+```
+
+
+If an immutable variable is accessed from the global namespace. It can be reassigned in the functions local namespace. This will not influence the variable in the global namespace:
+
+```
+x = 2
+
+def localvariable():
+    x += 2
+    return x
+
+
+y = localvariable()
+```
 
 
 
+Care should be taken when the variable is mutable. If a mutable method is used, it will modify the global mutable variable. For example:
+
+```
+active = [1, 2, 3, 4]
+
+def updateactive():
+    active.append(5)
+    
+
+updateactive()    
+active
+```
 
 
 
-print
+Note that when a mutable variable is returned to a new value using a function, that an alias of it is made:
+
+```
+active = [1, 2, 3, 4]
+
+def returnactive():
+    return active
+    
+
+active2 = returnactive()    
+active2.append(5)
+```
 
 
-return
 
-yield
+Variables from the outside are normally assigned using input arguments. Once again for an immutable variable, a local copy of it is made in the function namespace:
+
+```
+x = 2
+
+def localvariable(num):
+    num += 2
+    return num
 
 
+y = localvariable(num=x)
+```
+
+
+
+For a mutable variable, an alias of it is made and a mutable method will update the global variable:
+
+```
+active = [1, 2, 3, 4]
+
+def updatedata(data):
+    data.append(5)
+    
+    
+updatedata(data=active)
+
+active
+```
+
+### *args and **kwargs
+
+
+
+### Yield
+
+```
 def incrementer():
     num = 0
     while True:
         yield num
         num += 1
+
+
+```
+
+
+
+### Closure
+
+
+
+
+
+
+
+
+
+## lambda Expression
 
 
 map and filter
