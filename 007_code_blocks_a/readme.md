@@ -3062,13 +3062,66 @@ greeting('world')
 
 ## lambda Expression
 
-The keyword ```lambda``` is taken from the Greek alphabet and lacks description for its use case in Python. ```lambda``` should be conceptualised as *make function* and is used to create a simple anonymous function over a single line. Because it is anonymous and expressed over a single line, it does not have a docstring.
+The keyword ```lambda``` is taken from the Greek alphabet and lacks description for its use case in Python. ```lambda``` should be conceptualised as meaning *make anonymous function* as it is used to create a simple anonymous function over a single line. Because it is anonymous and expressed over a single line, it does not have a docstring.
+
+Let's return to the basic implementation of the function ```plural``` without any assertions or docstring:
+
+```
+def plural(word):
+   return word + 's'
 
 
+```
 
+This can be re-expressed as a lambda expression:
 
+```
+plural = lambda word: word + 's'
+```
 
+The commonalities can be examined, first of all is the function name:
 
+![img_249](./images/img_249.png)
+
+Then the assignment operator ```=``` which can be thought of as being equivalent to the ```def``` keyword:
+
+![img_250](./images/img_250.png)
+
+Next is the input arguments. In this case only 1 input argument displays. If more are used, they are seperated by a ```,```. Alternatively some functions do not have input arguments:
+
+![img_251](./images/img_251.png)
+
+Next is the colon ```:```. In the function it begins a code block. In the lambda expression, there is no code block and the code continues on the same line. In the lambda expression the colon ```:``` can also in some case be conceptualised as the seperation of the input arguments from the return statement, carrying out a similar purpose to splitting a key from a value in a Python dictionary:
+
+![img_252](./images/img_252.png)
+
+Finally there is the return value. Not all functions have a return value, some functions call other functions such as print, which always prints and has no return value:
+
+![img_253](./images/img_253.png)
+
+The ```lambda``` expression can be called in the same way as the equivalent function before:
+
+```
+plural('apple')
+```
+
+![img_254](./images/img_254.png)
+
+Some lambda expressions are totally anonymous and aren't even assigned to a name:
+
+```
+lambda word: word + 's'
+```
+
+![img_255](./images/img_255.png)
+
+They can be called without assignment on a single line:
+
+```
+(lambda word: word + 's')('apple')
+```
+
+![img_256](./images/img_256.png)
 
 ## Map, Filter and Reduce
 
