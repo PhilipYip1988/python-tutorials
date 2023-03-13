@@ -3125,30 +3125,136 @@ They can be called without assignment on a single line:
 
 ### Map
 
+A ```lambda``` expression is designed to take a scalar input argument and return a value which is calculated using that input argument:
+
+```
+square = lambda x: x ** 2
+```
+
+Sometimes it is desired for a function to be invoked for every value in an iterable: 
+
+```
+nums = (1, 2, 3, 4, 5)
+```
+
+The ```map``` function can be used to map a function to an iterable:
+
+![img_257](./images/img_257.png)
+
+This creates a ```mapped``` object:
+
+```
+map(square, nums)
+```
+
+This ```mapped``` object is essentially a generator and evaluates the value for each item in the sequence when ```next``` is invoked. More commonly it is cast into a sequence such as a ```tuple```:
+
+```
+tuple(map(square, nums))
+```
+
+![img_258](./images/img_258.png)
+
+Putting this together in a single line using lists instead of tuples:
+
+```
+list(map(lambda x: x ** 2, [1, 2, 3, 4, 5]))
+```
+
+Many of the use cases for ```map``` are superseded by comprehensions which are cleaner and simpler. For example:
+
+```
+[num ** 2 for num in [1, 2, 3, 4, 5]]
+```
+
+![img_259](./images/img_259.png)
+
+However the principle behind using the ```map``` function is still applicable for other data structures particularly mapping a function to a series within a pandas dataframe.
+
 ### Filter 
+
+A lambda expression can be used to create a scalar filter function, that for example only returns a positive number:
+
+```
+positive = lambda x: x >= 0
+```
+
+Now supposing the following ```nums``` are created:
+
+```
+nums = tuple(range(-5, 6))
+nums
+```
+
+![img_260](./images/img_260.png)
+
+And from this iterable, only the numbers greater or equal to ```0``` are desired.
+
+The ```filter``` function can be used to map the scalar filter function to a sequence:
+
+![img_261](./images/img_261.png)
+
+```
+filter(positive, nums)
+```
+
+![img_262](./images/img_262.png)
+
+This ```filter``` object is essentially a generator and evaluates the value for each item in the sequence when ```next``` is invoked. More commonly it is cast into a sequence such as a ```tuple```:
+
+```
+tuple(filter(positive, nums))
+```
+
+![img_263](./images/img_263.png)
+
+Putting this together in a single line using lists instead of tuples:
+
+```
+list(filter(lambda x: x >= 0, list(range(-5, 6))))
+```
+
+This can be compared to a list comprehension:
+
+```
+[num for num in list(range(-5, 6)) if num >= 0]
+```
+
+The following list comprehension can also be used to see how the mapping works using boolean values:
+
+```
+[num >= 0 for num in list(range(-5, 6))]
+```
+
+![img_264](./images/img_264.png)
 
 ### Reduce
 
-
-
-map(func, *iterables) --> map object
+Sometimes it is desirable to ```reduce``` an iterable into a single value:
 
 ```
-nums = [1, 2, 3, 4, 5]
-map(lambda x: x**2, nums)
-squared = list(map(lambda x: x**2, nums))
+nums = (1, 2, 3, 4)
 ```
 
+For example to calculate the sum or product of the iterable above.
 
-
-filter(function, iterable)
-
+This can be done using the ```reduce``` function found in the ```functools``` module:
 
 ```
-nums = list(range(-5, 6))
-filter(lambda x: x > 0, nums)
-list(filter(lambda x: x > 0, nums))
+from functools import reduce
 ```
+
+![img_265](./images/img_265.png)
+
+
+
+
+
+
+
+
+
+
 
 
 
