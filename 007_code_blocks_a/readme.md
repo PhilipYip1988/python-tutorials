@@ -1,6 +1,6 @@
 # Code Blocks
 
-This tutorial will look at the use of code blocks in the Python programming language. Code blocks can be used to direct code in response to a condition, repeat an operation multiple times, or handle errors.
+This tutorial will look at the use of code blocks in the Python programming language. Code blocks can be used to direct code in response to a condition, repeat an operation multiple times, or to handle errors.
 
 ## Code Block Spacing
 
@@ -2734,237 +2734,331 @@ para('Up above the world so high,')
 
 ### Decorators
 
-A decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it. 
-
-The ```decorator_function``` therefore is configured to take in an ```original_function``` as its input argument. To extend the behaviour of the ```original_function```, the ```decorator_function``` must include a nested ```wrapper_function``` which returns the ```original_function```. The ```wrapper_function``` will only include a simple print statement in this case for simplicity:
+A decorator uses an outer function which contains an inner function. The outer function takes in an external function as its input argument. This external function is returned by the inner function which also contains additional code. The outer function returns the inner function. This configuration extends the behavior of the external function without explicitly modifying it and the additional code in the inner function decorates the external function: 
 
 ```
-def decorator_function(original_function):
-    def wrapper_function():
-        print(f'calling the {original_function}')
-        return original_function
-    return wrapper_function
+def outer(external_function):
+    def inner():
+        print(f'calling the {external_function}')
+        return external_function
+    return inner
 
 
 ```
 
-Let's use the above with a simple ```greeting_function```:
+![img_230](./images/img_230.png)
+
+A simple ```greeting``` function can be decorated:
 
 ```
-def greeting_function():
-    """
-    returns a greeting
-   
+def greeting():
+    """ generic greeting.
     Returns
     -------
     str
+        'hello'.
+
     """
-    return f'Hello'
+    return 'hello'
 
 
 ```
 
-The decorator function can be called and assigned to a variable name:
+![img_231](./images/img_231.png)
+
+The decorator function can be called and assigned to an object name:
 
 ```
-greeting_function_decorated = decorator_function(greeting_function)
+greeting_decorated = outer(greeting)
 ```
 
-The ```greeting_function_decorated``` can be referenced using:
+![img_232](./images/img_232.png)
+
+```greeting_decorated``` which returns the inner function can be referenced using:
 
 ```
-greeting_function_decorated
+greeting_decorated
 ```
 
-It can be called using:
+This inner function can be called using:
 
 ```
 greeting_function_decorated()
 ```
+
+The inner function returns the external function which can be called:
 
 ```
 greeting_function_decorated()()
 ```
 
+![img_234](./images/img_234.png)
 
 
-
-Now if instead of referencing the ```original_function``` within the return statement of the ```wrapper_function```, it is called:
-
-```
-def decorator_function(original_function):
-    def wrapper_function():
-        print(f'calling the {original_function}')
-        return original_function()
-    return wrapper_function
-
+Now if instead of referencing the external function within the inner function return statement, it is called:
 
 ```
-
-The function being decorated, ```greeting_function``` is unchanged:
-
-```
-def greeting_function():
-    """
-    returns a greeting
-   
-    Returns
-    -------
-    str
-    """
-    return f'Hello'
+def outer(external_function):
+    def inner():
+        print(f'calling the {external_function}')
+        return external_function()
+    return inner
 
 
 ```
 
-The decorator function can be called and assigned to a variable name:
+![img_235](./images/img_235.png)
+
+The external function, ```greeting``` is unchanged. Once again the outer function can be called and assigned to a variable name:
 
 ```
-greeting_function_decorated = decorator_function(greeting_function)
+greeting_decorated = outer(greeting)
 ```
+
+![img_236](./images/img_236.png)
 
 It can be referenced:
 
 ```
-greeting_function_decorated
+greeting_decorated
 ```
 
 And called:
 
 ```
-greeting_function_decorated()
+greeting_decorated()
 ```
 
+![img_237](./images/img_237.png)
 
-
-In the above case, the ```greeting_function``` being decorated had no input arguments. In this example, an input argument ```name``` will be added:
+In the above case, the external function ```greeting``` being decorated had no input arguments. In this example, an input argument ```name``` will be added:
 
 ```
-def greeting_function(name):
-    """
-    returns a greeting
+def greeting(name):
+    """ custom greeting
     Parameters
     ----------
     name : str
-   
+        user name
+
     Returns
     -------
     str
+        custom greeting
+
     """
-    return f'Hello {name}'
+    assert isinstance(name, str)
+    return f'hello {name}'
 
 
 ```
 
-Now the return statement of the ```wrapper_function``` must call the function and provide the input argument ```name```.
+![img_238](./images/img_238.png)
+
+To accomodate the input argument ```name```, the return statement of the ```inner``` must provide the input argument 
 
 ```
-def decorator_function(original_function):
-    def wrapper_function():
-        print(f'calling the {original_function}')
-        return original_function(name)
-    return wrapper_function
-
-
-```
-
-In order to do so, the wrapper function must supply the input argument ```name```:
-
-```
-def decorator_function(original_function):
-    def wrapper_function(name):
-        print(f'calling the {original_function}')
-        return original_function(name)
-    return wrapper_function
+def outer(external_function):
+    def inner():
+        print(f'calling the {external_function}')
+        return external_function(name)
+    return inner
 
 
 ```
 
-More generally ```*args``` and ```**kwargs``` will be used for the input arguments of the ```wrapper_function``` so that they can be supplied when calling the ```original_function``` within the return statement of the ```wrapper_function```
+In order to do so, the ```inner``` function itself must also be supplied the input argument ```name```:
 
 ```
-def decorator_function(original_function):
-    def wrapper_function(*args, **kwargs):
-        print(f'calling the {original_function}')
-        return original_function(*args, **kwargs)
-    return wrapper_function
+def outer(external_function):
+    def inner(name):
+        print(f'calling the {external_function}')
+        return external_function(name)
+    return inner
 
 
 ```
 
-The decorator function can be called and assigned to a variable name as before:
+More generally ```*args``` and ```**kwargs``` will be used to allow a generic number of positional and keyword input arguments into the ```inner``` function so that they can be supplied when calling the ```external_function```.
 
 ```
-greeting_function_decorated = decorator_function(greeting_function)
+def outer(external_function):
+    def inner(*args, **kwargs):
+        print(f'calling the {external_function}')
+        return external_function(*args, **kwargs)
+    return inner
+
+
 ```
+
+![img_239](./images/img_239.png)
+
+The ```outer``` function can be called, supplying the external function ```greeting``` as an input argument and its function call assigned to a variable name:
+
+```
+greeting_decorated = outer(greeting)
+```
+
+![img_240](./images/img_240.png)
 
 It can be referenced:
 
 ```
-greeting_function_decorated
+greeting_decorated
 ```
 
-And called using the input argument ```name```:
+And called using an input argument ```name```:
 
 ```
-greeting_function_decorated('World')
+greeting_decorated('world')
 ```
 
+![img_241](./images/img_241.png)
 
-
-Normally the decorator function ```decorator_function``` is previously defined:
-
-```
-def decorator_function(original_function):
-    def wrapper_function(*args, **kwargs):
-        print(f'calling the {original_function}')
-        return original_function(*args, **kwargs)
-    return wrapper_function
-
+A new object name was created for the decorated function:
 
 ```
-It can be used to decorate a function using the ```@decorator_function``` above the original function definition for example:
+greeting_decorated = outer(greeting)
+```
+
+More often it is reassigned to the name of the function being decorated:
 
 ```
-@decorator_function
-def greeting_function(name):
-    """
-    returns a greeting
+greeting = outer(greeting)
+```
+
+Prefixing ```@outer``` above the function definition will also decorate it. With this syntax, the decorated function name will use the same name as the original function:
+
+```
+@outer
+def greeting(name):
+    """ custom greeting
     Parameters
     ----------
     name : str
-   
+        user name
+
     Returns
     -------
     str
+        custom greeting
+
     """
-    return f'Hello {name}'
+    assert isinstance(name, str)
+    return f'hello {name}'
 
 
 ```
 
-The ```@``` syntax is shorthand for assignment of the original function decorated:
+![img_242](./images/img_242.png)
+
+Now, when the function is called, it is decorated, which can be seen from the additional print statement:
 
 ```
-greeting_function_decorated = decorator_function(greeting_function)
+greeting('world')
 ```
 
-When the ```@``` syntax is used reassignment of the original function is carried out to the original function decorated:
+![img_243](./images/img_243.png)
+
+Although the input arguments are passed through, the docstring is not:
+
+![img_244](./images/img_244.png)
+
+The ```functools``` module groups together function tools. One of the tools is the ```wraps``` function which can be used as a decorator:
 
 ```
-greeting_function = decorator_function(greeting_function)
+from functools import wraps
+
+def outer(external_function):
+    @wraps(external_function)
+    def inner(*args, **kwargs):
+        print(f'calling the {external_function}')
+        return external_function(*args, **kwargs)
+    return inner
+
+
 ```
 
-Therefore in this case using:
+![img_245](./images/img_245.png)
+
+And rerunning:
 
 ```
-greeting_function('World')
+@outer
+def greeting(name):
+    """ custom greeting
+    Parameters
+    ----------
+    name : str
+        user name
+
+    Returns
+    -------
+    str
+        custom greeting
+
+    """
+    assert isinstance(name, str)
+    return f'hello {name}'
+
+
 ```
 
-will implement the decorated version of ```greeting_function```:
+![img_246](./images/img_246.png)
+
+Now shows the docstring of the function being decorated:
+
+![img_247](./images/img_247.png)
+
+When the decorated function is called and supplied an input argument, the additional print statement that decorates the function shows:
+
+```
+greeting('world')
+```
+
+![img_248](./images/img_248.png)
+
+The inner function is only used internally within the outer function. As a consequence both the outer and inner functions take on the same function name, with the inner prefixed with an underscore, recalling that a prefix with an underscore designates internal use. For example:
+
+```
+def wrapper(external_function):
+    @wraps(external_function)
+    def _wrapper(*args, **kwargs):
+        print(f'calling the {external_function}')
+        return external_function(*args, **kwargs)
+    return _wrapper
 
 
+```
 
+This can be used to wrap the external function as before:
+
+```
+@wrapper
+def greeting(name):
+    """ custom greeting
+    Parameters
+    ----------
+    name : str
+        user name
+
+    Returns
+    -------
+    str
+        custom greeting
+
+    """
+    assert isinstance(name, str)
+    return f'hello {name}'
+
+
+```
+
+Calling the function and supplying an input argument, or examining the docstring works in the same manner as earlier:
+
+```
+greeting('world')
+```
 
 ## lambda Expression
 
