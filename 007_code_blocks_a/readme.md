@@ -3236,7 +3236,11 @@ Sometimes it is desirable to ```reduce``` an iterable into a single value:
 nums = (1, 2, 3, 4)
 ```
 
-For example to calculate the sum or product of the iterable above.
+The following lambda expression will reduce two variables to a singular variable:
+
+```
+summation = lambda x, y: x + y
+```
 
 This can be done using the ```reduce``` function found in the ```functools``` module:
 
@@ -3246,32 +3250,26 @@ from functools import reduce
 
 ![img_265](./images/img_265.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-reduce(function, iterable)
-
 ```
-from functools import reduce
-reduce((lambda x, y: x + y), [1, 2, 3, 4])
+reduce(summation, nums)
 ```
 
-Under the hood, conceptualise this as a ```for``` loop. In the first iteration. ```x``` is initially ```1``` the value at the 0th index and ```y``` is initially ```2``` the value of the 1st index. The result ```x + y``` is therefore ```3```. In the second iteration ```x``` is taken to be this value of ```3``` and ```y``` is taken to be the value at the 2nd index, which is also ```3```. ```x + y``` is therefore ```6```. In the third iteration, ```x``` is taken to be the value of ```6``` and ```y``` is taken to be the value at the last index. The final ```x + y``` calculation is therefore ```10``` which is returned.
+![img_266](./images/img_266.png)
 
+Under the hood, conceptualise this as a ```for``` loop. In the first iteration. ```x``` is initially ```1``` the value at the 0th index and ```y``` is initially ```2``` the value of the 1st index. The result ```x + y``` is therefore ```3```. In the second iteration ```x``` is now taken to be the value of ```3``` calculated from the previous iteration and ```y``` is taken to be the value at the 2nd index, which is also ```3```. ```x + y``` is therefore calculated to be ```6```. In the third iteration, ```x``` is taken to be the value of the previous iteration ```6``` and ```y``` is taken to be the value at the last index. The final ```x + y``` calculation is therefore ```10``` which is returned.
 
+## try, except, else, finally
 
+Earlier ```if```, ```elif``` and ```else``` were examined to direct code in response to a condition. In Python there are four code blocks used for error handling
 
+|Code Block|Purpose|
+|---|---|
+|try|The try code block contains the code to be tested. It can run without any errors or execute can halt when an error is found.|
+|except|This code block will be used to handle an error type and is ignored when there is no error.|
+|else|This else code block will be ran if there is no error.|
+|finally|This code block is carried out regardless if there is an error or not.|
 
+These are normally used within a function, for example after asserting the data type of an input argument.
 
 
 
@@ -3299,16 +3297,9 @@ try, except, else and finally update.
 
 
 
-## try, except, else, finally
 
-Earlier we seen the use of if, elif and else statements to carry out different code blocks in response to a condition or conditions. In Python we have a similar structure setup for handling errors.
 
-|Code Block|Purpose|
-|---|---|
-|try|This code block will test the code for an expected error|
-|except|This code block will be used to handle an error type|
-|else|This code block will be used elsewise when there is no error|
-|finally|This code block is carried out regardless if there is an error or not|
+
 
 If the variable number is created and assigned to a string. Casting will work, if the string is recognised as numeric.
 
