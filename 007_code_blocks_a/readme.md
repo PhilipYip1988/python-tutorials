@@ -298,7 +298,7 @@ else:
 
 ![img_021](./images/img_021.png)
 
-## match and case
+## The match Code Block with Nested case Code Blocks
 
 When a series of code blocks are used to match a variable to ordinal values, like in the case above, it is better to use a ```match``` code block. Each condition in the ```match``` code block is a ```case``` and each ```case``` has its own nested code block. Notice the double indentation of code, indicating it belongs to the corresponding ```case``` code block which in turn belongs to the ```match``` code block. ```case _``` is used to represent any other value of the variable ```num```:
 
@@ -1141,7 +1141,7 @@ A ```for``` loop cannot replace, all occurances of a ```while``` loop. In the ab
 
 ```while``` loops are often employed in sensor feedback mechanisms. A central heating system may use a ```while``` loop to turn on a heater *while* the temperature is below a set point measured by a temperature sensor. It may also use a ```while``` loop to turn on air conditioning *while* the temperature is above the same set point. Both of these ```while``` loops may be contained within an infinite ```while``` loop which runs continuously to maintain the temperature.
 
-## Comprehensions
+## List, Generator and Dictionary Comprehensions
 
 Supposing the following tuple is created:
 
@@ -2347,7 +2347,7 @@ customsum(one=1, two=2, three=3, four=4)
 
 ![img_202](./images/img_202.png)
 
-### Yield
+### Yield and Generators
 
 A function can use a ```yield``` statement instead of a ```return``` statement:
 
@@ -3060,7 +3060,7 @@ Calling the function and supplying an input argument, or examining the docstring
 greeting('world')
 ```
 
-## lambda Expression
+## The lambda Expression
 
 The keyword ```lambda``` is taken from the Greek alphabet and lacks description for its use case in Python. ```lambda``` should be conceptualised as meaning *make anonymous function* as it is used to create a simple anonymous function over a single line. Because it is anonymous and expressed over a single line, it does not have a docstring.
 
@@ -3123,7 +3123,11 @@ They can be called without assignment on a single line:
 
 ![img_256](./images/img_256.png)
 
-## Map, Filter and Reduce
+### Map
+
+### Filter 
+
+### Reduce
 
 
 
