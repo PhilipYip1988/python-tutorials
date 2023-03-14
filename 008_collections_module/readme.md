@@ -106,15 +106,17 @@ dir(today)
 
 ![img_012](./images/img_012.png)
 
+
+
 The Spyder Variable Explorer, doesn't show the Field names and the ```NamedTuple``` subclass ```DateTuple``` instance ```today``` just displays as an ordinary ```tuple```:
 
 ![img_013](./images/img_013.png)
 
 ![img_014](./images/img_014.png)
 
-Hopefully Field will be added, alongside the field names.
+Hopefully a Field column will be added, that displays the field names.
 
-
+## 
 
 
 
