@@ -210,6 +210,10 @@ By default the Channel is ```conda-forge``` which is the community channel.
 
 ![img_028](./images/img_028.png)
 
+Python Version Numbers are of the format X.Y.Z for example version 3.10.6 where X is the major version 3, Y is the minor version 10 and X is the patch version 6.
+
+Python libraries are installed as Python packages which follow the same X.Y.Z format.
+
 To clear this, use the command clear screen:
 
 ```
@@ -611,13 +615,20 @@ Each version on the conda-forge channel will be displayed from earliest to newes
 
 ![img_094](./images/img_094.png)
 
-As multiple versions of Python are supported by Spyder, there are multiple listings for Spyder. These can be installed using the install command. A specific version can be specified using the assignment operator. 
+**As multiple versions of Python are supported by Spyder, there are multiple listings for each Spyder version.** These can be installed using the install command. If no version is selected, the latest version of Spyder is installed but you may get the latest version of Spyder for an older minor version of Python. 
+
+```
+mamba install spyder python 
+```
+
+A specific version can be specified using the assignment operator. 
 
 ```
 mamba install spyder=5.4.2 python=3.11 
+mamba install spyder=5.4.2 python=3.10
 ```
 
-If no version is selected, the latest version of Spyder is installed but you may get an older version of Python.
+Recall Python Version Numbers are of the format X.Y.Z for example version 3.11.2 where X is the major version 3, Y is the minor version 11 and X is the patch version 2. Specifying only the Major and Minor Version for Python will install the specified minor version with the latest patch available.
 
 Spyder will be installed with its mandatory dependencies however it is recommended to install it alongside its optional dependencies for complete functionality:
 

@@ -1,6 +1,6 @@
-# Code Blocks
+# Programming Constructs with Code Blocks
 
-This tutorial will look at the use of code blocks in the Python programming language. Code blocks can be used to direct code in response to a condition, repeat an operation multiple times, or to handle errors.
+This tutorial will look at the use of code blocks in the Python programming language. Code blocks can be used to direct code in response to a condition, repeat an operation multiple times, or to handle errors. They are also used to create custom functions.
 
 ## Code Block Spacing
 
