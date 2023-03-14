@@ -3448,4 +3448,82 @@ higher(3, 'three')
 
 ![img_276](./images/img_276.png)
 
+## Recursion
+
+A factorial is a sequence of integer multiplications. For example:
+
+$$5! = 5 * 4 * 3 * 2 * 1$$
+
+There are two base cases:
+
+$$1! = 1$$
+$$0! = 1$$
+
+If the value above is examined:
+
+$$5! = 5 * 4 * 3 * 2 * 1$$
+
+It can be expressed as:
+
+$$5! = 5 * ( 4 * 3 * 2 * 1 ) = 5 * 4!$$
+
+Which can be expressed as a multiplication of a smaller factorial. Likewise:
+
+$$4! = 4 * ( 3 * 2 * 1 ) = 4 * 3!$$
+$$3! = 3 * ( 2 * 1 ) = 3 * 2!$$
+$$3! = 2 * ( 1 ) = 2 * 1!$$
+
+Therefore a general recursive expression outlining the above is:
+
+$$n! = (n - 1)!$$
+
+And the following is a base case:
+
+$$1! = 1$$
+
+This can be expressed in a recursive function. A recursive function is a function that recursively calls itself. The recursive function has an ```if``` code block which executes for a base case and the base case ultimately returns a numeric value. 
+
+The ```else``` code block on the other hand looks at the recursive case and returns a simplified function call, in this case reduction of the factorial by 1:
+
+```
+def factorial(num):
+    if (num == 0) | (num == 1):
+        # base cases
+        return 1
+    else:
+        # recursive case
+        return num * factorial(num - 1)
+    
+    
+```
+
+![img_279](./images/img_279.png)
+
+Any factorial can be expressed as a number of recursive calls which eventually leads to multiplication of a number by a base case, returning a value.
+
+For example:
+
+```
+factorial(5)
+```
+
+![img_280](./images/img_280.png)
+
+Under the hood, for this example the ```else``` block will recursively call the function using:
+
+```
+5 * factorial(4)
+4 * factorial(3)
+3 * factorial(2)
+```
+
+It will finally call the function using:
+
+```
+2 * factorial(1)
+```
+
+which is a base case that returns a value.
+
 [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
+
