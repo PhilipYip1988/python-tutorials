@@ -1822,9 +1822,9 @@ plural(word='banana')
 
 ![img_174](./images/img_174.png)
 
-### Positional Argument Only
+### Positional Only Input Arguments
 
-If a ```/``` is added at the end of input arguments, it will make the input arguments positional only:
+Input arguments have a named parameter by default. During a function call input arguments can be specified positionally or they can be specified by assigning the named parameter to a default value. Adding a ```/``` to a functions input arguments mandates that the input arguments that come the ```/``` can only be specified positionally during a function call i.e. the named parameter cannot be used during the function call. This syntax is typically used for the functions in builtins including the methods defined in builtins classes as seen in the previous tutorials. In this use case, the name of the function makes it pretty obvious what a positional input argument is used for and enforcing this syntax makes the code easier to read and faster to write. In other use cases the use of named parameters may be preferable for functions where it is not obvious from the function name what the named parameter does. Having an appropriate named parameter therefore can make the code more readible:
 
 ```
 def plural(word, /):
@@ -1850,7 +1850,7 @@ def plural(word, /):
 
 ![img_175](./images/img_175.png)
 
-The function will proceed as normal when a positional input argument is supplied but raise a ```TypeError``` when a keyword input argument is supplied:
+The function will proceed as normal when a positional input argument is supplied but raise a ```TypeError``` when a named input argument is supplied:
 
 ```
 plural('banana')
@@ -1861,7 +1861,7 @@ plural(word='banana')
 
 ### Default Keyword Input Arguments
 
-Alternatively the input argument can be supplied as a keyword input argument. A keyword input argument has a default value:
+An input argument can be supplied a default value:
 
 ```
 def plural(word='apple'):
@@ -1887,7 +1887,7 @@ def plural(word='apple'):
 
 ![img_186](./images/img_186.png)
 
-When called without any input arguments, the default value will be used, this can be overridden using the keyword input argument and assigning it to a new value. Alternatively the new value can be supplied positionally:
+When called without any input arguments, the default value will be used, this can be overridden using the named input argument and assigning it to a new value. Alternatively the new value can be supplied positionally:
 
 ```
 plural()
@@ -1896,6 +1896,47 @@ plural('banana')
 ```
 
 ![img_187](./images/img_187.png)
+
+If the ```/``` is added after the input argument, it can only be provided positionally:
+
+```
+def plural(word='apple', /):
+    """Takes a singular word and returns its plural. 
+    e.g. 'apple' becomes 'apples'.
+
+    Parameters
+    ----------
+    word : str
+        singular str. The default is 'apple'.
+
+    Returns
+    -------
+    str
+        plural str.
+
+    """
+    assert isinstance(word, str)    
+    return word + 's'
+
+
+```
+
+![img_277](./images/img_277.png)
+
+Not using the input argument will provide the default value. Using a positional input argument will override the default value:
+
+```
+plural()
+plural('banana')
+```
+
+Using a named argument will give a ```TypeError```:
+
+```
+plural(word='banana')
+```
+
+![img_278](./images/img_278.png)
 
 ### The Return Value Continued
 
