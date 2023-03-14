@@ -669,7 +669,7 @@ for _ in word:
 
 Notice that ```hello``` is printed out 5 times, because it has a length of 5.
 
-Another example can be given using qa ```tuple``` which recall can be conceptualised as an archive of records:
+Another example can be given using a ```tuple``` which recall can be conceptualised as an archive of records:
 
 ```
 archive = (0, True, 3.14, 'hello')
@@ -3265,80 +3265,146 @@ Earlier ```if```, ```elif``` and ```else``` were examined to direct code in resp
 |Code Block|Purpose|
 |---|---|
 |try|The try code block contains the code to be tested. It can run without any errors or execute can halt when an error is found.|
-|except|This code block will be used to handle an error type and is ignored when there is no error.|
-|else|This else code block will be ran if there is no error.|
+|except|This code block uses an error class as a condition. It will be used to handle this error type if this error occurs. Multiple except blocks can be configured for various error types.|
+|else|This else code block will be ran, if none of the previous except blocks have been executed.|
 |finally|This code block is carried out regardless if there is an error or not.|
 
-These are normally used within a function, for example after asserting the data type of an input argument.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Demonstrate use of a debugger in a for loop.
-
-try, except, else and finally update.
-
-
-
-
-
-
-
-
-If the variable number is created and assigned to a string. Casting will work, if the string is recognised as numeric.
+These are normally used within a function and are best understood using an example. For example after asserting the data type of an input argument.
 
 ```
-number = "5"
-float(number)
+def plural(word):
+    try:
+        assert isinstance(word, str)
+    except AssertionError:
+        word = f'num: {str(word)}'
+    else:
+        word = f'word: {word}'
+    finally:
+        return word + 's'
+    
+    
 ```
 
-![074_try](./images/074_try.png)
+![img_267](./images/img_267.png)
 
-However a "ValueError" will be given when the string is not recognised as numeric.
-
-```
-number = "five"
-float(number)
-```
-
-![075_try](./images/075_try.png)
-
-The following code blocks can be setup in response to the ```number``` variable above. Normally these would be setup with a function and the variable ```number``` would be an input argument of the function. However for clarity these are shown outwith a function and functions will be discussed in the next tutorial.
+For example, if the following is used, the ```try``` block does not encounter any error. Therefore the ```except``` code blocks are skipped and the ```else``` and ```finally``` code blocks are executed:
 
 ```
-try:
-    float(number)
-except ValueError:
-    print("invalid number, number set to 0")
-    number = 0
-else:
-    number = float(number)
-finally:
-    value = number + 1
+plural('Apple')
 ```
 
-When the ```try``` code block does not find an error, the code in the ```else``` code block and the ```finally``` code blocks are carried out.
+![img_268](./images/img_268.png)
 
-![076_try](./images/076_try.png)
+For example, if the following is used, the ```try``` block encounters an ```AssertionError```. Therefore the ```except``` code block configured for an ```AssertionError``` is executed and the ```else``` block is skipped. The ```finally``` code block is also executed:
 
-When the ```try``` code block does find a ```ValueError```, the code in the ```except ValueError``` code block and the ```finally``` code blocks are carried out.
+```
+plural(2)
+```
 
-![077_try](./images/077_try.png)
+![img_269](./images/img_269.png)
+
+Another example can be given. In this scenario, the ```try``` code block is configured to look for two errors, an ```AssertionError``` and a ```TypeError```
+
+```
+def compare(num1, num2):
+    try:
+        assert isinstance(num1, (int, float, bool))
+        num1 > num2
+    except AssertionError:
+        print('num1 not numeric')
+    except TypeError:
+        print('num2 not numeric')
+    else:
+        print('num1 and num2 are numeric')
+    finally:
+        print('num1 has been examined')
+    
+    
+```
+
+![img_270](./images/img_270.png)
+
+No errors are encountered in the ```try``` code block. The ```else``` code block is executed and the ```finally``` code block is executed:
+
+```
+compare(1, 2)
+```
+
+An ```AssertionError``` is encountered in the ```try``` code block. The ```except TypeError``` code block is executed and the ```finally``` code block is executed:
+
+![img_271](./images/img_271.png)
+
+```
+compare('a', 2)
+```
+
+![img_272](./images/img_272.png)
+
+A ```TypeError``` is encountered in the ```try``` code block. The ```except TypeError``` code block is executed and the ```finally``` code block is executed:
+
+```
+compare(1, 'b')
+```
+
+![img_273](./images/img_273.png)
+
+An ```AssertionError``` is encountered in the ```try``` code block. This raises the ```AssertionError``` on the first line of code and all subsequent code is skipped. The ```except TypeError``` code block is executed and the ```finally``` code block is executed:
+
+```
+compare('a', 'b')
+```
+
+![img_274](./images/img_274.png)
+
+The above demonstrated the capabilities of error handling using code blocks. The ```else``` and ```finally``` code blocks are optional. 
+
+Normally ```try``` and ```except``` are configured for each input argument. The ```except``` can also include a nested ```try``` and ```except```:
+
+```
+def higher(num1, num2):
+    try:
+        assert isinstance(num1, (int, float, bool))
+    except AssertionError:
+        try:
+            num1 = float(num1)
+        except ValueError:
+            num1 = 1
+            print('num1 given a default value of 1')
+    try:
+        assert isinstance(num2, (int, float, bool))
+    except AssertionError:
+        try:
+            num2 = float(num2)
+        except ValueError:
+            num2 = 2
+            print('num2 given a default value of 2')
+    finally:
+        if num1 > num2:
+            return num1
+        else:
+            return num2
+
+
+```
+
+![img_275](./images/img_275.png)
+
+The effect of error handling can be seen with the following examples. 
+
+The first case has no errors. 
+
+The second case raises an ```AssertionError``` which is handled in the ```except ValueError``` via the nested ```try``` code block. 
+
+The third case once again raises an ```AssertionError```. An attempt to handle it is carried out in the ```except ValueError``` code block via the nested ```try``` code block, this in turn raises a ```ValueError```, so the nested ```except ValueError``` code block handles it.
+
+In all cases once the input arguments are handled, the ```finally``` code block is executed:
+
+```
+higher(3, 4)
+higher(3, '3.14')
+higher(3, 'three')
+```
+
+![img_276](./images/img_276.png)
 
 [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

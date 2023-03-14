@@ -6,15 +6,19 @@ The Python ecosystem is pretty vast and a consequence there are a multitude of w
 
 There are three package managers commonly used to install Python and Python packages. 
 
-|Installer Name|Package Manager|Python Base Environment|Python Base Environment Channel|
-|:-:|:-:|:-:|:-:|
-|Python|pip|minimal|pip|
-|Anaconda|conda|data science distribution|conda (older packages)|
-|Miniconda|conda|minimal|conda (older packages)|
-|Miniforge|conda|minimal|conda-forge|
-|Mambaforge|mamba|minimal|conda-forge|
+|Installer Name|Package Manager|Python Base Environment|Python Base Environment Channel|Python Version in Base Environment|
+|:-:|:-:|:-:|:-:|:-:|
+|Python|pip|minimal|pip|3.11|
+|Mambaforge|mamba|minimal|conda-forge|3.10|
+|Miniforge|conda|minimal|conda-forge|3.10|
+|Anaconda|conda|data science distribution|conda (older packages)|3.9|
+|Miniconda|conda|minimal|conda (older packages)|3.9|
 
-**In this guide Mambaforge will be used as it is the most reliable solution.**
+**In this guide Mambaforge will be used as it is the most reliable solution.** Seperate Python 3.11.2 environments will be made for each IDE.
+
+Python Version Numbers are of the format X.Y.Z for example version 3.11.2 where X is the major version 3, Y is the minor version 11 and X is the patch version 2. 
+
+A new minor version of Python 3 is developed each year. Python 3.12.0 for example is currently in development. It is recommended to wait for a patch number of at least version 1, which usually indicates that the most significant bug fixes have been addressed. In addition it also means that the developers of popular Python libraries have had enough time to update their libraries allowing them to run on this new minor version. Python libraries are installed as Python packages which follow the same X.Y.Z format.
 
 ## Integrated Development Environments (IDEs)
 

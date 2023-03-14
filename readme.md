@@ -36,25 +36,15 @@ Python has four collections the immutable tuple, which can be conceptualised as 
 
 [Collections; tuple, list, set, dict](https://github.com/PhilipYip1988/python-tutorials/blob/main/006_collections/readme.md)
 
+## Programming Constructs
+
+Indentation and spacing is very important in Python and code is often grouped into a code block. Code blocks are used to direct code in response to a condition, to repeat an operation multiple times, to error handle and to create custom functions:
+
+[Programming Constructs using Code Blocks](https://github.com/PhilipYip1988/python-tutorials/blob/main/007_programming_constructs_with_code_blocks/readme.md)
+
 ---
 
 Old versions/drafts below, to be updated.
-
-## Programming Constructs
-
-Indentation and spacing is very important in Python and code is often grouped into a code block. An analogy to not using indentation in Python, is not not use a steering wheel in a car. All the code so far has been run in a straight line going from start to finish. Indentation with a code block can be used to repeat code multiple times in a loop or to direct code in response to a condition. 
-
-[Code Blocks; for loops, if-elif-else, match-case, while loops, try-except-else-finally](https://github.com/PhilipYip1988/python-tutorials/blob/main/007_code_blocks/readme.md)
-
-The behaviour of functions in inbuilt identifiers has been explored. Functions have been observed to have no, one or multiple input arguments and to return or not return a value. To understand this syntax better, custom functions will be explored. Under the hood these use a code block and therefore this tutorial builds upon the knowledge of previous tutorial. Custom functions are a very powerful tool.
-
-[Functions](./008_functions/)
-
-Add in onfo about yield...
-
-Previously for loops and functions were explored. A loop is commonly used to construct a new list or dictionary from an existing list or dictionary and Python has a very powerful one line convention known as a comprehension to carry this out. A simple function can also be created on a single line using a lambda expression. Use of comprehensions and lambda expressions can make the code more succinct and more readible.
-
-[Comprehensions (list and dict) and Lambda Functions](https://github.com/PhilipYip1988/python-tutorials/blob/main/009_comprehensions_and_lambda/readme.md)
 
 The concept of a Python Module was previously explored during installation. A Python Module is used to compartmentalise code into a seperate often reusable file. This tutorial looks at the creation of a custom Module or a group of custom Modules known as a library. 
 
