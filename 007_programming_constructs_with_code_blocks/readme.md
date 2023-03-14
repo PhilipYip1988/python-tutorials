@@ -2896,7 +2896,7 @@ def greeting(name):
 
 ![img_238](./images/img_238.png)
 
-To accomodate the input argument ```name```, the return statement of the ```inner``` must provide the input argument 
+To accommodate the input argument ```name```, the return statement of the ```inner``` must provide the input argument 
 
 ```
 def outer(external_function):
