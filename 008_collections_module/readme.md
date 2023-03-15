@@ -18,9 +18,46 @@ The most important classes are listed. The three in lower case were orginally de
 
 ## namedtuple
 
-```namedtuple``` is a factory function that creates a ```NamedTuple``` subclass. Note the factory function uses lower case and the class uses CamelCase.
+A ```tuple``` can be conceptualised as an immutable archive of records. Each record only has a numeric index associated with the value and doesn't have a field name to describe what the value is. For example in the following tuple it is hard to distinguish what field is what:
 
-The ```NamedTuple``` subclass is a ```tuple``` subclass that is configured to have a field name for each record.
+```
+(4, 3, 2023)
+```
+
+Some more details may be deciphered from the variable name:
+
+```
+date = (4, 3, 2023)
+```
+
+However it is still unclear whether the 4 is the day (UK format) or the month (US format). In such a case, a dictionary may be more appropriate. The ```dict``` class can be used to instantiate the dictionary:
+
+```
+date = dict(day=4, month=3, year=2023)
+date
+```
+
+When dealing with a large number of archives, the keys need to be specified every time:
+
+```
+today = dict(day=14, month=3, year=2023)
+tommorrow = dict(day=15, month=3, year=2023)
+yesterday = dict(day=13, month=3, year=2023)
+nextmonth = dict(day=14, month=4, year=2023)
+nextyear = dict(day=14, month=3, year=2024)
+```
+
+And there is no check to make sure the keys are input consistently:
+
+```
+tommorrow = dict(d=15, m=3, y=2023)
+```
+
+It is more convenient to group all of the data above into a subclass that has a datastructure similar to a ```tuple``` but is fixed length and associates each record with an appropriate field name. 
+
+The ```namedtuple``` is a factory function that creates a ```NamedTuple``` subclass; essentially a ```tuple```-like data structure or template that in this case has only three fields the  ```'day'```, ```'month'``` and ```'year'``` respectively. Once this subclass is created, it can be instantiated for each date above. 
+
+Do not confuse the factory function ```namedtuple``` which is lower case and the abstract class ```NamedTuple``` which is CamelCase. Note that the abstract class ```NamedTuple``` isn't used directly, instead subclasses with a predefined number of fields and field names are created.
 
 The ```namedtuple``` factory function can be imported from the ```collections``` module using:
 
@@ -34,25 +71,37 @@ To view the docstring of the ```namedtuple``` factory function input the functio
 
 ![img_003](./images/img_003.png)
 
-For example the ```NamedTuple``` subclass ```DateTuple``` can be created using:
+For example the subclass ```DateTuple``` can be created using:
 
 ```
 DateTuple = namedtuple('DateTuple', ('day', 'month', 'year'))
 ```
 
-The name of the ```NamedTuple``` subclass ```'DateTuple'``` is supplied as a string for the first input argument which is used to generate a docstring. This normally matches the name ```DateTuple``` the subclass is assigned to and should be in CamelCase. Note the difference between the object name without quotations and the string which is enclosed in quotations:
+The name of the ```NamedTuple``` subclass ```'DateTuple'``` is supplied as a string for the first input argument which is used to generate a docstring. This normally matches the name ```DateTuple``` the subclass is assigned to and should be in CamelCase. Note the difference between the object name specified without quotations to the left hand side of the assignment operator and the string provided as the first input argument to the ```namedtuple``` factory function which is enclosed in quotations:
 
 ![img_004](./images/img_004.png)
 
 The names of the fields are supplied as a ```tuple``` of strings:
 
-![img_005](./images/img_005.png)
+```
+DateTuple = namedtuple('DateTuple', 
+                       ('day', 'month', 'year'))
+```
 
-Now that this ```NamedTuple``` subclass ```DateTuple``` is assigned its docstring can be viewed by typing in ```DateTuple``` with open parenthesis followed by shift ```⇧``` + tab ```↹```:
+These can optionally be given default values:
+
+```
+DateTuple = namedtuple('DateTuple', 
+                       ('day', 'month', 'year')
+                       defaults=(14, 3, 2023))
+```
+
+
+The ```DateTuple``` subclass docstring can be viewed by typing in ```DateTuple``` with open parenthesis followed by shift ```⇧``` + tab ```↹```:
 
 ![img_006](./images/img_006.png)
 
-When the ```NamedTuple``` subclass is assigned to a different name, the docstring uses the string supplied as the first input argument and is inconsistent to the init signature of the created subclass which uses the class name assigned:
+When the ```NamedTuple``` subclass was assigned a different name, the docstring uses the string supplied as the first input argument and is inconsistent to the init signature of the created subclass which uses the class name assigned:
 
 ```
 DateTuple2 = namedtuple('DateTuple', ('day', 'month', 'year'))
@@ -82,6 +131,33 @@ yesterday = DateTuple(14, 3, 2023)
 
 ![img_009](./images/img_009.png)
 
+The ```namedtuple``` factory function can take in a keyword input argument ```defaults``` which is assigned to a ```tuple``` of default values.
+
+```
+DateTuple = namedtuple('DateTuple', 
+                       ('day', 'month', 'year'),
+                       defaults=(14, 3, 2023))
+```
+
+
+
+Generally
+
+
+```
+today._fields
+today._field_defaults
+
+today._asdict()
+
+today._replace(year=2024)
+
+today._make((1, 2, 3))
+DateTuple(*(1, 2, 3))
+DateTuple(**{'day': 1, 'month': 2, 'year': 3})
+```
+
+
 Looking at the identifiers of ```today``` by inputting ```today.``` followed by a tab ```↹```:
 
 ![img_010](./images/img_010.png)
@@ -106,7 +182,7 @@ dir(today)
 
 ![img_012](./images/img_012.png)
 
-
+These data model identifiers behave in an identical manner to a ```tuple``` as they are inherited from the ```tuple```.
 
 The Spyder Variable Explorer, doesn't show the Field names and the ```NamedTuple``` subclass ```DateTuple``` instance ```today``` just displays as an ordinary ```tuple```:
 
