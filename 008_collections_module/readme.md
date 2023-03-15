@@ -292,22 +292,46 @@ The Spyder Variable Explorer, doesn't show the field names in a ```NamedTuple```
 
 Hopefully a Field column will be added, that displays the field names in the future.
 
-## 
+## deque
+
+The doubly ended queue ```deque``` class was originally designed to be a ```builtins``` class and is therefore lower case like ```tuple``` or ```list```. 
+
+A ```list``` is optimised for operations at the end and has the methods ```append``` and ```extend```. The ```deque``` is list-like but as the name suggests is doubly ended and optimised for operations at the front and back. It can be imported using:
+
+```
+from collections import deque
+```
+
+![img_036](./images/img_036.png)
+
+To view the init signature of the ```deque```  class input ```deque``` followed by open parenthesis and pressing shift ```⇧``` + tab ```↹```:
+
+![img_037](./images/img_037.png)
+
+The ```deque``` takes an iterable as input argument such as a ```list``` or ```tuple``` and has the optional input argument, ```keylen``` which specifies the maximum length of the ```deque```.
+
+```
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
+duoactive = deque(archive, 7)
+```
+
+![img_038](./images/img_038.png)
+
+![img_039](./images/img_039.png)
+
+![img_040](./images/img_040.png)
+
+![img_041](./images/img_041.png)
+
+![img_042](./images/img_042.png)
 
 
 
+![img_043](./images/img_043.png)
+
+![img_044](./images/img_044.png)
+
+![img_045](./images/img_045.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+duoactive.appendleft('skipped')
