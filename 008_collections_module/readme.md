@@ -284,13 +284,13 @@ DateTuple(**d1)
 
 ![img_033](./images/img_033.png)
 
-The Spyder Variable Explorer, doesn't show the field names in a ```NamedTuple``` subclass and instead just displays an ordinary ```tuple```:
+The Spyder Variable Explorer, doesn't show the field names in a ```NamedTuple``` subclass and instead just displays it as an ordinary ```tuple```:
 
 ![img_034](./images/img_034.png)
 
-![img_035](./images/img_035.png)
+It should look like the following:
 
-Hopefully a Field column will be added, that displays the field names in the future.
+![img_035](./images/img_035.png)
 
 ## deque
 
@@ -317,21 +317,180 @@ duoactive = deque(archive, 7)
 
 ![img_038](./images/img_038.png)
 
+The ```deque``` also doesn't display in the Variable Explorer. It can be conceptualised essentially as a ```list``` with some minor modifications:
+
 ![img_039](./images/img_039.png)
 
 ![img_040](./images/img_040.png)
 
+The identifiers of the ```deque``` instance can be examined by inputting ```duoactive.``` and pressing tab ```↹```: 
+
 ![img_041](./images/img_041.png)
+
+Notice that lots of these identifiers have the same name as their equivalents in the ```list``` class and behave identically. The additional identifiers specify a left-right direction in line with the collapsed view with the elements displayed horizontally:
+
+![img_039](./images/img_039.png)
+
+![img_040](./images/img_040.png)
+
+At present there are 6 objects in the ```deque``` that has space for 7 objects. Each of the items can be indexed using their numeric index. The index at 6 does not exist as the ```deque``` is not full:
+
+```
+duoactive[0]
+duoactive[1]
+duoactive[5]
+duoactive[6]
+```
 
 ![img_042](./images/img_042.png)
 
+The ```maxlen``` attribute shows the value of the maximum length set for the ```deque```:
 
+```
+duoactive.maxlen
+```
+
+The ```append``` method may be used to ```append``` a single value to the end of the ```deque```:
+
+```
+duoactive.append('last')
+```
 
 ![img_043](./images/img_043.png)
 
+The end is the right hand side in the collapsed view:
+
 ![img_044](./images/img_044.png)
+
+Or the bottom in the expanded view:
 
 ![img_045](./images/img_045.png)
 
+```duoactive``` is now at its maximum length. This means an additional records appended will now eject a corresponding record at the other end of the queue:
 
-duoactive.appendleft('skipped')
+```
+duoactive.appendleft('front')
+```
+
+![img_046](./images/img_046.png)
+
+Notice ```'last'``` was eject out the right hand side of ```duoactive``` and ```duoactive``` is still at its maximum length of 7:
+
+![img_047](./images/img_047.png)
+
+![img_048](./images/img_048.png)
+
+The ```append``` and ```appendleft``` methods append a single item to the right and left of the ```deque``` (in the collapsed view). If the ```deque``` is at its maximum length, a single item on the opposite end is ejected. These methods will nest a collection at the last and first index respectively. 
+
+The ```extend``` and ```extendleft``` methods can be used to extend the ```deque``` on the right hand side or left hand side respectively. If the ```deque``` is at its maximum length, items at the other end of the ```deque``` will be ejected:
+
+```
+duoactive.extend((1, 2, 3))
+```
+
+![img_049](./images/img_049.png)
+
+![img_051](./images/img_051.png)
+
+![img_052](./images/img_052.png)
+
+The ```pop``` and ```popleft``` methods pop a record off at the right or left of the ```deque``` respectively. These methods return the popped record and mutate the ```deque``` in place:
+
+```
+duoactive.popleft()
+```
+
+![img_053](./images/img_053.png)
+
+![img_054](./images/img_054.png)
+
+![img_055](./images/img_055.png)
+
+The ```rotate``` method is a mutable method that can be used to rotate the elements in the ```deque```. Essentially it individually pops a record from one end of the ```deque``` and appends it to the other end of the ```deque```. It has an input argument ```n```, which is an integer number of steps to rotate by. For a value of ```-2``` for example, the first 2 items on the left will be removed from the left of the ```deque``` and placed at the end of the ```deque```:
+
+![img_056](./images/img_056.png)
+
+![img_057](./images/img_057.png)
+
+```
+duoactive.rotate(-2)
+```
+
+![img_058](./images/img_058.png)
+
+![img_059](./images/img_059.png)
+
+The other methods available for the ```deque``` class are consistent with their counterparts in the ```list``` class. The datamodel methods are also consistent:
+
+```
+from pprint import pprint
+pprint(dir(duoactive), compact=True)
+```
+
+![img_060](./images/img_060.png)
+
+## defaultdict and OrderedDict
+
+The ```defaultdict``` and ```OrderedDict``` are subclasses of the ```dict``` class. This can be seen by importing these collections and examining their method resolution order:
+
+```
+from collections import defaultdict, OrderedDict
+defaultdict.mro()
+OrderedDict.mro()
+```
+
+![img_061](./images/img_061.png)
+
+In previous versions of Python the ```dict``` was unordered, similar to a ```set``` and the ```OrderedDict``` was essentially a subclass of ```dict``` that instead maintained insertion order. In current versions of Python, the ```dict``` maintains insertion order making the ```OrderedDict``` mainly redundant.
+
+The ```defaultdict``` is a subclass of ```dict``` that has a default value. When indexed with a ```key``` that doesn't exist in the current ```keys```, the ```key```: ```default``` pair is added, instead of an ```IndexError```. The behaviour of a ```dict``` is shown:
+
+```
+mapping = {'red': '#FF0000', 
+           'green': '#00B050', 
+           'blue': '#0070C0'}
+
+mapping['red']
+mapping['yellow']
+```
+
+![img_062](./images/img_062.png)
+
+Instead of instantiating the ```dict``` with items. It is possible to instiate an empty ```dict``` and then add items to it:
+
+```
+mapping = {}
+mapping['red'] = '#FF0000'
+mapping['green'] = '#00B050'
+mapping['blue'] = '#0070C0'
+```
+
+![img_063](./images/img_063.png)
+
+This is essentially the workflow of a ```defaultdict```. To view the docstring of the ```defaultdict``` init signature input the class name with open parenthesis followed by shift ```⇧``` + tab ```↹```:
+
+![img_064](./images/img_064.png)
+
+
+
+
+## Counter
+
+
+
+from collections import Counter
+Counter.mro()
+
+
+## ChainMap
+
+
+
+
+## UserString, UserList, UserDict
+
+
+
+
+
+
