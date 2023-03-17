@@ -462,7 +462,7 @@ Notice the ```KeyError``` because ```'yellow'``` is not in ```Keys```:
 
 ![img_068](./images/img_068.png)
 
-Instead of instantiating the ```dict``` with items. It is possible to instiate an empty ```dict``` and then add items to it:
+Instead of instantiating the ```dict``` with items. It is possible to instantiate an empty ```dict``` and then add items to it:
 
 ```
 mapping = {}
@@ -477,7 +477,7 @@ mapping['blue'] = '#0070C0'
 
 ![img_068](./images/img_068.png)
 
-This is essentially the workflow of a ```defaultdict```. To view the docstring of the ```defaultdict``` init signature input the class name with open parenthesis followed by shift ```⇧``` + tab ```↹```:
+This can be used to examine the workflow of a ```defaultdict```. To view the docstring of the ```defaultdict``` init signature input the class name with open parenthesis followed by shift ```⇧``` + tab ```↹```:
 
 ![img_064](./images/img_064.png)
 
@@ -625,7 +625,7 @@ mapping.default_factory()
 
 ![img_089](./images/img_089.png)
 
-The other identifiers are inherited from the ```dict``` class and are unmodified so behave identically. The data model identifiers are also identical with exception to the ```__init__``` and ```__missing__``` identifiers. 
+The other identifiers are inherited from the ```dict``` class and are unmodified so behave identically. 
 
 The name of the identifier ```setdefault``` in the context of a ```defaultdict``` often gets confused. It is inherited from the ```dict``` class and does not relate to the ```factory_default```. Instead it essentially acts as a one time override of the ```default_value```. The key to be examined is the first input argument and the second argument is the default value to assign in this example when the key does not exist:
 
@@ -638,6 +638,32 @@ mapping['black']
 ![img_090](./images/img_090.png)
 
 ![img_091](./images/img_091.png)
+
+The initialization signature of the ```defaultdict``` takes a callable as its first input argument and can also take in a dictionary as a second keyword argument, initializing it with a number of items:
+
+```
+mapping = defaultdict(lambda: '#000000', 
+                      {'red': '#FF0000', 
+                       'green': '#00B050', 
+                       'blue': '#0070C0'})
+```
+
+![img_092](./images/img_092.png)
+
+![img_093](./images/img_093.png)
+
+![img_094](./images/img_094.png)
+
+The formal string representation ```repr``` uses the data model method ```__repr__``` and the informal string representation uses the ```__str__``` data model methods:
+
+```
+repr(mapping)
+str(mapping)
+```
+
+They widely follow this format:
+
+![img_095](./images/img_095.png)
 
 ## Counter
 
