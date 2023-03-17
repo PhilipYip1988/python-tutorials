@@ -471,8 +471,103 @@ This is essentially the workflow of a ```defaultdict```. To view the docstring o
 
 ![img_064](./images/img_064.png)
 
+The ```defaultdict``` has a single input argument ```default_factory```. This can be supplied positional argument or a named argument. This input argument takes a callable without any arguments. For example, the ```str``` class:
+
+```
+mapping = defaultdict(str)
+```
+
+Each key is added and assigned to a value:
+
+```
+mapping['red'] = '#FF0000'
+mapping['green'] = '#00B050'
+mapping['blue'] = '#0070C0'
+```
+
+When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
+
+```
+mapping['yellow']
+```
 
 
+In this example ```default_factory = str``` and this was called without input arguments i.e. ```str()``` which returned the empty ```str```.
+
+
+
+Another example can have ```default_factory=list```. For example:
+
+```
+mapping = defaultdict(list)
+```
+
+
+
+Each key is added and assigned to a value:
+
+```
+mapping['a'] = ['apples', 'apricots', 'avocado']
+mapping['b'] = ['bananas', 'beetroot']
+```
+
+
+When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
+
+```
+mapping['c']
+```
+
+Which in this looks at the ```default_factory``` and calls ```list``` without any input arguments to give an empty list. Methods can be called from such an empty list:
+
+```
+mapping['d'].append('dragonfruit')
+```
+
+
+
+
+The ```default_factory``` can be assigned to an anonymous function using a ```lambda``` expression. This ```lambda``` expression should have no input arguments and should have a return value:
+
+```
+mapping = defaultdict(lambda : '#000000')
+```
+
+Each key is added and assigned to a value:
+
+```
+mapping['red'] = '#FF0000'
+mapping['green'] = '#00B050'
+mapping['blue'] = '#0070C0'
+```
+
+When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
+
+```
+mapping['yellow']
+```
+
+
+Which in this looks at the ```default_factory``` and calls the ```lambda``` expression without any input arguments to give the return value which was the ```'#000000'```.
+
+The identifiers ...
+
+```
+mapping.default_factory()
+```
+
+
+
+The other identifiers are inherited from the ```dict``` class. The name of the identifier ```setdefault``` in a ```defaultdict``` often gets confused. The ```setdefault``` method does not change the ```default_factory```. Instead it essentially acts as a one time override of the ```default_value```. The key to be examined is the first input argument and the second argument is the default value to assign in this example when the key does not exist:
+
+```
+mapping.setdefault('red', '#ffffff')
+mapping.setdefault('orange', '#ffffff')
+```
+
+
+
+This method behaves identically to its counterpart in the ```dict``` class because it is inherited without modification from the ```dict``` class.
 
 ## Counter
 
