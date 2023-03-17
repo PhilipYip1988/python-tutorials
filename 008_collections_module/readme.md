@@ -443,7 +443,7 @@ OrderedDict.mro()
 
 In previous versions of Python the ```dict``` was unordered, similar to a ```set``` and the ```OrderedDict``` was essentially a subclass of ```dict``` that instead maintained insertion order. In current versions of Python, the ```dict``` maintains insertion order making the ```OrderedDict``` mainly redundant.
 
-The ```defaultdict``` is a subclass of ```dict``` that has a default value. When indexed with a ```key``` that doesn't exist in the current ```keys```, the ```key```: ```default``` pair is added, instead of an ```IndexError```. The behaviour of a ```dict``` is shown:
+The ```defaultdict``` is a subclass of ```dict``` that has a ```default_factory``` callable. When indexed with a ```key``` that doesn't exist in the current ```keys```, the ```key```: ```default_factory()``` pair is added, instead of an ```KeyError```. The behaviour of a ```dict``` is shown:
 
 ```
 mapping = {'red': '#FF0000', 
@@ -454,7 +454,13 @@ mapping['red']
 mapping['yellow']
 ```
 
+Notice the ```KeyError``` because ```'yellow'``` is not in ```Keys```:
+
 ![img_062](./images/img_062.png)
+
+![img_067](./images/img_067.png)
+
+![img_068](./images/img_068.png)
 
 Instead of instantiating the ```dict``` with items. It is possible to instiate an empty ```dict``` and then add items to it:
 
@@ -467,6 +473,10 @@ mapping['blue'] = '#0070C0'
 
 ![img_063](./images/img_063.png)
 
+![img_067](./images/img_067.png)
+
+![img_068](./images/img_068.png)
+
 This is essentially the workflow of a ```defaultdict```. To view the docstring of the ```defaultdict``` init signature input the class name with open parenthesis followed by shift ```⇧``` + tab ```↹```:
 
 ![img_064](./images/img_064.png)
@@ -477,7 +487,19 @@ The ```defaultdict``` has a single input argument ```default_factory```. This ca
 mapping = defaultdict(str)
 ```
 
-Each key is added and assigned to a value:
+![img_065](./images/img_065.png)
+
+If the directory function ```dir``` is used, all the identifiers are identical to that of the ```dict``` class with the exception to ```__missing__``` which is added:
+
+```
+pprint(dir(mapping), compact=True)
+```
+
+![img_066](./images/img_066.png)
+
+When attempting to access a missing key, the ```__missing__``` data model is invoked. In the ```dict``` class, the missing ```__datamodel__``` method is not defined so a ```KeyError``` is given. In the ```defaultdict```, ```__missing__``` calls the provided ```default_factory``` callable generating a new ```key: value``` pair.
+
+Each key is added and assigned to a value as before:
 
 ```
 mapping['red'] = '#FF0000'
@@ -485,16 +507,23 @@ mapping['green'] = '#00B050'
 mapping['blue'] = '#0070C0'
 ```
 
+![img_066](./images/img_066.png)
+
+![img_070](./images/img_070.png)
+
+![img_071](./images/img_071.png)
+
 When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
 
 ```
 mapping['yellow']
 ```
 
+![img_072](./images/img_072.png)
+
+![img_073](./images/img_073.png)
 
 In this example ```default_factory = str``` and this was called without input arguments i.e. ```str()``` which returned the empty ```str```.
-
-
 
 Another example can have ```default_factory=list```. For example:
 
@@ -502,7 +531,7 @@ Another example can have ```default_factory=list```. For example:
 mapping = defaultdict(list)
 ```
 
-
+![img_074](./images/img_074.png)
 
 Each key is added and assigned to a value:
 
@@ -511,6 +540,11 @@ mapping['a'] = ['apples', 'apricots', 'avocado']
 mapping['b'] = ['bananas', 'beetroot']
 ```
 
+![img_075](./images/img_075.png)
+
+![img_076](./images/img_076.png)
+
+![img_077](./images/img_077.png)
 
 When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
 
@@ -518,20 +552,39 @@ When a key is indexed that does not exist, the ```default_factory``` callable is
 mapping['c']
 ```
 
+![img_078](./images/img_078.png)
+
+![img_079](./images/img_079.png)
+
 Which in this looks at the ```default_factory``` and calls ```list``` without any input arguments to give an empty list. Methods can be called from such an empty list:
 
 ```
 mapping['d'].append('dragonfruit')
 ```
 
+![img_080](./images/img_080.png)
 
+![img_080](./images/img_081.png)
 
+The ```default_factory``` can be assigned to an anonymous function using a ```lambda``` expression. Recall the general form is:
 
-The ```default_factory``` can be assigned to an anonymous function using a ```lambda``` expression. This ```lambda``` expression should have no input arguments and should have a return value:
+```
+default_factory = lambda input0, input1, ... : value
+```
+
+The ```default_factory``` has to be callable without any input arguments, therefore the form below is used:
+
+```
+default_factory = lambda : value
+```
+
+A hexadecimal value has the form ```#rrggbb```. A default ```str``` can zero these values ```#000000``` and this can be supplied via the return value of a ```lambda``` expression:
 
 ```
 mapping = defaultdict(lambda : '#000000')
 ```
+
+![img_082](./images/img_082.png)
 
 Each key is added and assigned to a value:
 
@@ -541,33 +594,50 @@ mapping['green'] = '#00B050'
 mapping['blue'] = '#0070C0'
 ```
 
+![img_083](./images/img_083.png)
+
+![img_084](./images/img_084.png)
+
+![img_085](./images/img_085.png)
+
 When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
 
 ```
 mapping['yellow']
 ```
 
+![img_086](./images/img_086.png)
 
-Which in this looks at the ```default_factory``` and calls the ```lambda``` expression without any input arguments to give the return value which was the ```'#000000'```.
+![img_087](./images/img_087.png)
 
-The identifiers ...
+Which looks to ```default_factory``` which gives the return value which was the ```'#000000'```.
+
+The identifiers can be viewed by typing in ```mapping.``` followed by a tab ```↹```:
+
+![img_088](./images/img_088.png)
+
+The only addition is ```default_factory``` which invokes the callable:
 
 ```
+mapping.default_factory
 mapping.default_factory()
 ```
 
+![img_089](./images/img_089.png)
 
+The other identifiers are inherited from the ```dict``` class and are unmodified so behave identically. The data model identifiers are also identical with exception to the ```__init__``` and ```__missing__``` identifiers. 
 
-The other identifiers are inherited from the ```dict``` class. The name of the identifier ```setdefault``` in a ```defaultdict``` often gets confused. The ```setdefault``` method does not change the ```default_factory```. Instead it essentially acts as a one time override of the ```default_value```. The key to be examined is the first input argument and the second argument is the default value to assign in this example when the key does not exist:
+The name of the identifier ```setdefault``` in the context of a ```defaultdict``` often gets confused. It is inherited from the ```dict``` class and does not relate to the ```factory_default```. Instead it essentially acts as a one time override of the ```default_value```. The key to be examined is the first input argument and the second argument is the default value to assign in this example when the key does not exist:
 
 ```
 mapping.setdefault('red', '#ffffff')
 mapping.setdefault('orange', '#ffffff')
+mapping['black']
 ```
 
+![img_090](./images/img_090.png)
 
-
-This method behaves identically to its counterpart in the ```dict``` class because it is inherited without modification from the ```dict``` class.
+![img_091](./images/img_091.png)
 
 ## Counter
 
