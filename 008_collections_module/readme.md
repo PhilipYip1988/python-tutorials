@@ -18,7 +18,7 @@ The most important classes are listed. The three in lower case were orginally de
 
 ## namedtuple
 
-A ```tuple``` can be conceptualised as an immutable archive of records. Each record only has a numeric index associated with the value and doesn't have a field name to describe what the value is. For example in the following tuple it is hard to distinguish what field is what:
+A ```tuple``` can be conceptualised as an immutable archive of records. Each record only has a numeric index associated with the value and doesn't have a field name to describe what the value is. Foar example in the following tuple it is hard to distinguish what field is what:
 
 ```
 (4, 3, 2023)
@@ -284,11 +284,32 @@ DateTuple(**d1)
 
 ![img_033](./images/img_033.png)
 
-The Spyder Variable Explorer, doesn't show the field names in a ```NamedTuple``` subclass and instead just displays it as an ordinary ```tuple```:
+Unfortunately the Spyder Variable Explorer doesn't fully support the ```collections``` module. The collapsed view shows the generic ```DateTuple``` object:
 
 ![img_034](./images/img_034.png)
 
+It should be updated to reflect the formal string which can be seen when an instance is shown in a cell output:
+
+```
+today
+```
+
+Recall the formal string representation uses the ```__repr__``` data model identifier and the informal string representation uses the ```__str__``` data model identifier which are more typically invoked using Pythons ```builtins``` function ```repr``` and ```str``` respectively:
+
+```
+repr(today)
+str(today)
+```
+
+![img_112](./images/img_112.png)
+
+The expanded view doesn't show the field names in a ```NamedTuple``` subclass and instead just displays it as an ordinary ```tuple```:
+
+![img_113](./images/img_113.png)
+
 It should look like the following:
+
+![img_117](./images/img_117.png)
 
 ![img_035](./images/img_035.png)
 
@@ -317,7 +338,31 @@ duoactive = deque(archive, 7)
 
 ![img_038](./images/img_038.png)
 
-The ```deque``` also doesn't display in the Variable Explorer. It can be conceptualised essentially as a ```list``` with some minor modifications:
+Unfortunately the Spyder Variable Explorer doesn't fully support the ```collections``` module. The collapsed view looks like the following:
+
+![img_114](./images/img_114.png)
+
+The expanded view doesn't show the ```deque```:
+
+![img_116](./images/img_116.png)
+
+It should be updated to reflect the formal string which can be seen when an instance is shown in a cell output:
+
+```
+duoactive
+```
+
+Recall the formal string representation uses the ```__repr__``` data model identifier and the informal string representation uses the ```__str__``` data model identifier which are more typically invoked using Pythons ```builtins``` function ```repr``` and ```str``` respectively:
+
+```
+repr(duoactive)
+str(duoactive)
+```
+
+![img_115](./images/img_115.png)
+
+
+It should be conceptualised essentially as a ```list``` with some minor modifications:
 
 ![img_039](./images/img_039.png)
 
@@ -495,7 +540,7 @@ If the directory function ```dir``` is used, all the identifiers are identical t
 pprint(dir(mapping), compact=True)
 ```
 
-![img_066](./images/img_066.png)
+![img_069](./images/img_069.png)
 
 When attempting to access a missing key, the ```__missing__``` data model is invoked. In the ```dict``` class, the missing ```__datamodel__``` method is not defined so a ```KeyError``` is given. In the ```defaultdict```, ```__missing__``` calls the provided ```default_factory``` callable generating a new ```key: value``` pair.
 
@@ -509,17 +554,34 @@ mapping['blue'] = '#0070C0'
 
 ![img_066](./images/img_066.png)
 
-![img_070](./images/img_070.png)
-
-![img_071](./images/img_071.png)
-
 When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
 
 ```
 mapping['yellow']
 ```
 
-![img_072](./images/img_072.png)
+Unfortunately the Spyder Variable Explorer doesn't fully support the ```collections``` module. The collapsed view shows the generic ```defaultdict``` object:
+
+![img_070](./images/img_070.png)
+
+It should be updated to reflect the formal string which can be seen when an instance is shown in a cell output:
+
+```
+mapping
+```
+
+Recall the formal string representation uses the ```__repr__``` data model identifier and the informal string representation uses the ```__str__``` data model identifier which are more typically invoked using Pythons ```builtins``` function ```repr``` and ```str``` respectively:
+
+```
+repr(mapping)
+str(mapping)
+```
+
+![img_118](./images/img_118.png)
+
+![img_071](./images/img_071.png)
+
+The expanded view displays a regular ```dict```, this like the regular ```dict``` should be shown in insertion order:
 
 ![img_073](./images/img_073.png)
 
@@ -541,8 +603,6 @@ mapping['b'] = ['bananas', 'beetroot']
 ```
 
 ![img_075](./images/img_075.png)
-
-![img_076](./images/img_076.png)
 
 ![img_077](./images/img_077.png)
 
@@ -596,8 +656,6 @@ mapping['blue'] = '#0070C0'
 
 ![img_083](./images/img_083.png)
 
-![img_084](./images/img_084.png)
-
 ![img_085](./images/img_085.png)
 
 When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
@@ -650,33 +708,234 @@ mapping = defaultdict(lambda: '#000000',
 
 ![img_092](./images/img_092.png)
 
-![img_093](./images/img_093.png)
-
-![img_094](./images/img_094.png)
-
-The formal string representation ```repr``` uses the data model method ```__repr__``` and the informal string representation uses the ```__str__``` data model methods:
+The formal string representation and the informal string representation can be returned using:
 
 ```
 repr(mapping)
 str(mapping)
 ```
 
-They widely follow this format:
-
 ![img_095](./images/img_095.png)
+
+For a ```lambda``` expression these give details about where the function is stored in memory opposed to the ```lambda``` expression itself which would be more useful.
 
 ## Counter
 
+In Python it is quite common to count the number of occurrences in an iterable. For example:
+
+```
+text = ['hello world!']
+```
+
+![img_096](./images/img_096.png)
+
+Conventionally this is done by casting text into a ```set```, recalling a ```set``` can only contain unique values:
+
+```
+unique = set(text)
+```
+
+![img_097](./images/img_097.png)
+
+An initial value of ```0``` is used:
+
+```
+value = 0
+```
+
+![img_098](./images/img_098.png)
+
+And a dictionary is instantiated using the alternative constructor: 
+
+```
+frequency = dict.fromkeys(unique, value)
+```
+
+![img_099](./images/img_099.png)
+
+![img_100](./images/img_100.png)
+
+The frequency of each ```letter``` in the ```word``` can be counted using a ```for``` loop:
+
+```
+for letter in text:
+    frequency[letter] += 1
 
 
+```
+
+![img_101](./images/img_101.png)
+
+![img_102](./images/img_102.png)
+
+![img_103](./images/img_103.png)
+
+This can obtained more coveniently using a ```Counter```:
+
+```
 from collections import Counter
+```
+
+![img_104](./images/img_104.png)
+
+The list of identifiers from the ```Counter``` subclass can be seen by inputting ```Counter.``` followed by 
+a tab ```↹```:
+
+![img_105](./images/img_105.png)
+
+The method resolution order can be seen by using:
+
+```
 Counter.mro()
+```
+
+![img_106](./images/img_106.png)
+
+The ```Counter``` is a subclass of the ```dict``` used for counting occurrences, simplifying the procedure to get a similar data structure above. The input arguments can be seen if the init signature of the ```Counter``` subclass by typing in the subclass name followed by open parenthesis and shift ```⇧``` + tab ```↹```:
+
+![img_107](./images/img_107.png)
+
+The operation:
+
+```
+text = 'hello world!'
+frequency = Counter(text)
+```
+
+![img_108](./images/img_108.png)
+
+![img_109](./images/img_109.png)
+
+Unfortunately the Spyder Variable Explorer doesn't fully support the ```collections``` module. The collapsed view shows the generic ```Counter``` object:
+
+![img_119](./images/img_119.png)
+
+It should be updated to reflect the formal string which can be seen when an instance is shown in a cell output:
+
+```
+frequency
+```
+
+Recall the formal string representation uses the ```__repr__``` data model identifier and the informal string representation uses the ```__str__``` data model identifier which are more typically invoked using Pythons ```builtins``` function ```repr``` and ```str``` respectively:
+
+```
+repr(frequency)
+str(frequency)
+```
+
+![img_120](./images/img_120.png)
+
+![img_121](./images/img_121.png)
+
+The expanded view displays a regular ```dict```, this like the regular ```dict``` should be shown in insertion order. Unlike the more conventional method where an unordered ```set``` was used as an intermediate step and a random insertion order was obtained. In this example the key insertion order is by first appearance of the key. In this case a key was ordered by first appearance of a Unicode character in ```text```:
+
+![img_110](./images/img_110.png)
+
+Most
+
+frequency.items()
+
+frequencies.total()
+
+frequencies.most_common()
+
+frequency.update('hello')
+
+frequency.most_common()
+
+frequency.subtract('bye world!')
+
+frequency.most_common()
+
+
+
+
+forward = frequencies.elements()
+next(forward)
+next(forward)
+
+
+tuple(frequencies.elements())
+
+
+
+
+
+
+
+
+frequencies = Counter(('g', 'r', 'g', 'b', 'r', 'r', 'r'))
+
+
+
 
 
 ## ChainMap
 
+```
+from collections import ChainMap
+```
 
 
+```
+ChainMap.mro()
+```
+
+```
+default = {'textcolor': '#000000', 
+           'font': 'Times New Roman', 
+           'fontsize': 12}
+```
+
+
+```
+settings = {'textcolor': '#FF0000'}
+```
+
+
+```
+config = ChainMap(settings, default)
+```
+
+
+```
+config['textcolor']
+config['font']
+config['fontsize']
+```
+
+
+```
+settings['fontsize'] = 72
+config['fontsize']
+```
+
+
+```
+config['fontsize'] = 48
+settings['fontsize']
+```
+
+
+
+
+The formal ```str``` representation and informal
+
+```
+repr(config)
+str(config)
+```
+
+```
+config.keys()
+config.values()
+config.itemss()
+```
+
+```
+for key in config.keys():
+    config[key]
+```
 
 ## UserString, UserList, UserDict
 
