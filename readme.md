@@ -50,11 +50,31 @@ The concept of an iterators was covered briefly when looking at programming cons
 
 [Iterator Tools Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/009_itertools_module/readme.md) 
 
+## Math and Statistics
 
+The Math Module
 
+The Random Module
 
+The Date and Time Module
 
+The Statistics Module
 
+## File Operations
+
+The Operating Sytem Module
+
+The Comma Seperated Values Module
+
+The Pickle Module
+
+The JavaScript Object Notation Module
+
+## Programming Constructs Continued
+
+Creating Custom Modules and the System Module
+
+Creating Custom Classes
 
 
 
