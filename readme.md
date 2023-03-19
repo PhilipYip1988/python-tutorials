@@ -46,7 +46,9 @@ The builtins module contains the ```str```, ```list```, ```tuple```, ```set``` a
 
 [Collections Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/008_collections_module/readme.md) 
 
+The concept of an iterators was covered briefly when looking at programming constructs using code blocks. The ```builtins``` module contains commonly used iterators such as the ```zip```, ```filter``` and ```map``` iterator classes. Python also has an iterator module ```itertools``` that contains ```zip_longest```, ```filterfalse```, and ```starmap``` iterator classes which complement their similar counterpart in ```builtins```. The itertools module also has a ```cycle```, ```repeat``` and ```count``` iterator classes which are endless iterators. The ```cycle``` iterator can be used to continuously index around a collection, returning to the top after reaching the bottom. Like the collections module, the itertools module is one of the closest modules to Python builtins. Effective use of these two modules simplifies common programming tasks and generally makes the code more Pythonic and easier to read:
 
+[Iterator Tools Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/009_itertools_module/readme.md) 
 
 
 
@@ -79,9 +81,7 @@ The queue module contains the SimpleQueue, Queue, LIFOQueue, PriorityQueue class
 [Queue Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/017_queue/readme.md)
 
 
-The concept of an iterators was covered briefly when looking at inbuilt collections and constructing a for loop. The builtins module contains commonly used iterators such as the zip, filter and map iterator classes. Python also has an iterator module itertools that contains zip_longest, filterfalse, and starmap iterator classes which complement their similar counterpart in builtins. The itertools module also has a cycle, repeat and count iterator classes which are endless iterators. The cycle iterator can be used to continuously index around a collection, returning to the top after reaching the bottom. Like the collections module, the itertools module is one of the closest modules to Python builtins. Effective use of these two modules simplifies common programming tasks and generally makes the code more Pythonic and easier to read:
 
-[Iterator Tools Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/019_itertools/readme.md) 
 
 ## Standard Modules
 
