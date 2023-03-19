@@ -831,55 +831,121 @@ The expanded view displays a regular ```dict```, this like the regular ```dict``
 
 ![img_110](./images/img_110.png)
 
-Most
+If the ```items``` identifier inherited from the ```dict``` parent class is used a list of ```tuple``` pairs displays; the first element is the key and the second element is the ```int``` value denoting the number of counts of that element. These are shown in insertion order:
 
+```
 frequency.items()
+```
 
-frequencies.total()
+![img_122](./images/img_122.png)
 
-frequencies.most_common()
+The ```total``` identifier will sum all the values returning the total:
 
+```
+frequency.total()
+```
+
+![img_123](./images/img_123.png)
+
+The ```most_common``` identifier, displays items essentially reverse sorted by the reverse number of counts.
+
+```
+frequency.most_common()
+```
+
+![img_124](./images/img_124.png)
+
+The ```update``` identifier is a mutable method that can be used to add counts of existing keys and supplementary keys in place. For example:
+
+```
 frequency.update('hello')
-
 frequency.most_common()
+```
 
+![img_125](./images/img_125.png)
+
+The ```subtract``` identifier is a mutable method that can be used to subtract counts of existing keys and show supplementary keys with negative values in place. For example:
+
+```
 frequency.subtract('bye world!')
-
 frequency.most_common()
+```
 
+![img_126](./images/img_126.png)
 
+As the value is always an integer, inplace assignment or subtraction operators are commonly used to update a single value:
 
+```
+frequency['b'] += 5
+frequency['y'] -= 5
+frequency.most_common()
+```
 
-forward = frequencies.elements()
+![img_127](./images/img_127.png)
+
+The identifier ```elements``` returns an iterator of all the elements in the ```counter``` with positive values:
+
+```
+forward = frequency.elements()
 next(forward)
 next(forward)
+```
 
+![img_128](./images/img_128.png)
 
-tuple(frequencies.elements())
+To exhaust all elements in the iterator, it can be cast into a ```tuple```:
 
+```
+tuple(forward)
+```
 
+![img_129](./images/img_129.png)
 
+Note that the iterator follows the insertion order used in ```items```:
 
+```
+frequency.items()
+tuple(frequency.elements())
+```
 
+![img_130](./images/img_130.png)
 
+```'h'``` has a count value of ```2``` so displays twice, ```'e'``` has a count value of ```1``` so displays once and so on...
 
+The format of elements being cast into a tuple is generally used to create a new ```Counter``` instance from an iterable:
 
-frequencies = Counter(('g', 'r', 'g', 'b', 'r', 'r', 'r'))
+```
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
+record_frequencies = Counter(archive)
+```
 
+![img_131](./images/img_131.png)
 
-
-
+![img_132](./images/img_132.png)
 
 ## ChainMap
+
+A ```ChainMap``` is used to chain dictionaries together. It can be imported using:
 
 ```
 from collections import ChainMap
 ```
 
+![img_133](./images/img_133.png)
+
+Its identifiers can be viewed by typing in ```ChainMap.``` followed by a tab ```↹```:
+
+![img_134](./images/img_134.png)
+
+Its method resolution order can be examined using:
 
 ```
 ChainMap.mro()
 ```
+
+![img_135](./images/img_135.png)
+
+A common use case is combining a dicitonary with default options:
 
 ```
 default = {'textcolor': '#000000', 
@@ -887,6 +953,7 @@ default = {'textcolor': '#000000',
            'fontsize': 12}
 ```
 
+With one for user settings:
 
 ```
 settings = {'textcolor': '#FF0000'}
