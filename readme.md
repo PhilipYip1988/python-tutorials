@@ -42,6 +42,22 @@ Indentation and spacing is very important in Python and code is often grouped in
 
 [Programming Constructs using Code Blocks](https://github.com/PhilipYip1988/python-tutorials/blob/main/007_programming_constructs_with_code_blocks/readme.md)
 
+The builtins module contains the ```str```, ```list```, ```tuple```, ```set``` and ```dict``` collections. The collections module includes a number of additional collections which supplement these such as the ```NamedTuple``` which is a ```tuple``` subclass that has field names, ```deque``` (double ended queue) that is list like, ```defaultdict``` which is a ```dict``` subclass with default behaviour when new keys that don't exist are indexed, and ```Counter``` which is a ```dict``` subclass used for counting. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python ```builtins```. Learning this module at this stage will build an understanding for subclassing:
+
+[Collections Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/008_collections_module/readme.md) 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 Old versions/drafts below, to be updated.
@@ -62,9 +78,6 @@ The queue module contains the SimpleQueue, Queue, LIFOQueue, PriorityQueue class
 
 [Queue Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/017_queue/readme.md)
 
-The builtins module contains the str, list, tuple, set and dict collections. The collections module includes a number of additional collections which supplement these such as the deque (double ended queue that is list like), defaultdict (dictionary with default behaviour for new keys), NamedTuple (tuple with named fields) and Counter (dictionary of counts) collection. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python builtins.
-
-[Collections Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/018_collections/readme.md) 
 
 The concept of an iterators was covered briefly when looking at inbuilt collections and constructing a for loop. The builtins module contains commonly used iterators such as the zip, filter and map iterator classes. Python also has an iterator module itertools that contains zip_longest, filterfalse, and starmap iterator classes which complement their similar counterpart in builtins. The itertools module also has a cycle, repeat and count iterator classes which are endless iterators. The cycle iterator can be used to continuously index around a collection, returning to the top after reaching the bottom. Like the collections module, the itertools module is one of the closest modules to Python builtins. Effective use of these two modules simplifies common programming tasks and generally makes the code more Pythonic and easier to read:
 

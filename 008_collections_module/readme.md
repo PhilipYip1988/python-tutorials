@@ -14,7 +14,7 @@ And the modules docstring can be viewed:
 
 ![img_001](./images/img_001.png)
 
-The most important classes are listed. The three in lower case were orginally designed to become.
+The most important classes are listed. 
 
 ## namedtuple
 
@@ -234,7 +234,7 @@ yesterday._field_defaults
 
 ![img_027](./images/img_027.png)
 
-```asdict``` is a method that returns a dictionary where the keys are the field names and the values are the default values:
+```asdict``` is a method that returns a dictionary where the keys are the field names and the values are the values:
 
 ```
 yesterday._asdict
@@ -307,7 +307,7 @@ The expanded view doesn't show the field names in a ```NamedTuple``` subclass an
 
 ![img_113](./images/img_113.png)
 
-It should look like the following:
+It should look instead be updated to like the following:
 
 ![img_117](./images/img_117.png)
 
@@ -362,9 +362,11 @@ str(duoactive)
 ![img_115](./images/img_115.png)
 
 
-It should be conceptualised essentially as a ```list``` with some minor modifications:
+It should be updated to look like the following:
 
 ![img_039](./images/img_039.png)
+
+In the expanded view it should be conceptualised essentially as a ```list``` with some minor modifications:
 
 ![img_040](./images/img_040.png)
 
@@ -560,9 +562,11 @@ When a key is indexed that does not exist, the ```default_factory``` callable is
 mapping['yellow']
 ```
 
+![img_157](./images/img_157.png)
+
 Unfortunately the Spyder Variable Explorer doesn't fully support the ```collections``` module. The collapsed view shows the generic ```defaultdict``` object:
 
-![img_070](./images/img_070.png)
+![img_156](./images/img_156.png)
 
 It should be updated to reflect the formal string which can be seen when an instance is shown in a cell output:
 
@@ -580,6 +584,8 @@ str(mapping)
 ![img_118](./images/img_118.png)
 
 ![img_071](./images/img_071.png)
+
+![img_155](./images/img_155.png)
 
 The expanded view displays a regular ```dict```, this like the regular ```dict``` should be shown in insertion order:
 
@@ -791,7 +797,7 @@ Counter.mro()
 
 ![img_106](./images/img_106.png)
 
-The ```Counter``` is a subclass of the ```dict``` used for counting occurrences, simplifying the procedure to get a similar data structure above. The input arguments can be seen if the init signature of the ```Counter``` subclass by typing in the subclass name followed by open parenthesis and shift ```⇧``` + tab ```↹```:
+The ```Counter``` is a subclass of the ```dict``` used for counting occurrences, simplifying the procedure to get a similar data structure above. The input arguments can be seen for the init signature of the ```Counter``` subclass by typing in the subclass name followed by open parenthesis and shift ```⇧``` + tab ```↹```:
 
 ![img_107](./images/img_107.png)
 
@@ -945,7 +951,7 @@ ChainMap.mro()
 
 ![img_135](./images/img_135.png)
 
-A common use case is combining a dicitonary with default options:
+A common use case is combining a dictionary with default options:
 
 ```
 default = {'textcolor': '#000000', 
@@ -953,17 +959,64 @@ default = {'textcolor': '#000000',
            'fontsize': 12}
 ```
 
-With one for user settings:
+With one for user preferences:
 
 ```
 settings = {'textcolor': '#FF0000'}
 ```
 
+![img_136](./images/img_136.png)
+
+These can be viewd in the Variable Explorer:
+
+![img_137](./images/img_137.png)
+
+![img_138](./images/img_138.png)
+
+![img_139](./images/img_139.png)
+
+A ```ChainMap``` is essentially a ```dict``` like data structure that takes any setting from ```setting``` where available and when not available takes it from ```default```. The input arguments can be seen for the init signature of the ```Counter``` subclass by typing in the subclass name followed by open parenthesis and shift ```⇧``` + tab ```↹```:
+
+![img_140](./images/img_140.png)
+
+```*maps``` is a variable number of input arguments. In this example, ```settings``` and ```default``` are supplied. ```settings``` will be the primary ```dict``` where custom preferences have been specified and ```default``` will be the secondary ```dict``` where default preferences are specified:
 
 ```
 config = ChainMap(settings, default)
 ```
 
+![img_141](./images/img_141.png)
+
+Unfortunately the Spyder Variable Explorer doesn't fully support the ```collections``` module. The collapsed view shows the generic ```ChainMap``` object:
+
+![img_142](./images/img_142.png)
+
+It should be updated to reflect the formal string which can be seen when an instance is shown in a cell output:
+
+```
+config
+```
+
+Recall the formal string representation uses the ```__repr__``` data model identifier and the informal string representation uses the ```__str__``` data model identifier which are more typically invoked using Pythons ```builtins``` function ```repr``` and ```str``` respectively:
+
+```
+repr(config)
+str(config)
+```
+
+![img_143](./images/img_143.png)
+
+![img_144](./images/img_144.png)
+
+The expanded view doesn't show the ```ChainMap```:
+
+![img_145](./images/img_145.png)
+
+The data structure should look like the following:
+
+![img_146](./images/img_146.png)
+
+If a key is indexed, it will display the value:
 
 ```
 config['textcolor']
@@ -971,43 +1024,78 @@ config['font']
 config['fontsize']
 ```
 
+![img_147](./images/img_147.png)
+
+The ```ChainMap``` instance ```config``` is linked to the two original dictionaries. If a value in ```settings``` is changed, it is updated in ```config```:
 
 ```
 settings['fontsize'] = 72
 config['fontsize']
 ```
 
+![img_148](./images/img_148.png)
+
+Likewise if a value in ```config``` is changed, it is updated in ```settings```:
 
 ```
 config['fontsize'] = 48
 settings['fontsize']
 ```
 
+![img_149](./images/img_149.png)
 
-
-
-The formal ```str``` representation and informal
+If a value in ```default``` is changed, that is not in ```settings```, ```config``` will be updated:
 
 ```
-repr(config)
-str(config)
+default['font'] = 'Arial'
+config['font']
 ```
+
+![img_150](./images/img_150.png)
+
+The ```ChainMap``` instance ```config``` has  ```keys```, ```values``` and ```items```. The ```repr``` for these have been updated:
 
 ```
 config.keys()
 config.values()
-config.itemss()
+config.items()
 ```
+
+![img_151](./images/img_151.png)
+
+However when used in a ```for``` loop behave identically to their counterpart in the ```dict``` class:
 
 ```
 for key in config.keys():
-    config[key]
+    print(f'{key}: {config[key]}')
+
+
 ```
+
+![img_152](./images/img_152.png)
+
+The attribute ```parents``` shows the form of the ```ChainMap``` parent in ```dict```-like form. The related attribute ```maps``` returns a list of the maps by order:
+
+```
+config.parents
+config.maps
+```
+
+![img_153](./images/img_153.png)
+
+The method ```new_child``` can be used to create a new ```ChainMap``` instance using the ```new_child``` as the primary ```dict``` and the previous maps as the secondary ```dict``` and tertiary ```dict```...:
+
+```
+settings2 = {'textcolor': '#FFFF00'}
+config2 = config.new_child(settings2)
+config2.parents
+config2.maps
+```
+
+![img_154](./images/img_154.png)
 
 ## UserString, UserList, UserDict
 
+```UserString```, ```UserList``` and ```UserDict``` behave similarly to the ```str```, ```list``` and ```dict``` classes in ```builtins```. Their main purpose is user custom  subclassing which will be discussed in a subsequent tutorial.
 
-
-
-
-
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
