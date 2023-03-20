@@ -1017,25 +1017,141 @@ The ```itertools.compress``` class can be used to compress data using a selector
 
 ![img_123](./images/img_123.png)
 
+For example, the data can be the ```tuple``` instance ```letters``` and the selector can be the ```tuple``` instance ```conditions```. Both of these have the same length:
 
+```
+letters = ('a', 'b', 'c', 'd', 'e', 'f')
+conditions = (True, True, False, False, True, True)
+```
 
+The compressed iterator is therefore:
 
+```
+forward = itertools.compress(letters, conditions)
+forward
+```
 
+![img_124](./images/img_124.png)
 
+This displays in the variable explorer:
 
+![img_125](./images/img_125.png)
 
+When ```next``` is called, the next value in the sequence is returned where the selector is ```True```: 
 
+```
+next(forward)
+```
 
+![img_126](./images/img_126.png)
 
+```
+next(forward)
+```
 
+![img_127](./images/img_127.png)
+
+```
+next(forward)
+```
+
+![img_128](./images/img_128.png)
+
+This can be seen more clearly when casting to a ```tuple```:
+
+```
+tuple(itertools.compress(letters, conditions))
+```
+
+![img_129](./images/img_129.png)
 
 ### combinations
 
+The ```itertools.combinations``` class can be used to display the unique combinations available from items in an iterable using a r-length. This is best visualised pictorially. For example if the iterable has three color circles and a r-length of 2. The combinations would look like:
+
+![img_130](./images/img_130.png)
+
+Its initialization signature can be viewed by inputting ```itertools.combinations()``` and pressing shift ```⇧``` and tab ```↹```. It has the input arguments ```iterable``` and ```r```:
+
+![img_131](./images/img_131.png)
+
+The example above can be created using:
+
+```
+colors = ('c', 'y', 'm')
+forward = itertools.combinations(colors, 2)
+forward
+tuple(forward)
+```
+
+![img_132](./images/img_132.png)
+
 ### combinations_with_replacement
+
+The ```itertools.combinations_with_replacement``` class can be used to display the unique combinations available from items in an iterable using a r-length when the items in the iterable can be duplciated. This is best visualised pictorially. For example if the iterable has three color circles and a r-length of 2. The combinations with replacement would look like:
+
+![img_133](./images/img_133.png)
+
+Its initialization signature can be viewed by inputting ```itertools.itertools.combinations_with_replacement()``` and pressing shift ```⇧``` and tab ```↹```. It has the input arguments ```iterable``` and ```r```:
+
+![img_134](./images/img_134.png)
+
+The example above can be created using:
+
+```
+colors = ('c', 'y', 'm')
+forward = itertools.combinations_with_replacement(colors, 2)
+forward
+tuple(forward)
+```
+
+![img_135](./images/img_135.png)
 
 ### permutations
 
+The ```itertools.permutations``` class can be used to display the unique permutations available from items in an iterable using a r-length. In a combination, the order of the values in the ```tuple``` representing the combination doesn't matter. In a permutation this order matters. This is best visualised pictorially. For example if the iterable has three color circles and a r-length of 2. The combinations would look like:
+
+![img_136](./images/img_136.png)
+
+Its initialization signature can be viewed by inputting ```itertools.permutations()``` and pressing shift ```⇧``` and tab ```↹```. It has the input arguments ```iterable``` and ```r```:
+
+![img_137](./images/img_137.png)
+
+The example above can be created using:
+
+```
+colors = ('c', 'y', 'm')
+forward = itertools.permutations(colors, 2)
+forward
+tuple(forward)
+```
+
+![img_138](./images/img_138.png)
+
 ### product
+
+The ```itertools.product``` class can be used to display the unique permutations with replacement available from items in an iterable using a r-length. This is best visualised pictorially. For example if the iterable has three color circles and a r-length of 2. The product would look like:
+
+![img_139](./images/img_139.png)
+
+Its initialization signature can be viewed by inputting ```itertools.product()``` and pressing shift ```⇧``` and tab ```↹```. It uses different input arguments to the init signatures of the similar classes. It has a variable number of input argument ```*iterables``` and the ```repeat``` keyword input argument:
+
+![img_140](./images/img_140.png)
+
+When a single iterable is supplied and ```repeat``` is assigned to the previously used r-length, this calculates the permutations with replacement:
+
+```
+colors = ('c', 'y', 'm')
+forward = itertools.product(colors, repeat=2)
+forward
+tuple(forward)
+```
+
+![img_141](./images/img_141.png)
+
+If multiple iterables are supplied ...
+
+
 
 ### groupby
 
