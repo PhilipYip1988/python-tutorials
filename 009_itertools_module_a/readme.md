@@ -972,13 +972,62 @@ This can be seen more clearly by casting to a ```tuple```:
 
 ### takewhile
 
-The ```itertools.takewhile``` class will take each item in an iterable until a predicate is taken to be ```False```. i.e. the first ```False``` acts as a trigger point dropping this value and all subsequent items. Its initialization signature can be viewed by inputting ```itertools.takewhile()``` and pressing shift ```⇧``` and tab ```↹```. It has the input arguments ```predicate``` and ```iterable```. These are followed by a ```/``` which indicates the input arguments are to be provided positionally only:
+The ```itertools.takewhile``` class is the inverse of the ```itertools.dropwhile``` class. It will take each item in an iterable until a predicate is taken to be ```False```. i.e. the first ```False``` acts as a trigger point and all values dropping this value and all subsequent items. Its initialization signature can be viewed by inputting ```itertools.takewhile()``` and pressing shift ```⇧``` and tab ```↹```. It has the input arguments ```predicate``` and ```iterable```. These are followed by a ```/``` which indicates the input arguments are to be provided positionally only:
 
+![img_118](./images/img_118.png)
 
+The same example can be viewed as before:
 
+```
+letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')
+forward = itertools.takewhile(lambda x: x != 'd', letters)
+forward
+```
 
+![img_119](./images/img_119.png)
+
+This displays in the Variable Explorer:
+
+![img_120](./images/img_120.png)
+
+When ```next``` is called, the next value in the sequence is returned unless the condition is ```False```, at this point the iterator is exhausted: 
+
+```
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![img_121](./images/img_121.png)
+
+The two classes are complementary to each toher and this can be seen when casting to a ```tuple```:
+
+```
+letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')
+tuple(itertools.takewhile(lambda x: x != 'd', letters))
+tuple(itertools.dropwhile(lambda x: x != 'd', letters))
+```
+
+![img_122](./images/img_122.png)
 
 ### compress
+
+The ```itertools.compress``` class can be used to compress data using a selector. Its initialization signature can be viewed by inputting ```itertools.compress()``` and pressing shift ```⇧``` and tab ```↹```. It has the input arguments ```data``` and ```selectors```:
+
+![img_123](./images/img_123.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### combinations
 
