@@ -2,19 +2,19 @@
 
 ## Recap Iterators
 
-A range object can be created using:
+A ```range``` instance can be created using:
 
 ```
 range(10)
 ```
 
-This can be cast into a ```list``` using the list class to view all of the values in the range object:
+This can be cast into a ```tuple``` to view all of the values:
 
 ```
-list(range(10))
+tuple(range(10))
 ```
 
-The range object can also be cast into an iterator using the ```iter``` class:
+The ```range``` instance can also be cast into an iterator:
 
 ```
 iter(range(10))
@@ -30,7 +30,7 @@ inumber = iter(range(10))
 
 ![img_002](./images/img_002.png)
 
-Unlike a list, the values in an iterator are not displayed by default. The reason for this is to optimise for memory management. An iterator has a current state, the value of the first state can be seen using the ```next``` function on the iterator. Repeated use of the ```next``` function steps through the iterator displaying each value in the iterator one by one:
+Unlike a ```tuple```, the values in an iterator are not displayed by default. The reason for this is to optimise for memory management. An iterator has a current state, the value of the first state can be seen using the ```next``` function on the iterator. Repeated use of the ```next``` function steps through the iterator displaying each value in the iterator one by one:
 
 ```
 next(inumber)
@@ -40,18 +40,17 @@ next(inumber)
 
 ![img_003](./images/img_003.png)
 
-Any previous value accessed is dismissed and it is not possible to move backwards. Casting to a list, will exhaust all remaining values in the iterator:
+Any previous value accessed is dismissed and it is not possible to move backwards. Casting to a ```tuple```, will exhaust all remaining values in the iterator:
 
 ```
-for num in inumber:
-    print(num)
+tuple(inumber)
 ```
 
 ![img_004](./images/img_004.png)
 
 ## itertools module
 
-Additional iterator classes are available in the ```iterators``` module. This can be imported using:
+Additional iterator classes are available in the ```iterators``` module. The module can be imported using:
 
 ```
 import itertools
@@ -108,9 +107,9 @@ Both sides of a zip are normally the same size and in such a case both classes b
 ```
 import builtins
 import itertools
-nums = [0, 1, 2, 3]
+nums = (0, 1, 2, 3)
 nums
-letters = ["a", "b", "c", "d", "e", "f"]
+letters = ('a', 'b', 'c', 'd', 'e', 'f')
 letters
 zip(nums, letters)
 itertools.zip_longest(nums, letters)
@@ -118,24 +117,24 @@ itertools.zip_longest(nums, letters)
 
 ![img_011](./images/img_011.png)
 
-The zipped objects will be assigned to variables and then cast to a list so their elements can be readily inspected:
+The zipped objects will be assigned to variables and then cast to a ```tuple``` so their elements can be readily inspected:
 
 ```
 izip_short = zip(nums, letters)
 izip_long = itertools.zip_longest(nums, letters)
-zip_short = list(izip_short)
+zip_short = tuple(izip_short)
 zip_short
-zip_long = list(izip_long)
+zip_long = tuple(izip_long)
 zip_long
 ```
 
 ![img_013](./images/img_013.png)
 
-```zip``` is commonly used to cast two lists into a dictionary:
+```zip``` is commonly used to cast two ```tuples``` into a dictionary:
 
 ```
-letters = ["a", "b", "c", "d"]
-numbers = [1, 2, 3, 4]
+letters = ('a', 'b', 'c', 'd')
+numbers = (1, 2, 3, 4)
 idata = zip(letters, numbers)
 idata
 data = dict(idata)
@@ -147,8 +146,8 @@ data
 The ```zip``` class can also be used to unzip data which is zipped. i.e. is an iterable of equally sized tuples. To demonstrate this two lists can be zipped together and then unzipped. When unzipping, a ```*``` is prefixed in front of the iterable of zipped values:
 
 ```
-letters = ["a", "b", "c", "d"]
-numbers = [1, 2, 3, 4]
+letters = ('a', 'b', 'c', 'd')
+numbers = (1, 2, 3, 4)
 idata = zip(letters, numbers)
 idata
 data = list(idata)
@@ -306,14 +305,14 @@ An iterator can be used as an iterable in place of a collection list for a large
 
 ![img_027](./images/img_027.png)
 
-An iterator which repeats ```"Hello World!"```, ten times can be created and used in a for loop:
+An iterator which repeats ```'Hello World!'```, ten times can be created and used in a for loop:
 
 ```
-igreeting = itertools.repeat("Hello World!", 10)
+igreeting = itertools.repeat('Hello World!', 10)
 
 idx = 0
 for greeting in igreeting:
-    print(f"{idx}: {greeting}")
+    print(f'{idx}: {greeting}')
     idx += 1
 
 
@@ -324,11 +323,11 @@ for greeting in igreeting:
 If the value is not specified, the iterator will be endless i.e. have a length of infinity:
 
 ```
-igreeting = itertools.repeat("Hello World!")
+igreeting = itertools.repeat('Hello World!')
 
 idx = 0
 for greeting in igreeting:
-    print(f"{idx}: {greeting}")
+    print(f'{idx}: {greeting}')
     idx += 1
 
 
@@ -446,7 +445,7 @@ The ```cycle``` class from ```itertools``` can be used to create an iterator tha
 For example a cyclic list:
 
 ```
-fruits = ["apples", "bananas", "grapes"]
+fruits = ['apples', 'bananas', 'grapes']
 ifruits = itertools.cycle(fruits)
 next(ifruits)
 next(ifruits)
@@ -459,7 +458,7 @@ next(ifruits)
 Or a dictionary:
 
 ```
-colors = {"r": "red", "g": "green", "b": "blue"}
+colors = {'r': 'red', 'g': 'green', 'b': 'blue'}
 icolors = itertools.cycle(colors)
 next(icolors)
 colors[next(icolors)]
@@ -516,9 +515,9 @@ next(inumbers)
 The ```+``` operator is used for collections to perform concantentation:
 
 ```
-letters1 = "h e l l o".split()
+letters1 = 'h e l l o'.split()
 letters1
-letters2 = "w o r l d".split()
+letters2 = 'w o r l d'.split()
 letters2
 letters1 + letters2
 ```
@@ -536,9 +535,9 @@ Instead the ```chain``` class from ```itertools``` can be used to chain multiple
 This can be demonstrated using:
 
 ```
-letters1 = "h e l l o".split()
+letters1 = 'h e l l o'.split()
 letters1
-letters2 = "w o r l d".split()
+letters2 = 'w o r l d'.split()
 letters2
 iletters1 = iter(letters1)
 iletters2 = iter(letters2)
@@ -551,9 +550,9 @@ list(iletters)
 Chaining isn't the same as concatenation. Each of the original iterators chained will be consumed as the cain operator is steped through. This can be seen below for example:
 
 ```
-letters1 = "h e l l o".split()
+letters1 = 'h e l l o'.split()
 letters1
-letters2 = "w o r l d".split()
+letters2 = 'w o r l d'.split()
 letters2
 iletters1 = iter(letters1)
 iletters2 = iter(letters2)
@@ -670,7 +669,7 @@ The ```combinations``` class from ```itertools``` can be used to create an itera
 ![img_062](./images/img_062.png)
 
 ```
-colors = ["g", "p", "r"]
+colors = ['g', 'p', 'r']
 icombinations = itertools.combinations(colors, 2)
 icombinations
 combinations = list(icombinations)
@@ -680,7 +679,7 @@ combinations
 ![img_063](./images/img_063.png)
 
 ```
-colors = ["g", "p", "r"]
+colors = ['g', 'p', 'r']
 ipermutations = itertools.permutations(colors, 2)
 ipermutations
 permutations = list(ipermutations)
@@ -698,7 +697,7 @@ The ```combinations_with_replacement``` class from ```itertools``` can be used t
 ![img_066](./images/img_066.png)
 
 ```
-colors = ["g", "p", "r"]
+colors = ['g', 'p', 'r']
 icombinations = itertools.combinations_with_replacement(colors, 2)
 icombinations
 combinations = list(icombinations)
@@ -712,7 +711,7 @@ The ```product``` class from ```itertools``` is essentially *```*permutations wi
 ![img_068](./images/img_068.png)
 
 ```
-colors = ["g", "p", "r"]
+colors = ['g', 'p', 'r']
 iproduct = itertools.product(colors, repeat=2)
 iproduct
 products = list(iproduct)
@@ -724,7 +723,7 @@ products
 It is also possible to look at the product of multiple iterables:
 
 ```
-colors = ["g", "r"]
+colors = ['g', 'r']
 nums = [1, 2]
 iproduct = itertools.product(colors, nums, repeat=1)
 iproduct
@@ -791,9 +790,9 @@ A very simple function can be created to define custom keys. Notice that each ke
 ```
 def grade(value):
     if(value>1):
-        return "good"
+        return 'good'
     else:
-        return "bad"
+        return 'bad'
 
 
 keys = []

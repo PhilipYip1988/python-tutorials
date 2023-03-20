@@ -583,8 +583,6 @@ str(mapping)
 
 ![img_118](./images/img_118.png)
 
-![img_071](./images/img_071.png)
-
 ![img_155](./images/img_155.png)
 
 The expanded view displays a regular ```dict```, this like the regular ```dict``` should be shown in insertion order:
@@ -662,8 +660,6 @@ mapping['blue'] = '#0070C0'
 
 ![img_083](./images/img_083.png)
 
-![img_085](./images/img_085.png)
-
 When a key is indexed that does not exist, the ```default_factory``` callable is used. For example: 
 
 ```
@@ -671,8 +667,6 @@ mapping['yellow']
 ```
 
 ![img_086](./images/img_086.png)
-
-![img_087](./images/img_087.png)
 
 Which looks to ```default_factory``` which gives the return value which was the ```'#000000'```.
 
@@ -701,7 +695,6 @@ mapping['black']
 
 ![img_090](./images/img_090.png)
 
-![img_091](./images/img_091.png)
 
 The initialization signature of the ```defaultdict``` takes a callable as its first input argument and can also take in a dictionary as a second keyword argument, initializing it with a number of items:
 
@@ -967,7 +960,7 @@ settings = {'textcolor': '#FF0000'}
 
 ![img_136](./images/img_136.png)
 
-These can be viewd in the Variable Explorer:
+These can be viewed in the Variable Explorer:
 
 ![img_137](./images/img_137.png)
 
