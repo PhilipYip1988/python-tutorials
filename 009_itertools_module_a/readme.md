@@ -1149,8 +1149,30 @@ tuple(forward)
 
 ![img_141](./images/img_141.png)
 
-If multiple iterables are supplied ...
+If multiple iterables of equal length are supplied, the product creates an iterator. When ```next``` is called a ```tuple``` is returned which takes a value from each of the sequences:
 
+```
+letters = ('a', 'b', 'c')
+nums = (1, 2, 3)
+
+forward = itertools.product(letters, nums)
+forward
+
+tuple(forward)
+```
+
+![img_142](./images/img_142.png)
+
+If multiple iterables of equal length are supplied, and ```repeat``` is assigned to 2, the the ```tuple``` returned has two values from each sequence. For example:
+
+```
+forward = itertools.product(letters, nums, repeat=2)
+forward
+
+tuple(forward)
+```
+
+![img_143](./images/img_143.png)
 
 
 ### groupby
