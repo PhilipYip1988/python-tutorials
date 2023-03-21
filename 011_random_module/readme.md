@@ -417,10 +417,10 @@ random.getrandbits(4)
 The ```byte``` consists of hexadecimal values in the form ```\x00```, if the hexadecimal value is in the range ```0x00``` to ```0x7f```, it is an ASCII character and the ASCII character is printable or non-printable but displayed in Python as an escape character such as the tab ```\t``` the escape character will display instead. The hex values of these can be seen by using the ```ord``` function on the character enclosed by the ```hex``` function:
 
 ```
-hex(ord("L"))
-hex(ord("\t"))
-hex(ord("U"))
-hex(ord("k"))
+hex(ord('L'))
+hex(ord('\t'))
+hex(ord('U'))
+hex(ord('k'))
 ```
 
 ![img_040](./images/img_040.png)

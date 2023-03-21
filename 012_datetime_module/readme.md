@@ -1100,9 +1100,9 @@ time.sleep()
 This function is used to delay execution of Python code by the specified number of seconds. For example:
 
 ```
-print(f"Hello World")
+print(f'Hello World')
 time.sleep(5)
-print(f"Goodbye World")
+print(f'Goodbye World')
 ```
 
 The beginning executes:
