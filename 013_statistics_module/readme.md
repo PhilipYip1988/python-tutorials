@@ -18,7 +18,7 @@ The docstring of the statistics module is pretty detailed can be examined by inp
 
 ![img_002](./images/img_002.png)
 
-As seen from the docmenation, the module contains a collection of functions for calculating averages:
+As seen from the documentation, the module contains a collection of functions for calculating averages:
 
 |function|description|
 |---|---|
