@@ -59,12 +59,12 @@ These functions can be tested using:
 ```
 math.radians(1)
 math.degrees(1)
-math.degrees(2*pi)
+math.degrees(2 * pi)
 ```
 
 ![img_157](./images/img_157.png)
 
-Conceptually it can be seen that a radian is approximately 57.3 degrees. This is to be expected as 360 degrees/6 is 60 degrees. The denominator 6 is just slightly smaller than $2\pi$ so 360 degrees/$2\pi$ is 57.3 degrees which is just slightyl smaller than 60 degrees.
+Conceptually it can be seen that a radian is approximately 57.3 degrees. This is to be expected as 360 degrees/6 is 60 degrees. The denominator 6 is just slightly smaller than $2\pi$ so 360 degrees/ $2\pi$ is 57.3 degrees which is just slightly smaller than 60 degrees.
 
 There was also an attempt to decimalise the degree making another unit known as a grad where 100 grads make a right angle. The grad was never commonly employed as 90 is more divisible than 100 for example by 3 and 6:
 
@@ -375,9 +375,9 @@ This can be a more useful when dealing with floats than traditional comparison o
 
 ```
 0.3
-print(f"{0.3 :018.17f}")
+print(f'{0.3 :018.17f}')
 0.1 + 0.2
-print(f"{0.1 + 0.2 :018.17f}")
+print(f'{0.1 + 0.2 :018.17f}')
 0.3 == 0.1 + 0.2
 math.isclose(0.3, 0.1 + 0.2, rel_tol=1e-9)
 ```
@@ -387,14 +387,14 @@ math.isclose(0.3, 0.1 + 0.2, rel_tol=1e-9)
 The relative tolerance ```rel_tol``` of ```1e-9``` means the number lies between:
 
 ```
-f"{0.3 - 0.3*1e-9 :018.17f}"
-f"{0.3 + 0.3*1e-9 :018.17f}"
+f'{0.3 - 0.3*1e-9 :018.17f}'
+f'{0.3 + 0.3*1e-9 :018.17f}'
 ```
 
 The number can be seen to be between these bounds:
 
 ```
-f"{0.1 + 0.2 :018.17f}"
+f'{0.1 + 0.2 :018.17f}'
 ```
 
 ![img_024](./images/img_024.png)
@@ -408,18 +408,17 @@ math.isclose(0.3, 0.1 + 0.2, abs_tol=1e-6)
 The absolute tolerance ```abs_tol``` of ```1e-6``` means the number lies between:
 
 ```
-f"{0.3 - 1e-6 :018.17f}"
-f"{0.3 + 1e-6 :018.17f}"
+f'{0.3 - 1e-6 :018.17f}'
+f'{0.3 + 1e-6 :018.17f}'
 ```
 
 The number can be seen to be between these bounds:
 
 ```
-print(f"{0.1 + 0.2 :018.17f}")
+print(f'{0.1 + 0.2 :018.17f}')
 ```
 
 ![img_025](./images/img_025.png)
-
 
 Because of the the physical arrangement to store floating point numbers seen above, large numbers are much more widely spaced apart from each other than smaller numbers. The unit in last place, is essentially the next step up or down:
 
@@ -428,11 +427,11 @@ Because of the the physical arrangement to store floating point numbers seen abo
 This can be demonstrated with a small and a large number:
 
 ```
-f"{0.1 :018.17f}"
-f"{math.ulp(0.1) :018.17f}"
-f"{0.1 + math.ulp(0.1) :018.17f}"
-f"{1e18 :018.0f}"
-f"{math.ulp(1e18) :018.0f}"
+f'{0.1 :018.17f}'
+f'{math.ulp(0.1) :018.17f}'
+f'{0.1 + math.ulp(0.1) :018.17f}'
+f'{1e18 :018.0f}'
+f'{math.ulp(1e18) :018.0f}'
 ```
 
 For the small number, the number next up is a small step of ```0.00000000000000001``` and for the large number the step to the next number is ```128```:
@@ -441,6 +440,11 @@ For the small number, the number next up is a small step of ```0.000000000000000
 
 Calculations generally depend on the relative precision of each floating point number and either case the relative precision is approximately ```1e-16```:
 
+```
+math.ulp(0.1) / 0.1
+math.ulp(1e18) / 1e18
+```
+
 ![img_077](./images/img_077.png)
 
 The related next after function ```nextafter``` will compute the number after ```x``` going towards ```y```:
@@ -448,7 +452,7 @@ The related next after function ```nextafter``` will compute the number after ``
 ![img_078](./images/img_078.png)
 
 ```
-f"{math.nextafter(1e18, 2e18):018.0f}"
+f'{math.nextafter(1e18, 2e18):018.0f}'
 ```
 
 ![img_079](./images/img_079.png)

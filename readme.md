@@ -52,7 +52,9 @@ The concept of an iterators was covered briefly when looking at programming cons
 
 ## Math and Statistics
 
-The Math Module
+The ```math``` module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks. There is an associated complex math module ```cmath``` which is designed to handle complex numbers.
+
+[Math and Complex Math Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/010_math_module/readme.md) 
 
 The Random Module
 
@@ -117,7 +119,7 @@ The previous guide looked at working with text data. Another common data type is
 
 [CSV, Pickle and JSON Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_csv_pickle_json/readme.md)
 
-The math module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks. There is an associated complex math module cmath which is designed to handle complex numbers.
+
 
 [Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_math/readme.md)
 
