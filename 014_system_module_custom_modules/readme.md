@@ -50,6 +50,17 @@ It has the following dynamic objects, note these are mutable data types and can 
 * ```modules``` is a dictionary of loaded modules.
 * ```argv``` is a list of command line arguments. The value at index 0 correponds to the script path file.
 
+The follwoing strings can be viewed which mainly give details about the Python version:
+
+```
+sys.winver
+sys.version_info
+sys.version
+sys.copyright
+```
+
+![img_054](./images/img_054.png)
+
 The following can be assigned to object names
 
 ```
