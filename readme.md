@@ -52,29 +52,29 @@ The concept of an iterators was covered briefly when looking at programming cons
 
 ## Math and Statistics
 
-The ```math``` module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks. There is an associated complex math module ```cmath``` which is designed to handle complex numbers.
+The ```math``` module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks. There is an associated complex math module ```cmath``` which is designed to handle complex numbers:
 
 [Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/010_math_module/readme.md) 
 
-The random module is a pseudo random number generator which can be used to select a choice or choices from a list which are operations done with replacement. Alternatively it may be used to select a sample from a list which is done without replacement or to mutate the existing list by shuffling it. There are also a number of statistical distributions that a number can be generated from including the commonly used uniform, normal and exponential distributions.
+The ```random``` module is a pseudo random number generator which can be used to select a choice or choices from a list which are operations done with replacement. Alternatively it may be used to select a sample from a list which is done without replacement or to mutate the existing list by shuffling it. There are also a number of statistical distributions that a number can be generated from including the commonly used uniform, normal and exponential distributions:
 
 [Random Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/011_random_module/readme.md)
 
-The datetime module is a module for working with dates and times. The associated zoneinfo module is for dealing with timezones. The time module is a module written in C and exists mainly for advanced use timing applications. There are a couple of the functions from the time module that are commonly used such as time which retrieved the time from the system hardware and sleep which is used to delay execution of a Python script. 
+The ```datetime``` module is a module for working with dates and times. The associated ```zoneinfo``` module is for dealing with timezones. The ```time``` module is a module written in C and exists mainly for advanced use timing applications. There are a couple of the functions from the ```time``` module that are commonly used such as ```time``` which retrieves the time from the system hardware and ```sleep``` which is used to delay execution of a Python script:
 
 [DateTime, ZoneInfo and Time Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/012_datetime_module/readme.md)
 
-The statistics module is a module for working with basic statistics.
+The ```statistics``` module is a module for working with basic statistics:
 
 [Statistics Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/013_statistics_module/readme.md)
 
+## Programming Constructs Continued
 
+The system module ```sys``` gives details about objects used or maintained by the Python interpreter. This gives details about the builtin modules, the standard modules and third-party modules. Custom user modules can also be added:
 
+[The System Module and Working with Custom Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_system_module_custom_modules/readme.md)
 
-
-
-
-
+Creating Custom Classes
 
 
 
@@ -90,11 +90,9 @@ The Pickle Module
 
 The JavaScript Object Notation Module
 
-## Programming Constructs Continued
 
-Creating Custom Modules and the System Module
 
-Creating Custom Classes
+
 
 
 
@@ -104,9 +102,6 @@ Creating Custom Classes
 
 Old versions/drafts below, to be updated.
 
-The concept of a Python Module was previously explored during installation. A Python Module is used to compartmentalise code into a seperate often reusable file. This tutorial looks at the creation of a custom Module or a group of custom Modules known as a library. 
-
-[Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/010_modules/readme.md)
 
 Previously inbuild classes such as the int, bool, float, str, list, tuple, set and dict were explored. Each instance of a class had instance data attributes and functions which were designed to operate on this instance data. The template for this data and the function definition for these definitions are given in the class itself. This tutorial looks at the concept of a Python object and the use of it to create a custom class.
 
