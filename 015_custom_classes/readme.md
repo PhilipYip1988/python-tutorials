@@ -608,6 +608,21 @@ Another set of abstract base classes are available in the ```numbers``` module f
 import numbers
 ```
 
+|Abstract<br />Class|Abstract<br />Parent<br />Class|Abstract<br />Data<br />Model<br />Identifiers|Inherited<br />Data<br />Model<br />Identifiers|Abstract<br />Identifiers|Inherited<br />Abstract<br />Identifiers|
+|---|---|---|---|---|---|
+|Number||||||
+|Complex||\_\_abs\_\_ <br /> \_\_add\_\_ <br /> \_\_bool\_\_ <br /> \_\_complex\_\_ <br />  \_\_div\_\_ <br /> \_\_eq\_\_ <br /> \_\_mul\_\_ <br /> \_\_ne\_\_ <br /> \_\_pow\_\_<br /> \_\_sub\_\_ ||conjugate<br /> imag<br /> real||
+|Real|Complex|\_\_ceil\_\_ <br /> \_\_div\_\_ <br /> \_\_divmod\_\_ <br /> \_\_float\_\_ <br /> \_\_floor\_\_ <br /> \_\_floordiv\_\_<br />  \_\_ge\_\_ <br /> \_\_gt\_\_  <br /> \_\_le\_\_<br /> \_\_lt\_\_ <br /> \_\_round\_\_ <br /> \_\_trunc\_\_|\_\_abs\_\_ <br /> \_\_add\_\_ <br /> \_\_bool\_\_ <br /> **\_\_complex\_\_** <br />  \_\_div\_\_ <br /> \_\_eq\_\_ <br /> \_\_mul\_\_ <br /> \_\_ne\_\_ <br /> \_\_pow\_\_<br /> \_\_sub\_\_||conjugate<br /> **imag**<br /> **real**|
+|Rational|Real||\_\_ceil\_\_ <br /> \_\_div\_\_ <br /> \_\_divmod\_\_ <br /> \_\_float\_\_ <br /> \_\_floor\_\_ <br /> \_\_floordiv\_\_<br />  \_\_ge\_\_ <br /> \_\_gt\_\_  <br /> \_\_le\_\_<br /> \_\_lt\_\_ <br /> \_\_round\_\_ <br /> \_\_trunc\_\_ <br /> \_\_abs\_\_ <br /> \_\_add\_\_ <br /> \_\_bool\_\_ <br /> \_\_complex\_\_ <br />  \_\_div\_\_ <br /> \_\_eq\_\_ <br /> \_\_mul\_\_ <br /> \_\_ne\_\_ <br /> \_\_pow\_\_<br /> \_\_sub\_\_|conjugate<br /> imag<br /> real|denominator<br />numerator|
+|Integral|Rational|||||
+
+
+
+
+
+
+
+
 
 Integral - integer
 
