@@ -299,15 +299,329 @@ CustomString.mro()
 
 The method ```upper``` is now defined in two places and this class ```CustomString``` will preference the definition closer towards the top of the method resolution order list i.e. the definition in ```CustomString```. In this case, the definition in ```CustomString``` uses the definition in ```UserString``` and builds upon it.
 
-... mutable method ...
+Let's create a ```list``` based subclass with one additional mutable method. Note that the mutable method has no return value as it mutates the list in place:
+
+```
+class CustomList(UserList):
+    def append_hello(self):
+        self.append('hello')
 
 
 ```
-import collections.abc
+
+![img_036](./images/img_036.png)
+
+A new instance can be created using:
+
+```
+active = CustomList()
+```
+
+![img_037](./images/img_037.png)
+
+The list of identifiers can be viewed by inputting ```active.``` followed by a tab ```↹```:
+
+![img_038](./images/img_038.png)
+
+Inputting ```active.append_hello()``` followed by a shift ```⇧``` and tab ```↹``` shows the docstring:
+
+![img_039](./images/img_039.png)
+
+This method has no input arguments and can be called using:
+
+```
+active.append_hello()
+```
+
+![img_040](./images/img_040.png)
+
+Notice that calling this mutable method displays no output in the cell as it has no return statement. If the instance:
+
+```
+active
+```
+
+is examined, the value ```'hello'``` is appended:
+
+![img_041](./images/img_041.png)
+
+Another method ```appendleft``` which behaves equivalently to its coutnerpart in the ```deque``` collection can be made using the ```list``` method ```insert```. If the docstring is viewed by typing in ````active.insert()``` followed by a shift ```⇧``` and tab ```↹```, this method has two input arguments ```index``` and ```value```:
+
+![img_042](./images/img_042.png)
+
+For the ```appendleft``` method, the ```index``` is going to be locked to ```0``` however a single input argument ```value``` will need to be provided:
+
+```
+class CustomList(UserList):
+    def appendleft(self, value):
+        """Add an element to the left side of the CustomList"""
+        self.insert(0, value)
+
+
+```
+
+![img_043](./images/img_043.png)
+
+Now an instance can be created:
+
+```
+active = CustomList(('a', 'b', 'c'))
+```
+
+![img_044](./images/img_044.png)
+
+The list of identifiers can be viewed by inputting ```active.``` followed by a tab ```↹```:
+
+![img_045](./images/img_045.png)
+
+The docstring for the identifier ```appendleft``` can be viewed by inputting ```active.appendleft()``` followed by a shift ```⇧``` and tab ```↹``` and requests the input argument ```value```:
+
+![img_046](./images/img_046.png)
+
+The ```active``` instance of ```CustomList``` can be examined:
+
+```
+active
+```
+
+Then the method ```appendleft``` can be used:
+
+```
+active.appendleft('hello')
+```
+
+This method is mutable so has no return value. The ```active``` instance of ```CustomList``` can be examined again using:
+
+```
+active
+```
+
+The value ```'hello'``` is appended as expected:
+
+![img_047](./images/img_047.png)
+
+Other methods found in the ```deque``` could be made such as ```extendleft``` and ```popleft```:
+
+```
+class CustomList(UserList):
+    def appendleft(self, value):
+        """Add an element to the left side of the CustomList"""
+        self.insert(0, value)
+        
+    def popleft(self):
+        """Remove and return the leftmost element."""
+        return self.pop(0) # pop has a return value
+        
+    def extendleft(self, seq):
+        """Extend the left side of the CustomList with elements from the iterable"""
+        for item in seq:
+            self.appendleft(item)
+
+
+```
+
+![img_048](./images/img_048.png)
+
+These can be tested using:
+
+```
+active = CustomList([1, 2, 3])
+active
+active.popleft()
+active
+active.extendleft(('a', 'b', 'c'))
+active
+```
+
+![img_049](./images/img_049.png)
+
+Notice the cell output:
+
+```
+active
+```
+
+This differs from:
+
+```
+repr(active)
+str(active)
+```
+
+![img_050](./images/img_050.png)
+
+Normally the formal string representation shows how to instantiate a new instance. To change this the data model method ```__repr__``` needs to be defined:
+
+```
+class CustomList(UserList):
+    def __repr__(self):
+        string = super().__repr__()
+        updatedstring = f'CustomList({string})'
+        return updatedstring
+
+    def appendleft(self, value):
+        """Add an element to the left side of the CustomList"""
+        self.insert(0, value)
+        
+    def popleft(self):
+        """Remove and return the leftmost element."""
+        return self.pop(0) # pop has a return value
+        
+    def extendleft(self, seq):
+        """Extend the left side of the CustomList with elements from the iterable"""
+        for item in seq:
+            self.appendleft(item)
+
+
+```
+
+![img_051](./images/img_051.png)
+
+This can be tested with:
+
+```
+active = CustomList((1, 2, 3))
+active
+repr(active)
+active2 = CustomList(('a', 'b', 'c'))
+active2
+repr(active2)
+str(active2)
+```
+
+![img_052](./images/img_052.png)
+
+Notice the informal string has the same format as the formal string, this is the default case when ```__repr__``` is defined and ```__str__``` is not defined. For clarity ```__str__``` can be defined to something different:
+
+```
+class CustomList(UserList):
+    def __repr__(self):
+        string = super().__repr__()
+        updatedstring = f'CustomList({string})'
+        return updatedstring
+
+    def __str__(self):
+        string = super().__repr__()
+        return string    
+    
+    def appendleft(self, value):
+        """Add an element to the left side of the CustomList"""
+        self.insert(0, value)
+        
+    def popleft(self):
+        """Remove and return the leftmost element."""
+        return self.pop(0) # pop has a return value
+        
+    def extendleft(self, seq):
+        """Extend the left side of the CustomList with elements from the iterable"""
+        for item in seq:
+            self.appendleft(item)
+
+
+```
+
+![img_053](./images/img_053.png)
+
+This can be tested with:
+
+```
+active2 = CustomList(('a', 'b', 'c'))
+active2
+repr(active2)
+str(active2)
+```
+
+![img_054](./images/img_054.png)
+
+If the method resolution order of the ```builtins``` objects are compared to their counterparts in the ```collections``` module:
+
+```
+str.mro()
+UserString.mro()
+```
+
+![img_055](./images/img_055.png)
+
+Notice that the ```UserString``` has a much larger number of abstract base classes. Inclusion of the abstract base classes is a design pattern, that makes it easier for another Python programmer to identify what data model methods to expect in a third-party class. Looking at only the abstract base classes from bottom to top, the following relationship can be outlined:
+
+|Abstract<br />Class|Abstract<br />Parent<br />Class|Abstract<br />Data<br />Model<br />Methods|Inherited<br />Data<br />Model<br />Methods|Abstract<br />Methods|Inherited<br />Abstract<br />Methods|
+|---|---|---|---|---|---|
+|Container||\_\_contains\_\_||||
+|Iterable||\_\_iter\_\_||||
+|Sized||\_\_len\_\_||||
+|Collection|Container <br /> Iterable <br /> Sized||\_\_contains\_\_ <br /> \_\_iter\_\_ <br /> \_\_len\_\_|||
+|Reversible|Iterable|\_\_reversed\_\_|\_\_iter\_\_|||
+|Sequence|Reversible <br /> Collection|\_\_getitem\_\_|\_\_contains\_\_ <br /> \_\_iter\_\_ <br /> \_\_len\_\_ <br /> \_\_reversed\_\_|count <br /> index||
+
+A ```Collection``` for example inherits everything from ```Container```, ```Iterable``` and ```Sized```.
+
+A ```str``` is a ```Sequence``` and has all the immutable ```Sequence``` methods shown in the table above. 
+
+A ```tuple``` is also a ```Sequence``` and has all the immutable ```Sequence``` methods shown in the table above which behave equivalently. i.e. the ```str``` and ```tuple``` classes behave consistently when it comes to indexing, slicing and looping over for example:
+
+```
+list.mro()
+UserList.mro()
+```
+
+![img_056](./images/img_056.png)
+
+Notice that the ```UserList``` once again has a much larger number of abstract base classes. Most of these are the same however there is the inclusion of ```MutableSequence```:
+
+|Abstract<br />Class|Abstract<br />Parent<br />Class|Abstract<br />Data<br />Model<br />Methods|Inherited<br />Data<br />Model<br />Methods|Abstract<br />Methods|Inherited<br />Abstract<br />Methods|
+|---|---|---|---|---|---|
+|Container||\_\_contains\_\_||||
+|Iterable||\_\_iter\_\_||||
+|Sized||\_\_len\_\_||||
+|Collection|Container <br /> Iterable <br /> Sized||\_\_contains\_\_ <br /> \_\_iter\_\_ <br /> \_\_len\_\_|||
+|Reversible|Iterable|\_\_reversed\_\_|\_\_iter\_\_|||
+|Sequence|Reversible <br /> Collection|\_\_getitem\_\_|\_\_contains\_\_ <br /> \_\_iter\_\_ <br /> \_\_len\_\_ <br /> \_\_reversed\_\_|count <br /> index||
+|MutableSequence|Sequence|\_\_iadd\_\_ <br /> \_\_setitem\_\_ <br /> \_\_delitem\_\_|\_\_contains\_\_ <br /> \_\_getitem\_\_ <br /> \_\_iter\_\_ <br /> \_\_len\_\_ <br /> \_\_reversed\_\_|append <br /> extend <br /> insert <br /> pop <br /> remove <br /> reverse|count <br /> index|
+
+A ```list``` is a ```MutableSequence``` and inherits all the immutable methods from the ```Sequence```, therefore as seen previously equivalent methods between a ```tuple``` and a ```list``` behave identically. The ```list``` also has all the mutable ```MutableSequence``` methods shown in the table above.
+
+```
+dict.mro()
+UserDict.mro()
+```
+
+![img_057](./images/img_057.png)
+
+Notice that the ```UserDict``` once again has a much larger number of abstract base classes:
+
+|Abstract<br />Class|Abstract<br />Parent<br />Class|Abstract<br />Data<br />Model<br />Methods|Inherited<br />Data<br />Model<br />Methods|Abstract<br />Methods|Inherited<br />Abstract<br />Methods|
+|---|---|---|---|---|---|
+|Container||\_\_contains\_\_||||
+|Iterable||\_\_iter\_\_||||
+|Sized||\_\_len\_\_||||
+|Collection|Container <br /> Iterable <br /> Sized||\_\_contains\_\_ <br /> \_\_iter\_\_ <br /> \_\_len\_\_|||
+|Mapping|Collection|\_\_getitem\_\_|\_\_contains\_\_ <br /> \_\_eq\_\_ <br /> \_\_iter\_\_ <br /> \_\_len\_\_ <br /> \_\_ne\_\_ <br />|get<br />  items<br />  keys<br />  values||
+|MutableMapping|Mapping|\_\_delitem\_\_ <br />  \_\_setitem\_\_|\_\_contains\_\_ <br /> \_\_eq\_\_ <br /> \_\_getitem\_\_  <br />\_\_iter\_\_ <br /> \_\_len\_\_ <br /> \_\_ne\_\_ <br />|clear <br /> pop <br />  popitem <br /> setdefault <br />  update|get<br />  items<br />  keys<br />  values|
+
+The ```dict``` is not a ```Mapping```. Notice that both the ```Sequence``` and ```Mapping``` inherit from the ```Collection``` which is why there is some consistent behaviour between a ```dict``` and a ```tuple``` for example. A ```Sequence``` has a numeric index, whereas a ```Mapping``` has keys, both of these use the ```__getitem__``` data model method but it is defined differently.
+
+Sticking to the design patterns above makes it easier for another Python programmer to use the third-party class.
+
+Another set of abstract base classes are available in the ```numbers``` module for the numeric data types:
+
+```
 import numbers
 ```
 
 
+Integral - integer
 
+Real - float
+
+
+Rational
+
+
+
+
+
+Complex
+
+Number
 
 
