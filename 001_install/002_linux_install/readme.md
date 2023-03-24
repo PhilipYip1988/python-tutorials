@@ -222,7 +222,7 @@ The package Name, Version, Build and Channel will be shown:
 
 ![img_033](./images/img_033.png)
 
-By default the Channel is ```conda-forge``` which is the community channel.
+The Version has the form Major.Minor.Patch and by default the Channel is ```conda-forge``` which is the community channel.
 
 ![img_034](./images/img_034.png)
 
@@ -252,7 +252,7 @@ When looking for packages the following displays in the Mambaforge Prompt:
 
 ![img_038](./images/img_038.png)
 
-```Looking for ['brotlipy', 'bzip2', 'ca-certificates', 'certifi', 'cffi', 'charset-normalizer', 'colorama', 'conda', 'conda-package-handling', 'cryptography', 'fmt', 'idna', 'krb5', 'libarchive', 'libcurl', 'libffi', 'libiconv', 'libmamba', 'libmambapy', 'libsolv', 'libsqlite', 'libssh2', 'libxml2', 'libzlib', 'lz4-c', 'lzo', 'mamba', 'menuinst', 'miniforge_console_shortcut', 'openssl', 'pip', 'pybind11-abi', 'pycosat', 'pycparser', 'pyopenssl', 'pysocks', 'python', 'python_abi', 'reproc', 'reproc-cpp', 'requests', 'ruamel_yaml', 'setuptools', 'tk', 'toolz', 'tqdm', 'tzdata', 'ucrt', 'urllib3', 'vc', 'vs2015_runtime', 'wheel', 'win_inet_pton', 'xz', 'yaml', 'yaml-cpp', 'zstd']```
+```Looking for ['libgomp', 'toolz', 'ncurses', 'python_abi', 'keyutils', 'icu', 'libsqlite', 'readline', 'libssh2', 'openssl', 'fmt', 'idna', 'cryptography', '_libgcc_mutex', 'libuuid', 'urllib3', 'ca-certificates', 'libsolv', 'mamba', 'pluggy', 'setuptools', 'libxml2', 'libmambapy', 'libzlib', 'python', 'cffi', 'zstandard', 'charset-normalizer', 'zstd', 'libarchive', 'ld_impl_linux-64', 'lzo', 'ruamel.yaml', 'conda-package-streaming', 'libev', 'wheel', 'lz4-c', 'libgcc-ng', 'conda', 'yaml-cpp', 'libffi', 'tzdata', 'xz', '_openmp_mutex', 'bzip2', 'libmamba', 'colorama', 'libstdcxx-ng', 'brotlipy', 'certifi', 'libnghttp2', 'pybind11-abi', 'libiconv', 'libnsl', 'libcurl', 'c-ares', 'ruamel.yaml.clib', 'reproc', 'libedit', 'krb5', 'pip', 'pycosat', 'pycparser', 'pysocks', 'tk', 'requests', 'tqdm', 'reproc-cpp', 'conda-package-handling', 'pyopenssl']```
 
 This means that the following:
 
@@ -950,7 +950,7 @@ The mandatory and optional dependencies should be satisfied:
 
 ![img_232](./images/img_232.png)
 
-#### Script Editor
+### Script Editor
 
 To the left is the script editor. By default a temporary script file in the location ```~/.config/spyder-py3``` is open. To the top right, the files tab can be selected, this opens by default in ```~```:
 
@@ -978,7 +978,7 @@ The current working directory changes on the right hand side, to the directory o
 
 ![img_238](./images/img_238.png)
 
-#### Identifiers, Docstrings and Help Pane
+### Identifiers, Docstrings and Help Pane
 
 A list of builtin identifiers displays as code is input:
 
@@ -1098,9 +1098,9 @@ Finally the standard Run button, executes all the code in the script file:
 
 ![img_265](./images/img_265.png)
 
-#### Variable Explorer
+### Variable Explorer
 
-Spyder has a very powerful Variable Explorer. Its capabilities can be seen when the following script is Executed:
+This script contains the most commonly used datatypes in Python:
 
 ```
 #%% Data Science Library Imports
@@ -1128,169 +1128,194 @@ spreadsheet = pd.DataFrame({'x': [1, 2, 3, 4, 5]
                             'y': [2, 4, 6, 8, 10]})
 ```
 
+Spyder has a very powerful Variable Explorer. Its capabilities can be seen when the following script is executed:
 
+![img_266](./images/img_266.png)
 
+Notice how they are all colour-coded on the Variable Explorer:
 
+![img_267](./images/img_267.png)
 
+When a large number of Variables are on the Variable Explorer, it can be Undocked:
 
+![img_268](./images/img_268.png)
 
+The Collections can be viewed in their own window by clicking into their Value field witthin the Variable Explorer:
 
+![img_269](./images/img_269.png)
 
+The ```tuple``` is greyed out as it is immutable:
 
+![img_270](./images/img_270.png)
 
+On GNOME, it is sometimes useful to right click the title bar and select Always on Top. This allows one to view the Variable while typing additional code in the Script Editor for example:
 
+![img_271](./images/img_271.png)
 
+The ```list``` is mutable and therefore has coloured fields which can be interacted with:
 
+![img_272](./images/img_272.png)
 
+The ```str``` at index 0 can be updated:
 
+![img_273](./images/img_273.png)
 
+Save and Close can be selected and the Variable Explorer will be updated:
 
+![img_274](./images/img_274.png)
 
-The Spyder IDE looks like the following. To the left hand side is the Script Editor which is similar to Notepad.
+![img_275](./images/img_275.png)
 
-To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called ```spyder``` and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
+The ```set``` is an unordered collection and has no numeric index:
 
-To the top right are 4 tabs Help, Variable Explorer, Plot and Files:
+![img_276](./images/img_276.png)
 
-![img_128a](./images/img_128a.png)
+The ```dict``` has no numeric index and instead has items which have key, value pairs. The insertion order of a dictionary is important however unfortunately it is not currently maintained in the expanded view on Spyders Variable Explorer:
 
+![img_277](./images/img_277.png)
 
+![img_278](./images/img_278.png)
 
+A numeric array such as the matrix can also be viewed, no datatype is shown in the expanded view as the data type is constant across all cells:
 
-The Spyder Dependencies can be checked using Help from the Menu Bar and then Dependencies:
+![img_279](./images/img_279.png)
 
-![img_128](./images/img_128.png)
+The pandas series and dataframe can also be explored in the Variable Explorer. Datatypes are constant across each series:
 
-The mandatory and optional dependencies should be satisfied:
+![img_280](./images/img_280.png)
 
-![img_129](./images/img_129.png)
+![img_281](./images/img_281.png)
 
-To save the Python Script file select File → Save As or ```Ctrl```, ```⇧```  and ```s```. Select your Documents folder and save the file as ```script2.py```:
+The Variable Explorer can be docked once again:
 
-![img_130](./images/img_130.png)
+![img_282](./images/img_282.png)
 
-![img_131](./images/img_131.png)
+![img_283](./images/img_283.png)
 
-The tab in the script editor will be updated to reflect the file name and the location of the file will be shown in the top left. The file location shown in the File tab to the right is the current working directory and will not update until the script is run:
-
-![img_132](./images/img_132.png)
-
-The script can be run using the run key:
-
-![img_133](./images/img_133.png)
-
-Now the Current Working Directory is updated to the location of the Main Script file.
-
-In Python ```#``` is used to denote that a line of code is a comment. In Spyder ```#%%``` can be used to compartmentalise a Python Script File into cells. This can be demonstrated with the example code:
-
-
-
-The top cell can be highlighted and the Run Current Cell button can be selected. Its output shows in the IPython Console and this cell is still selected:
-
-![img_134](./images/img_134.png)
-
-The top cell can be highlighted and the Run Current Cell button can be selected. Its output shows in the IPython Console and this cell is still selected:
-
-![img_135](./images/img_135.png)
-
-Alternately a line or multiple lines may be selected and the Run Selection button can be selected, their outyput show in the IPython Console:
-
-![img_136](./images/img_136.png)
-
-The Data Science libraries can be imported using:
-
-
-
-Builtin datatypes and Data Science datatypes can be seen on the variable explorer:
-
-![img_137](./images/img_137.png)
-
-Variables can be examined in more detail by clicking into them:
-
-![img_138](./images/img_138.png)
+### Restarting the Kernel
 
 The Kernel can be restarted by going to Consoles → Restart Kernel.
 
-![img_139](./images/img_139.png)
+![img_284](./images/img_284.png)
 
 Accept the Warning to proceed:
 
-![img_140](./images/img_140.png)
+![img_285](./images/img_285.png)
 
-When the Kernel is Restarted the IPython Console reverteds back to 0, All Variables are erased and the imported libraries are no longer imported.
+When the Kernel is Restarted the IPython Console reverts back to 0, all variables are erased and the imported libraries are no longer imported.
 
-![img_141](./images/img_141.png)
+![img_286](./images/img_286.png)
 
-Another test script can be made to test plotting:
+### Plotting
+
+Spyder works seamlessly with MatplotLib:
 
 ```
-#%% Importing Data Science Libraries
+#%% Data Science Library Imports
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_style('whitegrid')
 #%% Pandas DataFrame
-data = pd.DataFrame({'x': [1, 2, 3, 4, 5], 
-                     'y': [2, 4, 6, 8, 10]})
+spreadsheet = pd.DataFrame({'x': [1, 2, 3, 4, 5], 
+                            'y': [2, 4, 6, 8, 10]})
 #%% Plot
-plt.plot(data['x'], data['y'])
-plt.show()
+plt.plot(spreadsheet['x'], spreadsheet['y'])
 ```
 
-Spyder can be configured to display plots as interactive plots or as static inline plots docked to the plots pane:
+Spyder can be configured to display plots as static inline plots (default). These are docked to the plots pane as shown. Alternatively it can be set to output interactive plots which use the Qt5 backed:
 
-![img_142](./images/img_142.png)
+![img_287](./images/img_287.png)
 
 To change the plot backend select Tools→Preferences:
 
-![img_143](./images/img_143.png)
+![img_288](./images/img_288.png)
 
-Then to the left select IPython Console. To the right select the Graphics Tab and select the desired Backend:
+Then to the left select IPython Console:
 
-![img_144](./images/img_144.png)
+![img_289](./images/img_289.png)
 
-The screenshots in this guide use Spyder with the Spyder (light) appearance. This can be selected from the Appearance Tab:
+To the right select the Graphics Tab and select Qt5 (auto gives the same setting at Qt5). Select APply and then Restart the Kernel:
 
-![img_145](./images/img_145.png)
+![img_290](./images/img_290.png)
 
-The Editor settings can be changed to Show Indent Guides and Show Blank Spaces:
+The plot now displays as an interactive Window:
 
-![img_146](./images/img_146.png)
+![img_291](./images/img_291.png)
 
-The plot now displays as a static image in the plots pane:
+The Interactive plot can be modified through a GUI. If Figure Options are selected, the blank fields can be updated in the Axes tab:
 
-![img_147](./images/img_147.png)
+![img_292](./images/img_292.png)
 
-Spyder will display code completions as code is input:
+The fields can also be customised in the Curves tab:
 
-![img_148](./images/img_148.png)
+![img_293](./images/img_293.png)
+![img_294](./images/img_294.png)
+![img_295](./images/img_295.png)
+![img_296](./images/img_296.png)
 
-And docstrings when function names are input:
+Borders and spacing can also be selected and a tight layout can be configured:
 
-![img_149](./images/img_149.png)
+![img_297](./images/img_297.png)
 
-Spyder should also have the ability to inspect an object and display its documentation in the Help Pane. This does not appear to work properly in Linux:
+![img_298](./images/img_298.png)
 
-![img_151](./images/img_151.png)
+### Debugger
 
-The IPython console behaves slightly differently to the Script Editor. Help can be output in the console using the ```?```. For example:
+Spyder also has a debugger. The line numbers to debug between can be selected on the Script Editor:
 
-```
-? print
-```
+![img_299](./images/img_299.png)
 
-![img_152](./images/img_152.png)
+The debug button can be selected to begin debugging:
 
-Inputting an object name followed by a dot ```.```displays a list of identifiers that can be referenced from the object: 
+![img_300](./images/img_300.png)
 
-![img_153](./images/img_153.png)
+Run current line can be selected to run each line individually:
 
-This feature has in the past worked better for Python and Inbuilt Modules than Scientific Modules which has a slower response time. The latest version made improvements in the response time but unfortunately there is a slight reversion and now one character needs to be typed past the ```.``` in order for any identifiers to display.
+![img_301](./images/img_301.png)
 
-![img_154](./images/img_154.png)
+Run current line instantiates the global variable ```x```:
 
-The code completion on the IPython console is more responsive but less detailed. In IPython Console press ```↹``` after the ```.``` to view the list of identifiers.
+![img_302](./images/img_302.png)
+
+Run current line instantiates the global variable ```y```:
+
+![img_303](./images/img_303.png)
+
+Run current line defines the function ```fun```. Callables are not shown on the Variable Explorer:
+
+![img_304](./images/img_304.png)
+
+If run current line is selected at the function call, the function would be executed and the return value shown. To get more details it is possible to step into the function:
+
+![img_305](./images/img_305.png)
+
+The global variable ```x``` is seen by the function however the local variable ```y``` is reassigned using the functions input argument ```3```:
+
+![img_306](./images/img_306.png)
+
+Run current line will step through the fucntion call line by line:
+
+![img_307](./images/img_307.png)
+
+```x``` is reassigned to a local variable with value ```3```:
+
+![img_308](./images/img_308.png)
+
+```x``` is reassigned to a local variable with value ```4```:
+
+![img_309](./images/img_309.png)
+
+The ```return``` value is computed as ```x + ``` which is ```3 + 4``` which is ```7```:
+
+![img_310](./images/img_310.png)
+
+This is stored as the global variable ```z``` and the functions local code block is exited. The global variables ```x```, ```y``` and ```z``` display:
+
+![img_311](./images/img_311.png)
+
+The global ```x``` and ```y``` were unchanged by the function.
 
 ## JupyterLab
 
