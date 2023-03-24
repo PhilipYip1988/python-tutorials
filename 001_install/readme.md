@@ -14,9 +14,9 @@ There are three package managers commonly used to install Python and Python pack
 |Anaconda|conda|data science distribution|conda (older packages)|3.10|
 |Miniconda|conda|minimal|conda (older packages)|3.10|
 
-**In this guide Mambaforge will be used as it is the most reliable solution.** Seperate Python 3.11.2 environments will be made for each IDE. Anaconda has been updated to include a recent version of JupyterLab and a recent version of Spyder. The version of Spyder 5.4.1 lacks the code completion fixed of Spyder 5.4.2.
+**In this guide Mambaforge will be used as it is the most reliable solution.** Seperate Python 3.11 environments will be made for each IDE. Anaconda has been updated to include a recent version of JupyterLab and a recent version of Spyder. The version of Spyder 5.4.1 unfortuantely lacks the code completion fixes of Spyder 5.4.2.
 
-Python Version Numbers are of the format X.Y.Z for example version 3.11.2 where X is the major version 3, Y is the minor version 11 and X is the patch version 2. 
+Python Version Numbers are of the format X.Y.Z for example version 3.11.2 where X is the major version 3, Y is the minor version 11 and Z is the patch version 2. 
 
 A new minor version of Python 3 is developed each year. Python 3.12.0 for example is currently in development. It is recommended to wait for a patch number of at least version 1, which usually indicates that the most significant bug fixes have been addressed. In addition it also means that the developers of popular Python libraries have had enough time to update their libraries allowing them to run on this new minor version. Python libraries are installed as Python packages which follow the same X.Y.Z format.
 
