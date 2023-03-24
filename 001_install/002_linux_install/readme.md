@@ -988,7 +988,7 @@ Accept the Warning to proceed:
 
 ![img_140](./images/img_140.png)
 
-hen the Kernel is Restarted the IPython Console reverteds back to 0, All Variables are erased and the imported libraries are no longer imported.
+When the Kernel is Restarted the IPython Console reverteds back to 0, All Variables are erased and the imported libraries are no longer imported.
 
 ![img_141](./images/img_141.png)
 
@@ -1000,7 +1000,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set_style("whitegrid")
+sns.set_style('whitegrid')
 #%% Pandas DataFrame
 data = pd.DataFrame({'x': [1, 2, 3, 4, 5], 
                      'y': [2, 4, 6, 8, 10]})
@@ -1040,7 +1040,6 @@ Spyder will display code completions as code is input:
 And docstrings when function names are input:
 
 ![img_149](./images/img_149.png)
-
 
 Spyder should also have the ability to inspect an object and display its documentation in the Help Pane. This does not appear to work properly in Linux:
 
