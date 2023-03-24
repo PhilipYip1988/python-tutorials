@@ -874,6 +874,8 @@ The default channel for Mambaforge is the community ```conda-forge``` channel an
 
 ## The Scientific Python Development Environment (SPYDER)
 
+### Install Summary
+
 To recap Spyder is installed in its own Python environment using:
 
 ```
@@ -888,6 +890,262 @@ Spyder can be launched using:
 spyder
 ```
 
+### Preferences
+
+The Spyder IDE looks like the following:
+
+![img_219](./images/img_219.png)
+
+The preferences can be changed by selecting Tools → Preferences:
+
+![img_220](./images/img_220.png)
+
+The Appearance can be changed from Spyder Dark to Spyder:
+
+![img_221](./images/img_221.png)
+
+Applying will require a restart of Spyder:
+
+![img_222](./images/img_222.png)
+
+Spyder will relaunch with the light theme:
+
+![img_223](./images/img_223.png)
+
+For a High DPI Screen, the High DPI Setting should be enabled. Select Tools → Preferences:
+
+![img_224](./images/img_224.png)
+
+Select Application and Enable Auto High DPI Setting:
+
+![img_225](./images/img_225.png)
+
+Applying will require a restart of Spyder:
+
+![img_226](./images/img_226.png)
+
+Show Indent Guides and Show Blank Spaces can be Enabled on the Editor Tab:
+
+![img_227](./images/img_227.png)
+
+### IPython Console
+
+To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called spyder and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
+
+![img_228](./images/img_228.png)
+
+The IPython Console can be used to individually input a command, line by line as seen before:
+
+![img_229](./images/img_229.png)
+
+### Dependencies
+
+The Spyder Dependencies can be checked using Help from the Menu Bar and then Dependencies:
+
+![img_230](./images/img_230.png)
+
+The mandatory and optional dependencies should be satisfied:
+
+![img_231](./images/img_231.png)
+
+![img_232](./images/img_232.png)
+
+#### Script Editor
+
+To the left is the script editor. By default a temporary script file in the location ```~/.config/spyder-py3``` is open. To the top right, the files tab can be selected, this opens by default in ```~```:
+
+![img_233](./images/img_233.png)
+
+The Script file can be saved using File → Save As:
+
+![img_234](./images/img_234.png)
+
+The Script File should be saved somewhere locally, normally within a subfolder within ```~/Documents```. In this example it will be saved directly within ```~/Documents``` as ```script.py```:
+
+![img_235](./images/img_235.png)
+
+Notice the name of the tab updates, alongside the file location on the left address bar. To run the script select Run:
+
+![img_236](./images/img_236.png)
+
+Select Run with Default Configuration and Run:
+
+![img_237](./images/img_237.png)
+
+### Files Pane
+
+The current working directory changes on the right hand side, to the directory of the running script file:
+
+![img_238](./images/img_238.png)
+
+#### Identifiers, Docstrings and Help Pane
+
+A list of builtin identifiers displays as code is input:
+
+![img_239](./images/img_239.png)
+
+If a callable is input such as a function or class, the docstring displays in a popup balloon. Docstrings which have additional tooltips can be opened in the Help Pane by selecting the link below:
+
+![img_240](./images/img_240.png)
+
+Alternatively the object name may be selected and right clcked and Inspect Current Object or ```Ctrl``` + ```i``` selected:
+
+![img_241](./images/img_241.png)
+
+The Help Pane formats the docstring making it easier to read:
+
+![img_242](./images/img_242.png)
+
+A docstring may also be output in a cell the IPython console using the ```?```
+
+![img_243](./images/img_243.png)
+![img_244](./images/img_244.png)
+![img_245](./images/img_245.png)
+
+Recent improvements in Spyders Code Completion allows this to be used with the data science libraries numpy, pandas and matplotlib. These need to be imported:
+
+```
+import numpy as np
+```
+
+![img_246](./images/img_246.png)
+
+![img_247](./images/img_247.png)
+
+```
+import pandas as pd
+```
+
+![img_248](./images/img_248.png)
+
+![img_249](./images/img_249.png)
+
+```
+import matplotlib.pyplot as plt
+```
+
+![img_250](./images/img_250.png)
+
+![img_251](./images/img_251.png)
+
+Previously these needed to be imported and executed in the IPython Console for their identifiers or callable docstrings to display. Recent improvements have no longer made this necessary.
+
+The objects in the ```builtins``` module are automatically imported. However it is sometimes convenient to import it and then view the identifiers from it directly:
+
+```
+import builtins
+```
+
+![img_252](./images/img_252.png)
+
+### Comments and Cells
+
+In Python a line beginning with ```#``` is commented out. Notice the syntax highlighting greys the line out:
+
+![img_253](./images/img_253.png)
+
+Multiple lines of code can be commented out by highlighting them:
+
+![img_254](./images/img_254.png)
+
+And going to the Edit Menu and selecting Comment/Uncomment or pressing ```Ctrl``` + ```1```:
+
+![img_255](./images/img_255.png)
+
+![img_256](./images/img_256.png)
+
+In Spyder the ```#%%``` is used to create a new cell. For example:
+
+```
+#%% Cell0
+print('A')
+print('B')
+#%% Cell1
+print('C')
+print('D')
+#%% Cell2
+print('E')
+print('F')
+```
+
+Notice the currently seelcted cell is highlighted in yellow. The Run current Cell button can be pressed:
+
+![img_257](./images/img_257.png)
+
+It is executed and still selected:
+
+![img_258](./images/img_258.png)
+
+The Run Current Cell and Advance button can be pressed:
+
+![img_259](./images/img_259.png)
+
+The cell is executed and now the next cell is selected. This can be pressed again and again to run through all the cells individually:
+
+![img_260](./images/img_260.png)
+
+![img_261](./images/img_261.png)
+
+A selection can be made and the Run Selection button can be selected to execute only the selection:
+
+![img_262](./images/img_262.png)
+
+![img_263](./images/img_263.png)
+
+Finally the standard Run button, executes all the code in the script file:
+
+![img_264](./images/img_264.png)
+
+![img_265](./images/img_265.png)
+
+#### Variable Explorer
+
+Spyder has a very powerful Variable Explorer. Its capabilities can be seen when the following script is Executed:
+
+```
+#%% Data Science Library Imports
+import numpy as np
+import pandas as pd
+#%% Builtins Data Types
+unicode_text = 'Hello World!'
+string_literal = "the str is 'Hello World!'"
+boolean = True
+whole_num = 3
+num = 3.14
+archive = ('Hello', 'Hello', 1, 3.14, True)
+active = ['Hello', 'Hello', 1, 3.14, True]
+unique = {'Hello', 'Hello', 1, 3.14, True}
+mapping = {'red': '#FF0000', 
+           'green': '#00B050', 
+           'blue': '#0070C0'}
+#%% NumPy Numeric Arrays
+vector = np.array([1, 2, 3, 4, 5])
+matrix = np.array([[1, 2, 3, 4, 5], 
+                   [6, 7, 8, 9, 10]])
+#%% Pandas DataFrame
+column = pd.Series({'x': [1, 2, 3, 4, 5]})
+spreadsheet = pd.DataFrame({'x': [1, 2, 3, 4, 5]
+                            'y': [2, 4, 6, 8, 10]})
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 The Spyder IDE looks like the following. To the left hand side is the Script Editor which is similar to Notepad.
 
 To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called ```spyder``` and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
@@ -895,6 +1153,9 @@ To the bottom right there is an IPython console. Below this in the status bar th
 To the top right are 4 tabs Help, Variable Explorer, Plot and Files:
 
 ![img_128a](./images/img_128a.png)
+
+
+
 
 The Spyder Dependencies can be checked using Help from the Menu Bar and then Dependencies:
 
@@ -922,17 +1183,7 @@ Now the Current Working Directory is updated to the location of the Main Script 
 
 In Python ```#``` is used to denote that a line of code is a comment. In Spyder ```#%%``` can be used to compartmentalise a Python Script File into cells. This can be demonstrated with the example code:
 
-```
-#%% Cell0
-print('A')
-print('B')
-#%% Cell1
-print('C')
-print('D')
-#%% Cell2
-print('E')
-print('F')
-```
+
 
 The top cell can be highlighted and the Run Current Cell button can be selected. Its output shows in the IPython Console and this cell is still selected:
 
@@ -948,29 +1199,7 @@ Alternately a line or multiple lines may be selected and the Run Selection butto
 
 The Data Science libraries can be imported using:
 
-```
-#%% Importing Data Science Libraries
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-#%% Builtin DataTypes
-str_1 = 'Hello'
-int_1 = 1
-float_1 = 3.14
-boot_1 = True
-list_1 = ['Hello', 'Hello', 1, 3.14, True]
-tuple_1 = ('Hello', 'Hello', 1, 3.14, True)
-set_1 = {'Hello', 'Hello', 1, 3.14, True}
-dict_1 = {'r': 'red', 'b': 'blue', 'g': 'green'}
-#%% Numeric Array
-list_x = [1, 2, 3, 4, 5]
-x = np.array(list_x)
-list_y = [2, 4, 6, 8, 10]
-y = np.array(list_y)
-#%% Pandas DataFrame
-data = pd.DataFrame({'x': x, 'y': y})
-```
+
 
 Builtin datatypes and Data Science datatypes can be seen on the variable explorer:
 
