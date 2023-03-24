@@ -8,7 +8,7 @@ In the Byte Strings, each unit in the string is instead a numeric configuration 
 
 ## Object Orientated Programming Conception
 
-Python is an Object Orientated Programming (OOP) language. Before delving into Python, its worthwhile exploring the general concept of OOP using physical objecgts.
+Python is an Object Orientated Programming (OOP) language. Before delving into Python, its worthwhile exploring the general concept of OOP using physical objects.
 
 Each *object* belongs to an associated *class*. The *class* can be conceptualised as a set of instructions, similar to the blueprint shown that has an associated label ```MobileSuit```. 
 
