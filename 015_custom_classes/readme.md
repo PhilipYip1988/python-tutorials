@@ -602,19 +602,279 @@ The ```dict``` is not a ```Mapping```. Notice that both the ```Sequence``` and `
 
 Sticking to the design patterns above makes it easier for another Python programmer to use the third-party class.
 
-Another set of abstract base classes are available in the ```numbers``` module for the numeric data types:
+## Property
+
+So far subclassing using the UserClasses of the ```collections``` module has been examined. This has typically involved the addition or modification of methods which act on instance data. Let's create an ```XVariable``` class which directly subclasses from ```object```, recall everything in Python is ultimately an ```object```. 
+
+Three methods will be created for a variable ```x```, an associated ```get_x```, ```set_x``` and ```del_x``` method:
 
 ```
-import numbers
+class XVariable(object):
+
+    def get_x(self):
+        return self.x
+
+    def set_x(self, x):
+        self.x = x
+
+    def del_x(self):
+        self.x = None
+
+
 ```
 
-|Abstract<br />Class|Abstract<br />Parent<br />Class|Abstract<br />Data<br />Model<br />Identifiers|Inherited<br />Data<br />Model<br />Identifiers|Abstract<br />Identifiers|Inherited<br />Abstract<br />Identifiers|
-|---|---|---|---|---|---|
-|Number||||||
-|Complex||\_\_abs\_\_ <br /> \_\_add\_\_ <br /> \_\_bool\_\_ <br /> \_\_complex\_\_ <br />  \_\_div\_\_ <br /> \_\_eq\_\_ <br /> \_\_mul\_\_ <br /> \_\_ne\_\_ <br /> \_\_pow\_\_<br /> \_\_sub\_\_ ||conjugate<br /> imag<br /> real||
-|Real|Complex|\_\_ceil\_\_ <br /> \_\_div\_\_ <br /> \_\_divmod\_\_ <br /> \_\_float\_\_ <br /> \_\_floor\_\_ <br /> \_\_floordiv\_\_<br />  \_\_ge\_\_ <br /> \_\_gt\_\_  <br /> \_\_le\_\_<br /> \_\_lt\_\_ <br /> \_\_round\_\_ <br /> \_\_trunc\_\_|\_\_abs\_\_ <br /> \_\_add\_\_ <br /> \_\_bool\_\_ <br /> **\_\_complex\_\_** <br />  \_\_div\_\_ <br /> \_\_eq\_\_ <br /> \_\_mul\_\_ <br /> \_\_ne\_\_ <br /> \_\_pow\_\_<br /> \_\_sub\_\_||conjugate<br /> **imag**<br /> **real**|
-|Rational|Real||\_\_ceil\_\_ <br /> \_\_div\_\_ <br /> \_\_divmod\_\_ <br /> \_\_float\_\_ <br /> \_\_floor\_\_ <br /> \_\_floordiv\_\_<br />  \_\_ge\_\_ <br /> \_\_gt\_\_  <br /> \_\_le\_\_<br /> \_\_lt\_\_ <br /> \_\_round\_\_ <br /> \_\_trunc\_\_ <br /> \_\_abs\_\_ <br /> \_\_add\_\_ <br /> \_\_bool\_\_ <br /> \_\_complex\_\_ <br />  \_\_div\_\_ <br /> \_\_eq\_\_ <br /> \_\_mul\_\_ <br /> \_\_ne\_\_ <br /> \_\_pow\_\_<br /> \_\_sub\_\_|conjugate<br /> imag<br /> real|denominator<br />numerator|
-|Integral|Rational|||||
+![img_058](./images/img_058.png)
+
+Notice that ```get_x``` returns a value and does not modify the instance, whereas ```set_x``` and ```del_x``` directly mutate the instance and have no return statement.
+
+The default Initialization Signature inherited from the parent class ```object``` can be examined by inputting ```XVariable()``` and pressing shift ```⇧``` and tab:
+
+![img_059](./images/img_059.png)
+
+An instance can be created using:
+
+```
+x1 = XVariable()
+```
+
+![img_060](./images/img_060.png)
+
+The identifiers can be viewed by inputting ```x1.``` and pressing tab ```↹```:
+
+![img_061](./images/img_061.png)
+
+Notice the three identifiers ```get_x```, ```set_x``` and ```del_x``` show but there is no variable ```x``` itself. If the ```get_x``` is attempted to be called an ```AttributeError``` displays:
+
+```
+x1.get_x()
+```
+
+![img_062](./images/img_062.png)
+
+If ```x``` is set:
+
+```
+x1.set_x(3)
+```
+
+![img_063](./images/img_063.png)
+
+The identifiers can be viewed once again by inputting ```x1.``` and pressing tab ```↹```:
+
+![img_064](./images/img_064.png)
+
+Now the attribute ```x``` displays. Its value can be viewed by the ```get_x``` method, it can also be deleted using the ```del_x``` method. Since deleting is designed to return ```None``` instead of removing the attribute, the method ```get_x``` can be used after deletion:
+
+```
+x1.get_x()
+x1.del_x()
+x1.get_x()
+```
+
+![img_065](./images/img_065.png)
+
+More conventionally an attribute can be set using:
+
+```
+x1.x = 4
+```
+
+It can be get using:
+
+```
+x1.x
+```
+
+And it can be del using:
+
+```
+del x1.x
+```
+
+![img_066](./images/img_066.png)
+
+Once deleted it cannot be accessed, giving an ```AttributeError``` if attempting to do so:
+
+```
+x1.x
+```
+
+![img_067](./images/img_067.png)
+
+Supposing, the attribute is supposed to only be interacted with using the three methods ```get_x```, ```set_x``` and ```del_x```, it can be prefixed with an underscore. 
+
+Prefixing a variable with a single underscore, indicates the attribute is designed to only be accessed internally (within the class itself).
+
+```
+class XVariable(object):
+
+    def get_x(self):
+        return self._x
+
+    def set_x(self, x):
+        self._x = x
+
+    def del_x(self):
+        self._x = None
+
+
+```
+
+And not outwith the class for example from an instance:
+
+```
+x1 = XVariable()
+x1.set_x(4)
+```
+
+![img_068](./images/img_068.png)
+
+The identifiers can be viewed once again by inputting ```x1.``` and pressing tab ```↹```:
+
+![img_069](./images/img_069.png)
+
+Notice the private attribute ```_x``` does not show and it is therefore more obvious to use the ```get_x``` method:
+
+```
+x1.get_x()
+```
+
+![img_070](./images/img_070.png)
+
+```
+from pprint import pprint
+pprint(dir(x1), compact=True)
+```
+
+![img_071](./images/img_071.png)
+
+It becomes rather cumbersome to have three methods for each attribute displaying in the list of identifiers. Instead a property is typically configured. The function names ```get_x```, ```set_x``` and ```del_x``` are all renamed ```x```. The getter has the decorator ```@property```, the setter has the decorator ```@x.setter``` and the deleter has the decorator ```@x.deleter```:
+
+```
+class XVariable(object):
+
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, x):
+        self._x = x
+
+    @x.deleter
+    def x(self):
+        self._x = None
+
+
+```
+
+![img_072](./images/img_072.png)
+
+Now when the instance ```x1``` is instantiated. The attribute ```x``` can be get, set and deleted using Pythons standard syntax. Notice when it is accessed again after deletion, ```None``` is returned opposed to the ```AttributeError``` meaning the custom deleter method is invoked:
+
+```
+x1 = XVariable()
+x1.x = 4
+del x1.x
+x1.x
+```
+
+If the directory of the instance ```x1``` is examined, there is the property attribute ```x``` and the private attribute ```_x```. The user should only interact with ```x``` as the getter, setter and deleter are configured as desired:
+
+```
+from pprint import pprint
+pprint(dir(x1), compact=True)
+```
+
+![img_073](./images/img_073.png)
+
+If a second instance is created, although ```x``` is recognised as an identifier, when it is attempted to be accessed without prior assignment an ```AttributeError``` displays:
+
+```
+x2 = XVariable()
+x2.x
+```
+
+![img_074](./images/img_074.png)
+
+The purpose of an Initialization Signature is to initialize instance attributes, during instantiation. This is done using the data model method ```__init__```. 
+
+```
+class XVariable(object):
+
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, value):
+        self._x = value
+
+    @x.deleter
+    def x(self):
+        self._x = None
+
+    def __init__(self, value):
+        self.x = value
+    
+
+```
+
+![img_075](./images/img_075.png)
+
+Notice that this assigns the ```value``` supplied as an input argument to the attribute ```x```. Assignment of a value to the attribute ```x``` invokes the setter method for ```x```. 
+
+Note that the ```__init__``` signature only initializes instance attributes and has **no** return statement. When ```XVariable()``` is input followed by a shift ```⇧``` and tab ```↹```, the docstring of the initialization signature i.e. the ```__init__``` method displays. All the input arguments required for this method need to be supplied:
+
+![img_076](./images/img_076.png)
+
+Although the docstring of the initialization signature displayed above. Instantiation actually uses another data model method ```__new__```. The ```__new__``` data model method creates a new instance, then calls the ```__init__``` method to initialize instance attributes and then finally has a return value which returns the new instance:
+
+```
+XVariable(4)
+```
+
+![img_077](./images/img_077.png)
+
+This effect of ```__new__``` can be seen by the return value shown in the cell output above, recall ```__init__``` has no return value and if ```__init__``` was instead invoked there would be no instance:
+
+```
+x1 = XVariable(4)
+x1.x
+```
+
+![img_078](./images/img_078.png)
+
+## Abstract Base Class
+
+An Abstract Base Class (ABC) is a design pattern that is used to create an abstract template for a class. This template is not designed to be instantiated directly. For example, the following outline can be made for a coordinate:
+
+```
+from abc import ABC, abstractmethod
+
+class AbstractCoordinate(ABC):
+    @abstractmethod
+    def __init__(self):
+        pass
+    
+    @property    
+    @abstractmethod
+    def x(self):
+        pass
+
+    @property    
+    @abstractmethod
+    def y(self):
+        pass
+
+
+
+
+```
+
+classvariable
+classmethod
+staticmethod
 
 
 
@@ -624,19 +884,252 @@ import numbers
 
 
 
-Integral - integer
-
-Real - float
-
-
-Rational
 
 
 
 
 
-Complex
 
-Number
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The identifiers can be viewed by inputting ```x1.``` and pressing tab ```↹```:
+
+
+
+
+)
+x1.get_x()
+```
+
+```point1.``` and pressing tab ```↹```
+
+
+
+```
+point1.set_y(4)
+```
+
+
+```
+class Coordinate(object):
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def get_x(self):
+        return self.x
+
+    def set_x(self, x):
+        self.x = x
+
+    def del_x(self):
+        self.x = None
+
+    def get_y(self):
+        return self.y
+
+    def set_y(self, y):
+        self.y = y
+
+    def del_y(self):
+        self.y = None
+
+
+```
+
+
+```
+Coordinate()
+```
+
+
+```
+point1 = Coordinate(3, 4)
+```
+
+```point1.``` and pressing tab ```↹```
+
+
+
+```
+class Coordinate(object):
+
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+    
+    def get_x(self):
+        return self._x
+
+    def set_x(self, x):
+        self._x = x
+
+    def del_x(self):
+        self._x = None
+
+    def get_y(self):
+        return self_.y
+
+    def set_y(self, y):
+        self._y = y
+
+    def del_y(self):
+        self._y = None
+
+
+```
+
+```
+Coordinate()
+```
+
+
+```
+point1 = Coordinate(3, 4)
+```
+
+```point1.``` and pressing tab ```↹```
+
+
+```
+class Coordinate(object):
+
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+    
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, x):
+        self._x = x
+
+    @x.deleter
+    def x(self):
+        self._x = None
+
+    @property
+    def y(self):
+        return self_.y
+
+    @y.setter
+    def y(self, y):
+        self._y = y
+
+    @y.deleter
+    def y(self):
+        self._y = None
+
+
+```
+
+
+```
+point1.x
+point1.x = 5
+point1.x
+del point1.x
+point1.x
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Abstract Base Classes
+
+```
+from abc import ABC, abstractmethod
+
+class PersonDesignPattern(ABC):
+    @abstractmethod
+    def walk(self):
+        pass
+
+    @abstractmethod
+    def talk(self):
+        pass
+    
+```
+
+
+```
+PersonDesignPattern()
+```
+
+```
+class Person(PersonDesignPattern):
+    def walk(self):
+        print('Plod Plod Plod')
+    
+    def talk(self):
+        print('Blah Blah Blah')
+
+```
+
+```
+fred = Person()
+fred.walk()
+fred.talk()
+```
+
+```
+class Horse(PersonDesignPattern):
+    def walk(self):
+        print('Trot Trot Trot')
+    
+```
+
+
+```
+george = Horse()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
