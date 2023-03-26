@@ -1,0 +1,38 @@
+---
+
+Old versions, to be updated.
+
+## File Operations
+
+The Operating Sytem Module
+
+The Comma Seperated Values Module
+
+The Pickle Module
+
+The JavaScript Object Notation Module
+
+This guide looks at the use of the Operating System module and the shell utilities shutil module. These modules are used to carry out file operations within Python and behave similar to the equivalent commands in bash. This tutorial will examine how to read and write data to a text file.
+
+[File and Directory Operations with the os and shutil Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/020_os_module/readme.md)
+
+The previous guide looked at working with text data. Another common data type is the Comma Seperated Values (CSV) which as the name suggests uses a comma as a delimiter to seperate data into columns. The CSV Module can be used to read or write data from or to a CSV file. The Pickle module can be used to pickle a variable into a byte stream or unpickle a variable into a Python object which is useful for data tranfer over a serial port for example. This byte stream can also be saved to file so a variable can be loaded in a later session opposed to being recreated. The pickled data is easy for a computer to read but not very human readible. Another common datatype is the JavaScript Object Notation (JSON) which is a more complicated data stream that is more user readible than pickled data. The JSON syntax originated from JavaScript but is similar to a Python dictionary with some subtle differences. Despite originating from JavaScript, the JSON data stream has become a commonly used standarrd data stream used to store data for all programming languages and most data on a website is stored in JSON for example. The JSON Module can be used to convert between a JSON syntax and a Python dictionary. 
+
+[CSV, Pickle and JSON Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_csv_pickle_json/readme.md)
+
+---
+
+To be added...
+
+## Scientific Libraries
+
+Python has a large number of Third-Party Modules which are exclude from the standard Python Installation. 
+
+The array module...
+The Numeric Python Library - numpy
+
+The Python and Data Analysis Library - pandas
+
+The Matrix Plotting Library - matplotlib
+
+The DataFrame Visualisation Library - seaborn
