@@ -1,6 +1,6 @@
 # Python Tutorials
 
-This set of tutorials will look at the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE. All the tutorials are written in markdown with a large number of screenshots to help demonstrate the programming concepts and highlight interaction with the JupyterLab IDE. The code snippets can be copied and pasted or better typed into your own interactive notebook which you can open on your second monitor while reading through these markdown tutorials.
+This set of tutorials goes through basic to intermediate concepts of the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE, supplemented with the Variable Explorer of the Spyder IDE. The tutorials themselves are written in markdown, and therefore can be downloaded as a zip file, extracted and opened in JupyterLab if GitHub doesn't render images or equations correctly. Pleae star the tutorials on GitHub and share with friends if you have found them useful.
 
 ## Installation
 
