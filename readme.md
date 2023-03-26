@@ -92,34 +92,6 @@ The Pickle Module
 
 The JavaScript Object Notation Module
 
-
-
-
-
-
-
-
-
-
-
-
-The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
-
-[Array Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_array/readme.md)
-
-The queue module contains the SimpleQueue, Queue, LIFOQueue, PriorityQueue classes. These are used to create a queue or stack datastructure.
-
-[Queue Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/017_queue/readme.md)
-
-
-
-
-## Standard Modules
-
-The Python Standard Modules are Modules that are included with the Python installation. There are approximately 200 standard modules in the [Python module Index](https://docs.python.org/3/py-modindex.html). The Python Module Index lists each module in alphabetical order and gives brief details about each module. It is possible to get overwhelmed when looking at this list for the first time. Each standard module is compartmentalised for a specific purpose, that is common but not as common as the builtin identifiers which have previously been used. Some of the modules are much more commonly used than others an some of the modules are designed more for advanced Python programmers and Python developers. It is not recommended to attempt to learn these in the alphabetical order listed.
-
-This guide selects some of the more commonly used modules and places them in a good order for the purpose of learning. Tackling the modules in this order will reinforce the programming concepts learned from the builtins Python Module and give a prequisite understanding of Python required for more specialised purposes such as Data Science or Web Development.
-
 This guide looks at the use of the Operating System module and the shell utilities shutil module. These modules are used to carry out file operations within Python and behave similar to the equivalent commands in bash. This tutorial will examine how to read and write data to a text file.
 
 [File and Directory Operations with the os and shutil Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/020_os_module/readme.md)
@@ -128,6 +100,13 @@ The previous guide looked at working with text data. Another common data type is
 
 [CSV, Pickle and JSON Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_csv_pickle_json/readme.md)
 
+---
+
+To be added...
+
+The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
+
+[Array Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_array/readme.md)
 
 ## Scientific Libraries
 
