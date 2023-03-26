@@ -80,7 +80,7 @@ This tutorial will look at the concept of a class, a subclass, an Abstract Base 
 
 ---
 
-Old versions/drafts below, to be updated.
+Old versions, to be updated.
 
 ## File Operations
 
@@ -104,16 +104,11 @@ The previous guide looked at working with text data. Another common data type is
 
 To be added...
 
-The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
-
-[Array Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_array/readme.md)
-
 ## Scientific Libraries
 
 Python has a large number of Third-Party Modules which are exclude from the standard Python Installation. 
 
-These tutorials are a work in progress. 
-
+The array module...
 The Numeric Python Library - numpy
 
 The Python and Data Analysis Library - pandas
@@ -121,5 +116,3 @@ The Python and Data Analysis Library - pandas
 The Matrix Plotting Library - matplotlib
 
 The DataFrame Visualisation Library - seaborn
-
-
