@@ -627,7 +627,7 @@ class XVariable(object):
 
 Notice that ```get_x``` returns a value and does not modify the instance, whereas ```set_x``` and ```del_x``` directly mutate the instance and have no return statement.
 
-The default Initialization Signature inherited from the parent class ```object``` can be examined by inputting ```XVariable()``` and pressing shift ```⇧``` and tab:
+The default Initialization Signature inherited from the parent class ```object``` can be examined by inputting ```XVariable()``` and pressing shift ```⇧``` and tab ```↹```:
 
 ![img_059](./images/img_059.png)
 
@@ -847,7 +847,7 @@ x1.x
 
 ## Abstract Base Class
 
-An Abstract Base Class (ABC) is a design pattern that is used to create an abstract template for a class. This template is not designed to be instantiated directly. For example, the following outline can be made for a coordinate:
+An Abstract Base Class (ABC) is a design pattern that is used to create an abstract template for a class. For example, the following outline can be made for a coordinate:
 
 ```
 from abc import ABC, abstractmethod
@@ -868,9 +868,165 @@ class AbstractCoordinate(ABC):
         pass
 
 
+```
 
+![img_079](./images/img_079.png)
+
+The docstring can be viewed by inputting ```AbstractCoordinate()``` and pressing shift ```⇧``` and tab ```↹```:
+
+![img_080](./images/img_080.png)
+
+This template is not designed to be instantiated directly and a ```TypeError``` displays if this is attempted:
 
 ```
+AbstractCoordinate()
+```
+
+![img_081](./images/img_081.png)
+
+A class can be made that uses ```AbstractCoordinate``` as a base class. All of the methods that have the decorator ```@abstractmethod``` in ```AbstractCoordinate``` need to be defined. For example:
+
+```
+class Coordinate(AbstractCoordinate):
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, value):
+        self._x = value
+
+    @x.deleter
+    def x(self):
+        self._x = None
+
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        self._y = value
+
+    @y.deleter
+    def y(self):
+        self._y = None
+        
+    def __init__(self, xvalue, yvalue):
+        self.x = xvalue
+        self.y = yvalue
+        
+
+```
+
+![img_082](./images/img_082.png)
+
+The docstring can be viewed by inputting ```Coordinate()``` and pressing shift ```⇧``` and tab ```↹```:
+
+![img_083](./images/img_083.png)
+
+An instance can be instantiated using:
+
+```
+c1 = Coordinate(3, 4)
+```
+
+![img_084](./images/img_084.png)
+
+The identifiers can be viewed once again by inputting ```c1.``` and pressing tab ```↹```:
+
+![img_085](./images/img_085.png)
+
+The attributes ```x``` and ```y``` from the instance ```c1``` can be get, set and deleted:
+
+```
+c1.x
+c1.y
+c1.x = 5
+c1.x
+del c1.y
+c1.y
+```
+
+![img_086](./images/img_086.png)
+
+Recall that ```self``` can be conceptualised as meaning *this instance*. A regular method is bound to *this instance* which is why ```self``` is the first input argument when each method is defined within the class.
+
+Instead of being bound to *this instance* ```self```, a class method is bound to the class ```cls```. The ```@classmethod``` decorator is used to distinguish a class method from a standard instance method. Normally the return value of a class method is a new instance of the class itself and is therefore used as an alternative constructor.  This can alternative constructor can be defined in the ```AbstractCoordinate``` template:
+
+```
+class AbstractCoordinate(ABC):
+    @abstractmethod
+    def __init__(self):
+        pass
+    
+    @property    
+    @abstractmethod
+    def x(self):
+        pass
+
+    @property    
+    @abstractmethod
+    def y(self):
+        pass
+
+    @classmethod
+    @abstractmethod
+    def alternativeconstructor(cls):
+        pass
+
+```
+
+![img_087](./images/img_087.png)
+
+For simplicity the ```alternativeconstructor``` will use ```yvalue``` and ```xvalue``` opposed to ```xvalue``` and ```yvalue```:
+
+```
+class Coordinate(AbstractCoordinate):
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, value):
+        self._x = value
+
+    @x.deleter
+    def x(self):
+        self._x = None
+
+    @property
+    def y(self):
+        return self._y
+
+    @y.setter
+    def y(self, value):
+        self._y = value
+
+    @y.deleter
+    def y(self):
+        self._y = None
+        
+    def __init__(self, xvalue, yvalue):
+        self.x = xvalue
+        self.y = yvalue
+        
+    @classmethod
+    def alternativeconstructor(cls, yvalue, xvalue):
+        return(Coordinate(xvalue, yvalue))   
+
+```
+
+
+
+
+
+
+
+
+
+
+
 
 classvariable
 classmethod
