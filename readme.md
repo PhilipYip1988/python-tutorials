@@ -74,7 +74,7 @@ The system module ```sys``` gives details about objects used or maintained by th
 
 [The System Module and Working with Custom Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_system_module_custom_modules/readme.md)
 
-This tutorial will look at the concept of a class, a subclass, an Abstract Base Class (ABC) and ultimately creating a custom class where each instance has data attributes and instance methods:
+This tutorial will look at the concept of a class, a subclass, using an Abstract Base Class (ABC) to create a design pattern and ultimately creating a custom class where each instance has data attributes and instance methods:
 
-[Abstract Base Classes and Custom Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_abc_custom_classes/readme.md)
+[The Abstract Base Classes Module and Custom Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_abc_custom_classes/readme.md)
 
