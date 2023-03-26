@@ -950,36 +950,7 @@ c1.y
 
 ![img_086](./images/img_086.png)
 
-Recall that ```self``` can be conceptualised as meaning *this instance*. A regular method is bound to *this instance* which is why ```self``` is the first input argument when each method is defined within the class.
-
-Instead of being bound to *this instance* ```self```, a class method is bound to the class ```cls```. The ```@classmethod``` decorator is used to distinguish a class method from a standard instance method. Normally the return value of a class method is a new instance of the class itself and is therefore used as an alternative constructor.  This can alternative constructor can be defined in the ```AbstractCoordinate``` template:
-
-```
-class AbstractCoordinate(ABC):
-    @abstractmethod
-    def __init__(self):
-        pass
-    
-    @property    
-    @abstractmethod
-    def x(self):
-        pass
-
-    @property    
-    @abstractmethod
-    def y(self):
-        pass
-
-    @classmethod
-    @abstractmethod
-    def alternativeconstructor(cls):
-        pass
-
-```
-
-![img_087](./images/img_087.png)
-
-For simplicity the ```alternativeconstructor``` will use ```yvalue``` and ```xvalue``` opposed to ```xvalue``` and ```yvalue```:
+The setters are normally habe an assert statemetn to assert that the input arguments are the correct data type:
 
 ```
 class Coordinate(AbstractCoordinate):
@@ -989,6 +960,7 @@ class Coordinate(AbstractCoordinate):
 
     @x.setter
     def x(self, value):
+        assert isinstance(value, (int, float, bool))
         self._x = value
 
     @x.deleter
@@ -1001,6 +973,7 @@ class Coordinate(AbstractCoordinate):
 
     @y.setter
     def y(self, value):
+        assert isinstance(value, (int, float, bool))
         self._y = value
 
     @y.deleter
@@ -1011,171 +984,591 @@ class Coordinate(AbstractCoordinate):
         self.x = xvalue
         self.y = yvalue
         
+
+```
+
+![img_100](./images/img_100.png)
+
+Recall that ```self``` can be conceptualised as meaning *this instance*. A regular method is bound to *this instance* which is why ```self``` is the first input argument when each method is defined within the class.
+
+Instead of being bound to *this instance* ```self```, a class method is bound to the class ```cls```. The ```@classmethod``` decorator is used to distinguish a class method from a standard instance method. Normally the return value of a class method is a new instance of the class itself and is therefore used as an alternative constructor.  This can alternative constructor can be defined in the ```AbstractCoordinate2``` template:
+
+```
+class AbstractCoordinate2(ABC):
+    @abstractmethod
+    def __init__(self):
+        pass
+    
+    @classmethod
+    @abstractmethod
+    def alternativeconstructor(cls):
+        pass
+
+```
+
+![img_087](./images/img_087.png)
+
+For simplicity the class ```Coordinate2``` will subclass both ```AbstractCoordinate``` and ```Coordinate```. Subclassing the former will check the class conforms to the expected design pattern. Subclassing the latter will allow inheritance of the getter, setter and deleter for the ```x``` and ```y``` attributes. Because these are inherited without modification, they do not need to be redefined.
+
+This allows focus on the ```__init__``` signature and the ```alternativeconstructor```. Technically the ```__init__``` could also of been inherited without modification in this case however is explicitly specified for clarity. The ```alternativeconstructor``` will return a new ```Coordinate2``` instance from a supplied ```yvalue``` and ```xvalue``` opposed to the default ```xvalue``` and ```yvalue```:
+
+```
+class Coordinate2(AbstractCoordinate, Coordinate):        
+    def __init__(self, xvalue, yvalue):
+        self.x = xvalue
+        self.y = yvalue
+        
     @classmethod
     def alternativeconstructor(cls, yvalue, xvalue):
-        return(Coordinate(xvalue, yvalue))   
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-classvariable
-classmethod
-staticmethod
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The identifiers can be viewed by inputting ```x1.``` and pressing tab ```↹```:
-
-
-
-
-)
-x1.get_x()
-```
-
-```point1.``` and pressing tab ```↹```
-
-
-
-```
-point1.set_y(4)
-```
-
-
-```
-class Coordinate(object):
-
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+        return(Coordinate(xvalue, yvalue))
     
-    def get_x(self):
-        return self.x
-
-    def set_x(self, x):
-        self.x = x
-
-    def del_x(self):
-        self.x = None
-
-    def get_y(self):
-        return self.y
-
-    def set_y(self, y):
-        self.y = y
-
-    def del_y(self):
-        self.y = None
-
 
 ```
 
+![img_088](./images/img_088.png)
+
+The return value gives a new ```Coordinate2``` instance providing the ```xvalue``` and ```yvalue``` in the order expected. Recall that instantiation invokes the ```__new__``` data model method. This creates a new instance *this instance* ```self``` and then invokes the ```__init__``` method to initialize the attributes ```x``` and ```y```.
+
+The identifiers can be viewed by inputting ```c1.``` and pressing tab ```↹```:
+
+![img_089](./images/img_089.png)
+
+The method resolution order can be examined:
 
 ```
-Coordinate()
+Coordinate2.mro()
 ```
 
+![img_090](./images/img_090.png)
+
+To recap, the ```mro``` identifier was inherited from ```object```. The ```Coordinate``` class defined the attributes ```x``` and ```y``` and the ```Coordinate``` class satisifed the design pattern of ```AbstractCoordinate```. The ```Coordinate2``` class subclassed ```Coordinate``` inherited the attributes ```x``` and ```y``` and matched the additional design pattern ```AbstractCoordinate2```.
+
+The following instances can be made using the data model identifier ```__new__```directly or indirectly via the ```alternativeconstructor```:
 
 ```
-point1 = Coordinate(3, 4)
+c1 = Coordinate2(3, 4)
+c1.x
+c1.y
+c1 = Coordinate2.alternativeconstructor(4, 3)
+c2.x
+c2.y
 ```
 
-```point1.``` and pressing tab ```↹```
+![img_091](./images/img_091.png)
 
-
+The ```alternativeconstructor``` can also be called from an instance although it is less common to do so. This works because each instance infers the class it belongs to. No instance data from ```c1``` is used to alternatively construct ```c3```:
 
 ```
-class Coordinate(object):
+c3 = c1.alternativeconstructor(5, 6)
+c3.x
+c3.y
+```
 
-    def __init__(self, x, y):
-        self._x = x
-        self._y = y
+![img_092](./images/img_092.png)
+
+Sometimes instance data is required for an alternative constructor and therefore a standard method or instance method is required. This can be seen below with the additional method ```replace```. ```replace``` is an immutable method and returns a new instance. ```update``` is a mutable method and updates the existing instance:
+
+```
+class Coordinate2(AbstractCoordinate2, Coordinate):        
+    def __init__(self, xvalue, yvalue):
+        self.x = xvalue
+        self.y = yvalue
+        
+    @classmethod
+    def alternativeconstructor(cls, yvalue, xvalue):
+        return(Coordinate2(xvalue, yvalue))
     
-    def get_x(self):
-        return self._x
-
-    def set_x(self, x):
-        self._x = x
-
-    def del_x(self):
-        self._x = None
-
-    def get_y(self):
-        return self_.y
-
-    def set_y(self, y):
-        self._y = y
-
-    def del_y(self):
-        self._y = None
-
-
-```
-
-```
-Coordinate()
-```
-
-
-```
-point1 = Coordinate(3, 4)
-```
-
-```point1.``` and pressing tab ```↹```
-
-
-```
-class Coordinate(object):
-
-    def __init__(self, x, y):
-        self._x = x
-        self._y = y
+    def replace(self, xvalue=None, yvalue=None):
+        if xvalue == None:
+            xvalue = self.x
+        if yvalue == None:
+            yvalue = self.y
+        return(Coordinate2(xvalue, yvalue))
     
+    def update(self, xvalue=None, yvalue=None):
+        if xvalue == None:
+            xvalue = self.x
+        if yvalue == None:
+            yvalue = self.y
+        self.x = xvalue
+        self.y = yvalue
+        
+```
+
+![img_093](./images/img_093.png)
+
+These methods work as expected:
+
+```
+c1 = Coordinate2(4, 3)
+c1.x, c1.y
+c1.update(xvalue=5)
+c1.x, c1.y
+c2 = c1.replace(yvalue=9)
+c2.x, c2.y
+```
+
+![img_094](./images/img_094.png)
+
+A static method is not bound to an instance or a class. In other words it is a function that is simply included within the code block or namespace of the class. Notice there is no *this instance* ```self``` or class ```cls``` provided as an input argument:
+
+```
+class AbstractCoordinate3(ABC):
+    @staticmethod
+    @abstractmethod
+    def function():
+        pass
+
+    
+```
+
+![img_095](./images/img_095.png)
+
+The abstract method is essentially a function that does not use instance attributes or the class name. However this function is normally loosely associated with the class type and therefore expected under the class namespace. The following static method ```function``` for example prints out some detail about a coordinate in response to the number of dimensions supplied:
+
+```
+class Coordinate3(AbstractCoordinate3, Coordinate2):
+    @staticmethod
+    def function(ndim):
+        match ndim:
+            case 1:
+                print('a 1d coordinate lies on the x-line')
+            case 2:
+                print('a 2d coordinate lies on the xy-plane')
+            case 3:
+                print('a 3d coordinate lies within an xyz-cube')
+            case _:
+                print('I cannot visualize this')
+
+
+```
+
+![img_096](./images/img_096.png)
+
+The static method can be called from the class or an instance and behaves otherwise like a regular function. For example:
+
+```
+Coordinate3.function(3)
+c1 = Coordinate3(5, 4)
+c1.function(2)
+```
+
+![img_097](./images/img_097.png)
+
+Notice if the ```alternativeconstructor``` class method inherited from ```Coordinate2``` or ```replace``` instance method inherited from ```Coordinate2``` are used that an instance of ```Coordinate2``` is created instead of ```Coordinate3```:
+
+```
+Coordinate3(1, 2)
+Coordinate3.alternativeconstructor(1, 2)
+c1 = Coordinate3(1, 2)
+c1.replace(xvalue=5)
+```
+
+![img_101](./images/img_101.png)
+
+Going back to ```Coordinate2```. In the class method, ```alternativeconstructor```, ```cls``` is used to designate *this class* and can be used instead of ```Coordinate2``` in the return statement. 
+
+In the instance method ```replace```, there is only *this instance* ```self```. However *this class* can be found by using the data model identifier ```__class__``` from *this instance* ```self.__class__```.
+
+Updating ```Coordinate2```:
+
+```
+class Coordinate2(AbstractCoordinate2, Coordinate):        
+    def __init__(self, xvalue, yvalue):
+        self.x = xvalue
+        self.y = yvalue
+        
+    @classmethod
+    def alternativeconstructor(cls, yvalue, xvalue):
+        return(cls(xvalue, yvalue))
+    
+    def replace(self, xvalue=None, yvalue=None):
+        if xvalue == None:
+            xvalue = self.x
+        if yvalue == None:
+            yvalue = self.y
+        cls = self.__class__
+        return(cls(xvalue, yvalue))
+    
+    def update(self, xvalue=None, yvalue=None):
+        if xvalue == None:
+            xvalue = self.x
+        if yvalue == None:
+            yvalue = self.y
+        self.x = xvalue
+        self.y = yvalue
+        
+```
+
+![img_102](./images/img_102.png)
+
+And rerunning the code to create the class ```Coordinate3```, so it now uses the updated ```Coordinate2``` as a parent class:
+
+```
+class Coordinate3(AbstractCoordinate3, Coordinate2):
+    @staticmethod
+    def function(ndim):
+        match ndim:
+            case 1:
+                print('a 1d coordinate lies on the x-line')
+            case 2:
+                print('a 2d coordinate lies on the xy-plane')
+            case 3:
+                print('a 3d coordinate lies within an xyz-cube')
+            case _:
+                print('I cannot visualize this')
+
+
+```                
+
+![img_103](./images/img_103.png)
+
+When the following code is run, all instances are now of the class ```Coordinate3```:
+
+```
+Coordinate3(1, 2)
+Coordinate3.alternativeconstructor(1, 2)
+c1 = Coordinate3(2, 1)
+c1.replace(xvalue=5)
+```
+
+![img_104](./images/img_104.png)
+
+Unitary (single instance) and binary (two instances) data model identifiers can be configured for the class. These are immutable methods that operate on the instance data and return a new instance. For example an ```AbstractCoordinate4``` design pattern can be configured for ```__neg__``` and ```__sub__```. 
+
+```__neg__``` is unitary and only the instance data from *self*.
+
+```__sub__``` is binary and requires the instance data from *self* and from the second instance *value*.
+
+```
+class AbstractCoordinate4(ABC):
+    @abstractmethod
+    def __neg__(self):
+        pass
+    
+    @abstractmethod
+    def __sub__(self, value):
+        pass
+
+    
+```
+
+![img_098](./images/img_098.png)
+
+It is quite common for the data model method in a custom class to be broken down into steps which involve use of the equivalent data model method for a fundamental data type. In the data model ```__neg__``` for example the return value supplies ```-self.x``` where ```x``` is assumed to be a number and ```-``` uses the numbers data model method ```__neg__```:
+
+```
+class Coordinate4(AbstractCoordinate4, Coordinate2):
+    def __neg__(self):
+        cls = self.__class__
+        return(cls(-self.x, -self.y))
+    
+    def __sub__(self, value):
+        x = self.x - value.x
+        y = self.y - value.y
+        cls = self.__class__
+        return(cls(x, y))
+
+    
+```
+
+![img_099](./images/img_099.png)
+
+The following code works as expected:
+
+```
+c1 = Coordinate4(5, 2)
+c2 = Coordinate4(1, 3)
+c3 = c1 - c2
+c3.x, c3.y
+c4 = Coordinate4.alternativeconstructor(6, 7)
+c4.x, c4.y
+c5 = -c4
+c5.x, c5.y
+```
+
+![img_105](./images/img_105.png)
+
+Sometimes all instances of a class will have an attribute that is the same regardless of the instance. Instead of creating a seperate instance attribute, it is more convenient to create a class variable. For example all the coordinates are 2 dimensional and therefore the number of dimensions ndim is 2. A very simple abstract class will be used to demonstrate this. Notice that the class variable is assigned directly within the class and there is no dot ```.``` indicating it is coming from another object:
+
+```
+class AbstractCoordinate5(ABC):
+    ndim = None
+    
+```
+
+![img_106](./images/img_106.png)
+
+```
+class Coordinate5(Coordinate4):
+    ndim = 2
+
+
+```
+
+![img_107](./images/img_107.png)
+
+The class variable can be accessed from a class and any instance of the class. Notice these all have the same value:
+
+```
+Coordinate5.ndim
+c1 = Coordinate5(1, 2)
+c1.ndim
+c2 = Coordinate5.alternativeconstructor(4, 2)
+c2.ndim
+```
+
+![img_108](./images/img_108.png)
+
+In the above, the class variable can be accessed from instances, in the same way an attribute is accessed. It can also be reassigned to a new value, which makes it an instance attribute only influencing that instance:
+
+```
+c2.ndim = 7
+c2.ndim
+c1.ndim
+```
+
+![img_109](./images/img_109.png)
+
+Clearly, in the above implementation it doesn't make sense to do this and the class variable can be protected by making ```_ndim``` a private variable and using a property for ```ndim```:
+
+```
+class AbstractCoordinate5(ABC):
+    _ndim = None
+    
+    @property
+    @abstractmethod
+    def ndim(self):
+        pass
+    
+```    
+
+![img_110](./images/img_110.png)
+
+If only the getter method is defined, a ```TypeError``` will be raised if the class variable is attempted to be set or deleted:
+
+```
+class Coordinate5(AbstractCoordinate5, Coordinate4):
+    _ndim = 2
+    
+    @property
+    def ndim(self):
+        return self._ndim
+        
+
+```
+
+![img_111](./images/img_111.png)
+
+```
+Coordinate5.ndim
+c1 = Coordinate5(1, 2)
+c1.ndim
+c1.ndim = 7
+```
+
+![img_112](./images/img_112.png)
+
+For this specific use case, it may be more appropriate to use the ```__len__``` data model method instead of having the class variable as a proeprty:
+
+```
+class AbstractCoordinate5(ABC):
+    _ndim = None
+    
+    @abstractmethod
+    def __len__(self):
+        pass
+    
+```
+
+![img_113](./images/img_113.png)
+
+The ```__len__``` data model identifier can be designed to return this value:
+
+```
+class Coordinate5(AbstractCoordinate5, Coordinate4):
+    _ndim = 2
+    
+    def __len__(self):
+        return self._ndim
+        
+```
+
+![img_114](./images/img_114.png)
+
+For example:
+
+```
+c1 = Coordinate5(1, 2)
+len(c1)
+```
+
+![img_115](./images/img_115.png)
+
+A class variable can also be created that counts the number of instances of a class. The following abstract class can be used:
+
+```
+class AbstractCoordinate6(ABC):
+    _ninstances = None
+    
+    @abstractmethod
+    def __init__(self):
+        pass
+    
+    @property
+    @abstractmethod
+    def ninstances(self):
+        pass
+    
+
+```
+
+![img_116](./images/img_116.png)
+
+The ```__init__``` signature needs to be updated in order to increment the class variable. Recall the class can be accessed from *this instance* ```self``` by use of the data model identifier ```__class__``` in this case ```self.__class__```:
+
+```
+class Coordinate6(AbstractCoordinate6, Coordinate5):
+    _ninstances = 0
+    
+    def __init__(self, xvalue, yvalue):
+        self.x = xvalue
+        self.y = yvalue
+        cls = self.__class__
+        cls._ninstances += 1
+        
+    @property
+    def ninstances(self):
+        cls = self.__class__
+        return cls._ninstances
+        
+```
+
+![img_117](./images/img_117.png)
+
+This works as expected:
+
+```
+Coordinate6.ninstances
+c1 = Coordinate6(1, 2)
+c1.ninstances
+c2 = Coordinate6(3, 2)
+c2.ninstances
+c1.ninstances
+```
+
+![img_118](./images/img_118.png)
+
+The property also protects the class variable from undesired reassignment or deletion:
+
+![img_119](./images/img_119.png)
+
+```self.__class__``` returns the class from an instance. ```self.__class__.__name__``` returns it as a string. This can be useful when defining the formal string representation using ```__repr__```.
+
+```
+class Coordinate7(Coordinate6):
+    def __repr__(self):
+        cls_str = self.__class__.__name__
+        return (f'{cls_str}({self.x}, {self.y})')
+
+
+```
+
+![img_120](./images/img_120.png)
+
+This can be tested using:
+
+```
+c1 = Coordinate7(1, 2)
+c1
+```
+
+![img_121](./images/img_121.png)
+
+The above used several layers of subclasses to go through new concepts individually. It is worth condensing the above into one Abstract Base Class ```AbstractCoordinate```:
+
+```
+class AbstractCoordinate(ABC):
+    _ndim = None
+    _ninstances = None
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def __repr__(self):
+        pass
+
+    @property
+    def x(self):
+        pass
+
+    @property
+    def y(self):
+        pass
+
+    @property
+    @abstractmethod
+    def ninstances(self):
+        pass
+
+    @classmethod
+    @abstractmethod
+    def alternativeconstructor(cls):
+        pass        
+
+    @abstractmethod
+    def replace(self):
+        pass    
+
+    @abstractmethod
+    def update(self):
+        pass    
+
+    @abstractmethod
+    def __neg__(self):
+        pass
+    
+    @abstractmethod
+    def __sub__(self, value):
+        pass
+    
+    @abstractmethod
+    def __len__(self):
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def function():
+        pass
+
+
+```
+
+And then using this template to create one class ```Coordinate```:
+
+```
+class Coordinate(AbstractCoordinate):
+    _ndim = 2
+    _ninstances = 0
+
+    def __init__(self, xvalue, yvalue):
+        self.x = xvalue
+        self.y = yvalue
+        self.__class__._ninstances += 1
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}({self.x}, {self.y})')
+
     @property
     def x(self):
         return self._x
 
     @x.setter
-    def x(self, x):
-        self._x = x
+    def x(self, value):
+        assert isinstance(value, (int, float, bool))
+        self._x = value
 
     @x.deleter
     def x(self):
@@ -1183,109 +1576,87 @@ class Coordinate(object):
 
     @property
     def y(self):
-        return self_.y
+        return self._y
 
     @y.setter
-    def y(self, y):
-        self._y = y
+    def y(self, value):
+        assert isinstance(value, (int, float, bool))
+        self._y = value
 
     @y.deleter
     def y(self):
         self._y = None
 
+    @property
+    def ninstances(self):
+        return self.__class__._ninstances
 
-```
-
-
-```
-point1.x
-point1.x = 5
-point1.x
-del point1.x
-point1.x
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Abstract Base Classes
-
-```
-from abc import ABC, abstractmethod
-
-class PersonDesignPattern(ABC):
-    @abstractmethod
-    def walk(self):
-        pass
-
-    @abstractmethod
-    def talk(self):
-        pass
+    @classmethod
+    def alternativeconstructor(cls, yvalue, xvalue):
+        return(cls(xvalue, yvalue))
     
-```
-
-
-```
-PersonDesignPattern()
-```
-
-```
-class Person(PersonDesignPattern):
-    def walk(self):
-        print('Plod Plod Plod')
+    def replace(self, xvalue=None, yvalue=None):
+        if xvalue == None:
+            xvalue = self.x
+        if yvalue == None:
+            yvalue = self.y
+        return(self.__class__(xvalue, yvalue))
     
-    def talk(self):
-        print('Blah Blah Blah')
+    def update(self, xvalue=None, yvalue=None):
+        if xvalue == None:
+            xvalue = self.x
+        if yvalue == None:
+            yvalue = self.y
+        self.x = xvalue
+        self.y = yvalue   
 
-```
-
-```
-fred = Person()
-fred.walk()
-fred.talk()
-```
-
-```
-class Horse(PersonDesignPattern):
-    def walk(self):
-        print('Trot Trot Trot')
+    def __neg__(self):
+        return(self.__class__(-self.x, -self.y))
     
-```
+    def __sub__(self, value):
+        x = self.x - value.x
+        y = self.y - value.y
+        return(self.__class__(x, y))
+    
+    def __len__(self):
+        return self._ndim
+
+    @staticmethod
+    def function(ndim):
+        match ndim:
+            case 1:
+                print('a 1d coordinate lies on the x-line')
+            case 2:
+                print('a 2d coordinate lies on the xy-plane')
+            case 3:
+                print('a 3d coordinate lies within an xyz-cube')
+            case _:
+                print('I cannot visualize this')
 
 
 ```
-george = Horse()
+
+This behaves in the same manner as before. Other identifiers and data model identifiers can be defined to increase the classes functionality.
+
+## Modules
+
+Classes generally involve a large amount of code, the ```AbstractCoordinate``` and ```Coordinate``` class are over 100 lines of code and would be larger with more of the data model identifiers defined. In addition for brevity, no docstrings were added. Normally the class and each method in the class would have its own docstring. 
+
+Therefore classes are typically modularised. i.e. included with their required imports in a seperate module. In this example ```coordinate.py```, noting that the file name is all lower case and follows the conventions of Python object names:
+
+![img_122](./images/img_122.png)
+
+Then the class can be used as shown:
+
+```
+from coordinate import Coordinate
+c1 = Coordinate(3, 4)
+c1
+c1.x
+c2 = Coordinate.alternativeconstructor(5, 3)
+c2 - c1
 ```
 
+![img_123](./images/img_123.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

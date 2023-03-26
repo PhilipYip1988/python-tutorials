@@ -74,11 +74,13 @@ The system module ```sys``` gives details about objects used or maintained by th
 
 [The System Module and Working with Custom Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_system_module_custom_modules/readme.md)
 
-Creating Custom Classes
+This tutorial will look at the concept of a class, a subclass, an Abstract Base Class (ABC) and ultimately creating a custom class where each instance has data attributes and instance methods:
 
+[Abstract Base Classes and Custom Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_abc_custom_classes/readme.md)
 
+---
 
-
+Old versions/drafts below, to be updated.
 
 ## File Operations
 
@@ -98,14 +100,8 @@ The JavaScript Object Notation Module
 
 
 
----
-
-Old versions/drafts below, to be updated.
 
 
-Previously inbuild classes such as the int, bool, float, str, list, tuple, set and dict were explored. Each instance of a class had instance data attributes and functions which were designed to operate on this instance data. The template for this data and the function definition for these definitions are given in the class itself. This tutorial looks at the concept of a Python object and the use of it to create a custom class.
-
-[Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/011_classes/readme.md)
 
 The array module is based around the array class. The array class is list like however does not have the same flexibility as lists when it comes to storing mixed datatypes and is designed to store numeric data of a uniform datatype. The array class is lower case, indicating that class is very close to builtins. The use of arrays over lists reduces the likelihood of a TypeError due to one of the datatypes being wrong. Use of the correct data type is also more memory efficient, as the flexibility of a list takes up more memory.
 
@@ -131,8 +127,6 @@ This guide looks at the use of the Operating System module and the shell utiliti
 The previous guide looked at working with text data. Another common data type is the Comma Seperated Values (CSV) which as the name suggests uses a comma as a delimiter to seperate data into columns. The CSV Module can be used to read or write data from or to a CSV file. The Pickle module can be used to pickle a variable into a byte stream or unpickle a variable into a Python object which is useful for data tranfer over a serial port for example. This byte stream can also be saved to file so a variable can be loaded in a later session opposed to being recreated. The pickled data is easy for a computer to read but not very human readible. Another common datatype is the JavaScript Object Notation (JSON) which is a more complicated data stream that is more user readible than pickled data. The JSON syntax originated from JavaScript but is similar to a Python dictionary with some subtle differences. Despite originating from JavaScript, the JSON data stream has become a commonly used standarrd data stream used to store data for all programming languages and most data on a website is stored in JSON for example. The JSON Module can be used to convert between a JSON syntax and a Python dictionary. 
 
 [CSV, Pickle and JSON Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_csv_pickle_json/readme.md)
-
-
 
 
 ## Scientific Libraries
