@@ -456,9 +456,7 @@ archive2 = ('bye', 2, False, 3.14)
 archive1 + archive2
 ```
 
-```
 ![img_064](images/img_064.png)
-```
 
 The ```*``` operator is setup to perform record replication with an integer. The ```*``` operator uses the data model identifier ```__mul__``` or the reverse data model idenfier ```__rmul__``` depending on whether the tuple is to the left hand side or right hand side of the ```*``` operator:
 
