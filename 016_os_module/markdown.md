@@ -90,7 +90,7 @@ file.closed
 
 ![img_005](./images/img_005.png)
 
-```readable```, ```writeable``` and ```seekable``` are method which return a ```bool```:
+```readable```, ```writeable``` and ```seekable``` are methods which return a ```bool```:
 
 ```
 with open('textfile.txt', mode='rt') as file:
@@ -353,21 +353,522 @@ data
 
 ![img_046](./images/img_046.png)
 
+```
+data = [line.strip() for line in data]
+'\r\n'.join(data)
+```
 
-write mode ...
+![img_047](./images/img_047.png)
+
+If ```data2.txt``` is examined.
+
+![img_048](./images/img_048.png)
+
+![img_049](./images/img_049.png)
+
+If the file is opened as a text file with write access, i.e. ```mode='wt'```, then all previous data in the file will be erased and the file can otherwise be treated as a blank file:
+
+```
+with open('textfile2.txt', mode='wt') as file:
+    pass
+
+```
+
+![img_050](./images/img_050.png)
+
+![img_051](./images/img_051.png)
+
+If the file is opened as a raw binary file with write access. A ```byte``` can be written to it using hexadecimal escape characters:
+
+```
+with open('textfile2.txt', mode='wb') as file:
+    file.write(b'\x48\x65\x6c\x6c\x6f\x20\x57\x6f\x72\x6c\x64\x21\x0d\x0a')
+
+```
+
+![img_052](./images/img_052.png)
+
+![img_053](./images/img_053.png)
+
+Note the ```'\x20'``` is the hexadecimal escape character for a space and the last two escape characters are ```'\x0d\x0a'``` which is the Carriage Return and Line Feed respectively.
+
+![img_054](./images/img_054.png)
+
+If the text is highlighted in Notepad++ and Plugins → Converter → ASCII to Hex is selected:
+
+![img_055](./images/img_055.png)
+
+This converted file can be be read in using text read i.e. ```mode='rt'```:. The ```bytes``` alternative constructor ```fromhex`` can be used to convert this back to ASCII characters:
+
+```
+with open('textfile2.txt', mode='rt') as file:
+    data = file.read()
+    
+data
+
+bytes.fromhex(data)
+```
+
+![img_056](./images/img_056.png)
+
+Returning the file back to:
+
+```
+with open('textfile2.txt', mode='wb') as file:
+    file.write(b'\x48\x65\x6c\x6c\x6f\x20\x57\x6f\x72\x6c\x64\x21\x0d\x0a')
+
+```
+
+![img_057](./images/img_057.png)
+
+Its properties can be examined using the file explorer:
+
+![img_058](./images/img_058.png)
+
+![img_059](./images/img_059.png)
+
+Note the size is 14 bytes, meaning there are 14 ASCII characters in it including the Carriage Return and Line Feed:
+
+![img_060](./images/img_060.png)
+
+If the file is opened as a raw binary file with append access. The ```truncate``` method can be used to truncate the file to a maximum number of bytes, for example ```5```:
+
+```
+with open('textfile2.txt', mode='ab') as file:
+    file.truncate(5)
+    
+```
+
+![img_061](./images/img_061.png)
+
+The file when opened, now only has 5 ASCII characters:
+
+![img_062](./images/img_062.png)
+
+## OS Module
+
+So far, the only text files examined have been in the same folder as the Interactive Python Notebook File. The Operating System Module ```os``` can be used to navigate around the Operating System. To import the module use:
+
+```
+import os
+```
+
+Details about the module can be found using:
+
+```
+? os
+```
+
+![img_063](./images/img_063.png)
+
+The identifiers from the ```os``` module can be viewed by inputting ```os.``` followed by a tab ```↹```:
+
+![img_064](./images/img_064.png)
+
+The ```os``` module has a number of string identifiers such as current directory ```curdir``` represented by ```'.'```, parent directory ```pardir``` represented by ```'..'```, the seperator used between folders ```sep``` which on Windows is ```'\\'``` by default (recall for Python strings the ```\``` is used to insert an escape character, to insert ```\``` as the escape character ```\\``` is used.) The alternative seperator ```altsep``` is ```'/'``` which Linux also uses by default. The extension seperator ```extsep``` is ```'.'``` and the line seperator ```linesep``` is carriage return, line feed ```'\r\n'```:
+
+```
+os.curdir
+os.pardir
+os.sep
+os.altsep
+os.extsep
+os.linesep
+```
+
+![img_065](./images/img_065.png)
+
+These are commonly used for file path manipulation and can be imported directly using:
+
+```
+from os import curdir, pardir, sep, extsep
+```
+
+![img_066](./images/img_066.png)
+
+The environmental variables path is a dictionary like collection of key value pairs:
+
+```
+os.environ
+```
+
+![img_067](./images/img_067.png)
+
+It can be viewed in the Variable Explorer using:
+
+```
+environ = os.environ
+```
+
+![img_069](./images/img_069.png)
+
+And for readibility, cast into a dicitionary using:
+
+```
+environ = dict(os.environ)
+```
+
+![img_070](./images/img_070.png)
+
+![img_071](./images/img_071.png)
+
+It is worthwhile examining this dictionary as it contains important locations in the Windows OS:
+
+![img_072](./images/img_072.png)
+![img_073](./images/img_073.png)
+![img_074](./images/img_074.png)
+![img_075](./images/img_075.png)
+![img_076](./images/img_076.png)
+![img_077](./images/img_077.png)
+![img_078](./images/img_078.png)
+
+Of particular importance are ```'USERNAME'``` which is different for all Windows Users and ````'USERPROFILE'``` which is dependent on the ```'USERNAME'```. If ```%USERPROFILE%``` is typed in the address bar in Windows Explorer, the UserProfile is displayed:
+
+![img_079](./images/img_079.png)
+
+This contains the Documents folder:
+
+![img_080](./images/img_080.png)
+
+This file path can be accessed using the key:
+
+```
+os.environ['USERPROFILE']
+```
+
+And Documents can therefore be accessed using string concatenation:
+
+```
+os.environ['USERPROFILE'] + sep + 'Documents'
+```
+
+![img_081](./images/img_081.png)
+
+The ```notebook.ipynb``` file in Documents:
+
+![img_082](./images/img_082.png)
+
+Therefore has the full path
+
+```
+os.environ['USERPROFILE'] + sep + 'Documents' + sep + 'notebook' + extsep + 'ipynb'
+```
+
+![img_083](./images/img_083.png)
+
+The function get environmental variables ```os.getenv``` can be used to retrieve the file path of the environmental variable using the key:
+
+```
+os.getenv('USERPROFILE')
+```
+
+![img_102](./images/img_102.png)
+
+Concatenation using the above is quite cumbersome. The ```os.path``` module compartmentalises useful path related identifiers: 
+
+![img_084](./images/img_084.png)
+
+Its list of identifiers can be viewed by inputting ```os.``` followed by a tab ```↹```:
+
+![img_085](./images/img_085.png)
+
+The string instances ```curdir```, ```pardir```, ```sep```, ```extsep```, ```altsep``` are available as before.
+
+The three most commonly used functions in the ```os``` module, get current working directory ```os.getcwd```,  change directory ```os.chdir``` and list directories ```os.listdir``` are frequently used in combination with ```path``` identifiers.
+
+The current working directory can be examined using:
+
+```
+os.getcwd()
+```
+
+![img_086](./images/img_086.png)
+
+If ```os.listdir()``` is input followed by a shift ```⇧``` and tab ```↹```, its docstring will display:
+
+![img_087](./images/img_087.png)
+
+It has the keyword input argument ```path``` which by defaults to ```None``` meaning the current working directory is selected:
+
+![img_088](./images/img_088.png)
+
+Each directory within the current working directory and file within the current working directory are shown. Note that the files have file extensions and the directory names have no extensions.
+
+The absolute path ```os.path.abspath``` will retrieve the full path name from a file:
+
+```
+os.path.abspath('textfile.txt')
+```
+
+![img_089](./images/img_089.png)
+
+The relative path ```os.path.relpath``` will retrieve the relative path from the current working directory:
+
+```
+os.path.relpath('C:\\Users\\Philip\\Documents\\textfile.txt')
+```
+
+![img_090](./images/img_090.png)
+
+If a new folder ```SubDirectory``` is created:
+
+![img_091](./images/img_091.png)
+
+And the absolute path is examined:
+
+```
+os.path.abspath('SubDirectory')
+```
+
+![img_092](./images/img_092.png)
+
+Because this ```SubDirectory``` is within the current working directory, the directory can be changed to it using the relative path:
+
+```
+os.chdir('SubDirectory')
+```
+
+Notice if the relative path of the same file explored earlier is examined:
+
+```
+os.path.relpath('C:\\Users\\Philip\\Documents\\textfile.txt')
+```
+
+That the prefix ```..``` now displays which instructs to go up a level to the parent directory:
+
+![img_093](./images/img_093.png)
+
+The directory name of this file can be found using the function ```os.path.dirname```:
+
+```
+os.path.dirname('..\\textfile.txt')
+```
+
+![img_094](./images/img_094.png)
+
+The expand user profile ```os.path.expanduser``` can be used to expand a user path beginning with the ```'~'```, normally these involve a raw string:
+
+```
+os.path.expanduser('~')
+os.path.expanduser('~\\Documents')
+os.path.expanduser(r'~\Documents')
+```
+
+![img_095](./images/img_095.png)
+
+The expand environmental variables ```os.path.expandvar``` can be used to expand a user path beginning with an environmental variable enclosed in ```%``` signs:
+
+```
+os.path.expandvars('%UserProfile%')
+os.path.expandvars('%AppData%')
+os.path.expandvars('%WinDir%')
+os.path.expandvars('%UserProfile%\\Documents')
+```
+
+![img_096](./images/img_096.png)
+
+The split extension ```os.splitext``` returns a ```tuple``` where the first element is the path to the file and the second element is the file extension:
+
+```
+os.path.splitext(os.path.expanduser(r'~\Documents\notebook.ipynb'))
+```
+
+![img_097](./images/img_097.png)
+
+The split ```os.path.split``` returns a ```tuple``` where the first element is the directory of the file and the second element is the file including the extension:
+
+```
+os.path.split(os.path.expanduser(r'~\Documents\notebook.ipynb'))
+```
+
+![img_098](./images/img_098.png)
+
+The join ```os.path.join``` joins elements of a file path. This function is particularly useful as it automatically adds the ```\\``` which can be easily missed out when using string concatenation:
+
+```
+os.path.join(os.path.expanduser('~'), 
+             'Documents', 
+             'notebook.ipynb')
+```
+
+![img_099](./images/img_099.png)
+
+The exists ```os.path.exists``` can be used to check whether a directory or file exists:
+
+```
+os.path.exists(os.path.join(os.path.expanduser('~'), 
+                            'Documents', 
+                            'notebook.ipynb'))
+
+os.path.exists(os.path.join(os.path.expanduser('~'), 
+                            'Documents', 
+                            'notebook.ipynb'))
+```
+
+![img_100](./images/img_100.png)
+
+The same file ```os.path.samefile``` can be used to check whether two paths are to the same file:
+
+```
+os.path.samefile(os.path.expanduser(r'~\Documents\notebook.ipynb'), 
+                 r'..\notebook.ipynb')
+```
+
+![img_101](./images/img_101.png)
+
+Now that the most common path related identifiers have been examined, directory operations can be used. The current working directory may be examined and changed to the Documents folder using:
+
+```
+os.getcwd()
+os.chdir(os.path.expanduser(r'~\Documents'))
+os.getcwd()
+```
+
+![img_103](./images/img_103.png)
+
+![img_104](./images/img_104.png)
+
+To check for the existance of the ```'SubDirectory'```, the absolute path or relative path can be used:
+
+```
+os.path.exists(os.path.join(os.getcwd(), 'SubDirectory'))
+os.path.exists('SubDirectory')
+```
+
+![img_105](./images/img_105.png)
+
+The remove directory ```os.rmdir``` can be used to remove an empty directory.
+
+```
+os.rmdir('SubDirectory')
+```
+
+![img_106](./images/img_106.png)
+
+![img_107](./images/img_107.png)
+
+The make directory ```os.mkdir``` can be used to make a directory or a new file:
+
+```
+os.mkdir('SubDirectoryA')
+```
+
+![img_108](./images/img_108.png)
+
+![img_109](./images/img_109.png)
+
+This function operates one level at a time:
+
+```
+os.mkdir(r'SubDirectoryA\SubDirectoryB')
+```
+
+![img_110](./images/img_110.png)
+
+![img_111](./images/img_111.png)
+
+Now that the directory is made, the ```open``` command with ```mode=xt``` can be used to touch the directory:
+
+```
+with open(r'SubDirectoryA\SubDirectoryB\textfile.txt', mode='xt') as file:
+    file.write('Hello World!\n')
+```
+
+![img_112](./images/img_112.png)
+
+![img_113](./images/img_113.png)
+
+![img_114](./images/img_114.png)
+
+The make directories function ```makedirs``` is more powerful and can create a series of nested subdirectories:
+
+![img_115](./images/img_115.png)
+
+```
+os.makedirs(r'SubDirectory1\SubDirectory2')
+```
+
+![img_116](./images/img_116.png)
+
+![img_117](./images/img_117.png)
+
+![img_118](./images/img_118.png)
+
+Now that the directory is made, the ```open``` command with ```mode=at``` can be used to touch the directory as before:
+
+```
+with open(r'SubDirectory1\SubDirectory2\textfile2.txt', mode='xt') as file:
+    file.write('Hello World!!\n')
+```
+
+![img_119](./images/img_119.png)
+
+![img_120](./images/img_120.png)
+
+![img_121](./images/img_121.png)
+
+Generally the procedure to remove a file and an empty directories is to use ```os.remove``` to remove the file, ```os.rmdir``` to remove the empty directory and ```os.listdir``` to check the contents at each stage:
+
+```
+os.listdir(r'SubDirectory1\SubDirectory2')
+os.remove(r'SubDirectory1\SubDirectory2\textfile2.txt')
+os.listdir(r'SubDirectory1\SubDirectory2')
+os.rmdir(r'SubDirectory1\SubDirectory2')
+os.listdir(r'SubDirectory1')
+os.rmdir(r'SubDirectory1')
+```
+
+![img_122](./images/img_122.png)
+
+![img_123](./images/img_123.png)
+
+The more powerful remove directories ```os.removedirs``` can remove a series of empty directories. This function flags up an ```OSError``` if the directories have files in them:
+
+```
+os.removedirs(r'SubDirectoryA\SubDirectoryB')
+```
+
+![img_124](./images/img_124.png)
+
+```
+os.remove(r'SubDirectoryA\SubDirectoryB\textfile.txt')
+os.removedirs(r'SubDirectoryA\SubDirectoryB')
+```
+
+![img_125](./images/img_125.png)
+
+![img_126](./images/img_126.png)
+
+The replace function ```os.replace``` can be used to replace the source directory of a file to a destination directory. Its dostring can be viewed by inputting ```os.replace()``` followed by a shift ```⇧``` and tab ```↹```:
+
+![img_127](./images/img_127.png)
+
+![img_128](./images/img_128.png)
+
+```
+os.mkdir('SubDirectory')
+os.replace('textfile.txt', r'SubDirectory\textfile.txt')
+```
+
+![img_129](./images/img_129.png)
+
+![img_130](./images/img_130.png)
+
+![img_131](./images/img_131.png)
+
+This can also be used to rename a file:
+
+```
+os.replace(r'SubDirectory\textfile.txt', 
+           r'SubDirectory\baabaablacksheep.txt')
+```
+
+![img_132](./images/img_132.png)
+
+![img_133](./images/img_133.png)
 
 
 
-write
-writelines
-
-
-
-
-
-write_through
-
-truncate
 
 
 
@@ -376,8 +877,52 @@ truncate
 
 
 
- within a ```with``` code block:
 
+
+
+
+walk
+
+
+## Stat Module
+
+The ```os.st``` module or ```stat``` module compartmentalises useful file statistic identifiers: 
+
+
+
+Its list of identifiers can be accessed by inputting ```os.st.``` followed by a tab ```↹```:
+
+
+Many of these statistics are equivalent to the details shown in file properties within Windows Explorer:
+
+
+
+The attribute ```os.st.ST_SIZE``` should give the size in bytes. In my case I get a value of ```6``` instead of ```229```:
+
+```
+os.st.ST_SIZE
+```
+
+The attributes ```os.st.ST_CTIME```, ```os.st.ST_MTIME``` and ```os.st.ST_ATIME``` gives the created, modified and access time. In my case I get ```9```, ```8``` and ```7```:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stat
+
+## The Shell Utilities Module
 
 
 
