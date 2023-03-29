@@ -868,59 +868,43 @@ os.replace(r'SubDirectory\textfile.txt',
 ![img_133](./images/img_133.png)
 
 
+os.walk
 
 
-
-
-
-
-
-
-
-
-
-
-
-walk
+os.stat
 
 
 ## Stat Module
 
-The ```os.st``` module or ```stat``` module compartmentalises useful file statistic identifiers: 
-
-
-
-Its list of identifiers can be accessed by inputting ```os.st.``` followed by a tab ```↹```:
-
-
-Many of these statistics are equivalent to the details shown in file properties within Windows Explorer:
-
-
-
-The attribute ```os.st.ST_SIZE``` should give the size in bytes. In my case I get a value of ```6``` instead of ```229```:
-
 ```
-os.st.ST_SIZE
+info = os.stat(r'SubDirectory/baabaablacksheep.txt')
+info
 ```
 
-The attributes ```os.st.ST_CTIME```, ```os.st.ST_MTIME``` and ```os.st.ST_ATIME``` gives the created, modified and access time. In my case I get ```9```, ```8``` and ```7```:
 
 
+```
+import stat
+```
+
+```stat.``` followed by a tab ```↹```:
+
+```
+stat.ST_MODE
+stat.ST_INO
+stat.ST_DEV
+stat.ST_NLINK
+stat.ST_UID
+stat.ST_GID
+stat.ST_SIZE # Size in Bytes
+stat.ST_ATIME # Access Time
+stat.ST_MTIME # Modified Time
+stat.ST_CTIME # Creation Time
+```
 
 
+numeric index to index into list above to retrieve the statistic.
 
-
-
-
-
-
-
-
-
-
-
-
-stat
 
 ## The Shell Utilities Module
 
