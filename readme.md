@@ -88,7 +88,7 @@ To work with files the Operating System module ```os``` is typically used to nav
 
 [The Operating System, Stat and Shell Utilities Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_operating_system_module/readme.md)
 
-The Comma Separated Values Module ```csv``` allows basic reading and writing of ```csv``` files to ```builtins``` objects, in the form of lists of strings or nested lists of strings. This is a basic module and the (.csv) file format is more typically read into more specialised data structures such as the ```DataFrame``` which will be discussed in a later tutorial:
+The Comma Separated Values Module ```csv``` allows basic reading and writing of ```csv``` files to ```builtins``` objects, in the form of lists of strings or nested lists of strings. Use of this basic module gives a good understanding of the file format. It is more routine to read the .csv file format into a more specialised data structure such as the ```DataFrame``` which the Python and Data Analysis Library revolves round. This will be discussed in a later tutorial:
 
 [The Comma Separated Values Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/017_comma_separated_values_module/readme.md)
 
