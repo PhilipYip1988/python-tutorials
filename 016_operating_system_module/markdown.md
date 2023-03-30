@@ -867,65 +867,199 @@ os.replace(r'SubDirectory\textfile.txt',
 
 ![img_133](./images/img_133.png)
 
+Supposing a number of subdirectories and files are added to ```SubDirectory```:
 
-os.walk
+```
+os.makedirs(r'SubDirectory\SubDirectoryA\SubDirectoryB')
+os.makedirs(r'SubDirectory\SubDirectory1\SubDirectory2')
+
+with open(r'SubDirectory\SubDirectory1\hello_world.txt', mode='xt') as file:
+    file.write('Hello World!\n')
+
+with open(r'SubDirectory\SubDirectoryA\hello_world2.txt', mode='xt') as file:
+    file.write('Hello World!!\n')
+
+with open(r'SubDirectory\SubDirectoryA\SubDirectoryB\hello_world3.txt', mode='xt') as file:
+    file.write('Hello World!!!\n')
+
+```
 
 
-os.stat
+![img_134](./images/img_134.png)
 
+The folders can be explored in Windows Explorer:
+
+![img_135](./images/img_135.png)
+![img_136](./images/img_136.png)
+![img_137](./images/img_137.png)
+![img_138](./images/img_138.png)
+![img_139](./images/img_139.png)
+![img_140](./images/img_140.png)
+
+A generator that walks through all file paths can be created using the function ```os.walk```:
+
+```
+forward = os.walk('SubDirectory')
+forward
+```
+
+![img_141](./images/img_141.png)
+
+```
+next(forward)
+next(forward)
+next(forward)
+next(forward)
+```
+
+![img_142](./images/img_142.png)
+
+Once exhaused, a ```StopIteratorError``` displays:
+
+```
+next(forward)
+```
+
+![img_143](./images/img_143.png)
+
+The ```tuple``` returned in each iteration has three elements, the first element is the directory being walked through presented as a string and in this case a relative paths is used. The second element is a list of subdirectories each presented as a string. The third element is a list of files in the subdirectories presented as a string. This can be cast into a ```tuple``` so it can be viewed on the Variable Explorer:
+
+```
+walked_dir = tuple(os.walk('SubDirectory'))
+```
+
+![img_144](./images/img_144.png)
+
+![img_145](./images/img_145.png)
+
+![img_146](./images/img_146.png)
 
 ## Stat Module
+
+If the list of identifiers from ```os``` is examined by inputting ```os.``` followed by a tab ```↹```:
+
+![img_147](./images/img_147.png)
+
+There is a ```stat``` function and a ```st``` module. The ```st``` module is an alias to the seperate module ```stat```:
+
+```
+import stat
+os.st is stat
+```
+
+![img_148](./images/img_148.png)
+
+Typically the ```os.stat``` function is used to access details about a file:
 
 ```
 info = os.stat(r'SubDirectory/baabaablacksheep.txt')
 info
 ```
 
+![img_149](./images/img_149.png)
 
+![img_150](./images/img_150.png)
+
+![img_151](./images/img_151.png)
+
+These details revolve around the index node (inode) data structure used with Unix file systems.
+
+These details roughly are similar to when a file is right clicked and properties are selected:
+
+![img_152](./images/img_152.png)
+
+![img_153](./images/img_153.png)
+
+![img_158](./images/img_158.png)
+
+![img_159](./images/img_159.png)
+
+If the identifiers in the ```stat``` module are examined by inputting ```stat.``` followed by a tab ```↹```:
+
+![img_154](./images/img_154.png)
+
+Most of the identifiers are integers. The 10 starting with ```ST``` are indexes for the ```os.stat``` function:
 
 ```
-import stat
+stat.ST_MODE # Inode protection mode (integer corresponding to combination of read, write, execute permissions).
+stat.ST_INO # Inode number (integer unique identifier).
+stat.ST_DEV # Device inode resides on (integer).
+stat.ST_NLINK # Number of links to the inode (integer).
+stat.ST_UID # User id of the owner (integer).
+stat.ST_GID # Group id of the owner (integer).
+stat.ST_SIZE # Size in Bytes (integer)
+stat.ST_ATIME # Access Time (integer timestamp)
+stat.ST_MTIME # Modified Time (integer timestamp)
+stat.ST_CTIME # Creation Time (integer timestamp)
 ```
 
-```stat.``` followed by a tab ```↹```:
+![img_155](./images/img_155.png)
+
+These integers can be used to index into the ```list``` returned from ```os.stat```. For example ```ST_SIZE``` returns the size in bytes and is index ```6```:
 
 ```
-stat.ST_MODE
-stat.ST_INO
-stat.ST_DEV
-stat.ST_NLINK
-stat.ST_UID
-stat.ST_GID
-stat.ST_SIZE # Size in Bytes
-stat.ST_ATIME # Access Time
-stat.ST_MTIME # Modified Time
-stat.ST_CTIME # Creation Time
+stat.ST_SIZE 
+info[stat.ST_SIZE]
+info[6]
 ```
 
+![img_156](./images/img_156.png)
 
-numeric index to index into list above to retrieve the statistic.
+The three times are given as timestamps which, recall is the time in milliseconds using 00:00:00 1 January 1970 as a reference. This can be converted into a date using the datetime class:
 
+```
+import datetime as dt
+dt.datetime.fromtimestamp(info[stat.ST_CTIME])
+```
+
+![img_157](./images/img_157.png)
+
+There is an associated file descriptor stat ```os.fstat``` and file stat without symbolic links ```os.lstat```. The ```stat``` module has associated identifiers beginning with ```SF``` for use with the file descriptor. The file can be opened with ```os.open``` to return a file descriptor. Opening a file as a file descriptor requires a flag, which is normally assigned to one of the constants in the ```os``` module:
+
+```
+fd = os.open(r'SubDirectory/baabaablacksheep.txt', os.O_RDONLY)
+fd
+
+info = os.fstat(fd)
+info
+```
+
+![img_160](./images/img_160.png)
+
+Most of the file properties available in the ```stat``` module are for advanced use case and therefore requires a look through the documentation for a specific use case.
 
 ## The Shell Utilities Module
 
+The Shell Utilities Module ```shutil``` is used to perform high level file and directory operations and generally supplements the Operating System Module ```os```. The most commonly used high level file operation not present in ```os``` is ```shutil.copy``` and ```shutil.copy2``` which attempt to copy a file without and with metadata respectively and ```shutil.copytree``` which copies a directory including all its contents. Note that the ```copy``` module previously examined is geared towards copying Python objects and not copying files or directories. The module can be imported using:
 
+```
+import shutil
+```
 
+A list of identifiers can be seen by inputting ```shutil.``` followed by a tab ```↹```:
 
+![img_161](./images/img_161.png)
 
+```
+shutil.copy(src=r'SubDirectory/baabaablacksheep.txt',
+            dst=r'SubDirectory/baabaablacksheep2.txt')
+```
 
+![img_162](./images/img_162.png)
 
+![img_163](./images/img_163.png)
 
+To copy a directory, ```shutil.copytree``` can be used:
 
+```
+shutil.copytree(src=r'SubDirectory',
+                dst=r'SubDirectory2')
+```
 
+![img_164](./images/img_164.png)
 
+![img_165](./images/img_165.png)
 
+![img_166](./images/img_166.png)
 
-
-
-
-
-
-
-
-
-
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

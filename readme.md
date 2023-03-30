@@ -78,3 +78,9 @@ This tutorial will look at the concept of a class, a subclass, using an Abstract
 
 [The Abstract Base Classes Module and Custom Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_abc_custom_classes/readme.md)
 
+## Working with Files
+
+The previous tutorials looked at programming constructs which compartmentalised Python code. In addition to code compartmentalisation, there is often data compartmentalisation. There are a number of file formats used to store data such as the text file (.txt), the comma seperated values file (.csv), and the JavaScript Object Notation file (.json). To work with files the Operating System module is typically used to navigate around the Operating System and perform low level file and directory operations. This is supplemented by the Shell Utilties Module for higher level operations such as copying. The stat module is an associated module that contains file statistics or file properties. Note the stat module should not be confused with the statistics module and the shell utilities module should not be confused with the copy module which have previously been examined:
+
+[The Operating System, Stat and Shell Utilities Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_operating_system_module/readme.md)
+
