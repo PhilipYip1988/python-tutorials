@@ -82,7 +82,13 @@ This tutorial will look at the concept of a class, a subclass, using an Abstract
 
 ## Working with Files
 
-The previous tutorials looked at programming constructs which compartmentalised Python code. In addition to code compartmentalisation, there is often data compartmentalisation. There are a number of file formats used to store data such as the text file (.txt), the comma seperated values file (.csv), and the JavaScript Object Notation file (.json). To work with files the Operating System module ```os``` is typically used to navigate around the Operating System and perform low level file and directory operations. This is supplemented by the Shell Utilties Module ```shutil``` for higher level operations such as copying. The file statistics module ```stat``` gives file statistics otherwise known as file properties. Note the ```stat``` module should not be confused with the ```statistics``` module and the ```shutil``` module (copying files or directories) should not be confused with the ```copy``` module (copying Python objects) which have previously been examined:
+The previous tutorials looked at programming constructs which compartmentalised Python code. In addition to code compartmentalisation, there is often data compartmentalisation. There are a number of file formats used to store data such as the text file (.txt), the comma seperated values file (.csv), and the JavaScript Object Notation file (.json). 
+
+To work with files the Operating System module ```os``` is typically used to navigate around the Operating System and perform low level file and directory operations. This is supplemented by the Shell Utilties Module ```shutil``` for higher level operations such as copying. The file statistics module ```stat``` gives file statistics otherwise known as file properties. Note the ```stat``` module should not be confused with the ```statistics``` module and the ```shutil``` module (copying files or directories) should not be confused with the ```copy``` module (copying Python objects) which have previously been examined:
 
 [The Operating System, Stat and Shell Utilities Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_operating_system_module/readme.md)
+
+The Comma Separated Values Module ```csv``` allows basic reading and writing of ```csv``` files to ```builtins``` objects, in the form of lists of strings or nested lists of strings. This is a basic module and the (.csv) file format is more typically read into more specialised data structures such as the ```DataFrame``` which will be discussed in a later tutorial:
+
+[The Comma Separated Values Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/017_comma_separated_values_module/readme.md)
 
