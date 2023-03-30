@@ -2,7 +2,7 @@
 
 ## Text Files
 
-A text file can be created in the same folder as the Interactive Python Ntoebook File:
+A text file can be created in the same folder as the Interactive Python Notebook File:
 
 ![img_001](./images/img_001.png)
 
