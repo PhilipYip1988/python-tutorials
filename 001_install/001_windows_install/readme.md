@@ -1272,7 +1272,6 @@ Install JupyterLab using:
 
 ```
 mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
-jupyter lab build
 ```
 
 Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using modifying the above command. 
