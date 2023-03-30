@@ -1,10 +1,12 @@
 # Python Tutorials
 
-This set of tutorials goes through basic to intermediate concepts of the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE, supplemented with the Variable Explorer of the Spyder IDE. The tutorials themselves are written in markdown, and therefore can be downloaded as a zip file, extracted and opened in JupyterLab if GitHub doesn't render images or equations correctly. Pleae star the tutorials on GitHub and share with friends if you have found them useful.
+This set of tutorials goes through basic to intermediate concepts of the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE. For illustration variables are explored using the Variable Explorer of the Spyder IDE as JupyterLab lacks in this area. The tutorials themselves are written in markdown, and therefore can be downloaded as a zip file, extracted and opened in JupyterLab if GitHub doesn't render images or equations correctly. 
+
+Please star the tutorials on GitHub and share with friends if you have found them useful.
 
 ## Installation
 
-The Python ecosystem is very large and has multiple package managers for third-party libraries and numerous IDEs available for writing Python code. This installation tutorial is very detailed as it explains how to use Python from the Terminal, the IDLE IDE, the Spyder IDE, the JupyterLab IDE and the Visual Code IDE and how to use the Mamba package manager to create Python Environments, examining what is going on behind the scenes in the file explorer.
+The Python ecosystem is very large and has multiple package managers for third-party libraries and numerous IDEs available for writing Python code. Installation is normally skimmed over briefly in other tutorials however configuring a Python environment using Mambaforge and the mamba package manager can be a good introduction to the Python programming language itself. Moreover covering the basics of a package manager and examining what is going on behind the scenes in the file explorer early on will help later when configuring/troubleshooting custom Python environments and trying to install third-party packages which otherwise can be problematic for begineers. This tutorial also explains how to use Python from the Terminal, the IDLE IDE, the Spyder IDE, the JupyterLab IDE and the Visual Code IDE.
 
 [Mambaforge Installation](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/readme.md)
 
@@ -74,13 +76,13 @@ The system module ```sys``` gives details about objects used or maintained by th
 
 [The System Module and Working with Custom Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_system_module_custom_modules/readme.md)
 
-This tutorial will look at the concept of a class, a subclass, using an Abstract Base Class (ABC) to create a design pattern and ultimately creating a custom class where each instance has data attributes and instance methods:
+This tutorial will look at the concept of a class, a subclass, using an Abstract Base Class (ABC) from the ```abc``` module to create a design pattern and ultimately creating a custom class where each instance has data attributes and instance methods:
 
 [The Abstract Base Classes Module and Custom Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_abc_custom_classes/readme.md)
 
 ## Working with Files
 
-The previous tutorials looked at programming constructs which compartmentalised Python code. In addition to code compartmentalisation, there is often data compartmentalisation. There are a number of file formats used to store data such as the text file (.txt), the comma seperated values file (.csv), and the JavaScript Object Notation file (.json). To work with files the Operating System module is typically used to navigate around the Operating System and perform low level file and directory operations. This is supplemented by the Shell Utilties Module for higher level operations such as copying. The stat module is an associated module that contains file statistics or file properties. Note the stat module should not be confused with the statistics module and the shell utilities module should not be confused with the copy module which have previously been examined:
+The previous tutorials looked at programming constructs which compartmentalised Python code. In addition to code compartmentalisation, there is often data compartmentalisation. There are a number of file formats used to store data such as the text file (.txt), the comma seperated values file (.csv), and the JavaScript Object Notation file (.json). To work with files the Operating System module ```os``` is typically used to navigate around the Operating System and perform low level file and directory operations. This is supplemented by the Shell Utilties Module ```shutil``` for higher level operations such as copying. The file statistics module ```stat``` gives file statistics otherwise known as file properties. Note the ```stat``` module should not be confused with the ```statistics``` module and the ```shutil``` module (copying files or directories) should not be confused with the ```copy``` module (copying Python objects) which have previously been examined:
 
 [The Operating System, Stat and Shell Utilities Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_operating_system_module/readme.md)
 
