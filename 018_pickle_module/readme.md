@@ -443,33 +443,7 @@ Which is ```1019``` (decimal). This number is ```-3 + 1022``` (decimal).
 
 
 
-The 52 bit binary number represents the **fraction**. Recall this is 1.100110011... (binary). The leading 1 and the binary point are constant for all numbers with this notation and are omitted to save memory **1.**100110011... (binary) giving 100110011... This number recurs and is trucated at the 52nd bit.
-
-
-
-
-
-
-
-
-
-
-  
-```
-import math
-math.log2(0.1)
-```
-
-
-
-
-
-
-
-
-3f b9 99 99 99 99 99 9a
-
-
+The 52 bit binary number represents the **fraction**. Recall this is 1.100110011... (binary). The leading 1 and the binary point are constant for all numbers with this notation and are omitted to save memory **1.**100110011... (binary) giving 100110011... This number recurs and is trucated at the 52nd bit. The number ```0.1``` (decimal) is therefore approximated as a floating point number stored using 64 Bit IEEE.
 
 
 
