@@ -310,7 +310,7 @@ pickle.dumps({'r': 'red', 'g': 'green', 'b': 'blue'}).hex()
 
 ![img_016](./images/img_016.png)
 
-The output below can be split into groups of 2 hexadecimal characters:  ```80 04 95 26 00 00 00 00 00 00 00 7d 94 28 8c 01 72 94 8c 03 72 65 64 94 8c 01 67 94 8c 05 67 72 65 65 6e 94 8c 01 62 94 8c 04 62 6c 75 65 94 75 2e```
+The output below can be split into groups of 2 hexadecimal characters ```80 04 95 26 00 00 00 00 00 00 00 7d 94 28 8c 01 72 94 8c 03 72 65 64 94 8c 01 67 94 8c 05 67 72 65 65 6e 94 8c 01 62 94 8c 04 62 6c 75 65 94 75 2e``` which means:
 
 |Hex Value|Meaning|
 |---|---|
@@ -348,14 +348,16 @@ The output below can be split into groups of 2 hexadecimal characters:  ```80 04
 |75|Dict SetItem OptCode: pickle.SETITEMS|
 |2e|Stop OptCode: pickle.STOP.hex()|
 
-
+And a floating point number can also be examined:
 
 ```
 pickle.dumps(0.1)
 pickle.dumps(0.1).hex()
 ```
 
-80 04 95 0a 00 00 00 00 00 00 00 47 3f b9 99 99 99 99 99 9a 2e
+![img_017](./images/img_017.png)
+
+The output below can be split into groups of 2 hexadecimal characters ```80 04 95 0a 00 00 00 00 00 00 00 47 3f b9 99 99 99 99 99 9a 2e``` which means:
 
 |Hex Value|Meaning|
 |---|---|
@@ -365,8 +367,94 @@ pickle.dumps(0.1).hex()
 |0a 00 00 00 00 00 00 00|Frame Size: 8 bytes little endian|
 |2e|Stop OptCode: pickle.STOP.hex()|
 |47|pickle.BINFLOAT|
-|3f b9 99 99 99 99 99 9a| |
+|3f b9 99 99 99 99 99 9a|0.1 in 64 Bit IEEE|
 |2e|Stop OptCode: pickle.STOP.hex()|
+
+To understand the ```3f b9 99 99 99 99 99 9a``` 64 Bit IEEE float representation, the above needs to be converted into bits. Recall that the hexadecimal values map to:
+
+|Hexadecimal Value|Binary Value|
+|---|---|
+|0|0000|
+|1|0001|
+|2|0010|
+|3|0011|
+|4|0100|
+|5|0101|
+|6|0110|
+|7|0111|
+|8|1000|
+|9|1001|
+|a|1010|
+|b|1011|
+|c|1100|
+|d|1101|
+|e|1110|
+|f|1111|
+
+So ```3f b9 99 99 99 99 99 9a``` is:
+
+```
+int('0x3fb999999999999a', base=16)
+```
+
+```
+bin(int('0x3fb999999999999a', base=16))
+```
+
+The two trailing zeros should be added: ```0 01111111011 1001100110011001100110011001100110011001100110011010```
+
+* The singular bit ```0``` is the sign, which corresponds to positive. 
+
+* The 11 bit ```01111111011``` binary number represents the exponent value of ```1019```. This number offsets the minimum value ```-1022``` to ```0``` so all numbers are positive.  In this case giving ```-3```. This corresponds to:
+  
+```
+import math
+math.log2(0.1)
+```
+
+
+```1001100110011001100110011001100110011010``` is the fractional value. This omits the leading 0 and the binary point ```0.1001100110011001100110011001100110011010```. This number can be calculated by multiplying the number 0.1 by 2 and attempting to remove any component past the decimal point. If the number before the decimal point is 0, it is recorded
+
+$$0.1\ast2=\textbf{0}+0.2$$
+
+$$0.2\ast2=\textbf{0}+0.4$$
+
+$$0.4\ast2=\textbf{0}+0.8$$
+
+$$0.8\ast2=\textbf{1}+0.6$$
+
+$$0.6\ast2=\textbf{1}+0.2$$
+
+$$0.2\ast2=\textbf{0}+0.4$$
+
+$$0.4\ast2=\textbf{0}+0.8$$
+
+$$0.8\ast2=\textbf{1}+0.6$$
+
+$$0.6\ast2=\textbf{1}+0.2$$
+
+
+
+
+
+This gives:
+
+0.1 * 2 ** -1
+
+
+
+
+
+
+
+
+
+
+3f b9 99 99 99 99 99 9a
+
+
+
+
 
 
 loads
