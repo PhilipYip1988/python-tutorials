@@ -1875,14 +1875,14 @@ Binary is not very human readible. It is easy to misread how many zeros are in t
 |0111|7|
 |1000|8|
 |1001|9|
-|1001|A|
-|1011|B|
-|1100|C|
-|1101|D|
-|1110|E|
-|1111|F|
+|1010|a|
+|1011|b|
+|1100|c|
+|1101|d|
+|1110|e|
+|1111|f|
 
-In the hexadecimal numbering system ```A```, ```B```, ```C```, ```D```, ```E``` and ```F``` are numeric digits and should not be conceptualised as letters or characters.
+In the hexadecimal numbering system ```a```, ```b```, ```c```, ```d```, ```e``` and ```f``` are numeric digits and should not be conceptualised as letters or characters.
 
 Recall that the character ```'A'``` is the ordinal integer ```65```:
 
