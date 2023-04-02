@@ -1875,7 +1875,7 @@ Binary is not very human readible. It is easy to misread how many zeros are in t
 |0111|7|
 |1000|8|
 |1001|9|
-|1001|a|
+|1010|a|
 |1011|b|
 |1100|c|
 |1101|d|
