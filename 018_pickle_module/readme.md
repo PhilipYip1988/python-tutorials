@@ -403,17 +403,9 @@ bin(int('0x3fb999999999999a', base=16))
 
 The two trailing zeros should be added: ```0 01111111011 1001100110011001100110011001100110011001100110011010```
 
-* The singular bit ```0``` is the sign, which corresponds to positive. 
+The singular bit ```0``` is the sign, which corresponds to positive. 
 
-* The 11 bit ```01111111011``` binary number represents the exponent value of ```1019```. This number offsets the minimum value ```-1022``` to ```0``` so all numbers are positive.  In this case giving ```-3```. This corresponds to:
-  
-```
-import math
-math.log2(0.1)
-```
-
-
-```1001100110011001100110011001100110011010``` is the fractional value. This omits the leading 0 and the binary point ```0.1001100110011001100110011001100110011010```. This number can be calculated by multiplying the number 0.1 by 2 and attempting to remove any component past the decimal point. If the number before the decimal point is 0, it is recorded
+The remaining numbers can be calculated by multiplying the number 0.1 (decimal) repeatedly by 2 to get the number in binary scientific notation. At each step the the integer component should be evaluated alongside the fractional component. The fractional component is carried over and this procedure continued until there is no fractional component. In the case of ```0.1```, the integer component is highlighted in bold: 
 
 $$0.1\ast2=\textbf{0}+0.2$$
 
@@ -433,15 +425,38 @@ $$0.8\ast2=\textbf{1}+0.6$$
 
 $$0.6\ast2=\textbf{1}+0.2$$
 
+$$\vdots$$
+
+This gives ```0.001100110011...``` (binary), this number is asjusted by an exponent, so there is a 1 before the binary point. In this case this gives an exponent of 3 (in decimal). i.e. **exponent** 3 (decimal) **fraction** 1.100110011... (binary).
+
+The 11 bit binary number represents the **exponent** value which is ```-3```. Negative numbers cannot be encoded so there is an offset which adjusts the lowest possible exponent ```-1022``` (decimal) to ```0``` (decimal or binary). ```01111111011``` (binary)  corresponds to:
+
+```
+int('0b01111111011', base=2)
+```
+
+
+
+Which is ```1019``` (decimal). This number is ```-3 + 1022``` (decimal).
+
+
+
+The 52 bit binary number represents the **fraction**. Recall this is 1.100110011... (binary). The leading 1 and the binary point are constant for all numbers with this notation and are omitted to save memory **1.**100110011... (binary) giving 100110011... This number recurs and is trucated at the 52nd bit.
 
 
 
 
-This gives:
-
-0.1 * 2 ** -1
 
 
+
+
+
+
+  
+```
+import math
+math.log2(0.1)
+```
 
 
 
