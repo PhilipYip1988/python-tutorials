@@ -482,18 +482,53 @@ The number ```0.1``` (decimal) is therefore approximated as the floating point n
 
 When using 64 Bit IEEE float representation recall that a binary number only has ```2``` unique characters ```0``` and ```1``` to store the number and only 52 digits in the fraction, meaning the number is often truncated, leading to recursive rounding errors which were seen when the concept of a ```float``` was first introduced.
 
-The ```pickle.dump``` function can be used to dump a pickled object to a file. Using the same example above:
+The ```pickle.loads``` function can be used to load a Python object from a pickled bytes string. For example:
+
+```
+pickled_byte = pickle.dumps(0.1)
+pickle.loads(pickled_byte)
+```
 
 
 
 
+The ```pickle.dump``` function can be used to dump one or multiple pickled objects to a file. Using the same examples above:
+
+```
+with open('newfile.pkl', mode='wb') as file:
+    pickle.dump(obj=1, file=file)
+    pickle.dump(obj='hello', file=file)
+    pickle.dump(obj=('hello', 'world', '!'), file=file)
+    pickle.dump(obj=['hello', 'world', '!'], file=file)
+    pickle.dump(obj={'r': 'red', 'g': 'green', 'b': 'blue'}, file=file)
+    pickle.dump(obj=0.1, file=file)
+    
+```
 
 
-loads
-load
+
+Objects can be loaded from this file within a ```while``` loop:
+
+```
+with open('newfile.pkl', mode='rb') as file:
+    while True:
+        print(pickle.load(file=file))
+        
+```
 
 
 
+This runs until an End of File Error ```EOFError``` displays. This can be handled using a nested ```try``` and ```except``` code block. The ```except``` code block will be used to ```break``` out of the ```while``` loop:
+
+```
+with open('newfile.pkl', mode='rb') as file:
+    while True:
+        try:
+            print(pickle.load(file=file))
+        except EOFError:
+            break
+    
+```
 
 
 

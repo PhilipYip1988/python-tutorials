@@ -930,7 +930,7 @@ Show Indent Guides and Show Blank Spaces can be Enabled on the Editor Tab:
 
 ### IPython Console
 
-To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.0)```. The Python environments is called spyder and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
+To the bottom right there is an IPython console. Below this in the status bar there is details about the Python environment. In this case the Python environment shows as ```conda: spyder (Python 3.11.2)```. The Python environments is called spyder and Python environments created by conda and mamba are identical, the only difference is in the package manager used to create the environment.
 
 ![img_228](./images/img_228.png)
 
@@ -1342,6 +1342,8 @@ mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl 
 
 Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using a modifying the above command. 
 
+### Launching JupyterLab
+
 JupyterLab is browser based and will open in the Linux default Browser. This can be changed to Chromium in Settings:
 
 ![img_155](./images/img_155.png)
@@ -1353,6 +1355,8 @@ jupyter lab
 ```
 
 ![img_156](./images/img_156.png)
+
+### File Explorer
 
 JupyterLab launches in the browser. To the left hand side is a file explorer:
 
