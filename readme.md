@@ -92,3 +92,7 @@ The Comma Separated Values Module ```csv``` allows basic reading and writing of 
 
 [The Comma Separated Values Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/017_comma_separated_values_module/readme.md)
 
+Python objects can be serialized to a bytes object for data transfer, for example over a serial port which operates using binary low ```0``` and high ```1``` voltages. The ```pickle``` module is used to serialize Python data, because the serialized data is hard for a user to visualize, it is said to pickled:
+
+[The Pickle Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/018_pickle_module/readme.md)
+

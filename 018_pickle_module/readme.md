@@ -489,10 +489,9 @@ pickled_byte = pickle.dumps(0.1)
 pickle.loads(pickled_byte)
 ```
 
+![img_022](./images/img_022.png)
 
-
-
-The ```pickle.dump``` function can be used to dump one or multiple pickled objects to a file. Using the same examples above:
+The ```pickle.dump``` function can be used to dump one or multiple pickled objects to a file. Using the same examples as above:
 
 ```
 with open('newfile.pkl', mode='wb') as file:
@@ -505,7 +504,19 @@ with open('newfile.pkl', mode='wb') as file:
     
 ```
 
+![img_023](./images/img_023.png)
 
+The file output can be viewed in Windows Explorer:
+
+![img_024](./images/img_024.png)
+
+If opened in Notepad++ it will attempt to open it in text mode:
+
+![img_025](./images/img_025.png)
+
+If plugins → converter → ASCII to Hex is selected, the contents of the file can be seen to be similar to what was examined earlier for each object:
+
+![img_026](./images/img_026.png)
 
 Objects can be loaded from this file within a ```while``` loop:
 
@@ -516,7 +527,7 @@ with open('newfile.pkl', mode='rb') as file:
         
 ```
 
-
+![img_027](./images/img_027.png)
 
 This runs until an End of File Error ```EOFError``` displays. This can be handled using a nested ```try``` and ```except``` code block. The ```except``` code block will be used to ```break``` out of the ```while``` loop:
 
@@ -530,6 +541,6 @@ with open('newfile.pkl', mode='rb') as file:
     
 ```
 
-
+![img_028](./images/img_028.png)
 
 [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
