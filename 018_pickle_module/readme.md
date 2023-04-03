@@ -237,6 +237,8 @@ The output below can once again be split into groups of 2 hexadecimal characters
 |94|Memoize OptCode: pickle.MEMOIZE.hex()|
 |2e|Stop OptCode: pickle.STOP.hex()|
 
+Note the frame size ```9``` (hexadecimal) which is also ```9``` (decimal) indicates the expected number of bytes after the Frame Size: 80 04 95 09 00 00 00 00 00 00 00 **8c 05 68 65 6c 6c 6f 94 2e**
+
 A more complicated object such as a tuple can be examined:
 
 ```
