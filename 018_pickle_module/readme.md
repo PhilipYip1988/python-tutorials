@@ -156,7 +156,9 @@ pickle_constants
 |97|pickle.NEXT_BUFFER|
 |98|pickle.READONLY_BUFFER|
 ​
+
 From the information above ```80 04 4b 01 2e``` means:
+
 
 |Hex Value|Meaning|
 |---|---|
@@ -202,7 +204,7 @@ pickle.dumps(True, protocol=1).hex()
 
 ![img_012](./images/img_012.png)
 
-````49 30 31 0a 2e``` means:
+```49 30 31 0a 2e``` means:
 
 |Hex Value|Meaning|
 |---|---|
@@ -279,6 +281,8 @@ pickle.dumps(['hello', 'world', '!']).hex()
 
 The output below can be split into groups of 2 hexadecimal characters ```80 04 95 19 00 00 00 00 00 00 00 5d 94 28 8c 05 68 65 6c 6c 6f 94 8c 05 77 6f 72 6c 64 94 8c 01 21 94 65 2e``` which means:
 
+|Hex Value|Meaning|
+|---|---|
 |80|Start OptCode: pickle.PROTO.hex()|
 |04|Protocol Version: pickle.DEFAULT_PROTOCOL|
 |95|Frame OptCode: pickle.FRAME.hex()|
@@ -391,21 +395,25 @@ To understand the ```3f b9 99 99 99 99 99 9a``` 64 Bit IEEE float representation
 |e|1110|
 |f|1111|
 
-So ```3f b9 99 99 99 99 99 9a``` is:
+So ```3f b9 99 99 99 99 99 9a``` is ```00111111 10111001 10011001 10011001 10011001 10011001 10011001 10011010```. This can be verified using the following:
 
 ```
 int('0x3fb999999999999a', base=16)
-```
-
-```
 bin(int('0x3fb999999999999a', base=16))
+print(f"0b{int('0x3fb999999999999a', base=16):>064b}")
 ```
 
-The two trailing zeros should be added: ```0 01111111011 1001100110011001100110011001100110011001100110011010```
+![img_018](./images/img_018.png)
 
-The singular bit ```0``` is the sign, where ```0``` corresponds to positive and ```1``` corresponds to negative. In this case this is a positive number. 
+For 64 Bit IEEE float representation, the number is grouped into 1 bit for the sign, 11 bits for the exponent and 52 bits for the fraction:
 
-The remaining bits can be calculated by multiplying the number 0.1 (decimal) repeatedly by 2 to get the number in binary scientific notation. At each step the the integer component should be evaluated alongside the fractional component. The fractional component is carried over and this procedure is continued in theory until there is no fractional component. In the case of ```0.1```, the integer component is highlighted in bold: 
+```0 01111111011 1001100110011001100110011001100110011001100110011010```
+
+The bits can be calculated by examining the number ```0.1``` (decimal). The first bit corresponds to the sign and ```0``` corresponds to a positive number and ```1``` corresponds to a negative number. In this case this is a positive number so the sign is ```0```. 
+
+**0** 01111111011 1001100110011001100110011001100110011001100110011010
+
+The number needs to be converted, essentially into binary scientific notation. This is done by multiplying the number ```0.1``` (decimal) repeatedly by ```2 ```. At each step the the integer component should be evaluated alongside the fractional component. The fractional component is carried over and this procedure is continued in theory until there is no fractional component. In the case of ```0.1```, the integer component is highlighted in bold: 
 
 $$0.1\ast2=\textbf{0}+0.2$$
 
@@ -427,23 +435,54 @@ $$0.6\ast2=\textbf{1}+0.2$$
 
 $$\vdots$$
 
-This gives ```0.001100110011...``` (binary), with the ```...``` representing recursion. This number can be adjusted by an exponent, so there is a 1 before the binary point. In this case this gives an exponent of ```-3``` (in decimal). 
+This gives ```0.001100110011...``` (binary), with the ```...``` representing recursion, recursion is common with a binary number as a binary number only has ```2``` unique characters ```0``` and ```1```.
 
-i.e. **exponent** ```-3``` (decimal) **fraction** 1.100110011... (binary).
+This number can be adjusted by an exponent, so there is a 1 before the binary point. In this case this gives an exponent of ```-3``` (in decimal) and this needs to be stored as 11 bits in binary. 
 
-The 11 bit binary number represents the **exponent** value which is ```-3```. Negative numbers cannot be encoded so there is an offset which adjusts the lowest possible exponent ```-1022``` (decimal) to ```0``` (decimal or binary). ```01111111011``` (binary)  corresponds to:
+The number can be conceptualised as **exponent** ```-3``` (decimal) **fraction** 1.100110011... (binary).
+
+The 11 bit binary number represents the **exponent** value. With 11 bits there are the following combinations:
 
 ```
-int('0b01111111011', base=2)
+2 ** 11
 ```
 
+![img_019](./images/img_019.png)
+
+Recall this is zero-order indexed so is ```0``` to ```2048``` exclusive of ```2048```. Approximately half of these are reserved for negative numbers and the other half are reserved for positive numbers:
+
+```
+(2 ** 11) // 2
+```
+
+![img_020](./images/img_020.png)
+
+Effectively, this gives the range of ```-1022``` to ```+1023```. Negative numbers cannot be encoded so there is an offset which adjusts the lowest possible exponent ```-1022``` (decimal) to ```0``` (decimal) which is encoded in binary as ```00000000000```. ```-3``` in decimal, therefore becomes ```-3 + 1022``` (decimal) which is ```1019``` (decimal):
+
+```
+-3 + 1022
+print(f"0b{1019:>011b}")
+```
+
+![img_021](./images/img_021.png)
+
+And is encoded as ```01111111011```.
+
+0 **01111111011** 1001100110011001100110011001100110011001100110011010
+
+The 52 bit binary number represents the **fraction**. Recall this is 1.100110011... (binary). The leading 1 and the binary point are constant for all numbers with this notation and are omitted to save memory **1.**100110011... (binary) giving **100110011...** This number recurs and is trucated at the 52nd bit. 
+
+0 01111111011 **1001100110011001100110011001100110011001100110011010**
+
+The number ```0.1``` (decimal) is therefore approximated as the floating point number stored using 64 Bit IEEE:
+
+```0 01111111011 1001100110011001100110011001100110011001100110011010```
+
+When using 64 Bit IEEE float representation recall that a binary number only has ```2``` unique characters ```0``` and ```1``` to store the number and only 52 digits in the fraction, meaning the number is often truncated, leading to recursive rounding errors which were seen when the concept of a ```float``` was first introduced.
+
+The ```pickle.dump``` function can be used to dump a pickled object to a file. Using the same example above:
 
 
-Which is ```1019``` (decimal). This number is ```-3 + 1022``` (decimal).
-
-
-
-The 52 bit binary number represents the **fraction**. Recall this is 1.100110011... (binary). The leading 1 and the binary point are constant for all numbers with this notation and are omitted to save memory **1.**100110011... (binary) giving 100110011... This number recurs and is trucated at the 52nd bit. The number ```0.1``` (decimal) is therefore approximated as a floating point number stored using 64 Bit IEEE.
 
 
 
