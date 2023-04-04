@@ -1,4 +1,4 @@
-# Serialization
+# Serialization of Python Objects using the pickle and shelve Modules
 
 Communication from a serial port essentially involves a digital signal along a read pin that is either low ```0``` or high ```1```. The communication is normally carried out at a specified baud rate (a baud is a bit per second).
 
