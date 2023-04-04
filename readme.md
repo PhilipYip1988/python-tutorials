@@ -96,3 +96,14 @@ Python objects can be serialized to a bytes object for data transfer. The ```pic
 
 [Serializing Python Objects using the Pickle and the Shelve Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/018_pickle_module/readme.md)
 
+Incomplete tutorial.
+
+[The JavaScript Object Notation Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/019_json_module/readme.md)
+
+### Data Science Libraries
+
+Incomplete tutorial (almost finished)
+
+[The Numeric Python Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/020_numeric_python_library/readme.md)
+
+

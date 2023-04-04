@@ -1,6 +1,6 @@
 # The Numeric Python Library - numpy
 
-The Numeric Python library - ```numpy``` is the most commonly used data science library. Moreover other popular data science libraries such as the Python and Data Analysis Library - ```pandas```, the Matrix Plotting Library - ```matplotlib``` and the Data Visualization Library - ```seaborn``` are based upon ```numpy```.
+The Numeric Python library - ```numpy``` is the most commonly used third-party Python library. It is fundamental for other popular data science libraries. The Python and Data Analysis Library - ```pandas```, the Matrix Plotting Library - ```matplotlib``` and the Data Visualization Library - ```seaborn``` are based upon ```numpy``` and are known as the ```numpy``` stack.
 
 ## Scalability in Python
 
@@ -43,7 +43,7 @@ import numpy as np
 
 ![img_002](./images/img_002.png)
 
-To setup a Python Environment with the Scientific Libraries, it is recommended to use Mambaforge and the ```mamba``` package manager. See [Python Installation Windows, Linux and Mac](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/readme.md)
+To setup a Python Environment with the Scientific Libraries, it is recommended to use Mambaforge and the ```mamba``` package manager. This is covered in detail in [Mambaforge Installation](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
 
 Once imported, the module datamodel attributes ```__name__```, ```__version__``` and ```__path__``` can be examined:
 
@@ -2092,7 +2092,7 @@ matrix1.argmax(axis=-1)[:, np.newaxis]
 
 The complementary methods ```min``` and ```argmin``` operate in a similar manner, returning the value and index of the minimum value.
 
-The ndarray statistical methods and their complementary ```numpy``` functions ```sum```, ```prod```, ```mean```, ```var``` and ```std``` all operate using ```axis``` and ```keepdims``` as input arguments nd behave similarly to their equivalents in the statistics module. The ```var``` and ```std``` have a keyword input argument delta degrees of freedom ````ddof``` which has a default value of ```0``` and calculates the population variance or population standard deviation. This can be changed to ```1``` to calculate the sample variance or sample standard deviation. For more details about these calculations, see the [Statistics Module Tutorial](https://github.com/PhilipYip1988/python-tutorials/tree/main/025_statistics#readme):
+The ndarray statistical methods and their complementary ```numpy``` functions ```sum```, ```prod```, ```mean```, ```var``` and ```std``` all operate using ```axis``` and ```keepdims``` as input arguments nd behave similarly to their equivalents in the statistics module. The ```var``` and ```std``` have a keyword input argument delta degrees of freedom ```ddof``` which has a default value of ```0``` and calculates the population variance or population standard deviation. This can be changed to ```1``` to calculate the sample variance or sample standard deviation. For more details about these calculations, see the [Statistics Module Tutorial](https://github.com/PhilipYip1988/python-tutorials/tree/main/025_statistics#readme):
 
 ```
 matrix1.sum(axis=-1, keepdims=True)
@@ -2349,7 +2349,7 @@ matrix1.round(decimals=1)
 
 The NumPy library includes an equivalent of every identifier in the ```math``` module it makes sense to extend its implementation to an array. These are extended to element by element functionality.
 
-Detailed information about all of these are given in [Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_math/readme.md).
+Detailed information about all of these are given in [Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
 
 The mathematical constants are the same:
 
@@ -2395,7 +2395,9 @@ The functions for complex numbers:
 
 ## Random Module
 
-The numpy library has a ```random``` module which is similar to the Python standard module ```random```. The workflow is similar, for example:
+The numpy library has a ```random``` module which is similar to the Python standard module ```random```. This is covered in [The Random Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
+
+The workflow is similar, for example:
 
 ```
 import random
@@ -2468,10 +2470,9 @@ The ```np.random``` has a handful of additional distributions not available in t
 
 ## DateTime and TimeDelta
 
+An overview of date and time objects was covered in [The Date and Time Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
 
-
-
-
+The ```numpy``` library has a slightly different implementation of these objects, expanded to ```ndarrays``` and with an optionaly higher precision to the nanosecond.
 
 
 
