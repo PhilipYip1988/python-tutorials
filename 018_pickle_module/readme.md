@@ -1,6 +1,10 @@
-# The Pickle Module
+# Serialization
 
 Communication from a serial port essentially involves a digital signal along a read pin that is either low ```0``` or high ```1```. The communication is normally carried out at a specified baud rate (a baud is a bit per second).
+
+Serialized data can be used for data persistence by saving the data to a file or a data base.
+
+## The pickle Module
 
 The ```pickle``` module is used to serialize a Python object into a byte string, that is a series of zeros and ones. 
 
@@ -9,6 +13,14 @@ It can be imported using:
 ```
 import pickle
 ```
+
+The docstring gives a brief overview of the module:
+
+```
+? pickle
+```
+
+![img_029](./images/img_029.png)
 
 Its list of identifiers can be seen by inputting ```pickle.``` followed by a tab ```↹```:
 
@@ -542,5 +554,150 @@ with open('newfile.pkl', mode='rb') as file:
 ```
 
 ![img_028](./images/img_028.png)
+
+## The shelve Module
+
+The ```pickle``` module can dump data to a file and load persistant data from the file. 
+
+The ```shelve``` module, complements the ```pickle``` module and is used to create a database. Each pickled object is shelved in the database, which is where the name of the module ```shelve``` comes from. The database can essentially be thought of as a set of shelves, each shelf has a key and a value and is therefore accessed similarly to a dicitonary. 
+
+It can be imported using:
+
+```
+import shelve
+```
+
+Details about the module can be seen by examining the docstring:
+
+```
+? shelve
+```
+
+![img_030](./images/img_030.png)
+
+Scrolling down shows the dictionary-like syntax used to shelve pickled objects to the database and retrieve pickled objects from the database:
+
+![img_031](./images/img_031.png)
+
+Like a file, a databsse is typically opened and closed within a ```with``` code block. The following Python object can be stored:
+
+```
+with shelve.open('database') as database:
+    database['whole_num'] = 1
+    
+```
+
+![img_032](./images/img_032.png)
+
+There are three files created a directory (```.dir```), database (```.dat```) and backup (```.bak```):
+
+![img_033](./images/img_033.png)
+
+If the ```.dir``` file is examined, the following format displays ```"'key', (offset, length)"```:
+
+![img_034](./images/img_034.png)
+
+The ```.dat``` file is a binary file that displays in text mode by default;
+
+![img_035](./images/img_035.png)
+
+If plugins → converter → ASCII to Hex is selected, the contents of the file can be seen to be similar to what was examined earlier for each object ```80 04 4b 01 2e```. This starts with an offset of 0 bytes and has a length of 5 bytes (10 hexadecimal characters):
+
+![img_036](./images/img_036.png)
+
+Another object can be added using:
+
+```
+with shelve.open('database') as database:
+    database['unicode_string'] = 'hello'
+    
+```
+
+![img_037](./images/img_037.png)
+
+The second ```tuple``` in the ```.dir``` file gives an offset of 512 bytes with a length of 20 bytes:
+
+![img_038](./images/img_038.png)
+
+![img_039](./images/img_039.png)
+
+Note Notepad++ artifically adds the CR and LF during the conversion to Hex, which is why the selection is 42 opposed to 40 Hhxadecimal characters (20 bytes). 
+
+There are 32 lines shown with 32 Hexadecimal characters, excluding the CR and LF. This gives 1024 hexadecimal characters which is the 512 bytes offset.
+
+Other items can be added to the database using:
+
+```
+with shelve.open('database') as database:
+    database['unicode_string'] = 'hello'
+    database['archive'] = ('hello', 'world', '!')
+    database['active'] = ['hello', 'world', '!']
+    database['mapping'] = {'r': 'red', 'g': 'green', 'b': 'blue'}
+    database['num'] = 0.1
+
+```
+
+![img_040](./images/img_040.png)
+
+![img_041](./images/img_041.png)
+
+The database has values, keys and items, analogous to a dictionary:
+
+```
+with shelve.open('database') as database:
+    print(database.values())
+    print(database.keys())
+    print(database.items())
+    
+```
+
+![img_042](./images/img_042.png)
+
+To view the keys, they can be cast into a tuple:
+
+```
+with shelve.open('database') as database:
+    print(tuple(database.keys()))
+    
+```
+
+![img_043](./images/img_043.png)
+
+Alternatively the keys can be accessed via a ```for``` loop:
+
+```
+with shelve.open('database') as database:
+    for key in database.keys():
+        print(key)
+    
+```
+
+![img_044](./images/img_044.png)
+
+Looping over the database also accessing the keys, analogously to a dictionary:
+
+```
+with shelve.open('database') as database:
+    for key in database:
+        print(key)
+    
+```
+
+![img_045](./images/img_045.png)
+
+A value from the database is typically retrieved using the key, analogously to a dictionary:
+
+```
+with shelve.open('database') as database:
+    string = database['unicode_string']
+
+string    
+```
+
+![img_046](./images/img_046.png)
+
+## The marshall Module
+
+Python has a second second primitive serialization module called ```marshal```. The serialized file format output by ```marshall``` is undocumented on purpose and supports less Python objects. This module is not used for general data persistence.
 
 [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
