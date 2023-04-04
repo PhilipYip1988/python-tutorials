@@ -1,6 +1,6 @@
 # JavaScript Object Notation (JSON)
 
-Serialized pickled data was previously examined. This data type works with most Python builtin objects however as previously seen, the data in the form of byte strings is not very user readible.
+Serialized pickled data was previously examined. This data type works with most Python builtin objects however as previously seen, the data in the form of byte strings is not very user readable.
 
 JavaScript Object Notation (JSON) as the name suggests originates from JavaScript but now has become a commonly used standard data stream. It is common to retrieve data from a website stored in JSON format and convert it into equivalent or similar Python data structures. The module can be imported using:
 
@@ -13,6 +13,8 @@ Its docstring can be viewed using:
 ```
 ? json
 ```
+
+![img_001](./images/img_001.png)
 
 
 
