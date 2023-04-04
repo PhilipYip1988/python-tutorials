@@ -698,6 +698,6 @@ string
 
 ## The marshall Module
 
-Python has a second second primitive serialization module called ```marshal```. The serialized file format output by ```marshall``` is undocumented on purpose and supports less Python objects. This module is not used for general data persistence.
+Python has a second second primitive serialization module called ```marshal```. The serialized file format output by ```marshall``` is slightly different to that of pickle. The modules documentation states that its file format is undocumented on purpose and supports less Python objects. The documentation also states that it is not designed for general data persistence and the ```pickle``` module should preferentially be used.
 
 [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
