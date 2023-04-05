@@ -64,7 +64,7 @@ To create a new Python environment for the latest version of the Spyder IDE incl
 ```
 mamba create -n spyder
 mamba activate spyder
-mamba install spyder=5.4.2 python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install spyder=5.4.3 python=3.11 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 To launch Spyder use:
@@ -81,7 +81,7 @@ To create a new Python environment for the latest version of the JupyterLab IDE 
 ```
 mamba create -n jupyterlab
 mamba activate jupyterlab
-mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
+mamba install jupyterlab python=3.11 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
 ```
 
 To launch JupyterLab use:
