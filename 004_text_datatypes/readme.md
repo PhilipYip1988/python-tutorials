@@ -1837,6 +1837,8 @@ id(greeting)
 
 ![img_301](./images/img_301.png)
 
+The ```object``` class has two comparison data model identifiers ```__eq__``` and ```__ne__``` defined. These control the way the operators ```==``` and ```!=```. By default for an ```object``` these check the id to see if the object is the same.
+
 The data model identifier ```__dir__``` returns the directory ```dir``` value of an object. Each object can be thought of as a directory or folder and within that directory or folder are other directories or folders. In the case of a Python object, these are other objects and functions:
 
 ![img_302](./images/img_302.png)
@@ -1861,6 +1863,40 @@ pprint(dir(greeting), compact=True)
 
 ![img_305](./images/img_305.png)
 
+There are some identifiers that display from the class, that do not display from an instance of the class. 
+
+The identifier ```__name__``` for example gives the name of the Python class:
+
+```
+object.__name__
+str.__name__
+```
+
+![img_323](./images/img_323.png)
+
+The identifier ```__module__``` for example gives the name of the Python module, the class belongs to:
+
+![img_320](./images/img_320.png)
+
+For example, the ```object``` and ```str``` classes are both in the ```builtins``` module:
+
+```
+object.__module__
+str.__module__
+```
+
+![img_321](./images/img_321.png)
+
+Which is why they can be seen when the ```builtins``` module is imported:
+
+```
+import builtins
+```
+
+and the list of identifiers is examined using ```builtins.``` followed by a tab ```↹```:
+
+![img_322](./images/img_322.png)
+
 A Python class can be displayed as a dictionary using the data model identifier ```__dict__```. The dictionary displays all the identifiers of the class
 
 ![img_306](./images/img_306.png)
@@ -1874,7 +1910,7 @@ pprint(str.__dict__, compact=True)
 
 ![img_308](./images/img_308.png)
 
-Most of the other data model identifiers available from the ```object``` class relate to subclassing. A subclass is a class that is typically based on another class, the superclass but has additional functionality. The method resolution order ```__mro__``` can be displayed using:
+Most of the other data model identifiers available from the ```object``` class relate to the concept of subclassing. This will only be discussed briefly here. A subclass is a class that is typically based on another class, the superclass but has additional or changed functionality. The method resolution order ```__mro__``` can be displayed using:
 
 ![img_309](./images/img_309.png)
 
@@ -1887,24 +1923,7 @@ str.__mro__
 
 The ```object``` has no superclass, this means all the methods are defined in the ```object``` class directly.
 
-The ```str``` has ```object``` as a superclass. What this means is that some of the methods used for the ```str``` class are defined directly in the ```str``` class and others are inherited from the ```object``` class. Notice when ```str.__dict__``` was examined that there was no entry for ```__dir__```, this is because ```__dir__``` is inherited from the ```object``` class and is therefore shown in ```object.__dir__```. There is an entry for ```__doc__``` in both dictionaries, this means that the docstring for the ```str``` class has been updated in the ```str``` class. The method resolution order states that this updated version should be used for any ```str``` class and any ```str``` instance.
-
----
-Small section to be updated
----
-
-
-
-
-The data model identifiers ```__base__``` gives the base class of the class hiercharchy which is essentially always ```object```.
-
-The data model identifier```__bases__``` gives the base class of the class hiercharchy which is essentially always ```object```.
-
-
-
-
-
-
+The ```str``` has ```object``` as a superclass. What this means is that some of the methods used for the ```str``` class are defined directly in the ```str``` class and others are inherited from the ```object``` class. Notice when ```str.__dict__``` was examined that there was no entry for ```__dir__```, this is because ```__dir__``` is inherited from the ```object``` class and is therefore shown in ```object.__dir__```. There is an entry for ```__doc__``` in both dictionaries, this means that the docstring for the ```str``` class has been updated in the ```str``` class. The method resolution order states that this updated version should be used for the ```str``` class and any ```str``` instance.
 
 The data model identifier ```__isinstance__``` checks whether an instance is an instance of a particular class:
 
@@ -1919,11 +1938,11 @@ Note that both ```instance``` and ```greeting``` are instances of the class ```o
 
 ![img_312](./images/img_312.png)
 
-
-
-
+The data model identifier ```__subclasses__``` can be used to return a list of immediate subclasses:
 
 ![img_313](./images/img_313.png)
+
+If the subclasses of the ```object``` class are examined, pretty much all classes in the ```builtins``` module are shown:
 
 ```
 object.__subclasses__()
@@ -1931,14 +1950,19 @@ object.__subclasses__()
 
 ![img_314](./images/img_314.png)
 
+As the ```str``` class is a fundamental data type, there are also a small number of classes that subclass the ```str``` class:
+
 ```
 str.__subclasses__()
 ```
 
 ![img_315](./images/img_315.png)
 
+The ```__subclasscheck__``` can be used to check if another class is a subclass returing a boolean value:
 
 ![img_316](./images/img_316.png)
+
+For example the ```str``` class is a subclass of the ```object``` class:
 
 ```
 object.__subclasscheck__(str)
@@ -1946,6 +1970,7 @@ object.__subclasscheck__(str)
 
 ![img_317](./images/img_317.png)
 
+The ```builtins``` function ```issubclass``` is typically used for this purpose:
 
 ![img_318](./images/img_318.png)
 
@@ -1955,99 +1980,211 @@ issubclass(str, object)
 
 ![img_319](./images/img_319.png)
 
+The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` data model identifiers are used to get, set and delete attributes. These control the behaviour behind the ```builtins``` functions ```getattr```, ```setattr``` and ```delattr``` respectively.
 
+![img_324](./images/img_324.png)
 
+![img_325](./images/img_325.png)
 
+![img_326](./images/img_326.png)
 
-The six comparison data model identifiers equals ```__eq```, not equals ```__ne__```, less than or equal to ```__le__```, less than ```__lt__```, greater than or equal to ```__ge__``` and greater than ```__gt__``` control the behaviour behind the 6 comparison operators ```==```, ```!=```, ```<=```, ```<```, ```>=``` and ```>``` respectively.
+![img_327](./images/img_327.png)
 
+![img_328](./images/img_328.png)
 
-Not in object .... gt ge etc
+![img_329](./images/img_329.png)
 
+Notice that the ```builtins``` functions ```getattr```, ```setattr``` and ```delattr``` are not conventionally used. Instead getting attributes is done using the dot ```.``` syntax, setting attributes is done using the dot ```.``` syntax and assignment ```=``` and deleting the attribute is done using the ```del``` keyword and the dot ```.``` syntax.
 
-
-
-The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` data model identifiers are used to get, set and delete attributes. An object instance and a string instance have no public attributes assigned to them so are not used for these classes.
-
-The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise Python objects.
-
-
-The data model identifier is ```__subclasshook__``` which is used for Abstract Base Classes.
-
-
-
-
-
-
-slots
-
-call
-
-base bases
-
-init_subclass
-
-
-
-
-
-
-
-```__len__```
-
-```__iter__``` is a collection data model identifier available in both immutable and mutable sequences. It controls the behaviour of the ```iter``` class.
-
-![img_185](./images/img_185.png)
-
-```__contains__``` is a collection data model identifier available in both immutable and mutable sequences. It controls the behaviour of the ```in``` keyword:
-
-![img_164](./images/img_164.png)
-
-```__getitem__``` is an collection data model identifier available in both immutable and mutable sequences. Notice there is no associated ```__setitem__``` as the string is immutable. This controls indexing and is why it is possible to read a value at an index but not allowed to set a value at that index:
-
-![img_165](./images/img_165.png)
-
-The addition ```__add__``` data model identifier controls the behaviour of the ```+``` operator:
-
-![img_186](./images/img_186.png)
-
-The instance to the left hand side of the ```+``` operator is know as ```self``` and the instance to the right hand side is known as ```value```:
+The ```str``` is immutable and doesn't have many attributes. The ```__mro__``` attribute is accessible from the ```str``` class but not from a ```str``` instance. It can be accessed from the ```str``` class using:
 
 ```
-greeting = 'Hello'
-greeting.__add__('World')
-greeting + 'World'
+getattr(str, '__mro__')
 ```
 
-![img_187](./images/img_187.png)
-
-The multiplication ```__mul__``` data model identifier controls the behaviour of the ```*``` operator. Recall the value to be multiplied has to be an integer:
-
-![img_188](./images/img_188.png)
+Which is more conventionally accessed using:
 
 ```
+str.__mro__
+```
+
+![img_330](./images/img_330.png)
+
+Immutable means cannot be modified once created, therefore if the ```__mro__``` attribute is attempted to be reassigned to a new value, a ```TypeError``` displays:
+
+```
+setattr(str, '__mro__', None)
+str.__mro__ = None
+```
+
+![img_331](./images/img_331.png)
+
+A ```TypeError``` also displays if this attribute is attempted to be deleted:
+
+```
+delattr(str, '__mro__')
+del str.__mro__
+```
+
+![img_332](./images/img_332.png)
+
+There are some other data model identifiers which can be seen in the ```object``` class. 
+
+```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the ```pickle``` module to serialise Python objects, this will be discussed in a later tutorial. 
+
+The data model identifiers ```__slots__```, ```__call__```, ```__prepare__```, ```__annotations__```, ```__qualname__```, ```__subclasshook__```, ```__text_signature__```, ```__dictoffset__``` and ```__weakrefoffsrt__``` are used for the purposes of creating custom classes via subclassing and are not applicable to the disccusion of the ```str``` class.
+
+```__basicsize__``` and ```__itemsize__``` are the identifiers that return the basic size of an object and an item in a object in ```bytes```. This is only relevant for objects that have items of a constant size. An item in a ```str``` is a Unicode character and Unicode characters can span different amount of bytes which will be discussed in more detail later.
+
+Python classes follow a design pattern. Everything in Python is based on the immutable ```object``` and therefore usethe data model identifiers that were were previously discussed. 
+
+A ```str``` is an immutable collection. The design pattern for a collection can be seen by examining the ```Collection``` abstract base class from the collections module:
+
+```
+from collections.abc import Collection
+```
+
+Its list of identifiers can be showned by inputting ```Collection.__``` followed by a tab ```↹```:
+
+![img_333](./images/img_333.png)
+
+An immutable collection has the following identifiers ```__len__```, ```__contains__```,  and ```__iter__```.
+
+The ```__len__``` data model identifier controls the behaviour fo the ```len``` function in ```builtins``` which returns the number of items in a collection as an integer:
+
+![img_334](./images/img_334.png)
+
+![img_335](./images/img_335.png)
+
+```
+len(greeting)
+```
+
+![img_336](./images/img_336.png)
+
+The ```__contains__``` data model identifier controls the behaviour of the ```in``` keyword which returns a boolean value if a value is in a collection as an integer:
+
+![img_337](./images/img_337.png)
+
+```
+'e' in greeting
+'z' in greeting
+```
+
+![img_338](./images/img_338.png)
+
+The ```__iter__``` data model identifier controls the behaviour of the ```iter``` function in ```builtins``` which returns an iterator, this is also used behind the scenes in a ```for``` loop:
+
+![img_339](./images/img_339.png)
+
+![img_340](./images/img_340.png)
+
+```
+forward = iter(greeting)
+forward
+
+next(forward)
+```
+
+![img_341](./images/img_341.png)
+
+An ordered collection also can have the ```__getitem__``` data model identifier which controls the behaviour of the square brackers ```[ ]``` for the purposes of indexing. For a collection, indexing is normally done with an integer key:
+
+![img_342](./images/img_342.png)
+
+```
+greeting[0]
+```
+
+![img_343](./images/img_343.png)
+
+As the ```str``` is as reviously discussed immutable there is no associated ```__setitem__```.
+
+A collection can also have the ```__add__``` and ```__mul__``` identifiers configured for concatenation of the collection and replication of the collection. These control the behaviour of the ```+``` and ```*``` operators respecitvely:
+
+![img_344](./images/img_344.png)
+
+![img_345](./images/img_345.png)
+
+```
+greeting + '!!!!'
 greeting * 3
 ```
 
-![img_189](./images/img_189.png)
+![img_346](./images/img_346.png)
 
-The reverse multiplication ```__rmul__``` data model identifier controls the behaviour when the positions around the ```*``` operator is reversed:
+Notice the ```__mul__``` identifier has an input argument of a different data type:
 
-![img_190](./images/img_190.png)
+```
+greeting * 3
+greeting.__mul__(3)
+```
+
+For the reverse operation to work, the associated ```__rmul__``` is also defined:
+
+![img_347](./images/img_347.png)
 
 ```
 3 * greeting
 ```
 
-![img_191](./images/img_191.png)
+![img_348](./images/img_348.png)
 
-The modulo data model identifier ```__mod__``` data controls the behaviour of the ```%``` operator which is used with a tuple for legacy string formatting. The reverse modulo identifier ```__imod__``` is used when the positions around the ```%``` operator are reversed.
+There is also a reverse
 
+The data model identifier ```__mod__``` data controls the behaviour of the modulo operator ```%``` which is used with a tuple for legacy string formatting. 
 
+![img_349](./images/img_349.png)
+
+```
+'One: %s, Two: %s, Three: %s' % ('one', 'two', 'three')
+```
+
+![img_350](./images/img_350.png)
+
+Unlike the ```object``` class which only defined ```__eq__``` and ```__ne__``` and compared the ids of object instances. For the ```str``` class the 6 comparison operators are defined and setup to compare string data. 
+
+```__eq__``` defines the behaviour of the is equal to operator ```==```:
+
+![img_351](./images/img_351.png)
+
+```__ne__``` defines the behaviour of the not equal to operator ```!=```:
+
+![img_352](./images/img_352.png)
+
+```__lt__``` defines the behaviour of the less than operator ```<```:
+
+![img_353](./images/img_353.png)
+
+```__gt__``` defines the behaviour of the less than operator ```>```:
+
+![img_354](./images/img_354.png)
+
+```__le__``` defines the behaviour of the less than or equal to operator ```<=```:
+
+![img_355](./images/img_355.png)
+
+```__ge__``` defines the behaviour of the greater than or equal to operator ```>=```:
+
+![img_356](./images/img_356.png)
+
+```
+'hello' == 'Hello'
+'hello' > 'Hello'
+```
+
+Recall that this is related to the ordinal values of each character:
+
+```
+ord('h')
+ord('H')
+```
+
+![img_357](./images/img_357.png)
 
 ## Binary and Hexadecimal
 
-Recall, the ```ord``` function can be used to return the decimal integer ordinal value of a character:
+The ```ord``` function can be used to return the decimal integer ordinal value of a character:
 
 ```
 ord('A')
@@ -2410,25 +2547,13 @@ bytes.fromhex('48 65 6c 6c 6f 20 57 6f 72 6c 64 21')
 
 ### Data Model Identifiers
 
-The directory of a bytes instance can be examined using the ```dir``` function:
+The data model identifiers can be viewed by inputting the instance name ```greeting.__``` followed by a tab ```↹```:
 
-```
-dir(greeting)
-```
+![img_358](./images/img_358.png)
 
-![img_227](./images/img_227.png)
+The data model identifiers are largely consistent with the ```str``` class and both classes are immutable collections.
 
-
-To view this list horizontally, use:
-
-```
-import pprint
-pprint.pprint(dir(greeting), compact=True)
-```
-
-![img_242](./images/img_242.png)
-
-The data model identifiers are largely consistent with the ```str``` class. The only addition is the ```__bytes__``` data model identifier which casts one ```bytes``` instance into another ```bytes``` instance:
+The addition of the ```__bytes__``` data model identifier casts one ```bytes``` instance into another ```bytes``` instance:
 
 ![img_228](./images/img_228.png)
 
