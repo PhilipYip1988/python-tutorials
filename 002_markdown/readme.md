@@ -412,7 +412,7 @@ In LaTeX there are a number of reserved symbols:
 
 In LaTeX it is possible to insert some of these symbols in as escape characters, for example ```$\$$``` for $ and ```$\%$``` for %. These give $\$$ (3 dollar signs) and $\%$ (nothing) respectively. MathJax is not reliable for placing one of these reserved escape characters into the LaTeX equation.
 
-### LateX Text (MathJax)
+### LaTeX Text (MathJax)
 
 |description|LaTeX|output|
 |---|---|---|
