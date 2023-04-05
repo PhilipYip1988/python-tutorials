@@ -1861,10 +1861,6 @@ pprint(dir(greeting), compact=True)
 
 ![img_305](./images/img_305.png)
 
-The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` data model identifiers are used to get, set and delete attributes. An object instance and a string instance have no public attributes assigned to them so are not used for these classes.
-
-The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise Python objects.
-
 A Python class can be displayed as a dictionary using the data model identifier ```__dict__```. The dictionary displays all the identifiers of the class
 
 ![img_306](./images/img_306.png)
@@ -1893,6 +1889,23 @@ The ```object``` has no superclass, this means all the methods are defined in th
 
 The ```str``` has ```object``` as a superclass. What this means is that some of the methods used for the ```str``` class are defined directly in the ```str``` class and others are inherited from the ```object``` class. Notice when ```str.__dict__``` was examined that there was no entry for ```__dir__```, this is because ```__dir__``` is inherited from the ```object``` class and is therefore shown in ```object.__dir__```. There is an entry for ```__doc__``` in both dictionaries, this means that the docstring for the ```str``` class has been updated in the ```str``` class. The method resolution order states that this updated version should be used for any ```str``` class and any ```str``` instance.
 
+---
+Small section to be updated
+---
+
+
+
+
+The data model identifiers ```__base__``` gives the base class of the class hiercharchy which is essentially always ```object```.
+
+The data model identifier```__bases__``` gives the base class of the class hiercharchy which is essentially always ```object```.
+
+
+
+
+
+
+
 The data model identifier ```__isinstance__``` checks whether an instance is an instance of a particular class:
 
 ![img_311](./images/img_311.png)
@@ -1906,9 +1919,6 @@ Note that both ```instance``` and ```greeting``` are instances of the class ```o
 
 ![img_312](./images/img_312.png)
 
----
-Small section to be updated
----
 
 
 
@@ -1946,6 +1956,22 @@ issubclass(str, object)
 ![img_319](./images/img_319.png)
 
 
+
+
+
+
+The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` data model identifiers are used to get, set and delete attributes. An object instance and a string instance have no public attributes assigned to them so are not used for these classes.
+
+The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise Python objects.
+
+
+The data model identifier is ```__subclasshook__``` which is used for Abstract Base Classes.
+
+
+
+
+
+
 slots
 
 call
@@ -1955,9 +1981,6 @@ base bases
 init_subclass
 
 
-
-
-The last data model identifier is ```__subclasshook__``` which is used for Abstract Base Classes.
 
 
 
