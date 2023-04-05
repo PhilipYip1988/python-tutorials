@@ -1601,83 +1601,206 @@ greeting[0:5]
 
 ![img_154](./images/img_154.png)
 
-The behaviour of the inbuilt functions and operators on ```str``` instances are governed by data model identifiers. The data model identifiers are hidden by default:
+The behaviour of the inbuilt functions and operators on ```str``` instances are governed by data model identifiers. The data model identifiers are hidden by default when the instance name followed by a dot ```.``` and tab ```↹``` are pressed:
 
 ![img_155](./images/img_155.png)
 
-But can be viewed alongside all other identifiers using the directory function ```dir```. This function treats each Python object as a directory or folder and lists all the other objects as files in this folder:
+The data model identifiers can however be shown when the instance name, in this case ```greeting``` followed by a dot ```.__``` and tab ```↹``` are pressed:
+
+![img_271](./images/img_271.png)
+
+The data model identifiers begin and end with a **d**ouble **under**score. These data model identifiers are often colloquially known as dunder identifiers.
+
+Many of the identifiers in this list display as instances, for example ```__repr__```: 
+
+![img_272](./images/img_272.png)
+
+These come from the ```str``` class itself and can be shown when the ```str``` class, followed by a dot ```.__``` and tab ```↹``` are pressed:
+
+![img_278](./images/img_278.png)
+
+One point of confusion is that some of the data model identifiers for example ```__repr__``` displays as an instance when the list of identifiers is populated from a ```str``` instance. On the other hand, the same data model identifiers display as a function when the list of identifiers is populated from the ```str``` class. Despite displaying as an instance i.e. another object when the identifier is accessed from an instance of the string class, the shift ```⇧``` and tab ```↹``` key can be pressed to view the docstring: 
+
+![img_273](./images/img_273.png)
+
+Notice that the docstring states that the data model method is a method wrapper and returns ```repr(self)```. This means that the docstring of the function ```repr``` from ```builtins``` can be examined for more details:
+
+![img_275](./images/img_275.png)
+
+The following:
 
 ```
-dir(greeting)
-```
-
-![img_156](./images/img_156.png)
-
-To view this list horizontally pretty print can be used:
-
-```
-import pprint
-pprint.pprint(dir(greeting), compact=True)
-```
-
-![img_263](./images/img_263.png)
-
-The data model identifiers display at the top and begin and end with a **d**ouble **under**score. These data model identifiers are often colloquially known as dunder identifiers.
-
-They are not typically used directly. Instead default Python functions or operators invoke them. For example, the data model identifier ```__dir__``` is a method that can be called using:
-
-```
-greeting.__dir__()
-```
-
-![img_157](./images/img_157.png)
-
-The inbuilt function ```dir``` uses this datamodel method and returns the sorted list. The ```__len__```, ```__str__``` and ```__repr__``` data model identifiers map to the inbuilt function ```len```, class ```str``` and function ```repr``` respectively:
-
-```
-greeting.__len__()
-len(greeting)
-greeting.__str__()
-str(greeting)
-greeting.__repr__()
 repr(greeting)
-greeting
 ```
 
-![img_158](./images/img_158.png)
-
-The data model identifier ```__class__``` maps to the inbuilt class ```type``` which displays the class type of the object. Notice that the data model identifier is an attribute so is just referenced and not called. The class ```type``` is called so uses parenthesis:
+is more conventionally used opposed to:
 
 ```
-greeting.__class__
-type(str)
+greeting.__repr__()
 ```
 
-![img_160](./images/img_160.png)
+![img_274](./images/img_274.png)
 
-The data model identifier ```__doc__``` is the document string for a string instance. Once again this is an attribute that is referenced:
+Although ```repr``` is used, under the hood the ```__repr__``` method is defined in the class ```str``` and as a method wrapper controls the behaviour of the ```builtins``` function ```repr```.
+
+A similar case can be seen for the informal representation ```__str__``` which acts as a method wrapper for the ```str``` class:
+
+![img_276](./images/img_276.png)
+
+![img_277](./images/img_277.png)
+
+All objects in Python including the ```str``` class are based upon the ```object``` class. Therefore all the data model identifiers in the ```object``` class are also present in the ```str``` class:
+
+![img_278](./images/img_278.png)
+
+![img_279](./images/img_279.png)
+
+This includes ```__repr__``` and ```__str__``` which indicates that all Python objects have a formal and informal string representation.
+
+Every ```object``` also has the data model identifiers ```__new__``` which is used to construct a new instance of the class. In the documentation ```self``` is used as a placeholder to mean *this instance*:
+
+![img_280](./images/img_280.png)
+
+When the following is used:
 
 ```
+greeting = 'hello world!'
+```
+
+Or more fully:
+
+```
+greeting = str('hello world!')
+```
+
+```self``` gets assigned to the label ```greeting``` for this instance.
+
+Likewise, an instance of the ```object``` class can be instantiated:
+
+```
+instance = object()
+```
+
+```self``` gets assigned to the label ```instance``` for this instance.
+
+The ```__new__``` data model constructor, calls the ```__init__``` data model initialization signature and is used by ```__new__``` to populate a new instance with instance data during construction:
+
+![img_281](./images/img_281.png)
+
+Notice that ```__init__``` does not have a return statement as it is used to initially populate an instance with instance data. The ```__new__``` uses ```__init__``` to initialize a new object which is returned. 
+
+When the class name is input followed by open parenthesis and the shift ```⇧``` and tab ```↹``` keys are pressed the docstring of the initialization signature displays. Recall the purpose of ```__init__``` is to provide an instance with instance data, the ```object``` class requires no instance data, whereas the ```str``` class does:
+
+![img_283](./images/img_283.png)
+
+![img_284](./images/img_284.png)
+
+Just to clarify, as it leads to a source of confusion for begineers, although the initialization signature displays here and prompts the user to provide instance data. Recall that ```__init__``` has no return value. Instead the ```__new__``` data model identifier is called which in turn calls ```__init__``` and forwards the supplied instance data to ```__init__``` and finally returns the new instance with the instance data. ```__new__``` is the constructor and ```__init__``` is the initializer.
+
+```
+greeting = str('hello world!')
+instance = object()
+```
+
+![img_285](./images/img_285.png)
+
+Every Python object has a data model identifier ```__class__``` which can be used to return the class type of the object:
+
+![img_282](./images/img_282.png)
+
+This uses the inbuilt class ```type```:
+
+![img_286](./images/img_286.png)
+
+```
+type(greeting)
+type(instance)
+```
+
+![img_287](./images/img_287.png)
+
+Every class has the data model identifier ```__doc__```:
+
+![img_288](./images/img_288.png)
+
+This returns a class attribute in the form of a string. A class attribute is an attribute that is defined in the class and is constant across all instances of the class:
+
+```
+object.__doc__
+str.__doc__
+```
+
+![img_289](./images/img_289.png)
+
+```
+instance.__doc__
 greeting.__doc__
 ```
 
-![img_159](./images/img_159.png)
+![img_290](./images/img_290.png)
 
-It is more commonly used with the ```?``` which includes some other information from the data model identifiers ```__type__```, ```__str__```, ```__len__``` and ```__doc__```:
+This is normally provided alongside, some other details when ```?``` is used:
+
+```
+? instance
+type(instance)
+repr(instance)
+instance.__doc__
+```
+
+![img_291](./images/img_291.png)
 
 ```
 ? greeting
 ```
 
-![img_161](./images/img_161.png)
+![img_292](./images/img_292.png)
 
-The ```__hash__``` method means that a string is hashable. Only immutable objects are hashable. Each item that is hashable is assigned a unique hash value. This can be viewed using:
+All objects have a ```__sizeof__``` data model identifier, which is used to return the size of the object in bytes:
+
+![img_293](./images/img_293.png)
 
 ```
+instance.__sizeof__()
+greeting.__sizeof__()
+```
+
+![img_294](./images/img_294.png)
+
+The ```getsizeof``` function from the ```sys``` module is more commonly used for this purpose:
+
+```
+import sys
+sys.getsizeof(instance)
+sys.getsizeof(greeting)
+```
+
+![img_295](./images/img_295.png)
+
+The ```__format__``` data model identifier give details about incorporating an object in a format string, i.e. controls how the format specifiers work:
+
+![img_296](./images/img_296.png)
+
+```
+f'greeting is formatted as a string: {greeting :s}'
+f'greeting is formatted as a string: {greeting :20s}'
+f'greeting is formatted as a string: {greeting :020s}'
+```
+
+![img_297](./images/img_297.png)
+
+The data model identifier ```__hash__``` returns the ```hash``` value of an object:
+
+![img_298](./images/img_298.png)
+
+Only immutable objects, that is objects that once created cannot be modified are hashable. Instances of the ```object``` and ```object``` classes are immutable and hsahable:
+
+```
+hash(instance)
 hash(greeting)
 ```
 
-![img_167](./images/img_167.png)
+![img_299](./images/img_299.png)
 
 A hashable value is permissible as a key in a dictionary or mapping. For example, the three keys ```'red'```, ```'green'``` and ```'blue'``` are strings:
 
@@ -1703,41 +1826,144 @@ colors[key]
 ![img_266](./images/img_266.png)
 
 
-This shouldn't be confused with the ```id``` which is a unique identifier available for all objects:
+Hashing shouldn't be confused with the ```id``` which is a unique identifier available for all objects:
+
+![img_300](./images/img_300.png)
 
 ```
+id(instance)
 id(greeting)
 ```
 
-![img_168](./images/img_168.png)
+![img_301](./images/img_301.png)
 
-The data model ```__sizeof__``` displays the memory an object occupies in bytes:
+The data model identifier ```__dir__``` returns the directory ```dir``` value of an object. Each object can be thought of as a directory or folder and within that directory or folder are other directories or folders. In the case of a Python object, these are other objects and functions:
 
-![img_170](./images/img_170.png)
+![img_302](./images/img_302.png)
 
-Typically this is used using the ```sys``` module function ```getsizeof```:
+![img_304](./images/img_304.png)
 
-```
-import sys
-sys.getsizeof(greeting)
-```
-
-![img_171](./images/img_171.png)
-
-The ```__init__``` data model method is called when instantiating a string:
-
-![img_162](./images/img_162.png)
+Most identifiers can be displayed as a list of strings using the directory function ```dir```. This function treats each Python object as a directory or folder and lists all the other objects as files in this folder:
 
 ```
-greeting = str('Hello World!')
-greeting = 'Hello World!'
+dir(instance)
 ```
 
-![img_163](./images/img_163.png)
+![img_303](./images/img_303.png)
 
-When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name ```greeting``` and then the initialization signature ```__init__``` is called to initialize the instance with the unique text data.
+To view this list horizontally the pretty print function ```pprint``` can be used from the pretty print module ```print```:
 
-The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` methods are used to get, set and delete attributes. A string has no attributes so these are not used by the end user.
+```
+from pprint import pprint
+pprint(dir(instance), compact=True)
+pprint(dir(greeting), compact=True)
+```
+
+![img_305](./images/img_305.png)
+
+The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` data model identifiers are used to get, set and delete attributes. An object instance and a string instance have no public attributes assigned to them so are not used for these classes.
+
+The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise Python objects.
+
+A Python class can be displayed as a dictionary using the data model identifier ```__dict__```. The dictionary displays all the identifiers of the class
+
+![img_306](./images/img_306.png)
+
+```
+pprint(object.__dict__, compact=True)
+pprint(str.__dict__, compact=True)
+```
+
+![img_307](./images/img_307.png)
+
+![img_308](./images/img_308.png)
+
+Most of the other data model identifiers available from the ```object``` class relate to subclassing. A subclass is a class that is typically based on another class, the superclass but has additional functionality. The method resolution order ```__mro__``` can be displayed using:
+
+![img_309](./images/img_309.png)
+
+```
+object.__mro__
+str.__mro__
+```
+
+![img_310](./images/img_310.png)
+
+The ```object``` has no superclass, this means all the methods are defined in the ```object``` class directly.
+
+The ```str``` has ```object``` as a superclass. What this means is that some of the methods used for the ```str``` class are defined directly in the ```str``` class and others are inherited from the ```object``` class. Notice when ```str.__dict__``` was examined that there was no entry for ```__dir__```, this is because ```__dir__``` is inherited from the ```object``` class and is therefore shown in ```object.__dir__```. There is an entry for ```__doc__``` in both dictionaries, this means that the docstring for the ```str``` class has been updated in the ```str``` class. The method resolution order states that this updated version should be used for any ```str``` class and any ```str``` instance.
+
+The data model identifier ```__isinstance__``` checks whether an instance is an instance of a particular class:
+
+![img_311](./images/img_311.png)
+
+```
+object.__instancecheck__(instance)
+object.__instancecheck__(greeting)
+```
+
+Note that both ```instance``` and ```greeting``` are instances of the class ```object```. This is because ```object``` is the superclass:
+
+![img_312](./images/img_312.png)
+
+---
+Small section to be updated
+---
+
+
+
+
+![img_313](./images/img_313.png)
+
+```
+object.__subclasses__()
+```
+
+![img_314](./images/img_314.png)
+
+```
+str.__subclasses__()
+```
+
+![img_315](./images/img_315.png)
+
+
+![img_316](./images/img_316.png)
+
+```
+object.__subclasscheck__(str)
+```
+
+![img_317](./images/img_317.png)
+
+
+![img_318](./images/img_318.png)
+
+```
+issubclass(str, object)
+```
+
+![img_319](./images/img_319.png)
+
+
+slots
+
+call
+
+base bases
+
+init_subclass
+
+
+
+
+The last data model identifier is ```__subclasshook__``` which is used for Abstract Base Classes.
+
+
+
+
+
+```__len__```
 
 ```__iter__``` is a collection data model identifier available in both immutable and mutable sequences. It controls the behaviour of the ```iter``` class.
 
@@ -1790,10 +2016,6 @@ The modulo data model identifier ```__mod__``` data controls the behaviour of th
 The ```__format__``` method is used to specify how the string object behaves with format specifiers in a formatted string.
 
 The six comparison data model identifiers equals ```__eq```, not equals ```__ne__```, less than or equal to ```__le__```, less than ```__lt__```, greater than or equal to ```__ge__``` and greater than ```__gt__``` control the behaviour behind the 6 comparison operators ```==```, ```!=```, ```<=```, ```<```, ```>=``` and ```>``` respectively.
-
-The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise the ```str```.
-
-The last data model identifier is ```__subclasshook__``` which is used for Abstract Base Classes.
 
 ## Binary and Hexadecimal
 
