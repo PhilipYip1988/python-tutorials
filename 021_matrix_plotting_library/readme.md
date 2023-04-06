@@ -9,6 +9,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 
+![img_001](./images/img_001.png)
 
 ## ndarray Recap
 
@@ -19,11 +20,34 @@ x = np.array([0, 1, 2, 3, 4])
 y = np.array([0, 1, 4, 9, 16])
 ```
 
+![img_002](./images/img_002.png)
 
+These can be viewed in the Spyder Variable Explorer:
 
-These can be viewed in the Spyder Variable Explorer, notice that these have the same length:
+![img_003](./images/img_003.png)
 
+This array has a single dimension. When viewed in the Variable Explorer it displays as a row. When expanded in the Variable Explorer it displays as a column for convenience:
 
+![img_004](./images/img_004.png)
+
+![img_005](./images/img_005.png)
+
+Most of the plotting functions in ```matplotlib``` that expect data in the form of a 1d array, will also accept a 2d array configured as a column or row respectively.
+
+For the sake of clarity column vectors will be shown:
+
+```
+x = np.array([0, 1, 2, 3, 4], ndmin=2).T
+y = np.array([0, 1, 4, 9, 16], ndmin=2).T
+```
+
+![img_006](./images/img_006.png)
+
+![img_007](./images/img_007.png)
+
+Notice the ```x``` and ```y``` data are the same length, i.e. for every ```x``` value, there is a corresponding ```y``` value:
+
+![img_008](./images/img_008.png)
 
 ## Plot Backends
 
@@ -37,6 +61,15 @@ Details about these can be seen by inputting:
 %magic
 ```
 
+![img_009](./images/img_009.png)
+
+This is a long docstring, scrolling down until the ```%matplotlib``` is mentioned:
+
+![img_010](./images/img_010.png)
+
+Gives details about the backends:
+
+![img_011](./images/img_011.png)
 
 ### List Backends
 
@@ -46,6 +79,7 @@ For ```matplotlib```, compatible backends can be listed:
 %matplotlib --list
 ```
 
+![img_012](./images/img_012.png)
 
 ### Inline Backend
 
@@ -55,13 +89,15 @@ The default plot backend is ```inline``` which displays the plot as a static ima
 %matplotlib inline
 ```
 
+![img_013](./images/img_013.png)
+
 A basic line plot can be created using:
 
 ```
 plt.plot(x, y)
 ```
 
-
+![img_014](./images/img_014.png)
 
 Notice information about the last object is returned in the cell output ```[<matplotlib.lines.Line2D]```. This can be suppressed by use of a semi-colon ```;``` for example:
 
@@ -112,7 +148,7 @@ plt.plot(x, y)
 
 
 
-Unfortunately changing to this backend when an Interactive Python Notebook has plots using other backends gives the following warning ```Warning: Cannot change to a different GUI toolkit```:
+Unfortunately changing to this backend when an Interactive Python Notebook has existing plots that use other backends gives the following warning ```Warning: Cannot change to a different GUI toolkit```:
 
 
 
