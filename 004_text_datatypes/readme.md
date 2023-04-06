@@ -1583,7 +1583,7 @@ Some keywords have been used with string instances:
 
 ![img_148](./images/img_148.png)
 
-And some operators have been used with string instancesa:
+And some operators have been used with string instances:
 
 ```
 'Hello' + 'World'
@@ -1839,7 +1839,7 @@ id(greeting)
 
 The ```object``` class has two comparison data model identifiers ```__eq__``` and ```__ne__``` defined. These control the way the operators ```==``` and ```!=```. By default for an ```object``` these check the id to see if the object is the same.
 
-The data model identifier ```__dir__``` returns the directory ```dir``` value of an object. Each object can be thought of as a directory or folder and within that directory or folder are other directories or folders. In the case of a Python object, these are other objects and functions:
+The data model identifier ```__dir__``` returns the directory ```dir``` value of an object. Each object can be thought of as a directory or folder and within that directory or folder are other directories or folders. In the case of a Python object, these are other identifiers:
 
 ![img_302](./images/img_302.png)
 
@@ -1874,11 +1874,11 @@ str.__name__
 
 ![img_323](./images/img_323.png)
 
-The identifier ```__module__``` for example gives the name of the Python module, the class belongs to:
+The identifier ```__module__``` gives the name of the Python module, the class belongs to:
 
 ![img_320](./images/img_320.png)
 
-For example, the ```object``` and ```str``` classes are both in the ```builtins``` module:
+```object``` and ```str``` classes are both in the ```builtins``` module:
 
 ```
 object.__module__
@@ -1887,13 +1887,13 @@ str.__module__
 
 ![img_321](./images/img_321.png)
 
-Which is why they can be seen when the ```builtins``` module is imported:
+When the ```builtins``` module is explicitly imported:
 
 ```
 import builtins
 ```
 
-and the list of identifiers is examined using ```builtins.``` followed by a tab ```↹```:
+These classes can be seen in the list of identifiers which can be accessed by inputting ```builtins.``` followed by a tab ```↹```:
 
 ![img_322](./images/img_322.png)
 
@@ -2032,7 +2032,7 @@ There are some other data model identifiers which can be seen in the ```object``
 
 ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the ```pickle``` module to serialise Python objects, this will be discussed in a later tutorial. 
 
-The data model identifiers ```__slots__```, ```__call__```, ```__prepare__```, ```__annotations__```, ```__qualname__```, ```__subclasshook__```, ```__text_signature__```, ```__dictoffset__``` and ```__weakrefoffsrt__``` are used for the purposes of creating custom classes via subclassing and are not applicable to the disccusion of the ```str``` class.
+The data model identifiers ```__slots__```, ```__call__```, ```__prepare__```, ```__annotations__```, ```__qualname__```, ```__subclasshook__```, ```__text_signature__```, ```__dictoffset__``` and ```__weakrefoffsrt__``` are used for the purposes of creating custom classes via subclassing and are not applicable to the discussion of the ```str``` class.
 
 ```__basicsize__``` and ```__itemsize__``` are the identifiers that return the basic size of an object and an item in a object in ```bytes```. This is only relevant for objects that have items of a constant size. An item in a ```str``` is a Unicode character and Unicode characters can span different amount of bytes which will be discussed in more detail later.
 
@@ -2098,7 +2098,7 @@ greeting[0]
 
 ![img_343](./images/img_343.png)
 
-As the ```str``` is as reviously discussed immutable there is no associated ```__setitem__```.
+As the ```str``` is as previously discussed immutable there is no associated ```__setitem__```.
 
 A collection can also have the ```__add__``` and ```__mul__``` identifiers configured for concatenation of the collection and replication of the collection. These control the behaviour of the ```+``` and ```*``` operators respecitvely:
 
@@ -2129,8 +2129,6 @@ For the reverse operation to work, the associated ```__rmul__``` is also defined
 ```
 
 ![img_348](./images/img_348.png)
-
-There is also a reverse
 
 The data model identifier ```__mod__``` data controls the behaviour of the modulo operator ```%``` which is used with a tuple for legacy string formatting. 
 
@@ -2224,7 +2222,7 @@ num_cap_a = int(bin(ord('A')).lstrip('0b'))
 
 ![img_108](./images/img_108.png)
 
-A formatted string can be produced to display the string literal ```'A'``` and its corresponding byte sequence. Recall that double quotations are used to create a string with a string literal and there are 8 bits in a byte so;
+A formatted string can be produced to display the string literal ```'A'``` and its corresponding byte sequence. Recall that double quotations are used to create a string with a string literal and there are 8 bits in a byte so:
 
 ```
 f"The byte sequence for 'A' is {num_cap_a :08d}"
@@ -2551,7 +2549,7 @@ The data model identifiers can be viewed by inputting the instance name ```greet
 
 ![img_358](./images/img_358.png)
 
-The data model identifiers are largely consistent with the ```str``` class and both classes are immutable collections.
+The data model identifiers are largely consistent with the ```str``` class and both classes are immutable collections following the design pattern of the ```Collections``` class examined previously.
 
 The addition of the ```__bytes__``` data model identifier casts one ```bytes``` instance into another ```bytes``` instance:
 
@@ -2615,9 +2613,7 @@ greeting[:6]
 
 ![img_234](./images/img_234.png)
 
-Both the ```bytes``` and ```str``` are immutable collections. There is no ```__setitem__``` data model identifier and attempting to reassign the value of an index will raise a ```TypeError```:
-
-![img_235](./images/img_235.png)
+Since the ```bytes``` class is an immutable collection, there is no associated ```__setitem__``` data model identifier.
 
 ### Decoding
 
@@ -2853,7 +2849,9 @@ greeting.decode(encoding='UTF-8-Sig')
 
 ## The Mutable Byte String Class bytearray
 
-The ```bytearray``` is a mutable collection otherwise similar to the immutable ```byte``` collection.
+The ```bytearray``` is similar to the ```byte``` collection. The ```byte``` collection is immutable, meaning that once it is created, that it cannot be modified. The ```bytearray``` is mutable, meaning that once it is created, it can be modified. 
+
+Conceptualise the ```bytes``` class as being setup similar to a ```.pdf``` file, i.e. is opened as read only, data can be read but not modified. Conceptualise the ```bytesarray``` as a ```.docx``` file opened in a word processor i.e. opened in edit mode, data can be read and modified. In some cases this is not desirable as data can be accidentally modified i.e. corrupted.
 
 ### Init Signature
 
@@ -2873,7 +2871,9 @@ If the instance name ```greeting``` is input followed by a dot ```.``` and then 
 
 ![img_237](./images/img_237.png)
 
-Notice the inclusion of the mutable identifiers ```append```, ```extend```, ```insert```, ```pop```, ```remove``` and ```reverse```. These identifiers are methods that mutate the ```bytearray``` i.e. change the original and do not output a return value. The ordinal value of ```'!'``` is ```33```:
+Notice the inclusion of the mutable identifiers ```append```, ```extend```, ```insert```, ```pop```, ```remove``` and ```reverse```. These identifiers are methods that mutate the ```bytearray``` i.e. change the original and do not output a return value. 
+
+The ordinal value of ```'!'``` is ```33```:
 
 ```
 ord('!')
@@ -2943,7 +2943,7 @@ greeting
 
 ![img_246](./images/img_246.png)
 
-Inputting ```greeting.pop()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. It has a single input argument ```index``` which has a default value of ```-1``` meaning the end of the ```bytearray```. This is trailed by a ```/``` indicating it should be supplied only as a positional input argument when its default value is to be overriden. The method ```pop``` by default *pops* off the last item returning it as well as mutating the ```bytearray``` in place:
+Inputting ```greeting.pop()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring. It has a single input argument ```index``` which has a default value of ```-1``` meaning the end of the ```bytearray```. This is trailed by a ```/``` indicating it should be supplied only as a positional input argument when its default value is to be overridden. The method ```pop``` by default *pops* off the last item returning it as well as mutating the ```bytearray``` in place:
 
 ![img_247](./images/img_247.png)
 
@@ -3023,25 +3023,21 @@ greeting
 
 ### Data Model Identifiers
 
-The directory of the ```bytearray``` instance ```greeting``` can be examined using the directory function ```dir```:
+The data model identifiers can be viewed by inputting the name of an instance followed by a dot ```.``` and two underscores ```__``` and a tab ```↹```:
 
-```
-greeting = bytearray('Hello WOrld!', encoding='utf-8')
-dir(greeting)
-```
+![img_359](./images/img_359.png)
 
-![img_254](./images/img_254.png)
+Notice that the same immutable data model identifiers as seen in the ```str``` and ```bytes``` classes are available. For example ```__getitem__```:
 
-To view the output horizontally use:
+![img_362](./images/img_362.png)
 
-```
-import pprint
-pprint.pprint(dir(greeting), compact=True)
-```
+The ```bytesarray``` class has the immutable data model identifiers ```__setitem__``` and ```__delitem__```:
 
-![img_265](./images/img_265.png)
+![img_360](./images/img_360.png)
 
-Notice that the same immutable data model identifiers as seen in the other two classes are available. Since ```__getitem__``` is available, the ```bytearray``` can be indexed into:
+![img_361](./images/img_361.png)
+
+Since ```__getitem__``` is available, the ```bytearray``` can be indexed into and follows the same behaviour as the immutable ```bytes``` class:
 
 ```
 greeting
@@ -3051,7 +3047,7 @@ chr(79)
 
 ![img_255](./images/img_255.png)
 
-The mutable data model identifier ```__setitem__``` is also available. This means reassignment of an index can be carried out. This typo can be fixed. The ordinal value of lower case ```'o'``` is ```111```:
+As the mutable data model identifier ```__setitem__``` is also available, reassignment of a value at an index can also be carried out. This typo can be fixed. The ordinal value of lower case ```'o'``` is ```111```:
 
 ```
 ord('o')
@@ -3063,12 +3059,21 @@ The value at index 7 can be reassigned to this:
 greeting[7] = 111
 ```
 
-There is no cell output, however ```greeting``` can be viewed using:
+There is no cell output as the instance is modified in place, ```greeting``` can be viewed using:
 
 ```
 greeting
 ```
 
 ![img_256](./images/img_256.png)
+
+As the mutable data model identifier ```__delitem__``` is available. The last byte at index 11 can be deleted using:
+
+```
+del greeting[11]
+greeting
+```
+
+![img_363](./images/img_363.png)
 
 [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
