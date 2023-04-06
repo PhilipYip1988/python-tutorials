@@ -190,7 +190,7 @@ plt.plot(x, y);
 
 ### Labels and LaTeX (MathJax)
 
-In Axes there is a Title X-Axis Label and Y-Axis Label which are blank by default. These can be changed to ```length $x$ vs area $y$```, ```length $x$ (m)``` and ```area $y$ (m$^{2}$)```. Selecting Apply updates the plot to the following:
+In Axes there is a Title, X-Axis Label and Y-Axis Label which are blank by default. These can be changed to ```length $x$ vs area $y$```, ```length $x$ (m)``` and ```area $y$ (m$^{2}$)```. Selecting Apply updates the plot to the following:
 
 
 
