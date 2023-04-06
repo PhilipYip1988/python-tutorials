@@ -33,7 +33,9 @@ These concepts will be explored with other inbuilt Python collections.
 
 A tuple is an ordered finite immutable collection of references to Python objects. Think of the ```tuple``` as an ordered numeric *archive* and each reference to a Python object in the archive as a *record*.
 
-There are similarities between a Unicode string ```str``` and a ```tuple```. Both are immutable collections, in the case of a ```str```, the individual unit is a Unicode character. In the case of a ```tuple```, each unit is a reference to a Python object.
+There are similarities between a Unicode string ```str``` and a ```tuple``` as both are immutable collections and follow the same design pattern, which was previously covered by examining the abstract base class ```Collections``` from the ```collections.abc``` module.
+
+In the case of a ```str```, the individual unit is a Unicode character. In the case of a ```tuple```, each unit is a reference to a Python object.
 
 ### The Initialization Signature
 
@@ -226,16 +228,10 @@ Returning to:
 archive = (1, True, 3.14, 'hello', 'hello', 'bye')
 ```
 
-![img_029](images/img_029.png)
+The data model identifiers can be viewed by inputting ```archive.``` followed by a tab ```↹```:
 
-The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
 
-```
-from pprint import pprint
-pprint(dir(archive), compact=True)
-```
-
-![img_030](images/img_030.png)
+![img_377](images/img_377.png)
 
 The ```__init__``` data model method is called when instantiating a ```tuple```:
 
@@ -446,7 +442,7 @@ sys.getsizeof(archive)
 
 ![img_063](images/img_063.png)
 
-The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` identifiers are used to get, set and delete attributes. A ```tuple``` has no attributes so these are not used by the end user.
+The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` identifiers are used to get, set and delete attributes. The ```tuple``` class only has a handful of data model attributes such as the method resolution order ```__mro__``` inherited from the ```object``` class which was previously discussed. As it is immutable the attribute cannot be set or deleted.
 
 The ```+``` operator is setup to perform concatenation using the data model identifier ```__add__```:
 
@@ -1060,14 +1056,9 @@ active = [1, True, 3.14, 'hello', 'hello', 'bye']
 
 ![img_148](images/img_148.png)
 
-The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
+The data model identifiers can be viewed by inputting ```active.__``` followed by a tab ```↹```:
 
-```
-from pprint import pprint
-pprint(dir(active), compact=True)
-```
-
-![img_149](images/img_149.png)
+![img_378](images/img_378.png)
 
 Most of the data model identifiers listed are the same as the identifiers listed for the immutable ```tuple``` and the ```list``` identifiers behave consistently with their ```tuple``` counterparts. 
 
@@ -1080,6 +1071,7 @@ hash(active)
 ![img_150](images/img_150.png)
 
 The **immutable** ```tuple``` only has ```__getitem__```.
+
 The **mutable** ```list``` has ```__getitem__```, ```__setitem__``` and ```__delitem__```. This means for both a ```tuple``` and a ```list```, the value at an index can be read using:
 
 ```
@@ -1740,15 +1732,9 @@ Returning to:
 unique1 = {0, 1, 2, 3, 4, 5, 6}
 ```
 
-![img_256](images/img_256.png)
+The data model identifiers can be viewed by inputting ```unique1.__``` followed by a tab ```↹```: 
 
-The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
-
-```
-pprint(dir(unique1), compact=True)
-```
-
-![img_257](images/img_257.png)
+![img_379](images/img_379.png)
 
 The ```__init__``` data model method is called when instantiating a ```set```:
 
@@ -1977,6 +1963,16 @@ Each **key** in **keys** has to be unique and **keys** is therefore set-like. Fo
 The **value** in **values** does not have to be unique and **values** is tuple-like.
 
 The colon ```:``` is used to split each ```key: value``` and the ```,``` is used to split each key, value pair in the mapping.
+
+The ```dict``` class follows the design pattern of a mutable mapping. Details about this design pattern can be seen by examining the identifiers from the ```MutableMapping``` abstract class in the ```collections.abc``` module:
+
+```
+from collections.abc import MutableMapping
+```
+
+![img_380](images/img_380.png)
+
+The design pattern of a mapping is similar to a collection, so some consistency will be observed with the classes identifiers to the previously examiend collections.
 
 ### The Initialization Signature
 
@@ -2276,13 +2272,9 @@ mapping = {'red': '#FF0000',
 
 ![img_343](images/img_343.png)
 
-The directory function ```dir``` can be used to look at the data model identifiers available. The ```pprint``` function from the ```pprint``` module can be imported and used to display the as compact:
+Teh data model identifiers can be viewed by inputting ```mapping.__``` followed by a tab ```↹```:
 
-```
-pprint(dir(mapping), compact=True)
-```
-
-![img_344](images/img_344.png)
+![img_380](images/img_380.png)
 
 The ```__init__``` data model method is called when instantiating a ```dict```:
 
