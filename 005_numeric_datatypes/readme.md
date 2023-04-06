@@ -153,11 +153,13 @@ int.from_bytes(letter2)
 
 ### Data Model Identifiers
 
-If the directory function ```dir``` is used on an integer instance ```num1```, the last of identifiers displays alongside data model identifiers. 
+The data model identifiers can be viewed by inputting an instance name followed by a dot ```.```, two underscores ```__``` and a tab ```↹```:
 
-![img_017](./images/img_017.png)
+![img_199](./images/img_199.png)
 
-To view this list horizontally, pretty print will be used:
+In the previous tutorial, the data model identifiers were discussed in detail for the ```str``` class. Some analogy can be seen between these two classes as they are both subclasses of ```object```.
+
+The data model ```__dir__``` controls the behaviour of ```builtins``` function ```dir``` and looks at the directory of the object returning a list of strings corresponding to the names of identifiers:
 
 ```
 import pprint
@@ -166,11 +168,7 @@ pprint.pprint(dir(num1), compact=True)
 
 ![img_018](./images/img_018.png)
 
-In the previous tutorial, the data model identifiers were discussed in detail for the ```str``` class. Some analogy can be seen between these two classes.
-
-The inbuilt function ```dir``` uses the datamodel method ```__dir__``` and the list of identifiers as just seen. 
-
-The ```__repr__``` and ```__str__``` data model identifiers give the formal representation of an ```int``` and the informal representation. These map to the ```repr``` and function ```str``` class respectively:
+The ```__repr__``` and ```__str__``` data model identifiers give the formal string representation and the informal string representation specifying the behaviour of the ```repr``` function and the ```str``` class respectively ```repr``` and ```str``` are in ```builtins```:
 
 ```
 repr(num1)
@@ -196,7 +194,7 @@ num1
 
 ![img_021](./images/img_021.png)
 
-The ```__format___``` identifier is typically used when an integer variable is placed in a formatted string. This was examined in detail when the string class was examined however to recap:
+The data model identifier ```__format___``` is typically used when an integer variable is placed in a formatted string. This was examined in detail when the string class was examined however to recap:
 
 ```
 f'The number is {num1 :d}'
@@ -206,7 +204,7 @@ f'The number is {num1 :+04d}'
 
 ![img_022](./images/img_022.png)
 
-The data model identifier ```__class__``` maps to the inbuilt class ```type``` which displays the class type of the object. 
+The data model identifier ```__class__``` is a method wrapper to the ```builtins``` class ```type``` which displays the class type of the object. 
 
 ```
 type(num1)
@@ -224,7 +222,7 @@ The data model identifier ```__doc__``` is the document string for a string inst
 
 ![img_024](./images/img_024.png)
 
-The ```__index__``` method means that an ```int``` can be used for indexing:
+The data model identifier ```__index__``` means that an ```int``` can be used for indexing:
 
 ```
 'hello'[0]
@@ -233,7 +231,7 @@ b'hello'[0]
 
 ![img_025](./images/img_025.png)
 
-The ```__hash__``` method means that an ```int``` is hashable. A hashable value is permissible as a key in a dictionary or mapping. 
+The data model identifier ```__hash__``` means that an ```int``` is hashable. Recall that a hashable value is permissible as a key in a dictionary or mapping. 
 
 ```
 num_dict = {1: 'one', 2: 'two', 3: 'three'}
@@ -255,7 +253,7 @@ num1[0]
 
 This is setup to raise a ```TypeError``` as an ```int``` is not subscriptable.
 
-The data model ```__sizeof__``` displays the memory an object occupies in bytes:
+The data model identifier ```__sizeof__``` displays the memory an object occupies in bytes:
 
 ```
 import sys
@@ -264,7 +262,7 @@ sys.getsizeof(num1)
 
 ![img_028](./images/img_028.png)
 
-The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` methods are used to get, set and delete attributes. ```__getattribute__``` is used when:
+The ```__getattribute__```, ```__setattr__``` and ```__delattr__``` data model identifiers are used to get, set and delete attributes. ```__getattribute__``` is used when:
 
 ```
 num1.real
@@ -290,7 +288,7 @@ del num1.real
 
 ![img_031](./images/img_031.png)
 
-This is not supported and the method is setup to invoke an ```AttributeError```.
+This is also not supported and the method is setup to invoke an ```AttributeError```.
 
 The ```__init__``` data model method is called when instantiating an integer. 
 
@@ -298,15 +296,11 @@ The ```__init__``` data model method is called when instantiating an integer.
 
 When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance with the unique numeric data.
 
-The data model identifiers ```__getstate__```, ```__reduce__```, ```__reduce_ex__``` and ```__getnewargs__``` are used by the pickle module to serialise the ```str```.
-
-The last data model identifier is ```init_subclass``` and ```__subclasshook__``` which is used for Abstract Base Classes.
-
 ### Unitary Data Model Identifiers
 
-The unitary data model identifiers allow use of a mathematical operator on a unitary instance:
+The unitary data model identifiers allow use of a mathematical operator on a unitary instance.
 
-```__pos__``` maps to the ```+``` operator:
+```__pos__``` is a function wrapper for the ```+``` operator:
 
 ```
 num1
@@ -317,7 +311,7 @@ num1
 
 This doesn't change the sign of the integer.
 
-```__neg__``` maps to the ```-``` operator:
+```__neg__``` is a function wrapper for the ```-``` operator:
 
 ```
 num1
@@ -328,7 +322,11 @@ num1
 
 This changes the sign of the integer.
 
-```__abs__``` maps to the function ```abs```:
+If numeric instances are not assigned to instance names, the dot ```.``` syntax to access an identifier cannot be used as the dot ```.``` is confused with the decimal point ```.``` used for the floating point number ```float```. This is why the vast majority of identifiers for numeric values are data model identifiers that are function wrappers for numeric operators and why the use of numeric operators is preferential:
+
+![img_200](./images/img_200.png)
+
+```__abs__``` is a function wrapper for the ```builtins``` function ```abs```:
 
 ```
 abs(num1)
@@ -339,7 +337,7 @@ abs(- num1)
 
 Notice that both of these are positive, the signs have been stripped.
 
-```__ceil__```, ```__floor__``` and ```__trunc__``` map to ```math.ceil```, ```math.floor``` and ```math.trunc```. These methods are designed to cast a non-integer number into an integer. When the number is already an integer, the result is unchanged:
+```__ceil__```, ```__floor__``` and ```__trunc__``` are function wrappers for the functions ```math.ceil```, ```math.floor``` and ```math.trunc```. These functions are designed to cast a non-integer number into an integer. When the number is already an integer, the result is unchanged:
 
 ```
 num1
@@ -351,7 +349,7 @@ math.trunc(num1)
 
 ![img_036](./images/img_036.png)
 
-```__round__``` maps to ```round``` which by default rounds to an integer. When the number is already an integer, the result is unchanged:
+```__round__``` is a function wrapper for the function ```round``` which by default rounds to an integer. When the number is already an integer, the result is unchanged:
 
 ```
 round(num1)
@@ -359,7 +357,7 @@ round(num1)
 
 ![img_037](./images/img_037.png)
 
-```__int__``` maps to the ```int``` init signature to cast the number to an ```int```. When the number is already an integer, the result is unchanged:
+```__int__``` is a function wrapper for the ```int``` class and defines how to cast a number to an ```int```. When the number is already an integer, the result is unchanged:
 
 ```
 num1
@@ -368,7 +366,7 @@ int(num1)
 
 ![img_038](./images/img_038.png)
 
-```__bool__``` maps to the ```bool``` init signature to cast the number to an ```bool```. Any ```int``` that is non-zero will map to a boolean value of ```True```, zero will map to ```False```:
+```__bool__``` is a function wrapper for the ```bool``` class and defines how to cast a number to a ```bool```. Any ```int``` that is non-zero will map to a boolean value of ```True```, zero will map to ```False```:
 
 ```
 num1
@@ -381,7 +379,7 @@ bool(num3)
 
 ![img_039](./images/img_039.png)
 
-```__float__``` maps to the ```float``` init signature to cast the number to a ```float```. Notice the subtle difference in the output, a decimal point is now included:
+```__float__``` is a function wrapper for the ```float``` class and defines how to cast the number to a ```float```. Notice the subtle difference in the output, a decimal point is now included:
 
 ```
 num1
@@ -392,7 +390,7 @@ float(num1)
 
 ### Binary Data Model Identifiers
 
-Binary data model methods require two numeric instances.
+Binary data model methods require two numeric instances:
 
 ```
 num1 = 65
@@ -401,11 +399,11 @@ num2 = 4
 
 ![img_041](./images/img_041.png)
 
-If the docstring of the ```__add__``` binary data model method is examined, the numeric instance the data model method is being called from is referred to as self and the other instance is referred to as value:
+If the docstring of the ```__add__``` binary data model method is examined, the numeric instance the data model method is being called from is referred to as ```self``` meaning *this instance* and the *other instance* is referred to as ```value```:
 
 ![img_042](./images/img_042.png)
 
-```__add__``` maps to the addition operation ```+``` performing numeric addition:
+The data model identifier ```__add__``` is a function wrapper for the ```+``` operator performing numeric addition:
 
 ```
 num1 = 65
@@ -415,7 +413,7 @@ num1 + num2
 
 ![img_043](./images/img_043.png)
 
-```__radd__``` the reverse add data model method when called from ```num1``` carries out the operation:
+```__radd__``` is the reverse add data model method identifier:
 
 ```
 num2 + num1
@@ -423,9 +421,9 @@ num2 + num1
 
 ![img_044](./images/img_044.png)
 
-The operation above is commutative and both instances are of the same int class so the result is the same. When the operator is used between different class types, there can be subtle differences. 
+The operation above is commutative and both instances are of the same ```int``` class so the result is the same. When the operator is used between different class types, there can be subtle differences. 
 
-The ```__add__``` method also controls the behaviour of the inplace addition ```+=``` operator:
+The ```__add__``` data model identifier is also a function wrapper for the inplace addition ```+=``` operator:
 
 ```
 num1 = 65
@@ -445,9 +443,11 @@ num1 = num1 + num2
 
 ![img_046](./images/img_046.png)
 
-Recall the calculation on the right is carried out first using the original value of ```num1```. The object name or ```num1``` is then assigned to this new result.
+Recall an ```int``` instance is immutable and therefore was hashable. **Inplace addition i.e. addition and then reassignment should not be confused with mutability.** 
 
-```__mul__``` maps to the ```*``` operator:
+Inplace addition carries out the addition operation on the right first using the original instance of ```num1``` creating a new numeric instance. The instance name ```num1``` which recall can be conceptualised as a label originally pointed to the old instance. After the inplace addition it is now pointing to the new instance. i.e. is reassigned to the new instance. If the old instance has no other instance names or labels it is removed by Pythons garbage collecion.
+
+```__mul__``` is a function wrapper for the ```*``` operator:
 
 ```
 num1 = 65
@@ -493,9 +493,9 @@ Behind the scenes the reverse multiplication ```__rmul__``` is attempted. The ``
 'hello' * num1
 ```
 
-```__mul__``` also maps to the assignment multiplication operator ```*=```.
+```__mul__``` is also a function wrapper for the assignment multiplication operator ```*=```.
 
-```__sub__``` maps to the subtraction operator ```-``` which carries out numeric subtraction:
+```__sub__``` is a function wrapper for the subtraction operator ```-``` which carries out numeric subtraction:
 
 ```
 num1 = 65
@@ -505,9 +505,9 @@ num1 - num2
 
 ![img_052](./images/img_052.png)
 
-```__sub__``` also maps to the assignment multiplication operator ```-=```. There is also the associated reverse subtraction ```__rsub__```.
+```__sub__``` is also a function wrapper for the assignment subtraction operator ```-=```. There is also the associated reverse subtraction ```__rsub__```.
 
-```__pow__``` maps to the power operator ```**``` which raises self to the power of the value:
+```__pow__``` is a function wrapper for the power operator ```**``` which raises self to the power of the value:
 
 ```
 num1 = 65
@@ -525,9 +525,9 @@ Recall this is equivalent to:
 
 ![img_054](./images/img_054.png)
 
-```__pow__``` also maps to the assignment power operator ```**=```. There is also the associated reverse subtraction ```__rpow__```.
+```__pow__``` is also a function wrapper for the assignment power operator ```**=```. There is also the associated reverse subtraction ```__rpow__```.
 
-```__floordiv__``` maps the floor division ```//``` operator which performs floor division also known as integer division. The associated ```__modulo__``` maps the modulo operator ```%``` which calculates the modulo. ```__divmod__``` maps to the function ```divmod``` which returns the floor division and modulo as components of a tuple. These are usually used with positive itneger values:
+```__floordiv__``` is a function wrapper for the floor division ```//``` operator which performs floor division also known as integer division. The associated ```__modulo__``` is a function wrapper for the modulo operator ```%``` which calculates the modulo. ```__divmod__``` is a fucntion wrapper to the function ```divmod``` which returns the floor division and modulo as components of a tuple. These are usually used with positive itneger values:
 
 ```
 num1 = 65
@@ -539,9 +539,9 @@ divmod(num1, num2)
 
 ![img_055](./images/img_055.png)
 
-```__floordiv__``` and ```__mod__``` also maps to the assignment floor division operator ```//=``` and the assignment mudulo operator ```%=``` respectively. There is also the associated reverse versions ```__rfloordiv__```, ```__rmodulo__``` and ```__rdivmod__```.
+```__floordiv__``` and ```__mod__``` also wrap to the assignment floor division operator ```//=``` and the assignment mudulo operator ```%=``` respectively. There is also the associated reverse versions ```__rfloordiv__```, ```__rmodulo__``` and ```__rdivmod__```.
 
-```__truediv__``` maps to float division ```/``` operator which performs float division. The result will always be a float. Notice the inclusion of the decimal point:
+```__truediv__``` is a function wrapper to the float division ```/``` operator which performs float division. The result will always be a float. Notice the inclusion of the decimal point:
 
 ```
 num1 = 65
@@ -552,9 +552,9 @@ num1 / 1
 
 ![img_056](./images/img_056.png)
 
-```__truediv__``` also maps to the assignment floor division operator ```/=```. There is also the associated reverse float divide ```__rtruediv__```.
+```__truediv__``` also wraps to the assignment floor division operator ```/=```. There is also the associated reverse float divide ```__rtruediv__```.
 
-The six comparison data model identifiers equals ```__eq```, not equals ```__ne__```, less than or equal to ```__le__```, less than ```__lt__```, greater than or equal to ```__ge__``` and greater than ```__gt__``` control the behaviour behind the 6 comparison operators ```==```, ```!=```, ```<=```, ```<```, ```>=``` and ```>``` respectively.
+The six comparison data model identifiers equals ```__eq```, not equals ```__ne__```, less than or equal to ```__le__```, less than ```__lt__```, greater than or equal to ```__ge__``` and greater than ```__gt__``` are function wrappers to the 6 comparison operators ```==```, ```!=```, ```<=```, ```<```, ```>=``` and ```>``` respectively.
 
 ```
 num1 = 65
@@ -568,7 +568,7 @@ num1 != num1
 
 ![img_057](./images/img_057.png)
 
-```__and__```, ```__or__``` and ```__xor__``` map to the and operator ```&```, or operator ```|```, xor operator ```^```. These are normally associated with ```boolean``` values recall any integer value that is non-zero is ```True``` and an integer equal to zero is ```False```.
+```__and__```, ```__or__``` and ```__xor__``` are function wrappers to the and operator ```&```, or operator ```|```, xor operator ```^``` respectively. These are normally associated with ```boolean``` values recall any integer value that is non-zero is ```True``` and an integer equal to zero is ```False```.
 
 ```&``` is ```True``` only if both conditions are ```True```:
 
@@ -600,9 +600,9 @@ False ^ False
 
 ![img_060](./images/img_060.png)
 
-```__and__```, ```__or__``` and ```__xor__``` also maps to the assignment and operator ```=&```, assignment or operator ```=|``` and assignment xor operator ```^=```. There is also the associated reverse versions ```__rand__```, ```__ror__```, ```__rxor__```.
+```__and__```, ```__or__``` and ```__xor__``` also wrap to the assignment and operator ```=&```, assignment or operator ```=|``` and assignment xor operator ```^=``` respectively. There is also the associated reverse versions ```__rand__```, ```__ror__```, ```__rxor__```.
 
-```__lshift__``` maps to the binary left shift operator ```<<``` and ```__rshift__``` maps to the binary right shift operator ```>>```. These operate at the byte level. The ```bin``` function can be used to examine the change. 
+```__lshift__``` is a function wrapper to the binary left shift operator ```<<``` and ```__rshift__``` is a function wrapper to the binary right shift operator ```>>```. These operate at the byte level. The ```bin``` function can be used to examine the change. 
 
 Notice that trailing zeros of the specified number have been added to the end shifting the existing byte sequence to the left:
 
@@ -630,7 +630,7 @@ bin(num1 >> 2)
 
 ![img_062](./images/img_062.png)
 
-```__lshift__``` and ```__rshift__``` also map to the assignment binary left shift operator ```<<=``` and assignment binary right shift operator ```>>=```. There is the associated reverse versions ```__rlshift__``` and ```__rrshift__```.
+```__lshift__``` and ```__rshift__``` also wrap to the assignment binary left shift operator ```<<=``` and assignment binary right shift operator ```>>=``` respectively. There is the associated reverse versions ```__rlshift__``` and ```__rrshift__```.
 
 ### PEDMAS
 
@@ -691,6 +691,26 @@ bool.mro()
 
 The output list displays ```bool```, ```int``` and then ```object```. The method resolution order means Python will first look for a method defined in the ```bool``` class (blueprint), then secondly look for a method in the ```int``` class (blueprint) and finally if it can't find the method there, take a third look in the ```object``` class (blueprint). The only major modification to the ```bool``` class is a restriction to only two possible values ```False``` and ```True```. Otherwise it behaves identically to the ```int``` class as most its methods are taken directly from the ```int``` class unmodified (i.e. accessed directly from the ```int``` blueprint).
 
+Recall that each class has the data model identifier ```__dict__``` which gives a dictionary of identifiers. Notice only a handful of data model identifiers are shown in the ```bool``` class:
+
+```
+bool.__dict__
+```
+
+![img_201](./images/img_201.png)
+
+This is because most of the data model identifiers and other identifiers are inherited directly from the ```int``` base class:
+
+```
+int.__dict__
+```
+
+![img_202](./images/img_202.png)
+
+Some other identifiers are ```object``` superclass:
+
+![img_203](./images/img_203.png)
+
 ### Initialization Signature
 
 The init signature of the ```bool``` class can be viewed by inputting the class name with open parenthesis and pressing shift ```⇧``` and tab ```↹```:
@@ -709,7 +729,7 @@ bool(-4)
 
 ![img_066](./images/img_066.png)
 
-Typically the inbuilts ```False``` and ```True``` are sued directly but they can be assigned to object names:
+Typically the inbuilts ```False``` and ```True``` are used directly but they can be assigned to object names:
 
 ```
 False
@@ -728,15 +748,11 @@ These methods are the same as their counterparts in the ```int``` class because 
 
 ### Data Model Identifiers
 
-All the identifiers, including the data model identifiers can be viewed using:
+The data model identifiers can be viewed using ```False.__``` followed by a tab ```↹```
 
-```
-pprint.pprint(dir(False), compact=True)
-```
+![img_204](./images/img_204.png)
 
-![img_069](./images/img_069.png)
-
-Most of these behave identically to the ```int``` class as they are taken directly from this blueprint. The two string related data model identifiers ```__repr__``` and ```__str__``` have been updated to display strigns of the two builtin identifiers ```'False'``` and ```'True'``` opposed to ```'0'``` and ```'1'```.
+Most of these behave identically to the ```int``` class as they were taken directly from the ```int``` base class. The formal string data model identifier ```__repr__``` has been updated to display strings of the two builtin identifiers ```'False'``` and ```'True'``` opposed to ```'0'``` and ```'1'```. When only ```__repr__``` the formal string identifier is updated, the informal string identifier ```__str__``` is automatically updated to use the same representation:
 
 ```
 repr(False)
@@ -1059,14 +1075,9 @@ float.fromhex('0x1.eb851eb851eb8p-4')
 
 ### Data Model Identifiers
 
-To view the data model identifiers, the directory function ```dir``` can be used:
+To view the data model identifiers, a float instance name can be input followed by a dot ```.```, two underscores ```__``` and a tab ```↹```:
 
-```
-num1 = 0.5
-pprint.pprint(dir(num1), compact=True)
-```
-
-![img_092](./images/img_092.png)
+![img_205](./images/img_205.png)
 
 Most of the numeric identifiers are available and the ```float``` class and the ```int``` class are setup to be consistent with one another. 
 
@@ -1114,7 +1125,7 @@ int(num1)
 
 ![img_096](./images/img_096.png)
 
-Recall that the ```__ceil__```, ```__floor__``` and ```__trunc__``` map to ```math.ceil```, ```math.floor``` and ```math.trunc```. These methods are designed to cast a non-integer number into an integer. The subtle differences between these methods can be seen with  positive and a negative number:
+Recall that the ```__ceil__```, ```__floor__``` and ```__trunc__``` are function wrappers for ```math.ceil```, ```math.floor``` and ```math.trunc``` respectively. These methods are designed to cast a non-integer number into an integer. The subtle differences between these methods can be seen with  positive and a negative number:
 
 ```
 import math
@@ -1143,7 +1154,7 @@ math.trunc(num2)
 
 ![img_099](./images/img_099.png)
 
-```__round__``` maps to ```round``` function. The docstring of the ```round``` function can be examined in more detail by inputting it with open parentheis and pressing shift ```⇧``` and tab ```↹```:
+```__round__``` is a function wrapper for the ```builtins``` function ```round```. The docstring of the ```round``` function can be examined in more detail by inputting it with open parentheis and pressing shift ```⇧``` and tab ```↹```:
 
 ![img_100](./images/img_100.png)
 
@@ -1265,16 +1276,11 @@ Notice the real component remains unchanged but the sign of the imaginary compon
 
 ### Data Model Identifiers
 
-To view the data model identifiers, the directory function ```dir``` can be used:
+To view the data model identifiers, the name of an instance can be input followed by a dot ```.```, two underscores ```__``` and a tab ```↹```:
 
-```
-num1 = 2+1j
-pprint.pprint(dir(num1), compact=True)
-```
+![img_206](./images/img_206.png)
 
-![img_112](./images/img_112.png)
-
-Notice that there are substantially less of the mathematical data model identifiers defined meaning the operators for ones that are not defined cannot be used. Dor example there is no ```__floordiv__``` or  ```__mod__``` meaning ```//``` and ```%``` cannot be used with a complex number:
+Notice that there are substantially less of the mathematical data model identifiers defined. If a data model identifier is not defined, its corresponding operator cannot be used. For example there is no ```__floordiv__``` or  ```__mod__``` meaning ```//``` and ```%``` cannot be used with a complex number:
 
 ![img_113](./images/img_113.png)
 
@@ -1935,16 +1941,15 @@ num2.limit_denominator(max_denominator=1000)
 
 ### Data Model Identifiers
 
-To view the data model identifiers, the directory function ```dir``` can be used:
+To view the data model identifiers, a ```Fraction``` instance name can be input followed by a dot ```.```, two underscores ```__``` and a tab ```↹```:
 
-```
-num1 = Fraction(numerator=3, denominator=8)
-pprint.pprint(dir(num1), compact=True)
-```
+![img_207](./images/img_207.png)
 
-![img_177](./images/img_177.png)
+There are also some identifiers beginning with a single underscore. These are used internally by the equivalent data model identifiers with the same name. 
 
-The identifiers beginning with a single underscore are used internally by the equivalent data model identifiers with the same name. Recall that the ```__init__``` data model method is called when instantiating a ```Fraction```. When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance with the unique numeric data. The ```__getattribute__``` data model identifier is used when an attribute is accessed.
+![img_208](./images/img_208.png)
+
+Recall that the ```__init__``` data model method is called when instantiating a ```Fraction```. When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance with the unique numeric data. The ```__getattribute__``` data model identifier is used when an attribute is accessed.
 
 The Python functions ```repr``` and ```str``` use the data model identifiers ```__repr__``` and ```__str__```. Differences between the formal string representation and informal string representation can be seen by comparing the output from the ```repr``` and ```str``` functions respectively:
 
@@ -1956,7 +1961,7 @@ str(num1)
 
 ![img_178](./images/img_178.png)
 
-Recall that the Python function ```dir``` uses the data model identifier ```__dir__``` to display the directory of the object as seen above. The Python ```type``` function uses the datamodel identifier ```__class__```:
+Recall that the Python function ```dir``` uses the data model identifier ```__dir__``` to display the directory of the object. The Python ```type``` function uses the data model identifier ```__class__```:
 
 ```
 type(num1)
@@ -2029,8 +2034,6 @@ math.floor(num1)
 math.ceil(num1)
 round(num1, ndigits=2)
 ```
-
-
 
 ### Binary Data Model Identifiers
 
