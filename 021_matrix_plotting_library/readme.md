@@ -105,6 +105,7 @@ Notice information about the last object is returned in the cell output ```[<mat
 plt.plot(x, y);
 ```
 
+![img_015](./images/img_015.png)
 
 ### qt5 Backend
 
@@ -114,23 +115,47 @@ plt.plot(x, y);
 %matplotlib qt5
 ```
 
+![img_016](./images/img_016.png)
+
 A new plot can be created using:
 
 ```
 plt.plot(x, y)
 ```
 
+![img_017](./images/img_017.png)
 
+Notice that information about the last object displays in the cell output ```[<matplotlib.lines.Line2D]``` as it was not suppressed using a semi-colon. The plot itself displays in a seperate interactive window. This window has a window title ```Figure 1``` and on windows the three standard minimize, maximize and close buttons. On Linux the windows title bar will match the style of the desktop environment. In GNOME for example, the title bar can be right clicked to reveal these options.
 
-Notice that information about the last object displays in the cell output ```[<matplotlib.lines.Line2D]``` as it was not suppressed using a semi-colon:
-
-
-
-The plot itself displays in a seperate interactive window. This window has a window title ```Figure 1``` and on windows the three standard minimize, maximize and close buttons. On Linux the windows title bar will match the style of the desktop environment. In GNOME for example, the title bar can be right clicked to reveal these options.
+![img_018](./images/img_018.png)
 
 Under the titlebar is a Home, back, forward, pan, zoom, axes options, figure options and save button. The behaviour behind all these buttons under the hood invokes Python code. 
 
+The zoom button can be used to zoom into a region of interest:
 
+![img_019](./images/img_019.png)
+
+![img_020](./images/img_020.png)
+
+The pan tool can be used to reposition the data within the current window size and zoom setting: 
+
+![img_021](./images/img_021.png)
+
+The back and forward button may be used to go back to the previous view or next view:
+
+![img_022](./images/img_022.png)
+
+![img_023](./images/img_023.png)
+
+The home button returns to the default view:
+
+![img_024](./images/img_024.png)
+
+The save button can be used to save an image to .png:
+
+![img_025](./images/img_025.png)
+
+![img_026](./images/img_026.png)
 
 ### ipympl Backend
 
@@ -140,19 +165,13 @@ The interactive python matplotlib ```ipympl``` backend is supposed to bridge the
 %matplotlib ipympl
 ```
 
-A new plot can be created using:
+![img_027](./images/img_027.png)
 
-```
-plt.plot(x, y)
-```
+Unfortunately changing to this backend when an Interactive Python Notebook has existing plots that use other backends gives the following warning ```Warning: Cannot change to a different GUI toolkit```. To get around this, the kernel needs to be restarted.
 
+![img_029](./images/img_029.png)
 
-
-Unfortunately changing to this backend when an Interactive Python Notebook has existing plots that use other backends gives the following warning ```Warning: Cannot change to a different GUI toolkit```:
-
-
-
-To get around this, the kernel needs to be restarted and this plot backend needs to be selected before any plots are created. For this reason the backend is normally changed at the top of the Interactive Python Notebook File after the library imports:
+ This plot backend needs to be selected before any plots are created. For this reason the backend is normally changed at the top of the Interactive Python Notebook File after the library imports:
 
 ```
 import numpy as np
@@ -166,16 +185,39 @@ y = np.array([0, 1, 4, 9, 16])
 plt.plot(x, y);
 ```
 
-
-
-The interactive plot in the cell output can be panned and zoomed but lacks the overall level of interactivity of a plot using the ```qt5``` backend.
+![img_028](./images/img_028.png)
 
 ### Inline Backend (Spyder IDE)
 
+The Spyder IDE plots inline by default, the plots are static images and are shown in the plots pane:
+
+![img_030](./images/img_030.png)
 
 ### qt5 Backend (Spyder IDE)
 
+To change the backend select Tools → Preferences:
 
+![img_031](./images/img_031.png)
+
+Select the IPython Console left tab and then the Graphics top tab. Change the Backend to Qt5 and select Apply:
+
+![img_032](./images/img_032.png)
+
+Select Consoles → Restart Kernel:
+
+![img_033](./images/img_033.png)
+
+Plotting will now show a plot using the qt5 backend in its own window:
+
+![img_034](./images/img_034.png)
+
+### plt.show
+
+Some other IDEs such as VSCode will create plots but not show them. The ```show``` function from the ```pyplot``` module needs to be called to view the plots:
+
+```
+plt.show()
+```
 
 ## Changing a Plot via GUI
 
@@ -193,16 +235,21 @@ y = x ** 2
 plt.plot(x, y);
 ```
 
+![img_035](./images/img_035.png)
 
-
+![img_036](./images/img_036.png)
 
 ### Labels and LaTeX (MathJax)
 
-In Axes there is a Title, X-Axis Label and Y-Axis Label which are blank by default. These can be changed to ```length $x$ vs area $y$```, ```length $x$ (m)``` and ```area $y$ (m$^{2}$)```. Selecting Apply updates the plot to the following:
+In Axes there is a Title, X-Axis Label and Y-Axis Label which are blank by default. 
 
+![img_037](./images/img_037.png)
 
+These can be changed to ```length $x$ vs area $y$```, ```length $x$ (m)``` and ```area $y$ (m$^{2}$)```. Selecting Apply updates the plot to the following:
 
-Enclosing text in ```$ $``` allows a basic subset of inline LaTeX, which was previously discussed when the markdown syntax was examined. Enclosing text in ```$$ $$``` is used in markdown for display LaTeX and is not supported on a figure.
+![img_038](./images/img_038.png)
+
+Enclosing text in ```$ $``` allows a basic subset of inline LaTeX, powered by MathJax which was previously discussed when markdown syntax was examined.
 
 LaTeX Text (MathJax)
 
@@ -343,7 +390,13 @@ Prefixing ```\left``` and ```\right``` to a set of brackets will automatically r
 
 The ```{``` and ```}``` are reserved so ```\lbrace``` and ```\rbrace``` need to be used.
 
+The figure typically assigns limited space for labels and normally simple inline expressions such as the above are used.
 
+Enclosing text in ```$$ $$``` is used for display LaTeX. I a figure however display equations show as inline equations i.e. there seems to be no difference enclosing in single ```$ $``` or double ```$$ $$```.
+
+Some more complicated mathematical expressions can be added. In my personal testing, I couldn't get a matrix or column vector to properly display, this seems to be an issue with MathJax rendering as previously discussed when looking at markdown.
+
+Large equations will typically be cut off at the bottom of the figure by default.
 
 ### Axes Scales
 
