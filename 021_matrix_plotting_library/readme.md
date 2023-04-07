@@ -170,6 +170,13 @@ plt.plot(x, y);
 
 The interactive plot in the cell output can be panned and zoomed but lacks the overall level of interactivity of a plot using the ```qt5``` backend.
 
+### Inline Backend (Spyder IDE)
+
+
+### qt5 Backend (Spyder IDE)
+
+
+
 ## Changing a Plot via GUI
 
 Before looking at any code, it is worthwhile exploring the most common changes in the UI to get a feel for the plot. The following plot will be created using the ```qt5``` backend:
@@ -185,6 +192,7 @@ y = x ** 2
 
 plt.plot(x, y);
 ```
+
 
 
 
@@ -389,6 +397,25 @@ plt.plot(x, y);
 In JupyterLab the default backend is inline, which 
 
 
+## Functional Programming Overview
+
+The ```pyplot``` module is imported from the ```matplotlib``` library using:
+
+```
+import matplotlib.pyplot as plt
+```
+
+
+
+The docstring of the ```pyplot``` module can be viewed by using ```?``` on its alias ```plt```:
+
+```
+? plt
+```
+
+
+
+T
 
 
 
@@ -410,6 +437,109 @@ In JupyterLab the default backend is inline, which
 
 
 
+The identifiers from the ```pyplot``` module can be viewed by inputting its alias ```plt.``` followed by a tab ```↹```:
 
 
+
+|function|description|
+|---|---|
+|figure|Create a new figure, or activate an existing figure.|
+|axes|Add an axes to the current figure and make it the current axes.|
+|plot|Plot y versus x as lines and/or markers.|
+|xlabel|Set the label for the x-axis.|
+|ylabel|Set the label for the y-axis.|
+|title|Set a title for the Axes.|
+|legend|Place a legend on the Axes.|
+|grid|Configure the grid lines.|
+|minorticks_on|Display minor ticks on the Axes.|
+|minorticks_off|Remove minor ticks from the Axes.|
+|xlim|Get or set the x limits of the current axes.|
+|ylim|Get or set the y-limits of the current axes.|
+|xscale|Set the x-axis scale.|
+|yscale|Set the y-axis scale.|
+|xticks|Get or set the current tick locations and labels of the x-axis.|
+|yticks|Get or set the current tick locations and labels of the y-axis.|
+|tight_layout|Adjust the padding between and around subplots.|
+|subplot|Add an Axes to the current figure or retrieve an existing Axes.|
+
+
+
+
+
+
+grid	Configure the grid lines.
+minorticks_on	Display minor ticks on the Axes.
+minorticks_off	Remove minor ticks from the Axes.
+xlim	Get or set the x limits of the current axes.
+ylim	Get or set the y-limits of the current axes.
+xscale	Set the x-axis scale.
+yscale	Set the y-axis scale.
+xticks	Get or set the current tick locations and labels of the x-axis.
+yticks	Get or set the current tick locations and labels of the y-axis.
+tight_layout	Adjust the padding between and around subplots.
+subplot	Add an Axes to the current figure or retrieve an existing Axes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+plt.get_plot_commands()
+
+list(plt.get_plot_commands())
+
+
+The ```plt.plotting``` function is essentially a documentation string outlining the most commonly used plotting functions of the ```pyplot``` module.
+
+
+
+
+
+
+```
+fig, ax = plt.subplots()
+bar_container = ax.bar(fruit_names, fruit_counts)
+ax.set(ylabel='pints sold', title='Gelato sales by flavor', ylim=(0, 8000))
+ax.bar_label(bar_container, fmt='{:,.0f}')
+```
+
+
+
+
+ax.yaxis.set_tick_params(labelsize=30, labelcolor='red',
+                         direction='out', which='major')
+ax.yaxis.get_tick_params(which='major')
+
+
+
+    ax.set_aspect(aspects[i], adjustable='datalim')
+aspects = ('auto', 'equal', 'equalxy', 'equalyz', 'equalxz')
+
+
+
+fig.colorbar(im, cax=ax.inset_axes([0, 1.05, 1, 0.05]),
+             location='top')
+
+
+
+
+
+fig, axd = plt.subplot_mosaic(
+    "AB;CD",
+    per_subplot_kw={
+        "A": {"projection": "polar"},
+        ("C", "D"): {"xscale": "log"},
+        "B": {"projection": "3d"},
+    },
+)
 
