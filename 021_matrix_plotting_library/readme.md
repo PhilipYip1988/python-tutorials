@@ -229,8 +229,8 @@ import matplotlib.pyplot as plt
 
 %matplotlib qt5
 
-x = np.arange(start=0, stop=101, step=5)
-y = x ** 2
+x = np.array([0, 1, 2, 3, 4])
+y = np.array([0, 1, 4, 9, 16])
 
 plt.plot(x, y);
 ```
@@ -241,7 +241,7 @@ plt.plot(x, y);
 
 ### Labels and LaTeX (MathJax)
 
-In Axes there is a Title, X-Axis Label and Y-Axis Label which are blank by default. 
+In Axes there is a Title (```title```), X-Axis Label (```xlabel```) and Y-Axis Label (```ylabel```) which are blank by default. 
 
 ![img_037](./images/img_037.png)
 
@@ -386,69 +386,213 @@ LaTeX Brackets (MathJax)
 |inline fraction square|```$[\frac{a}{b}]$```|$[\frac{a}{b}]$|
 |inline fraction braces|```$\lbrace\frac{a}{b}\rbrace$```|$\lbrace\frac{a}{b} \rbrace$|
 
-Prefixing ```\left``` and ```\right``` to a set of brackets will automatically resize the brackets.
-
 The ```{``` and ```}``` are reserved so ```\lbrace``` and ```\rbrace``` need to be used.
+
+In markdown enclosing text in ```$$ $$``` is used for display equations, this does not seem to be supported for the xlabel, ylabel or title. In my testing more complicated mathematical expressions such as vectors and matrices do not render. 
 
 The figure typically assigns limited space for labels and normally simple inline expressions such as the above are used.
 
-Enclosing text in ```$$ $$``` is used for display LaTeX. I a figure however display equations show as inline equations i.e. there seems to be no difference enclosing in single ```$ $``` or double ```$$ $$```.
-
-Some more complicated mathematical expressions can be added. In my personal testing, I couldn't get a matrix or column vector to properly display, this seems to be an issue with MathJax rendering as previously discussed when looking at markdown.
-
-Large equations will typically be cut off at the bottom of the figure by default.
-
 ### Axes Scales
 
+The x-axis min (xmin) and x-axis max (xmax) can be set to ```-1``` and ```5```, alongside the x-axis scale (xscale) which is linear by default. The y-axis min (ymin) and y-axis max (ymax) can be set to ```1``` and ```1000```, alongside the y-axis scale (yscale) to logarithimic (log).
 
+![img_039](./images/img_039.png)
 
+In curves there is a dropdown menu of labels. By default each line is called ```_childN``` where ```N``` is an integer corresponding to the index indicating the order that the lines were plotted. In this case there is only index 0. 
 
-Selecting the Axes options, the Tight Layout button can be pressed:
+![img_040](./images/img_040.png)
 
+The individual label (```label```) can be assigned to a value for example ```area```.
 
+The Line Style (```linestyle``` or ```ls```) has a default value of Solid (```'solid'``` or ```'-'```), but can also be changed to Dotted (```'dotted'``` or ```':'```), Dashed (```'dashed'``` or ```'--'```) or Dashdot (```'dashdot'``` or ```'-.'```). In this case it will be changed to Dashed.
 
-Going back to Figure Options the X-Axis Min and X-Axis Max values can be altered, these are automatically selected from the limits ofthe x data but can be changed to ```-2``` and ```6```respectively:
+The Line Width (```linewidth``` or ```lw```) has a default floating point number value of ```1.5```. It can be changed to ```2.0```.
 
+The Draw Style (```drawstyle``` or ```ds```) has a default value of default (```'default'```). It can be changed to Steps (Pre) (```'steps-pre'```), Steps (Mid) (```'steps-mid'```) or Steps (Post) (```'steps-post'```). This will be left at default.
 
+The Color (```color```) U.S. spelling exclusive of the u, is usually in the form #rrggbb (```'#rrggbb'```). 
 
+![img_041](./images/img_041.png)
 
+Physiologically, the human eye has red sensitive, green sensitive and blue sensitive receptors. The brain maps a color to the intensity ratio picked up by these three sensor types. In a screen each pixel consists of a red LED, green LED and blue LED (RGB LED). Each color in the RGB LED has 8 bit levels used to adjust the intensity ratio to create what the brain perceives as a color.
 
+In the example above a color is selected from one of the options in the left. 
 
+This color is shown in the Hue Saturation Value (HSV) plot to the right. This HSV plot is designed so visually it is easiest to select a color. In the HSV plot the Hue (decreases right along x) and Saturation (increases down along y). The Value is left constant as the cursor moves, however it can be increased using the associated Value box. 
 
+The Red, Green and Blue (RGB) values are shown to the right. These are 8 bit values ranging from 0-255 (decimal). The 85, 170 and 127 (decimal) correspond to the 55, aa and 7f (hexadecimal). The HTML #55aa7f is the color selected.
 
+The alpha channel also ranges from 0-255 (decimal) or 0-ff (hexadecimal) and corresponds to an overall brightness. In this case full brightness is selected giving a HTML of #55aa7fff.
 
+This HTML value is as the name suggest quite commonly used with HTML, so many websites have color pickers that use a similar form, paint application such as Microsoct Paint and Office Programs such as Word, Excedl and PowerPoint all exhibit similar color pickers.
 
+![img_042](./images/img_042.png)
 
+Changing the Line Style to Dotted and the Draw Style to Steps (Pre) looks like the following:
 
+![img_043](./images/img_043.png)
 
+A plot also known as a lineplot, does not display markers by default. A Marker (```marker```) can be selected from the dropdown menu:
 
+![img_044](./images/img_044.png)
 
+|Marker Description|String|Integer or None|
+|---|---|---|
+|nothing|```''```|```None```|
+|point|```'.'```||
+|pixel|```','```||
+|circle|```'o'```||
+|triangle_down|```'v'```||
+|triangle_up|```'^'```||
+|triangle_left|```'<'```||
+|triangle_right|```'>'```||
+|tri_down|```'1'```||
+|tri_up|```'2'```||
+|tri_left|```'3'```||
+|tri_right|```'4'```||
+|octagon|```'8'```||
+|square|```'s'```||
+|pentagon|```'p'```||
+|plus_filled|```'P'```||
+|star|```'*'```||
+|hexagon1|```'h'```||
+|hexagon2|```'H'```||
+|plus|```'+'```||
+|x|```'x'```||
+|X|```'X'```||
+|vline|```'\|'```||
+|hline|```'_'```||
+|tickleft||```0```|
+|tickright||```1```|
+|caretleft||```2```|
+|caretright||```3```|
+|caretup||```4```|
+|caretdown||```5```|
+|caretleftbase||```6```|
+|caretrightbase||```7```|
+|caretupbase||```8```|
+|caretdownbase||```9```|
 
+The Marker Size (```markersize``` or ```ms```) can be changed from the default floating point value of ```6.0``` to ```15.0```.
 
+The Marker Face Color (```markerfacecolor``` or ```mfc```) and Marker Edge Color (```markeredgecolor``` or ```mec```) can be selected. These take in the form ```#rrggbbaa``` as discussed previously and have a color selection. This can be updated to ```#aa55ffff``` and ```#55ffffff``` respectively.
 
+![img_045](./images/img_045.png)
 
+With markers shown, it is easier to understand what the draw style does. Steps (Pre), Steps (Mid) and Steps (Post):
 
-In JupyterLab a warning sometimes displays when attempting to change backend.
+![img_046](./images/img_046.png)
 
+![img_047](./images/img_047.png)
 
+![img_048](./images/img_048.png)
 
-For this reason the backend is normally changed at the top of the Interactive Python Notebook File after the library imports:
+Colors are typically input using the HTML format #rrggbb. However for primary and secondary colors, there is an internal dictionary of color name keys and hexadecimal values. Black is regarded as the absence of color i.e. the RGB LED is off and white is when the RGB is ramped up to maximum for every color.
 
-```
-import numpy as np
-import matplotlib.pyplot as plt
+|base color key|HTML value|
+|---|---|
+|```'red'```|```'#ff0000'```|
+|```'green'```|```'#00ff00'```|
+|```'blue'```|```'#0000ff'```|
+|```'yellow'```|```'#ffff00'```|
+|```'cyan'```|```'#00ffff'```|
+|```'magenta'```|```'#ff00ff'```|
+|```'black'```|```'#000000'```|
+|```'white'```|```'#ffffff'```|
 
-%matplotlib qt5
+![img_049](./images/img_049.png)
 
-x = np.array([0, 1, 2, 3, 4])
-y = np.array([0, 2, 4, 6, 8])
+There is another internal dictionary of single letters for colors, this is typically the first letter in the color, with exception to black which uses its last letter k as b is already taken for blue.
 
-plt.plot(x, y);
-```
+|base color letter key|HTML value|
+|---|---|
+|```'r'```|```'#ff0000'```|
+|```'g'```|```'#00ff00'```|
+|```'b'```|```'#0000ff'```|
+|```'y'```|```'#ffff00'```|
+|```'c'```|```'#00ffff'```|
+|```'m'```|```'#ff00ff'```|
+|```'k'```|```'#000000'```|
+|```'w'```|```'#ffffff'```|
 
+![img_050](./images/img_050.png)
 
-In JupyterLab the default backend is inline, which 
+The default colormap for matplotlib is called tableau. It has the following color dictionary:
 
+|tab color letter key|HTML value|
+|---|---|
+|```'tab:blue'```|```'#1f77b4'```|
+|```'tab:orange'```|```'#ff7f0e'```|
+|```'tab:green'```|```'#2ca02c'```|
+|```'tab:red'```|```'#d62728'```|
+|```'tab:purple'```|```'#9467bd'```|
+|```'tab:brown'```|```'#8c564b'```|
+|```'tab:pink'```|```'#e377c2'```|
+|```'tab:gray'```|```'#7f7f7f'```|
+|```'tab:olive'```|```'#bcbd22'```|
+|```'tab:cyan'```|```'#17becf'```|
+
+gray is spelt using U.S. spelling with the a opposed to the e.
+
+![img_051](./images/img_051.png)
+
+There is also another dictionary of CSS colors that essentially expands the base color dictionary of 8 items to 200 items.
+
+![img_052](./images/img_052.png)
+
+![img_053](./images/img_053.png)
+
+More details about the Markers and Colors are available in matplotlibs documentation:
+
+[Markers](https://matplotlib.org/stable/api/markers_api.html)
+
+[Named Colors](https://matplotlib.org/stable/gallery/color/named_colors.html)
+
+If Generate automatic Legend is selected, a legend displays in an area of the graph with the least data being obscured:
+
+![img_054](./images/img_054.png)
+
+The curves dropdown list then gets updated to the set labels:
+
+![img_055](./images/img_055.png)
+
+If the borders and spacing button is selected. The borders display.
+
+The square box is the axes. The axes have a data co-ordinate system which in this case is ymin=1, ymax=100, xmin=-1 and xmax=5. They also have a normalised coordinate system ymin=0, ymax=1, xmin=0 and xmax=1.
+
+The axes square box is also positioned on the figure canvas which has its own normalised coordinate system ymin=0, ymax=1, xmin=0 and xmax=1.
+
+The values shown in the borders and spacing correspond to the figure canvas normalised coordinates. 
+
+![img_056](./images/img_056.png)
+
+Changing the top to 1 moves the top edge of the axes to the position 1 on the figure canvas which is the top of the figure canvas:
+
+![img_057](./images/img_057.png)
+
+Changing the bottom to 0 moves the bottom edge of the axes to the position 0 on the figure canvas which is the bottom of the figure canvas:
+
+![img_058](./images/img_058.png)
+
+Changing the left to 0 moves the left edge of the axes to the position 0 on the figure canvas which is the left of the figure canvas:
+
+![img_059](./images/img_059.png)
+
+Changing the right to 1 moves the right edge of the axes to the position 1 on the figure canvas which is the right of the figure canvas:
+
+![img_060](./images/img_060.png)
+
+Resetting the Axes repositions the limits to their original values i.e. the default values which correspond to the normalised co-ordinate system of the figure canvas:
+
+![img_061](./images/img_061.png)
+
+The tight layout is often used to more efficiently manage the spacing:
+
+![img_062](./images/img_062.png)
+
+Exporting the values gives values that can be used programmatically as input arguments:
+
+![img_063](./images/img_063.png)
 
 ## Functional Programming Overview
 
@@ -458,13 +602,374 @@ The ```pyplot``` module is imported from the ```matplotlib``` library using:
 import matplotlib.pyplot as plt
 ```
 
-
-
 The docstring of the ```pyplot``` module can be viewed by using ```?``` on its alias ```plt```:
 
 ```
 ? plt
 ```
+
+Notice that it outlines functional plot generation:
+
+![img_064](./images/img_064.png)
+
+And object-orientated plot generation:
+
+![img_065](./images/img_065.png)
+
+```
+plt.figure(num=1, figsize=None, dpi=None)
+```
+
+
+```
+plt.figure(num=1, figsize=None, dpi=None)
+plt.axes()
+```
+
+
+
+```
+plt.figure(num=2, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y)
+```
+
+
+```
+plt.figure(num=3, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y)
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+```
+
+
+
+```
+plt.figure(num=4, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend()
+```
+
+
+The keyword ```loc``` can be used to specify the position. Normally by concatenating a y position and x position with a space. If both the x and y position are  ```'center'```, it is only mentioned once.
+
+|y position|x position|
+|---|---|
+|```'lower'```|```'left'```|
+|```'center'```|```'center'```|
+|```'upper'```|```'right'```|
+
+The default value is ```'best'``` which will by default pick one of the locations above which obscures the underlying data the least. 
+
+```
+plt.figure(num=5, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+```
+
+
+```
+plt.figure(num=6, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+plt.tight_layout()
+```
+
+
+```
+plt.figure(num=7, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area',
+         color='royalblue',
+         drawstyle='default',
+         linewidth=2.0, linestyle='dotted',
+         marker='o', markersize=15.0,
+         markerfacecolor='hotpink', 
+         markeredgecolor='palegreen')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+plt.tight_layout()
+```
+
+
+```
+plt.figure(num=8, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area',
+         c='royalblue',
+         ds='default',
+         lw=2.0, ls=':',
+         marker='o', ms=15.0,
+         mfc='hotpink', 
+         mec='palegreen')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+plt.tight_layout()
+```
+
+
+```
+plt.figure(num=9, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area',
+         c='royalblue',
+         ds='default',
+         lw=2.0, ls=':',
+         marker='o', ms=15.0,
+         mfc='hotpink', 
+         mec='palegreen')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+plt.xlim(left=-1, right=5)
+plt.ylim(top=100, bottom=1)
+plt.xscale('linear')
+plt.yscale('log')
+plt.tight_layout()
+```
+
+
+```
+import math
+x = np.linspace(start=-math.tau, stop=math.tau, num=100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+y3 = np.tan(x)
+```
+
+
+```
+plt.figure(num=10, figsize=None, dpi=None)
+plt.subplot(2, 1, 1)
+```
+
+
+```
+plt.figure(num=11, figsize=None, dpi=None)
+plt.subplot(2, 1, 1)
+plt.plot(x, y1, label=r'$y$=sin($x$)')
+plt.plot(x, y2, label=r'$y$=cos($x$)')
+```
+
+
+
+```
+plt.figure(num=12, figsize=None, dpi=None)
+plt.subplot(2, 1, 1)
+plt.plot(x, y1, label=r'$y$=sin($x$)')
+plt.plot(x, y2, label=r'$y$=cos($x$)')
+plt.subplot(2, 1, 2)
+plt.plot(x, y3, label=r'$y$=tan($x$)')
+```
+
+
+
+
+
+
+
+
+
+
+```
+xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
+```
+
+
+
+```
+xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
+
+plt.figure(num=13, figsize=None, dpi=None)
+
+plt.subplot(2, 1, 1)
+plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
+plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
+plt.legend(loc='lower left')
+plt.xticks(xticks)
+
+plt.subplot(2, 1, 2)
+plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
+plt.legend(loc='lower left')
+```
+
+
+```
+xticks = np.Alinspace(start=-math.tau, stop=math.tau, num=9)
+xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
+```
+
+
+```
+xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
+xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
+
+plt.figure(num=14, figsize=None, dpi=None)
+
+plt.subplot(2, 1, 1)
+plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
+plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
+plt.legend(loc='lower left')
+plt.xticks(xticks, xtickvalues)
+
+plt.subplot(2, 1, 2)
+plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
+plt.legend(loc='lower left')
+```
+
+```
+xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
+xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
+
+plt.figure(num=15, figsize=None, dpi=None)
+
+plt.subplot(2, 1, 1)
+plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
+plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
+plt.legend(loc='lower left')
+plt.xticks(xticks, xtickvalues)
+
+plt.subplot(2, 1, 2)
+plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
+plt.legend(loc='lower left')
+plt.xticks(xticks, xtickvalues)
+
+plt.xlabel(r'$\alpha$ (radians)')
+
+plt.tight_layout()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+import math
+x = np.linspace(start=-math.tau, stop=math.tau, num=100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+y3 = np.tan(x)
+
+y4 = np.sinh(x)
+y5 = np.cosh(x)
+y6 = np.tanh(x)
+
+xticks = np.linspace(start=-math.tau, stop=math.tau, num=5)
+xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
+
+plt.figure(num=16, figsize=None, dpi=None)
+
+plt.subplot(2, 2, 1)
+plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
+plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
+plt.legend(loc='lower left')
+plt.xticks(xticks, xtickvalues)
+
+plt.subplot(2, 2, 3)
+plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
+plt.legend(loc='lower left')
+plt.xticks(xticks, xtickvalues)
+
+plt.xlabel(r'$\alpha$ (radians)')
+
+plt.subplot(2, 2, 2)
+plt.plot(x, y4, label=r'$y$=sinh($x$)', c='royalblue')
+plt.plot(x, y5, label=r'$y$=cosh($x$)', c='olivedrab')
+plt.legend(loc='lower right')
+plt.xticks(xticks, xtickvalues)
+
+plt.subplot(2, 2, 4)
+plt.plot(x, y6, label=r'$y$=tanh($x$)', c='tomato')
+plt.legend(loc='lower right')
+plt.xticks(xticks, xtickvalues)
+
+plt.xlabel(r'$\alpha$ (radians)')
+
+plt.tight_layout()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+horizontal space can be added
+
+
+
+
+
+
+
+
+
+
+
+
+ fig.add_axes([left, bottom, width, height]) 
+
+top=0.922,
+bottom=0.13,
+left=0.121,
+right=0.97,
+hspace=0.2,
+wspace=0.2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
