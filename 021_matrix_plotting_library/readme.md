@@ -616,27 +616,65 @@ And object-orientated plot generation:
 
 ![img_065](./images/img_065.png)
 
+Let's import the ```numpy``` library and ```pyplot``` module, configure the plot backend to ```qt5``` and create basic ```x``` and ```y``` data:
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+%matplotlib qt5
+
+x = np.array([0, 1, 2, 3, 4])
+y = np.array([0, 1, 4, 9, 16])
+```
+
+![img_066](./images/img_066.png)
+
+A plot will be created similar to the one before, that was modified using the GUI. 
+
+The ```pyplot``` function ```figure``` is used to create a new figure. The keyword argument ```num``` assigns a number to a figure. If the ```num``` already exists, the figure will be reselected. If it does not already exist, a new figure will be created. If it is not specified the next available figure number is taken and a new figure is selected:
+
 ```
 plt.figure(num=1, figsize=None, dpi=None)
 ```
 
+![img_067](./images/img_067.png)
 
-```
-plt.figure(num=1, figsize=None, dpi=None)
-plt.axes()
-```
+Notice the figure number is 1 as specified and is a blank canvas:
 
+![img_068](./images/img_068.png)
 
+In JupyterLab in general all the commands used to create a figure are usually input in the same cell. Let's create another figure, with ```num=2``` and then use the ```pyplot``` function ```axes``` to add axes to the existing figure:
 
 ```
 plt.figure(num=2, figsize=None, dpi=None)
 plt.axes()
-plt.plot(x, y)
 ```
 
+![img_069](./images/img_069.png)
+
+Notice the set of blank axes on the figure canvas. There is no data so these just show normalised co-ordinates:
+
+![img_070](./images/img_070.png)
+
+Think of the figure as being a canvas and the axes as being an object that lies on top of the canvas i.e. belongs to the figure. A plot is in turn an object that belongs to the axes.
 
 ```
 plt.figure(num=3, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y)
+```
+
+![img_071](./images/img_071.png)
+
+The plot is created with default settings:
+
+![img_072](./images/img_072.png)
+
+The axes and title are unlabelled. The ```pyplot``` functions ```xlabel```, ```ylabel``` and ```title``` can be used to set these. Each label is a string. If LaTeX is used a raw string is usually preferred (prefixed by ```r```) as the ```\``` is used commonly within most LaTeX expressions. If a variable is to be inserted, this is normally done using a formatted string (prefixed by 'f'). String concatenation ```+``` is usually used to combine a relative string containing a LaTeX expression with a formatted string containing the value fo a variable. 
+
+```
+plt.figure(num=4, figsize=None, dpi=None)
 plt.axes()
 plt.plot(x, y)
 plt.xlabel(r'length $x$ (m)')
@@ -644,10 +682,14 @@ plt.ylabel(r'area $y$ (m$^{2}$)')
 plt.title(r'length $x$ vs area $y$')
 ```
 
+![img_073](./images/img_073.png)
 
+![img_074](./images/img_074.png)
+
+If a legend is to be added, each plot is normally assigned a label in the form of a string, which can be a raw string containing latex or a formatted string containing a variable. The ```pyplot``` function ```legend``` can be used to add the legend to the axes. It uses the best location by default which inserts the legend in a graph location which minimises the obscuring of underlying data.
 
 ```
-plt.figure(num=4, figsize=None, dpi=None)
+plt.figure(num=5, figsize=None, dpi=None)
 plt.axes()
 plt.plot(x, y, label='area')
 plt.xlabel(r'length $x$ (m)')
@@ -656,6 +698,9 @@ plt.title(r'length $x$ vs area $y$')
 plt.legend()
 ```
 
+![img_075](./images/img_075.png)
+
+![img_076](./images/img_076.png)
 
 The keyword ```loc``` can be used to specify the position. Normally by concatenating a y position and x position with a space. If both the x and y position are  ```'center'```, it is only mentioned once.
 
@@ -668,17 +713,6 @@ The keyword ```loc``` can be used to specify the position. Normally by concatena
 The default value is ```'best'``` which will by default pick one of the locations above which obscures the underlying data the least. 
 
 ```
-plt.figure(num=5, figsize=None, dpi=None)
-plt.axes()
-plt.plot(x, y, label='area')
-plt.xlabel(r'length $x$ (m)')
-plt.ylabel(r'area $y$ (m$^{2}$)')
-plt.title(r'length $x$ vs area $y$')
-plt.legend(loc='lower right')
-```
-
-
-```
 plt.figure(num=6, figsize=None, dpi=None)
 plt.axes()
 plt.plot(x, y, label='area')
@@ -686,12 +720,120 @@ plt.xlabel(r'length $x$ (m)')
 plt.ylabel(r'area $y$ (m$^{2}$)')
 plt.title(r'length $x$ vs area $y$')
 plt.legend(loc='lower right')
-plt.tight_layout()
 ```
 
+![img_077](./images/img_077.png)
+
+![img_078](./images/img_078.png)
+
+The ```pyplot``` function ```legend``` can also take in the keyword input argument ```labels``` which can be assigned to a list of strings where the length of the list is equal to the number of traces on the plot and each string is the respective label for each trace:
 
 ```
 plt.figure(num=7, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y)
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(labels=['area'], loc='lower right')
+```
+
+![img_079](./images/img_079.png)
+
+![img_080](./images/img_080.png)
+
+This is not noramlly done when each single trace is individually specified.
+
+The ```pyplot``` function ```plot``` accepts multiple positional input arguments each x, y pair received corresponds will be plotted out as a seperate line. In other words by default the line plot, outputs a list of lines:
+
+```
+plt.figure(num=8, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, x, y+1, x, y+2)
+```
+
+![img_081](./images/img_081.png)
+
+![img_082](./images/img_082.png)
+
+In this form, any keyword argument supplied to the plot function, applies to all traces, for example:
+
+```
+plt.figure(num=9, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, x, y+1, x, y+2, label='area')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+```
+
+![img_083](./images/img_083.png)
+
+![img_084](./images/img_084.png)
+
+To get unique labels, ```labels``` must be supplied as a list of strings equal in length to the number of traces expected. The labels will be of the name of the color from the default palette tableau, this palette has ```10``` values:
+
+```
+plt.figure(num=10, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, 
+         x, y+1, 
+         x, y+2,
+         x, y+3,
+         x, y+4,
+         x, y+5,
+         x, y+6,
+         x, y+7,
+         x, y+8,
+         x, y+9)
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(labels=['tab:blue', 'tab:orange', 'tab:green',
+                  'tab:red', 'tab:purple', 'tab:brown',
+                  'tab:pink', 'tab:gray', 'tab:olive',
+                  'tab:cyan'], 
+           loc='lower right')
+```
+
+![img_085](./images/img_085.png)
+
+![img_086](./images/img_086.png)
+
+This multiform can also be used with a color positional argument for each trace:
+
+```
+plt.figure(num=11, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, 'royalblue',
+         x, y+1, 'gold',
+         x, y+2, 'forestgreen',
+         x, y+3, 'salmon',
+         x, y+4, 'violet',
+         x, y+5, 'peru',
+         x, y+6, 'deeppink',
+         x, y+7, 'slategray',
+         x, y+8, 'lawngreen',
+         x, y+9, 'darkturquoise')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(labels=['royalblue', 'gold', 'forestgreen',
+                  'salmon', 'violet', 'peru',
+                  'deeppink', 'slategray', 'lawngreen',
+                  'darkturquoise'], 
+           loc='lower right')
+```
+
+![img_087](./images/img_087.png)
+
+![img_088](./images/img_088.png)
+
+Returning to a single trace, the full keyword input arguments will be used to specify all the options that were changed for the trace in the GUI:
+
+```
+plt.figure(num=12, figsize=None, dpi=None)
 plt.axes()
 plt.plot(x, y, label='area',
          color='royalblue',
@@ -704,12 +846,16 @@ plt.xlabel(r'length $x$ (m)')
 plt.ylabel(r'area $y$ (m$^{2}$)')
 plt.title(r'length $x$ vs area $y$')
 plt.legend(loc='lower right')
-plt.tight_layout()
 ```
 
+![img_089](./images/img_089.png)
+
+![img_090](./images/img_090.png)
+
+There is also a shortform for most of these keyword input arguments:
 
 ```
-plt.figure(num=8, figsize=None, dpi=None)
+plt.figure(num=13, figsize=None, dpi=None)
 plt.axes()
 plt.plot(x, y, label='area',
          c='royalblue',
@@ -722,20 +868,20 @@ plt.xlabel(r'length $x$ (m)')
 plt.ylabel(r'area $y$ (m$^{2}$)')
 plt.title(r'length $x$ vs area $y$')
 plt.legend(loc='lower right')
-plt.tight_layout()
 ```
 
+![img_091](./images/img_091.png)
+
+![img_092](./images/img_092.png)
+
+The ```pyplot``` functions ```xlim``` and ```ylim``` can be used to specify the x and y limits taking the keyword input arguments ```left```, ```right``` and ```top```, ```bottom``` respectively. The ```pyplot``` functions ```xscale``` and ```yscale``` can be used to change the scale of the axis. These can be set to the string ```'linear'``` (default) or ```'log'``` respecitvely.
+
+To view the values of the data more clearly, gridlines can be added using the ```pyplot``` function ```grid```. It has the keyword arguments ```visible``` which is assigned to a boolean value, ```which``` which is assigned to the string ```'major'```, ```'minor'``` or ```'both'```, ```axis``` which is assigned to the string ```'x'```, ```'y'``` or ```'both'```. This function shares has consistent keyword arguments to the ```pyplot``` function ```plot``` such as ```color```, ```linewidth``` and ```linestyle```. The short hand abbreviations ```c```,```lw``` and ```ls``` also work:
 
 ```
-plt.figure(num=9, figsize=None, dpi=None)
+plt.figure(num=14, figsize=None, dpi=None)
 plt.axes()
-plt.plot(x, y, label='area',
-         c='royalblue',
-         ds='default',
-         lw=2.0, ls=':',
-         marker='o', ms=15.0,
-         mfc='hotpink', 
-         mec='palegreen')
+plt.plot(x, y, label='area', c='royalblue')
 plt.xlabel(r'length $x$ (m)')
 plt.ylabel(r'area $y$ (m$^{2}$)')
 plt.title(r'length $x$ vs area $y$')
@@ -745,8 +891,74 @@ plt.ylim(top=100, bottom=1)
 plt.xscale('linear')
 plt.yscale('log')
 plt.tight_layout()
+plt.grid(visible=True, which='major', axis='both', 
+         c='lightgray', lw=3.0, ls='-')
+plt.grid(visible=True, which='minor', axis='y', 
+         c='lightgray', lw=1.5, ls=':')
 ```
 
+![img_093](./images/img_093.png)
+
+![img_094](./images/img_094.png)
+
+When the linear scale is used, the minor ticks are not turned on by default, they can be enabled using:
+
+```
+plt.figure(num=14, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area', c='royalblue')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+plt.xlim(left=-1, right=5)
+plt.ylim(top=100, bottom=1)
+plt.xscale('linear')
+plt.yscale('log')
+plt.tight_layout()
+plt.grid(visible=True, which='major', axis='both', 
+         lw=3.0, ls='-', c='lightgray')
+plt.grid(visible=True, which='minor', axis='y', 
+         lw=1.5, ls=':', c='lightgray')
+plt.minorticks_on()
+plt.grid(visible=True, which='minor', axis='x', 
+         lw=1.5, ls=':', c='lightgray')
+```
+
+![img_095](./images/img_095.png)
+
+![img_096](./images/img_096.png)
+
+The tight layout can be enabled using the ```pyplot``` function ```tight_layout```:
+
+```
+plt.figure(num=15, figsize=None, dpi=None)
+plt.axes()
+plt.plot(x, y, label='area', c='royalblue')
+plt.xlabel(r'length $x$ (m)')
+plt.ylabel(r'area $y$ (m$^{2}$)')
+plt.title(r'length $x$ vs area $y$')
+plt.legend(loc='lower right')
+plt.xlim(left=-1, right=5)
+plt.ylim(top=100, bottom=1)
+plt.xscale('linear')
+plt.yscale('log')
+plt.tight_layout()
+plt.grid(visible=True, which='major', axis='both', 
+         lw=3.0, ls='-', c='lightgray')
+plt.grid(visible=True, which='minor', axis='y', 
+         lw=1.5, ls=':', c='lightgray')
+plt.minorticks_on()
+plt.grid(visible=True, which='minor', axis='x', 
+         lw=1.5, ls=':', c='lightgray')
+plt.tight_layout()
+```
+
+![img_097](./images/img_097.png)
+
+![img_098](./images/img_098.png)
+
+If the ```math``` module is imported the constant ```tau``` can be used. A linearly spaced array of 100 values between negative tau and positive tau can be created and assigned to the variable ```x```. The trigonmetric functions can be supplied this ```x``` array to create corresponding ```y``` arrays:
 
 ```
 import math
@@ -756,24 +968,38 @@ y2 = np.cos(x)
 y3 = np.tan(x)
 ```
 
+![img_099](./images/img_099.png)
+
+The ```pyplot``` function ```subplot``` can be used to create a subplot. This function uses 1st order indexing instead of Pythons usual second order indexing. The first input argument is an integer that corresponds to the number of rows, the second input argument is an integer that coreesponds to the number of columns and the third input argument is the index itself. The ordering of the subplot indexes traverses each row. Since there is only 1 column; subplot index 1 is the plot on the first row and subplot index 2 is the subplot on the second row. Let's examine subplot index 1:
 
 ```
-plt.figure(num=10, figsize=None, dpi=None)
+plt.figure(num=16, figsize=None, dpi=None)
 plt.subplot(2, 1, 1)
 ```
 
+![img_100](./images/img_100.png)
+
+Notice the subplot only occupies the top half of the figure canvas:
+
+![img_101](./images/img_101.png)
+
+In functional programming data is usually added to it before working with any other subplots:
 
 ```
-plt.figure(num=11, figsize=None, dpi=None)
+plt.figure(num=17, figsize=None, dpi=None)
 plt.subplot(2, 1, 1)
 plt.plot(x, y1, label=r'$y$=sin($x$)')
 plt.plot(x, y2, label=r'$y$=cos($x$)')
 ```
 
+![img_102](./images/img_102.png)
 
+![img_103](./images/img_103.png)
+
+Once data is added to the the first subplot index, the second subplot index can be created and data can be added to it:
 
 ```
-plt.figure(num=12, figsize=None, dpi=None)
+plt.figure(num=18, figsize=None, dpi=None)
 plt.subplot(2, 1, 1)
 plt.plot(x, y1, label=r'$y$=sin($x$)')
 plt.plot(x, y2, label=r'$y$=cos($x$)')
@@ -781,95 +1007,55 @@ plt.subplot(2, 1, 2)
 plt.plot(x, y3, label=r'$y$=tan($x$)')
 ```
 
+![img_104](./images/img_104.png)
 
+![img_105](./images/img_105.png)
 
-
-
-
-
-
-
+Sometimes the default tick values are not what is desired. In this case, it is more convenient to show the xticks in relation to the circle constant tau. A linearly spaced array of xticks can be created:
 
 ```
 xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
+xticks
 ```
 
+![img_106](./images/img_106.png)
 
+The value of the xticks is as desired but a string format in relation to tau may be preferred:
 
 ```
-xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
+xtickvalues = [f'{num/math.tau}' + r' $\tau$' 
+               for num in xticks]
+xtickvalues
+```
 
-plt.figure(num=13, figsize=None, dpi=None)
+![img_107](./images/img_107.png)
+
+The ```pyplot``` function ```xticks``` can be used to place a list of ```labels``` for each location in a specified list of ```ticks```. The list of ticks should be numeric and the list of labels should be strings:
+
+```
+plt.figure(num=19, figsize=None, dpi=None)
 
 plt.subplot(2, 1, 1)
 plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
 plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
 plt.legend(loc='lower left')
-plt.xticks(xticks)
+plt.xticks(ticks=xticks, labels=xtickvalues)
 
 plt.subplot(2, 1, 2)
 plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
 plt.legend(loc='lower left')
-```
-
-
-```
-xticks = np.Alinspace(start=-math.tau, stop=math.tau, num=9)
-xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
-```
-
-
-```
-xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
-xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
-
-plt.figure(num=14, figsize=None, dpi=None)
-
-plt.subplot(2, 1, 1)
-plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
-plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
-plt.legend(loc='lower left')
-plt.xticks(xticks, xtickvalues)
-
-plt.subplot(2, 1, 2)
-plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
-plt.legend(loc='lower left')
-```
-
-```
-xticks = np.linspace(start=-math.tau, stop=math.tau, num=9)
-xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
-
-plt.figure(num=15, figsize=None, dpi=None)
-
-plt.subplot(2, 1, 1)
-plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
-plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
-plt.legend(loc='lower left')
-plt.xticks(xticks, xtickvalues)
-
-plt.subplot(2, 1, 2)
-plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
-plt.legend(loc='lower left')
-plt.xticks(xticks, xtickvalues)
+plt.xticks(ticks=xticks, labels=xtickvalues)
 
 plt.xlabel(r'$\alpha$ (radians)')
 
 plt.tight_layout()
 ```
 
+![img_108](./images/img_108.png)
 
+![img_109](./images/img_109.png)
 
-
-
-
-
-
-
-
-
-
-
+This can be extended to more subplots for example 4 subplots with 2 rows and 2 columns. The data being plotted will be the same trigonmetry data as before, in addition to the hyperbolic trigonmetric functions. The following data will be created seperately:
 
 ```
 import math
@@ -883,9 +1069,16 @@ y5 = np.cosh(x)
 y6 = np.tanh(x)
 
 xticks = np.linspace(start=-math.tau, stop=math.tau, num=5)
-xtickvalues = [f'{num/math.tau}' + r' $\tau$' for num in xticks]
+xtickvalues = [f'{num/math.tau}' + r' $\tau$' 
+               for num in xticks]
+```
 
-plt.figure(num=16, figsize=None, dpi=None)
+![img_110](./images/img_110.png)
+
+Now the plot can be examined:
+
+```
+plt.figure(num=20, figsize=None, dpi=None)
 
 plt.subplot(2, 2, 1)
 plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
@@ -914,8 +1107,87 @@ plt.xticks(xticks, xtickvalues)
 plt.xlabel(r'$\alpha$ (radians)')
 
 plt.tight_layout()
+```
+
+![img_111](./images/img_111.png)
+
+![img_112](./images/img_112.png)
+
+The ```pyplot``` function ```savefig``` can be used to save the image to a ```.png``` file or other image format. The ```pyplot``` function ````plt.close``` will close the currently selected figure:
 
 ```
+plt.figure(num=21, figsize=None, dpi=None)
+plt.subplot(2, 2, 1)
+plt.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
+plt.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
+plt.legend(loc='lower left')
+plt.xticks(xticks, xtickvalues)
+plt.subplot(2, 2, 3)
+plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
+plt.legend(loc='lower left')
+plt.xticks(xticks, xtickvalues)
+plt.xlabel(r'$\alpha$ (radians)')
+plt.subplot(2, 2, 2)
+plt.plot(x, y4, label=r'$y$=sinh($x$)', c='royalblue')
+plt.plot(x, y5, label=r'$y$=cosh($x$)', c='olivedrab')
+plt.legend(loc='lower right')
+plt.xticks(xticks, xtickvalues)
+plt.subplot(2, 2, 4)
+plt.plot(x, y6, label=r'$y$=tanh($x$)', c='tomato')
+plt.legend(loc='lower right')
+plt.xticks(xticks, xtickvalues)
+plt.xlabel(r'$\alpha$ (radians)')
+plt.tight_layout()
+plt.savefig('trigonmetricplots.png')
+plt.close()
+```
+
+The following code runs, the figure is seen for a second and is closed:
+
+![img_113](./images/img_113.png)
+
+The saved image can be seen in Windows Explorer:
+
+![img_114](./images/img_114.png)
+
+![img_115](./images/img_115.png)
+
+To recap on functional programming, the following functions were examined and each function was called in turn from the ```pyplot``` module:
+
+|pyplot function|description|
+|---|---|
+|figure|Create a new Figure, or activate an existing Figure.|
+|axes|Add Axes to the current Figure and make it the current Axes.|
+|plot|Plot y versus x as lines and/or markers.|
+|xlabel|Set the label for the x-axis.|
+|ylabel|Set the label for the y-axis.|
+|title|Set a title for the Axes.|
+|legend|Place a legend on the Axes.|
+|grid|Configure the grid lines.|
+|minorticks_on|Display minor ticks on the Axes.|
+|minorticks_off|Remove minor ticks from the Axes.|
+|xlim|Get or set the x limits of the current axes.|
+|ylim|Get or set the y-limits of the current axes.|
+|xscale|Set the x-axis scale.|
+|yscale|Set the y-axis scale.|
+|xticks|Get or set the current tick locations and labels of the x-axis.|
+|yticks|Get or set the current tick locations and labels of the y-axis.|
+|tight_layout|Adjust the padding between and around subplots.|
+|subplot|Add an Axes to the current figure or retrieve an existing Axes.|
+|show|Show the currently selected Figure (required for some IDEs).|
+|close|Close the currently selected Figure.|
+|savefig|Save the currently selected Figure to an image file.|
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -999,26 +1271,6 @@ The identifiers from the ```pyplot``` module can be viewed by inputting its alia
 
 
 
-|function|description|
-|---|---|
-|figure|Create a new figure, or activate an existing figure.|
-|axes|Add an axes to the current figure and make it the current axes.|
-|plot|Plot y versus x as lines and/or markers.|
-|xlabel|Set the label for the x-axis.|
-|ylabel|Set the label for the y-axis.|
-|title|Set a title for the Axes.|
-|legend|Place a legend on the Axes.|
-|grid|Configure the grid lines.|
-|minorticks_on|Display minor ticks on the Axes.|
-|minorticks_off|Remove minor ticks from the Axes.|
-|xlim|Get or set the x limits of the current axes.|
-|ylim|Get or set the y-limits of the current axes.|
-|xscale|Set the x-axis scale.|
-|yscale|Set the y-axis scale.|
-|xticks|Get or set the current tick locations and labels of the x-axis.|
-|yticks|Get or set the current tick locations and labels of the y-axis.|
-|tight_layout|Adjust the padding between and around subplots.|
-|subplot|Add an Axes to the current figure or retrieve an existing Axes.|
 
 
 
