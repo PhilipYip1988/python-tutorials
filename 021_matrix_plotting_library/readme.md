@@ -430,7 +430,7 @@ The Red, Green and Blue (RGB) values are shown to the right. These are 8 bit val
 
 The alpha channel also ranges from 0-255 (decimal) or 0-ff (hexadecimal) and corresponds to an overall brightness. In this case full brightness is selected giving a HTML of #55aa7fff.
 
-This HTML value is as the name suggest quite commonly used with HTML, so many websites have color pickers that use a similar form, paint application such as Microsoct Paint and Office Programs such as Word, Excedl and PowerPoint all exhibit similar color pickers.
+This HTML value is as the name suggest quite commonly used with HTML, so many websites have color pickers that use a similar form, paint application such as Microsoft Paint and Office Programs such as Word, Excel and PowerPoint all exhibit similar color pickers.
 
 ![img_042](./images/img_042.png)
 
@@ -1137,7 +1137,7 @@ The Borders and Spacing hspace and vertical space may be set using a normalised 
 
 ![img_119](./images/img_119.png)
 
-The ```pyplot``` function ```savefig``` can be used to save the image to a ```.png``` file or other image format. The ```pyplot``` function ````plt.close``` will close the currently selected figure:
+The ```pyplot``` function ```savefig``` can be used to save the image to a ```.png``` file or other image format. The ```pyplot``` function ```plt.close``` will close the currently selected figure:
 
 ```
 plt.figure(num=21, figsize=None, dpi=None)
@@ -1389,7 +1389,7 @@ Notice that figure 25 and figure 26 were both recreated but figure 25 was resele
 
 ![img_142](./images/img_142.png)
 
-Learning to navigate around a created figure that hasn't been assigned to an object name can be quite useful, if a proeprty is to be checked. The ```pyplot``` functions ```getp``` and ```setp``` can be used to get and set properties of a matplotlib object. Let's create a simpler figure:
+Learning to navigate around a created figure that hasn't been assigned to an object name can be quite useful, if a property is to be checked. The ```pyplot``` functions ```getp``` and ```setp``` can be used to get and set properties of a matplotlib object. Let's create a simpler figure:
 
 ```
 fig = plt.figure(num=27, figsize=None, dpi=None)
@@ -1464,21 +1464,238 @@ plt.setp(ax.lines[0], c='crimson', lw=5.0, ls='-')
 
 ![img_153](./images/img_153.png)
 
+### Subplots
 
+Creating an ```Axes``` instance by using the ```Figure``` method ```add_axes``` and specifying a rectangle isn't always the most convenient way. 
 
+There is also the ```Figure``` method ```add_subplot```, which behaves consistently to the ```pyplot``` function ```subplot```. It is normally used with three positional input arguments ```nrows```, ```ncols``` and ```index```:
 
+![img_154](./images/img_154.png)
 
+```
+fig = plt.figure(num=28, figsize=None, dpi=None)
+ax1 = fig.add_subplot(2, 1, 1)
+ax2 = fig.add_subplot(2, 1, 2)
+```
 
+![img_155](./images/img_155.png)
 
+![img_156](./images/img_156.png)
 
+It can also be used with a single input argument which is a three digit integer corresponding to ```nrows```, ```ncols``` and the ```index``` respectively:
 
- adds a single ```AxesSubplot``` to the canvas of ```fig```, whereas ```add_subplot``` adds multiple ```AxesSubplot``` to the figure canvas. The instance ```axes``` returns a list of each ```AxesSubplot``` on the figure canvas.
+```
+fig = plt.figure(num=29, figsize=None, dpi=None)
+ax1 = fig.add_subplot(211)
+ax2 = fig.add_subplot(212)
+```
 
+![img_157](./images/img_157.png)
 
-add_subplot(nrows, ncols, index)
+![img_158](./images/img_158.png)
 
-subplots(nrows, ncols)
+If no input arguments are supplied to the ```Figure``` method ```add_subplot```, a single ```Axes``` is created that spans the figure canvas i.e. the default is ```nrows=1```, ```ncols=1```, ```index=1``` or ```111```. This behaves consistently to the ```Axes``` created when the ```pyplot``` function ```axes``` is used:
 
+```
+fig = plt.figure(num=30, figsize=None, dpi=None)
+ax = fig.add_subplot()
+```
+
+![img_159](./images/img_159.png)
+
+![img_160](./images/img_160.png)
+
+Instead of having each ```Axes``` assigned to a seperate ```object``` name, it can be more convenient to have all of the ```Axes``` within a collection such as a ```ndarray```. The ```Figure``` method ```subplots``` does this:
+
+![img_161](./images/img_161.png)
+
+Because the output is a collection of all of the ```Axes```, only ```nrows``` and ```ncols``` are required as input argument. There is no ```index``` input argument as the desired ```Axes``` is selected via indexing.
+
+```
+fig = plt.figure(num=31, figsize=None, dpi=None)
+ax = fig.subplots(2, 1)
+```
+
+![img_162](./images/img_162.png)
+
+![img_163](./images/img_163.png)
+
+Since ```ncols=1```, a 1d ```ndarray``` is output. This can be indexed using regular zero-order indexing of a 1d ```ndarray```:
+
+```
+ax
+ax[0]
+```
+
+![img_164](./images/img_164.png)
+
+If ```nrows=2``` and ```ncols=2```:
+
+```
+fig = plt.figure(num=32, figsize=None, dpi=None)
+ax = fig.subplots(2, 2)
+```
+
+![img_165](./images/img_165.png)
+
+![img_166](./images/img_166.png)
+
+Then the output is a 2d ```ndarray```:
+
+![img_166](./images/img_166.png)
+
+This can be indexed using regular zero-order indexing of a 2d ```ndarray```:
+
+```
+ax
+ax[0, 1]
+```
+
+![img_167](./images/img_167.png)
+
+Since each item in the ```ndarray``` is an ```Axes```, they can be indexed into and all the identifiers for that ```Axes``` instance can be used:
+
+```
+fig = plt.figure(num=33, figsize=None, dpi=None)
+ax = fig.subplots(2, 2)
+ax[0, 0].plot(x, y1, c='deepskyblue')
+ax[0, 1].plot(x, y2, c='peru')
+ax[1, 0].plot(x, y3, c='plum')
+```
+
+![img_168](./images/img_168.png)
+
+![img_169](./images/img_169.png)
+
+The first two lines are often combined using the ```pyplot``` function ```subplots```. The ```pyplot``` function ```subplots``` outputs a ```tuple```, the first index of the ```tuple``` is the ```Figure``` and the second index of the ```tuple``` is the ```ndarray``` of ```Axes```:
+
+```
+fig, ax = plt.subplots(2, 2, 
+                       num=34, figsize=None, dpi=None)
+ax[0, 0].plot(x, y1, c='deepskyblue')
+ax[0, 1].plot(x, y2, c='peru')
+ax[1, 0].plot(x, y3, c='plum')
+```
+
+![img_170](./images/img_170.png)
+
+![img_171](./images/img_171.png)
+
+The ```Figure``` method ```subplot_mosaic``` can be used to create a ```dict``` of ```Axes``` using a ```mosaic```. A ```mosaic``` is a list of strings or a list of nested list of strings. The strings in a ```mosaic``` should be valid identifiers, as each string will become a key in the ```dict```:
+
+![img_172](./images/img_172.png)
+
+```
+fig = plt.figure(num=35, figsize=None, dpi=None)
+ax = fig.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                ['cubic', 'cubic']])
+ax
+```
+
+![img_173](./images/img_173.png)
+
+![img_174](./images/img_174.png)
+
+This key is used to index into the dicitonary to get the corresponding ```Axes```:
+
+```
+fig = plt.figure(num=36, figsize=None, dpi=None)
+ax = fig.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                ['cubic', 'cubic']])
+ax['linear'].plot(x, y1, c='deepskyblue')
+ax['quadratic'].plot(x, y2, c='peru')
+ax['cubic'].plot(x, y3, c='plum')
+```
+
+![img_175](./images/img_175.png)
+
+![img_176](./images/img_176.png)
+
+The first two lines are also combined using the ```pyplot``` function ```subplot_mosaic```. The ```pyplot``` function ```subplot_mosaic``` outputs a ```tuple```, the first index of the ```tuple``` is the ```Figure``` and the second index is the ```dict``` of ```Axes```:
+
+```
+fig, ax = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                     ['cubic', 'cubic']],
+                             num=37, figsize=None, dpi=None)
+ax['linear'].plot(x, y1, c='deepskyblue')
+ax['quadratic'].plot(x, y2, c='peru')
+ax['cubic'].plot(x, y3, c='plum')
+```
+
+![img_177](./images/img_177.png)
+
+![img_178](./images/img_178.png)
+
+The ```subplot_mosaic``` ```pyplot``` function or ```Figure``` method can take a keyword input argument ```per_subplot_kw```. The ```per_subplot_kw``` is a ```dict``` where the keys correspond to the keys used within the axes ```dict``` and the values are a nested ```dict``` of properties. The nested ```dict``` has keys that are keyword arguments recognised by an ```Axes``` and the values are their corresponding values. These properties get supplied to each corresponding ```Axes```:
+
+```
+ax_properties = {'linear': {'xlabel': 'x', 'ylabel': 'y1'},
+                 'quadratic': {'xlabel': 'x', 'ylabel': 'y2'},
+                 'cubic': {'xlabel': 'x', 'ylabel': 'y3'}}
+
+fig, ax = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                     ['cubic', 'cubic']],
+                             per_subplot_kw=ax_properties,
+                             num=38, figsize=None, dpi=None)
+ax['linear'].plot(x, y1, c='deepskyblue')
+ax['quadratic'].plot(x, y2, c='peru')
+ax['cubic'].plot(x, y3, c='plum')
+fig.tight_layout()
+```
+
+![img_179](./images/img_179.png)
+
+![img_180](./images/img_180.png)
+
+Recall valid input arguments that can be supplied as ```Axes``` properties in the nested ```dict``` in ```per_subplot_kw``` can be seen by using the ```pyplot``` function ```getp``` on an ```Axes```:
+
+```
+plt.getp(ax['linear'])
+```
+
+![img_181](./images/img_181.png)
+
+The above plot uses the ```Figure``` method ```tight_layout```, the other options seen in the borders and spacing GUI are accessible from the ```Figure``` method ```subplots_adjust```. There is also a ```pyplot``` function ```subplots_adjust``` which operates similarly on the currently selected figure.
+
+![img_183](./images/img_183.png)
+
+These use keyword arguments ```left```, ```bottom```, ```right```, ```top```, ```wspace``` and ```hspace``` which match the labels of the spinboxes in the borders and spacing GUI:
+
+![img_182](./images/img_182.png)
+
+```
+ax_properties = {'linear': {'xlabel': 'x', 'ylabel': 'y1'},
+                 'quadratic': {'xlabel': 'x', 'ylabel': 'y2'},
+                 'cubic': {'xlabel': 'x', 'ylabel': 'y3'}}
+
+fig, ax = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                     ['cubic', 'cubic']],
+                             per_subplot_kw=ax_properties,
+                             num=39, figsize=None, dpi=None)
+ax['linear'].plot(x, y1, c='deepskyblue')
+ax['quadratic'].plot(x, y2, c='peru')
+ax['cubic'].plot(x, y3, c='plum')
+plt.subplots_adjust(left=0.12, bottom=0.12, 
+                    right=0.98, top=1.0,
+                    wspace=0.4, hspace=0.3)
+```
+
+![img_184](./images/img_184.png)
+
+![img_185](./images/img_185.png)
+
+### Figure Methods
+
+savefig
+show
+plt.show
+
+### Axes
+
+set_xlabel
+set_ylabel
+grid
+grid_minor
 
 
 
@@ -1486,9 +1703,6 @@ savefig
 
 show
 
-subplot_mosaic
-
-subplots
 
 subplots_adjust
 
@@ -1506,7 +1720,6 @@ subplots_adjust
 
 
 
-ax = fig.add_subplot()
 
 
 
@@ -1518,125 +1731,14 @@ ax = fig.add_subplot()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-horizontal space can be added
-
-
-
-
-
-
-
-
-
-
-
-
- fig.add_axes([left, bottom, width, height]) 
-
-top=0.922,
-bottom=0.13,
-left=0.121,
-right=0.97,
-hspace=0.2,
-wspace=0.2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-T
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The identifiers from the ```pyplot``` module can be viewed by inputting its alias ```plt.``` followed by a tab ```↹```:
-
-
-
-
-
-
-
-
-
-grid	Configure the grid lines.
-minorticks_on	Display minor ticks on the Axes.
-minorticks_off	Remove minor ticks from the Axes.
-xlim	Get or set the x limits of the current axes.
-ylim	Get or set the y-limits of the current axes.
-xscale	Set the x-axis scale.
-yscale	Set the y-axis scale.
-xticks	Get or set the current tick locations and labels of the x-axis.
-yticks	Get or set the current tick locations and labels of the y-axis.
-tight_layout	Adjust the padding between and around subplots.
-subplot	Add an Axes to the current figure or retrieve an existing Axes.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-plt.get_plot_commands()
-
-list(plt.get_plot_commands())
-
-
-The ```plt.plotting``` function is essentially a documentation string outlining the most commonly used plotting functions of the ```pyplot``` module.
-
-
+fig, axd = plt.subplot_mosaic(
+    "AB;CD",
+    per_subplot_kw={
+        "A": {"projection": "polar"},
+        ("C", "D"): {"xscale": "log"},
+        "B": {"projection": "3d"},
+    },
+)
 
 
 
@@ -1665,16 +1767,4 @@ aspects = ('auto', 'equal', 'equalxy', 'equalyz', 'equalxz')
 fig.colorbar(im, cax=ax.inset_axes([0, 1.05, 1, 0.05]),
              location='top')
 
-
-
-
-
-fig, axd = plt.subplot_mosaic(
-    "AB;CD",
-    per_subplot_kw={
-        "A": {"projection": "polar"},
-        ("C", "D"): {"xscale": "log"},
-        "B": {"projection": "3d"},
-    },
-)
 
