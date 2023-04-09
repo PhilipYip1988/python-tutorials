@@ -241,7 +241,7 @@ plt.plot(x, y);
 
 ### Labels and LaTeX (MathJax)
 
-In Axes there is a Title (```title```), X-Axis Label (```xlabel```) and Y-Axis Label (```ylabel```) which are blank by default. 
+In the Axes Tab of Figure Options there is a Title (```title```), X-Axis Label (```xlabel```) and Y-Axis Label (```ylabel```) which are blank by default. 
 
 ![img_037](./images/img_037.png)
 
@@ -398,17 +398,23 @@ The x-axis min (xmin) and x-axis max (xmax) can be set to ```-1``` and ```5```, 
 
 ![img_039](./images/img_039.png)
 
+### Labels
+
 In curves there is a dropdown menu of labels. By default each line is called ```_childN``` where ```N``` is an integer corresponding to the index indicating the order that the lines were plotted. In this case there is only index 0. 
 
 ![img_040](./images/img_040.png)
 
 The individual label (```label```) can be assigned to a value for example ```area```.
 
+### Line Properties
+
 The Line Style (```linestyle``` or ```ls```) has a default value of Solid (```'solid'``` or ```'-'```), but can also be changed to Dotted (```'dotted'``` or ```':'```), Dashed (```'dashed'``` or ```'--'```) or Dashdot (```'dashdot'``` or ```'-.'```). In this case it will be changed to Dashed.
 
 The Line Width (```linewidth``` or ```lw```) has a default floating point number value of ```1.5```. It can be changed to ```2.0```.
 
 The Draw Style (```drawstyle``` or ```ds```) has a default value of default (```'default'```). It can be changed to Steps (Pre) (```'steps-pre'```), Steps (Mid) (```'steps-mid'```) or Steps (Post) (```'steps-post'```). This will be left at default.
+
+### Color HTML Format
 
 The Color (```color```) U.S. spelling exclusive of the u, is usually in the form #rrggbb (```'#rrggbb'```). 
 
@@ -427,6 +433,8 @@ The alpha channel also ranges from 0-255 (decimal) or 0-ff (hexadecimal) and cor
 This HTML value is as the name suggest quite commonly used with HTML, so many websites have color pickers that use a similar form, paint application such as Microsoct Paint and Office Programs such as Word, Excedl and PowerPoint all exhibit similar color pickers.
 
 ![img_042](./images/img_042.png)
+
+### Marker
 
 Changing the Line Style to Dotted and the Draw Style to Steps (Pre) looks like the following:
 
@@ -486,6 +494,8 @@ With markers shown, it is easier to understand what the draw style does. Steps (
 ![img_047](./images/img_047.png)
 
 ![img_048](./images/img_048.png)
+
+### CSS Colors
 
 Colors are typically input using the HTML format #rrggbb. However for primary and secondary colors, there is an internal dictionary of color name keys and hexadecimal values. Black is regarded as the absence of color i.e. the RGB LED is off and white is when the RGB is ramped up to maximum for every color.
 
@@ -555,6 +565,8 @@ If Generate automatic Legend is selected, a legend displays in an area of the gr
 The curves dropdown list then gets updated to the set labels:
 
 ![img_055](./images/img_055.png)
+
+### Borders and Spacing
 
 If the borders and spacing button is selected. The borders display.
 
@@ -1113,6 +1125,18 @@ plt.tight_layout()
 
 ![img_112](./images/img_112.png)
 
+Selecting Figure Options now displays a dropdown with an Axes for each subplot:
+
+![img_116](./images/img_116.png)
+
+![img_117](./images/img_117.png)
+
+The Borders and Spacing hspace and vertical space may be set using a normalised floating point number between 0.0 and 1.0. If 0.0 is selected,there is no spacing and if 1.0 is selected, there is a large gap used to space the subplots:
+
+![img_118](./images/img_118.png)
+
+![img_119](./images/img_119.png)
+
 The ```pyplot``` function ```savefig``` can be used to save the image to a ```.png``` file or other image format. The ```pyplot``` function ````plt.close``` will close the currently selected figure:
 
 ```
@@ -1124,7 +1148,7 @@ plt.legend(loc='lower left')
 plt.xticks(xticks, xtickvalues)
 plt.subplot(2, 2, 3)
 plt.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
-plt.legend(loc='lower left')
+plt.legend(loc='lower left')/
 plt.xticks(xticks, xtickvalues)
 plt.xlabel(r'$\alpha$ (radians)')
 plt.subplot(2, 2, 2)
@@ -1178,10 +1202,311 @@ To recap on functional programming, the following functions were examined and ea
 |close|Close the currently selected Figure.|
 |savefig|Save the currently selected Figure to an image file.|
 
+## Object Orientated Programming (OOP) Overview
+
+The ```pyplot``` module also has an Object Orientated Programming (OOP) Application Interface (API). The ```pyplot``` function ```figure``` creates an instance of the ```Figure``` class. The following data can be created:
+
+```
+x = np.linspace(start=-5, stop=5, num=100)
+y1 = x
+y2 = x ** 2
+y3 = x ** 3
+```
+
+![img_124](./images/img_124.png)
+
+### Figure Class
+
+```
+fig = plt.figure(num=21, figsize=None, dpi=None)
+```
+
+![img_120](./images/img_120.png)
+
+The list of identifiers can be accessed by inputting the ```Figure``` instances name ```fig``` followed by a dot ```.``` and a tab ```↹```:
+
+![img_121](./images/img_121.png)
+
+### Axes Class
+
+The most commonly used identifiers relate to axes, for example the method ```add_axes``` can be used to draw an ```Axes``` instance using a rectangle on the figure canvas. The rectangle is specified by the keyword argument ```rect``` on the figure:
+
+![img_122](./images/img_122.png)
+
+The ```rect``` tuple has four values which correspond to the normalised co-ordinates of the figure canvas. ```left``` and ```bottom``` correspond to the same values seen previously. Instead of specifying the ```right``` and ```top```, the ```width``` and ```height``` are specified. These are also provided in the form of normalised floats relating to the co-ordinate system of the figure canvas.
+
+![img_123](./images/img_123.png)
+
+If ```left``` and ```bottom``` are set to ```0``` and ```width``` and ```height``` are set to ```1```. The square box of the axes will be at the four corners of the figure canvas.
+
+![img_124](./images/img_124.png)
+
+The list of identifiers from the ```Axes``` instance ```ax1``` can be viewed by inputting ```ax1.``` followed by a tab ```↹```. There are number of get methods which return a value. For example everything that has been viewed on the xaxis and yaxis:
+
+![img_125](./images/img_125.png)
+
+![img_126](./images/img_126.png)
+
+There are also a number of associated set methods which mutate the ```AxesSubplot``` instance ```ax1``` in place. For example everything that has been manipulated with the xaxis and yaxis:
+
+![img_127](./images/img_127.png)
+
+The ```grid``` and ```minorticks_on``` methods are also available to manipulate gridlines:
+
+![img_129](./images/img_129.png)
+
+![img_128](./images/img_128.png)
+
+### Line2D Class
+
+The ```plot``` method is also available and can be used to add a lineplot to ```ax1```:
+
+![img_130](./images/img_130.png)
+
+Recall that ```plot``` has the multiline form:
+
+```
+fig = plt.figure(num=23, figsize=None, dpi=None)
+ax1 = fig.add_axes(rect=(0, 0, 1, 1))
+lines1 = ax1.plot(x, y1, 'lightcoral',
+                  x, y2, 'khaki', 
+                  x, y3, 'slateblue')
+```
+
+![img_131](./images/img_131.png)
+
+![img_132](./images/img_132.png)
+
+A consequence is the return value is always a list of ```Line2D``` instances (even if only 1 line is specified):
+
+```
+lines1
+```
+
+![img_133](./images/img_133.png)
+
+Multiple ```Axes``` instances can be added, to a single ```Figure``` canvas. For example:
+
+```
+fig = plt.figure(num=24, figsize=None, dpi=None)
+ax1 = fig.add_axes(rect=(0, 0, 1, 1))
+lines1 = ax1.plot(x, y1, 'lightcoral',
+                  x, y2, 'khaki', 
+                  x, y3, 'slateblue')
+ax2 = fig.add_axes(rect=(0.2, 0.2, 0.75, 0.75))
+lines2 = ax2.plot(x, y1, 'lightcoral')
+ax3 = fig.add_axes(rect=(0.3, 0.4, 0.5, 0.4))
+lines3 = ax3.plot(x, y2, 'khaki')
+```
+
+![img_134](./images/img_134.png)
+
+![img_135](./images/img_135.png)
+
+The ```Axes``` instances can all be individually selected using:
+
+```
+ax1
+ax2
+ax3
+```
+
+![img_136](./images/img_136.png)
+
+The ```Figure``` identifier ```axes``` is a list of ```Axes``` instances which belong to the ```Figure``` canvas. Each ```Axes``` instance is listed in the order created and can be accessed via indexing:
+
+```
+fig.axes
+fig.axes[0]
+fig.axes[0] == ax1
+```
+
+![img_137](./images/img_137.png)
+
+Each set of lines can be individually accessed:
+
+```
+lines1
+lines2
+lines3
+```
+
+![img_138](./images/img_138.png)
+
+The ```Axes``` identifier ```lines``` is a list of ```Line2D``` instances which belong to the ```Axes```. Each ```Line2D``` instance is listed in the order created and can be accessed via indexing:
+
+```
+ax1.lines
+ax2.lines
+ax3.lines
+ax3.lines[0]
+```
+
+![img_139](./images/img_139.png)
+
+### Getting and Setting Current Figure or Axes
+
+The ```pyplot``` module has the functions get current figure ```gcf``` and get current axes ```gca``` which can be used to assign a figure and an axes to an object name if not done during instantiation. There is also the associated ```pyplot``` function set current axes ```sca```.  ```gca``` and ```sca``` are also available as ```Figure``` methods. 
+
+Examples of selection are given throughout below:
+
+```
+plt.figure(num=25, figsize=None, dpi=None)
+figa = plt.gcf()
+
+plt.subplot(2, 2, 1)
+ax1a = plt.gca()
+ax1b = fig.gca()
+
+plt.subplot(2, 2, 2)
+ax2a = plt.gca()
+ax2b = fig.gca()
+
+plt.figure(num=26, figsize=None, dpi=None)
+
+figb = plt.figure(num=25)
+
+ax2c = plt.gca()
+ax2d = fig.gca()
+ax2e = fig.axes[1]
+
+ax1c = fig.axes[0]
+
+plt.figure(num=25)
+plt.sca(ax1a)
+figa.sca(figa.axes[0])
+
+plt.plot(x, y1)
+```
+
+![img_140](./images/img_140.png)
+
+Note that ```figa```, ```figb``` are selections of the same ```Figure```. ```ax1a```, ```ax1b```, ```ax1c``` are selections of the same ```Axes```. ```ax2a```, ```ax2b```, ```ax2c```, ```ax2d```, ```ax2e``` are selections of the same ```Axes```. 
+
+Notice that figure 25 and figure 26 were both recreated but figure 25 was reselected and the current axes was changed to the first subplot. Therefore when the ```pyplot``` function ```plot``` was used, this axes was updated:
+
+![img_141](./images/img_141.png)
+
+![img_142](./images/img_142.png)
+
+Learning to navigate around a created figure that hasn't been assigned to an object name can be quite useful, if a proeprty is to be checked. The ```pyplot``` functions ```getp``` and ```setp``` can be used to get and set properties of a matplotlib object. Let's create a simpler figure:
+
+```
+fig = plt.figure(num=27, figsize=None, dpi=None)
+ax = fig.add_axes(rect=(0.2, 0.2, 0.75, 0.75))
+lines = ax.plot(x, y1, 'lightcoral',
+                x, y2, 'khaki', 
+                x, y3, 'slateblue')
+```
+
+![img_143](./images/img_143.png)
+
+![img_144](./images/img_144.png)
+
+### Get and Set Properties
+
+The properties of the axes can be examined:
+
+```
+plt.getp(ax)
+```
+
+![img_145](./images/img_145.png)
+
+Everything in the output list is a keyword input argument, available to use when the ```setp``` function is used on the same object:
+
+```
+plt.setp(ax, 
+         xlabel=r'$x$', 
+         ylabel=r'$y$', 
+         title=r'$x$ vs $y$',
+         xticks=[-3, -1, 1, 3],
+         xticklabels=['-3a', '-1b', '1c', '3d'])
+```
+
+![img_146](./images/img_146.png)
+
+![img_147](./images/img_147.png)
+
+The properties of the lines can also be examined:
+
+```
+plt.getp(lines)
+```
+
+![img_148](./images/img_148.png)
+
+Once again everything in the output list is a keyword input argument, available to use when the ```setp``` function is used on the same object. In this case, changing the properties here will update all lines:
+
+```
+plt.setp(lines, lw=3.0, ls=':')
+```
+
+![img_149](./images/img_149.png)
+
+![img_150](./images/img_150.png)
+
+The properties of an individual line can also be examined:
+
+```
+plt.getp(lines[0])
+```
+
+![img_151](./images/img_151.png)
+
+Setting a property here will just update that single line:
+
+```
+plt.setp(ax.lines[0], c='crimson', lw=5.0, ls='-')
+```
+
+![img_152](./images/img_152.png)
+
+![img_153](./images/img_153.png)
 
 
 
 
+
+
+
+
+
+ adds a single ```AxesSubplot``` to the canvas of ```fig```, whereas ```add_subplot``` adds multiple ```AxesSubplot``` to the figure canvas. The instance ```axes``` returns a list of each ```AxesSubplot``` on the figure canvas.
+
+
+add_subplot(nrows, ncols, index)
+
+subplots(nrows, ncols)
+
+
+
+
+savefig
+
+show
+
+subplot_mosaic
+
+subplots
+
+subplots_adjust
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ax = fig.add_subplot()
 
 
 
