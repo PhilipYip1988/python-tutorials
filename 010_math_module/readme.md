@@ -1646,7 +1646,7 @@ cmath.rect(1, 2*tau/16)
 
 Which is of the form: 
 
-$$r=x+iy$$
+$$r=x+jy$$
 
 In this case:
 

@@ -1684,6 +1684,61 @@ plt.subplots_adjust(left=0.12, bottom=0.12,
 
 ![img_185](./images/img_185.png)
 
+### Projection
+
+The ```Figure``` method ```add_subplots``` has a keyword argument ```projection``` which has a default value ```rectilinear```. It can be changed to another option such as ```'polar'``` to get a polar plot. 
+
+A complex number can be represented as:
+
+$$r=x+jy$$
+
+Where $x$ is the real axis and $y$ is the imaginary axis. If this number is compared to the origin $x=0$ (angle 0 radians) and $y=0$ (radius 0). A straight line can be drawn.
+
+
+
+This number can be expressed in the following format:
+
+$$z=r\exp(j\varphi)$$
+
+
+
+
+Instead of an $x$-axis and $y$-axis, the polar plot has an angle $\varphi$ in radians and radius $r$.
+
+These relate to the $x$ and $y$ co-ordinates via. 
+
+
+
+```
+fig = plt.figure(num=40, figsize=None, dpi=None)
+ax = fig.add_subplot(111, projection='polar')
+ax.plot(0*math.tau/8, 1, color='royalblue', 
+        ls=None, marker='o', markersize=10)
+ax.plot(1*math.tau/8, 1, color='gold', 
+        ls=None, marker='s', markersize=10)
+ax.plot(2*math.tau/8, 1, color='forestgreen', 
+        ls=None, marker='p', markersize=10)
+ax.plot(3*math.tau/8, 1, color='salmon', 
+        ls=None, marker='h', markersize=10)
+ax.plot(4*math.tau/8, 1, color='violet', 
+        ls=None, marker='8', markersize=10)
+ax.plot(5*math.tau/8, 1, color='peru', 
+        ls=None, marker='X', markersize=10)
+ax.plot(6*math.tau/8, 1, color='deeppink', 
+        ls=None, marker='*', markersize=10)
+ax.plot(7*math.tau/8, 1, color='slategray', 
+        ls=None, marker='P', markersize=10)
+```
+
+![img_186](./images/img_186.png)
+
+![img_187](./images/img_187.png)
+
+
+
+
+
+
 ### Figure Methods
 
 savefig
