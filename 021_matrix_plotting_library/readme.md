@@ -1794,10 +1794,10 @@ plt.getp(axpolar)
 
 ![img_188](./images/img_188.png)
 
-The xticks themselves are shown to be in radians, however the xticklabels are shown to be in degrees. The xticks can be changed using the ```pyplot``` function ```setp```:
+The xticks themselves are shown to be in radians, however the xticklabels are shown to be in degrees. The xtick labels can be changed to a numeric scale involving $\tau$ using the ```pyplot``` function ```setp```:
 
 ```
-[f'{num/math.tau}'+r'$\tau$' for num in ax.get_xticks()]
+[f'{num/math.tau}'+r'$\tau$' for num in axpolar.get_xticks()]
 ```
 
 ![img_189](./images/img_189.png)
@@ -1836,10 +1836,6 @@ plt.setp(axpolar, xticklabels=[r'$\frac{'+f'{num}'+r'}{8\tau}$'
 
 ![img_193](./images/img_193.png)
 
-```
-plt.setp(axpolar, xticklabels[str(num)/math.tau+'$\tau$' for num in ax.xticks])
-```
-
 There is once again a ```UserWarning: FixedFormatter should only be used together with FixedLocator``` however this warning can be ignored as the change takes place as expected:
 
 ![img_194](./images/img_194.png)
@@ -1847,7 +1843,7 @@ There is once again a ```UserWarning: FixedFormatter should only be used togethe
 This ```UserWarning``` can be removed by updating ```xticks``` to the original values:
 
 ```
-plt.setp(axpolar, xticks=ax.get_xticks(),
+plt.setp(axpolar, xticks=axpolar.get_xticks(),
          xticklabels=[r'$\frac{'+f'{num}'+r'}{8}\tau$' 
                      for 
                      num 
@@ -1873,6 +1869,10 @@ The 3D Axes has a Z-Axis shown in the Figure Options:
 ![img_198](./images/img_198.png)
 
 If the ```pyplot``` function ```getp``` is used on the 3d ```Axes3D```, the properties for the ```Z-Axis``` will display:
+
+```
+plt.getp(ax3d)
+```
 
 ![img_199](./images/img_199.png)
 
@@ -1985,7 +1985,7 @@ ax = fig.add_subplot(111)
 
 ![img_229](./images/img_229.png)
 
-img 186 onwards for ax label update
+img 219 axes3d onwards for ax label update
 
 
 
