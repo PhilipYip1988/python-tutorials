@@ -49,6 +49,67 @@ Notice the ```x``` and ```y``` data are the same length, i.e. for every ```x``` 
 
 ![img_008](./images/img_008.png)
 
+For more complicated plots, sometimes data is required that has $x$ in the form as a row, $y$ in the form as a column and $z$ in the form of a matrix with the same number of columns as $x$ and the same number of rows as $y$:
+
+```
+xrow = np.array([5, 6, 7, 8, 9])[np.newaxis, :]
+ycol = np.array([1, 2, 3, 4])[:, np.newaxis]
+zmat = np.array([[0, 1, 1, 1, 0],
+                 [1, 2, 3, 2, 1],
+                 [1, 2, 3, 2, 1],
+                 [0, 1, 1, 1, 0]])
+```
+
+![img_205](./images/img_205.png)
+
+![img_206](./images/img_206.png)
+
+![img_207](./images/img_207.png)
+
+Recall that the dimension of $x$ can be expanded by those of $y$ and the dimension of $y$ can be expanded by those of $x$ using the ```numpy``` function ```meshgrid``` giving matrices which have the same dimensions as $z$:
+
+```
+xmat, ymat = np.meshgrid(xrow, ycol)
+```
+
+![img_208](./images/img_208.png)
+
+![img_209](./images/img_209.png)
+
+![img_210](./images/img_210.png)
+
+![img_211](./images/img_211.png)
+
+![img_212](./images/img_212.png)
+
+Example data often uses linearly spaced $x$ and $y$ data and a ```lambda``` expression with a mathematical function to determine $z$:
+
+```
+xrow = np.linspace(-2, 2, 10)[np.newaxis, :]
+ycol = np.linspace(-2, 2, 10)[:, np.newaxis]
+xmat, ymat = np.meshgrid(xrow, ycol)
+zdata_fun = lambda x, y: x * np.exp(-x**2 - y**2)
+zmat = zdata_fun(x=xrow, y=ycol)
+```
+
+![img_213](./images/img_213.png)
+
+![img_214](./images/img_214.png)
+
+![img_215](./images/img_215.png)
+
+Sometimes the $x$, $y$ and $z$ are also required to be equally sized 1d ```ndarray```. To achieve this the arrays can be collapsed using the ```ndarray``` method ```flatten```:
+
+```
+xarray = xmat.flatten()
+yarray = ymat.flatten()
+zarray = zmat.flatten()
+```
+
+![img_216](./images/img_216.png)
+
+![img_217](./images/img_217.png)
+
 ## Plot Backends
 
 ### Magic Commands
@@ -1513,7 +1574,7 @@ Because the output is a collection of all of the ```Axes```, only ```nrows``` an
 
 ```
 fig = plt.figure(num=31, figsize=None, dpi=None)
-ax = fig.subplots(2, 1)
+axarray = fig.subplots(2, 1)
 ```
 
 ![img_162](./images/img_162.png)
@@ -1523,8 +1584,8 @@ ax = fig.subplots(2, 1)
 Since ```ncols=1```, a 1d ```ndarray``` is output. This can be indexed using regular zero-order indexing of a 1d ```ndarray```:
 
 ```
-ax
-ax[0]
+axarray
+axarray[0]
 ```
 
 ![img_164](./images/img_164.png)
@@ -1533,7 +1594,7 @@ If ```nrows=2``` and ```ncols=2```:
 
 ```
 fig = plt.figure(num=32, figsize=None, dpi=None)
-ax = fig.subplots(2, 2)
+axarray = fig.subplots(2, 2)
 ```
 
 ![img_165](./images/img_165.png)
@@ -1547,20 +1608,20 @@ Then the output is a 2d ```ndarray```:
 This can be indexed using regular zero-order indexing of a 2d ```ndarray```:
 
 ```
-ax
-ax[0, 1]
+axarray
+axarray[0, 1]
 ```
 
 ![img_167](./images/img_167.png)
 
-Since each item in the ```ndarray``` is an ```Axes```, they can be indexed into and all the identifiers for that ```Axes``` instance can be used:
+Since each item in the ```ndarray``` instance           ```axarray``` is an ```Axes```, they can be indexed into and all the identifiers for that ```Axes``` instance can be used:
 
 ```
 fig = plt.figure(num=33, figsize=None, dpi=None)
-ax = fig.subplots(2, 2)
-ax[0, 0].plot(x, y1, c='deepskyblue')
-ax[0, 1].plot(x, y2, c='peru')
-ax[1, 0].plot(x, y3, c='plum')
+axarray = fig.subplots(2, 2)
+axarray[0, 0].plot(x, y1, c='deepskyblue')
+axarray[0, 1].plot(x, y2, c='peru')
+axarray[1, 0].plot(x, y3, c='plum')
 ```
 
 ![img_168](./images/img_168.png)
@@ -1570,11 +1631,11 @@ ax[1, 0].plot(x, y3, c='plum')
 The first two lines are often combined using the ```pyplot``` function ```subplots```. The ```pyplot``` function ```subplots``` outputs a ```tuple```, the first index of the ```tuple``` is the ```Figure``` and the second index of the ```tuple``` is the ```ndarray``` of ```Axes```:
 
 ```
-fig, ax = plt.subplots(2, 2, 
-                       num=34, figsize=None, dpi=None)
-ax[0, 0].plot(x, y1, c='deepskyblue')
-ax[0, 1].plot(x, y2, c='peru')
-ax[1, 0].plot(x, y3, c='plum')
+fig, axarray = plt.subplots(2, 2, 
+                           num=34, figsize=None, dpi=None)
+axarray[0, 0].plot(x, y1, c='deepskyblue')
+axarray[0, 1].plot(x, y2, c='peru')
+axarray[1, 0].plot(x, y3, c='plum')
 ```
 
 ![img_170](./images/img_170.png)
@@ -1587,24 +1648,24 @@ The ```Figure``` method ```subplot_mosaic``` can be used to create a ```dict``` 
 
 ```
 fig = plt.figure(num=35, figsize=None, dpi=None)
-ax = fig.subplot_mosaic(mosaic=[['linear', 'quadratic'],
-                                ['cubic', 'cubic']])
-ax
+axdict = fig.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                    ['cubic', 'cubic']])
+axdict
 ```
 
 ![img_173](./images/img_173.png)
 
 ![img_174](./images/img_174.png)
 
-This key is used to index into the dicitonary to get the corresponding ```Axes```:
+This key is used to index into the dictionary ```axdict``` to get the corresponding ```Axes```:
 
 ```
 fig = plt.figure(num=36, figsize=None, dpi=None)
-ax = fig.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+axdict = fig.subplot_mosaic(mosaic=[['linear', 'quadratic'],
                                 ['cubic', 'cubic']])
-ax['linear'].plot(x, y1, c='deepskyblue')
-ax['quadratic'].plot(x, y2, c='peru')
-ax['cubic'].plot(x, y3, c='plum')
+axdict['linear'].plot(x, y1, c='deepskyblue')
+axdict['quadratic'].plot(x, y2, c='peru')
+axdict['cubic'].plot(x, y3, c='plum')
 ```
 
 ![img_175](./images/img_175.png)
@@ -1614,32 +1675,32 @@ ax['cubic'].plot(x, y3, c='plum')
 The first two lines are also combined using the ```pyplot``` function ```subplot_mosaic```. The ```pyplot``` function ```subplot_mosaic``` outputs a ```tuple```, the first index of the ```tuple``` is the ```Figure``` and the second index is the ```dict``` of ```Axes```:
 
 ```
-fig, ax = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
-                                     ['cubic', 'cubic']],
-                             num=37, figsize=None, dpi=None)
-ax['linear'].plot(x, y1, c='deepskyblue')
-ax['quadratic'].plot(x, y2, c='peru')
-ax['cubic'].plot(x, y3, c='plum')
+fig, axdict = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                         ['cubic', 'cubic']],
+                                 num=37, figsize=None, dpi=None)
+axdict['linear'].plot(x, y1, c='deepskyblue')
+axdict['quadratic'].plot(x, y2, c='peru')
+axdict['cubic'].plot(x, y3, c='plum')
 ```
 
 ![img_177](./images/img_177.png)
 
 ![img_178](./images/img_178.png)
 
-The ```subplot_mosaic``` ```pyplot``` function or ```Figure``` method can take a keyword input argument ```per_subplot_kw```. The ```per_subplot_kw``` is a ```dict``` where the keys correspond to the keys used within the axes ```dict``` and the values are a nested ```dict``` of properties. The nested ```dict``` has keys that are keyword arguments recognised by an ```Axes``` and the values are their corresponding values. These properties get supplied to each corresponding ```Axes```:
+The ```subplot_mosaic``` ```pyplot``` function or ```Figure``` method can take a keyword input argument ```per_subplot_kw```. The ```per_subplot_kw``` is also a ```dict``` where the keys correspond to the keys used within the axes ```dict``` and the values are a nested ```dict``` of properties. The nested ```dict``` has keys that are keyword arguments recognised by an ```Axes``` and the values are their corresponding values. These properties get supplied to each corresponding ```Axes```:
 
 ```
-ax_properties = {'linear': {'xlabel': 'x', 'ylabel': 'y1'},
-                 'quadratic': {'xlabel': 'x', 'ylabel': 'y2'},
-                 'cubic': {'xlabel': 'x', 'ylabel': 'y3'}}
+axdictprop = {'linear': {'xlabel': 'x', 'ylabel': 'y1'},
+              'quadratic': {'xlabel': 'x', 'ylabel': 'y2'},
+              'cubic': {'xlabel': 'x', 'ylabel': 'y3'}}
 
-fig, ax = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
-                                     ['cubic', 'cubic']],
-                             per_subplot_kw=ax_properties,
-                             num=38, figsize=None, dpi=None)
-ax['linear'].plot(x, y1, c='deepskyblue')
-ax['quadratic'].plot(x, y2, c='peru')
-ax['cubic'].plot(x, y3, c='plum')
+fig, axdict = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                         ['cubic', 'cubic']],
+                                 per_subplot_kw=axdictprop,
+                                 num=38, figsize=None, dpi=None)
+axdict['linear'].plot(x, y1, c='deepskyblue')
+axdict['quadratic'].plot(x, y2, c='peru')
+axdict['cubic'].plot(x, y3, c='plum')
 fig.tight_layout()
 ```
 
@@ -1650,7 +1711,7 @@ fig.tight_layout()
 Recall valid input arguments that can be supplied as ```Axes``` properties in the nested ```dict``` in ```per_subplot_kw``` can be seen by using the ```pyplot``` function ```getp``` on an ```Axes```:
 
 ```
-plt.getp(ax['linear'])
+plt.getp(axdict['linear'])
 ```
 
 ![img_181](./images/img_181.png)
@@ -1664,17 +1725,17 @@ These use keyword arguments ```left```, ```bottom```, ```right```, ```top```, ``
 ![img_182](./images/img_182.png)
 
 ```
-ax_properties = {'linear': {'xlabel': 'x', 'ylabel': 'y1'},
-                 'quadratic': {'xlabel': 'x', 'ylabel': 'y2'},
-                 'cubic': {'xlabel': 'x', 'ylabel': 'y3'}}
+axdictprop = {'linear': {'xlabel': 'x', 'ylabel': 'y1'},
+              'quadratic': {'xlabel': 'x', 'ylabel': 'y2'},
+              'cubic': {'xlabel': 'x', 'ylabel': 'y3'}}
 
-fig, ax = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
-                                     ['cubic', 'cubic']],
-                             per_subplot_kw=ax_properties,
-                             num=39, figsize=None, dpi=None)
-ax['linear'].plot(x, y1, c='deepskyblue')
-ax['quadratic'].plot(x, y2, c='peru')
-ax['cubic'].plot(x, y3, c='plum')
+fig, axdict = plt.subplot_mosaic(mosaic=[['linear', 'quadratic'],
+                                         ['cubic', 'cubic']],
+                                 per_subplot_kw=axdictprop,
+                                 num=39, figsize=None, dpi=None)
+axdict['linear'].plot(x, y1, c='deepskyblue')
+axdict['quadratic'].plot(x, y2, c='peru')
+axdict['cubic'].plot(x, y3, c='plum')
 plt.subplots_adjust(left=0.12, bottom=0.12, 
                     right=0.98, top=1.0,
                     wspace=0.4, hspace=0.3)
@@ -1702,33 +1763,33 @@ And plotted on a polar plot at the angle $\varphi$ with the radius $r$. $\varphi
 
 ```
 fig = plt.figure(num=40, figsize=None, dpi=None)
-ax = fig.add_subplot(111, projection='polar')
-ax.plot(0*math.tau/8, 1, color='royalblue', 
-        ls=None, marker='o', markersize=10)
-ax.plot(1*math.tau/8, 1, color='gold', 
-        ls=None, marker='s', markersize=10)
-ax.plot(2*math.tau/8, 1, color='forestgreen', 
-        ls=None, marker='p', markersize=10)
-ax.plot(3*math.tau/8, 1, color='salmon', 
-        ls=None, marker='h', markersize=10)
-ax.plot(4*math.tau/8, 1, color='violet', 
-        ls=None, marker='8', markersize=10)
-ax.plot(5*math.tau/8, 1, color='peru', 
-        ls=None, marker='X', markersize=10)
-ax.plot(6*math.tau/8, 1, color='deeppink', 
-        ls=None, marker='*', markersize=10)
-ax.plot(7*math.tau/8, 1, color='slategray', 
-        ls=None, marker='P', markersize=10)
+axpolar = fig.add_subplot(111, projection='polar')
+axpolar.plot(0*math.tau/8, 1, color='royalblue', 
+             ls=None, marker='o', markersize=10)
+axpolar.plot(1*math.tau/8, 1, color='gold', 
+             ls=None, marker='s', markersize=10)
+axpolar.plot(2*math.tau/8, 1, color='forestgreen', 
+             ls=None, marker='p', markersize=10)
+axpolar.plot(3*math.tau/8, 1, color='salmon', 
+             ls=None, marker='h', markersize=10)
+axpolar.plot(4*math.tau/8, 1, color='violet', 
+             ls=None, marker='8', markersize=10)
+axpolar.plot(5*math.tau/8, 1, color='peru', 
+             ls=None, marker='X', markersize=10)
+axpolar.plot(6*math.tau/8, 1, color='deeppink', 
+             ls=None, marker='*', markersize=10)
+axpolar.plot(7*math.tau/8, 1, color='slategray', 
+             ls=None, marker='P', markersize=10)
 ```
 
 ![img_186](./images/img_186.png)
 
 ![img_187](./images/img_187.png)
 
-Although the unit of measurement of an angle is in radians. It is shown in degrees. If the properties of the ```ax``` are examined using the ```pyplot``` function ```getp```:
+Although the unit of measurement of an angle is in radians. It is shown in degrees. If the properties of the ```axpolar``` are examined using the ```pyplot``` function ```getp```:
 
 ```
-plt.getp(ax)
+plt.getp(axpolar)
 ```
 
 ![img_188](./images/img_188.png)
@@ -1742,11 +1803,11 @@ The xticks themselves are shown to be in radians, however the xticklabels are sh
 ![img_189](./images/img_189.png)
 
 ```
-plt.setp(ax, xticklabels=[f'{num/math.tau}'+r'$\tau$' 
-                          for 
-                          num 
-                          in 
-                          ax.get_xticks()])
+plt.setp(axpolar, xticklabels=[f'{num/math.tau}'+r'$\tau$' 
+                              for 
+                              num 
+                              in 
+                              axpolar.get_xticks()])
 ```
 
 ![img_190](./images/img_190.png)
@@ -1766,17 +1827,17 @@ Instead of decimals, fractions can be used:
 Note the difference in the use of ```{}``` in the formatted string and relative string:
 
 ```
-plt.setp(ax, xticklabels=[r'$\frac{'+f'{num}'+r'}{8\tau}$' 
-                          for 
-                          num 
-                          in 
-                          range(8)])
+plt.setp(axpolar, xticklabels=[r'$\frac{'+f'{num}'+r'}{8\tau}$' 
+                              for 
+                              num 
+                              in 
+                              range(8)])
 ```
 
 ![img_193](./images/img_193.png)
 
 ```
-plt.setp(ax, xticklabels[str(num)/math.tau+'$\tau$' for num in ax.xticks])
+plt.setp(axpolar, xticklabels[str(num)/math.tau+'$\tau$' for num in ax.xticks])
 ```
 
 There is once again a ```UserWarning: FixedFormatter should only be used together with FixedLocator``` however this warning can be ignored as the change takes place as expected:
@@ -1786,7 +1847,7 @@ There is once again a ```UserWarning: FixedFormatter should only be used togethe
 This ```UserWarning``` can be removed by updating ```xticks``` to the original values:
 
 ```
-plt.setp(ax, xticks=ax.get_xticks(),
+plt.setp(axpolar, xticks=ax.get_xticks(),
          xticklabels=[r'$\frac{'+f'{num}'+r'}{8}\tau$' 
                      for 
                      num 
@@ -1796,12 +1857,184 @@ plt.setp(ax, xticks=ax.get_xticks(),
 
 ![img_195](./images/img_195.png)
 
+Another projection is ```'3d'``` which will give a ```Axes3D``` instance:
+
+```
+fig = plt.figure(num=41, figsize=None, dpi=None)
+ax3d = fig.add_subplot(111, projection='3d')
+```
+
+![img_196](./images/img_196.png)
+
+![img_197](./images/img_197.png)
+
+The 3D Axes has a Z-Axis shown in the Figure Options:
+
+![img_198](./images/img_198.png)
+
+If the ```pyplot``` function ```getp``` is used on the 3d ```Axes3D```, the properties for the ```Z-Axis``` will display:
+
+![img_199](./images/img_199.png)
+
+The identifiers of the ```Axes3D``` instance can be viewed by inputting ```ax.``` followed by a tab ```↹```. The azimuthal angle ```azim``` and elevation ```elev``` angle are related to the view of the ```Axes3D``` from the users fixed reference plane:
+
+![img_200](./images/img_200.png)
+
+![img_201](./images/img_201.png)
+
+And supplementary 3D plots are available such as ```plot3D```:
+
+![img_202](./images/img_202.png)
+
+ The azimuthal angle is a horizontal angle measured clockwise from the users fixed reference plane. The altitude angle is the angle above the horizon. The default azimuthal angle ```azim``` and elevation ```elev``` angle are ```-60``` and ```30``` respectively:
+
+```
+ax3d.azim
+ax3d.elev
+```
+
+![img_203](./images/img_203.png)
+
+![img_204](./images/img_204.png)
+
+To explore the above views in more detail, some data can be created:
+
+```
+xrow = np.linspace(-2, 2, 100)[np.newaxis, :]
+ycol = np.linspace(-2, 2, 100)[:, np.newaxis]
+xmat, ymat = np.meshgrid(xrow, ycol)
+zdata_fun = lambda x, y: x * np.exp(-x**2 - y**2)
+zmat = zdata_fun(x=xrow, y=ycol)
+xarray = xmat.flatten()
+yarray = ymat.flatten()
+zarray = zmat.flatten()
+```
+
+![img_218](./images/img_218.png)
+
+The equally sized flattened 1d ```ndarrays``` can be supplied to ```Axes3D``` method ```plot3D``` and the ```Axes3D``` methods ```set_xlabel```, ```set_ylabel``` and ```set_zlabel``` can be used for clarity:
+
+```
+fig = plt.figure(num=42, figsize=None, dpi=None)
+ax3d = fig.add_subplot(111, projection='3d')
+ax3d.plot3D(xarray, yarray, zarray)
+ax3d.set_xlabel(r'$x$')
+ax3d.set_ylabel(r'$y$')
+ax3d.set_zlabel(r'$z$')
+```
+
+![img_219](./images/img_219.png)
+
+![img_220](./images/img_220.png)
+
+The view angles are:
+
+```
+ax3d.azim
+ax3d.elev
+```
+
+![img_221](./images/img_221.png)
+
+The ```Axes3D``` can be rotated by left clicking the ```Axes3D``` with the mouse, holding down the left click and moving the mouse:
+
+![img_222](./images/img_222.png)
+
+After moving the view angles are:
+
+```
+ax3d.azim
+ax3d.elev
+```
+
+![img_223](./images/img_223.png)
+
+![img_224](./images/img_224.png)
+
+After moving the view angles are:
+
+```
+ax3d.azim
+ax3d.elev
+```
+
+![img_225](./images/img_225.png)
+
+### Aspect
+
+The aspect ratio of a set of an ```Axes``` or ```Axes3D``` instance can be configured, this is particularly useful if wanting to plot a square or cube. The ```Axes``` or ```Axes3D``` class has a number of set methods, these can be accessed by inputting an instance, for example ```ax3d``` followed by a dot ```.``` and a tab ```↹```:
+
+![img_226](./images/img_226.png)
+
+The docstring for the ```Axes3D``` method ```set_aspect``` can be examined by typing in ```ax.set_aspect()```, followed by a shift ```⇧``` and tab ```↹```:
+
+![img_227](./images/img_227.png)
+
+For an ```Axes3D``` instance, there is the default ```'auto'``` which independently scales each axis. This can be changed to ```'equal'``` which will maintain an equal aspect ratio or one of the other strings ```'equalxy'```, ```'equalxy'``` and ```'equalxz'``` that leave one axes independent and maintain the aspect ratio of the other two.
+
+For simplicity an ```Axes``` instance will be examined:
+
+```
+fig = plt.figure(num=43, figsize=None, dpi=None)
+ax = fig.add_subplot(111)
+```
+
+
+
+![img_228](./images/img_228.png)
+
+![img_229](./images/img_229.png)
+
+img 186 onwards for ax label update
 
 
 
 
 
-3d
+
+
+```
+fig, ax = plt.subplots(3, 1, num=43, figsize=None, dpi=None)
+ax[0].set_aspect('auto')
+ax[0].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[0].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[0].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[0].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[0].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
+ax[1].set_aspect('equal')
+ax[1].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[1].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[1].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[1].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[1].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
+ax[2].set_aspect(4)
+ax[2].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[2].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[2].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[2].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+ax[2].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Another important
+
+
 aspect
 
 
