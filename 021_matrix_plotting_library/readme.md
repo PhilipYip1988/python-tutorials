@@ -1966,7 +1966,7 @@ The aspect ratio of a set of an ```Axes``` or ```Axes3D``` instance can be confi
 
 ![img_226](./images/img_226.png)
 
-The docstring for the ```Axes3D``` method ```set_aspect``` can be examined by typing in ```ax.set_aspect()```, followed by a shift ```⇧``` and tab ```↹```:
+The docstring for the ```Axes3D``` method ```set_aspect``` can be examined by typing in ```ax3d.set_aspect()```, followed by a shift ```⇧``` and tab ```↹```:
 
 ![img_227](./images/img_227.png)
 
@@ -1974,69 +1974,39 @@ For an ```Axes3D``` instance, there is the default ```'auto'``` which independen
 
 For simplicity an ```Axes``` instance will be examined:
 
-```
-fig = plt.figure(num=43, figsize=None, dpi=None)
-ax = fig.add_subplot(111)
-```
-
-
-
 ![img_228](./images/img_228.png)
+
+The docstring for the ```Axes``` method ```set_aspect``` can be examined by typing in ```ax.set_aspect()```, followed by a shift ```⇧``` and tab ```↹```:
 
 ![img_229](./images/img_229.png)
 
-img 219 axes3d onwards for ax label update
-
-
-
-
-
-
+For an ```Axes``` instance, there is the default ```'auto'``` which independently scales each axis. This can be changed to ```'equal'``` which will maintain an equal aspect ratio. Finally a floating point value can be used to select the length of the $y$ axis to the length of the $x$. 
 
 ```
-fig, ax = plt.subplots(3, 1, num=43, figsize=None, dpi=None)
-ax[0].set_aspect('auto')
-ax[0].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[0].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[0].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[0].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[0].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
-ax[1].set_aspect('equal')
-ax[1].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[1].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[1].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[1].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[1].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
-ax[2].set_aspect(4)
-ax[2].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[2].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[2].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[2].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
-ax[2].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
+fig, axarray = plt.subplots(3, 1, num=44, figsize=None, dpi=None)
+axarray[0].set_aspect('auto')
+axarray[0].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[0].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[0].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[0].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[0].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
+axarray[1].set_aspect('equal')
+axarray[1].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[1].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[1].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[1].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[1].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
+axarray[2].set_aspect(4)
+axarray[2].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[2].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[2].plot(2, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[2].plot(2, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
+axarray[2].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
 ```
 
+![img_230](./images/img_230.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Another important
-
-
-aspect
-
+![img_231](./images/img_231.png)
 
 
 
@@ -2046,7 +2016,7 @@ savefig
 show
 plt.show
 
-### Axes
+### Axes Method
 
 set_xlabel
 set_ylabel
