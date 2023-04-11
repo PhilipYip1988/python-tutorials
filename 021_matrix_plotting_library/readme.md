@@ -683,7 +683,7 @@ The plot is created with default settings:
 
 ![img_072](./images/img_072.png)
 
-The axes and title are unlabelled. The ```pyplot``` functions ```xlabel```, ```ylabel``` and ```title``` can be used to set these. Each label is a string. If LaTeX is used a raw string is usually preferred (prefixed by ```r```) as the ```\``` is used commonly within most LaTeX expressions. If a variable is to be inserted, this is normally done using a formatted string (prefixed by 'f'). String concatenation ```+``` is usually used to combine a relative string containing a LaTeX expression with a formatted string containing the value fo a variable. 
+The axes and title are unlabelled. The ```pyplot``` functions ```xlabel```, ```ylabel``` and ```title``` can be used to set these. Each label is a string. If LaTeX is used a raw string is usually preferred (prefixed by ```r```) as the ```\``` is used commonly within most LaTeX expressions. If a variable is to be inserted, this is normally done using a formatted string (prefixed by 'f'). String concatenation ```+``` is usually used to inserrt a variable within a LaTeX expression: 
 
 ```
 plt.figure(num=4, figsize=None, dpi=None)
@@ -1690,24 +1690,15 @@ The ```Figure``` method ```add_subplots``` has a keyword argument ```projection`
 
 A complex number can be represented as:
 
-$$r=x+jy$$
+$$z=x+jy$$
 
-Where $x$ is the real axis and $y$ is the imaginary axis. If this number is compared to the origin $x=0$ (angle 0 radians) and $y=0$ (radius 0). A straight line can be drawn.
+Where $x$ is the real axis and $y$ is the imaginary axis denoted by $j$. 
 
-
-
-This number can be expressed in the following format:
+If this number is compared to the origin $x=0$ (angle 0 radians) and $y=0$ (radius 0). A straight line can be drawn from the point to this origin which is known as the radius $r$. An angle $\varphi$ (in radians) can be calculated by measuring the value of this angle from the real axis. The complex number can therefore be expressed as:
 
 $$z=r\exp(j\varphi)$$
 
-
-
-
-Instead of an $x$-axis and $y$-axis, the polar plot has an angle $\varphi$ in radians and radius $r$.
-
-These relate to the $x$ and $y$ co-ordinates via. 
-
-
+And plotted on a polar plot at the angle $\varphi$ with the radius $r$. $\varphi$ is measured in radians and 8 angles corresponding to eighths of $\tau$ can be plotted as markers at a fixed $r$ of 1:
 
 ```
 fig = plt.figure(num=40, figsize=None, dpi=None)
@@ -1734,7 +1725,84 @@ ax.plot(7*math.tau/8, 1, color='slategray',
 
 ![img_187](./images/img_187.png)
 
+Although the unit of measurement of an angle is in radians. It is shown in degrees. If the properties of the ```ax``` are examined using the ```pyplot``` function ```getp```:
 
+```
+plt.getp(ax)
+```
+
+![img_188](./images/img_188.png)
+
+The xticks themselves are shown to be in radians, however the xticklabels are shown to be in degrees. The xticks can be changed using the ```pyplot``` function ```setp```:
+
+```
+[f'{num/math.tau}'+r'$\tau$' for num in ax.get_xticks()]
+```
+
+![img_189](./images/img_189.png)
+
+```
+plt.setp(ax, xticklabels=[f'{num/math.tau}'+r'$\tau$' 
+                          for 
+                          num 
+                          in 
+                          ax.get_xticks()])
+```
+
+![img_190](./images/img_190.png)
+
+There is a ```UserWarning: FixedFormatter should only be used together with FixedLocator``` however this warning can be ignored as the change takes place as expected:
+
+![img_191](./images/img_191.png)
+
+Instead of decimals, fractions can be used:
+
+```
+[r'$\frac{'+f'{num}'+r'}{8\tau}$' for num in range(8)]
+```
+
+![img_192](./images/img_192.png)
+
+Note the difference in the use of ```{}``` in the formatted string and relative string:
+
+```
+plt.setp(ax, xticklabels=[r'$\frac{'+f'{num}'+r'}{8\tau}$' 
+                          for 
+                          num 
+                          in 
+                          range(8)])
+```
+
+![img_193](./images/img_193.png)
+
+```
+plt.setp(ax, xticklabels[str(num)/math.tau+'$\tau$' for num in ax.xticks])
+```
+
+There is once again a ```UserWarning: FixedFormatter should only be used together with FixedLocator``` however this warning can be ignored as the change takes place as expected:
+
+![img_194](./images/img_194.png)
+
+This ```UserWarning``` can be removed by updating ```xticks``` to the original values:
+
+```
+plt.setp(ax, xticks=ax.get_xticks(),
+         xticklabels=[r'$\frac{'+f'{num}'+r'}{8}\tau$' 
+                     for 
+                     num 
+                     in 
+                     range(8)])
+```
+
+![img_195](./images/img_195.png)
+
+
+
+
+
+
+3d
+aspect
 
 
 
