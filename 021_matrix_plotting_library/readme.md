@@ -1983,7 +1983,7 @@ The docstring for the ```Axes``` method ```set_aspect``` can be examined by typi
 For an ```Axes``` instance, there is the default ```'auto'``` which independently scales each axis. This can be changed to ```'equal'``` which will maintain an equal aspect ratio. Finally a floating point value can be used to select the length of the $y$ axis to the length of the $x$. 
 
 ```
-fig, axarray = plt.subplots(3, 1, num=44, figsize=None, dpi=None)
+fig, axarray = plt.subplots(3, 1, num=43, figsize=None, dpi=None)
 axarray[0].set_aspect('auto')
 axarray[0].plot(1, 1, ls=None, marker='o', mfc='royalblue', mec='tomato')
 axarray[0].plot(1, 2, ls=None, marker='o', mfc='royalblue', mec='tomato')
