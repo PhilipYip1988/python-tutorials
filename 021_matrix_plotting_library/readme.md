@@ -2008,6 +2008,128 @@ axarray[2].plot(4, 4, ls=None, marker='o', mfc='fuchsia', mec='lawngreen')
 
 ![img_231](./images/img_231.png)
 
+### Shared Axes
+
+Sometimes it is desirable to share an axis between two axes. Sharing the xaxis between two axes means if the xlimits, xticks or xticklabels in one is altered, the other is also altered. The trigonometric functions can once again be examined:
+
+```
+import math
+x = np.linspace(start=-math.tau, stop=math.tau, num=100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+y3 = np.tan(x)
+```
+
+![img_232](./images/img_232.png)
+
+And a plot can be configured as shown:
+
+```
+fig = plt.figure(num=44, figsize=None, dpi=None)
+ax1 = fig.add_subplot(211)
+ax1.plot(x, y1, label=r'$y$=sin($x$)')
+ax1.plot(x, y2, label=r'$y$=cos($x$)')
+ax2 = fig.add_subplot(212, sharex=ax1)
+ax2.plot(x, y3, label=r'$y$=tan($x$)')
+```
+
+![img_233](./images/img_233.png)
+
+![img_234](./images/img_234.png)
+
+Since ```ax2``` and ```ax1``` share the xaxis, using the ```pyplot``` function ```getp``` to update the properties of ```ax2``` also updates ```ax1```. In this case the xticks, xticklabels and xlim for both ```ax2``` and ```ax1``` are updated however the ```xlabel``` is independent and only updated in ```ax2```:
+
+```
+plt.setp(ax2, 
+         xticks=np.linspace(start=-math.tau, 
+                            stop=math.tau, 
+                            num=5),
+         xticklabels=[r'$\frac{'+f'{num}'+r'}{2}\tau$' 
+                      for 
+                      num 
+                      in 
+                      range(-2, 3, 1)],
+         xlim=(-9, 9),
+         xlabel=r'$x$')
+```
+
+![img_235](./images/img_235.png)
+
+![img_236](./images/img_236.png)
+
+### Twin Axes
+
+Sometimes it is desirable to twin an axis between two axes allowing a plot overlay of two related datasets. For example the trigonmetric data above which has the same $x$ data can have a twinned xaxis and use the left $y$ axis for the sin and cos function and the right yaxis for the tan function:
+
+```
+fig = plt.figure(num=45, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
+ax1.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
+ax2 = ax1.twinx()
+ax2.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
+fig.legend(loc='upper right')
+```
+
+![img_237](./images/img_237.png)
+
+![img_238](./images/img_238.png)
+
+Notice the use of the ```Figure``` method ```legend``` instead of the ```Axes``` method ```legend```. This creates a combined ```legend``` containing the traces for all ```Axes``` in the ```Figure```.
+
+For a twinx axis, it is important to clearly label the axes and sometimes it may be desirable to have the legends for each ```Axes``` seperately shown beside the respective ```Axes```. For example:
+
+```
+fig = plt.figure(num=46, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1, label=r'$y$=sin($x$)', c='royalblue')
+ax1.plot(x, y2, label=r'$y$=cos($x$)', c='olivedrab')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y1$ or $y2$')
+ax1.legend(loc='upper left')
+ax2 = ax1.twinx()
+ax2.plot(x, y3, label=r'$y$=tan($x$)', c='tomato')
+ax2.set_ylabel(r'$y3$')
+ax2.legend(loc='upper right')
+fig.tight_layout()
+```
+
+![img_239](./images/img_239.png)
+
+![img_240](./images/img_240.png)
+
+If the ```pyplot``` function ```getp``` is used on each ```Axes``` ```yaxis``` attribute, details about the ```yaxis```:
+
+```
+plt.getp(ax1.yaxis)
+plt.getp(ax2.yaxis)
+```
+
+![img_241](./images/img_241.png)
+
+![img_242](./images/img_242.png)
+
+The ```label_location```, ```tick_params``` and ```ticks_position``` all show right for ```ax2```. These can be accessed and modified using their corresponding get and set methods:
+
+![img_243](./images/img_243.png)
+
+```
+ax2.yaxis.get_label_position()
+ax2.yaxis.get_tick_params()
+ax2.yaxis.get_ticks_position()
+```
+
+![img_244](./images/img_244.png)
+
+
+
+
+
+
+
+
+
+
 
 
 ### Figure Methods
