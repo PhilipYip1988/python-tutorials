@@ -2109,7 +2109,7 @@ plt.getp(ax2.yaxis)
 
 ![img_242](./images/img_242.png)
 
-The ```label_location```, ```tick_params``` and ```ticks_position``` all show right for ```ax2```. These can be accessed and modified using their corresponding get and set methods:
+The ```label_location```, ```tick_params``` and ```ticks_position``` all show right for ```ax2```. These can be accessed and modified using their corresponding get and set methods:```⇧```
 
 ![img_243](./images/img_243.png)
 
@@ -2121,38 +2121,155 @@ ax2.yaxis.get_ticks_position()
 
 ![img_244](./images/img_244.png)
 
+### Tick Parameters and Grid
+
+```ax2.yaxis.get_tick_params()``` means ```yaxis``` is an attribute of the ```Axes``` instance ```ax2``` and ```get_tick_params``` is in turn a method of ```yaxis```. If the docstring of the corresponding set method is examined by inputting ```ax2.yaxis.get_tick_params()``` and pressing shift ```⇧``` and tab ```↹```:
+
+![img_245](./images/img_245.png)
+
+The docstring refers to the more general ```tick_params``` method of the ```Axes``` instance ```ax2```. Its docstring may examined by inputting ```ax2.tick_params()``` and pressing shift ```⇧``` and tab ```↹```:
+
+![img_246](./images/img_246.png)
+
+This function has the three keyword parameters ```axis```, ```which``` and ```reset``` which are used to select the component the changes are applied to. 
+
+The ```axis``` can be used to select the axis ```'x'```, ```'y'``` or ```'both'```. When the ```yaxis``` attribute is selected, the ```axis``` parameter is redundant  following two are therefore equivalent:
+
+```
+ax2.yaxis.set_tick_params()
+ax2.tick_params(which='y')
+```
+
+The ```which``` parameter has the options ```'major'```, ```'minor'``` or ```'both'```.
+
+The ```reset``` parameter will reset the ticks to default before making any changes.
+
+The parameters that can be changed are then listed. These relate to the ticks, the ticklabel and the grid:
+
+![img_247](./images/img_247.png)
+
+![img_248](./images/img_248.png)
+
+The grid parameters are often modified using the seperate function ```grid```. Its docstring may examined by inputting ```ax2.grid()``` and pressing shift ```⇧``` and tab ```↹```:
+
+![img_249](./images/img_249.png)
+
+This has a ```visible``` parameter which is a boolean value and has the ```which``` and ```axis``` parameters which behave consistently to their counterparts in the ```tick_params``` method. Like the ```tick_params``` method, the two expressions are equivalent:
+
+```
+ax2.yaxis.grid()
+ax2.grid(which='y')
+```
+
+The additional keyword arguments ```color``` or ```c```, ```linewidth``` or ```lw``` and ```linestyle``` or ```ls``` for example behave consistently to their counterparts in the method ```plot```. Other keyword arguments relating to markers are also available.
+
+When the grid is made visible it looks like the following:
+
+```
+fig = plt.figure(num=47, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1, label=r'$y$=sin($x$)')
+ax1.plot(x, y2, label=r'$y$=cos($x$)')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.grid(visible=True)
+```
+
+![img_250](./images/img_250.png)
+
+![img_251](./images/img_251.png)
+
+The major gridlines can be customised and the minorticks can be enabled:
+
+```
+fig = plt.figure(num=48, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1, label=r'$y$=sin($x$)')
+ax1.plot(x, y2, label=r'$y$=cos($x$)')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.grid(visible=True, axis='both', which='major',
+         c='lightgrey', ls='-', lw=1.5)
+ax1.minorticks_on()
+```
+
+![img_252](./images/img_252.png)
+
+![img_253](./images/img_253.png)
+
+Now minor gridlines can be added:
+
+```
+fig = plt.figure(num=49, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1, label=r'$y$=sin($x$)')
+ax1.plot(x, y2, label=r'$y$=cos($x$)')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.grid(visible=True, axis='both', which='major',
+         c='lightgrey', ls='-', lw=1.5)
+ax1.minorticks_on()
+ax1.grid(visible=True, axis='both', which='minor',
+         c='lightgrey', ls=':', lw=1.0)
+```
+
+![img_254](./images/img_254.png)
+
+![img_255](./images/img_255.png)
+
+Both the gridlines and the tick parameters cn be customised:
+
+```
+fig = plt.figure(num=50, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y1, label=r'$y$=sin($x$)')
+ax1.plot(x, y2, label=r'$y$=cos($x$)')
+ax1.set_xlabel(r'$x$', c='blueviolet')
+ax1.set_ylabel(r'$y$', c='blueviolet')
+ax1.grid(visible=True, axis='both', which='major', 
+         c='lightgrey', ls='-', lw=1.5)
+ax1.tick_params(axis='both', which='major',
+                direction='in', length=5,
+                width=3,
+                color='tomato', labelcolor='dodgerblue')
+ax1.minorticks_on()
+ax1.grid(visible=True, axis='both', which='major',
+         c='lightgrey', ls=':', lw=1.0)
+ax1.tick_params(axis='both', which='minor',
+                direction='in', length=3,
+                width=1.5,
+                color='darkorange', labelcolor='aqua')
+```
+
+![img_256](./images/img_256.png)
+
+![img_257](./images/img_257.png)
+
+### Spines
+
+ax2.spines.top.
+
+
+spines are dict like
+
+spines['top'].
 
 
 
 
 
 
+### Figure Canvas Methods
+
+fig.savefig
 
 
-
-
-
-### Figure Methods
-
-savefig
-show
 plt.show
+fig.show
 
-### Axes Method
-
-set_xlabel
-set_ylabel
-grid
-grid_minor
-
-
-
-savefig
-
-show
-
-
-subplots_adjust
+fig.close
+plt.close
+'all'
 
 
 
@@ -2179,14 +2296,6 @@ subplots_adjust
 
 
 
-fig, axd = plt.subplot_mosaic(
-    "AB;CD",
-    per_subplot_kw={
-        "A": {"projection": "polar"},
-        ("C", "D"): {"xscale": "log"},
-        "B": {"projection": "3d"},
-    },
-)
 
 
 
@@ -2197,20 +2306,6 @@ bar_container = ax.bar(fruit_names, fruit_counts)
 ax.set(ylabel='pints sold', title='Gelato sales by flavor', ylim=(0, 8000))
 ax.bar_label(bar_container, fmt='{:,.0f}')
 ```
-
-
-
-
-ax.yaxis.set_tick_params(labelsize=30, labelcolor='red',
-                         direction='out', which='major')
-ax.yaxis.get_tick_params(which='major')
-
-
-
-    ax.set_aspect(aspects[i], adjustable='datalim')
-aspects = ('auto', 'equal', 'equalxy', 'equalyz', 'equalxz')
-
-
 
 fig.colorbar(im, cax=ax.inset_axes([0, 1.05, 1, 0.05]),
              location='top')
