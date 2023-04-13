@@ -2247,17 +2247,95 @@ ax1.tick_params(axis='both', which='minor',
 
 ### Spines
 
-ax2.spines.top.
+The ```Axes``` attribute ```spines``` can be accessed by from an ```Axes``` instance ```ax1```:
 
+![img_258](./images/img_258.png)
 
-spines are dict like
+Attributes can be accessed from this by typing in a further dot ```.``` and a tab ```↹```:
 
-spines['top'].
+![img_259](./images/img_259.png)
 
+This is a dictionary like collection and its keys can be viewed by use of the ```keys``` method and casting to a ```tuple```:
 
+```
+ax1.spines.keys()
+tuple(ax1.spines.keys())
+```
 
+![img_260](./images/img_260.png)
 
+A key can be used to index into the dictionary to get a spine value. Unfortunately then using a dot ```.``` and tab ```↹``` does not display the attributes:
 
+![img_261](./images/img_261.png)
+
+These can be viewed by assigning the value to a new object name and indexing from that:
+
+```
+rightspine = ax1.spines['right']
+```
+
+![img_262](./images/img_262.png)
+
+The spine has a number of get and set methods. The method ```set_visible``` can be used to hide the spine:
+
+```
+rightspine.set_visible(False)
+```
+
+This is equivalent to the expression (code completion won't show any of the docstrings for the methods):
+
+```
+ax1.spines['right'].set_visible(False)
+```
+
+![img_263](./images/img_263.png)
+
+![img_264](./images/img_264.png)
+
+The top spine can also be examined. It may be convenient to use the ```pyplot``` fucntion ```getp``` to view the properties:
+
+```
+topspine = ax1.spines['top']
+plt.getp(topspine)
+```
+
+![img_265](./images/img_265.png)
+
+The following settings can be applied:
+
+```
+plt.setp(topspine, ls=':', lw=5, 
+         ec='aquamarine', fc='mediumblue',
+         visible=True)
+```
+
+![img_266](./images/img_266.png)
+
+![img_267](./images/img_267.png)
+
+Note as the spine is mainly a line. The ```facecolor``` or ```fc``` and ```hatch``` are negligible.
+
+### Axes and Figure FaceColor
+
+The ```Axes``` and ```Figure``` facecolor can be accessed using their respective methods ```get_facecolor```:
+
+```
+ax1.get_facecolor()
+fig.get_facecolor()
+```
+
+![img_268](./images/img_268.png)
+
+The color is given as a ```tuple``` of normalised floating point numbers. This has the form ```(r, g, b, a)``` corresponding to the red, green, blue and alpha channels respectively. Instead of having 255 integer levels displayed in hexadecimal, the float tuple is normalised. A value of ```1``` is equivalent to the integer ```255``` or hexadecimal ```FF```. In other words ```255/255``` is ```1```. The color given is therefore ```'white'``` or ```'#FFFFFF'``` or ```'#FFFFFFFF'```. The analogous ```set_facecolor``` method can be used to set the color:
+
+```
+ax1.set_facecolor('lightcyan')
+fig.set_facecolor('paleturquoise')
+```
+
+![img_269](./images/img_269.png)
+
+![img_270](./images/img_270.png)
 
 ### Figure Canvas Methods
 
