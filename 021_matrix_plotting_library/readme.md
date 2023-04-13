@@ -2337,42 +2337,196 @@ fig.set_facecolor('paleturquoise')
 
 ![img_270](./images/img_270.png)
 
-### Figure Canvas Methods
+### Figure and Axes Methods
 
-fig.savefig
+Previously the ```pyplot``` function ```savefig``` was examined. The ```Figure``` class has an analogous method ```savefig``` which behaves similarly:
+
+```
+fig.savefig('trigonmetricplots2.png')
+```
+
+![img_271](./images/img_271.png)
+
+![img_272](./images/img_272.png)
+
+![img_273](./images/img_273.png)
+
+The ```pyplot``` function ```show``` was also examined. The ```Figure``` class has an analogous method ```show``` which behaves similarly. For IDEs such as VSCode which require a figure to be shown, normally the ```show``` method is used seperately for each figure and then the ```pyplot``` function ```show``` is used to show all the plots:
+
+```
+fig.show()
+plt.show()
+```
+
+![img_274](./images/img_274.png)
+
+The ```pyplot``` function ```clf``` and ```cla``` can be used to clear a ```Figure``` or ```Axes``` respectively:
+
+```
+plt.cla()
+```
+
+![img_275](./images/img_275.png)
+
+![img_276](./images/img_276.png)
+
+```
+plt.clf()
+```
+
+![img_277](./images/img_277.png)
+
+![img_278](./images/img_278.png)
+
+The ```Figure``` and the ```Axes``` classes also have their own ```clear``` methods which behave analogously:
+
+```
+fig.clear()
+ax.clear()
+```
+
+![img_279](./images/img_279.png)
+
+The ```pyplot``` function ```close``` can be used to close an open Figure by specification of the ```fig``` using its integer value:
+
+```
+plt.close(fig=50)
+```
+
+![img_280](./images/img_280.png)
+
+Assigning the string ```'all'``` will close all open figures:
+
+```
+plt.close(fig='all')
+```
+
+![img_281](./images/img_281.png)
+
+### Annotate
+
+Let's examine the simple $x$, $y$ dataset:
+
+```
+x = np.arange(start=0, stop=10, step=1)
+y = 2 * x
+```
+
+![img_282](./images/img_282.png)
+
+This straight line will be plotted out 6 times with markers using subplots:
+
+```
+fig = plt.figure(num=51, figsize=None, dpi=None)
+ax1 = fig.add_subplot(321)
+ax1.plot(x, y, label=r'$y$=2$x$', marker='o')
+ax2 = fig.add_subplot(323)
+ax2.plot(x, y, label=r'$y$=2$x$', marker='o')
+ax3 = fig.add_subplot(325)
+ax3.plot(x, y, label=r'$y$=2$x$', marker='o')
+ax4 = fig.add_subplot(322)
+ax4.plot(x, y, label=r'$y$=2$x$', marker='o')
+ax5 = fig.add_subplot(324)
+ax5.plot(x, y, label=r'$y$=2$x$', marker='o')
+ax6 = fig.add_subplot(326)
+ax6.plot(x, y, label=r'$y$=2$x$', marker='o')
+```
+
+![img_283](./images/img_283.png)
+
+![img_284](./images/img_284.png)
+
+The ```Axes``` method ```annotate``` can be used to annotate a data point. The ```text``` is the string that is to be be displayed on the figure. ```xy``` is a ```tuple``` which corresponds to the x and y co-ordinate to be annotated. ```xytext``` is another ```tuple``` which states the co-ordinate where the lower left corner of the text is to be placed. The ```xycoords``` is a string relating to the co-ordinate system and is usually set to the string ```'data'```. ```arrowprops``` is a dictionary which contains the key ```'arrowstyle'``` and other optional keys:
+
+![img_285](./images/img_285.png)
+
+```
+text1 = ax1.annotate(text=f'(2, 4)', xy=(2, 4), 
+                     xytext=(2, 10), xycoords='data',
+                     arrowprops={'arrowstyle': 'simple'})
+text2 = ax2.annotate(text=f'(2, 4)', xy=(2, 4), 
+                     xytext=(2, 10), xycoords='data',
+                     arrowprops={'arrowstyle': 'fancy'})
+text3 = ax3.annotate(text=f'(2, 4)', xy=(2, 4), 
+                     xytext=(2, 10), xycoords='data',
+                     arrowprops={'arrowstyle': 'wedge'})
+text4 = ax4.annotate(text=f'(2, 4)', xy=(2, 4), 
+                     xytext=(2, 10), xycoords='data',
+                     arrowprops={'arrowstyle': '->'})
+text5 = ax5.annotate(text=f'(2, 4)', xy=(2, 4), 
+                     xytext=(2, 10), xycoords='data',
+                     arrowprops={'arrowstyle': '<-'})
+text6 = ax6.annotate(text=f'(2, 4)', xy=(2, 4), 
+                     xytext=(2, 10), xycoords='data',
+                     arrowprops={'arrowstyle': '<->'})
+```
+
+![img_286](./images/img_286.png)
+
+![img_287](./images/img_287.png)
+
+Other keyword arguments can be added to the ```arrowprops``` dictionary for additional customisation. More details are given in matplotlibs documentation:
+
+[Annotations](https://matplotlib.org/stable/tutorials/text/annotations.html)
+
+## Line Plots
+
+The ```pyplot``` functions or ```Axes``` method ```plot``` was seen to produce a line plot. There are additional ```pyplot``` functions or ```Axes``` methods which also create line plots, these functions have some of the default values for the line such as the drawstyle of the options for the Axes such as the xlimit, ylimit, xscale and yscale precofigured.
+
+step
+
+```
+fig = plt.figure(num=52, figsize=None, dpi=None)
+ax1 = fig.add_subplot(211)
+ax1.plot(x, y, ds='steps-pre')
+ax2 = fig.add_subplot(212)
+ax2.step(x, y)
+```
 
 
-plt.show
-fig.show
+semilogx
 
-fig.close
-plt.close
-'all'
-
-
-
-
-
-
+```
+fig = plt.figure(num=53, figsize=None, dpi=None)
+ax1 = fig.add_subplot(211)
+ax1.plot(x, y)
+ax1.set_xscale('log')
+ax2 = fig.add_subplot(212)
+ax2.semilogx(x, y)
+```
 
 
+semilogy
+
+```
+fig = plt.figure(num=54, figsize=None, dpi=None)
+ax1 = fig.add_subplot(211)
+ax1.plot(x, y)
+ax1.set_yscale('log')
+ax2 = fig.add_subplot(212)
+ax2.semilogx(x, y)
+```
 
 
+loglog
+
+```
+fig = plt.figure(num=55, figsize=None, dpi=None)
+ax1 = fig.add_subplot(211)
+ax1.plot(x, y)
+ax1.set_xscale('log')
+ax1.set_yscale('log')
+ax2 = fig.add_subplot(212)
+ax2.loglog(x, y)
+```
 
 
+axhline
+axvline
+axline
 
-
-
-
-
-
-
-
-
-
-
-
-
+hlines
+vlines
 
 
 
