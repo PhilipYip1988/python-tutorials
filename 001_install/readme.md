@@ -106,7 +106,7 @@ mamba install -c  python=3.11 notebook cython seaborn scikit-learn sympy openpyx
 Once installed, launch Visual Studio Code using the start menu shortcut. Alternatively laubnch it from the Mambaforge Prompt (Windows)/Terminal (Linux) using:
 
 ```
-mamba activate vscode-cf
+mamba activate vscode
 code
 ```
 
