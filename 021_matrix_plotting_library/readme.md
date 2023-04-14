@@ -2473,7 +2473,7 @@ Other keyword arguments can be added to the ```arrowprops``` dictionary for addi
 
 The ```pyplot``` functions or ```Axes``` method ```plot``` was seen to produce a line plot. There are additional ```pyplot``` functions or ```Axes``` methods which also create line plots, these functions have some of the default values for the line such as the drawstyle of the options for the Axes such as the xlimit, ylimit, xscale and yscale precofigured.
 
-step
+The ```pyplot``` function or ```Axes``` method ```step``` creates a line plot with the drawstyle preconfigured to ````'steps-pre'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=52, figsize=None, dpi=None)
@@ -2483,8 +2483,11 @@ ax2 = fig.add_subplot(212)
 ax2.step(x, y)
 ```
 
+![img_288](./images/img_288.png)
 
-semilogx
+![img_289](./images/img_289.png)
+
+The ```pyplot``` function or ```Axes``` method ```semilogx``` creates a line plot with the xscale preconfigured to ````'log'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=53, figsize=None, dpi=None)
@@ -2495,8 +2498,11 @@ ax2 = fig.add_subplot(212)
 ax2.semilogx(x, y)
 ```
 
+![img_290](./images/img_290.png)
 
-semilogy
+![img_291](./images/img_291.png)
+
+The ```pyplot``` function or ```Axes``` method ```semilogy``` creates a line plot with the yscale preconfigured to ````'log'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=54, figsize=None, dpi=None)
@@ -2504,11 +2510,14 @@ ax1 = fig.add_subplot(211)
 ax1.plot(x, y)
 ax1.set_yscale('log')
 ax2 = fig.add_subplot(212)
-ax2.semilogx(x, y)
+ax2.semilogy(x, y)
 ```
 
+![img_292](./images/img_292.png)
 
-loglog
+![img_293](./images/img_293.png)
+
+The ```pyplot``` function or ```Axes``` method ```loglog``` creates a line plot with the xscale and yscale preconfigured to ````'log'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=55, figsize=None, dpi=None)
@@ -2519,6 +2528,34 @@ ax1.set_yscale('log')
 ax2 = fig.add_subplot(212)
 ax2.loglog(x, y)
 ```
+
+![img_294](./images/img_294.png)
+
+![img_295](./images/img_295.png)
+
+The ```pyplot``` function and ```Axes``` method ```axhline``` can be used to draw a horizontal line:
+
+![img_296](./images/img_296.png)
+
+It has the input argument ```y``` and the optional input arguments ```xmin``` and ```xmin```. Note that ```y``` is in data co-ordinates whereas ```xmin``` and ```xmax``` use normalised co-ordinates corresponding to the normalised dimensions of the xaxis.
+
+```
+fig = plt.figure(num=56, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y, c='royalblue', marker='o')
+ax1.axhline(y=2, xmin=0, xmax=1, c='tomato')
+ax1.axhline(y=4, xmin=0.25, xmax=0.75, c='darkorange')
+```
+
+![img_297](./images/img_297.png)
+
+![img_298](./images/img_298.png)
+
+
+
+
+
+
 
 
 axhline
