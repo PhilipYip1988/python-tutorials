@@ -2551,19 +2551,335 @@ ax1.axhline(y=4, xmin=0.25, xmax=0.75, c='darkorange')
 
 ![img_298](./images/img_298.png)
 
+The ```pyplot``` function and ```Axes``` method ```axvline``` can be used to draw a vertical line. It has the input argument ```x``` and the optional input arguments ```ymin``` and ```ymin```. Note that ```x``` is in data co-ordinates whereas ```ymin``` and ```ymax``` use normalised co-ordinates corresponding to the normalised dimensions of the xaxis.
 
+```
+fig = plt.figure(num=57, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y, c='royalblue', marker='o')
+ax1.axvline(x=2, ymin=0, ymax=1, c='tomato')
+ax1.axvline(x=4, ymin=0.25, ymax=0.75, c='darkorange')
+```
 
+![img_299](./images/img_299.png)
 
+![img_300](./images/img_300.png)
 
+The ```pyplot``` function and ```Axes``` method ```axline``` can be used to draw an infinite line to the edges of the ```Axes```. This has the input arguments ```xy1``` which is a ```tuple``` of ```(x, y)``` data co-ordinates. A floating point ```slope``` can be calculated so an infinite line of that slope that intersects that point is drawn. Alternatively a second co-ordinate ```xy2``` can be used and an infinite line that intersects both points will be drawn.
 
+![img_301](./images/img_301.png)
 
+```
+fig = plt.figure(num=58, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y, c='royalblue', marker='o')
 
-axhline
+ax1.plot(0.5, 2.0, ls=None, c='aqua', marker='o')
+ax1.axline(xy1=(0.5, 2.0), slope=2, c='tomato')
+
+ax1.plot(1.5, 2.0, ls=None, c='lime', marker='o')
+ax1.plot(4.5, 6.0, ls=None, c='lime', marker='o')
+ax1.axline(xy1=(1.5, 2.0), xy2=(4.5, 6.0), c='hotpink')
+```
+
+![img_302](./images/img_302.png)
+
+![img_303](./images/img_303.png)
+
+The ```pyplot``` function and ```Axes``` method ```hlines``` or ```vlines``` can be used to draw multiple horizontal or vertical lines respectively:
+
+![img_304](./images/img_304.png)
+
+```hlines``` has the input argument ```y``` and the optional input arguments ```xmin``` and ```xmin```. Note that ```y``` is a ```tuple``` of y values in data co-ordinates. ```xmin``` and ```xmax``` also use data co-ordinates. ```vlines``` instead has ```x```, ```ymin``` and ```ymax```. Because there are multiple lines the keyword input arguments are slightly different, ```c``` cannot be used as an abbreviation for ```color``` as there is a singular version that specifies the color for all lines using a string and a plural version that individually specifies a color for each collection using a list of strings equal in length to the number of lines:
+
+```
+fig = plt.figure(num=59, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.plot(x, y, c='royalblue', marker='o')
+ax1.hlines(y=(2, 4, 6), xmin=2, xmax=8, 
+           colors=('orange', 'cyan', 'lime'))
+ax1.vlines(x=(2, 4, 6), ymin=3, ymax=11, 
+           color='magenta')
+```
+
+![img_305](./images/img_305.png)
+
+![img_306](./images/img_306.png)
+
+If the following are assigned to variables:
+
+```
+fig = plt.figure(num=60, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+lines = ax1.plot(x, y, c='royalblue', marker='o')
+axvline = ax1.axvline(x=4, ymin=0.25, ymax=0.75, 
+                      c='darkorange')
+hlines = ax1.hlines(y=(2, 4, 6), xmin=2, xmax=8, 
+                    colors=('orange', 'cyan', 'lime'))
+```
+
+![img_307](./images/img_307.png)
+
+![img_308](./images/img_308.png)
+
+Notice the difference:
+
+```
+lines
 axvline
-axline
-
 hlines
-vlines
+```
+
+![img_309](./images/img_309.png)
+
+```lines``` is a list of individual ```Line2D```, each ```Line2D``` is designed to be easily accessible from the list and can be altered independently. ```axvline``` is a ```Line2D``` and can be altered independently. ```hlines``` is a ```LineCollection``` and cannot be indexed independently. Instead the entire ```LineCollection``` has plural and sometimes singular style input arguments that can be altered. This can be seen by use of the ```pyplot``` function ```getp```:
+
+```
+plt.getp(hlines)
+```
+
+![img_310](./images/img_310.png)
+
+## Scatter Plots
+
+The ```plot``` function is by default configured for a lineplot. It can be used for a scatter plot by overriding the default ```ls``` from ```'-'``` to ```None``` and the ```marker``` default ```None``` to one of the markers previously discussed. 
+
+There is also the function ```scatter``` which in contrast will create a scatter plot by default without a line. ```s``` is the size of the marker, it has a default value of ```30``` (although ```None``` is shown). The ```marker``` is the marker type and it has a default value of ```'c'``` corresponding to a circle (although ```None``` is shown). ```c``` corresponds to the colors of the markers and should be assigned to a ```tuple``` of color strings, equal in length to the number of data points. When a single color is used, the keyword ```color``` should instead be used which should be assigned to a single color string. Both ```s``` and ```c``` can be arrays that are of equal length to the data points:
+
+![img_311](./images/img_311.png)
+
+```
+fig = plt.figure(num=61, figsize=None, dpi=None)
+ax1 = fig.add_subplot(311)
+points1 = ax1.scatter(x, y)
+ax2 = fig.add_subplot(312)
+points2 = ax2.scatter(x, y, 
+                      s=30, color='tab:blue', 
+                      marker='o')
+ax3 = fig.add_subplot(313)
+points3 = ax3.scatter(x, y, 
+                      s=10*y, 
+                      c=('tab:blue', 'tab:orange', 
+                         'tab:green', 'tab:red', 
+                         'tab:purple', 'tab:brown', 
+                         'tab:pink', 'tab:gray',
+                         'tab:olive','tab:cyan'),
+                      marker='o')
+```
+
+![img_312](./images/img_312.png)
+
+![img_313](./images/img_313.png)
+
+The keyword ```linewidths``` can be assigned to a float scalar or an array of floats equal in length to the number of datapoints and changes the size of the line around each marker. There is an associated keyword ```ec``` which behaves similarly to ```c``` and is used for the edgecolor. The alpha keyword can be assigned to a normalised float or an array of normalised floats equal in length to the number of datapoints and changes the size of the line around each marker. 
+
+```
+fig = plt.figure(num=62, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+points1 = ax1.scatter(x, y, 
+                      s=100, 
+                      c='mediumpurple',
+                      linewidths=(0.2, 0.4, 0.6, 0.8, 1.0, 
+                                  1.2, 1.4, 1.6, 1.8, 2.0), 
+                      ec='deepskyblue',
+                      alpha=(0.1, 0.2, 0.3, 0.4, 0.5, 
+                             0.6, 0.7, 0.8, 0.9, 1.0))
+```
+
+![img_314](./images/img_314.png)
+
+![img_315](./images/img_315.png)
+
+## bar, barh and pie
+
+
+
+```
+fig = plt.figure(num=63, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+bars = ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+               height=(41.0, 10.51, 10.20, 5.80))
+ax1.set_xlabel('Country')
+ax1.set_ylabel('Population (millions)')
+ax1.set_title('Visegrad 4')
+ax1.grid(visible=True, which='major')
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+```
+
+```
+fig = plt.figure(num=64, figsize=(10, 5), dpi=None)
+ax1 = fig.add_subplot(111)
+bars = ax1.bar(x=('Poland', 'Ukraine', 'Czechia', 'Hungary', 
+                  'Austria', 'Slovakia', 'Lithuania', 'Slovenia',
+                  'Latvia', 'Estonia'), 
+               height=(36.7, 41.0, 10.51, 10.20, 
+                       8.95, 5.80, 2.72, 2.12, 
+                       1.83, 1.32),
+               hatch=('*', '+', 'x', 'o', 
+                      '.', 'O', '-', '|', 
+                      '/', '\\'),
+               color=('tomato', 'limegreen', 'darkorange', 'darkviolet',
+                      'dodgerblue', 'violet', 'purple', 'aqua',
+                      'olive', 'lightcoral'),
+               lw=2, ec='black')
+ax1.set_xlabel('Country')
+ax1.set_ylabel('Population (millions)')
+ax1.set_title('Countries')
+ax1.grid(visible=True, which='major')
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+ax1.xaxis.set_tick_params(rotation=45)
+fig.tight_layout()
+```
+
+
+
+
+
+```
+fig = plt.figure(num=65, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+bars2023 = ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+                   height=(41.0, 10.51, 10.20, 5.80))
+bars2050 = ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+                   height=(-2.85, 0.03, -1.40, -0.6),
+                   bottom=(41.0, 10.51, 10.20, 5.80),
+                   color='tomato')
+ax1.set_xlabel('Country')
+ax1.set_ylabel('Population (millions)')
+ax1.set_title('Visegrad 4')
+ax1.grid(visible=True, which='major')
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+```
+
+
+
+```
+fig = plt.figure(num=66, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.barh(y=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+            width=(41.0, 10.51, 10.20, 5.80),
+            hatch=('*', 'x', 'o', '.'),
+            color=('tomato', 'darkorange', 'darkviolet', 'dodgerblue'))
+ax1.set_xlabel('Population (millions)')
+ax1.set_ylabel('Country')
+ax1.set_title('Visegrad 4')
+ax1.grid(visible=True, which='major')
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+fig.tight_layout()
+```
+
+
+
+
+
+```
+fig = plt.figure(num=67, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.pie(x=(41.0, 10.51, 10.20, 5.80),
+        explode=None,
+        labels=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+        hatch=('*', 'x', 'o', '.'),
+        colors=('tomato', 'darkorange', 'darkviolet', 'dodgerblue'),
+        wedgeprops={'lw': 2, 'ec': 'black'})
+```
+
+
+```
+fig = plt.figure(num=68, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.pie(x=(41.0, 10.51, 10.20, 5.80),
+        explode=(0, 0.1, 0, 0.3),
+        labels=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+        hatch=('*', 'x', 'o', '.'),
+        colors=('tomato', 'darkorange', 'darkviolet', 'dodgerblue'),
+        wedgeprops={'lw': 2, 'ec': 'black'})
+```
+
+
+```
+fig = plt.figure(num=69, figsize=(10, 5), dpi=None)
+ax1 = fig.add_subplot(311)
+ax1.bar(x=(1, 2, 3, 4), 
+        height=(41.0, 10.51, 10.20, 5.80),
+        width=0.3, color='royalblue')
+ax1.bar(x=(1.4, 2.4, 3.4, 4.4), 
+        height=(38.15, 10.54, 8.8, 5.1),
+        width=0.3, color='tomato')
+ax2 = fig.add_subplot(312)
+ax2.bar(x=(1, 2, 3, 4), 
+        height=(41.0, 10.51, 10.20, 5.80),
+        width=0.3, color='royalblue')
+ax2.bar(x=(1.4, 2.4, 3.4, 4.4), 
+        height=(38.15, 10.54, 8.8, 5.1),
+        width=0.3, color='tomato')
+ax2.xaxis.set_ticks((1.2, 2.2, 3.2, 4.2))
+ax3 = fig.add_subplot(313)
+ax3.bar(x=(1, 2, 3, 4), 
+        height=(41.0, 10.51, 10.20, 5.80),
+        width=0.3, color='royalblue')
+ax3.bar(x=(1.4, 2.4, 3.4, 4.4), 
+        height=(38.15, 10.54, 8.8, 5.1),
+        width=0.3,
+        color='tomato')
+ax3.legend(labels=('2023', '2050'))
+ax3.xaxis.set_ticks((1.2, 2.2, 3.2, 4.2))
+ax3.xaxis.set_ticklabels(('Poland', 'Czechia', 'Hungary', 'Slovakia'))
+```
+
+
+
+
+
+
+
+bar_label
+
+## hist
+
+
+
+
+
+## BoxPlot and ViolinPlot
+
+
+
+## MatShow and PColor
+
+
+
+## Contour and Contourf
+
+
+
+## Plot3D
+
+
+
+## Wireframe and Surface
+
+
+
+
+
+## Contour and Countourf
+
+
+
+
+## ImShow
+
+
+
+
+
+
+
+
 
 
 
