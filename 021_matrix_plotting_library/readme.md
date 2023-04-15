@@ -2930,38 +2930,382 @@ ax1.pie(x=(41.0, 10.51, 10.20, 5.80),
 
 ## Histogram Plots
 
-The histogram plot
+The ```pyplot``` function or ```Axes``` method ```hist``` can be used to create a histogram plot. Under the hood, the histogram plot is essentially a call to a bar graph so shares many of the keyword input arguments used to customise a bar graph. The input argument ```x``` is the data to be histogrammed. ```bins``` is an integer number of bins to be created. ```range``` is a ```tuple``` of start and stop values. The ```range``` keyword input argument should not be confused with the ```range``` class; however both behave similarly inclusive of the start bound and exclusive of the stop bound. The ```range``` class uses a step whereas the ```range``` input argument uses ```bins``` alongside the ```start``` and ```stop``` values provided to effectively calculate the step. 
 
 ![img_343](./images/img_343.png)
 
+Supposing a dataset has the following numbers:
 
+```
+nums = (1.0, 1.2, 1.3, 2.3, 2.3, 2.4, 3.5, 3.4, 4.1, 4.2, 
+        4.7, 5.1, 5.1, 5.5, 5.7, 5.7, 5.8, 5.9, 5.9, 5.9,
+        6.1, 6.1, 6.1, 6.1, 6.2, 7.3, 7.4, 7.4, 7.4, 7.4,
+        8.8, 8.8, 8.8, 8.8, 8.8, 9.2, 9.2, 9.2, 9.2, 9.9)
+```
 
+![img_344](./images/img_344.png)
 
+The histogram plot can be created using ```10``` bins with a range between ```0``` and ```10```, in other words ```10``` bins starting from ```0``` and going up to but excluding ```10``` in steps of ```2```:
+
+```
+fig = plt.figure(num=71, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.hist(x=nums, bins=10, range=(0, 10),
+         color='mediumseagreen',
+         hatch='O',
+         lw=2, ls='-', ec='k')
+ax1.grid(visible=True)
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+ax1.set_xlabel('bins')
+ax1.set_ylabel('frequency')
+```
+
+![img_345](./images/img_345.png)
+
+![img_346](./images/img_346.png)
+
+Since it is a small dataset, the number of datapoints lying in each bin can be physically counted by examining ```nums```.
+
+The number of bins can be decreased to 5, which effectively combines every 2 bars:
+
+```
+fig = plt.figure(num=72, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.hist(x=nums, bins=5, range=(0, 10),
+         color='mediumseagreen',
+         hatch='O',
+         lw=2, ls='-', ec='k')
+ax1.grid(visible=True)
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+ax1.set_xlabel('bins')
+ax1.set_ylabel('frequency')
+```
+
+![img_347](./images/img_347.png)
+
+![img_348](./images/img_348.png)
 
 ## Box and Violin Plots
 
+A distribution for example the ```tuple``` of floats ```nums``` can be categorised using quantiles, that is seperation of data into 4 parts. The central divider is the median value. The lower quantile and the upper quantile form a box around the median value and this box contains 50 % of datapoints. There is a whisker from the box to the lower and upper bounds, exclusive of outliers. The statistics module can be imported and the quantiles of ```nums``` examined:
 
+```
+import statistics as st
+st.median(nums)
+st.quantiles(data=nums, n=4, method='inclusive')
+```
+
+![img_349](./images/img_349.png)
+
+The ```pyplot``` function or ```Axes``` method ```boxplot``` can be used to create a quantile plot which is otherwise known as a box plot:
+
+![img_350](./images/img_350.png)
+
+A box plot of ```nums``` can be created using:
+
+```
+fig = plt.figure(num=73, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.boxplot(x=nums)
+ax1.grid(visible=True)
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+ax1.set_xlabel('bins')
+ax1.set_ylabel('frequency')
+```
+
+![img_351](./images/img_351.png)
+
+![img_352](./images/img_352.png)
+
+A violin plot is similar but instead of a box, gives a kernel density estimation which gives more details about the shape of the distribution:
+
+```
+fig = plt.figure(num=74, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.violinplot(dataset=nums)
+ax1.grid(visible=True)
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+ax1.set_xlabel('bins')
+ax1.set_ylabel('frequency')
+```
+
+![img_353](./images/img_353.png)
+
+![img_354](./images/img_354.png)
 
 ## MatShow and PColor
 
+A matrix can be created using:
+
+```
+xrow = np.linspace(-2, 2, 10)[np.newaxis, :]
+ycol = np.linspace(-2, 2, 10)[:, np.newaxis]
+xmat, ymat = np.meshgrid(xrow, ycol)
+zdata_fun = lambda x, y: x * np.exp(-x**2 - y**2)
+zmat = zdata_fun(x=xrow, y=ycol)
+xarray = xmat.flatten()
+yarray = ymat.flatten()
+zarray = zmat.flatten()
+```
+
+```
+fig = plt.figure(num=75, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.matshow(zmat)
+ax1.set_xlabel('column')
+ax1.xaxis.set_label_position('top') 
+ax1.set_ylabel('row')
+```
+
+
+
+
+
+
+
+
+```
+fig = plt.figure(num=76, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.pcolor(zmat)
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+```
+
+```
+fig = plt.figure(num=77, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.pcolor(xrow, ycol, zmat)
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+```
+
+```
+pcolor.cmap
+```
+
+```
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
+                        location='top')
+```
+
+
+
+```
+fig = plt.figure(num=78, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+pcolor = ax1.pcolor(xrow, ycol, zmat,
+                    cmap='viridis',
+                    vmin=0, vmax=0.4)
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1)
+```
+
+
+
+```
+fig = plt.figure(num=79, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+pcolor = ax1.pcolor(xrow, ycol, zmat,
+                    cmap='viridis',
+                    vmin=0, vmax=1.0)
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1)
+```
+
+
+```
+fig = plt.figure(num=80, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+pcolor = ax1.pcolor(xrow, ycol, zmat,
+                    cmap='viridis',
+                    vmin=-0.4, vmax=0.4)
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
+                        orientation='horizontal')
+```
+
+
+```
+plt.getp(pcolor)
+```
+
+
+```
+plt.viridis
+```
+
+```
+plt.cm.viridis
+```
+
+```
+plt.setp(pcolor, cmap=plt.cm.jet)
+```
+
+
+```
+plt.setp(pcolor, cmap=plt.cm.cividis)
+```
+
+
+```
+plt.setp(pcolor, cmap=plt.cm.hot)
+```
+
+
+```
+plt.setp(pcolor, cmap=plt.cm.magma)
+```
+
+
+```
+plt.setp(pcolor, cmap=plt.cm.inferno)
+```
+
+A matrix can be created using:
+
+```
+xrow = np.linspace(-2, 2, 1000)[np.newaxis, :]
+ycol = np.linspace(-2, 2, 1000)[:, np.newaxis]
+xmat, ymat = np.meshgrid(xrow, ycol)
+zdata_fun = lambda x, y: x * np.exp(-x**2 - y**2)
+zmat = zdata_fun(x=xrow, y=ycol)
+xarray = xmat.flatten()
+yarray = ymat.flatten()
+zarray = zmat.flatten()
+```
+
+
+```
+fig = plt.figure(num=81, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+pcolor = ax1.pcolormesh(xrow, ycol, zmat,
+                        cmap='jet',
+                        vmin=-0.4, vmax=0.4)
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
+                        orientation='horizontal')
+```
 
 
 ## Contour and Contourf
 
+```
+fig = plt.figure(num=82, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+contour = ax1.contour(xmat, ymat, zmat,
+                      levels=(-0.4, -0.3, -0.2, -0.1, 0.0, 
+                              0.1, 0.2, 0.3, 0.4),
+                      cmap='jet')
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
+                        orientation='horizontal')
+```
 
+
+```
+fig = plt.figure(num=83, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+contour = ax1.contourf(xmat, ymat, zmat,
+                       levels=(-0.4, -0.3, -0.2, -0.1, 0.0, 
+                              0.1, 0.2, 0.3, 0.4),
+                       cmap='jet')
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
+                        orientation='horizontal')
+```
+
+
+```
+fig = plt.figure(num=84, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+contour = ax1.contour(xmat, ymat, zmat,
+                      levels=np.linspace(start=-0.4,
+                                        stop=0.4,
+                                        num=25),
+                      cmap='jet')
+ax1.set_xlabel('column')
+ax1.set_ylabel('row')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
+                        orientation='horizontal')
+```
 
 ## Plot3D
 
-
+```
+fig = plt.figure(num=85, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot3D(xarray, yarray, zarray)
+```
 
 ## Wireframe and Surface
 
+```
+fig = plt.figure(num=86, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot_surface(xrow, ycol, zmat)
+```
 
 
+```
+fig = plt.figure(num=87, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot_wireframe(xrow, ycol, zmat)
+```
 
+```
+fig = plt.figure(num=88, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot_wireframe(xrow, ycol, zmat,
+                            color='tomato')
+```
+
+
+```
+fig = plt.figure(num=88, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot_surface(xrow, ycol, zmat, color='tomato')
+```
+
+
+```
+fig = plt.figure(num=88, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot_surface(xrow, ycol, zmat, cmap='jet')
+```
 
 ## Contour and Countourf
 
+```
+fig = plt.figure(num=90, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.contour3D(xmat, ymat, zmat,
+                       levels=np.linspace(start=-0.4,
+                                          stop=0.4,
+                                          num=25),
+                       cmap='jet')
+```
+
+```
+fig = plt.figure(num=91, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.contourf3D(xmat, ymat, zmat,
+                        levels=np.linspace(start=-0.4,
+                                           stop=0.4,
+                                           num=25),
+                        cmap='jet')
+```
 
 
 
