@@ -2487,7 +2487,7 @@ ax2.step(x, y)
 
 ![img_289](./images/img_289.png)
 
-The ```pyplot``` function or ```Axes``` method ```semilogx``` creates a line plot with the xscale preconfigured to ````'log'```. This can be seen by comparing:
+The ```pyplot``` function or ```Axes``` method ```semilogx``` creates a line plot with the xscale preconfigured to ```'log'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=53, figsize=None, dpi=None)
