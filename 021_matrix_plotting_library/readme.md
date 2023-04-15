@@ -2690,39 +2690,49 @@ points1 = ax1.scatter(x, y,
 
 ![img_315](./images/img_315.png)
 
-## bar, barh and pie
+## Bar and Pie Plots
 
+The ```pyplot``` function or ```Axes``` method ```bar``` can be used to create a bar graph. The bar plot requires the input arguments ```x``` which is typically a ```tuple``` of strings corresponding to the names of each bar. The input argument ```heights``` is also a ```tuple``` of equal length, containing the heights for each bar. There is also the input argument ```width``` which is set to a normalised floating point number. It is set to a default width of ```0.8``` which leaves some spacing between the bars, raising this to ```1.0``` will make all the bars touch:
 
+![img_316](./images/img_316.png)
+
+In this example ```x``` is a ```tuple``` of strings corresponding to the names fo four countries and ```height``` is a ```tuple``` of numeric values corresponding to the population of each country:
 
 ```
 fig = plt.figure(num=63, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
-bars = ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
-               height=(41.0, 10.51, 10.20, 5.80))
+ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+        height=(41.0, 10.51, 10.20, 5.80))
 ax1.set_xlabel('Country')
 ax1.set_ylabel('Population (millions)')
-ax1.set_title('Visegrad 4')
+ax1.set_title('Countries')
 ax1.grid(visible=True, which='major')
 ax1.minorticks_on()
 ax1.grid(visible=True, which='minor', ls=':')
 ```
 
+![img_317](./images/img_317.png)
+
+![img_318](./images/img_318.png)
+
+More countries will be added, so that there are 10 bars. Each bar can be customised with a ```color``` and a ```hatch```. Note only the singular keyword ```color``` is accepted, even though it is used in a plural context in this case. The most common use case for a bar graph is to use a singular value for all the bars. The plural ```colors``` or single letter ```c``` are not accepted. There are 10 main hatch styles. The hatch style is an escape string ```'\\'```, the first ```\``` indicates insertion of an escape character and the second ```\``` is the escape character to be inserted:
+
 ```
 fig = plt.figure(num=64, figsize=(10, 5), dpi=None)
 ax1 = fig.add_subplot(111)
-bars = ax1.bar(x=('Poland', 'Ukraine', 'Czechia', 'Hungary', 
-                  'Austria', 'Slovakia', 'Lithuania', 'Slovenia',
-                  'Latvia', 'Estonia'), 
-               height=(36.7, 41.0, 10.51, 10.20, 
-                       8.95, 5.80, 2.72, 2.12, 
-                       1.83, 1.32),
-               hatch=('*', '+', 'x', 'o', 
-                      '.', 'O', '-', '|', 
-                      '/', '\\'),
-               color=('tomato', 'limegreen', 'darkorange', 'darkviolet',
-                      'dodgerblue', 'violet', 'purple', 'aqua',
-                      'olive', 'lightcoral'),
-               lw=2, ec='black')
+ax1.bar(x=('Poland', 'Ukraine', 'Czechia', 'Hungary', 
+           'Austria', 'Slovakia', 'Lithuania', 'Slovenia',
+           'Latvia', 'Estonia'), 
+            height=(36.7, 41.0, 10.51, 10.20, 
+                    8.95, 5.80, 2.72, 2.12, 
+                    1.83, 1.32),
+            hatch=('*', '+', 'x', 'o', 
+                   '.', 'O', '-', '|', 
+                   '/', '\\'),
+            color=('tomato', 'limegreen', 'darkorange', 'darkviolet',
+                   'dodgerblue', 'violet', 'purple', 'aqua',
+                   'olive', 'lightcoral'),
+                   lw=2, ec='black')
 ax1.set_xlabel('Country')
 ax1.set_ylabel('Population (millions)')
 ax1.set_title('Countries')
@@ -2733,118 +2743,202 @@ ax1.xaxis.set_tick_params(rotation=45)
 fig.tight_layout()
 ```
 
+![img_319](./images/img_319.png)
 
+![img_320](./images/img_320.png)
 
-
+A stacked bar graph can be created by use of the ```bottom``` keyword and assigning it to the height of all the original bars. In this case, the projected population increase (positive) or decrease (negative) f0r 2050 can be plotted. For clairty the original bars won't be shown and the bottom ylimit will be set to ```0```:
 
 ```
 fig = plt.figure(num=65, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
-bars2023 = ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
-                   height=(41.0, 10.51, 10.20, 5.80))
-bars2050 = ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
-                   height=(-2.85, 0.03, -1.40, -0.6),
-                   bottom=(41.0, 10.51, 10.20, 5.80),
-                   color='tomato')
+#ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+#        height=(41.0, 10.51, 10.20, 5.80))
+ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+        height=(-2.85, 0.03, -1.40, -0.6),
+        bottom=(41.0, 10.51, 10.20, 5.80),
+        color='tomato')
 ax1.set_xlabel('Country')
+ax1.set_ylim(bottom=0)
 ax1.set_ylabel('Population (millions)')
-ax1.set_title('Visegrad 4')
+ax1.set_title('Countries')
 ax1.grid(visible=True, which='major')
 ax1.minorticks_on()
 ax1.grid(visible=True, which='minor', ls=':')
 ```
 
+![img_321](./images/img_321.png)
 
+![img_322](./images/img_322.png)
+
+The previous bars can be shown:
 
 ```
 fig = plt.figure(num=66, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
+ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+        height=(41.0, 10.51, 10.20, 5.80))
+ax1.bar(x=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
+        height=(-2.85, 0.03, -1.40, -0.6),
+        bottom=(41.0, 10.51, 10.20, 5.80),
+        color='tomato')
+ax1.set_xlabel('Country')
+ax1.set_ylim(bottom=0)
+ax1.set_ylabel('Population (millions)')
+ax1.set_title('Countries')
+ax1.grid(visible=True, which='major')
+ax1.minorticks_on()
+ax1.grid(visible=True, which='minor', ls=':')
+ax1.legend(labels=('2023', '2050'))
+```
+
+![img_323](./images/img_323.png)
+
+![img_324](./images/img_324.png)
+
+Because some of the data is negative, this representation can be misinterpretted i.e. the visualisation makes the 2023 population look lower and appears to represent population growth from 2023-2050 which is incorrect. In such a case, side by side bars will be more appropriate. When ```x``` is assigned to a string of labels, the xticks are automatically assumed to be integer values. This can be seen by examining the properties of the xaxis:
+
+```
+plt.getp(ax1.xaxis)
+```
+
+![img_325](./images/img_325.png)
+
+Setting ```x``` explicitly to a ```tuple``` of integers, and ```width``` explictly to ```0.8``` gives the following plot:
+
+```
+fig = plt.figure(num=67, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.bar(x=(0, 1, 2, 3), 
+        height=(41.0, 10.51, 10.20, 5.80),
+        width=0.8, color='royalblue')
+```
+
+![img_326](./images/img_326.png)
+
+![img_327](./images/img_327.png)
+
+Note the first bar is centred at ```0``` and has a width of ```0.8``` and therefore spans from ```-0.4``` to ```0.4```, this can be changed to a narrower bar:
+
+```
+fig = plt.figure(num=68, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.bar(x=(0, 1, 2, 3), 
+        height=(41.0, 10.51, 10.20, 5.80),
+        width=0.4, color='royalblue')
+ax1.bar(x=(0.4, 1.4, 2.4, 3.4), 
+        height=(38.15, 10.54, 8.8, 5.1),
+        width=0.4, color='tomato')
+```
+
+![img_328](./images/img_328.png)
+
+![img_329](./images/img_329.png)
+
+The xticks can be modified using:
+
+```
+ax1.xaxis.set_ticks((0.2, 1.2, 2.2, 3.2))
+```
+
+![img_330](./images/img_330.png)
+
+![img_331](./images/img_331.png)
+
+Then the labels can be added using:
+
+```
+ax1.xaxis.set_ticklabels(('Poland', 'Czechia', 'Hungary', 'Slovakia'))
+```
+
+![img_332](./images/img_332.png)
+
+![img_333](./images/img_333.png)
+
+The ```barh``` produces a horizontal bar chart. It uses similar input arguments however because it is horizontal, it uses ```y``` for the labels and there is a variation in ```width``` and constant ```height```:
+
+```
+fig = plt.figure(num=69, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
 ax1.barh(y=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
-            width=(41.0, 10.51, 10.20, 5.80),
-            hatch=('*', 'x', 'o', '.'),
-            color=('tomato', 'darkorange', 'darkviolet', 'dodgerblue'))
+        width=(41.0, 10.51, 10.20, 5.80),
+        height=0.8, 
+        color=('tomato', 'darkorange', 'darkviolet', 'dodgerblue'),
+        hatch=('*', 'x', 'o', '.'),
+        ec='black', lw=2)
 ax1.set_xlabel('Population (millions)')
 ax1.set_ylabel('Country')
-ax1.set_title('Visegrad 4')
-ax1.grid(visible=True, which='major')
+ax1.set_title('Country')
+ax1.grid(visible=True)
 ax1.minorticks_on()
 ax1.grid(visible=True, which='minor', ls=':')
 fig.tight_layout()
 ```
 
+![img_334](./images/img_334.png)
 
+![img_335](./images/img_335.png)
 
-
+The bar plot wasn't assigned to a variable however they can be accessed from the ```Axes``` using its attribute ```containers``` which gives a list with 1 item in it:
 
 ```
-fig = plt.figure(num=67, figsize=None, dpi=None)
+ax1.containers
+```
+
+![img_336](./images/img_336.png)
+
+The first index is the ```BarContainer```:
+
+```
+ax1.containers[0]
+```
+
+![img_337](./images/img_337.png)
+
+The ```Axes``` methof ``bar_label``` can be used to label a bar graph or horizontal bar graph:
+
+```
+ax1.bar_label(container=ax1.containers[0])
+```
+
+![img_338](./images/img_338.png)
+
+![img_339](./images/img_339.png)
+
+Other data types can be accessed via the ```Axes``` plural attributes ```lines```, ```collections```, ```patches```, ```images```, ```tables```, ```texts``` and ```legend_```.
+
+The data above can also be shown in a pie graph. The ```pyplot``` function or ```Axes``` method ```pie``` can be used to create a pie chart:
+
+![img_340](./images/img_340.png)
+
+It takes the input argument ```x``` which is the data used to create pie segments otherwise known as wedges, it is equivalent to the heights of the bars in a vertical bar graph although these are normalised in the pie chart. ```explode``` takes a ```tuple``` of normalised floating point numbers equal in length to the number of segments. An explode value of zero has each wedge placed in the middle and increasing the explode value drags the wedge out until it is off the edge of the ```Axes```. ```labels``` is a ```tuple``` of strings corresponding to the label for each wedge. Like the ```bar``` graph there is the input argument ```hatch``` which behaves analogously. There is also the input argument ```colors``` (notice that it is plural for a pie chart). The ```wedgeprops``` input argument is a dictionary that is typically used to set a conwtant value across all wedges:
+
+```
+fig = plt.figure(num=70, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 ax1.pie(x=(41.0, 10.51, 10.20, 5.80),
-        explode=None,
+        explode=(0, 0.1, 0, 0.2),
         labels=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
         hatch=('*', 'x', 'o', '.'),
         colors=('tomato', 'darkorange', 'darkviolet', 'dodgerblue'),
         wedgeprops={'lw': 2, 'ec': 'black'})
 ```
 
+![img_341](./images/img_341.png)
 
-```
-fig = plt.figure(num=68, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111)
-ax1.pie(x=(41.0, 10.51, 10.20, 5.80),
-        explode=(0, 0.1, 0, 0.3),
-        labels=('Poland', 'Czechia', 'Hungary', 'Slovakia'), 
-        hatch=('*', 'x', 'o', '.'),
-        colors=('tomato', 'darkorange', 'darkviolet', 'dodgerblue'),
-        wedgeprops={'lw': 2, 'ec': 'black'})
-```
+![img_342](./images/img_342.png)
 
+## Histogram Plots
 
-```
-fig = plt.figure(num=69, figsize=(10, 5), dpi=None)
-ax1 = fig.add_subplot(311)
-ax1.bar(x=(1, 2, 3, 4), 
-        height=(41.0, 10.51, 10.20, 5.80),
-        width=0.3, color='royalblue')
-ax1.bar(x=(1.4, 2.4, 3.4, 4.4), 
-        height=(38.15, 10.54, 8.8, 5.1),
-        width=0.3, color='tomato')
-ax2 = fig.add_subplot(312)
-ax2.bar(x=(1, 2, 3, 4), 
-        height=(41.0, 10.51, 10.20, 5.80),
-        width=0.3, color='royalblue')
-ax2.bar(x=(1.4, 2.4, 3.4, 4.4), 
-        height=(38.15, 10.54, 8.8, 5.1),
-        width=0.3, color='tomato')
-ax2.xaxis.set_ticks((1.2, 2.2, 3.2, 4.2))
-ax3 = fig.add_subplot(313)
-ax3.bar(x=(1, 2, 3, 4), 
-        height=(41.0, 10.51, 10.20, 5.80),
-        width=0.3, color='royalblue')
-ax3.bar(x=(1.4, 2.4, 3.4, 4.4), 
-        height=(38.15, 10.54, 8.8, 5.1),
-        width=0.3,
-        color='tomato')
-ax3.legend(labels=('2023', '2050'))
-ax3.xaxis.set_ticks((1.2, 2.2, 3.2, 4.2))
-ax3.xaxis.set_ticklabels(('Poland', 'Czechia', 'Hungary', 'Slovakia'))
-```
+The histogram plot
+
+![img_343](./images/img_343.png)
 
 
 
 
 
-
-
-bar_label
-
-## hist
-
-
-
-
-
-## BoxPlot and ViolinPlot
+## Box and Violin Plots
 
 
 
@@ -2881,16 +2975,6 @@ bar_label
 
 
 
-
-
-
-
-```
-fig, ax = plt.subplots()
-bar_container = ax.bar(fruit_names, fruit_counts)
-ax.set(ylabel='pints sold', title='Gelato sales by flavor', ylim=(0, 8000))
-ax.bar_label(bar_container, fmt='{:,.0f}')
-```
 
 fig.colorbar(im, cax=ax.inset_axes([0, 1.05, 1, 0.05]),
              location='top')
