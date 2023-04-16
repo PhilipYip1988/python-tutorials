@@ -3037,7 +3037,7 @@ ax1.set_ylabel('frequency')
 
 ![img_354](./images/img_354.png)
 
-## MatShow and PColor
+## Matrix Show and Plot Color
 
 A matrix can be created using:
 
@@ -3309,18 +3309,113 @@ plot3d = ax1.contourf3D(xmat, ymat, zmat,
 
 
 
-## ImShow
+## Image Show
+
+```
+img1 = plt.imread('image1.jpg')
+```
+
+```
+type(img1)
+```
+
+
+```
+img1.shape
+```
+
+
+```
+img1.shape[-2] * img1.shape[-1]
+```
 
 
 
+```
+reds = img1[:, :, 0]
+reds
+```
+
+
+```
+greens = img1[:, :, 1]
+greens
+```
 
 
 
+```
+blues = img1[:, :, 2]
+blues
+```
+
+
+```
+fig = plt.figure(num=92, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.matshow(reds)
+```
 
 
 
+```
+fig = plt.figure(num=93, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.matshow(greens)
+```
 
-fig.colorbar(im, cax=ax.inset_axes([0, 1.05, 1, 0.05]),
-             location='top')
+
+
+```
+fig = plt.figure(num=94, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.matshow(blues)
+```
+
+
+```
+fig = plt.figure(num=95, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.imshow(img1)
+```
+
+
+```
+img2 = np.zeros_like(img1)
+```
+
+```
+img2[:, :, 0] = 2 * reds
+```
+
+```
+img2[:, :, 1] = greens
+```
+
+```
+img2[:, :, 2] = blues
+```
+
+```
+img2[:, :, :] > 255
+```
+
+
+```
+img2[img2[:, :, :] > 255] = 255 
+```
+
+
+```
+fig = plt.figure(num=96, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+ax1.imshow(img2)
+```
+
+
+```
+plt.imsave(fname='image1redenhanched.jpg', arr=img2)
+```
+
 
 
