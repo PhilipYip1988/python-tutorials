@@ -100,13 +100,17 @@ Incomplete tutorial (beginning only)
 
 [The JavaScript Object Notation Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/019_json_module/readme.md)
 
+Incomplete tutorial (beginning only)
+
+[The Regular Expressions Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/020_regular_expressions_module/readme.md)
+
 ### Data Science Libraries
 
 Incomplete tutorial (almost finished)
 
-[The Numeric Python Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/020_numeric_python_library/readme.md)
+[The Numeric Python Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_numeric_python_library/readme.md)
 
-Incomplete tutorial (beginning only)
+Incomplete tutorial (almot finished)
 
-[The Matrix Plotting Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_matrix_plotting_library/readme.md)
+[The Matrix Plotting Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_matrix_plotting_library/readme.md)
 
