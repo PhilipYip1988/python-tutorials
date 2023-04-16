@@ -3384,6 +3384,12 @@ colorbar = fig.colorbar(mappable=contour, ax=ax1,
 
 ## Plot3D
 
+The ```Axes3D``` method ```plot3D``` can be used to create a 3D plot. Like its 2D counterpart ```plot```, this function expects the data to be provided as a 1d ```ndarray```:
+
+![img_397](./images/img_397.png)
+
+The following 3d plot can be created:
+
 ```
 fig = plt.figure(num=86, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
@@ -3393,7 +3399,15 @@ ax1.set_ylabel(r'$y$')
 ax1.set_zlabel(r'$z$')
 ```
 
+![img_398](./images/img_398.png)
+
+![img_399](./images/img_399.png)
+
 ## Wireframe and Surface
+
+The data in the 3D plot can be manipulated via rotation but it is hard to visualise it. The ```Axes3D``` method ```plot_surface``` can be used to create a surface plot. Unlike ```plot3D``` which only accepted data in the form of a 1d ```ndarray```, ```plot_surface``` accepts $x$ as a row, $y$ as a column and $z$ as a matrix:
+
+![img_400](./images/img_400.png)
 
 ```
 fig = plt.figure(num=87, figsize=None, dpi=None)
@@ -3404,29 +3418,14 @@ ax1.set_ylabel(r'$y$')
 ax1.set_zlabel(r'$z$')
 ```
 
+![img_401](./images/img_401.png)
+
+![img_402](./images/img_402.png)
+
+By default, the surface plot is a monochrome color:
 
 ```
 fig = plt.figure(num=88, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111, projection='3d')
-plot3d = ax1.plot_wireframe(xrow, ycol, zmat)
-ax1.set_xlabel(r'$x$')
-ax1.set_ylabel(r'$y$')
-ax1.set_zlabel(r'$z$')
-```
-
-```
-fig = plt.figure(num=89, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111, projection='3d')
-plot3d = ax1.plot_wireframe(xrow, ycol, zmat,
-                            color='tomato')
-ax1.set_xlabel(r'$x$')
-ax1.set_ylabel(r'$y$')
-ax1.set_zlabel(r'$z$')
-```
-
-
-```
-fig = plt.figure(num=90, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
 plot3d = ax1.plot_surface(xrow, ycol, zmat,
                           color='tomato')
@@ -3435,9 +3434,14 @@ ax1.set_ylabel(r'$y$')
 ax1.set_zlabel(r'$z$')
 ```
 
+![img_403](./images/img_403.png)
+
+![img_404](./images/img_404.png)
+
+However it also accepts a colormap which can make the data easier to visualise:
 
 ```
-fig = plt.figure(num=91, figsize=None, dpi=None)
+fig = plt.figure(num=89, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
 plot3d = ax1.plot_surface(xrow, ycol, zmat, 
                           cmap='jet')
@@ -3446,137 +3450,188 @@ ax1.set_ylabel(r'$y$')
 ax1.set_zlabel(r'$z$')
 ```
 
+![img_405](./images/img_405.png)
+
+![img_406](./images/img_406.png)
+
+The ```Axes3D``` method ```plot_wiregrid``` can be used to create a wiregrid plot which is essentially a hollow surface plot and resembles a kids wiregrid climbing frame. The wiregrid is onyl a single color input argument and cannot use a colormap:
+
+```
+fig = plt.figure(num=90, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot_wireframe(xrow, ycol, zmat,
+                            color='tomato')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_zlabel(r'$z$')
+```
+
+![img_407](./images/img_407.png)
+
+![img_408](./images/img_408.png)
+
 ## Contour and Countourf
+
+The ```Axes3D``` method ```contour3D``` or ```contourf3D``` can be used to bring the ```contour``` or ```countourf``` to 3D and takes similar input arguments to the 2D counterparts:
+
+![img_409](./images/img_409.png)
+
+```
+fig = plt.figure(num=91, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+contour = ax1.contour3D(xmat, ymat, zmat,
+                        levels=9,
+                        linewidths=(8, 
+                                    5, 4, 3, 2, 
+                                    1, 
+                                    2, 3, 4, 5,
+                                    8),
+                        linestyles=(':', 
+                                    ':', ':', ':', ':',
+                                    '--',
+                                    '-', '-', '-', '-',
+                                    '-'),
+                        colors=('rosybrown', 
+                               'lightcoral', 'indianred', 'brown', 'firebrick',
+                               'black',
+                               'mediumblue', 'blue', 'mediumslateblue', 'mediumpurple',
+                               'blueviolet'))
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_ylabel(r'$z$')
+```
+
+![img_410](./images/img_410.png)
+
+![img_411](./images/img_411.png)
 
 ```
 fig = plt.figure(num=92, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
-plot3d = ax1.contour3D(xmat, ymat, zmat,
-                       levels=np.linspace(start=-0.4,
-                                          stop=0.4,
-                                          num=25),
-                       cmap='jet')
-```
-
-```
-fig = plt.figure(num=93, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111, projection='3d')
 plot3d = ax1.contourf3D(xmat, ymat, zmat,
-                        levels=np.linspace(start=-0.4,
-                                           stop=0.4,
-                                           num=25),
-                        cmap='jet')
+                        levels=9)
 ```
 
+![img_412](./images/img_412.png)
 
+![img_413](./images/img_413.png)
 
 ## Image Show
+
+Let's examine an image now:
+
+![img_414](./images/img_414.png)
+
+![img_415](./images/img_415.png)
+
+If opened in an image manipulation program such as paint. The size of the image is displayed which is 600 rows by 797 columns in this case. Zooming into 800 %, with the grid enabled, allows each pixel to be visualised as a square. The color picker tool can be used on the first square in the top left hand corner and edit colors can be examined:
+
+![img_416](./images/img_416.png)
+
+Notice the HTML value ```'#4463B3'``` which corresponds to the red integer ```68```, green integer ```99``` and blue integer ```179``` in decimal:
+
+![img_417](./images/img_417.png)
+
+A color exists of three integer values ranging from 0-255 and in an images these colors are arranged into rows and columns. In other words this is a 3d ```ndarray```. The ```pyplot``` function ```imread``` can be used to convert an image into a 3d ```ndarray```:
 
 ```
 img1 = plt.imread('image1.jpg')
 ```
 
+Its type can be determined:
+
 ```
 type(img1)
 ```
 
+And since it is a ``ndarray```, its shape can be examined:
 
 ```
 img1.shape
 ```
 
+![img_418](./images/img_418.png)
+
+The number of pixels in the image is therefore:
 
 ```
 img1.shape[-2] * img1.shape[-1]
 ```
 
+![img_419](./images/img_419.png)
 
+And the image can be deconstructed into a matrix for each of the three seperate color channels:
 
 ```
 reds = img1[:, :, 0]
-reds
-```
-
-
-```
 greens = img1[:, :, 1]
-greens
-```
-
-
-
-```
 blues = img1[:, :, 2]
-blues
 ```
 
+![img_420](./images/img_420.png)
+
+```
+plt.bone()
+fig = plt.figure(num=93, figsize=(8, 8), dpi=None)
+ax1 = fig.add_subplot(311)
+ax1.matshow(reds)
+ax2 = fig.add_subplot(312)
+ax2.matshow(greens)
+ax3 = fig.add_subplot(313)
+ax3.matshow(blues)
+```
+
+![img_421](./images/img_421.png)
+
+![img_422](./images/img_422.png)
+
+The images above are what are detected by each of the individual sensor types in the human eye, before the brain combines them together to make a color image. The ```pylot``` function or ```Axes``` method ```imshow``` can be used to show a color image:
 
 ```
 fig = plt.figure(num=94, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
-ax1.matshow(reds)
+ax1.imshow(img1)
 ```
 
+![img_423](./images/img_423.png)
 
+![img_424](./images/img_424.png)
+
+Image manipulation such as adjusting the brightness or contrasts essentially is a manipulation of the underlying ndarrays for each color channel. A second image can be created which has the dimensions of the first and has double the red values, the same green values and the same blue values. Any value above ```255``` will be restricted to ```255```:
+
+```
+img2 = np.zeros_like(img1)
+img2[:, :, 0] = 2 * reds
+img2[:, :, 1] = greens
+img2[:, :, 2] = blues
+img2[:, :, :] > 255
+img2[img2[:, :, :] > 255] = 255 
+```
+
+![img_425](./images/img_425.png)
+
+This red enhance image can be viewed:
 
 ```
 fig = plt.figure(num=95, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
-ax1.matshow(greens)
-```
-
-
-
-```
-fig = plt.figure(num=96, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111)
-ax1.matshow(blues)
-```
-
-
-```
-fig = plt.figure(num=97, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111)
-ax1.imshow(img1)
-```
-
-
-```
-img2 = np.zeros_like(img1)
-```
-
-```
-img2[:, :, 0] = 2 * reds
-```
-
-```
-img2[:, :, 1] = greens
-```
-
-```
-img2[:, :, 2] = blues
-```
-
-```
-img2[:, :, :] > 255
-```
-
-
-```
-img2[img2[:, :, :] > 255] = 255 
-```
-
-
-```
-fig = plt.figure(num=98, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111)
 ax1.imshow(img2)
 ```
 
+![img_426](./images/img_426.png)
+
+![img_427](./images/img_427.png)
+
+And this red enhanced image can be saved:
 
 ```
 plt.imsave(fname='image1redenhanched.jpg', arr=img2)
 ```
 
+![img_428](./images/img_428.png)
 
+![img_429](./images/img_429.png)
 
+![img_430](./images/img_430.png)
+
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
