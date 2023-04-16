@@ -4,12 +4,6 @@ Old versions, to be updated.
 
 ## File Operations
 
-The Operating Sytem Module
-
-The Comma Seperated Values Module
-
-The Pickle Module
-
 The JavaScript Object Notation Module
 
 
@@ -29,7 +23,5 @@ The array module...
 The Numeric Python Library - numpy
 
 The Python and Data Analysis Library - pandas
-
-The Matrix Plotting Library - matplotlib
 
 The DataFrame Visualisation Library - seaborn

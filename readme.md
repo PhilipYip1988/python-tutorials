@@ -1,24 +1,24 @@
 # Python Tutorials
 
-This set of tutorials goes through basic to intermediate concepts of the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE. For illustration variables are explored using the Variable Explorer of the Spyder IDE as JupyterLab lacks in this area. The tutorials themselves are written in markdown, and therefore can be downloaded as a zip file, extracted and opened in JupyterLab if GitHub doesn't render images or equations correctly.
+This set of tutorials goes through basic to intermediate concepts of the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE. For illustration variables are explored using the Variable Explorer of the Spyder IDE as JupyterLab unfortunately falls behind in this area. The tutorials themselves are written in markdown, and therefore can be downloaded as a zip file, extracted and opened in JupyterLab if GitHub doesn't render images or equations correctly.
 
 Please star the tutorials on GitHub and share with friends if you have found them useful.
 
 ## Installation
 
-The Python ecosystem is very large and has multiple package managers for third-party libraries and numerous IDEs available for writing Python code. Installation is normally skimmed over briefly in other tutorials however configuring a Python environment using Mambaforge and the mamba package manager can be a good introduction to the Python programming language itself. Moreover covering the basics of a package manager and examining what is going on behind the scenes in the file explorer early on will help later when configuring/troubleshooting custom Python environments and trying to install third-party packages which otherwise can be problematic for begineers. This tutorial also explains how to use Python from the Terminal, the IDLE IDE, the Spyder IDE, the JupyterLab IDE and the Visual Code IDE:
+The Python ecosystem is very large and has multiple package managers for third-party libraries and numerous IDEs available for writing Python code. Installation is normally skimmed over briefly in other tutorials however configuring a Python environment using Mambaforge and the mamba package manager can be a good introduction to the Python programming language itself. Covering the basics of a package manager and examining what is going on behind the scenes in the file explorer early on will help later when configuring/troubleshooting custom Python environments and trying to install third-party packages which otherwise can be problematic for begineers. This tutorial also explains how to use Python from the Terminal, the IDLE IDE, the Spyder IDE, the JupyterLab IDE and the Visual Code IDE:
 
 [Mambaforge Installation](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/readme.md)
 
 ## Markdown
 
-The JupyterLab IDE has the ability to write formatted notes in a Markdown file. This tutorial will cover the basics of Markdown syntax. All of these tutorials are written using this basic Markdown syntax. It is also possible to use this knowledge in an Interactive Python Notebook File which has Markdown cells:
+The JupyterLab IDE has the ability to write formatted notes in a Markdown file. This tutorial will cover the basics of Markdown syntax. All of these tutorials are written using this basic Markdown syntax. An Interactive Python Notebook File has Markdown cells and Code cells allowing one to create a detailed notebook to run Python Code from:
 
 [Markdown Tutorial](https://github.com/PhilipYip1988/python-tutorials/blob/main/002_markdown/readme.md)
 
 ## Terminal
 
-When running Python code from the Terminal, two programming languages are used. In Linux and Mac there is the inbuilt programming language bash and in Windows there is PowerShell which closely resembles bash. The bash programming language is optimised for basic file operations within the operating system and is commonly used in conjunction with Python. bash however uses a different programming syntax to Python and this tutorial will cover basic file operating systems using bash. Familarity with bash before delving into Python will prevent later confusion when using the terminal with Python commands:
+When running Python code from the Terminal, two progra	mming languages are used. In Linux and Mac there is the inbuilt programming language bash and in Windows there is PowerShell which closely resembles bash. The bash programming language is optimised for basic file operations within the operating system and is commonly used in conjunction with Python. bash however uses a different programming syntax to Python and this tutorial will cover basic file operating systems using bash. Familarity with bash before delving into Python will prevent later confusion when using the terminal with Python commands:
 
 [Terminal Commands](https://github.com/PhilipYip1988/python-tutorials/blob/main/003_terminal/readme.md)
 
@@ -107,6 +107,8 @@ Incomplete tutorial (beginning only)
 ### Data Science Libraries
 
 Incomplete tutorial (almost finished)
+
+The Numeric Python Library known as numpy is based around the ndarray. The ndarray is a multi-dimensional numeric array that is configured for numeric data. The identifiers and data model identifiers for the ndarray are configured for numerical operations, math and statistics essentially allowing broadcasting of an operation over the size of the array. This allows for a much cleaner syntax and faster operation than the use of multiple for loops. The numpy library also has an associated random module that allows broadcasting of randomly generated numbers across an array and has a more accurate datetime and timedelta giving ns precision. The numpy library is the general foundation for all other scientific libraries:
 
 [The Numeric Python Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_numeric_python_library/readme.md)
 
