@@ -2473,7 +2473,7 @@ Other keyword arguments can be added to the ```arrowprops``` dictionary for addi
 
 The ```pyplot``` functions or ```Axes``` method ```plot``` was seen to produce a line plot. There are additional ```pyplot``` functions or ```Axes``` methods which also create line plots, these functions have some of the default values for the line such as the drawstyle of the options for the Axes such as the xlimit, ylimit, xscale and yscale precofigured.
 
-The ```pyplot``` function or ```Axes``` method ```step``` creates a line plot with the drawstyle preconfigured to ````'steps-pre'```. This can be seen by comparing:
+The ```pyplot``` function or ```Axes``` method ```step``` creates a line plot with the drawstyle preconfigured to ```'steps-pre'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=52, figsize=None, dpi=None)
@@ -2502,7 +2502,7 @@ ax2.semilogx(x, y)
 
 ![img_291](./images/img_291.png)
 
-The ```pyplot``` function or ```Axes``` method ```semilogy``` creates a line plot with the yscale preconfigured to ````'log'```. This can be seen by comparing:
+The ```pyplot``` function or ```Axes``` method ```semilogy``` creates a line plot with the yscale preconfigured to ```'log'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=54, figsize=None, dpi=None)
@@ -2517,7 +2517,7 @@ ax2.semilogy(x, y)
 
 ![img_293](./images/img_293.png)
 
-The ```pyplot``` function or ```Axes``` method ```loglog``` creates a line plot with the xscale and yscale preconfigured to ````'log'```. This can be seen by comparing:
+The ```pyplot``` function or ```Axes``` method ```loglog``` creates a line plot with the xscale and yscale preconfigured to ```'log'```. This can be seen by comparing:
 
 ```
 fig = plt.figure(num=55, figsize=None, dpi=None)
@@ -3039,7 +3039,7 @@ ax1.set_ylabel('frequency')
 
 ## Matrix Show and Plot Color
 
-A matrix can be created using:
+The matrix $z$ can be created from a meshgrid of linearly $x$ and $y$ data and a mathematical expression involving both terms. For convenience $x$, $y$ and $z$ will be computed in matrix form and flattened, $x$ and $y$ are also a row and a column:
 
 ```
 xrow = np.linspace(-2, 2, 10)[np.newaxis, :]
@@ -3052,6 +3052,20 @@ yarray = ymat.flatten()
 zarray = zmat.flatten()
 ```
 
+![img_355](./images/img_355.png)
+
+The matrix ```zmat``` in the Spyder Variable Explorer without a background color looks like:
+
+![img_356](./images/img_356.png)
+
+If a background color is added, the overall shape of the third dimension can be visualised:
+
+![img_357](./images/img_357.png)
+
+Most of the matrix plots involve use of color to visualise the third dimension. For example the ```pyplot``` function or ```Axes``` method matrix show ```matshow``` can be used to visualise a matrix:
+
+![img_358](./images/img_358.png)
+
 ```
 fig = plt.figure(num=75, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
@@ -3061,12 +3075,15 @@ ax1.xaxis.set_label_position('top')
 ax1.set_ylabel('row')
 ```
 
+![img_359](./images/img_359.png)
 
+![img_360](./images/img_360.png)
 
+The ```pyplot``` function or ```Axes``` method plot color ```pcolor``` is similar and can also be used to visualise a matrix:
 
+![img_361](./images/img_361.png)
 
-
-
+Notice that there are a variable number of input arguments ```*args```. This function can be used to plot a matrix directly, like in the case of ```matshow```, in which case the xaxis will display the column integers and the yaxis will display the row integers:
 
 ```
 fig = plt.figure(num=76, figsize=None, dpi=None)
@@ -3076,24 +3093,45 @@ ax1.set_xlabel('column')
 ax1.set_ylabel('row')
 ```
 
+![img_362](./images/img_362.png)
+
+![img_363](./images/img_363.png)
+
+Alternatively, the $x$ and $y$ values can be specified as a row and column respectively. For $x$, the row is 1 row which has multiple columns corresponding to the value of each pixel along the xaxis. Likewise for $y$, the column is 1 column which has multiple rows corresponding to the value of each pixel along the yaxis:
+
 ```
 fig = plt.figure(num=77, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 ax1.pcolor(xrow, ycol, zmat)
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
 ```
+
+![img_364](./images/img_364.png)
+
+![img_365](./images/img_365.png)
+
+The ```pcolor``` attribute colormap ```cmap``` can be used to view the colormap:
 
 ```
 pcolor.cmap
 ```
 
+![img_366](./images/img_366.png)
+
+The ```Figure``` method ```colorbar``` can be used to add a colorbar. It requires a mappable plot and its corresponding ```Axes``` instance:
+
 ```
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1,
+                        orientation='horizontal', 
                         location='top')
 ```
 
+![img_367](./images/img_367.png)
 
+![img_368](./images/img_368.png)
+
+The ```vmin``` and ```vmax``` can be used to the set the minimum value and maximum value that the ends fo the colorbar correspond to. For example, if all values below ```0``` are considered noise and only the positive values are of interest:
 
 ```
 fig = plt.figure(num=78, figsize=None, dpi=None)
@@ -3101,12 +3139,18 @@ ax1 = fig.add_subplot(111)
 pcolor = ax1.pcolor(xrow, ycol, zmat,
                     cmap='viridis',
                     vmin=0, vmax=0.4)
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
 ```
 
+![img_369](./images/img_369.png)
 
+![img_370](./images/img_370.png)
+
+If the limits are set too high, the underlying pattern behind the data may not be easily visualised:
 
 ```
 fig = plt.figure(num=79, figsize=None, dpi=None)
@@ -3114,11 +3158,18 @@ ax1 = fig.add_subplot(111)
 pcolor = ax1.pcolor(xrow, ycol, zmat,
                     cmap='viridis',
                     vmin=0, vmax=1.0)
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
 ```
 
+![img_371](./images/img_371.png)
+
+![img_372](./images/img_372.png)
+
+Resetting back to ```vmin=-0.4``` and ```vmax=0.4```:
 
 ```
 fig = plt.figure(num=80, figsize=None, dpi=None)
@@ -3126,51 +3177,76 @@ ax1 = fig.add_subplot(111)
 pcolor = ax1.pcolor(xrow, ycol, zmat,
                     cmap='viridis',
                     vmin=-0.4, vmax=0.4)
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
-                        orientation='horizontal')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
 ```
 
+![img_373](./images/img_373.png)
+
+![img_374](./images/img_374.png)
+
+The properties of the ```pcolor``` plot can be examined by use of the ```pyplot``` function ```getp```:
 
 ```
 plt.getp(pcolor)
 ```
 
+![img_375](./images/img_375.png)
 
-```
-plt.viridis
-```
+The ```cmap``` property can be seen to be a colormap object. Colormaps are compartmentalised into a colormap ```cm``` module. Notice in this case they are instances:
 
-```
-plt.cm.viridis
-```
+![img_377](./images/img_377.png)
+
+The instances can be used to set the ```pcolor``` attribute ```cmap``` to ```plt.cm.jet``` for example:
 
 ```
 plt.setp(pcolor, cmap=plt.cm.jet)
 ```
 
+![img_378](./images/img_378.png)
+
+![img_379](./images/img_379.png)
+
+This is more commonly set using the string of the colormap ```'jet'```. It can be changed to another colormap such as ```'bone'```:
 
 ```
-plt.setp(pcolor, cmap=plt.cm.cividis)
+plt.setp(pcolor, cmap='bone')
 ```
 
+![img_380](./images/img_380.png)
+
+![img_381](./images/img_381.png)
+
+The most common colormaps are also available as functions direct from the ```pyplot``` module. Calling thease functions will use the colormap on as default on new plots if not otherwise specified:
+
+![img_382](./images/img_382.png)
 
 ```
-plt.setp(pcolor, cmap=plt.cm.hot)
+plt.magma()
+
+fig = plt.figure(num=81, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+pcolor = ax1.pcolor(xrow, ycol, zmat,
+                    vmin=-0.4, vmax=0.4)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
 ```
 
+![img_383](./images/img_383.png)
 
-```
-plt.setp(pcolor, cmap=plt.cm.magma)
-```
+![img_384](./images/img_384.png)
 
+The point of using a colormap is to optimise the contrast in the $z$ so it can be easily visualised. The best colormap to be used is therefore often slightly subjective. The colormaps are grouped into Sequential, Diverging, Cyclic, Qualitative and Miscellaneous colormaps. More details are given in Matplotlibs documentation:
 
-```
-plt.setp(pcolor, cmap=plt.cm.inferno)
-```
+[ColorMaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)
 
-A matrix can be created using:
+A larger matrix can be created using more linear spaced $x$ and $y$ values:
 
 ```
 xrow = np.linspace(-2, 2, 1000)[np.newaxis, :]
@@ -3183,112 +3259,197 @@ yarray = ymat.flatten()
 zarray = zmat.flatten()
 ```
 
+![img_385](./images/img_385.png)
 
-```
-fig = plt.figure(num=81, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111)
-pcolor = ax1.pcolormesh(xrow, ycol, zmat,
-                        cmap='jet',
-                        vmin=-0.4, vmax=0.4)
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
-                        orientation='horizontal')
-```
-
-
-## Contour and Contourf
+The ```pyplot``` function or ```Axes``` method ```pcolormesh``` should be used in preference to ```pcolor``` for large arrays. These plot types have the same input arguments and otherwise behave near identically:
 
 ```
 fig = plt.figure(num=82, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
-contour = ax1.contour(xmat, ymat, zmat,
-                      levels=(-0.4, -0.3, -0.2, -0.1, 0.0, 
-                              0.1, 0.2, 0.3, 0.4),
-                      cmap='jet')
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
-                        orientation='horizontal')
+pcolor = ax1.pcolormesh(xrow, ycol, zmat,
+                        cmap='jet',
+                        vmin=-0.4, vmax=0.4)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=pcolor, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
 ```
 
+![img_386](./images/img_386.png)
+
+![img_387](./images/img_387.png)
+
+## Contour and Contourf
+
+Inclines and declines in data can be represented using contours, similar to the contours seen to represent hills, mountains and valleys:
+
+![img_388](./images/img_388.png)
+
+For example a contour of 9 levels can be created. The colors of the lines use the default colormap which was previously set to ```magma```. This can also be specified using the input argument ```cmap```:
 
 ```
 fig = plt.figure(num=83, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
-contour = ax1.contourf(xmat, ymat, zmat,
-                       levels=(-0.4, -0.3, -0.2, -0.1, 0.0, 
-                              0.1, 0.2, 0.3, 0.4),
-                       cmap='jet')
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
-                        orientation='horizontal')
+contour = ax1.contour(xmat, ymat, zmat,
+                      levels=9)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
 ```
 
+![img_389](./images/img_389.png)
+
+![img_390](./images/img_390.png)
+
+Although 9 levels are specified, which correspond to 9 lines on the plot. There is also an additional lower and upper line for data outwith the specified range. When the line widths and linestyles are manually specified, all 11 must be specified. The ```Axes``` method ```clabel``` can be applied to the ```contour``` plot:
 
 ```
 fig = plt.figure(num=84, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 contour = ax1.contour(xmat, ymat, zmat,
-                      levels=np.linspace(start=-0.4,
-                                        stop=0.4,
-                                        num=25),
-                      cmap='jet')
-ax1.set_xlabel('column')
-ax1.set_ylabel('row')
-colorbar = fig.colorbar(mappable=pcolor, ax=ax1, 
-                        orientation='horizontal')
+                      levels=9,
+                      linewidths=(8, 
+                                  5, 4, 3, 2, 
+                                  1, 
+                                  2, 3, 4, 5,
+                                  8),
+                      linestyles=(':', 
+                                  ':', ':', ':', ':',
+                                  '--',
+                                  '-', '-', '-', '-',
+                                  '-'))
+ax1.clabel(contour, fontsize=9, inline=True)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=contour, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
 ```
+
+![img_391](./images/img_391.png)
+
+![img_392](./images/img_392.png)
+
+Instead of a colormap, a color for each line can be individually specified:
+
+```
+fig = plt.figure(num=84, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+contour = ax1.contour(xmat, ymat, zmat,
+                      levels=9,
+                      linewidths=(8, 
+                                  5, 4, 3, 2, 
+                                  1, 
+                                  2, 3, 4, 5,
+                                  8),
+                      linestyles=(':', 
+                                  ':', ':', ':', ':',
+                                  '--',
+                                  '-', '-', '-', '-',
+                                  '-'),
+                      colors=('rosybrown', 
+                             'lightcoral', 'indianred', 'brown', 'firebrick',
+                             'black',
+                             'mediumblue', 'blue', 'mediumslateblue', 'mediumpurple',
+                             'blueviolet'))
+ax1.clabel(contour, fontsize=9, inline=True)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=contour, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
+```
+
+![img_393](./images/img_393.png)
+
+![img_394](./images/img_394.png)
+
+The ```pyplot``` function or ```Axes``` method contour filled```contourf``` behaves in a similar manner as ```contour``` and gives a filled contour plot:
+
+```
+fig = plt.figure(num=85, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111)
+contour = ax1.contourf(xmat, ymat, zmat,
+                       levels=9)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+colorbar = fig.colorbar(mappable=contour, ax=ax1,
+                        orientation='vertical', 
+                        location='right')
+```
+
+![img_395](./images/img_395.png)
+
+![img_396](./images/img_396.png)
 
 ## Plot3D
 
 ```
-fig = plt.figure(num=85, figsize=None, dpi=None)
+fig = plt.figure(num=86, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
 plot3d = ax1.plot3D(xarray, yarray, zarray)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_zlabel(r'$z$')
 ```
 
 ## Wireframe and Surface
 
 ```
-fig = plt.figure(num=86, figsize=None, dpi=None)
-ax1 = fig.add_subplot(111, projection='3d')
-plot3d = ax1.plot_surface(xrow, ycol, zmat)
-```
-
-
-```
 fig = plt.figure(num=87, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
-plot3d = ax1.plot_wireframe(xrow, ycol, zmat)
+plot3d = ax1.plot_surface(xrow, ycol, zmat)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_zlabel(r'$z$')
 ```
+
 
 ```
 fig = plt.figure(num=88, figsize=None, dpi=None)
+ax1 = fig.add_subplot(111, projection='3d')
+plot3d = ax1.plot_wireframe(xrow, ycol, zmat)
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_zlabel(r'$z$')
+```
+
+```
+fig = plt.figure(num=89, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
 plot3d = ax1.plot_wireframe(xrow, ycol, zmat,
                             color='tomato')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_zlabel(r'$z$')
 ```
 
 
 ```
-fig = plt.figure(num=88, figsize=None, dpi=None)
+fig = plt.figure(num=90, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
-plot3d = ax1.plot_surface(xrow, ycol, zmat, color='tomato')
+plot3d = ax1.plot_surface(xrow, ycol, zmat,
+                          color='tomato')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_zlabel(r'$z$')
 ```
 
 
 ```
-fig = plt.figure(num=88, figsize=None, dpi=None)
+fig = plt.figure(num=91, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
-plot3d = ax1.plot_surface(xrow, ycol, zmat, cmap='jet')
+plot3d = ax1.plot_surface(xrow, ycol, zmat, 
+                          cmap='jet')
+ax1.set_xlabel(r'$x$')
+ax1.set_ylabel(r'$y$')
+ax1.set_zlabel(r'$z$')
 ```
 
 ## Contour and Countourf
 
 ```
-fig = plt.figure(num=90, figsize=None, dpi=None)
+fig = plt.figure(num=92, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
 plot3d = ax1.contour3D(xmat, ymat, zmat,
                        levels=np.linspace(start=-0.4,
@@ -3298,7 +3459,7 @@ plot3d = ax1.contour3D(xmat, ymat, zmat,
 ```
 
 ```
-fig = plt.figure(num=91, figsize=None, dpi=None)
+fig = plt.figure(num=93, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111, projection='3d')
 plot3d = ax1.contourf3D(xmat, ymat, zmat,
                         levels=np.linspace(start=-0.4,
@@ -3351,7 +3512,7 @@ blues
 
 
 ```
-fig = plt.figure(num=92, figsize=None, dpi=None)
+fig = plt.figure(num=94, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 ax1.matshow(reds)
 ```
@@ -3359,7 +3520,7 @@ ax1.matshow(reds)
 
 
 ```
-fig = plt.figure(num=93, figsize=None, dpi=None)
+fig = plt.figure(num=95, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 ax1.matshow(greens)
 ```
@@ -3367,14 +3528,14 @@ ax1.matshow(greens)
 
 
 ```
-fig = plt.figure(num=94, figsize=None, dpi=None)
+fig = plt.figure(num=96, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 ax1.matshow(blues)
 ```
 
 
 ```
-fig = plt.figure(num=95, figsize=None, dpi=None)
+fig = plt.figure(num=97, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 ax1.imshow(img1)
 ```
@@ -3407,7 +3568,7 @@ img2[img2[:, :, :] > 255] = 255
 
 
 ```
-fig = plt.figure(num=96, figsize=None, dpi=None)
+fig = plt.figure(num=98, figsize=None, dpi=None)
 ax1 = fig.add_subplot(111)
 ax1.imshow(img2)
 ```
