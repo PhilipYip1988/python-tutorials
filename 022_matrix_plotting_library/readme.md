@@ -11,6 +11,15 @@ import matplotlib.pyplot as plt
 
 ![img_001](./images/img_001.png)
 
+The matplotlib library can be imported as a whole. This is normally for more speciifc (advanced) use cases but as a simple example, can be done to check the version:
+
+```
+import matplotlib
+matplotlib.__version__
+```
+
+![img_431](./images/img_431.png)
+
 ## ndarray Recap
 
 The following numpy arrays can be created:

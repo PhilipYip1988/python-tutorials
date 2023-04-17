@@ -1,16 +1,153 @@
 # The Numeric Python Library - numpy
 
-The Numeric Python library - ```numpy``` is the most commonly used third-party Python library. It is fundamental for other popular data science libraries. The Python and Data Analysis Library - ```pandas```, the Matrix Plotting Library - ```matplotlib``` and the Data Visualization Library - ```seaborn``` are based upon ```numpy``` and are known as the ```numpy``` stack.
+The Numeric Python library - ```numpy``` is the most commonly used third-party Python library. It is fundamental for other popular data science libraries. The Python and Data Analysis Library - ```pandas```, the Matrix Plotting Library - ```matplotlib``` and the Data Visualization Library - ```seaborn``` are based upon ```numpy``` and are collectively known as the ```numpy``` stack.
+
+## Tuples and Lists
+
+The inbuilt collections such as a ```tuple``` or ```list``` can be used to store numeric data:
+
+```
+nums1 = (1, 2, 3, 4, 5)
+nums2 = (2, 4, 6, 8, 10)
+```
+
+![img_134](./images/img_134.png)
+
+Use of the ```+``` operator performs concatenation instead of addition:
+
+```
+nums1 + nums2
+```
+
+![img_135](./images/img_135.png)
+
+Numeric addition and other mathematical operations are normally broadcast along an inbuilt array using a ```for``` loop or a slightly more elegant list comprehension:
+
+```
+[num1 + num2 for num1, num2 in zip(nums1, nums2)]
+```
+
+![img_136](./images/img_136.png)
+
+The ```tuple``` and ```list``` collections are versatile and each record can be a unique data type:
+
+```
+nums1 = (1, 2, 3, 4, 5)
+nums2 = (2, 4, 6, '8', 10)
+[num1 + num2 for num1, num2 in zip(nums1, nums2)]
+```
+
+![img_137](./images/img_137.png)
+
+This becomes a disadvantage when working only with numeric data as it can introduce an ```TypeError``` when one of the records in the collection is the wrong datatype.
+
+## Array Module
+
+Python has an ```array``` module. It can be imported using:
+
+```
+import array
+```
+
+And its identifiers can be viewed by typing in ```array.``` followed by a tab ```↹```:
+
+![img_138](./images/img_138.png)
+
+The ```array``` module contains the ```array``` class and this is used to create an array where each value is of a fixed datatype. Its docstring can be examined by inputting ```array.array()``` and pressing shift ```⇧``` and tab ```↹```:
+
+![img_139](./images/img_139.png)
+
+The first input argument is the type code which is a one-digit character and details are given below:
+
+![img_140](./images/img_140.png)
+
+The typecode, decription and size in bytes for a single value are given. In general the higher the number of bytes, the higher the dynamic range of possible values but the more memory consumed by the array. Recall a byte is 8 bits and each bit can have 2 values, so the number of combinations for a 1 byte, 2 byte and 4 byte integer are:
+
+```
+2 ** 8
+2 ** (2 * 8)
+2 ** (4 * 8)
+```
+
+![img_141](./images/img_141.png)
+
+If unsigned the range is therefore:
+
+0:256
+
+0:65536
+
+0:4294967296
+
+Using Pythons standard zero-order indexing which is inclusive of the lower bound and exclusive of the upper bound. If signed, half the bit combinations will be assigned to negative values and the other half assigned to positive values:
+
+```
+256 // 2
+65536 // 2
+4294967296 // 2
+```
+
+![img_142](./images/img_142.png)
+
+If signed the range is therefore:
+
+-128:+128
+
+-32768:+32768
+
+-2147483648:+2147483648
+
+The standard ```int``` in Python is 4 bit signed (known as a long integer in some progamming languages) and the standard ```float``` in Python is 8 bit (known as a double in some other programming languages). These use the type codes ```'l'``` (long integer) and ```'d'``` (double) respectively. 
+
+Datatypes with a more restrictive range can be used in some cases to conserve memory which can substantially lower the overhead for very large arrays.
+
+The docstring also outlines the methods and these are seen to be very similar to the ```list``` and ```bytearray``` mutatable collections examined previously:
+
+![img_143](./images/img_143.png)
+
+While using the inbuilt ```array``` prevents some of the issues seen above due to the wrogn data type:
+
+```
+nums1 = array.array('l', [1, 2, 3, 4, 5])
+nums2 = array.array('l', [2, 4, 6, 8, 10])
+```
+
+Its data model identifiers are configured for collection based operations such as concatentation:
+
+```
+nums1 + nums2
+```
+
+And ```for``` loops or list comprehensiom has to be used to broadcast a numeric operation along the array:
+
+```
+[num1 + num2 for num1, num2 in zip(nums1, nums2)]
+```
+
+![img_144](./images/img_144.png)
+
+The ```array``` collection above is also only 1 dimensional. It is not possible to nest other collections in it, as all the values in it by definition must be of a fixed data type. 
+
+As a consequence of only being 1 dimensional and its data model identifiers being configured only for collection based operations, the inbuilt ```array``` is not too commonly used and it has limited support on Spyders Variable Explorer:
+
+![img_145](./images/img_145.png)
 
 ## Scalability in Python
 
 The following data structures have been explored in inbuilt Python and Python standard modules:
 
-* list - collection of mixed datatypes
-* array - 1d uniform data structure
-* nested lists
+|class|description|mutability|fundamental datatype|
+|---|---|---|---|
+|tuple|archive of records|immutable|object|
+|list|active of records|mutable|object|
+|bytes|array of byte|immutable|byte|
+|bytes|array of bytes|mutable|byte|
+|str|array of unicode characters|immutable|unicode character|
+|array|array|mutable|specified numeric data type|
 
-These data structures are collections and their datamodel methods are setup as collections.
+Because the ```tuple``` and ```list``` have a Python object as a fundamental datatype. They can store a collection as a value. This allows for nested collections.
+
+All the data structures mentioned above are collections and their data model methods are configured for collection based operations such as concatenation.
 
 The following mathematical concepts have also been explored:
 
@@ -25,13 +162,11 @@ Most of these mathematical concepts have been constrained to a scalar variable (
 
 ## N-Dimensional Array
 
-The numeric Python Library is based upon the n-dimensional array ```ndarray``` data structure. The ```ndarray``` bridges the features mentioned above over multiple dimensions using simple succinct syntax. 
-
-The numpy library is therefore a very large Python library. Despite it being large, previous tutorials have established a vigourous understanding of how each of these features operates over a single dimension using builtin Python or a standard Python module. Once the mechanics of using a ndarray are setup, such as indexing and working across multiple dimensions, this previous knowledge can easily be applied. It becomes a case of using the equivalent function from the numpy library to act on the ndarray(s) or the equivalent ndarray method.
+The numeric Python Library is based upon the n-dimensional array ```ndarray``` data structure. The ```ndarray``` unlike the ```array``` data structure can be scaled to other dimensions. The ```ndarray``` is also mutable and unlike the other collections has data model identifiers configured for numeric operations, making it much simpler to broadcast a numerical operation along a ```ndarray``` using a cleaner syntax without the use of for loops or list comprehensions. In addition to numeric data model methods the ```numpy``` library also provides equivalents to range objects, mathematical functions, statistics, datetimes and random number generation that can all be broadcast along the ```ndarray```. Previous tutorials have established a vigourous understanding of how each of these features operates over a single value which is also known as a scalar using Python ```builtins``` or a standard Python module. Once the mechanics of using a ```ndarray``` are setup, such as indexing and working across multiple dimensions, this previous knowledge can easily be applied and it becomes a case of using the equivalent ```numpy``` library function or ```ndarray``` method.
 
 ## Importing numpy
 
-The ```numpy``` library is typically imported using a 2 letter abbreviation ```np```. The numpy library includes a large number of functions and it is more convenient to access these using this two letter abbreviation:
+Because the ```numpy``` library is so commonly used, it is typically imported using a 2 letter abbreviation ```np```. The ```numpy``` library includes a large number of functions and it is more convenient to access these using this two letter abbreviation:
 
 ```
 import numpy as np
@@ -157,6 +292,18 @@ array1
 
 ![img_009](./images/img_009.png)
 
+The ```list``` and ```ndarray``` can be explored in the Variable Explorer:
+
+![img_146](./images/img_146.png)
+
+Notice that the size of the ```list``` is ```4```. A ```list``` is always a single dimension and only has a ```size```. For the ```ndarray```, the *Size* is shown as the tuple ```(4,)```, this is actually the *Shape* and there is a slight difference between these two terms which will be explored in further detail in a moment. Because the *Shape* is in this case a single dimension, the ```ndarray``` can in this case be viewed either as a row or as a column. The ```list``` and the 1d ```ndarray``` are displayed in the Variable Explorer as a row and displayed as a column when expanded for convenience:
+
+![img_147](./images/img_147.png)
+
+![img_149](./images/img_148.png)
+
+Notice in the ```list``` expanded view the ```type``` and ```size``` for every element are shown as these are variable. The array on the other hand displays *Array of int32* on the Variable Explorer because these are fixed across the array. i.e. the size is fixed to ```1``` and the type is ```int```. 
+
 Dimensionality details about this ```ndarray``` can be found using the attributes ```size```, ```ndim``` and ```shape``` respectively:
 
 ```
@@ -171,7 +318,7 @@ The ```size``` is ```4``` as there are 4 elements in the array. The number of di
 
 A 1d array is known as a *vector*. Note the shape tuple states that this *vector* only has ```4``` *columns*. 
 
-Care should be taken regarding the dimensionality in a ```ndarray```. It does not behave like a ```list``` which can be represented as either a row or column for convenience:
+A 1darray behaves like a ```list``` which can be represented as either a row or column for convenience:
 
 ```
 list1 = [1, 2, 3, 4]
@@ -186,9 +333,15 @@ list1
 
 ![img_011](./images/img_011.png)
 
-A 1d array or *vector* should be distiguished from a 2d array known as a *2d row vector*, a *2d row vector* by definition has 1 row by multiple columns.
+However a clear distinction should be made between:
 
-Sometimes it is required to specifically create a *2d row vector* as dimensionality can be important in array operations. This can be done by providing the ```ndmin``` keyword input argument and assigning it to ```2```:
+* a 1d array or *vector* 
+* a 2d array *row vector*
+* a 2d array *column vector*
+  
+Upon first sight these may be mistaken for one another when viewed in the Variable Explorer, however the subtle dimensionality difference between these is fundamentally siginifcant.
+
+A *2d row vector* by definition has 1 row by multiple columns. Sometimes it is required to specifically create a *2d row vector* as dimensionality can be important in array operations. This can be done by providing the ```ndmin``` keyword input argument and assigning it to ```2```:
 
 ```
 arrayr = np.array([1, 2, 3, 4], ndmin=2)
@@ -202,13 +355,21 @@ The ```size``` is still ```4``` as there are 4 elements in the array. The number
 
 ![img_012](./images/img_012.png)
 
+This 2d row vector can be seen in the Variable Explorer. Notice the double square brackets enclosing the numbers:
+
+![img_149](./images/img_149.png)
+
+When expanded, it displays as a row:
+
+![img_150](./images/img_150.png)
+
 Compare:
 
 ```
 array1.ndim
 array1.shape
 
-array1.ndim
+arrayr.ndim
 arrayr.shape
 ```
 
@@ -228,15 +389,19 @@ The 2d array or *2d row vector*, has 1 row and 4 columns.
 |1|(4 columns,)|
 |2|(1 row, 4 columns)|
 
-Notice that in the ```shape``` ```tuple``` the new dimension is left appended, this makes sense as the origin of the new dimension is the outer list:
+Notice that in the ```shape``` ```tuple``` the new dimension is left appended, this makes sense as the origin of the new dimension is the outer list. 
+
+Conceptualise the following:
 
 ```
-column = [1, 2, 3, 4]
-row = [column]
+array1d = [1, 2, 3, 4]
+row = [array1d]
 row
 ```
 
 ![img_014](./images/img_014.png)
+
+The two brackets indicate that the dimension is 2d.
 
 The ```shape``` ```tuple``` can be indexed to retrieve the number of columns for the 1d vector and the 2d row vector and the number of rows for the 2d row vector:
 
@@ -282,6 +447,37 @@ arrayc.shape
 
 ![img_017](./images/img_017.png)
 
+Notice that once again the two brackets indicate that the dimension is 2d. The representation shown in the cell output shows how this would be input directly:
+
+```
+array([[1],
+       [2],
+       [3],
+       [4]])
+```
+
+Notice that ```arrayc``` is shown as a column in the collapsed view and as a column when expanded:
+
+![img_151](./images/img_151.png)
+
+![img_152](./images/img_152.png)
+
+For clarity it is worthwhile examining the three arrays in the Variable Explorer. The 1d vector looks similar to the 2d row vector in the Variable Explorer, note the addition of square brackets indicating 2 dimensions:
+
+![img_153](./images/img_153.png)
+
+In the expanded view ,sadly the 1d vector looks identical to the 2d column vector which can result in confusion for begineers getting to grips with dimensionality: 
+
+![img_154](./images/img_154.png)
+
+![img_155](./images/img_155.png)
+
+![img_156](./images/img_156.png)
+
+The 1d vector is conceptualised as a column, however the column itself is shown with an index of 0 indicating 2 dimensions, this should not be present as there is only a single dimension to index from:
+
+![img_157](./images/img_157.png)
+
 When every value in the input list, is a list of integers, the datatype will automatically be assumed to be an integer:
 
 ```
@@ -291,6 +487,8 @@ array1.dtype
 ```
 
 ![img_018](./images/img_018.png)
+
+![img_158](./images/img_158.png)
 
 If one of these datatypes is updated to a floating point number, the datatype of the array will be assumed to be floating point:
 
@@ -302,15 +500,19 @@ array1.dtype
 
 ![img_019](./images/img_019.png)
 
+![img_159](./images/img_159.png)
+
 If one of these datatypes is updated to a complex number, the datatype of the array will be assumed to be complex:
 
 ```
-array1 = np.array([1=2j, 2, 3, 4])
+array1 = np.array([1+2j, 2, 3, 4])
 array1
 array1.dtype
 ```
 
 ![img_020](./images/img_020.png)
+
+![img_160](./images/img_160.png)
 
 If all of the datatypes are boolean, the datatype of the array will be assumed to be boolean:
 
@@ -322,6 +524,8 @@ array1.dtype
 
 ![img_021](./images/img_021.png)
 
+![img_161](./images/img_161.png)
+
 In some cases it is more convenient to specify the datatype using the keyword input argument ```dtype``` and assigning it to ```builtins``` classes ```bool```, ```int```, ```float```, or ```complex```:
 
 ```
@@ -331,6 +535,8 @@ array1.dtype
 ```
 
 ![img_022](./images/img_022.png)
+
+![img_162](./images/img_162.png)
 
 There are also corresponding ```int```, ```float```, or ```complex``` classes available in the ```numpy``` library. The numbers 8, 16, 32, 64, 128 correspond to the number of bytes used to store each individual number in the array, these are typically only used for application with very large arrays to optimise memory management:
 
@@ -344,7 +550,7 @@ There are also corresponding ```int```, ```float```, or ```complex``` classes av
 
 ![img_026](./images/img_026.png)
 
-A 2d array is known as a matrix and can be formed when the ```object``` is a list of equally sized lists:
+A more general 2d array is known as a matrix and can be formed when the ```object``` is a list of equally sized lists:
 
 ```
 matrix1 = np.array([[1, 2, 3],
@@ -356,6 +562,10 @@ matrix1.shape
 ```
 
 ![img_027](./images/img_027.png)
+
+![img_163](./images/img_163.png)
+
+![img_164](./images/img_164.png)
 
 Notice that the ```size``` is ```6```, the number of dimensions ```ndim``` is ```2``` and the ```shape``` ```tuple``` is ```(2, 3)``` i.e. 2 rows by 3 columns as expected.
 
@@ -428,6 +638,18 @@ book1.shape
 ```
 
 ![img_030](./images/img_030.png)
+
+This displays in the Variable Explorer:
+
+![img_165](./images/img_165.png)
+
+When expanded, because the view is only in 2D, the index of the third dimension can be cycled through, equivalent to turning the page in a book:
+
+![img_166](./images/img_166.png)
+
+![img_167](./images/img_167.png)
+
+![img_168](./images/img_168.png)
 
 ## ravel and reshape
 
@@ -622,6 +844,10 @@ matrix1[0, 1]
 
 ![img_040](./images/img_040.png)
 
+![img_169](./images/img_169.png)
+
+![img_179](./images/img_170.png)
+
 Notice that the form of the square bracket, has a similar form to the ```shape``` ```tuple```. Indexing a scalar value from a higher dimension array follows the same trend as the ```shape``` ```tuple```:
 
 |ndim|description|indexing|
@@ -661,6 +887,9 @@ $$ \text{matrix1} = \begin{bmatrix}
                     7 & 8 & 9 \\
                     10 & 11 & 12 \\
                     \end{bmatrix} $$
+
+
+![img_171](./images/img_171.png)
 
 This can be indexed explicitly using two lists:
 
@@ -1087,15 +1316,9 @@ matrix1
 
 ![img_070](./images/img_070.png)
 
-If the directory function ```dir``` is used on the ndarray:
+If the ```ndarray``` instance ```matrix1``` is input followed by a dot ```.```, two underscores ```__``` and tab ```↹```, the data model identifiers will display:
 
-```
-dir(matrix1)
-```
-
-A large list of identifiers displays including a larger list of data model identifiers:
-
-![img_071](./images/img_071.png)
+![img_172](./images/img_172.png)
 
 The unitary data model methods require only a single instance:
 
@@ -2472,12 +2695,144 @@ The ```np.random``` has a handful of additional distributions not available in t
 
 An overview of date and time objects was covered in [The Date and Time Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
 
-The ```numpy``` library has a slightly different implementation of these objects, expanded to ```ndarrays``` and with an optionaly higher precision to the nanosecond.
+The ```numpy``` library has a slightly different implementation of these objects, expanded to ```ndarrays``` and with an optionally higher precision to the nanosecond. The docstring of the ```datetime64``` class from the ```numpy``` library can be examined by inputting ```np.datetime64()``` followed by a shift ``⇧``` and tab ```↹```:
 
+![img_174](./images/img_174.png)
 
+Normally a datetime is constructed from an ISO 8601 string which has the form ```'YYYY-MM-DDThh:mm:ss.fffffffff'``` where ```YYYY``` is the year, ```MM``` is the month, ```DD``` is the day, ```hh``` is the hours, ```mm``` is the minutes, ```ss``` is the seconds and ```fffffffff``` is the fractional component down to a nanosecond precision.
 
+```
+today = np.datetime64('2023-04-17T12:00:00.000000001')
+today
+```
 
+![img_175](./images/img_175.png)
+
+The date displays on the Variable Explorer. Double clicking into the field reveals the representation:
+
+![img_176](./images/img_176.png)
+
+![img_177](./images/img_177.png)
+
+Another ```datetime64``` instance can be created:
+
+```
+yesterday = np.datetime64('2023-04-16T12:00:00.000000002')
+yesterday
+```
+
+![img_178](./images/img_178.png)
+
+Subtraction of one date by another gives a time difference, in the form of a ```timedelta64``` instance:
+
+```
+difference = yesterday - today
+difference
+```
+
+![img_179](./images/img_179.png)
+
+This displays in the Variable Explorer and once again the representation can be seen when double clicking into the field:
+
+![img_180](./images/img_180.png)
+
+![img_181](./images/img_181.png)
+
+The docstring of the ```timedelta64``` class from the ```numpy``` library can be examined by inputting ```np.timedelta64()``` followed by a shift ``⇧``` and tab ```↹```:
+
+![img_182](./images/img_182.png)
+
+The documentation doesn't give too much detail however as seen earlier, the time difference is provided as an integer, followed by a string representing the unit:
+
+```
+days = np.timedelta64(1, 'D')
+hours = np.timedelta64(1, 'h')
+minutes = np.timedelta64(1, 'm')
+seconds = np.timedelta64(1, 's')
+microseconds = np.timedelta64(1, 'us')
+nanoseconds = np.timedelta64(1, 'ns')
+```
+
+![img_183](./images/img_183.png)
+
+The units above can all be combined:
+
+```
+days + hours + minutes + seconds + microseconds + nanoseconds
+```
+
+![img_184](./images/img_184.png)
+
+There are two other units but these are less commonly used due to their imprecise definition:
+
+```
+years = np.timedelta64(1, 'Y')
+months = np.timedelta64(1, 'M')
+```
+
+![img_185](./images/img_185.png)
+
+This makes them incompatible with the other units:
+
+![img_186](./images/img_186.png)
+
+The ```numpy``` function ```arange``` can be used to create a ```datetime64``` array using two dates and a step:
+
+```
+startdate = np.datetime64('2023-01')
+stopdate = np.datetime64('2024-01')
+month = np.timedelta64(1, 'M')
+
+dates = np.arange(start=startdate,
+                  stop=stopdate,
+                  step=month)
+dates
+```
+
+![img_187](./images/img_187.png)
+
+As usual, the start bound is inclusive and the stop bound is exclusive. Unfortunately the Variable Explorer doesn't support ```datetime64``` or ```timedelta64``` arrays:
+
+![img_188](./images/img_188.png)
+
+![img_189](./images/img_189.png)
+
+It is more routine for such arrays to be incorporated in ```Series``` (which is essentially a ```numpy``` arrays with an associated label). The Variable Explorer does support this data type. More details about this will be given in a subsequent ```pandas``` tutorial:
+
+```
+import pandas as pd
+dates = pd.Series(data=dates, name='dates')
+```
+
+![img_190](./images/img_190.png)
+
+![img_191](./images/img_191.png)
+
+![img_192](./images/img_192.png)
 
 ## Meshgrid
 
-np.meshgrid
+Supposing $x$ is a row and $y$ is a column:
+
+```
+xrow = np.array([5, 6, 7, 8, 9])[np.newaxis, :]
+ycol = np.array([1, 2, 3, 4])[:, np.newaxis]
+```
+
+![img_193](./images/img_193.png)
+
+![img_194](./images/img_194.png)
+
+The ```numpy``` function ```meshgrid``` can be used to replicate an ```x``` array using the dimensionality of a ```y``` array and vice versa.
+
+```
+xmat, ymat = np.meshgrid(xrow, ycol)
+```
+
+![img_195](./images/img_195.png)
+
+![img_196](./images/img_196.png)
+
+This is a useful function for plotting data, which will be discussed in the next tutorial on ```matplotlib```.
+
+[Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)

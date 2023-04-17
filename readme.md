@@ -106,13 +106,11 @@ Incomplete tutorial (beginning only)
 
 ### Data Science Libraries
 
-Incomplete tutorial (almost finished)
-
-The Numeric Python Library known as numpy is based around the ndarray. The ndarray is a multi-dimensional numeric array that is configured for numeric data. The identifiers and data model identifiers for the ndarray are configured for numerical operations, math and statistics essentially allowing broadcasting of an operation over the size of the array. This allows for a much cleaner syntax and faster operation than the use of multiple for loops. The numpy library also has an associated random module that allows broadcasting of randomly generated numbers across an array and has a more accurate datetime and timedelta giving ns precision. The numpy library is the general foundation for all other scientific libraries:
+The Numeric Python Library known as numpy is based around the ```ndarray```. The ```ndarray``` is a multi-dimensional numeric array that is configured for numeric data. The identifiers and data model identifiers for the ```ndarray``` are configured for numerical operations, math and statistics essentially allowing broadcasting of an operation over the size of the array. This allows for a much cleaner syntax and faster operation than the use of multiple for loops. The numpy library also has an associated random module that allows broadcasting of randomly generated numbers across an array and has a more accurate datetime and timedelta giving ns precision. The numpy library is the general foundation for all other scientific libraries:
 
 [The Numeric Python Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_numeric_python_library/readme.md)
 
-The Matrix Plotting Library known as matplotlib is Pythons most commonly used plotting library, and the base library of other common plotting libraries. matplotlib as the name suggests is designed for plotting numeric data in 1d ndarrays and 2d ndarrays. This library is commonly used for an assortment of plots including, line plots, scatter plots, bar graphs, pie charts, histograms, box plots, violin plots, matrix color plots, contour plots, surface plots and wireframe plots:
+The Matrix Plotting Library known as ```matplotlib``` is Pythons most commonly used plotting library, and the base library of other common plotting libraries. matplotlib as the name suggests is designed for plotting numeric data in 1d ndarrays and 2d ndarrays. This library is commonly used for an assortment of plots including, line plots, scatter plots, bar graphs, pie charts, histograms, box plots, violin plots, matrix color plots, contour plots, surface plots and wireframe plots:
 
 [The Matrix Plotting Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_matrix_plotting_library/readme.md)
 
