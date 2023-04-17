@@ -2,12 +2,6 @@
 
 This tutorial will configure Python 3.11 on a Windows 11 computer using Mambaforge. For Linux/Mac see [Linux/Mac Install](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/002_linux_install/readme.md)
 
-## Tutorial Video
-
-[Spyder IDE Setup and Overview](https://www.youtube.com/watch?v=fvQX0wRExCI&ab_channel=PhilipYip)
-
-[JupyterLab IDE Setup and Overview](https://www.youtube.com/watch?v=r7o1eiwOhc4&ab_channel=PhilipYip)
-
 ## System Requirements
 
 The PC should match or exceed the following system requirements:
