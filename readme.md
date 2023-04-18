@@ -105,3 +105,9 @@ The Numeric Python Library known as numpy is based around the ```ndarray```. The
 The Matrix Plotting Library known as ```matplotlib``` is Pythons most commonly used plotting library, and the base library of other common plotting libraries. matplotlib as the name suggests is designed for plotting numeric data in 1d ndarrays and 2d ndarrays. This library is commonly used for an assortment of plots including, line plots, scatter plots, bar graphs, pie charts, histograms, box plots, violin plots, matrix color plots, contour plots, surface plots and wireframe plots:
 
 [The Matrix Plotting Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_matrix_plotting_library/readme.md)
+
+Incomplete tutorial: Beginning Section Complete
+
+The Seaborn Data Visualisation Library is a wrapper library around ```pyplot``` and allows easy visualisation from data within a ```pandas``` ```DataFrame``` instance. ```seaborn``` includes 1 line plot commands for the most commonly used data visualisations. In theory all the plots that can be created in ```seaborn``` can be produced directly using ```pyplot``` however the simplified syntax of ```seaborn``` is often more elegant and makes the code more readible, allowing more focus on the data visualisation:
+
+[The Seaborn Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/024_seaborn_library/readme.md)
