@@ -16,7 +16,7 @@ There are three package managers commonly used to install Python and Python pack
 
 **In this guide Mambaforge will be used as it is the most reliable solution.** Seperate Python 3.11 environments will be made for each IDE. Anaconda has been updated to include a recent version of JupyterLab and a recent version of Spyder. The version of Spyder 5.4.1 preinstalled with Anaconda unfortunately lacks significant code completion fixes which were addressed in Spyder 5.4.2 so use of Spyder in Anaconda will lead to impaired performance until the installer is further updated.
 
-Python Version Numbers are of the format X.Y.Z for example version 3.11.2 where X is the major version 3, Y is the minor version 11 and Z is the patch version 2. 
+Python Version Numbers are of the format X.Y.Z for example version 3.11.3 where X is the major version 3, Y is the minor version 11 and Z is the patch version 3. 
 
 A new minor version of Python 3 is developed each year. Python 3.12.0 for example is currently in development. It is recommended to wait for a patch number of at least version 1, which usually indicates that the most significant bug fixes have been addressed. In addition it also means that the developers of popular Python libraries have had enough time to update their libraries allowing them to run on this new minor version. Python libraries are installed as Python packages which follow the same X.Y.Z format.
 
@@ -24,7 +24,7 @@ A new minor version of Python 3 is developed each year. Python 3.12.0 for exampl
 
 Once Python is installed, it can be used with the Mambaforge Prompt/Terminal, a text editor and a file explorer. These three components are typically inbuilt into the Operating System. These three components also form the basis of a Python Integrated Development Environment often abbreviated as an IDE.
 
-Python has numerous IDEs. This guide will configure four of common IDEs and outline their features:
+Python has numerous IDEs. This guide will configure four common IDEs, that are good for begineers and outline their features:
 
 * IDLE
 * Spyder
