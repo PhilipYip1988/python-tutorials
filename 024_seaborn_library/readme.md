@@ -1056,6 +1056,20 @@ These plot types will be explored using the example data.
 
 ## Relational Plots
 
+Relational data, as the name suggests a relation between an independent $x$ variable and a dependent $y$ variable. The purpose of a relational plot is to see if an obvious relation exists via a visualisation.
+
+Recall there are the following types of plots available:
+
+|Name|Module|Level|
+|---|---|---|
+|relplot|relational|**FacetGrid**|
+|scatterplot|relational|Axes|
+|lineplot|relational|Axes|
+
+These plots have already been examined using a fabricated dataset. Let's explore the use of a relative plot on a real dataset. The ```flight``` ```DataFrame``` instance has the ```Series``` ```'year'``` which is the independent variable and the ```Series``` ```'passengers'``` which is the dependent variable. It also has the ```Series``` ```'month'``` which is categorical.
+
+A ```relplot``` can be used to view this relationship, using the ```'month'``` as the ```hue```. Recall this outputs a ```Figure``` level ```FacetGrid```:
+
 ```
 fig = sns.relplot(data=flights, x='year', y='passengers',
                   hue='month')
@@ -1064,6 +1078,8 @@ fig = sns.relplot(data=flights, x='year', y='passengers',
 ![img_133](./images/img_133.png)
 
 ![img_134](./images/img_134.png)
+
+If instead of the ```hue```, the ```'month'``` is assigned to ```col```, a seperate subplot will be made for each of the 12 months. A ```col_wrap``` of ```4``` can be used to create 3 rows by 4 columns:
 
 ```
 fig = sns.relplot(data=flights, x='year', y='passengers',
@@ -1074,6 +1090,8 @@ fig = sns.relplot(data=flights, x='year', y='passengers',
 
 ![img_136](./images/img_136.png)
 
+If ```'month'``` is assigned both to ```col``` and ```hue```, each subplot will contain a plot that has a different color from the default palette:
+
 ```
 fig = sns.relplot(data=flights, x='year', y='passengers',
                   hue='month',
@@ -1083,6 +1101,63 @@ fig = sns.relplot(data=flights, x='year', y='passengers',
 ![img_137](./images/img_137.png)
 
 ![img_138](./images/img_138.png)
+
+The ```kind``` can be switched from the default ```'scatter'``` to ```'line'``` to create a line plot:
+
+```
+fig = sns.relplot(data=flights, x='year', y='passengers',
+                  hue='month',
+                  col='month', col_wrap=4,
+                  kind='line')
+```
+
+![img_139](./images/img_139.png)
+
+![img_140](./images/img_140.png)
+
+From the relational plots above, it is easy to visualise a general trend, that is the number of flights increases as the year increases. Moreover as each of the months are shown in a seperate subplot that has the same scale, it is easy to see that the summer months such as July have more flights than the winter months such as December.
+
+## Distribution Plots
+
+The main purpose of a distribution plot is to see if the data in a distribution can be easily distinguished from another distribution via a visualisation. 
+
+|displot|distributions|**FacetGrid**|
+|histplot|distributions|Axes|
+|kdeplot|distributions|Axes|
+|ecdfplot|distributions|Axes|
+|rugplot|distributions|Axes|
+
+The ```iris``` ```DataFrame``` is typically used to explore the concepts of a distribution data. For simplicity only one species ```'setosa'``` and one dimension the ```'sepal_length'``` will initially be considered:
+
+```
+iris[iris['species']=='setosa'].head()
+```
+
+![img_141](./images/img_141.png)
+
+The number of datapoints in the head will be increased to 7. 
+
+The rugplot displays each data point as a low transparency line, overlapping lines 
+
+normally a rugplot is used alongside other plots and is shown as a small proportion of the plot at the bottom. For clarity, each line will be shown
+
+```
+fig, axarray = plt.subplots(nrows=3, ncols=1,
+                            num=11, figsize=None, dpi=None)
+sns.rugplot(data=iris[iris['species']=='setosa'].head(7),
+            x='sepal_length', ax=axarray[0],
+            height=1)
+sns.histplot(data=iris[iris['species']=='setosa'].head(7),
+            x='sepal_length', ax=axarray[1], bins=9)
+sns.kdeplot(data=iris[iris['species']=='setosa'].head(7),
+            x='sepal_length', ax=axarray[2])
+```
+
+
+
+
+
+
 
 
 
