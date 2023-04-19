@@ -1137,9 +1137,13 @@ iris[iris['species']=='setosa'].head()
 
 The number of datapoints in the head will be increased to 7. 
 
-The rugplot displays each data point as a low transparency line, overlapping lines 
+Three subplots will be made.
 
-normally a rugplot is used alongside other plots and is shown as a small proportion of the plot at the bottom. For clarity, each line will be shown
+The top subplot will display a rugplot. The rugplot displays each data point as a line, the line is of low transparency so overlapping lines can be seen. normally a rugplot is used alongside other plots and is shown as a small proportion of the plot at the bottom. For clarity, it will be shown as a subplot and each line will be shown using a height of 1.
+
+The middle subplot shows a histogram. In this case, there are 9 discrete bins and the ticks lying in each bin are computed.
+
+The bottom subplot shows a kernel density estimation (kde) function. A kde, essentially each tick in the rugplot is computed as a gaussian and summed.
 
 ```
 fig, axarray = plt.subplots(nrows=3, ncols=1,
