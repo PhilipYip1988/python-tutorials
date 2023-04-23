@@ -99,8 +99,10 @@ To create a new Python environment for the latest version of the JupyterLab IDE 
 ```
 mamba create -n jupyterlab
 mamba activate jupyterlab
-mamba install jupyterlab python=3.11 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
+mamba install jupyterlab python=3.11 ipython=8.11.0 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
 ```
+
+ipython 8.12.0 introduces an error with code completion with pandas dataframes.
 
 To launch JupyterLab use:
 
@@ -121,7 +123,7 @@ mamba install -c  python=3.11 notebook cython seaborn scikit-learn sympy openpyx
 
 [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) needs to be installed seperately using the appropriate package for your Operating System.
 
-Once installed, launch Visual Studio Code using the start menu shortcut. Alternatively laubnch it from the Mambaforge Prompt (Windows)/Terminal (Linux) using:
+Once installed, launch Visual Studio Code using the start menu shortcut. Alternatively launch it from the Mambaforge Prompt (Windows)/Terminal (Linux) using:
 
 ```
 mamba activate vscode
