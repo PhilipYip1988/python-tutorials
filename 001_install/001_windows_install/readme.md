@@ -16,9 +16,96 @@ The performance for Python will be very poor if these system requirements are no
 
 ## Uninstall
 
-Before proceeding uninstall any version of Python or Python distributions you may have previously installed such as Anaconda, Miniconda, Mambaforge or Miniforge. Uninstall any standalone Spyder and any other Python IDEs. This will clean up your computer and prevent any confusion.
+Skip this section if Python has never been installed on your computer.
 
-If you have two versions of one of these distributions installed and have uninstalled the latest version... the Windows 11 Installed Apps may still list the old version but have problems removing it. In such a scenario you may get better results by accessing the older Programs and Features. This can be accessed by pressing ```⊞``` and ```r``` to open up a run dialog. Input ```appwiz.cpl```.
+Before proceeding uninstall any version of Python or Python distributions you may have previously installed. Right click the Start button and select Installed Apps:
+
+![img_419](./images/img_419.png)
+
+Uninstall Anaconda, Miniconda, Mambaforge or Miniforge. Uninstall any standalone Spyder, Python and any other Python IDEs. This will clean up your computer and prevent any confusion:
+
+![img_420](./images/img_420.png)
+![img_421](./images/img_421.png)
+![img_422](./images/img_422.png)
+![img_423](./images/img_423.png)
+
+Sometimes Installed Apps has an issue showing two entries for a prgoram that has been udpated. It is unable to remove the second entry once the first has been uninstalled. If this happens press ```⊞``` and ```r``` and input:
+
+```
+appwiz.cpl
+```
+
+![img_424](./images/img_424.png)
+
+This will launch the legacy Programs and Features which usually fares better in such a scenario:
+
+![img_425](./images/img_425.png)
+
+Open up file explorer and input ```%UserProfile%``` in the address bar:
+
+![img_426](./images/img_426.png)
+
+Delete the old configuration folders ```.conda```, ```.continuum```, ```.ipython```, ```.jupyter```, ```.matplotlib``` and ```.spyder-py3```:
+
+![img_427](./images/img_427.png)
+
+Delete the ```jedi``` folder:
+
+![img_428](./images/img_428.png)
+
+Delete the ```.condarc``` file. Having this file in particular may result in the ```mamba``` package manager using the wrong channel:
+
+![img_429](./images/img_429.png)
+
+Open up file explorer and input ```%AppData%``` in the address bar:
+
+![img_430](./images/img_430.png)
+
+Delete the ```.anaconda``` and ```jupyter``` folders:
+
+![img_431](./images/img_431.png)
+
+Press ```alt``` and ```↑``` to go up a level and then select the Roaming subfolder:
+
+![img_432](./images/img_432.png)
+
+Delete the ```conda```, ```seaborn``` and ```spyder``` folders:
+
+![img_433](./images/img_433.png)
+![img_434](./images/img_434.png)
+
+Go to the Microsoft folder, select Windows, Start Menu and Programs and delete any old Start Menu entries:
+
+![img_442](./images/img_442.png)
+![img_443](./images/img_443.png)
+![img_444](./images/img_444.png)
+![img_445](./images/img_445.png)
+![img_446](./images/img_446.png)
+
+Open up file explorer and input ```%ProgramData%``` in the address bar. This location is used if one of these programs is installed for All Users. Look for the same folders above and delete them:
+
+![img_435](./images/img_435.png)
+![img_436](./images/img_436.png)
+
+Right click the Start Button and select System:
+
+![img_447](./images/img_447.png)
+
+Select Advanced System Settings:
+
+![img_448](./images/img_448.png)
+
+Select Environmental Variables:
+
+![img_449](./images/img_449.png)
+
+Select the Path and select Edit:
+
+![img_450](./images/img_450.png)
+
+Ensure there are no old entries to Anaconda, Miniconda, Mambaforge, Miniforge or Python:
+
+![img_451](./images/img_451.png)
 
 ## Mambaforge Install
 

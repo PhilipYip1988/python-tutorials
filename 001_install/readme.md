@@ -14,7 +14,25 @@ There are three package managers commonly used to install Python and Python pack
 |Anaconda|conda|data science distribution|conda (older packages)|3.10|
 |Miniconda|conda|minimal|conda (older packages)|3.10|
 
-**In this guide Mambaforge will be used as it is the most reliable solution.** Seperate Python 3.11 environments will be made for each IDE. Anaconda has been updated to include a recent version of JupyterLab and a recent version of Spyder. The version of Spyder 5.4.1 preinstalled with Anaconda unfortunately lacks significant code completion fixes which were addressed in Spyder 5.4.2 so use of Spyder in Anaconda will lead to impaired performance until the installer is further updated.
+Anaconda has been updated to include a relatively recent version of JupyterLab and a recent version of Spyder. Unfortunately the version of Spyder 5.4.1 preinstalled with Anaconda unfortunately lacks significant code completion fixes which were addressed in Spyder 5.4.2 so use of Spyder in Anaconda will lead to impaired performance. Although Spyder can be updated to version 5.4.3:
+
+![img_001](./images/img_001.png)
+
+Spyder 5.4.3 reports a missing dependencies python-lsp 1.7.1 (NOK) and 1.7.2 to 1.8.0 is required. This dependency is needed for the improved code completion:
+
+![img_002](./images/img_002.png)
+
+When attempting to install the dependency in Anaconda Navigator:
+
+![img_003](./images/img_003.png)
+
+The notice says installing it will modify 30 Packages, **remove 185 packages** and install 4 packages:
+
+![img_004](./images/img_004.png)
+
+In other words installing it will break the Anaconda ```base``` installation and therefore a seperate environment will need to be used to properly install Spyder with all its dependencies.
+
+**In this guide Mambaforge will be used as it is the most reliable solution.** Seperate Python 3.11 environments will be made for each IDE. 
 
 Python Version Numbers are of the format X.Y.Z for example version 3.11.3 where X is the major version 3, Y is the minor version 11 and Z is the patch version 3. 
 
