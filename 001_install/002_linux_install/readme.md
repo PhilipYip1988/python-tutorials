@@ -671,7 +671,7 @@ If no version is selected, the latest version of Spyder is installed but you may
 Spyder will be installed with its mandatory dependencies however it is recommended to install it alongside its optional dependencies for complete functionality:
 
 ```
-mamba install python=3.11 spyder=5.4.3 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install python=3.11 spyder=5.4.3 cython seaborn pandas=2 ipython=8.11.0 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 Installing ```seaborn``` will give the other scientific libraries such as ```numpy```, ```pandas```, ```matplotlib``` and ```scipy```. The ```openpyxl```, ```xlrd```, ```xlsxwriter```, ```lxml``` and ```sqlalchemy``` are used by ```pandas``` to read and write to common file formats:
@@ -893,7 +893,7 @@ To recap Spyder is installed in its own Python environment using:
 ```
 mamba create -n spyder
 mamba activate spyder
-mamba install python=3.11 spyder cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install python=3.11 spyder cython seaborn pandas=2 ipython=8.11.0 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 Spyder can be launched using:
@@ -1349,7 +1349,7 @@ mamba search jupyterlab
 Install JupyterLab using:
 
 ```
-mamba install jupyterlab python=3.11 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt5
+mamba install jupyterlab python=3.11 cython seaborn pandas=2 ipython=8.11.0 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt5
 ```
 
 Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using a modifying the above command. 
