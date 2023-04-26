@@ -522,7 +522,7 @@ It is worthwhile examining this dictionary as it contains important locations in
 ![img_077](./images/img_077.png)
 ![img_078](./images/img_078.png)
 
-Of particular importance are ```'USERNAME'``` which is different for all Windows Users and ````'USERPROFILE'``` which is dependent on the ```'USERNAME'```. If ```%USERPROFILE%``` is typed in the address bar in Windows Explorer, the UserProfile is displayed:
+Of particular importance are ```'USERNAME'``` which is different for all Windows Users and ```'USERPROFILE'``` which is dependent on the ```'USERNAME'```. If ```%USERPROFILE%``` is typed in the address bar in Windows Explorer, the UserProfile is displayed:
 
 ![img_079](./images/img_079.png)
 
