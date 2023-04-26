@@ -16,27 +16,43 @@ The performance for Python will be poor if these system requirements are not sat
 
 ## Uninstall
 
-Before proceeding remove any Python distributions such as Anaconda, Miniconda, Mambaforge or Miniforge. These distributions are typically found as subfolders in the Home ```~``` folder:
+Skip this section if Python has never been installed on your computer.
 
-![img_001](./images/img_001.png)
+Before proceeding remove any Python distributions such as Anaconda, Miniconda, Mambaforge or Miniforge. These distributions are typically found as subfolders in the Home ```~``` folder. The old installation can be uninstalled by deleting the corresponding folder:
 
-They can be deleted by deleting the corresponding folder. Open the Terminal. The prompt should look like the following ```philip@pc~``` where ```philip``` is the user name, ```pc``` is the ```pc``` name and ```~``` is an abbreviation for the Home folder. There should be no ```(base)``` prefix:
+![img_312](./images/img_312.png)
+
+These distributions leave behind alot of hidden configuration files. Select Show Hidden Files:
+
+![img_313](./images/img_313.png)
+
+Close any open Terminals. Then open up the ```.bashrc``` file in the text editor:
+
+![img_314](./images/img_314.png)
+
+Remove the conda initialise code block:
+
+![img_315](./images/img_315.png)
+
+Because Mambaforge and Anaconda are closely related and the ```mamba``` package manager uses the ```conda``` package manager under the hood, having some of the old configuration files, particularly the ```.condarc``` will change the channels used by the ```mamba``` package manager making it less reliable:
+
+![img_316](./images/img_316.png)
+
+![img_317](./images/img_317.png)
+
+Delete the ```.condarc``` file. It is also recommended to delete the ```.anaconda```, ```.conda```, ```.continuum```, ```.ipython``` and ```.jupyter``` folders.
+
+The ```.config``` folder contains configuration files for some Python libraries and other programs. It shouldn't be outright deleted:
+
+![img_318](./images/img_318.png)
+
+Instead the ```matplotlib``` subfolder and ```spyder-py3``` subfolder can be deleted:
+
+![img_317](./images/img_317.png)
+
+Open the Terminal. The prompt should look like the following ```philip@pc~``` where ```philip``` is the user name, ```pc``` is the ```pc``` name and ```~``` is an abbreviation for the Home folder. There should be no ```(base)``` prefix:
 
 ![img_002a](./images/img_002a.png)
-
-If there is a ```(base)``` prefix, then select Show Hidden Files:
-
-![img_002](./images/img_002.png)
-
-Open the ```.bashrc``` file in text editor:
-
-![img_003a](./images/img_003a.png)
-
-Search for ```conda```. Remove the conda initialization section and save the ```.bashrc``` file:
-
-![img_003](./images/img_003.png)
-
-Close any Terminal windows and relauch the Terminal. The ```(base)``` prefix should now be removed.
 
 ## Mambaforge Install
 
@@ -655,7 +671,7 @@ If no version is selected, the latest version of Spyder is installed but you may
 Spyder will be installed with its mandatory dependencies however it is recommended to install it alongside its optional dependencies for complete functionality:
 
 ```
-mamba install python=3.11 spyder=5.4.3 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install python=3.11 spyder=5.4.3 cython seaborn pandas=2 ipython=8.11.0 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 Installing ```seaborn``` will give the other scientific libraries such as ```numpy```, ```pandas```, ```matplotlib``` and ```scipy```. The ```openpyxl```, ```xlrd```, ```xlsxwriter```, ```lxml``` and ```sqlalchemy``` are used by ```pandas``` to read and write to common file formats:
@@ -877,7 +893,7 @@ To recap Spyder is installed in its own Python environment using:
 ```
 mamba create -n spyder
 mamba activate spyder
-mamba install python=3.11 spyder cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install python=3.11 spyder cython seaborn pandas=2 ipython=8.11.0 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 Spyder can be launched using:
@@ -1333,7 +1349,7 @@ mamba search jupyterlab
 Install JupyterLab using:
 
 ```
-mamba install jupyterlab python=3.11 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt5
+mamba install jupyterlab python=3.11 cython seaborn pandas=2 ipython=8.11.0 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt5
 ```
 
 Check the latest version of JupyterLab is being installed. If not cancel the operation and assign JupyterLab to the latest version using a modifying the above command. 
