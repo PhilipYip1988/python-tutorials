@@ -93,7 +93,7 @@ To create a new Python environment for the latest version of the Spyder IDE incl
 ```
 mamba create -n spyder
 mamba activate spyder
-mamba install spyder=5.4.3 python=3.11 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
+mamba install spyder python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy
 ```
 
 To launch Spyder use:
@@ -103,8 +103,6 @@ mamba activate spyder
 spyder
 ```
 
-*ipython 8.12.0* introduces an error with code completion with pandas dataframes.
-
 ### JupyterLab env
 
 To create a new Python environment for the latest version of the JupyterLab IDE including its optional dependencies use:
@@ -112,10 +110,8 @@ To create a new Python environment for the latest version of the JupyterLab IDE 
 ```
 mamba create -n jupyterlab
 mamba activate jupyterlab
-mamba install jupyterlab python=3.11 ipython=8.11.0 cython seaborn pandas=2 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
+mamba install jupyterlab python=3.11 cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly jupyterlab-variableinspector ipympl pyqt
 ```
-
-*ipython 8.12.0* introduces an error with code completion with pandas dataframes.
 
 To launch JupyterLab use:
 
@@ -131,10 +127,8 @@ To create a new Python environment for the latest version of the Visual Studio C
 ```
 mamba create -n vscode
 mamba activate vscode
-mamba install -c  python=3.11 notebook cython seaborn pandas=2 ipython=8.11.0 scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly ipympl pyqt
+mamba install -c python=3.11 notebook cython seaborn scikit-learn sympy openpyxl xlrd xlsxwriter lxml sqlalchemy nodejs ipywidgets plotly ipympl pyqt
 ```
-
-*ipython 8.12.0* introduces an error with code completion with pandas dataframes.
 
 [Visual Studio Code](https://code.visualstudio.com/#alt-downloads) needs to be installed seperately using the appropriate package for your Operating System.
 
