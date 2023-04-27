@@ -17,7 +17,7 @@ statement:
 
 ![img_001](./images/img_001.png)
 
-The statement ends in a colon ```:``` which is used to indicate the beginning of a code block. 
+The statement ends in a colon : which is used to indicate the beginning of a code block. 
 
 ![img_002](./images/img_002.png)
 
@@ -63,7 +63,7 @@ outside block
 
 ### if Code Block
 
-The ```if``` code block is carried out in response to a condition. Notice that the print statement is executed for a ```True``` condition:
+The if code block is carried out in response to a condition. Notice that the print statement is executed for a True condition:
 
 ```
 condition = True
@@ -72,11 +72,11 @@ if condition:
     print('The condition was True')
 
 
-```    
+```
 
 ![img_006](./images/img_006.png)
 
-When the condition is instead ```False```, the print statement is not executed and the contents of the code block are skipped:
+When the condition is instead False, the print statement is not executed and the contents of the code block are skipped:
 
 ```
 condition = False
@@ -85,11 +85,11 @@ if condition:
     print('The condition was True')
 
 
-``` 
+```
 
 ![img_007](./images/img_007.png)
 
-A print statement outside the code block can be added. This is carried out after the code block when the condition is ```True```:
+A print statement outside the code block can be added. This is carried out after the code block when the condition is True:
 
 ```
 condition = True
@@ -103,7 +103,7 @@ print('Outside the Code Block')
 
 ![img_008](./images/img_008.png)
 
-When the condition is ```False``` and the code block is skipped, only the print statement outside the code block is carried out:
+When the condition is False and the code block is skipped, only the print statement outside the code block is carried out:
 
 ```
 condition = False
@@ -153,13 +153,13 @@ if 5 > 3:
     print('The condition was True')
     
     
-```    
+```
 
 ![img_011](./images/img_011.png)
 
-An ```if``` statement can be configured to examine multiple conditions through the use of the and ```&``` and or ```|``` operators. 
+An if statement can be configured to examine multiple conditions through the use of the and & and or | operators. 
 
-The ```&``` and ```|``` operators take precedence over the comparison operators ```==```, ```!=```, ```>```, ```>=```, ```<``` and ```<=```, so conditions are normally placed in parenthesis:
+The & and | operators take precedence over the comparison operators ==, !=, >, >=, < and <=, so conditions are normally placed in parenthesis:
 
 ```
 if (5 > 3) & ('a' < 'b'):
@@ -170,7 +170,7 @@ if (5 > 3) & ('a' < 'b'):
 
 ![img_012](./images/img_012.png)
 
-If the parenthesis are removed, the operation ```3 & 'a'``` is attempted which gives a ```TypeError```:
+If the parenthesis are removed, the operation 3 & 'a' is attempted which gives a TypeError:
 
 ![img_013](./images/img_013.png)
 
@@ -187,7 +187,7 @@ if (((5 > 3) & ('a' > 'b')) | (4 == 3)):
 
 ### else Code Block
 
-It is common to setup a code block in response to a ```True``` condition and another code block in response to a ```False``` condition:
+It is common to setup a code block in response to a True condition and another code block in response to a False condition:
 
 ```
 condition = False
@@ -202,7 +202,7 @@ if not condition:
 
 ![img_015](./images/img_015.png)
 
-This is typically done shorthand using an associated ```else``` code block:
+This is typically done shorthand using an associated else code block:
 
 ```
 condition = False
@@ -219,7 +219,7 @@ else:
 
 ### elif Code Block
 
-If multiple ```if``` code blocks are used, they are each individually assessed and the ```else``` code block is only associated with the last ```if``` code block. When both conditions are ```True```, the print statements in both ```if``` code blocks are carried out:
+If multiple if code blocks are used, they are each individually assessed and the else code block is only associated with the last if code block. When both conditions are True, the print statements in both if code blocks are carried out:
 
 ```
 if 10 > 3:
@@ -234,7 +234,7 @@ else:
 
 ![img_017](./images/img_017.png)
 
-When the first condition in the first ```if``` code block is ```True```, the print statement in the first code block is carried out. When the condition in the second ```if``` code block is ```False```, the print stement in the associated ```else``` code block is also carried out:
+When the first condition in the first if code block is True, the print statement in the first code block is carried out. When the condition in the second if code block is False, the print stement in the associated else code block is also carried out:
 
 ```
 if 10 > 9:
@@ -245,11 +245,11 @@ else:
     print('These are not greater')
     
     
-```    
+```
 
 ![img_018](./images/img_018.png)
 
-It is common to instead setup a linked else if code block using ```elif```. When conditions are linked, only the **first** code block that has a ```True``` condition is executed. All subsequent code blocks are skipped, regardless if the condition is ```True``` or not, as in the case with the example below:
+It is common to instead setup a linked else if code block using elif. When conditions are linked, only the **first** code block that has a True condition is executed. All subsequent code blocks are skipped, regardless if the condition is True or not, as in the case with the example below:
 
 ```
 if 10 > 3:
@@ -260,11 +260,11 @@ else:
     print('These are not greater')
     
     
-```   
+   
 
 ![img_019](./images/img_019.png)
 
-The ```else``` code block is linked to all the subsequent code blocks and is only carried out if all conditions specified are ```False```:
+The else code block is linked to all the subsequent code blocks and is only carried out if all conditions specified are False:
 
 ```
 if 10 > 30:
@@ -275,11 +275,11 @@ else:
     print('These are not greater')
     
     
-```   
+   
 
 ![img_020](./images/img_020.png)
 
-There can be multiple ```elif``` code blocks:
+There can be multiple elif code blocks:
 
 ```
 num = 2
@@ -300,7 +300,7 @@ else:
 
 ## The match Code Block with Nested case Code Blocks
 
-When a series of code blocks are used to match a variable to ordinal values, like in the case above, it is better to use a ```match``` code block. Each condition in the ```match``` code block is a ```case``` and each ```case``` has its own nested code block. Notice the double indentation of code, indicating it belongs to the corresponding ```case``` code block which in turn belongs to the ```match``` code block. ```case _``` is used to represent any other value of the variable ```num```:
+When a series of code blocks are used to match a variable to ordinal values, like in the case above, it is better to use a match code block. Each condition in the match code block is a case and each case has its own nested code block. Notice the double indentation of code, indicating it belongs to the corresponding case code block which in turn belongs to the match code block. case _ is used to represent any other value of the variable num:
 
 ```
 num = 2
@@ -320,7 +320,7 @@ match num:
 
 ![img_022](./images/img_022.png)
 
-Recall that characters are ordinal and therefore can also be used with ```match```. For example:
+Recall that characters are ordinal and therefore can also be used with match. For example:
 
 ```
 letter = 'c'
@@ -336,13 +336,13 @@ match letter:
         print("letter not 'a', 'b' or 'c'")
     
 
-```    
+```
 
 ![img_023](./images/img_023.png)
 
 ## Nested Code Blocks
 
-The ```match``` code block is a demonstration of a nested code block. It is possible to nest other code blocks:
+The match code block is a demonstration of a nested code block. It is possible to nest other code blocks:
 
 ```
 letter = 'a'
@@ -359,11 +359,11 @@ else:
     print("letter != 'a'")
 
     
-```    
+```
 
 ![img_024](./images/img_024.png)
 
-With too much nesting, the code often becomes hard to read. It is generally better to try and branch out the conditions using a single level with the and ```&``` and or ```|``` operators where possible:
+With too much nesting, the code often becomes hard to read. It is generally better to try and branch out the conditions using a single level with the and & and or | operators where possible:
 
 ```
 letter = 'a'
@@ -404,13 +404,13 @@ Its contents including whitespace can be viewed in Notepad++:
 
 ![img_027](./images/img_027.png)
 
-The file can be opened using the ```open``` function:
+The file can be opened using the open function:
 
 ![img_028](./images/img_028.png)
 
-The ```open``` function requires a file which can be specified directly when it is in the same folder as the interactive Python notebook file (or Python script file).
+The open function requires a file which can be specified directly when it is in the same folder as the interactive Python notebook file (or Python script file).
 
-The ```mode``` keyword input argument can be specified using a single letter:
+The mode keyword input argument can be specified using a single letter:
 
 |mode|definition|
 |---|---|
@@ -419,11 +419,11 @@ The ```mode``` keyword input argument can be specified using a single letter:
 |'a'|open an existing file and append new content|
 |'x'|create a new file and write new content|
 
-A second letter can also be used for the encoding. The encoding can be ```'t'``` text (default) which is also known as ```UTF-8``` or ```'b'``` binary which is known as ```'ASCII'```. 
+A second letter can also be used for the encoding. The encoding can be 't' text (default) which is also known as UTF-8 or 'b' binary which is known as 'ASCII'. 
 
-```mode=rt``` for example is the default which reads a text file encoded as text ('ASCII'). 
+mode=rt for example is the default which reads a text file encoded as text ('ASCII'). 
 
-For other encoding schemes, the ```encoding``` keyword argument is seperately used. For a CSV file created in Microsoft Excel, the ```'UTF-8-Sig'``` encoding needs to be used to properly handle the BOM. The other encoding schemes available were previously discussed in the text data types tutorial. 
+For other encoding schemes, the encoding keyword argument is seperately used. For a CSV file created in Microsoft Excel, the 'UTF-8-Sig' encoding needs to be used to properly handle the BOM. The other encoding schemes available were previously discussed in the text data types tutorial. 
 
 |encoding|bit|bytes|byte order|BOM|
 |---|---|---|---|---|
@@ -438,7 +438,7 @@ For other encoding schemes, the ```encoding``` keyword argument is seperately us
 |'UTF-8'|1-4|adaptive|1-4 adaptive| |
 |'UTF-8-Sig'|1-4|adaptive|1-4 adaptive|BOM|
 
-The ```newline``` keyword input argument can be used to specify the character that is used to represent a new line. in the example above a carriage return and line feed were shown in Notepad++. In Python the escape characters ```\r\n``` are used to represent this which is the default.
+The newline keyword input argument can be used to specify the character that is used to represent a new line. in the example above a carriage return and line feed were shown in Notepad++. In Python the escape characters \r\n are used to represent this which is the default.
 
 The file can be opened using:
 
@@ -449,11 +449,11 @@ file_object
 
 ![img_029](./images/img_029.png)
 
-A number of identifiers are available from the ```file_object``` and can be viewed by inputting ```file_object.``` followed by a tab ```↹```:
+A number of identifiers are available from the file_object and can be viewed by inputting file_object. followed by a tab ↹:
 
 ![img_030](./images/img_030.png)
 
-In the example above the mode is set for reading, so ```readline``` can be used to read an individual line and return it as a ```str``` or ```readlines``` can be used to read all lines and return a ```list``` of lines. i.e. each item in the list is a ```str``` corresponding to the line:
+In the example above the mode is set for reading, so readline can be used to read an individual line and return it as a str or readlines can be used to read all lines and return a list of lines. i.e. each item in the list is a str corresponding to the line:
 
 ```
 file_object.readline()
@@ -470,7 +470,7 @@ file_object.close()
 
 ![img_032](./images/img_032.png)
 
-This will release the physical file from Python, allowing it to be used by other programs in Windows. The ```file_object``` will still present in Python but no longer associated to the physical file. If the directory function ```dir``` is used a number of data model identifiers can also be viewed:
+This will release the physical file from Python, allowing it to be used by other programs in Windows. The file_object will still present in Python but no longer associated to the physical file. If the directory function dir is used a number of data model identifiers can also be viewed:
 
 ```
 dir(file_object)
@@ -478,9 +478,9 @@ dir(file_object)
 
 ![img_033](./images/img_033.png)
 
-There are two data model identifiers of particular interest ```__enter__``` and ```__exit__``` which means the ```file_object``` can be entered and exited using a context manager. 
+There are two data model identifiers of particular interest \_\_enter\_\_ and \_\_exit\_\_ which means the file_object can be entered and exited using a context manager. 
 
-The context manager is essentially a code block, ```with``` is used to create the code block and has an associated colon ```:```. Instead of assignment to a variable using the assignment operator ```=```, the ```as``` keyword is used. The operations above with a context manager are:
+The context manager is essentially a code block, with is used to create the code block and has an associated colon :. Instead of assignment to a variable using the assignment operator =, the as keyword is used. The operations above with a context manager are:
 
 ```
 with open('text.txt', mode='rt') as file_object:
@@ -494,15 +494,15 @@ remaining_lines
 
 ![img_034](./images/img_034.png)
 
-The use of the ```with``` context manager opens, the physical file within the code block using the data model method ```__enter__``` and when the code block ends uses the data model method ```__exit__``` to release the physical file. This prevents a file from being opened in Python and not properly closed and the code is a bit cleaner to read grouping all the operations with that file together.
+The use of the with context manager opens, the physical file within the code block using the data model method \_\_enter\_\_ and when the code block ends uses the data model method \_\_exit\_\_ to release the physical file. This prevents a file from being opened in Python and not properly closed and the code is a bit cleaner to read grouping all the operations with that file together.
 
 ## The for Loop
 
-The ```for``` loop can be used to carry out operations within a code block *for* a specified number of times.
+The for loop can be used to carry out operations within a code block *for* a specified number of times.
 
 ### Iterator
 
-The for loop requires an iterator which comes from a collection. The following ```str``` can be used to examine the mechanics behind a ```for``` loop:
+The for loop requires an iterator which comes from a collection. The following str can be used to examine the mechanics behind a for loop:
 
 ```
 word = 'hello'
@@ -519,7 +519,7 @@ dir(word)
 
 ![img_036](./images/img_036.png)
 
-Recall that use of ```in``` in the context above, uses the data model identifier ```__contains__```. There is also the ```__iter__``` data model method which can be used to create an iterator and the ```__len__``` data model method which specifies the number of Unicode characters in the Unicode string.
+Recall that use of in in the context above, uses the data model identifier \_\_contains\_\_. There is also the \_\_iter\_\_ data model method which can be used to create an iterator and the \_\_len\_\_ data model method which specifies the number of Unicode characters in the Unicode string.
 
 An iterator can be created using:
 
@@ -530,7 +530,7 @@ letter
 
 ![img_037](./images/img_037.png)
 
-The ```next``` keyword can be used until the iterator is exhausted:
+The next keyword can be used until the iterator is exhausted:
 
 ```
 next(letter)
@@ -542,7 +542,7 @@ next(letter)
 
 ![img_038](./images/img_038.png)
 
-If the iterator is exhausted, a ```StopIteration``` error displays:
+If the iterator is exhausted, a StopIteration error displays:
 
 ```
 next(letter)
@@ -550,7 +550,7 @@ next(letter)
 
 ![img_039](./images/img_039.png)
 
-Recall to exhaust the iterator, ```next``` is called 5 times, which matches the length of the ```word```:
+Recall to exhaust the iterator, next is called 5 times, which matches the length of the word:
 
 ```
 len(word)
@@ -558,7 +558,7 @@ len(word)
 
 ![img_040](./images/img_040.png)
 
-The ```word``` can also be cast into a ```tuple``` and viewed on the Variable Explorer:
+The word can also be cast into a tuple and viewed on the Variable Explorer:
 
 ```
 word_t = tuple(word)
@@ -570,7 +570,7 @@ word_t = tuple(word)
 
 ![img_043](./images/img_043.png)
 
-If the directory function ```dir``` is used on ```word_t```:
+If the directory function dir is used on word_t:
 
 ```
 dir(word_t)
@@ -578,7 +578,7 @@ dir(word_t)
 
 ![img_044](./images/img_044.png)
 
-Notice there are also the data model methods ```__contains__```, ```__iter__``` and ```__len__```. This means an iterator can be created. This iterator is a ```tuple``` iterator, where each item can be a Python object. Since this ```tuple``` was cast from a ```str``` each Python object is a one character Unicode ```str```:
+Notice there are also the data model methods \_\_contains\_\_, \_\_iter\_\_ and \_\_len\_\_. This means an iterator can be created. This iterator is a tuple iterator, where each item can be a Python object. Since this tuple was cast from a str each Python object is a one character Unicode str:
 
 ```
 letter_t = iter(word_t)
@@ -599,9 +599,9 @@ next(letter_t)
 
 ![img_046](./images/img_046.png)
 
-A ```list``` which is essentially a mutable ```tuple``` behaves similarly. 
+A list which is essentially a mutable tuple behaves similarly. 
 
-The ```word``` can also be cast into a ```set``` and viewed on the Variable Explorer:
+The word can also be cast into a set and viewed on the Variable Explorer:
 
 ```
 word_s = set(word)
@@ -613,7 +613,7 @@ word_s = set(word)
 
 ![img_049](./images/img_049.png)
 
-A ```set``` only contains unique values and is not ordered. If the directory function ```dir``` is used on ```word_s```:
+A set only contains unique values and is not ordered. If the directory function dir is used on word_s:
 
 ```
 dir(word_s)
@@ -621,7 +621,7 @@ dir(word_s)
 
 ![img_050](./images/img_050.png)
 
-The data model methods ```__contains__```, ```__iter__``` and ```__len__``` are still available. An iterator can be created:
+The data model methods \_\_contains\_\_, \_\_iter\_\_ and \_\_len\_\_ are still available. An iterator can be created:
 
 ```
 letter_s = iter(word_s)
@@ -641,7 +641,7 @@ next(letter_s)
 
 ### Iterating using a for Loop
 
-A ```for``` loop can be used to loop over each letter in each of the collections above. Returning to the Unicode string for example:
+A for loop can be used to loop over each letter in each of the collections above. Returning to the Unicode string for example:
 
 ```
 word = 'hello'
@@ -654,9 +654,9 @@ for letter in word:
 
 ![img_053](./images/img_053.png)
 
-Under the hood, the ```for``` loop uses the ```__contains__```, ```__iter__``` and ```__len__``` data model methods to loop over each Unicode character in the string ```word```. 
+Under the hood, the for loop uses the \_\_contains\_\_, \_\_iter\_\_ and \_\_len\_\_ data model methods to loop over each Unicode character in the string word. 
 
-```letter``` is a loop variable which can be accessed in the loop and can be renamed using any variable name. When the variable is not referenced in the ```for``` loop, it is called ```_```. For example:
+letter is a loop variable which can be accessed in the loop and can be renamed using any variable name. When the variable is not referenced in the for loop, it is called _. For example:
 
 ```
 for _ in word:
@@ -667,9 +667,9 @@ for _ in word:
 
 ![img_054](./images/img_054.png)
 
-Notice that ```hello``` is printed out 5 times, because it has a length of 5.
+Notice that hello is printed out 5 times, because it has a length of 5.
 
-Another example can be given using a ```tuple``` which recall can be conceptualised as an archive of records:
+Another example can be given using a tuple which recall can be conceptualised as an archive of records:
 
 ```
 archive = (0, True, 3.14, 'hello')
@@ -697,9 +697,9 @@ for record in records:
 
 ### Mutability Issues
 
-Mutable methods such as the ```list``` method ```append``` are commonly used within ```for``` loops. 
+Mutable methods such as the list method append are commonly used within for loops. 
 
-Care should be taken not to use a ```for``` loop to iterate over the mutable sequence itself, while mutating the same sequence, as an infinite loop can occur. For example:
+Care should be taken not to use a for loop to iterate over the mutable sequence itself, while mutating the same sequence, as an infinite loop can occur. For example:
 
 ```
 active = [0, True, 3.14, 'hello']
@@ -712,7 +712,7 @@ for record in active:
 
 ![img_057](./images/img_057.png)
 
-To exit an infinite loop, restart the Kernel in JupyterLab (and clear all outputs). In Spyder use the keyboard shortcut ```Ctrl``` + ```c```.
+To exit an infinite loop, restart the Kernel in JupyterLab (and clear all outputs). In Spyder use the keyboard shortcut Ctrl + c.
 
 Instead a copy of the mutable sequence can be made to loop over, for example: 
 
@@ -730,7 +730,7 @@ active
 
 ### The range class
 
-A ```range``` object is commonly used within a loop. For example:
+A range object is commonly used within a loop. For example:
 
 ```
 active = [0, True, 3.14, 'hello']
@@ -810,11 +810,11 @@ for num in range(len(word)):
 
 ![img_064](./images/img_064.png)
 
-A ```range``` object has been created from the length of a collection. The docstring of the init signature of the ```range``` class can be examined by inputting ```range()``` and pressing shift ```⇧``` and tab ```↹```:
+A range object has been created from the length of a collection. The docstring of the init signature of the range class can be examined by inputting range() and pressing shift ⇧ and tab ↹:
 
 ![img_065](./images/img_065.png)
 
-A ```range``` object uses zero-order indexing and increments in integer steps of ```1``` up to but excluding the integer ```stop``` value. It has consistency to the ```slice``` object which was examined when indexing collections. If only an integer ```stop``` value is specified:
+A range object uses zero-order indexing and increments in integer steps of 1 up to but excluding the integer stop value. It has consistency to the slice object which was examined when indexing collections. If only an integer stop value is specified:
 
 ```
 ro = range(5)
@@ -823,7 +823,7 @@ ro
 
 ![img_066](./images/img_066.png)
 
-The integer ```start``` will assumed to be ```0```. The range object ```ro``` can be cast into a ```tuple``` and examined in the Variable Explorer:
+The integer start will assumed to be 0. The range object ro can be cast into a tuple and examined in the Variable Explorer:
 
 ```
 ro_t = tuple(ro)
@@ -833,11 +833,11 @@ ro_t = tuple(ro)
 
 ![img_068](./images/img_068.png)
 
-Notice in this scenario, the index and value of the ```tuple``` match:
+Notice in this scenario, the index and value of the tuple match:
 
 ![img_069](./images/img_069.png)
 
-If a non-zero ```start``` value is also supplied. For example:
+If a non-zero start value is also supplied. For example:
 
 ```
 ro = range(1, 5)
@@ -849,11 +849,11 @@ ro_t = tuple(ro)
 
 ![img_071](./images/img_071.png)
 
-Notice in this scenario, the index and value of the ```tuple``` do not match:
+Notice in this scenario, the index and value of the tuple do not match:
 
 ![img_072](./images/img_072.png)
 
-Finally an integer ```step``` can be specified. When an integer ```step``` is specified, the integer ```start``` needs to also be specified even if it is ```0```:
+Finally an integer step can be specified. When an integer step is specified, the integer start needs to also be specified even if it is 0:
 
 ```
 ro = range(0, 6, 2)
@@ -865,11 +865,11 @@ ro_t = tuple(ro)
 
 ![img_074](./images/img_074.png)
 
-Notice that once again zero-order indexing is used, going up to but not including the ```stop``` value of ```6```:
+Notice that once again zero-order indexing is used, going up to but not including the stop value of 6:
 
 ![img_075](./images/img_075.png)
 
-Zero-order indexing needs to be addressed when using negative values. For example beginning at a negative value and counting up until ```0``` requires a ```stop``` value ```1``` past ```0``` which is ```1```:
+Zero-order indexing needs to be addressed when using negative values. For example beginning at a negative value and counting up until 0 requires a stop value 1 past 0 which is 1:
 
 ```
 ro = range(-5, 1, 1)
@@ -884,7 +884,7 @@ ro_t = tuple(ro)
 ![img_078](./images/img_078.png)
 
 
-Or using a negative step of ```-1``` to count down from a positive integer value to ```0```, requires a ```stop``` value ```-1``` past ```0``` which is ```-1```:
+Or using a negative step of -1 to count down from a positive integer value to 0, requires a stop value -1 past 0 which is -1:
 
 ```
 ro = range(5, -1, -1)
@@ -898,7 +898,7 @@ ro_t = tuple(ro)
 
 ![img_081](./images/img_081.png)
 
-To check your understanding, create the following ```range``` objects:
+To check your understanding, create the following range objects:
 
 ![img_082](./images/img_082.png)
 
@@ -930,7 +930,7 @@ dir(mapping)
 
 ![img_087](./images/img_087.png)
 
-Notice the data model identifiers ```__contains__```, ```__iter__``` and ```__len__```. If an iterator is created from a dictionary, it examines the keys:
+Notice the data model identifiers \_\_contains\_\_, \_\_iter\_\_ and \_\_len\_\_. If an iterator is created from a dictionary, it examines the keys:
 
 ```
 keys = iter(mapping)
@@ -942,7 +942,7 @@ next(keys)
 
 ![img_088](./images/img_088.png)
 
-This means that using a ```for``` loop on a dictionary iterates over the keys:
+This means that using a for loop on a dictionary iterates over the keys:
 
 ```
 for key in mapping:
@@ -964,7 +964,7 @@ for key in mapping:
 
 ![img_090](./images/img_090.png)
 
-Recall that the dictionary has the three identifiers ```keys```, ```values``` and ```items```:
+Recall that the dictionary has the three identifiers keys, values and items:
 
 ```
 mapping.keys()
@@ -974,7 +974,7 @@ mapping.items()
 
 ![img_091](./images/img_091.png)
 
-These are all iterable. ```keys``` are not normally explicitly used as it is the same as iterating using a dicitonary directly:
+These are all iterable. keys are not normally explicitly used as it is the same as iterating using a dicitonary directly:
 
 ```
 for key in mapping.keys():
@@ -985,7 +985,7 @@ for key in mapping.keys():
 
 ![img_092](./images/img_092.png)
 
-```values``` are also not normally explicitly used as it is relatively easy to index into the dictionary using a key as seen before:
+values are also not normally explicitly used as it is relatively easy to index into the dictionary using a key as seen before:
 
 ```
 for value in mapping.values():
@@ -996,7 +996,7 @@ for value in mapping.values():
 
 ![img_093](./images/img_093.png)
 
-Each item in ```items``` is a ```tuple``` of the form ```(key, value)```. This ```tuple``` can be accessed:
+Each item in items is a tuple of the form (key, value). This tuple can be accessed:
 
 ```
 for (key, value) in mapping.items():
@@ -1007,7 +1007,7 @@ for (key, value) in mapping.items():
 
 ![img_094](./images/img_094.png)
 
-This is normally simplified using ```tuple``` unpacking:
+This is normally simplified using tuple unpacking:
 
 ```
 for key, value in mapping.items():
@@ -1020,17 +1020,17 @@ for key, value in mapping.items():
 
 ### The enumerate class
 
-Using the dictionary identifier ```items``` gives an iterable that cotnains a ```tuple``` of the form ```(key, value)```:
+Using the dictionary identifier items gives an iterable that cotnains a tuple of the form (key, value):
 
 ![img_096](./images/img_096.png)
 
-For another collection such as the string ```word``` which was ```'hello'``` a numeric index is used opposed to a key and the value is the corresponding Unicode character. This was seen in more detail when this was cast to the tuple ```word_t```:
+For another collection such as the string word which was 'hello' a numeric index is used opposed to a key and the value is the corresponding Unicode character. This was seen in more detail when this was cast to the tuple word_t:
 
 ![img_097](./images/img_097.png)
 
-Using ```range``` on the length of the collection, gave a ```range``` object that was associated with the numeric index. This was examined earlier and it was seen, that the value could be retrieved by indexing into the collection.
+Using range on the length of the collection, gave a range object that was associated with the numeric index. This was examined earlier and it was seen, that the value could be retrieved by indexing into the collection.
 
-To get both the index and value however, an ```enumerate``` object can be created:
+To get both the index and value however, an enumerate object can be created:
 
 ```
 word_t = tuple('hello')
@@ -1039,7 +1039,7 @@ enumerate(word_t)
 
 ![img_098](./images/img_098.png)
 
-If this ```enumerate``` object is cast into a ```list```, notice that it has a similar form to the dictionary ```items```.
+If this enumerate object is cast into a list, notice that it has a similar form to the dictionary items.
 
 ```
 list(enumerate(word_t))
@@ -1048,9 +1048,9 @@ mapping.items()
 
 ![img_099](./images/img_099.png)
 
-Casting into a ```list``` opposed to a ```tuple``` clearly distinguishes the inner and outer brackets.
+Casting into a list opposed to a tuple clearly distinguishes the inner and outer brackets.
 
-The ```enumerate``` object can be looped over to get the index and the value at the index, analogously to the key and the value at the key for a dictionary:
+The enumerate object can be looped over to get the index and the value at the index, analogously to the key and the value at the key for a dictionary:
 
 ```
 word = 'hello'
@@ -1065,7 +1065,7 @@ for index, letter in enumerate(word):
 
 ## The while Loop
 
-The ```while``` loop can be conceptualised as an ```if``` code block that is continually repeated *while* a condition is ```True```. Note when the condition is never updated in the code block, the ```while``` loop will never exit resulting in an infinite loop. 
+The while loop can be conceptualised as an if code block that is continually repeated *while* a condition is True. Note when the condition is never updated in the code block, the while loop will never exit resulting in an infinite loop. 
 
 ```
 while True:
@@ -1076,9 +1076,9 @@ while True:
 
 ![img_101](./images/img_101.png)
 
-To exit an infinite loop, restart the Kernel in JupyterLab (and clear all outputs). In Spyder use the keyboard shortcut ```Ctrl``` + ```c```.
+To exit an infinite loop, restart the Kernel in JupyterLab (and clear all outputs). In Spyder use the keyboard shortcut Ctrl + c.
 
-A variable can be initialised before entering a ```while``` loop. This variable is examined in the ```while``` loops condition and code within the ```while``` loop updates the value of this variable. Eventually the value of the variable will be updated to a value which makes the condition of the ```while``` loop untrue and therefore exists the ```while``` loop. For example:
+A variable can be initialised before entering a while loop. This variable is examined in the while loops condition and code within the while loop updates the value of this variable. Eventually the value of the variable will be updated to a value which makes the condition of the while loop untrue and therefore exists the while loop. For example:
 
 ```
 loop_var = 0
@@ -1094,19 +1094,19 @@ print(f'loop_var = {loop_var}')
 
 ![img_102](./images/img_102.png)
 
-The initial unindented print statement shows the initial value of ```loop_var``` before the ```while``` loop. 
+The initial unindented print statement shows the initial value of loop_var before the while loop. 
 
-The indented print statements shows the value of ```loop_var``` when the ```while``` condition is checked. For each of these values, the condition ```loop_var < 5``` is ```True``` and the value ```loop_var``` is incremented.
+The indented print statements shows the value of loop_var when the while condition is checked. For each of these values, the condition loop_var < 5 is True and the value loop_var is incremented.
 
-The final unindented print statement shows the final value of ```5```. This value was incremented from ```4``` in the last iteration of the ```while``` loop. For this value of ```5```, the condition of the ```while``` loop ```loop_var < 5``` was ```False``` and therefore the ```while``` loop exited. 
+The final unindented print statement shows the final value of 5. This value was incremented from 4 in the last iteration of the while loop. For this value of 5, the condition of the while loop loop_var < 5 was False and therefore the while loop exited. 
 
-While loops are often used when interacting with hardware. An example is using the ```input``` function which waits for a response from a user that has to interact with a keyboard:
+While loops are often used when interacting with hardware. An example is using the input function which waits for a response from a user that has to interact with a keyboard:
 
 ```
 user_message = input('Input some text: ')
 ```
 
-Under the hood, this uses a ```while``` loop and the Kernel will hang until a user optionally inputs some text in the box and presses enter ```↵```:
+Under the hood, this uses a while loop and the Kernel will hang until a user optionally inputs some text in the box and presses enter ↵:
 
 ![img_103](./images/img_103.png)
 
@@ -1114,7 +1114,7 @@ Under the hood, this uses a ```while``` loop and the Kernel will hang until a us
 
 ![img_105](./images/img_105.png)
 
-A ```while``` loop can be used in place of any ```for``` loop although the syntax may not be as elegant. Compare the following for example:
+A while loop can be used in place of any for loop although the syntax may not be as elegant. Compare the following for example:
 
 ```
 index = 0
@@ -1137,9 +1137,9 @@ for letter in 'hello':
 
 ![img_107](./images/img_107.png)
 
-A ```for``` loop cannot replace, all occurances of a ```while``` loop. In the above scenario for example, *while* waiting for user input there is no specified duration to wait for the user to input text. The user can input text quickly, slowly or not at all (resulting in an infinite loop). 
+A for loop cannot replace, all occurances of a while loop. In the above scenario for example, *while* waiting for user input there is no specified duration to wait for the user to input text. The user can input text quickly, slowly or not at all (resulting in an infinite loop). 
 
-```while``` loops are often employed in sensor feedback mechanisms. A central heating system may use a ```while``` loop to turn on a heater *while* the temperature is below a set point measured by a temperature sensor. It may also use a ```while``` loop to turn on air conditioning *while* the temperature is above the same set point. Both of these ```while``` loops may be contained within an infinite ```while``` loop which runs continuously to maintain the temperature.
+while loops are often employed in sensor feedback mechanisms. A central heating system may use a while loop to turn on a heater *while* the temperature is below a set point measured by a temperature sensor. It may also use a while loop to turn on air conditioning *while* the temperature is above the same set point. Both of these while loops may be contained within an infinite while loop which runs continuously to maintain the temperature.
 
 ## List, Generator and Dictionary Comprehensions
 
@@ -1164,7 +1164,7 @@ for num in nums:
 
 ![img_109](./images/img_109.png)
 
-Instead of printing the doubled values, each value can be appended to a mutable collection such as a ```list```. The collection needs to be mutable so the ```list``` identifier ```append``` can be used within the ```for``` loop:
+Instead of printing the doubled values, each value can be appended to a mutable collection such as a list. The collection needs to be mutable so the list identifier append can be used within the for loop:
 
 ```
 nums = (0, 1, 2, 3, 4)
@@ -1179,7 +1179,7 @@ doubled_nums
 
 ![img_110](./images/img_110.png)
 
-And for clarity, a ```print``` statement can be added to the ```for``` loops code block to view ```doubled_nums``` during each iteration of the ```for``` loop.
+And for clarity, a print statement can be added to the for loops code block to view doubled_nums during each iteration of the for loop.
 
 ```
 nums = (0, 1, 2, 3, 4)
@@ -1211,15 +1211,15 @@ for num in nums:
 doubled_nums = [2 * num for num in nums]
 ```
 
-A list comprehension is typically used to create an output list from interaction with a collection via a for loop. The square brackets ```[]``` enclose the list and the list is assigned to the object name ```doubled_nums``` using the assignment operator ```=```:
+A list comprehension is typically used to create an output list from interaction with a collection via a for loop. The square brackets [] enclose the list and the list is assigned to the object name doubled_nums using the assignment operator =:
 
 ![img_113](./images/img_113.png)
 
-To the left hand side, the expression supplied to the ```list``` identifier ```append``` is used:
+To the left hand side, the expression supplied to the list identifier append is used:
 
 ![img_114](./images/img_114.png)
 
-To the right hand side the ```for``` loop is added. Note as the list comprehension has no code block there is no colon:
+To the right hand side the for loop is added. Note as the list comprehension has no code block there is no colon:
 
 ![img_115](./images/img_115.png)
 
@@ -1235,7 +1235,7 @@ doubled_even_nums
 
 ![img_117](./images/img_117.png)
 
-When the condition has an associated ```else```, the expression when the condition is ```True``` is specified, followed by the expression when the condition is ```False```. ```elif``` is not supported for list comprehension and code blocks should be used when multiple conditions are examined:
+When the condition has an associated else, the expression when the condition is True is specified, followed by the expression when the condition is False. elif is not supported for list comprehension and code blocks should be used when multiple conditions are examined:
 
 ```
 nums = (0, 1, 2, 3, 4)
@@ -1247,7 +1247,7 @@ parity
 
 ![img_118](./images/img_118.png)
 
-If the square brackets ```[ ]``` are replaced by parenthesis ```( )```:
+If the square brackets [ ] are replaced by parenthesis ( ):
 
 ```
 nums = (0, 1, 2, 3, 4)
@@ -1258,7 +1258,7 @@ double_nums
 
 ![img_119](./images/img_119.png)
 
-A generator is essentially an iterator that carries out an expression. In this case the expression ```2 * num``` for each ```num``` in ```nums``` when ```next``` is used:
+A generator is essentially an iterator that carries out an expression. In this case the expression 2 * num for each num in nums when next is used:
 
 ```
 next(double_nums)
@@ -1270,19 +1270,19 @@ next(double_nums)
 
 ![img_120](./images/img_120.png)
 
-If the generator is exhausted, a ```StopIteration``` error displays:
+If the generator is exhausted, a StopIteration error displays:
 
 ![img_121](./images/img_121.png)
 
-If the square brackets ```[ ]``` are replaced by braces ```{ }```, a dictionary comprehension is used. Recall a dictionary has ```key: value``` pairs. The expression for the keys and the expression for the values is seperated out. 
+If the square brackets [ ] are replaced by braces { }, a dictionary comprehension is used. Recall a dictionary has key: value pairs. The expression for the keys and the expression for the values is seperated out. 
 
-For example if the following list of ```colors``` is created: 
+For example if the following list of colors is created: 
 
 ```
 colors = ['red', 'green', 'blue']
 ```
 
-A ```mapping``` which takes the first letter in the ```color``` as the key and the full ```color``` as the value can be created using:
+A mapping which takes the first letter in the color as the key and the full color as the value can be created using:
 
 ```
 mapping = {color[0]: color for color in colors}
@@ -1302,7 +1302,7 @@ keys = [color[0] for color in colors]
 
 ![img_124](./images/img_124.png)
 
-The colon ```:``` is highlighted. The colon in the dictionary seperates, the key expression from the value expression:
+The colon : is highlighted. The colon in the dictionary seperates, the key expression from the value expression:
 
 ![img_125](./images/img_125.png)
 
@@ -1310,7 +1310,7 @@ The value expression is highlighted:
 
 ![img_126](./images/img_126.png)
 
-This can be used in a list comprehension to get the values. In this case, ```values``` is essentially a copy of the original list:
+This can be used in a list comprehension to get the values. In this case, values is essentially a copy of the original list:
 
 ```
 values = [color for color in colors]
@@ -1348,7 +1348,7 @@ The first line is the key. The second line is the value. The third line is the i
 
 ![img_129](./images/img_129.png)
 
-The dictionary comprehension can also use an ```if``` and ```else``` expression. These statements can be set for both the keys and the values as shown in the example below. The if condition takes the first letter of the color for the key and the color for the value when the ordinal value of the first letter is even. The else condition takes the last letter of the color for the key and reverses the color for the value:
+The dictionary comprehension can also use an if and else expression. These statements can be set for both the keys and the values as shown in the example below. The if condition takes the first letter of the color for the key and the color for the value when the ordinal value of the first letter is even. The else condition takes the last letter of the color for the key and reverses the color for the value:
 
 ```
 mapping = {color[0] if ord(color[0]) % 2 == 0 else color[-1]: 
@@ -1368,13 +1368,13 @@ mapping = {color[0]:
 
 ![img_131](./images/img_131.png)
 
-A dictionary comprehension can use the ```items``` identifier of an existing dictionary giving access to the original dictionaries keys and values using tuple unpacking. For example, supposing the following dictionary of ```fruits``` is made:
+A dictionary comprehension can use the items identifier of an existing dictionary giving access to the original dictionaries keys and values using tuple unpacking. For example, supposing the following dictionary of fruits is made:
 
 ```
 fruits = {'apples': 2, 'bananas': 3, 'carrots': 5}
 ```
 
-A dictionary ```fruits2``` which has the same keys and doubles the numeric values can be created using:
+A dictionary fruits2 which has the same keys and doubles the numeric values can be created using:
 
 ```
 fruits2 = {key: 
@@ -1398,7 +1398,7 @@ fruits3 = {key:
 
 ### Using Inbuilt Functions Recap
 
-Many inbuilt functions have already been used. However before looking at creating a custom function, the ```ord``` function will be examined. Recall if the function ```ord``` is input without parenthesis that it is referenced:
+Many inbuilt functions have already been used. However before looking at creating a custom function, the ord function will be examined. Recall if the function ord is input without parenthesis that it is referenced:
 
 ```
 ord
@@ -1406,11 +1406,11 @@ ord
 
 ![img_134](./images/img_134.png)
 
-If the function ```ord``` is input followed by parenthesis and shift ```⇧``` and tab ```↹```, its docstring will display:
+If the function ord is input followed by parenthesis and shift ⇧ and tab ↹, its docstring will display:
 
 ![img_135](./images/img_135.png)
 
-From the docstring, it can be seen that the function has a single input argument denoted ```c```. This is positional only:
+From the docstring, it can be seen that the function has a single input argument denoted c. This is positional only:
 
 ```
 ord('a')
@@ -1418,7 +1418,7 @@ ord('a')
 
 ![img_136](./images/img_136.png)
 
-Any input argument coming before the ```, \``` is positional only. Therefore the following will not work:
+Any input argument coming before the , \ is positional only. Therefore the following will not work:
 
 ```
 ord(c='a')
@@ -1438,9 +1438,9 @@ This return value can be examined when the variable is seen in the Variable Insp
 
 ![img_139](./images/img_139.png)
 
-The ```ord``` function has one positional input argument and 1 return value.
+The ord function has one positional input argument and 1 return value.
 
-The ```print``` function can likewise be referenced:
+The print function can likewise be referenced:
 
 ```
 print
@@ -1448,7 +1448,7 @@ print
 
 ![img_140](./images/img_140.png)
 
-If its docstring is examined, it can be seen that the print function has ```*args``` which means that it can take a variable number of input arguments. It also has the keyword input arguments ```sep```, ```end```, ```file``` and ```flush``` which all have default values. When these keyword input arguments are not specified the default values will be used. 
+If its docstring is examined, it can be seen that the print function has *args which means that it can take a variable number of input arguments. It also has the keyword input arguments sep, end, file and flush which all have default values. When these keyword input arguments are not specified the default values will be used. 
 
 Notice that there is no mention of a return statement in the print function, this is because the print function has no return value:
 
@@ -1458,7 +1458,7 @@ Notice that there is no mention of a return statement in the print function, thi
 empty = print('hello', 'world')
 ```
 
-Notice that the print function always prints. When it is assigned to a variable, text is printed to the cell output. Notice this text uses a space as a seperator ```sep=' '``` and ends on a new line ```end='\n'```. The variable ```empty``` has the value ```NoneType``` as the print function has no return statement.
+Notice that the print function always prints. When it is assigned to a variable, text is printed to the cell output. Notice this text uses a space as a seperator sep=' ' and ends on a new line end='\n'. The variable empty has the value NoneType as the print function has no return statement.
 
 ![img_142](./images/img_142.png)
 
@@ -1473,9 +1473,9 @@ print('good', 'morning', 'world')
 
 ![img_148](./images/img_148.png)
 
-Once again notice this text uses a space as a seperator ```sep=' '``` and ends on a new line ```end='\n'```.
+Once again notice this text uses a space as a seperator sep=' ' and ends on a new line end='\n'.
 
-The effect of modifying the ```sep``` and ```end``` input arguments can be seen using multiple print statements:
+The effect of modifying the sep and end input arguments can be seen using multiple print statements:
 
 ```
 print('hello', 'world')
@@ -1489,7 +1489,7 @@ print('bye', 'world')
 
 ![img_143](./images/img_143.png)
 
-The ```file``` keyword input argument has a default value of ```None``` which means the output is printed to the cell output. A file can be opened and data can be saved to the file using:
+The file keyword input argument has a default value of None which means the output is printed to the cell output. A file can be opened and data can be saved to the file using:
 
 ```
 textfile = open('text.txt', 'w')
@@ -1503,13 +1503,13 @@ textfile.close()
 
 ![img_146](./images/img_146.png)
 
-The effect of the keyword input argument ```flush``` can be seen when a small time delay is introduced:
+The effect of the keyword input argument flush can be seen when a small time delay is introduced:
 
 ```
 from time import sleep
 ```
 
-In the following, the printed ```0``` will appear to change to ```1``` once as the text isn't flushed and more slowly updated:
+In the following, the printed 0 will appear to change to 1 once as the text isn't flushed and more slowly updated:
 
 ```
 for index in range(10):
@@ -1520,7 +1520,7 @@ for index in range(10):
     print('\r', end='', flush=False)
 ```
 
-In the following, the printed ```0``` and ```1``` will be observed to quickly toggle as the text has been flushed:
+In the following, the printed 0 and 1 will be observed to quickly toggle as the text has been flushed:
 
 ```
 for index in range(10):
@@ -1531,7 +1531,7 @@ for index in range(10):
     print('\r', end='', flush=True)
 ```
 
-Integer division and the associated modulus can be carried out using the ```//``` and ```%``` operators respectively:
+Integer division and the associated modulus can be carried out using the // and % operators respectively:
 
 ```
 3 // 2
@@ -1540,11 +1540,11 @@ Integer division and the associated modulus can be carried out using the ```//``
 
 ![img_149](./images/img_149.png)
 
-The ```divmod``` function can be referenced:
+The divmod function can be referenced:
 
 ![img_150](./images/img_150.png)
 
-Its docstring can be examined. Notice it has the two input arguments ```x``` and ```y``` that are once again positional only followed by ```, /```. The value returned is a ```tuple``` which has the form ```(x // y, x % y)```:
+Its docstring can be examined. Notice it has the two input arguments x and y that are once again positional only followed by , /. The value returned is a tuple which has the form (x // y, x % y):
 
 ![img_151](./images/img_151.png)
 
@@ -1562,7 +1562,7 @@ The function call can be assigned to a tuple of variables:
 
 ![img_153](./images/img_153.png)
 
-This is normally done shorthand using ```tuple``` unpacking:
+This is normally done shorthand using tuple unpacking:
 
 ```
 quotient, remainder = divmod(3, 2)
@@ -1570,7 +1570,7 @@ quotient, remainder = divmod(3, 2)
 
 ![img_154](./images/img_154.png)
 
-The ```license``` function can be referenced using:
+The license function can be referenced using:
 
 ```
 license
@@ -1590,7 +1590,7 @@ license()
 
 ![img_157](./images/img_157.png)
 
-When the function is called and assigned to a variable, the variable has the value ```NoneType``` because this function has no return statement:
+When the function is called and assigned to a variable, the variable has the value NoneType because this function has no return statement:
 
 ```
 eula = license()
@@ -1598,11 +1598,11 @@ eula = license()
 
 ![img_158](./images/img_158.png)
 
-Under the hood, this function effectively uses the ```print``` function to print a constant string.
+Under the hood, this function effectively uses the print function to print a constant string.
 
 ### Defining a custom function
 
-Now that the features of inbuilt functions have been examined, a custom function can be explored. Instead of assignment, the ```def``` keyword is used followed by the functions name, in this case ```nothing```. The functions name is followed by parenthesis, and these parenthesis contain input arguments, when the function has input arguments. After the parenthesis is a colon ```:``` which is used to indicated the beginning of a code block. The functions code block usually ends in a ```return``` statement. The following function has no input arguments and no return statement:
+Now that the features of inbuilt functions have been examined, a custom function can be explored. Instead of assignment, the def keyword is used followed by the functions name, in this case nothing. The functions name is followed by parenthesis, and these parenthesis contain input arguments, when the function has input arguments. After the parenthesis is a colon : which is used to indicated the beginning of a code block. The functions code block usually ends in a return statement. The following function has no input arguments and no return statement:
 
 ```
 def nothing():
@@ -1633,7 +1633,7 @@ nothing()
 
 ![img_162](./images/img_162.png)
 
-Notice there is no cell output as there is no return statement. When the function call is assigned to a variable, its value will be ```NoneType```:
+Notice there is no cell output as there is no return statement. When the function call is assigned to a variable, its value will be NoneType:
 
 ```
 empty = nothing()
@@ -1643,7 +1643,7 @@ empty = nothing()
 
 ### Input Argument and Return Value
 
-Another function can be created, that takes in a singular ```word```, and returns the plural of it: 
+Another function can be created, that takes in a singular word, and returns the plural of it: 
 
 ```
 def plural(word):
@@ -1743,7 +1743,7 @@ fruits = plural('apple')
 
 ![img_169](./images/img_169.png)
 
-If no input arguments are supplied or too many, a ```TypeError``` will display:
+If no input arguments are supplied or too many, a TypeError will display:
 
 ```
 plural()
@@ -1752,15 +1752,15 @@ plural('apple', 'banana')
 
 ![img_170](./images/img_170.png)
 
-Another ```TypeError``` will display if the input argument is the wrong data type:
+Another TypeError will display if the input argument is the wrong data type:
 
 ![img_171](./images/img_171.png)
 
 ### Asserting Input Argument Data Types
 
-In other cases, the wrong data types for input arguments may run but give an unexpected result. For this reason it is usually recommended to ```assert``` the data type of an input argument.
+In other cases, the wrong data types for input arguments may run but give an unexpected result. For this reason it is usually recommended to assert the data type of an input argument.
 
-The ```assert``` statement is normally used with the ```isinstance``` function which returns a ```bool```:
+The assert statement is normally used with the isinstance function which returns a bool:
 
 ![img_177](./images/img_177.png)
 
@@ -1771,7 +1771,7 @@ isinstance(2, str)
 
 ![img_178](./images/img_178.png)
 
-When the ```assert``` statement is used with a value that is ```True```, the code runs as normal. When it is used with a value that is ```False``` it raises an ```AssertionError```:
+When the assert statement is used with a value that is True, the code runs as normal. When it is used with a value that is False it raises an AssertionError:
 
 ```
 assert isinstance('hello', str)
@@ -1804,7 +1804,7 @@ def plural(word):
 
 ![img_172](./images/img_172.png)
 
-Now the function works as normal when the data type is as expected and raises an ```AssertionError``` when the data type is wrong:
+Now the function works as normal when the data type is as expected and raises an AssertionError when the data type is wrong:
 
 ```
 plural('banana')
@@ -1824,7 +1824,7 @@ plural(word='banana')
 
 ### Positional Only Input Arguments
 
-Input arguments have a named parameter by default. During a function call input arguments can be specified positionally or they can be specified by assigning the named parameter to a default value. Adding a ```/``` to a functions input arguments mandates that the input arguments that come the ```/``` can only be specified positionally during a function call i.e. the named parameter cannot be used during the function call. This syntax is typically used for the functions in builtins including the methods defined in builtins classes as seen in the previous tutorials. In this use case, the name of the function makes it pretty obvious what a positional input argument is used for and enforcing this syntax makes the code easier to read and faster to write. In other use cases the use of named parameters may be preferable for functions where it is not obvious from the function name what the named parameter does. Having an appropriate named parameter therefore can make the code more readible:
+Input arguments have a named parameter by default. During a function call input arguments can be specified positionally or they can be specified by assigning the named parameter to a default value. Adding a / to a functions input arguments mandates that the input arguments that come the / can only be specified positionally during a function call i.e. the named parameter cannot be used during the function call. This syntax is typically used for the functions in builtins including the methods defined in builtins classes as seen in the previous tutorials. In this use case, the name of the function makes it pretty obvious what a positional input argument is used for and enforcing this syntax makes the code easier to read and faster to write. In other use cases the use of named parameters may be preferable for functions where it is not obvious from the function name what the named parameter does. Having an appropriate named parameter therefore can make the code more readible:
 
 ```
 def plural(word, /):
@@ -1850,7 +1850,7 @@ def plural(word, /):
 
 ![img_175](./images/img_175.png)
 
-The function will proceed as normal when a positional input argument is supplied but raise a ```TypeError``` when a named input argument is supplied:
+The function will proceed as normal when a positional input argument is supplied but raise a TypeError when a named input argument is supplied:
 
 ```
 plural('banana')
@@ -1897,7 +1897,7 @@ plural('banana')
 
 ![img_187](./images/img_187.png)
 
-If the ```/``` is added after the input argument, it can only be provided positionally:
+If the / is added after the input argument, it can only be provided positionally:
 
 ```
 def plural(word='apple', /):
@@ -1930,7 +1930,7 @@ plural()
 plural('banana')
 ```
 
-Using a named argument will give a ```TypeError```:
+Using a named argument will give a TypeError:
 
 ```
 plural(word='banana')
@@ -1963,7 +1963,7 @@ def higher(num1, num2):
         
 ```
 
-Both input arguments should be asserted as numeric, this can be done by supplying a ```tuple``` of numeric datatypes to the ```isinstance``` function:
+Both input arguments should be asserted as numeric, this can be done by supplying a tuple of numeric datatypes to the isinstance function:
 
 ```
 def higher(num1, num2):
@@ -2055,7 +2055,7 @@ higher(3.14, 2)
 
 ![img_183](./images/img_183.png)
 
-If an incorrect data type is supplied, there will be an ```AssertionError```. If the incorrect number of input arguments are supplied, there will be a ```TypeError```. This function can take in ```num1``` and ```num2``` as positional input arguments or keyword arguments. The input arguments could be made to be positional only by use of ```/```.
+If an incorrect data type is supplied, there will be an AssertionError. If the incorrect number of input arguments are supplied, there will be a TypeError. This function can take in num1 and num2 as positional input arguments or keyword arguments. The input arguments could be made to be positional only by use of /.
 
 ```
 def higher(num1, num2, /):
@@ -2099,7 +2099,7 @@ one()
 
 ![img_184](./images/img_184.png)
 
-If no ```return``` statement is added:
+If no return statement is added:
 
 ```
 def calcsomething():
@@ -2112,7 +2112,7 @@ def calcsomething():
 empty = calcsomething()
 ```
 
-Then there is no ```return``` value:
+Then there is no return value:
 
 ![img_185](./images/img_185.png)
 
@@ -2167,7 +2167,7 @@ def singular(word='apples'):
 
 ![img_188](./images/img_188.png)
 
-A tuple is normally returned using tuple unpacking. This means the return statement ```return word[:-1], word[-1]``` is simplified and the tuple is not explicitly specified ```return (word[:-1], word[-1])```.
+A tuple is normally returned using tuple unpacking. This means the return statement return word[:-1], word[-1] is simplified and the tuple is not explicitly specified return (word[:-1], word[-1]).
 
 ```
 singular()
@@ -2179,7 +2179,7 @@ singular('bananas')
 
 ### Function Local Scope and Mutability
 
-Functions have their own local scope. This can be examined with the following. The local variable ```x``` assigned in the function does not alter the global variable ```x``` (seen on the Variable Inspector, after the function call):
+Functions have their own local scope. This can be examined with the following. The local variable x assigned in the function does not alter the global variable x (seen on the Variable Inspector, after the function call):
 
 ```
 x = 2
@@ -2208,7 +2208,7 @@ y = readglobalvariable()
 
 ![img_191](./images/img_191.png)
 
-If an immutable variable is accessed from the global namespace and reassignment is attempted in the functions local namespace, an ```UnboundLocalError``` will display:
+If an immutable variable is accessed from the global namespace and reassignment is attempted in the functions local namespace, an UnboundLocalError will display:
 
 ```
 x = 2
@@ -2222,7 +2222,7 @@ unboundlocal()
 
 ![img_192](./images/img_192.png)
 
-The ```global``` variable can be modified in the function by use of the ```global``` statement:
+The global variable can be modified in the function by use of the global statement:
 
 ```
 x = 2
@@ -2297,13 +2297,13 @@ def higher(num1, num2, /):
 
 ```
 
-Notice that there are two positional input arguments. These can be provided from a ```tuple``` of two numbers:
+Notice that there are two positional input arguments. These can be provided from a tuple of two numbers:
 
 ```
 nums = (3, 2)
 ```
 
-To unpack the ```tuple``` during the function call, it can be prefixed with a ```*```:
+To unpack the tuple during the function call, it can be prefixed with a *:
 
 ```
 higher(*nums)
@@ -2330,7 +2330,7 @@ A dictionary with keys that match the keyword input arguments of the function ca
 nums = {'num1': 3, 'num2': 1}
 ```
 
-To unpack the ```dict``` during the function call, it can be prefixed with a ```**```:
+To unpack the dict during the function call, it can be prefixed with a **:
 
 ```
 higher(**nums)
@@ -2365,7 +2365,7 @@ customsum(1, 2, 3, 4)
 
 ![img_200](./images/img_200.png)
 
-A similar implementation can be carried out using ```**kwargs```:
+A similar implementation can be carried out using **kwargs:
 
 ```
 def customsum(**kwargs):
@@ -2390,7 +2390,7 @@ customsum(one=1, two=2, three=3, four=4)
 
 ### Yield and Generators
 
-A function can use a ```yield``` statement instead of a ```return``` statement:
+A function can use a yield statement instead of a return statement:
 
 ```
 def incrementer(num=0):
@@ -2425,7 +2425,7 @@ count = incrementer()
 
 ![img_206](./images/img_206.png)
 
-It can be incremented using ```next```:
+It can be incremented using next:
 
 ```
 next(count)
@@ -2437,7 +2437,7 @@ This generator is exhausted after one iteration:
 
 ![img_208](./images/img_208.png)
 
-Normally the ```yield``` statement is included in a loop:
+Normally the yield statement is included in a loop:
 
 ```
 def incrementer(num=0):
@@ -2461,7 +2461,7 @@ next(clock)
 
 ![img_210](./images/img_210.png)
 
-From the above it can be seen that very time ```next(clock)``` is called, the code in the function executes until a ```yield``` statement is reached. The code execution is then paused until ```next(clock)``` is called again. This happens until all ```yield``` statements have been exhausted at which point the generator is exhausted. For simplicity this mechanism can be demonstrated without a ```loop``` using:
+From the above it can be seen that very time next(clock) is called, the code in the function executes until a yield statement is reached. The code execution is then paused until next(clock) is called again. This happens until all yield statements have been exhausted at which point the generator is exhausted. For simplicity this mechanism can be demonstrated without a loop using:
 
 ```
 def generate():
@@ -2481,7 +2481,7 @@ next(gen)
 
 ### First Order Function
 
-The following function, takes a ```name``` as an input argument and returns a formatted string including.
+The following function, takes a name as an input argument and returns a formatted string including.
 
 ```
 def greeting(name):
@@ -2512,11 +2512,11 @@ f = greeting
 
 ![img_213](./images/img_213.png)
 
-To the right hand side of the assignment operator, the function is being referenced and not called. Therefore, there is no parenthesis following the function name. ```f``` is essentially a copy of the original function ```greeting```. If ```f``` is input followed by open parenthesis and shift ```⇧``` and the tab ```↹``` are input, details about the input argument displays alongside the docstring provided in greeting:
+To the right hand side of the assignment operator, the function is being referenced and not called. Therefore, there is no parenthesis following the function name. f is essentially a copy of the original function greeting. If f is input followed by open parenthesis and shift ⇧ and the tab ↹ are input, details about the input argument displays alongside the docstring provided in greeting:
 
 ![img_214](./images/img_214.png)
 
-```f``` can therefore be called and supplied an input argument ```name``` using:
+f can therefore be called and supplied an input argument name using:
 
 ```
 f('world')
@@ -2525,7 +2525,7 @@ f('earth')
 
 ![img_215](./images/img_215.png)
 
-Note ```f``` is not an alias to ```greeting``` but a ```copy```. If ```greeting``` is deleted or reassigned, this will not change the functionality of ```f```:
+Note f is not an alias to greeting but a copy. If greeting is deleted or reassigned, this will not change the functionality of f:
 
 ```
 del greeting
@@ -2536,7 +2536,7 @@ f('world')
 
 ### Second-Order Function
 
-The first-order function ```greeting``` can be defined as before:
+The first-order function greeting can be defined as before:
 
 ```
 def greeting(name):
@@ -2559,7 +2559,7 @@ def greeting(name):
 
 ![img_217](./images/img_217.png)
 
-A second order function either takes in a function as an input argument or returns a function. The second order function ```second_input``` can be designed which takes in a function ```fun``` as an input argument.
+A second order function either takes in a function as an input argument or returns a function. The second order function second_input can be designed which takes in a function fun as an input argument.
 
 ```
 def second_order(fun):
@@ -2583,7 +2583,7 @@ def second_order(fun):
 
 ![img_218](./images/img_218.png)
 
-If this ```second_order``` function is called and provided a function as an input argument, the code will run, doing nothing. If another data type is supplied, an ```AssertionError``` will display:
+If this second_order function is called and provided a function as an input argument, the code will run, doing nothing. If another data type is supplied, an AssertionError will display:
 
 ```
 second_order(greeting)
@@ -2592,9 +2592,9 @@ second_order(1)
 
 ![img_219](./images/img_219.png)
 
-Notice the function ```greeting``` is supplied as an input argument as a reference and is not called.
+Notice the function greeting is supplied as an input argument as a reference and is not called.
 
-The ```second_order``` function can be modified to return the function being supplied:
+The second_order function can be modified to return the function being supplied:
 
 ```
 def second_order(fun):
@@ -2620,7 +2620,7 @@ def second_order(fun):
 
 ![img_220](./images/img_220.png)
 
-If this ```second_order``` function is called and provided a function as an input argument, the code will run, returning the function as a reference:
+If this second_order function is called and provided a function as an input argument, the code will run, returning the function as a reference:
 
 ```
 second_order(greeting)
@@ -2628,7 +2628,7 @@ second_order(greeting)
 
 ![img_221](./images/img_221.png)
 
-To call the returned function ```greeting```, a set of parenthesis enclosing an input argument can be supplied:
+To call the returned function greeting, a set of parenthesis enclosing an input argument can be supplied:
 
 ```
 second_order(greeting)('world')
@@ -2640,7 +2640,7 @@ second_order(greeting)('world')
 
 In the above section it was seen that a function can be used as an input argument for another function. It is also possible to define a function wthin a function.
 
-An ```inner``` function can be defined within an ```outer``` function:
+An inner function can be defined within an outer function:
 
 ```
 def outer():
@@ -2662,7 +2662,7 @@ def outer():
 
 ```
 
-Because the ```inner``` function is define within the local scope of the ```outer``` function it can access variables within the ```outer``` functions scope:
+Because the inner function is define within the local scope of the outer function it can access variables within the outer functions scope:
 
 ```
 def outer():
@@ -2676,19 +2676,19 @@ def outer():
 
 ![img_223](./images/img_223.png)
 
-```outer``` can be referenced:
+outer can be referenced:
 
 ```
 outer
 ```
 
-```outer``` can be called to return ```inner```:
+outer can be called to return inner:
 
 ```
 outer()
 ```
 
-And ```inner``` can be called:
+And inner can be called:
 
 ```
 outer()()
@@ -2696,7 +2696,7 @@ outer()()
 
 ![img_224](./images/img_224.png)
 
-More generally, ```outer``` would be called and assigned to a variable name:
+More generally, outer would be called and assigned to a variable name:
 
 ```
 fun_in = outer()
@@ -2710,7 +2710,7 @@ fun_in()
 
 ![img_225](./images/img_225.png)
 
-Let's modify the above code so an input argument ```name``` is requested by the ```outer``` function. This input argument is accessible by the ```inner``` function:
+Let's modify the above code so an input argument name is requested by the outer function. This input argument is accessible by the inner function:
 
 ```
 def outer(name):
@@ -2723,7 +2723,7 @@ def outer(name):
 
 ![img_226](./images/img_226.png)
 
-The ```outer``` function can be called and assigned to a variable name:
+The outer function can be called and assigned to a variable name:
 
 ```
 fun_in = outer('world')
@@ -2731,7 +2731,7 @@ fun_in = outer('world')
 
 ![img_227](./images/img_227.png)
 
-The variable ```'world'``` was provided by the ```outer``` function which has finished executing but is now **enclosed** within the ```inner``` function.
+The variable 'world' was provided by the outer function which has finished executing but is now **enclosed** within the inner function.
 
 ```
 fun_in()
@@ -2742,7 +2742,7 @@ fun_in()
 
 For this reason, the configuration above is known as a **closure** as variables provided from the outer function can be enclosed within the inner function.
 
-In HTML the following tags ```<p>``` and ```<\p>``` are used to enclose a paragraph and ```<h1>``` and ```<\h1>``` are used to enclose a heading of level 1.
+In HTML the following tags \<p\> and \<\\p\> are used to enclose a paragraph and \<h1\> and \<\\h1\> are used to enclose a heading of level 1.
 
 A closure can be defined using:
 
@@ -2755,7 +2755,7 @@ def html_tag(tag):
 
 ```
 
-The outer ```html_tag``` function can be called using a provided tag.
+The outer html_tag function can be called using a provided tag.
 
 ```
 para = html_tag('p')
@@ -2789,7 +2789,7 @@ def outer(external_function):
 
 ![img_230](./images/img_230.png)
 
-A simple ```greeting``` function can be decorated:
+A simple greeting function can be decorated:
 
 ```
 def greeting():
@@ -2815,7 +2815,7 @@ greeting_decorated = outer(greeting)
 
 ![img_232](./images/img_232.png)
 
-```greeting_decorated``` which returns the inner function can be referenced using:
+greeting_decorated which returns the inner function can be referenced using:
 
 ```
 greeting_decorated
@@ -2850,7 +2850,7 @@ def outer(external_function):
 
 ![img_235](./images/img_235.png)
 
-The external function, ```greeting``` is unchanged. Once again the outer function can be called and assigned to a variable name:
+The external function, greeting is unchanged. Once again the outer function can be called and assigned to a variable name:
 
 ```
 greeting_decorated = outer(greeting)
@@ -2872,7 +2872,7 @@ greeting_decorated()
 
 ![img_237](./images/img_237.png)
 
-In the above case, the external function ```greeting``` being decorated had no input arguments. In this example, an input argument ```name``` will be added:
+In the above case, the external function greeting being decorated had no input arguments. In this example, an input argument name will be added:
 
 ```
 def greeting(name):
@@ -2896,7 +2896,7 @@ def greeting(name):
 
 ![img_238](./images/img_238.png)
 
-To accommodate the input argument ```name```, the return statement of the ```inner``` must provide the input argument 
+To accommodate the input argument name, the return statement of the inner must provide the input argument 
 
 ```
 def outer(external_function):
@@ -2908,7 +2908,7 @@ def outer(external_function):
 
 ```
 
-In order to do so, the ```inner``` function itself must also be supplied the input argument ```name```:
+In order to do so, the inner function itself must also be supplied the input argument name:
 
 ```
 def outer(external_function):
@@ -2920,7 +2920,7 @@ def outer(external_function):
 
 ```
 
-More generally ```*args``` and ```**kwargs``` will be used to allow a generic number of positional and keyword input arguments into the ```inner``` function so that they can be supplied when calling the ```external_function```.
+More generally *args and **kwargs will be used to allow a generic number of positional and keyword input arguments into the inner function so that they can be supplied when calling the external_function.
 
 ```
 def outer(external_function):
@@ -2934,7 +2934,7 @@ def outer(external_function):
 
 ![img_239](./images/img_239.png)
 
-The ```outer``` function can be called, supplying the external function ```greeting``` as an input argument and its function call assigned to a variable name:
+The outer function can be called, supplying the external function greeting as an input argument and its function call assigned to a variable name:
 
 ```
 greeting_decorated = outer(greeting)
@@ -2948,7 +2948,7 @@ It can be referenced:
 greeting_decorated
 ```
 
-And called using an input argument ```name```:
+And called using an input argument name:
 
 ```
 greeting_decorated('world')
@@ -2968,7 +2968,7 @@ More often it is reassigned to the name of the function being decorated:
 greeting = outer(greeting)
 ```
 
-Prefixing ```@outer``` above the function definition will also decorate it. With this syntax, the decorated function name will use the same name as the original function:
+Prefixing @outer above the function definition will also decorate it. With this syntax, the decorated function name will use the same name as the original function:
 
 ```
 @outer
@@ -3005,7 +3005,7 @@ Although the input arguments are passed through, the docstring is not:
 
 ![img_244](./images/img_244.png)
 
-The ```functools``` module groups together function tools. One of the tools is the ```wraps``` function which can be used as a decorator:
+The functools module groups together function tools. One of the tools is the wraps function which can be used as a decorator:
 
 ```
 from functools import wraps
@@ -3103,9 +3103,9 @@ greeting('world')
 
 ## The lambda Expression
 
-The keyword ```lambda``` is taken from the Greek alphabet and lacks description for its use case in Python. ```lambda``` should be conceptualised as meaning *make anonymous function* as it is used to create a simple anonymous function over a single line. Because it is anonymous and expressed over a single line, it does not have a docstring.
+The keyword lambda is taken from the Greek alphabet and lacks description for its use case in Python. lambda should be conceptualised as meaning *make anonymous function* as it is used to create a simple anonymous function over a single line. Because it is anonymous and expressed over a single line, it does not have a docstring.
 
-Let's return to the basic implementation of the function ```plural``` without any assertions or docstring:
+Let's return to the basic implementation of the function plural without any assertions or docstring:
 
 ```
 def plural(word):
@@ -3124,15 +3124,15 @@ The commonalities can be examined, first of all is the function name:
 
 ![img_249](./images/img_249.png)
 
-Then the assignment operator ```=``` which can be thought of as being equivalent to the ```def``` keyword:
+Then the assignment operator = which can be thought of as being equivalent to the def keyword:
 
 ![img_250](./images/img_250.png)
 
-Next is the input arguments. In this case only 1 input argument displays. If more are used, they are seperated by a ```,```. Alternatively some functions do not have input arguments:
+Next is the input arguments. In this case only 1 input argument displays. If more are used, they are seperated by a ,. Alternatively some functions do not have input arguments:
 
 ![img_251](./images/img_251.png)
 
-Next is the colon ```:```. In the function it begins a code block. In the lambda expression, there is no code block and the code continues on the same line. In the lambda expression the colon ```:``` can also in some case be conceptualised as the seperation of the input arguments from the return statement, carrying out a similar purpose to splitting a key from a value in a Python dictionary:
+Next is the colon :. In the function it begins a code block. In the lambda expression, there is no code block and the code continues on the same line. In the lambda expression the colon : can also in some case be conceptualised as the seperation of the input arguments from the return statement, carrying out a similar purpose to splitting a key from a value in a Python dictionary:
 
 ![img_252](./images/img_252.png)
 
@@ -3140,7 +3140,7 @@ Finally there is the return value. Not all functions have a return value, some f
 
 ![img_253](./images/img_253.png)
 
-The ```lambda``` expression can be called in the same way as the equivalent function before:
+The lambda expression can be called in the same way as the equivalent function before:
 
 ```
 plural('apple')
@@ -3166,7 +3166,7 @@ They can be called without assignment on a single line:
 
 ### Map
 
-A ```lambda``` expression is designed to take a scalar input argument and return a value which is calculated using that input argument:
+A lambda expression is designed to take a scalar input argument and return a value which is calculated using that input argument:
 
 ```
 square = lambda x: x ** 2
@@ -3178,17 +3178,17 @@ Sometimes it is desired for a function to be invoked for every value in an itera
 nums = (1, 2, 3, 4, 5)
 ```
 
-The ```map``` function can be used to map a function to an iterable:
+The map function can be used to map a function to an iterable:
 
 ![img_257](./images/img_257.png)
 
-This creates a ```mapped``` object:
+This creates a mapped object:
 
 ```
 map(square, nums)
 ```
 
-This ```mapped``` object is essentially a generator and evaluates the value for each item in the sequence when ```next``` is invoked. More commonly it is cast into a sequence such as a ```tuple```:
+This mapped object is essentially a generator and evaluates the value for each item in the sequence when next is invoked. More commonly it is cast into a sequence such as a tuple:
 
 ```
 tuple(map(square, nums))
@@ -3202,7 +3202,7 @@ Putting this together in a single line using lists instead of tuples:
 list(map(lambda x: x ** 2, [1, 2, 3, 4, 5]))
 ```
 
-Many of the use cases for ```map``` are superseded by comprehensions which are cleaner and simpler. For example:
+Many of the use cases for map are superseded by comprehensions which are cleaner and simpler. For example:
 
 ```
 [num ** 2 for num in [1, 2, 3, 4, 5]]
@@ -3210,7 +3210,7 @@ Many of the use cases for ```map``` are superseded by comprehensions which are c
 
 ![img_259](./images/img_259.png)
 
-However the principle behind using the ```map``` function is still applicable for other data structures particularly mapping a function to a series within a pandas dataframe.
+However the principle behind using the map function is still applicable for other data structures particularly mapping a function to a series within a pandas dataframe.
 
 ### Filter 
 
@@ -3220,7 +3220,7 @@ A lambda expression can be used to create a scalar filter function, that for exa
 positive = lambda x: x >= 0
 ```
 
-Now supposing the following ```nums``` are created:
+Now supposing the following nums are created:
 
 ```
 nums = tuple(range(-5, 6))
@@ -3229,9 +3229,9 @@ nums
 
 ![img_260](./images/img_260.png)
 
-And from this iterable, only the numbers greater or equal to ```0``` are desired.
+And from this iterable, only the numbers greater or equal to 0 are desired.
 
-The ```filter``` function can be used to map the scalar filter function to a sequence:
+The filter function can be used to map the scalar filter function to a sequence:
 
 ![img_261](./images/img_261.png)
 
@@ -3241,7 +3241,7 @@ filter(positive, nums)
 
 ![img_262](./images/img_262.png)
 
-This ```filter``` object is essentially a generator and evaluates the value for each item in the sequence when ```next``` is invoked. More commonly it is cast into a sequence such as a ```tuple```:
+This filter object is essentially a generator and evaluates the value for each item in the sequence when next is invoked. More commonly it is cast into a sequence such as a tuple:
 
 ```
 tuple(filter(positive, nums))
@@ -3271,7 +3271,7 @@ The following list comprehension can also be used to see how the mapping works u
 
 ### Reduce
 
-Sometimes it is desirable to ```reduce``` an iterable into a single value:
+Sometimes it is desirable to reduce an iterable into a single value:
 
 ```
 nums = (1, 2, 3, 4)
@@ -3283,7 +3283,7 @@ The following lambda expression will reduce two variables to a singular variable
 summation = lambda x, y: x + y
 ```
 
-This can be done using the ```reduce``` function found in the ```functools``` module:
+This can be done using the reduce function found in the functools module:
 
 ```
 from functools import reduce
@@ -3297,11 +3297,11 @@ reduce(summation, nums)
 
 ![img_266](./images/img_266.png)
 
-Under the hood, conceptualise this as a ```for``` loop. In the first iteration. ```x``` is initially ```1``` the value at the 0th index and ```y``` is initially ```2``` the value of the 1st index. The result ```x + y``` is therefore ```3```. In the second iteration ```x``` is now taken to be the value of ```3``` calculated from the previous iteration and ```y``` is taken to be the value at the 2nd index, which is also ```3```. ```x + y``` is therefore calculated to be ```6```. In the third iteration, ```x``` is taken to be the value of the previous iteration ```6``` and ```y``` is taken to be the value at the last index. The final ```x + y``` calculation is therefore ```10``` which is returned.
+Under the hood, conceptualise this as a for loop. In the first iteration. x is initially 1 the value at the 0th index and y is initially 2 the value of the 1st index. The result x + y is therefore 3. In the second iteration x is now taken to be the value of 3 calculated from the previous iteration and y is taken to be the value at the 2nd index, which is also 3. x + y is therefore calculated to be 6. In the third iteration, x is taken to be the value of the previous iteration 6 and y is taken to be the value at the last index. The final x + y calculation is therefore 10 which is returned.
 
 ## try, except, else, finally
 
-Earlier ```if```, ```elif``` and ```else``` were examined to direct code in response to a condition. In Python there are four code blocks used for error handling
+Earlier if, elif and else were examined to direct code in response to a condition. In Python there are four code blocks used for error handling
 
 |Code Block|Purpose|
 |---|---|
@@ -3328,7 +3328,7 @@ def plural(word):
 
 ![img_267](./images/img_267.png)
 
-For example, if the following is used, the ```try``` block does not encounter any error. Therefore the ```except``` code blocks are skipped and the ```else``` and ```finally``` code blocks are executed:
+For example, if the following is used, the try block does not encounter any error. Therefore the except code blocks are skipped and the else and finally code blocks are executed:
 
 ```
 plural('Apple')
@@ -3336,7 +3336,7 @@ plural('Apple')
 
 ![img_268](./images/img_268.png)
 
-For example, if the following is used, the ```try``` block encounters an ```AssertionError```. Therefore the ```except``` code block configured for an ```AssertionError``` is executed and the ```else``` block is skipped. The ```finally``` code block is also executed:
+For example, if the following is used, the try block encounters an AssertionError. Therefore the except code block configured for an AssertionError is executed and the else block is skipped. The finally code block is also executed:
 
 ```
 plural(2)
@@ -3344,7 +3344,7 @@ plural(2)
 
 ![img_269](./images/img_269.png)
 
-Another example can be given. In this scenario, the ```try``` code block is configured to look for two errors, an ```AssertionError``` and a ```TypeError```
+Another example can be given. In this scenario, the try code block is configured to look for two errors, an AssertionError and a TypeError:
 
 ```
 def compare(num1, num2):
@@ -3365,13 +3365,13 @@ def compare(num1, num2):
 
 ![img_270](./images/img_270.png)
 
-No errors are encountered in the ```try``` code block. The ```else``` code block is executed and the ```finally``` code block is executed:
+No errors are encountered in the try code block. The else code block is executed and the finally code block is executed:
 
 ```
 compare(1, 2)
 ```
 
-An ```AssertionError``` is encountered in the ```try``` code block. The ```except TypeError``` code block is executed and the ```finally``` code block is executed:
+An AssertionError is encountered in the try code block. The except TypeError code block is executed and the finally code block is executed:
 
 ![img_271](./images/img_271.png)
 
@@ -3381,7 +3381,7 @@ compare('a', 2)
 
 ![img_272](./images/img_272.png)
 
-A ```TypeError``` is encountered in the ```try``` code block. The ```except TypeError``` code block is executed and the ```finally``` code block is executed:
+A TypeError is encountered in the try code block. The except TypeError code block is executed and the finally code block is executed:
 
 ```
 compare(1, 'b')
@@ -3389,7 +3389,7 @@ compare(1, 'b')
 
 ![img_273](./images/img_273.png)
 
-An ```AssertionError``` is encountered in the ```try``` code block. This raises the ```AssertionError``` on the first line of code and all subsequent code is skipped. The ```except TypeError``` code block is executed and the ```finally``` code block is executed:
+An AssertionError is encountered in the try code block. This raises the AssertionError on the first line of code and all subsequent code is skipped. The except TypeError code block is executed and the finally code block is executed:
 
 ```
 compare('a', 'b')
@@ -3397,9 +3397,9 @@ compare('a', 'b')
 
 ![img_274](./images/img_274.png)
 
-The above demonstrated the capabilities of error handling using code blocks. The ```else``` and ```finally``` code blocks are optional. 
+The above demonstrated the capabilities of error handling using code blocks. The else and finally code blocks are optional. 
 
-Normally ```try``` and ```except``` are configured for each input argument. The ```except``` can also include a nested ```try``` and ```except```:
+Normally try and except are configured for each input argument. The except can also include a nested try and except:
 
 ```
 def higher(num1, num2):
@@ -3434,11 +3434,11 @@ The effect of error handling can be seen with the following examples.
 
 The first case has no errors. 
 
-The second case raises an ```AssertionError``` which is handled in the ```except ValueError``` via the nested ```try``` code block. 
+The second case raises an AssertionError which is handled in the except ValueError via the nested try code block. 
 
-The third case once again raises an ```AssertionError```. An attempt to handle it is carried out in the ```except ValueError``` code block via the nested ```try``` code block, this in turn raises a ```ValueError```, so the nested ```except ValueError``` code block handles it.
+The third case once again raises an AssertionError. An attempt to handle it is carried out in the except ValueError code block via the nested try code block, this in turn raises a ValueError, so the nested except ValueError code block handles it.
 
-In all cases once the input arguments are handled, the ```finally``` code block is executed:
+In all cases once the input arguments are handled, the finally code block is executed:
 
 ```
 higher(3, 4)
@@ -3481,9 +3481,9 @@ And the following is a base case:
 
 $$1! = 1$$
 
-This can be expressed in a recursive function. A recursive function is a function that recursively calls itself. The recursive function has an ```if``` code block which executes for a base case and the base case ultimately returns a numeric value. 
+This can be expressed in a recursive function. A recursive function is a function that recursively calls itself. The recursive function has an if code block which executes for a base case and the base case ultimately returns a numeric value. 
 
-The ```else``` code block on the other hand looks at the recursive case and returns a simplified function call, in this case reduction of the factorial by 1:
+The else code block on the other hand looks at the recursive case and returns a simplified function call, in this case reduction of the factorial by 1:
 
 ```
 def factorial(num):
@@ -3509,7 +3509,7 @@ factorial(5)
 
 ![img_280](./images/img_280.png)
 
-Under the hood, for this example the ```else``` block will recursively call the function using:
+Under the hood, for this example the else block will recursively call the function using:
 
 ```
 5 * factorial(4)
