@@ -117,7 +117,7 @@ sum(data) / len(data)
 
 ![img_008](./images/img_008.png)
 
-The function ```mean``` returns the integer mean for no modulus and the float mean, when a modulus is present. The docstring can be seen by inputting ```st.mean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The function mean returns the integer mean for no modulus and the float mean, when a modulus is present. The docstring can be seen by inputting st.mean() followed by pressing shift ⇧  and tab ↹:
 
 ![img_009](./images/img_009.png)
 
@@ -129,7 +129,7 @@ st.mean(data)
 
 ![img_010](./images/img_010.png)
 
-The function floating point mean, ```fmean``` on the other hand always returns the floating point mean. The docstring can be seen by inputting ```st.fmean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The function floating point mean, fmean on the other hand always returns the floating point mean. The docstring can be seen by inputting st.fmean() followed by pressing shift ⇧  and tab ↹:
 
 ![img_011](./images/img_011.png)
 
@@ -147,7 +147,7 @@ $$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&\textbf{4}&5&6&7\end{matrix}\
 
 $$\text{median}=\frac{4+4}{2}=4$$
 
-The docstring of the function ```median``` can be seen by inputting ```st.median()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function median can be seen by inputting st.median() followed by pressing shift ⇧  and tab ↹:
 
 ![img_013](./images/img_013.png)
 
@@ -163,7 +163,7 @@ Alternatively the value on the left is the median low value and can be read off 
 
 $$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&4&5&6&7\end{matrix}\right]$$
 
-The docstring of the function ```median_low``` can be seen by inputting ```st.median_low()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function median_low can be seen by inputting st.median_low() followed by pressing shift ⇧  and tab ↹:
 
 ![img_015](./images/img_015.png)
 
@@ -179,7 +179,7 @@ And the value on the right is the median high value and can be read off directly
 
 $$\text{data}=\left[\begin{matrix}1&2&3&4&\textbf{4}&5&6&7\end{matrix}\right]$$
 
-The docstring of the function ```median_high``` can be seen by inputting ```st.median_high()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function median_high can be seen by inputting st.median_high() followed by pressing shift ⇧  and tab ↹:
 
 ![img_017](./images/img_017.png)
 
@@ -195,7 +195,7 @@ The mode is the most commonly occuring value:
 
 $$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&\textbf{4}&5&6&7\end{matrix}\right]$$
 
-The docstring of the function ```mode``` can be seen by inputting ```st.mode()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function mode can be seen by inputting st.mode() followed by pressing shift ⇧  and tab ↹:
 
 ![img_019](./images/img_019.png)
 
@@ -209,7 +209,7 @@ st.mode(data)
 
 The mode can be an important metric in a trial run. For example if a fashion designer wants to issue a prototype design of clothe, they may simplify manufacturing by starting only with the mode cloth size, as it has the largest customer base. If the trial of the first cloth batch is successful, they may complicate the manufacturer process to accomodate other sizes. 
 
-Sometimes a dataset will have multiple mode values, using ```mode``` will only give one of these values:
+Sometimes a dataset will have multiple mode values, using mode will only give one of these values:
 
 ```
 data2 = [1, 2, 2, 2, 2, 3, 4, 4, 4, 4, 6, 6, 7]
@@ -218,7 +218,7 @@ st.mode(data2)
 
 ![img_029](./images/img_029.png)
 
-There is an associated, multiple mode function. The docstring of the function ```multi_mode``` can be seen by inputting ```st.multi_mode()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+There is an associated, multiple mode function. The docstring of the function multi_mode can be seen by inputting st.multi_mode() followed by pressing shift ⇧  and tab ↹:
 
 ![img_030](./images/img_030.png)
 
@@ -228,7 +228,7 @@ st.multimode(data2)
 
 ![img_031](./images/img_031.png)
 
-The multiple mode function only retrieves modes that have the highest number of counts. It will not show modes that have only a slightly lower number of counts. For this purpose, recall that the ```Counter``` class is used.
+The multiple mode function only retrieves modes that have the highest number of counts. It will not show modes that have only a slightly lower number of counts. For this purpose, recall that the Counter class is used.
 
 ```
 from collections import Counter
@@ -267,7 +267,7 @@ The variance takes into account a difference in the number of degrees of freedom
 
 $$\frac{28}{(8-1)}=\frac{28}{7}=4.0$$
 
-The docstring of the function ```pvariance``` and ```variance``` can be seen by inputting the functions name followed by open parenthesis and by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function pvariance and variance can be seen by inputting the functions name followed by open parenthesis and by pressing shift ⇧  and tab ↹:
 
 ![img_021](./images/img_021.png)
 
@@ -288,7 +288,7 @@ $$\sqrt{3.5}=$$
 
 $$\sqrt{3.5}=1.8708$$
 
-The docstring of the function ```pstdev``` and ```stdev``` can be seen by inputting the functions name followed by open parenthesis and by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function pstdev and stdev can be seen by inputting the functions name followed by open parenthesis and by pressing shift ⇧  and tab ↹:
 
 ![img_024](./images/img_024.png)
 
@@ -330,7 +330,7 @@ data
 
 The quantiles function is used to group data into quantiles, that is quarters with equal proability. 
 
-The docstring of the function ```quantiles``` can be seen by inputting ```st.quantiles()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function quantiles can be seen by inputting st.quantiles() followed by pressing shift ⇧  and tab ↹:
 
 ![img_033](./images/img_033.png)
 
@@ -380,7 +380,7 @@ To normalise the product the nth root is taken:
 
 $$\left(1\ast2\ast3\ast4\ast4\ast5\ast6\ast7\right)\ast\ast(1/8)=3.4519$$
 
-The docstring of the function ```geometric mean``` can be seen by inputting ```st.geometric_mean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function geometric mean can be seen by inputting st.geometric_mean() followed by pressing shift ⇧  and tab ↹:
 
 ![img_036](./images/img_036.png)
 
@@ -415,7 +415,7 @@ Then finally the inverse of this is taken:
 
 $$\frac{8}{\left(\frac{1}{1}+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{4}+\frac{1}{5}+\frac{1}{6}+\frac{1}{7}\right)}$$
 
-The docstring of the function ```harmonic mean``` can be seen by inputting ```st.harmonic_mean()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function harmonic mean can be seen by inputting st.harmonic_mean() followed by pressing shift ⇧  and tab ↹:
 
 ![img_038](./images/img_038.png)
 
@@ -465,11 +465,11 @@ $$2.5+\frac{\left(\frac{6}{2}-2\right)}{3}\ast1$$
 
 $$2.833$$
 
-The docstring of the function ```median_grouped``` can be seen by inputting ```st.median_grouped()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function median_grouped can be seen by inputting st.median_grouped() followed by pressing shift ⇧  and tab ↹:
 
 ![img_041](./images/img_041.png)
 
-The only keyword argument is the ```interval``` which has a default value of 1.0. All the rest of the parameters can be inferred from the data. The median grouped of the data can be calculated using:
+The only keyword argument is the interval which has a default value of 1.0. All the rest of the parameters can be inferred from the data. The median grouped of the data can be calculated using:
 
 ```
 data4 = [2, 2, 3, 3, 3, 4]
@@ -509,7 +509,7 @@ The covariance takes into account a difference in the number of degrees of freed
 
 $$\frac{2.0}{4-1}=\frac{2}{3}=0.667$$
 
-The docstring of the function ```covariance``` can be seen by inputting ```st.covariance()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function covariance can be seen by inputting st.covariance() followed by pressing shift ⇧  and tab ↹:
 
 ![img_044](./images/img_044.png)
 
@@ -534,7 +534,7 @@ $$\text{corr}\left(x,y\right)=\frac{\text{cov}\left(x,y\right)}{\sqrt{\text{var}
 
 $$\frac{0.6667}{\sqrt{0.6667}\ast\sqrt{0.6667}}=0.6325$$
 
-The docstring of the function ```correlation``` can be seen by inputting ```st.correlation()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function correlation can be seen by inputting st.correlation() followed by pressing shift ⇧  and tab ↹:
 
 ![img_046](./images/img_046.png)
 
@@ -552,9 +552,9 @@ For these datasets it can be manually calculated using:
 
 ![img_047](./images/img_047.png)
 
-The correlation values range between ```-1``` and ```1```. A correlation close to ```-1```, means a negative correlation and therefore the y variable decreases as the x value increases. A correlation close to ```0``` means no correlation and the y variable is uninfluenced when the x value increases. A correlation close to ```1```, means a positive correlation and therefore the y variable increases as the x value increases. 
+The correlation values range between -1 and 1. A correlation close to -1, means a negative correlation and therefore the y variable decreases as the x value increases. A correlation close to 0 means no correlation and the y variable is uninfluenced when the x value increases. A correlation close to 1, means a positive correlation and therefore the y variable increases as the x value increases. 
 
-This dataset has a positive correlation of ```0.6324``` and the relationship can be seen in a plot:
+This dataset has a positive correlation of 0.6324 and the relationship can be seen in a plot:
 
 ![img_048](./images/img_048.png)
 
@@ -564,7 +564,7 @@ $$y=\text{slope}*x+\text{intercept}+\text{noise}$$
 
 And the line of best fit, minimises the noise.
 
-The docstring of the function ```linear_regression``` can be seen by inputting ```st.correlation()``` followed by pressing shift ```⇧ ``` and tab ```↹```:
+The docstring of the function linear_regression can be seen by inputting st.correlation() followed by pressing shift ⇧  and tab ↹:
 
 ![img_049](./images/img_049.png)
 
@@ -589,7 +589,7 @@ lin_fit.slope
 lin_fit.intercept
 ```
 
-They can eb used to calculated prediced y values:
+They can be used to calculated prediced y values:
 
 ```
 yp = []
