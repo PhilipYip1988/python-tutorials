@@ -999,7 +999,7 @@ The mandatory and optional dependencies should be satisfied:
 
 ### Script Editor
 
-To the left is the script editor. By default a temporary script file in the location $UserProfile$/.spyder-py is open. To the top right, the files tab can be selected, this opens by default in /$UserProfile/$:
+To the left is the script editor. By default a temporary script file in the location $UserProfile$/.spyder-py is open. To the top right, the files tab can be selected, this opens by default in $UserProfile$:
 
 ![img_220](./images/img_220.png)
 
@@ -1007,7 +1007,7 @@ The Script file can be saved using File → Save As:
 
 ![img_221](./images/img_221.png)
 
-The Script File should be saved somewhere locally, normally within a subfolder within $UserProfile$/Documents. In this example it will be saved directly within /$UserProfile/$/Documents as script1.py:
+The Script File should be saved somewhere locally, normally within a subfolder within $UserProfile$/Documents. In this example it will be saved directly within $UserProfile$/Documents as script1.py:
 
 ![img_222](./images/img_222.png)
 
@@ -1063,7 +1063,7 @@ Alternatively it can be imported into the IPython Console by selecting run the c
 
 ![img_234](./images/img_234.png)
 
-The IPython uses slightly different code completion. To view a list of identifiers press tab ↹ after the dot .
+The IPython uses slightly different code completion. To view a list of identifiers press tab ↹ after the dot .```
 
 ![img_235](./images/img_235.png)
 
@@ -1071,7 +1071,7 @@ To view the docstring, type in a function name with open parenthesis:
 
 ![img_236](./images/img_236.png)
 
-The docstring can be outputted to the IPython Console by use of the ?
+The docstring can be outputted to the IPython Console by use of the ?```
 
 ![img_260](./images/img_260.png)
 

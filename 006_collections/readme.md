@@ -1305,6 +1305,689 @@ active
 
 ![img_173](images/img_173.png)
 
+## The frozenset Class
+
+A ```frozenset``` is an unordered finite **immutable** collection of unique Python objects.
+
+### The Initialization Signature
+
+Inputting ```frozenset()``` followed by shift ```⇧``` and tab ```↹``` will display the docstring of the init signature:
+
+![img_381](images/img_381.png)
+
+A ```frozenset``` can be created from an iterable such as a ```tuple``` or ```list``` using the set class:
+
+```
+archive = (1, True, 3.14, 'hello', 'hello', 'bye')
+unique = frozenset(archive)
+unique
+```
+
+![img_382](images/img_382.png)
+
+
+Notice that in the ```frozenset``` all duplicates have been removed. ```'hello'``` only displays once and ```1``` only displays once because:
+
+```
+1 == True
+```
+
+![img_385](images/img_385.png)
+
+The Spyder Variable Explorer unfortunately doesn't support the ```frozenset``` however it should look like the following:
+
+![img_383](images/img_383.png)
+
+```1``` and ```True``` were at indexes ```0``` and ```1``` in the ```tuple``` because these are duplicates, the index of the duplicate is unknown and when cast to a   ```frozenset``` there is no longer any index:
+
+![img_384](images/img_384.png)
+
+A ```frozenset``` is an unordered collection collection of unique records that has no index.
+
+### Identifiers
+
+Supposing the simple instance is created:
+
+```
+unique = frozenset((1, 2, 0))
+```
+
+![img_386](images/img_386.png)
+
+If the instance name ```unique``` is input followed by a dot ```.``` and then tab ```↹``` a list of identifiers displays:
+
+![img_387](images/img_387.png)
+
+The ```frozenset``` identifier ```copy``` operates analogously to the ```tuple``` counterpart identifier ```copy``` and performs a shallow copy. A deep copy can be performed using the ```deepcopy``` function from the ```copy``` module:
+
+![img_200](images/img_200.png)
+
+For example the shallow copy ```unique2``` can be made using:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Note this identifier should not be confused with the data model identifier ```__add__``` which isn't defined for a ```set```.
+
+The element ```3``` can be added using:
+
+```
+unique.add(3)
+```
+
+This identifier is a method that has no return value:
+
+![img_183](images/img_183.png)
+
+This is a mutatable method and modifies the instance inplace:
+
+![img_184](images/img_184.png)
+
+If the value to be added to the set is already included in the set, it won't be added again as sets can't have duplicates:
+
+```
+unique.add(2)
+```
+
+![img_185](images/img_185.png)
+
+![img_186](images/img_186.png)
+
+The ```set``` identifier```remove``` operates analogously to the ```list``` counterpart identifier ```remove```. It is also supplemented by ```discard```:
+
+![img_188](images/img_188.png)
+
+![img_189](images/img_189.png)
+
+For example:
+
+```
+unique.remove(3)
+```
+
+![img_190](images/img_190.png)
+
+![img_191](images/img_191.png)
+
+```
+unique.discard(2)
+```
+
+![img_192](images/img_192.png)
+
+![img_193](images/img_193.png)
+
+Both identifiers are mutable methods that have no return value and mutate the ``set``` inplace.
+
+The difference between two methods is in error handling; ```remove``` raises an error if a value is not present and ```discard``` is silent:
+
+```
+unique.remove(2)
+unique.discard(2)
+```
+
+![img_194](images/img_194.png)
+
+The ```pop``` identifier does not have the keyword input argument ```index``` because a ```set``` is unordered and will always pop off an arbitary value:
+
+![img_195](images/img_195.png)
+
+```
+unique.pop()
+```
+
+This identifier is a mutatable method that returns the popped value:
+
+![img_196](images/img_196.png)
+
+And mutates the ```set``` inplace:
+
+![img_197](images/img_197.png)
+
+The set identifier ```copy``` operates analogously to the ```list``` counterpart identifier ```copy``` and performs a shallow copy. A deep copy can be performed using the ```deepcopy``` function from the ```copy``` module:
+
+![img_200](images/img_200.png)
+
+For example the shallow copy ```unique2``` can be made using:
+
+```
+unique2 = unique.copy()
+```
+
+![img_198](images/img_198.png)
+
+![img_199](images/img_199.png)
+
+The set identifier ```clear``` operates analogously to the ```list``` counterpart identifier  ```clear```. All of the items in the collection are cleared inplace and there is no return value:
+
+![img_201](images/img_201.png)
+
+The original instance ```unique``` can be cleared:
+
+```
+unique.clear()
+```
+
+![img_202](images/img_202.png)
+
+![img_203](images/img_203.png)
+
+Supposing the four ```set``` instances are created:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6, 7, 8}
+unique2 = {0, 1, 2}
+unique3 = {7, 8, 9}
+unique4 = {'a', 'b', 'c'}
+```
+
+![img_208](images/img_208.png)
+
+The ```issuperset``` identifier checks whether one ```set``` instance is a superset, that is a ```set``` that contains all the values of another ```set```: 
+
+![img_209](images/img_209.png)
+
+For example ```unique1``` contains all the elements in ```unique2``` and is a superset:
+
+![img_210](images/img_210.png)
+
+```
+unique1.issuperset(unique2)
+```
+
+![img_211](images/img_211.png)
+
+```unique1``` does not contain all the elements in ```unique3``` and is not a superset:
+
+![img_212](images/img_212.png)
+
+```
+unique1.issuperset(unique3)
+```
+
+![img_213](images/img_213.png)
+
+The ```issubset``` identifier checks whether one ```set``` instance is a subset, that is a ```set``` which all values are contained with the other ```set``` (superset): 
+
+![img_214](images/img_214.png)
+
+For example ```unique2``` is a subset of ```unique1```:
+
+![img_215](images/img_215.png)
+
+```
+unique2.issubset(unique1)
+```
+
+![img_216](images/img_216.png)
+
+```unique3``` is not a subset of ```unique1``` as there is a value in ```unique3``` that is not in ```unique1```:
+
+![img_217](images/img_217.png)
+
+```
+unique3.issubset(unique1)
+```
+
+![img_218](images/img_218.png)
+
+The ```disjoint``` identifiers checks whether one set is disjoint with another, that is two sets which share no values in common:
+
+![img_219](images/img_219.png)
+
+For example ```unique4``` is disjoint from ```unique1``` as they have no overlapping values:
+
+![img_220](images/img_220.png)
+
+```
+unique4.isdisjoint(unique1)
+```
+
+![img_221](images/img_221.png)
+
+For example ```unique3``` is not disjoint from ```unique1``` as they have overlapping values:
+
+![img_222](images/img_222.png)
+
+```
+unique3.isdisjoint(unique1)
+```
+
+![img_223](images/img_222.png)
+
+Supposing now:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_224](images/img_224.png)
+
+The ```union``` identifier makes a superset which contains all unique values of the set the method is called from *self* and the set or iterable the method is applied to *other*. This method has a return value producing a new set:
+
+![img_225](images/img_225.png)
+
+For example the ```union``` between ```unique1``` and ```unique2```:
+
+![img_226](images/img_226.png)
+
+```
+unique1.union(unique2)
+```
+
+![img_227](images/img_227.png)
+
+If the Variable Explorer is viewed:
+
+![img_228](images/img_228.png)
+
+The ```update``` method can be thought of as *union_update* and behaves similarly to the method ```union```. 
+
+![img_229](images/img_229.png)
+
+```
+unique1.update(unique2)
+```
+
+The ```set``` method updates the instance *self* in place and there is no return value:
+
+![img_230](images/img_230.png)
+
+![img_231](images/img_231.png)
+
+Returning back to:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_232](images/img_232.png)
+
+The ```intersection``` identifier returns all unique values which occur both in *self* and *other*. This method has a return value producing a new set:
+
+![img_233](images/img_233.png)
+
+For example the intersection between ```unique1``` and ```unique2```:
+
+![img_234](images/img_234.png)
+
+```
+unique1.intersection(unique2)
+```
+
+![img_235](images/img_235.png)
+
+The ```intersection_update``` is the mutable method equivalent of ```intersection```:
+
+![img_248](images/img_248.png)
+
+![img_236](images/img_236.png)
+
+```
+unique1.intersection_update(unique2)
+```
+
+![img_237](images/img_237.png)
+
+![img_238](images/img_238.png)
+
+Returning to:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_239](images/img_239.png)
+
+The ```difference``` identifier returns all unique values which occur both in *self* that do not occur *other*. This method has a return value producing a new set:
+
+![img_240](images/img_240.png)
+
+For example the difference between ```unique1``` and ```unique2```:
+
+![img_241](images/img_241.png)
+
+```
+unique1.difference(unique2)
+```
+
+![img_242](images/img_242.png)
+
+The ```difference_update``` is the mutable method equivalent of ```difference``:
+
+![img_249](images/img_249.png)
+
+![img_243](images/img_243.png)
+
+```
+unique1.difference_update(unique2)
+```
+
+![img_244](images/img_244.png)
+
+![img_245](images/img_245.png)
+
+Returning to:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_246](images/img_246.png)
+
+The ```symmetric_difference``` identifier returns all unique values which occur both in *self* that do not occur *other* and all the unique values that occur in *other* but do not occur in *self*. This method has a return value producing a new set:
+
+![img_247](images/img_247.png)
+
+For example the symmetric difference between ```unique1``` and ```unique2```:
+
+![img_250](images/img_250.png)
+
+```
+unique1.symmetric_difference(unique2)
+```
+
+![img_251](images/img_251.png)
+
+The ```symmetric_difference_update``` is the mutable method equivalent of ```symmetric_difference``:
+
+![img_252](images/img_252.png)
+
+![img_253](images/img_253.png)
+
+```
+unique1.symmetric_difference_update(unique2)
+```
+
+![img_254](images/img_254.png)
+
+![img_255](images/img_255.png)
+
+### Data Model Identifiers
+
+Returning to:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+```
+
+The data model identifiers can be viewed by inputting ```unique1.__``` followed by a tab ```↹```: 
+
+![img_379](images/img_379.png)
+
+The ```__init__``` data model method is called when instantiating a ```set```:
+
+![img_261](images/img_261.png)
+
+When the new Python object is created, the ```__new__``` data model method is called. This creates the new instance which is given the label or object name and then the initialization signature ```__init__``` is called to initialize the instance data.
+
+The ```type``` class uses the data model identifier ```__class__``` to determine the class an instance belongs to:
+
+```
+type(unique1)
+```
+
+![img_262](images/img_262.png)
+
+The formal and informal string representation of a ```set``` are given by the ```repr``` function and ```str``` class which use the ```__repr__``` and ```__str__``` data model identifiers respectively:
+
+```
+repr(unique1)
+str(unique1)
+```
+
+![img_258](images/img_258.png)
+
+A set is mutatable, the ```hash``` function which uses the ```__hash__``` data model method:
+
+```
+hash(unique1)
+```
+
+![img_259](images/img_259.png)
+
+Notice there is no ```__getitem__```, for this reason, the set is unordered and has no index:
+
+![img_260](images/img_260.png)
+
+The ```__len__``` data model is available which means the ```len``` function can be used to determine the number of items in the ```set```:
+
+```
+len(unique1)
+```
+
+![img_263](images/img_263.png)
+
+The ```__doc__``` data model method is defined, so the help operator ```?``` can be used:
+
+```
+? unique1
+```
+
+![img_264](images/img_264.png)
+
+The binary data model identifiers are setup to carry out similar operations to the ```set``` identifiers seen above. Most of these carry out a similar functionality to the set identifiers.
+
+There is no ```__mul__``` identifier as it does not make sense to multiply a set to get duplicates because there is no duplicates in a set.
+
+There is no ```__add__``` identifier so the ```+``` operator cannot be used. It does not make sense to have concatenation of two sets, as sets cannot have duplicates. Instead the ```union``` is used.
+
+The ```|``` operator uses the ```__or__``` identifier which carries out similar functionality to the ```union``` identifier (values occur in ```unique1``` or ```unique2```):
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_270](images/img_270.png)
+
+```
+unique1 | unique2
+```
+
+![img_271](images/img_271.png)
+
+The ```|=``` operator uses the ```__ior__``` identifier which is similar to the ```update``` (*union_update*) identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
+
+![img_272](images/img_272.png)
+
+![img_273](images/img_273.png)
+
+![img_274](images/img_274.png)
+
+The ```union``` and ```update``` identifiers  are more powerful and can take a sequence as an input argument, which will be cast into a ```set```. In contrast ```|``` and ```|=``` require two ```set``` instances. 
+
+Notice also the subtle difference when using the mutatable ```update``` method identifier and the ```|=``` operator within a function:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+
+def fun():
+    unique1.update(unique2)
+
+fun()
+
+unique1
+```
+
+![img_275](images/img_275.png)
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+
+def fun():
+    unique1 |= unique2
+
+fun()
+
+unique1
+```
+
+![img_276](images/img_276.png)
+
+The ```&``` operator uses the ```__and__``` identifier which carries out similar functionality to the ```intersection``` identifier (intersection values occur in ```unique1``` and ```unique2```):
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_277](images/img_277.png)
+
+```
+unique1 & unique2
+```
+
+![img_278](images/img_278.png)
+
+The ```&=``` operator uses the ```__iand__``` identifier which is similar to the ```intersection_update```  identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
+
+![img_279](images/img_279.png)
+
+```
+unique1 &= unique2
+```
+
+![img_280](images/img_280.png)
+
+![img_281](images/img_281.png)
+
+The ```-``` operator uses the ```__sub__``` identifier which carries out similar functionality to the ```difference``` identifier:
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_265](images/img_265.png)
+
+```
+unique1 - unique2
+```
+
+![img_266](images/img_266.png)
+
+The ```-=``` operator uses the ```__isub__``` identifier which is similar to the ```difference_update```  identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
+
+![img_267](images/img_267.png)
+
+```
+unique1 -= unique2
+```
+
+![img_268](images/img_268.png)
+
+![img_269](images/img_269.png)
+
+The ```^``` operator uses the ```__xor__``` identifier which carries out similar functionality to the ```symmetric_difference``` identifier (symmetric difference values occur in ```unique1``` exclusive or ```unique2```):
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6}
+unique2 = {4, 5, 6, 7, 8, 9}
+```
+
+![img_282](images/img_282.png)
+
+```
+unique1 ^ unique2
+```
+
+![img_283](images/img_283.png)
+
+The ```^=``` operator uses the ```__ior__``` identifier which is similar to the ```symmetric_difference_update```  identifier. Notice that there is no return value, as the result has been reassigned to ```unique1```:
+
+![img_284](images/img_284.png)
+
+```
+unique1 ^= unique2
+```
+
+![img_285](images/img_285.png)
+
+![img_286](images/img_286.png)
+
+The equality operators are setup using the logic of subsets and supersets. ```unique1``` is less than ```unique2``` if it is a subset of ```unique1```. ```unique1``` is greater than ```unique1``` if it is a superset of ```unique2```. ```unique1``` is equal to ```unique2``` if all values are the same, otherwise the sets are not equal. The six comparison operators ```==```, ```!=```, ```<```, ```<=```, ```>```, ```>=``` use the data model identifiers ```__eq__```, ```__ne__```, ```__lt__``` and ```__le__```, ```__gt__``` and ```__ge__``` respectively. 
+
+```
+unique1 = {0, 1, 2, 3, 4, 5, 6, 7, 8}
+unique2 = {0, 1, 2}
+unique3 = {7, 8, 9}
+unique4 = {'a', 'b', 'c'}
+
+unique1 > unique2
+unique2 < unique1
+```
+
+![img_287](images/img_287.png)
+
+Notice that ```unique2``` is not greater than, not less than and not equal to ```unique3``` sinnce they are neither supersets or subsets of one another:
+
+```
+unique2 > unique3
+unique2 < unique3
+unique2 == unique3
+unique2 != unique3
+```
+
+![img_288](images/img_288.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## The set Class
 
 A ```set``` is an unordered finite **mutable** collection of unique Python objects
@@ -1434,7 +2117,7 @@ unique.discard(2)
 
 ![img_193](images/img_193.png)
 
-Both identifiers are mutable methods that have no return value and mutate the ``set``` inplace.
+Both identifiers are mutable methods that have no return value and mutate the ```set``` inplace.
 
 The difference between two methods is in error handling; ```remove``` raises an error if a value is not present and ```discard``` is silent:
 
