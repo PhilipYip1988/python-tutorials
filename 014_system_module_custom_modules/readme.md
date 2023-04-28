@@ -1,6 +1,6 @@
 # The sys Module and Working with Custom Modules
 
-Pythons ```builtins``` is supplied by Python standard modules. A module contains compartmentalised, classes, functions and variables. The following modules have already been examined:
+Pythons builtins is supplied by Python standard modules. A module contains compartmentalised, classes, functions and variables. The following modules have already been examined:
 
 * builtins
 * string
@@ -21,7 +21,7 @@ This guide will look at importing modules in more detail and creating simple cus
 
 ## The sys Module
 
-The system module ```sys``` gives details about objects used or maintained by the Python interpreter. It can be imported using:
+The system module sys gives details about objects used or maintained by the Python interpreter. It can be imported using:
 
 ```
 import sys
@@ -39,16 +39,16 @@ Its docstring can be accessed by inputting:
 
 It has the following static objects, note that these are immutable data types:
 
-* ```builtin_module_names``` is a tuple of module names built into Python.
-* ```sys.stdlib_module_names``` is a frozenset of module names built into Python.
-* ```version``` is the Python version as a string.
-* ```copyright``` is a copyright string.
+* builtin_module_names is a tuple of module names built into Python.
+* sys.stdlib_module_names is a frozenset of module names built into Python.
+* version is the Python version as a string.
+* copyright is a copyright string.
 
 It has the following dynamic objects, note these are mutable data types and can be updated:
 
-* ```path``` is a list of the module search path.
-* ```modules``` is a dictionary of loaded modules.
-* ```argv``` is a list of command line arguments. The value at index 0 correponds to the script path file.
+* path is a list of the module search path.
+* modules is a dictionary of loaded modules.
+* argv is a list of command line arguments. The value at index 0 correponds to the script path file.
 
 The follwoing strings can be viewed which mainly give details about the Python version:
 
@@ -86,27 +86,27 @@ This can be viewed in the Variable Explorer in Spyder:
 
 ![img_005](./images/img_005.png)
 
-Notice that there are 67 builtin modules (written in C) and 305 standard modules. 240 of these standard modules and physical files are in the ```Lib``` folder. The number of modules loaded is 1731, Spyder is an IDE written using Python and a multitude fo third-party modules.
+Notice that there are 67 builtin modules (written in C) and 305 standard modules. 240 of these standard modules and physical files are in the Lib folder. The number of modules loaded is 1731, Spyder is an IDE written using Python and a multitude fo third-party modules.
 
 ### sys.path
 
-The ```sys.path``` is a ```list``` of ```str```. The ```list``` is mutable meaning other file paths can be appended:
+The sys.path is a list of str. The list is mutable meaning other file paths can be appended:
 
 ![img_006](./images/img_006.png)
 
 #### builtin modules
 
-Index 0 shows the location of the Python ```builtins``` module and other builtin modules. These are written in C. Although a python311.zip file is mentioned, essentially these are contained within the python.exe:
+Index 0 shows the location of the Python builtins module and other builtin modules. These are written in C. Although a python311.zip file is mentioned, essentially these are contained within the python.exe:
 
 ![img_007](./images/img_007.png)
 
 #### standard modules
 
-Index 1 shows the location of the remaining Python standard modules which are essentially available in the ```Lib``` folder:
+Index 1 shows the location of the remaining Python standard modules which are essentially available in the Lib folder:
 
 ![img_008](./images/img_008.png)
 
-Smaller standard modules such as ```datetime.py``` are shown directly here:
+Smaller standard modules such as datetime.py are shown directly here:
 
 ![img_009](./images/img_009.png)
 
@@ -116,11 +116,11 @@ import datetime
 
 refers to this physical file.
 
-Larger standard modules have are in a subfolder that has the same name as the module for example ```email```:
+Larger standard modules have are in a subfolder that has the same name as the module for example email:
 
 ![img_010](./images/img_010.png)
 
-Within such a subfolder is an ```__init__.py``` file. This is the file that is imported when the name of a folder is imported:
+Within such a subfolder is an \_\_init\_\_.py file. This is the file that is imported when the name of a folder is imported:
 
 ![img_011](./images/img_011.png)
 
@@ -138,11 +138,11 @@ Index 5 is the site-packages subfolder. This folder contains all the third-party
 
 ![img_012](./images/img_012.png)
 
-The most commonly used third-party package with Python is ```numpy```. A package is also known as a library. There are two folders in site-packages, the one ending in dist-info details about the version number and the numpy folder. The numpy folder contains multiple Python script files, which are also known as modules:
+The most commonly used third-party package with Python is numpy. A package is also known as a library. There are two folders in site-packages, the one ending in dist-info details about the version number and the numpy folder. The numpy folder contains multiple Python script files, which are also known as modules:
 
 ![img_013](./images/img_013.png)
 
-Within the numpy folder is an ```__init__.py``` file. This is the file that is imported when the name of a folder in this case, the name of the library is imported:
+Within the numpy folder is an \_\_init\_\_.py file. This is the file that is imported when the name of a folder in this case, the name of the library is imported:
 
 ![img_014](./images/img_014.png)
 
@@ -158,7 +158,7 @@ Because this package is so commonly used it is normally imported with a 2 letter
 import numpy as np
 ```
 
-In the ```numpy``` folder are other script files such as ```version.py```. This is a module of the numpy package. Inputting ```import numpy.``` and pressing tab ```↹``` shows only the modules that can be imported (other identifiers are not shown):
+In the numpy folder are other script files such as version.py. This is a module of the numpy package. Inputting import numpy. and pressing tab ↹ shows only the modules that can be imported (other identifiers are not shown):
 
 ![img_015](./images/img_015.png)
 
@@ -174,7 +174,7 @@ This module (script file) is very basic:
 
 It has a variable version.
 
-For clarity, importing the package ```numpy```:
+For clarity, importing the package numpy:
 
 ```
 import numpy
@@ -183,7 +183,7 @@ numpy
 
 ![img_017](./images/img_017.png)
 
-Importing the module ```version``` from the package ```numpy``` as an alias ```version```:
+Importing the module version from the package numpy as an alias version:
 
 ```
 import numpy.version as version
@@ -192,7 +192,7 @@ version
 
 ![img_018](./images/img_018.png)
 
-And accessing the variable ```version``` from the module ```version``` from the package ```numpy```:
+And accessing the variable version from the module version from the package numpy:
 
 ```
 version.version
@@ -208,11 +208,11 @@ from numpy.version import version
 
 ![img_020](./images/img_020.png)
 
-The numpy package has larger modules that have their own subfolders such as ```linalg```:
+The numpy package has larger modules that have their own subfolders such as linalg:
 
 ![img_021](./images/img_021.png)
 
-Within this ```linalg``` subfolder is another ```__init__.py```:
+Within this linalg subfolder is another \_\_init\_\_.py:
 
 ![img_022](./images/img_022.png)
 
@@ -224,7 +224,7 @@ import numpy.linalg as linalg
 
 references this file.
 
-Returning to ```site-packages``` a commonly used module is ```pyplot.py``` that belongs in the ```matplotlib``` package:
+Returning to site-packages a commonly used module is pyplot.py that belongs in the matplotlib package:
 
 ![img_023](./images/img_023.png)
 
@@ -238,7 +238,7 @@ import matplotlib.pyplot as plt
 
 references this file.
 
-The entire package is not commonly imported but can be with its own ```__init__.py``` file:
+The entire package is not commonly imported but can be with its own \_\_init\_\_.py file:
 
 ![img_025](./images/img_025.png)
 
@@ -256,7 +256,7 @@ A custom module also known as a script (.py) file can be created in the same fol
 
 ![img_026](./images/img_026.png)
 
-Its file name should follow Python object names, that is be all lower case without special characters except for the underscore in this case the file is called ```script``` or ```script.py``` including the file extension:
+Its file name should follow Python object names, that is be all lower case without special characters except for the underscore in this case the file is called script or script.py including the file extension:
 
 ![img_027](./images/img_027.png)
 
@@ -277,7 +277,7 @@ import script
 
 ![img_029](./images/img_029.png)
 
-A list of identifiers can be accessed by inputting ```script.``` followed by a tab ```↹```:
+A list of identifiers can be accessed by inputting script. followed by a tab ↹:
 
 ![img_030](./images/img_030.png)
 
@@ -315,7 +315,7 @@ dir(script)
 
 Notice the 2 objects created display but the file also has a number of data model identifiers.
 
-```__builtins__``` merely means the file has access to everything from the ```builtins``` module, every Python script file and interactive notebook can access ```builtins```.
+\_\_builtins\_\_ merely means the file has access to everything from the builtins module, every Python script file and interactive notebook can access builtins.
 
 The other identifiers can be examined:
 
@@ -330,9 +330,9 @@ script.__package__
 
 ![img_034](./images/img_034.png)
 
-The docstring retrieved by ```__doc__``` is empty as none was provided. A multiline string can be added to the top of the script. The ```__name__``` is the name of the script file when it is imported. The ```__loader__``` gives details about how the file is loaded.The ```__file__``` is the physical file. The ```__spec__``` combines all the information above. The ```__package__``` can be used to define the package.
+The docstring retrieved by \_\_doc\_\_ is empty as none was provided. A multiline string can be added to the top of the script. The \_\_name\_\_ is the name of the script file when it is imported. The \_\_loader\_\_ gives details about how the file is loaded.The \_\_file\_\_ is the physical file. The \_\_spec\_\_ combines all the information above. The \_\_package\_\_ can be used to define the package.
 
-All of these identifiers can be accessed directly in the script file and the contents of the ```script.py``` file can be updated to:
+All of these identifiers can be accessed directly in the script file and the contents of the script.py file can be updated to:
 
 ```
 """This is a custom script file which contains the str text = 'hello world!' and has a function print_text that prints it."""
@@ -354,7 +354,7 @@ Now when imported in the interactive Python notebook file, all the print stateme
 
 ![img_036](./images/img_036.png)
 
-Notice the docstring now displays. Notice also the name of the script file is ```script```.
+Notice the docstring now displays. Notice also the name of the script file is script.
 
 ### Executed Directly
 
@@ -371,11 +371,11 @@ python script.py
 
 ![img_038](./images/img_038.png)
 
-Notice that the name is now ```__main__``` instead of ```script```:
+Notice that the name is now \_\_main\_\_ instead of script:
 
 ![img_039](./images/img_039.png)
 
-When a script file is ran directly ```__name__``` is equal to ```'__main__'``` and when it is imported ```__name__``` is the string of the script file name (excluding the file extension). This is often used as a condition to change the behaviour of a script file when it is ran directly versus when it is imported. Usually more code is ran when the script file is ran directly for diagnostic purposes. In this example the print statement will change::
+When a script file is ran directly \_\_name\_\_ is equal to '\_\_main\_\_' and when it is imported \_\_name\_\_ is the string of the script file name (excluding the file extension). This is often used as a condition to change the behaviour of a script file when it is ran directly versus when it is imported. Usually more code is ran when the script file is ran directly for diagnostic purposes. In this example the print statement will change::
 
 ```
 """This is a custom script file which contains the str text = 'hello world!' and has a function print_text that prints it."""
@@ -399,7 +399,7 @@ When imported:
 
 ### sys.argv
 
-```sys.argv``` is a list of command line arguments, the value at index 0 correponds to the script path file. This can be seen clearly by creating the following script file:
+sys.argv is a list of command line arguments, the value at index 0 correponds to the script path file. This can be seen clearly by creating the following script file:
 
 ```
 """This file will examine the command line arguments"""
@@ -424,7 +424,7 @@ python script.py
 
 ![img_042](./images/img_042.png)
 
-Notice the only command line argument in this ```argv``` list is the str corresponding to the name of the script file itself. This is always at index ```0```. This command line argument was supplied after the command python in the terminal. A space is used to seperate out command line arguments.
+Notice the only command line argument in this argv list is the str corresponding to the name of the script file itself. This is always at index 0. This command line argument was supplied after the command python in the terminal. A space is used to seperate out command line arguments.
 
 Other command line arguments can be added, these will all be of the type str:
 
@@ -466,7 +466,7 @@ The module can be moved to a custom folder:
 
 ![img_045](./images/img_045.png)
 
-If the module is moved into a different folder, it won't be found when attempting to import giving a ```ModuleNotFoundError```:
+If the module is moved into a different folder, it won't be found when attempting to import giving a ModuleNotFoundError:
 
 ```
 import script
@@ -474,7 +474,7 @@ import script
 
 ![img_046](./images/img_046.png)
 
-If this path is appended to ```sys.path``` it will be found:
+If this path is appended to sys.path it will be found:
 
 ```
 sys.path.append(r'C:\Users\Philip\Documents\custom_modules')
@@ -487,7 +487,7 @@ import script
 
 ### Custom Package
 
-If the script file is moved to a subfolder called ```custom_package``` and renamed ```__init__.py```. 
+If the script file is moved to a subfolder called custom_package and renamed \_\_init\_\_.py. 
 
 ![img_049](./images/img_049.png)
 
@@ -499,7 +499,7 @@ import custom_package
 
 ![img_050](./images/img_050.png)
 
-Another script file can be created called ```script```:
+Another script file can be created called script:
 
 ```
 """This is a custom script file which prints its identifiers"""
@@ -514,7 +514,7 @@ print(__package__)
 
 ![img_051](./images/img_051.png)
 
-If ```import custom_package.``` is input followed by a tab ```↹``` then ```script``` displays as a module:
+If import custom_package. is input followed by a tab ↹ then script displays as a module:
 
 ![img_052](./images/img_052.png)
 
@@ -526,25 +526,7 @@ import custom_package.module
 
 ![img_053](./images/img_053.png)
 
-Notice that the identifier ```__package__``` now has the value ```'custom_package'```.
+Notice that the identifier \_\_package\_\_ now has the value 'custom_package'.
 
 [Home Python Tutorials](https://github.com/PhilipYip1988/python-tutorials/blob/main/readme.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

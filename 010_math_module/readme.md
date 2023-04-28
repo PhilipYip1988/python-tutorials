@@ -8,7 +8,7 @@ To use the module it must be imported. Since the module name is relatively small
 import math
 ```
 
-Once imported, the name of the module ```math``` can be input followed by a dot ```.``` and tab ```↹``` to view a list of identifiers:
+Once imported, the name of the module math can be input followed by a dot . and tab ↹ to view a list of identifiers:
 
 ![img_001](./images/img_001.png)
 
@@ -16,7 +16,7 @@ Most of the identifiers are functions but there are also instances which are mat
 
 ## Mathematical Constants
 
-A circle can be drawn in x, y co-ordinate space by assigning ```(0, 0)``` to be the centre of the circle and each value in the circle (because it is a circle) has a constant radius. In this depiction a value of ```1``` will be used: 
+A circle can be drawn in x, y co-ordinate space by assigning (0, 0) to be the centre of the circle and each value in the circle (because it is a circle) has a constant radius. In this depiction a value of 1 will be used: 
 
 ![img_096](./images/img_096.png)
 
@@ -48,7 +48,7 @@ The circle contant $\pi$ and by extension the normalised unit known as the radia
 
 ![img_155](./images/img_155.png)
 
-The function ```radians``` converts an angle from degrees to radians and the function ```degrees``` converts an angle from radians to degrees:
+The function radians converts an angle from degrees to radians and the function degrees converts an angle from radians to degrees:
 
 ![img_158](./images/img_158.png)
 
@@ -111,7 +111,7 @@ Some mathematicians and physicists argue that the term $2\pi$ is a better normal
 math.tau
 ```
 
-```tau``` is therefore twice the size of ```pi```:
+tau is therefore twice the size of pi:
 
 ```
 math.tau == 2 * math.pi
@@ -139,9 +139,9 @@ The radian has the following relationship with $\tau$:
 
 $$r=\frac{c}{2\pi}=\frac{c}{\tau}$$
 
-Another constant ```e``` is known as Euler's number and is an important constant when it comes to modelling exponential growth. 
+Another constant e is known as Euler's number and is an important constant when it comes to modelling exponential growth. 
 
-The value of ```e``` can be calculated empirically using the following mathematical formula:
+The value of e can be calculated empirically using the following mathematical formula:
 
 $$
 e=\sum_{n=0}^{\infty}\frac{1}{n!}
@@ -192,7 +192,7 @@ factorial(3)
 
 ![img_004](./images/img_004.png)
 
-This ```factorial``` function can be used within an ```Euler``` series function to calculate a ```total```:
+This factorial function can be used within an Euler series function to calculate a total:
 
 ```
 def euler_series(factor):
@@ -204,7 +204,7 @@ def euler_series(factor):
 
 ```
 
-This function can be tested using different values of ```factor```:
+This function can be tested using different values of factor:
 
 ```
 euler_series(1)
@@ -217,9 +217,9 @@ euler_series(100)
 
 ![img_005](./images/img_005.png)
 
-The ```total``` generated from an Euler Series can be seen to converge. This is because the denominator in each additional term becomes larger and as a result, addition of its reciporical becomes negligible.
+The total generated from an Euler Series can be seen to converge. This is because the denominator in each additional term becomes larger and as a result, addition of its reciporical becomes negligible.
 
-The number this converges to is known as Eulers number ```e```. To get Eulers number use:
+The number this converges to is known as Eulers number e. To get Eulers number use:
 
 ```
 math.e
@@ -227,7 +227,7 @@ math.e
 
 ![img_006](./images/img_006.png)
 
-There are also two constants representing infinity ```inf``` and not a number ```nan```:
+There are also two constants representing infinity inf and not a number nan:
 
 ```
 math.inf
@@ -244,27 +244,27 @@ from math import pi, tau, e, inf, nan
 
 ![img_008](./images/img_008.png)
 
-All of these number are observed to be instances of the ```float``` class.
+All of these number are observed to be instances of the float class.
 
 ## Functions
 
-The ```math``` module has the inbuilt functions ```isinf```, ```isfinite``` and , ```isnan``` which take in a value as an input argument and return a ```bool```
+The math module has the inbuilt functions isinf, isfinite and , isnan which take in a value as an input argument and return a bool
 
-For example the number 1 is finite and the number inf is infinite so the following expressions are ```False``` and ```True``` respectively:
+For example the number 1 is finite and the number inf is infinite so the following expressions are False and True respectively:
 
 ```
 math.isinf(1)
 math.isinf(inf)
 ```
 
-And the counter-expressions are ```True``` and ```False``` respectively:
+And the counter-expressions are True and False respectively:
 
 ```
 math.isfinite(1)
 math.isfinite(inf)
 ```
 
-The number ```inf``` is a number whereas ```nan``` is not a number so the following expressions are ```False``` and ```True```:
+The number inf is a number whereas nan is not a number so the following expressions are False and True:
 
 ```
 math.isnan(inf)
@@ -273,22 +273,22 @@ math.isnan(nan)
 
 ![img_011](./images/img_011.png)
 
-The ```pow``` functions docstring can be seen by inputting the function name followed by open parenthesis and pressing shift ```⇧``` and tab ```↹```:
+The pow functions docstring can be seen by inputting the function name followed by open parenthesis and pressing shift ⇧ and tab ↹:
 
 ![img_012](./images/img_012.png)
 
-It is seen to have similar behaviour to the inbuilt operator ```**```:
+It is seen to have similar behaviour to the inbuilt operator **:
 
 ```
 math.pow(2, 4)
 2 ** 4
 ```
 
-However the ```pow``` function always returns a floating point number:
+However the pow function always returns a floating point number:
 
 ![img_013](./images/img_013.png)
 
-The ```math``` module also has the functions ```sqrt``` and ```isqrt``` which compute the square root and the integer square root respectively:
+The math module also has the functions sqrt and isqrt which compute the square root and the integer square root respectively:
 
 ![img_014](./images/img_014.png)
 ![img_015](./images/img_015.png)
@@ -304,21 +304,21 @@ math.isqrt(17)
 
 ![img_016](./images/img_016.png)
 
-The number of combinations and number or permutations can be calculated using the ```comb``` or ```perm``` functions respectively:
+The number of combinations and number or permutations can be calculated using the comb or perm functions respectively:
 
 ![img_071](./images/img_071.png)
 
 ![img_072](./images/img_072.png)
 
-The docstrings are a bit confusing for these functions; ```n``` is a large number of items that can be placed into ```k``` containers. This is better visualised pictorially with an example. If there are three coloured circle items, a purple, green and red circle i.e. ```n=3``` and 2 circular containers on a table i.e. ```k=2```. Then the following combinations are possible:
+The docstrings are a bit confusing for these functions; n is a large number of items that can be placed into k containers. This is better visualised pictorially with an example. If there are three coloured circle items, a purple, green and red circle i.e. n=3 and 2 circular containers on a table i.e. k=2. Then the following combinations are possible:
 
 ![img_069](./images/img_069.png)
 
-Each combination can be thought of as a set that is a subset of the items from ```k``` and like in the case of a set, the order doesn't matter. In a permutation, however the order does matter and in this example because there are 2 containers, there are 2 permutations for each color combination:
+Each combination can be thought of as a set that is a subset of the items from k and like in the case of a set, the order doesn't matter. In a permutation, however the order does matter and in this example because there are 2 containers, there are 2 permutations for each color combination:
 
 ![img_070](./images/img_070.png)
 
-The ```comb``` and ```perm``` functions can be used with the above examples and give the results ```3``` and ```6``` as expected:
+The comb and perm functions can be used with the above examples and give the results 3 and 6 as expected:
 ```
 math.comb(3, 2)
 math.perm(3, 2)
@@ -326,13 +326,13 @@ math.perm(3, 2)
 
 ![img_073](./images/img_073.png)
 
-The ```floor``` and ceiling ```ceil``` functions can be used to find the largest integer less than or equal to the input argument or the smallest integer greater or equal to the input argument:
+The floor and ceiling ceil functions can be used to find the largest integer less than or equal to the input argument or the smallest integer greater or equal to the input argument:
 
 ![img_017](./images/img_017.png)
 
 ![img_018](./images/img_018.png)
 
-For example, the floor of ```pi``` is 3 and the ceiling of ```pi``` is 4:
+For example, the floor of pi is 3 and the ceiling of pi is 4:
 
 ```
 math.floor(pi)
@@ -365,9 +365,9 @@ And the calculation:
 
 $$\frac{1}{3}+\frac{1}{3}+\frac{1}{3}=0.333333+0.333333+0.333333=0.999999$$
 
-This should be equal to unity however if a comparison operator is used to check whether this is exactly equal to 1, the result would be ```False```. This recursion rounding error depicted above occurs frequently with floating point numbers because they are stored in binary.
+This should be equal to unity however if a comparison operator is used to check whether this is exactly equal to 1, the result would be False. This recursion rounding error depicted above occurs frequently with floating point numbers because they are stored in binary.
 
-The ```isclose``` function can be used to check if a number is close to another number within a specified tolerance:
+The isclose function can be used to check if a number is close to another number within a specified tolerance:
 
 ![img_022](./images/img_022.png)
 
@@ -384,7 +384,7 @@ math.isclose(0.3, 0.1 + 0.2, rel_tol=1e-9)
 
 ![img_023](./images/img_023.png)
 
-The relative tolerance ```rel_tol``` of ```1e-9``` means the number lies between:
+The relative tolerance rel_tol of 1e-9 means the number lies between:
 
 ```
 f'{0.3 - 0.3*1e-9 :018.17f}'
@@ -405,7 +405,7 @@ The absolute tolerance can also be specified:
 math.isclose(0.3, 0.1 + 0.2, abs_tol=1e-6)
 ```
 
-The absolute tolerance ```abs_tol``` of ```1e-6``` means the number lies between:
+The absolute tolerance abs_tol of 1e-6 means the number lies between:
 
 ```
 f'{0.3 - 1e-6 :018.17f}'
@@ -434,11 +434,11 @@ f'{1e18 :018.0f}'
 f'{math.ulp(1e18) :018.0f}'
 ```
 
-For the small number, the number next up is a small step of ```0.00000000000000001``` and for the large number the step to the next number is ```128```:
+For the small number, the number next up is a small step of 0.00000000000000001 and for the large number the step to the next number is 128:
 
 ![img_076](./images/img_076.png)
 
-Calculations generally depend on the relative precision of each floating point number and either case the relative precision is approximately ```1e-16```:
+Calculations generally depend on the relative precision of each floating point number and either case the relative precision is approximately 1e-16:
 
 ```
 math.ulp(0.1) / 0.1
@@ -447,7 +447,7 @@ math.ulp(1e18) / 1e18
 
 ![img_077](./images/img_077.png)
 
-The related next after function ```nextafter``` will compute the number after ```x``` going towards ```y```:
+The related next after function nextafter will compute the number after x going towards y:
 
 ![img_078](./images/img_078.png)
 
@@ -457,7 +457,7 @@ f'{math.nextafter(1e18, 2e18):018.0f}'
 
 ![img_079](./images/img_079.png)
 
-The error due to float precision rounding can propogate when summing a sequence of floating point numbers. The float sum ```fsum``` function in the ```math``` module carries out additional checks to combat these rounding errors. 
+The error due to float precision rounding can propogate when summing a sequence of floating point numbers. The float sum fsum function in the math module carries out additional checks to combat these rounding errors. 
 
 ![img_027](./images/img_027.png)
 
@@ -469,11 +469,11 @@ math.fsum([0.1, 0.2, 0.1, 0.2, 0.1, 0.2])
 ```
 ![img_028](./images/img_028.png)
 
-There is also the float absolute ```fabs``` that can be used to calculate the absolute value of a floating point number (returning the number with the sign stripped):
+There is also the float absolute fabs that can be used to calculate the absolute value of a floating point number (returning the number with the sign stripped):
 
 ![img_026](./images/img_026.png)
 
-These performs a very similar behaviour to the ```abs``` function within Python:
+These performs a very similar behaviour to the abs function within Python:
 
 ```
 math.fabs(-0.3)
@@ -482,7 +482,7 @@ abs(-0.3)
 
 ![img_029](./images/img_029.png)
 
-The subtle difference is the input argument is cast to a float and the value returned is always a float when ```fabs``` is used:
+The subtle difference is the input argument is cast to a float and the value returned is always a float when fabs is used:
 
 ```
 math.fabs(-3)
@@ -493,7 +493,7 @@ abs(-3)
 
 The float sum will likewise always return a floating point number.
 
-The Fortran mod ```fmod``` calculates the modulus associated with an integer division (f doesn't stand for float here). For positive numbers the behaviour is identical to the inbuilt Python mod or modulus operator ```%```:
+The Fortran mod fmod calculates the modulus associated with an integer division (f doesn't stand for float here). For positive numbers the behaviour is identical to the inbuilt Python mod or modulus operator %:
 
 ![img_032](./images/img_032.png)
 
@@ -528,11 +528,11 @@ Without parenthesis, the Python implementation instead carried out:
 
 ![img_031](./images/img_031.png)
 
-The ```math``` module also has a related ```remainder``` function:
+The math module also has a related remainder function:
 
 ![img_037](./images/img_037.png)
 
-The modulus ```%``` or ```fmod``` are designed to be a companion with integer floor division:
+The modulus % or fmod are designed to be a companion with integer floor division:
 
 ```
 10.5 // 3
@@ -551,7 +551,7 @@ And as a consequence will give a positive or negative remainder.
 
 ![img_038](./images/img_038.png)
 
-The ```remainder``` function also operates with negative numbers and a comparison can be seen between the three related functions:
+The remainder function also operates with negative numbers and a comparison can be seen between the three related functions:
 
 ```
 -10.5 // 3
@@ -564,7 +564,7 @@ math.remainder(-10.5, 3)
 
 ![img_039](./images/img_039.png)
 
-The modulus fraction ```modf``` will split a float into a fractional and integer component outputting a tuple:
+The modulus fraction modf will split a float into a fractional and integer component outputting a tuple:
 
 ![img_040](./images/img_040.png)
 
@@ -579,7 +579,7 @@ fraction, whole = math.modf(pi)
 
 Notice that both the fraction and the whole number are of the type float.
 
-The truncate function ```trunc``` will truncate the integer component of a float, behaving similarly to ```modf``` but only returning the integer component as an integer. 
+The truncate function trunc will truncate the integer component of a float, behaving similarly to modf but only returning the integer component as an integer. 
 
 ![img_051](./images/img_051.png)
 
@@ -593,7 +593,7 @@ math.modf(-10.5/3)[1]
 
 ![img_050](./images/img_050.png)
 
-Notice the difference in output between the three functions. In this case ```round```, rounds up. ```trunc``` and  the value at index 1 for ```modf``` truncate the number. ```trunc``` and ```round``` return integers whereas the value at index 1 for ```modf``` is a float.
+Notice the difference in output between the three functions. In this case round, rounds up. trunc and  the value at index 1 for modf truncate the number. trunc and round return integers whereas the value at index 1 for modf is a float.
 
 The greatest common divisor will calculate the greatest common divisor between sequence of numbers:
 
@@ -605,7 +605,7 @@ For example:
 math.gcd(128, 12)
 ```
 
-gives the result ```4```. The result ```4``` perfectly divides by both numbers giving no modulus (or remainder). In this case ```%```, ```modf``` or ```remainder``` will all give ```0```: 
+gives the result 4. The result 4 perfectly divides by both numbers giving no modulus (or remainder). In this case %, modf or remainder will all give 0: 
 
 ```
 128 // 4
@@ -616,7 +616,7 @@ gives the result ```4```. The result ```4``` perfectly divides by both numbers g
 
 ![img_043](./images/img_043.png)
 
-The lowest common multiple function ```lcm```requires an input sequence of integers and returns the lowest common multiple, that is a number which can be divided by each number in the sequence without any modulus or remainder:
+The lowest common multiple function lcmrequires an input sequence of integers and returns the lowest common multiple, that is a number which can be divided by each number in the sequence without any modulus or remainder:
 
 ![img_044](./images/img_044.png)
 
@@ -626,7 +626,7 @@ For example:
 math.lcm(2, 3, 4, 5, 8)
 ```
 
-Gives ```120``` and the modulus for each of the following is ```0```:
+Gives 120 and the modulus for each of the following is 0:
 
 ```
 120 % 2
@@ -638,7 +638,7 @@ Gives ```120``` and the modulus for each of the following is ```0```:
 
 ![img_045](./images/img_045.png)
 
-The product function ```prod``` takes in a sequence of numbers in the form of a list or tuple and returns the product of all the numbers in the sequence:
+The product function prod takes in a sequence of numbers in the form of a list or tuple and returns the product of all the numbers in the sequence:
 
 ![img_046](./images/img_046.png)
 
@@ -651,7 +651,7 @@ math.prod([2, 3, 4, 5, 8])
 
 ![img_047](./images/img_047.png)
 
-The function ```copysign``` takes two numbers ```x``` and ```y``` and returns a number which has the magnitude of ```x``` and the sign of ```y```:
+The function copysign takes two numbers x and y and returns a number which has the magnitude of x and the sign of y:
 
 ![img_048](./images/img_048.png)
 
@@ -667,7 +667,7 @@ math.copysign(magnitude, direction)
 
 ## Exponential and Logarithmic Functions
 
-The ```math``` module has an inbuilt function ```factorial```. The concept of a factorial was explained when looking at the constant ```e```:
+The math module has an inbuilt function factorial. The concept of a factorial was explained when looking at the constant e:
 
 ![img_009](./images/img_009.png)
 
@@ -685,11 +685,11 @@ math.factorial(3)
 
 ![img_010](./images/img_010.png)
 
-The value ```e``` was explored before. The function ```exp``` raises ```e``` to the power of ```x```:
+The value e was explored before. The function exp raises e to the power of x:
 
 ![img_053](./images/img_053.png)
 
-For example a ```x``` value of ```1``` will give ```e ** 1``` and a ```x``` value of ```2``` will give ```e ** 2```:
+For example a x value of 1 will give e ** 1 and a x value of 2 will give e ** 2:
 
 ```
 e ** 1
@@ -710,7 +710,7 @@ exp(10)
 
 ![img_055](./images/img_055.png)
 
-Sometimes it is useful to get the inverse of the exponential using the logarithmic ```log``` function. This function defaults to the natural base of ```e``` by default:
+Sometimes it is useful to get the inverse of the exponential using the logarithmic log function. This function defaults to the natural base of e by default:
 
 ![img_056](./images/img_056.png)
 
@@ -746,7 +746,7 @@ math.log(4, 2)
 
 ![img_059](./images/img_059.png)
 
-These bases are so commonly used, they have their own functions ```log10``` and ```log2``` which are locked to the base 10 and 2 respectively:
+These bases are so commonly used, they have their own functions log10 and log2 which are locked to the base 10 and 2 respectively:
 
 ![img_060](./images/img_060.png)
 
@@ -761,7 +761,7 @@ math.log2(4)
 
 ![img_062](./images/img_062.png)
 
-The float radix exponent function ```frexp``` is used to convert a number into a fractional mantissa and integer exponent using a base of 2.
+The float radix exponent function frexp is used to convert a number into a fractional mantissa and integer exponent using a base of 2.
 
 ![img_063](./images/img_063.png)
 
@@ -775,7 +775,7 @@ mantissa, exponent = math.frexp(0.125)
 
 ![img_064](./images/img_064.png)
 
-The load exponent function ```ldexp``` is the inverse of ```frexp``` and is used to construct a floating point number from a mantissa and exponent usign the base of 2:
+The load exponent function ldexp is the inverse of frexp and is used to construct a floating point number from a mantissa and exponent usign the base of 2:
 
 ![img_065](./images/img_065.png)
 
@@ -786,11 +786,11 @@ math.ldexp(0.5, -2)
 
 ![img_066](./images/img_066.png)
 
-The exponential minus 1 ```expm1``` function calculates the exponential of a value and subtracts 1 from it:
+The exponential minus 1 expm1 function calculates the exponential of a value and subtracts 1 from it:
 
 ![img_067](./images/img_067.png)
 
-The reverse function logarithmic plus 1 ```logp1``` calculates the logarithmic of a value and adds to it:
+The reverse function logarithmic plus 1 logp1 calculates the logarithmic of a value and adds to it:
 
 ![img_068](./images/img_068.png)
 
@@ -805,7 +805,7 @@ math.log1p(e - 1)
 
 ![img_080](./images/img_080.png)
 
-The ```factorial``` function operates on integers and therefore produces discrete integer values. The ```gamma``` function is related to the factorial however takes a ```n+1``` term opposed to a ```n``` term:
+The factorial function operates on integers and therefore produces discrete integer values. The gamma function is related to the factorial however takes a n+1 term opposed to a n term:
 
 $$n!=Γ(n+1)$$
 
@@ -824,7 +824,7 @@ math.gamma(3 + 1)
 
 ![img_081](./images/img_081.png)
 
-The ```gamma``` function can however take in floating point values as an input argument:
+The gamma function can however take in floating point values as an input argument:
 
 ```
 math.gamma(1.5 + 1)
@@ -832,7 +832,7 @@ math.gamma(1.5 + 1)
 
 ![img_082](./images/img_082.png)
 
-Graphically a comparison of the ```gamma``` function and the discrete values from ```factorial``` looks like:
+Graphically a comparison of the gamma function and the discrete values from factorial looks like:
 
 ![img_083](./images/img_083.png)
 
@@ -844,7 +844,7 @@ As a consequence it is often plotted using a natural log scale:
 
 ![img_085](./images/img_085.png)
 
-The ```lgamma``` function takes the log of the ```gamma``` function:
+The lgamma function takes the log of the gamma function:
 
 $$log({\Gamma(n+1)})$$
 
@@ -862,7 +862,7 @@ math.lgamma(10 + 1)
 
 ## Triangle Equations
 
-The remaining functions in the math module are related to geometry. The function ```hypot``` is an application of Pythagoras theorem for right-angled triangles:
+The remaining functions in the math module are related to geometry. The function hypot is an application of Pythagoras theorem for right-angled triangles:
 
 ![img_088](./images/img_088.png)
 
@@ -887,7 +887,7 @@ The distance formula which calculates the distance between two co-ordinates:
 
 ![img_090](./images/img_090.png)
 
-The distance math function ```dist``` will calcuate the distance between two points:
+The distance math function dist will calcuate the distance between two points:
 
 ![img_092](./images/img_092.png)
 
@@ -895,7 +895,7 @@ This distance is under the hood calculated using Pythagoras theorem and conceptu
 
 ![img_091](./images/img_091.png)
 
-The co-ordinates in this case are ```p = (4, 1)``` and ```q = (1, 5)``` and the distance between them can be calculated using:
+The co-ordinates in this case are p = (4, 1) and q = (1, 5) and the distance between them can be calculated using:
 
 ```
 math.dist((4, 1), (1, 5))
@@ -907,7 +907,7 @@ The distance can also be projected to 3 dimensions (and higher). Essentially a c
 
 ![img_094](./images/img_094.png)
 
-The co-ordinates in this case are ```p=(1, 1, 1)``` and ```q=(3, 4, 7)``` and the distance between them can be calculated using:
+The co-ordinates in this case are p=(1, 1, 1) and q=(3, 4, 7) and the distance between them can be calculated using:
 
 ```
 math.dist((1, 1, 1), (3, 4, 7))
@@ -956,7 +956,7 @@ $$
 soh\ cah\ toa
 $$
 
-In the general case, when used with a right angled triangle, the sine function ```sin``` gives the ratio of opposite side to the hypotenuse side. Since the hypotenuse for a unit circle has a fixed radius of 1, i.e. is normalised. The sine function will directly give the length of the opposite side in this case which is the y co-ordinate of the point on the circle.
+In the general case, when used with a right angled triangle, the sine function sin gives the ratio of opposite side to the hypotenuse side. Since the hypotenuse for a unit circle has a fixed radius of 1, i.e. is normalised. The sine function will directly give the length of the opposite side in this case which is the y co-ordinate of the point on the circle.
 
 $$
 \sin{\left(\theta\right)}=\frac{opposite}{hypotenuse}
@@ -964,7 +964,7 @@ $$
 
 ![img_099](./images/img_099.png)
 
-The cos function ```cos``` gives the ratio of adjacent side to the hypotenuse side. Since the hypotenuse side is the radius of the circle which is 1, this will give the length of the adjacent side in this case which is the x co-ordinate of the point on the circle. Because the unit circle is normalised, the will directly give the length of the adjacent side which is the x co-ordinate of the point on the circle.
+The cos function cos gives the ratio of adjacent side to the hypotenuse side. Since the hypotenuse side is the radius of the circle which is 1, this will give the length of the adjacent side in this case which is the x co-ordinate of the point on the circle. Because the unit circle is normalised, the will directly give the length of the adjacent side which is the x co-ordinate of the point on the circle.
 
 
 $$
@@ -973,7 +973,7 @@ $$
 
 ![img_100](./images/img_100.png)
 
-The tan function ```tan``` gives the ratio of the opposite side to the adjacent side.
+The tan function tan gives the ratio of the opposite side to the adjacent side.
 
 $$
 \tan{\left(\theta\right)}=\frac{opposite}{adjacent}=\frac{\sin{\left(\theta\right)}}{\cos{(\theta)}}
@@ -985,7 +985,7 @@ When $\theta=0\tau/16$ pictorally it can be observed that the opposite length is
 
 ![img_102](./images/img_102.png)
 
-Therefore the ```sin``` function can be seen to be 0 and the ```cos``` function can be seen to be 1. The tan function is ```0/1``` which is ```0```:
+Therefore the sin function can be seen to be 0 and the cos function can be seen to be 1. The tan function is 0/1 which is 0:
 
 ```
 math.sin(0*tau/16)
@@ -1041,7 +1041,7 @@ When $\theta=4\tau/16$ pictorally it can be observed that the opposite length is
 
 ![img_106](./images/img_106.png)
 
-Therefore the ```sin``` function can be seen to be 1 and the ```cos``` function can be seen to be 0. The tan fucntion is ```1/0``` which is ```inf```:
+Therefore the sin function can be seen to be 1 and the cos function can be seen to be 0. The tan fucntion is 1/0 which is inf:
 
 ```
 math.sin(4*tau/16)
@@ -1069,7 +1069,7 @@ Therefore the plots for the 1st and 2nd quadrant look like:
 
 ![img_116](./images/img_116.png)
 
-Notice that the ```cos``` plot has the same form as the ```sin``` plot but is delayed by $\tau/4$. The reason for this is due to the rotational symmetry of the circle through by  $\tau/4$. Rotating the circle by $\tau/4$ changes the horizontal axis to a vertical axis and the behaviour of the vertical axis is modelled on ```cos``` which is a delayed ```sin```
+Notice that the cos plot has the same form as the sin plot but is delayed by $\tau/4$. The reason for this is due to the rotational symmetry of the circle through by  $\tau/4$. Rotating the circle by $\tau/4$ changes the horizontal axis to a vertical axis and the behaviour of the vertical axis is modelled on cos which is a delayed sin
 
 ![img_119](./images/img_119.png)
 
@@ -1127,7 +1127,7 @@ The squared terms look like the following:
 
 ![img_136](./images/img_136.png)
 
-The archsine, archcosine and arctangent functions ```asin```, ```acos``` and ```atan``` are inverse functions which return $\theta$ from the length ratios. Recall:
+The archsine, archcosine and arctangent functions asin, acos and atan are inverse functions which return $\theta$ from the length ratios. Recall:
 
 $$
 soh\ cah\ toa
@@ -1145,7 +1145,7 @@ $$\theta=\text{acos}{\left(\frac{adjacent}{hypotenuse}\right)}$$
 
 $$\theta=\text{atan}{\left(\frac{opposite}{adjacent}\right)}$$
 
-Due to the circles symmetry there are multiple angles that could correspond to a length ratio. If the waveform is centred around the origin the inverse ```asin```, function will output $\theta$ between $-4τ/16$ and $+4τ/16$ as shown:
+Due to the circles symmetry there are multiple angles that could correspond to a length ratio. If the waveform is centred around the origin the inverse asin, function will output $\theta$ between $-4τ/16$ and $+4τ/16$ as shown:
 
 ![img_126](./images/img_126.png)
 
@@ -1157,11 +1157,11 @@ For example:
 16 * math.asin(-1) / tau
 ```
 
-The multiplication through by ```16``` and division by ```tau``` is used for convenience and is the values $-4τ/16$, $0$ and $+4τ/16$ depicted on the sin graph above respectively:
+The multiplication through by 16 and division by tau is used for convenience and is the values $-4τ/16$, $0$ and $+4τ/16$ depicted on the sin graph above respectively:
 
 ![img_130](./images/img_130.png)
 
-In the case of the inverse ```acos```, the waveform is centred around $+4τ/16$ recalling that $+4τ/16$ is the delay between the sine and cosine waves:
+In the case of the inverse acos, the waveform is centred around $+4τ/16$ recalling that $+4τ/16$ is the delay between the sine and cosine waves:
 
 ![img_131](./images/img_131.png)
 
@@ -1175,9 +1175,9 @@ For example:
 
 ![img_132](./images/img_132.png)
 
-Notice that in the range where the ```asin``` function operates, the ```sin``` function increases. Whereas in the range where the ```acos``` function operates, the ```cos``` function decreases.
+Notice that in the range where the asin function operates, the sin function increases. Whereas in the range where the acos function operates, the cos function decreases.
 
-The ```atan``` function operates over the same range as the ```asin``` function.
+The atan function operates over the same range as the asin function.
 
 ![img_126](./images/img_126.png)
 
@@ -1191,7 +1191,7 @@ For example:
 
 ![img_133](./images/img_133.png)
 
-The ```atan2``` function takes in two input arguments ```y``` (the opposite) and ```x``` (the adjacent) instead of the ratio $\frac{y}{x}$
+The atan2 function takes in two input arguments y (the opposite) and x (the adjacent) instead of the ratio $\frac{y}{x}$
 
 ![img_138](./images/img_138.png)
 
@@ -1221,7 +1221,8 @@ There is no inbuilt function for the normal distribution in the math module but 
 ```
 def standard_normal(x):
     return (math.exp(-(x**2)/2))/math.sqrt(tau)
-```    
+    
+```
 
 The following test cases can be checked:
 
@@ -1282,7 +1283,7 @@ There is a complementary error function:
 
 $$1-\frac{2}{\sqrt{\frac{\tau}{2}}}\int_{0}^{x}{e^{-\theta^2}d\theta}$$
 
-This complementary error function ```erfc``` is normally used with positive values of $x$ and is essentially ```1 - erf``` which is the probability a value is a given value or higher.
+This complementary error function erfc is normally used with positive values of $x$ and is essentially 1 - erf which is the probability a value is a given value or higher.
 
 ![img_166](./images/img_166.png)
 
@@ -1317,7 +1318,7 @@ Because the equation above uses squared x and squared y terms, there is symmetry
 
 ![img_146](./images/img_146.png)
 
-The hyperbolic sine, hyperbolic cosine and hyperbolic tangent functions ```sinh```, ```cosh``` and ```tanh``` are the hyperbolic counterparts to the circular functions ```sin```, ```cos``` and ```tan```. Only focusing on the parabola on the right and the top half of this parabola. A right angle triangle can be constructed, however unlike the case of the circle, the magnitude of the hypotenuse will increase as the magnitude of the angle increases. This can be seen visually as the angle increases:
+The hyperbolic sine, hyperbolic cosine and hyperbolic tangent functions sinh, cosh and tanh are the hyperbolic counterparts to the circular functions sin, cos and tan. Only focusing on the parabola on the right and the top half of this parabola. A right angle triangle can be constructed, however unlike the case of the circle, the magnitude of the hypotenuse will increase as the magnitude of the angle increases. This can be seen visually as the angle increases:
 
 For $\theta=\tau/16$:
 
@@ -1346,7 +1347,7 @@ math.cosh(4*tau/16) / math.sinh(4*tau/16)
 
 ![img_144](./images/img_144.png)
 
-The inverse functions ```acosh``` and ```asinh``` return the angle from the length of x and the length of y respectively. The multiplication through by ```16``` and division by ```tau``` is used for convenience, giving the correct angle $+4τ/16$ as expected:
+The inverse functions acosh and asinh return the angle from the length of x and the length of y respectively. The multiplication through by 16 and division by tau is used for convenience, giving the correct angle $+4τ/16$ as expected:
 
 ```
 16 * math.acosh(2.5091784786580567) / tau
@@ -1356,7 +1357,7 @@ The inverse functions ```acosh``` and ```asinh``` return the angle from the leng
 
 ![img_145](./images/img_145.png)
 
-The ```cosh``` and ```sinh``` equations are  related to the exponential which previously some intuition was built up upon:
+The cosh and sinh equations are  related to the exponential which previously some intuition was built up upon:
 
 $$\cosh{\left(\theta\right)}=\frac{e^{\theta}+e^{-\theta}}{2}$$
 
@@ -1376,7 +1377,7 @@ For larger values it is insightful to plot out the positive exponential and nega
 
 ![img_152](./images/img_152.png)
 
-The ```cosh``` and ```sinh``` look as follows:
+The cosh and sinh look as follows:
 
 ![img_153](./images/img_153.png)
 
@@ -1406,17 +1407,17 @@ The square root of a negative number is indeterminate using standard real number
 
 ![img_168](./images/img_168.png)
 
-The symbol of this indeterminate is ```j```. And the definition of ```j``` such that:
+The symbol of this indeterminate is j. And the definition of j such that:
 
 ```
 1j * 1j
 ```
 
-is ```-1```.
+is -1.
 
 ![img_169](./images/img_169.png)
 
-In physics and mathematics, the indeterminate is denoted with the symbol ```i``` and is known as an imaginary component. In electrical engineering, the symbol ```i``` is used to denote current and therefore the symbol ```j``` is used. Python follows the same syntax as electrical engineering.
+In physics and mathematics, the indeterminate is denoted with the symbol i and is known as an imaginary component. In electrical engineering, the symbol i is used to denote current and therefore the symbol j is used. Python follows the same syntax as electrical engineering.
 
 A number with a real and imaginary component can be created using:
 
@@ -1426,11 +1427,11 @@ cnum = 3 + 2j
 
 ![img_170](./images/img_170.png)
 
-A complex can be visualised on an xy grid with ```x``` representing the real axis and ```y``` representing the imaginary axis:
+A complex can be visualised on an xy grid with x representing the real axis and y representing the imaginary axis:
 
 ![img_171](./images/img_171.png)
 
-The complex number has a ```real``` and ```imag``` attribute which can be visualised as the magnitude of the the x and y components on the axes above:
+The complex number has a real and imag attribute which can be visualised as the magnitude of the the x and y components on the axes above:
 
 ![img_172](./images/img_172.png)
 
@@ -1451,7 +1452,7 @@ cnum1 + cnum2
 
 ![img_174](./images/img_174.png)
 
-The blue indicates the components of ```cnum1``` and the orange indicates the components of ```cnum2```. The resultant complex number brought about by their addition is indicated by the red point. Similar arithmetic is carried out for subtraction:
+The blue indicates the components of cnum1 and the orange indicates the components of cnum2. The resultant complex number brought about by their addition is indicated by the red point. Similar arithmetic is carried out for subtraction:
 
 ![img_175](./images/img_175.png)
 
@@ -1473,7 +1474,7 @@ Which finally becomes the complex number:
 
 $$10+11j$$
 
-This can be done easily in Python using the ```*``` operator:
+This can be done easily in Python using the * operator:
 
 ```
 cnum * cnum2
@@ -1515,7 +1516,7 @@ A complex number $z$ can be considered tohave the general form:
 
 $$z=x+iy$$
 
-If ```x``` is ```1/(2 ** 0.5)``` and ```y``` is ```1/(2 ** 0.5)``` then the complex number can also be represented as a point on the circle.
+If x is 1/(2 ** 0.5) and y is 1/(2 ** 0.5) then the complex number can also be represented as a point on the circle.
 
 ![img_179](./images/img_179.png)
 
@@ -1562,17 +1563,17 @@ Therefore:
 
 $$z=r\exp(j\varphi)$$
 
-The complex math module ```cmath``` can be imported using:
+The complex math module cmath can be imported using:
 
 ```
 import cmath
 ```
 
-```cmath``` has a list of very similar identifiers to ```math``` giving a complex equivalent to the identifiers used in ```math```. 
+cmath has a list of very similar identifiers to math giving a complex equivalent to the identifiers used in math. 
 
 ![img_180](./images/img_180.png)
 
-There are two more constants for not a complex number ```nanj``` and for an infinite complex number ```infj```:
+There are two more constants for not a complex number nanj and for an infinite complex number infj:
 
 ```
 cmath.nanj
@@ -1594,7 +1595,7 @@ Which is represented in the diagram below:
 
 ![img_179](./images/img_179.png)
 
-The phase $\varphi$ can be obtained using the cmath function ```phase``` which takes in a complex number in rectangular co-ordinates as an input argument:
+The phase $\varphi$ can be obtained using the cmath function phase which takes in a complex number in rectangular co-ordinates as an input argument:
 
 ![img_182](./images/img_182.png)
 
@@ -1610,7 +1611,7 @@ Or in units of $\frac{\tau}{16}$ is:
 16*cmath.phase(cnum)/tau
 ```
 
-which gives ```2.0``` and matches the diagram as expected:
+which gives 2.0 and matches the diagram as expected:
 
 ![img_183](./images/img_183.png)
 
@@ -1632,7 +1633,7 @@ In this case:
 
 $$z=r\exp\left(j\frac{\tau}{16}\right)$$
 
-And the function ```rect``` can be used to convert a complex number from polar co-ordinates ($r$ $\varphi$) to rectangular co-ordinates (real $x$, imag $y$):
+And the function rect can be used to convert a complex number from polar co-ordinates ($r$ $\varphi$) to rectangular co-ordinates (real $x$, imag $y$):
 
 ![img_186](./images/img_186.png)
 
