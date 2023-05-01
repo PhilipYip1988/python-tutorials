@@ -748,7 +748,7 @@ These methods are the same as their counterparts in the int class because this i
 
 ### Data Model Identifiers
 
-The data model identifiers can be viewed using False.__ followed by a tab ↹:
+The data model identifiers can be viewed using False.__ followed by a tab ↹```
 
 ![img_204](./images/img_204.png)
 
@@ -884,8 +884,6 @@ for i in range(-12, 25, 2):
     print(float(5**i))
     
 
-```
-
 ![img_082](./images/img_082.png)
 
 ### Identifiers
@@ -965,7 +963,7 @@ num1.hex()
 
 ![img_088](./images/img_088.png)
 
-This gives '0x1.0000000000000p-1'
+This gives '0x1.0000000000000p-1'```
 
 The general form is:
 
@@ -1014,7 +1012,7 @@ num2.hex()
 
 ![img_089](./images/img_089.png)
 
-This gives '0x1.eb851eb851eb8p-4'
+This gives '0x1.eb851eb851eb8p-4'```
 
 The general form is:
 

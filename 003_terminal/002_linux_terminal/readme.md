@@ -1,6 +1,6 @@
 # The Linux Terminal
 
-The Linux Terminal uses the bash programming language by default which is an abbreviation for Bourne Again SHell. bash commands were used to install Mambaforge using a ```.sh``` script. On Linux, the Linux Terminal is commonly used with bash in conjunction with Python. It is worthwhile familarising yourself with bash before getting started with Python, in order to be familar with the Linux Terminal.
+The Linux Terminal uses the bash programming language by default which is an abbreviation for Bourne Again SHell. bash commands were used to install Mambaforge using a .sh script. On Linux, the Linux Terminal is commonly used with bash in conjunction with Python. It is worthwhile familarising yourself with bash before getting started with Python, in order to be familar with the Linux Terminal.
 
 ## Opening the Terminal
 
@@ -8,7 +8,7 @@ The Terminal can be opened using the Terminal icon on the start screen:
 
 ![img_001](./images/img_001.png)
 
-It can also be opened using the ```Ctrl```, ```Alt``` and ```t```. In either case, the Terminal opens in the default location which is ```~```.
+It can also be opened using the Ctrl, Alt and t. In either case, the Terminal opens in the default location which is ~.
 
 The Terminal can also be opened by using the right click context menu in Files and selecting open in Terminal:
 
@@ -18,49 +18,49 @@ The Terminal will open using the File Path of the current folder displayed in Fi
 
 ## The Prompt
 
-The current prompt is indicated using a ```$```:
+The current prompt is indicated using a $:
 
 ![img_003](./images/img_003.png)
 
-The prefix of the prompt displays the user name ```philip```:
+The prefix of the prompt displays the user name philip:
 
 ![img_004](./images/img_004.png)
 
-An ```@``` symbol:
+An @ symbol:
 
 ![img_005](./images/img_005.png)
 
-The pc name ```pc```:
+The pc name pc:
 
 ![img_006](./images/img_006.png)
 
-A single colon ```:``` :
+A single colon : :
 
 ![img_007](./images/img_007.png)
 
-The ```~```, indicates the file path:
+The ~, indicates the file path:
 
 ![img_008](./images/img_008.png)
 
-The ```$``` indicates a new prompt:
+The $ indicates a new prompt:
 
 ![img_009](./images/img_009.png)
 
 ## \~ home
 
-In Linux, the ```~``` represents the Home directory. Files opens by default in Home and selecting Open in Terminal from the right click context menu:
+In Linux, the ~ represents the Home directory. Files opens by default in Home and selecting Open in Terminal from the right click context menu:
 
 ![img_010](./images/img_010.png)
 
-Opens the Terminal in Home ```~```:
+Opens the Terminal in Home ~:
 
 ![img_011](./images/img_011.png)
 
-This is the default location the Terminal is opened in, if the shortcut key ```Ctrl```, ```Shift``` and ```t``` or the Terminal shortcut is used on the Start Screen.
+This is the default location the Terminal is opened in, if the shortcut key Ctrl, Shift and t or the Terminal shortcut is used on the Start Screen.
 
 ## ls list
 
-The ```ls``` command is an abbreviation for list and will list all the files and folders in the current directory.
+The ls command is an abbreviation for list and will list all the files and folders in the current directory.
 
 ```
 ls
@@ -74,7 +74,7 @@ If the Documents folder is selected, and Open in Terminal is selected:
 
 ![img_013](./images/img_013.png)
 
-The location changes to ```~/Documents``` and this is in the blue syntax:
+The location changes to ~/Documents and this is in the blue syntax:
 
 ![img_014](./images/img_014.png)
 
@@ -92,7 +92,7 @@ The file and the folder with a space are shown enclosed in single quotations.
 
 ## cd "change directory"
 
-The ```cd``` command is an abbreviation for change directory (folder). It can be used to change to a directory for example by specifying the ```Documents``` subdirectory listed:
+The cd command is an abbreviation for change directory (folder). It can be used to change to a directory for example by specifying the Documents subdirectory listed:
 
 ```
 cd Documents
@@ -106,11 +106,11 @@ If the command:
 cd Downloads
 ```
 
-is now used. The Terminal will try and access a Downloads subdirectory within ```Documents``` which doesn't exist and display a No such File or Directory Error:
+is now used. The Terminal will try and access a Downloads subdirectory within Documents which doesn't exist and display a No such File or Directory Error:
 
 ![img_016](./images/img_016.png)
 
-To select ```Downloads```, it can be selected by using the file path with respect to Home:
+To select Downloads, it can be selected by using the file path with respect to Home:
 
 ```
 cd ~/Downloads
@@ -118,17 +118,17 @@ cd ~/Downloads
 
 ![img_017](./images/img_017.png)
 
-It is also possible to use ```.``` to indicate explicitly in the same folder as or ```..``` to go up a directory. Using:
+It is also possible to use . to indicate explicitly in the same folder as or .. to go up a directory. Using:
 
 ```
 cd ..
 ```
 
-will move the Terminal path to Home ```~``` in this case:
+will move the Terminal path to Home ~ in this case:
 
 ![img_018](./images/img_018.png)
 
-The ```MyNotes``` folder within ```Documents``` can be selected using:
+The MyNotes folder within Documents can be selected using:
 
 ```
 cd ~/Documents/MyNotes
@@ -136,7 +136,7 @@ cd ~/Documents/MyNotes
 
 ![img_019](./images/img_019.png)
 
-To get back to Home ```~```, the following can be used:
+To get back to Home ~, the following can be used:
 
 ```
 cd ../..
@@ -144,7 +144,7 @@ cd ../..
 
 ![img_020](./images/img_020.png)
 
-The ```My Notes``` folder within within ```Documents``` can be selected using:
+The My Notes folder within within Documents can be selected using:
 
 ```
 cd ~/"Documents/MyNotes"
@@ -162,7 +162,7 @@ cd ~/Documents/"My Notes"
 
 ## clear
 
-To clear the terminal, the shortcut key ```ctrl``` + ```l``` can be used. This is lower case l for c**l**ear:
+To clear the terminal, the shortcut key ctrl + l can be used. This is lower case l for c**l**ear:
 
 ![img_021](./images/img_021.png)
 
@@ -180,17 +180,17 @@ Also clears the Terminal:
 
 ## copy and paste
 
-The shortcut key for copy is ```Ctrl```, ```⇧``` and ```c```:
+The shortcut key for copy is Ctrl, ⇧ and c:
 
 ![img_024](./images/img_024.png)
 
-The shortcut key for paste is ```Ctrl```, ```⇧``` and ```v```:
+The shortcut key for paste is Ctrl, ⇧ and v:
 
 ![img_025](./images/img_025.png)
 
 ## close
 
-The shortcut key for closing a currently running process such as an infinite loop is ```Ctrl``` and ```c```.
+The shortcut key for closing a currently running process such as an infinite loop is Ctrl and c.
 
 For example if the following is input:
 
@@ -204,13 +204,13 @@ The Terminal will be hung up in an infinite loop:
 
 ![img_027](./images/img_027.png)
 
-Pressing ```Ctrl``` and ```c``` will exit this infinite loop:
+Pressing Ctrl and c will exit this infinite loop:
 
 ![img_028](./images/img_028.png)
 
 ## echo
 
-The ```echo``` command is used to print a string to the Terminal. The string is enclosed in quotations. For example:
+The echo command is used to print a string to the Terminal. The string is enclosed in quotations. For example:
 
 ```
 echo "Hello World!"
@@ -218,7 +218,7 @@ echo "Hello World!"
 
 ![img_029](./images/img_029.png)
 
-The echo command is more commonly used from within a bash script file which has a ```.sh``` extension.
+The echo command is more commonly used from within a bash script file which has a .sh extension.
 
 ## bash script.sh
 
@@ -236,15 +236,15 @@ The file can be saved by going to file, then save as:
 
 ![img_031](./images/img_031.png)
 
-The file can be saved in Documents. Instead of using the file extensions ```.txt```, the file extension ```.sh``` should be used to create a shell script:
+The file can be saved in Documents. Instead of using the file extensions .txt, the file extension .sh should be used to create a shell script:
 
 ![img_032](./images/img_032.png)
 
-Code syntax highlighting will display, now that the file is a ```.sh``` file:
+Code syntax highlighting will display, now that the file is a .sh file:
 
 ![img_033](./images/img_033.png)
 
-The ```script0.sh``` can be seen in Files under Documents:
+The script0.sh can be seen in Files under Documents:
 
 ![img_034](./images/img_034.png)
 
@@ -265,7 +265,7 @@ bash ~/Documents/script0.sh
 
 ![img_036](./images/img_036.png)
 
-If the script file is copied to the ```My Notes``` folder within ```Documents```:
+If the script file is copied to the My Notes folder within Documents:
 
 ![img_040](./images/img_040.png)
 
@@ -277,7 +277,7 @@ bash ~/Documents/"My Notes"/script0.sh
 
 ![img_041](./images/img_041.png)
 
-The ```script0.sh``` within ```Documents``` can be accessed from this location using:
+The script0.sh within Documents can be accessed from this location using:
 
 ```
 bash ../script0.sh
@@ -287,7 +287,7 @@ bash ../script0.sh
 
 ## nano Text Editor
 
-```nano``` is a Terminal based text editor. It can be used to modify a file. For example if the directory is changed back to ```Documents```, ```nano``` can be used to open ```script0.sh```:
+nano is a Terminal based text editor. It can be used to modify a file. For example if the directory is changed back to Documents, nano can be used to open script0.sh:
 
 ```
 nano ~/Documents/script0.sh
@@ -295,23 +295,23 @@ nano ~/Documents/script0.sh
 
 ![img_043](./images/img_043.png)
 
-The file opens in the ```nano``` Terminal based Text Editor. Navigation around the file can be carried out using the ```←```, ```→```, ```↑```, and ```↓```.
+The file opens in the nano Terminal based Text Editor. Navigation around the file can be carried out using the ←, →, ↑, and ↓.
 
 ![img_044](./images/img_044.png)
 
-Text can be typed or deleted using ```del```. For example ```hello``` can be replaced with ```hi```. To the bottom display a number of keyboard shortcuts. The ```^``` means the ```Ctrl``` key. ```^x``` is shown for exit, press ```Ctrl``` and ```x``` to exit:
+Text can be typed or deleted using del. For example hello can be replaced with hi. To the bottom display a number of keyboard shortcuts. The ^ means the Ctrl key. ^x is shown for exit, press Ctrl and x to exit:
 
 ![img_045](./images/img_045.png)
 
-You will be prompted to save. Press ```y``` to proceed:
+You will be prompted to save. Press y to proceed:
 
 ![img_046](./images/img_046.png)
 
-You will be prompted for a file name, the currently opened file will be input by default. Select ```↵```:
+You will be prompted for a file name, the currently opened file will be input by default. Select ↵:
 
 ![img_047](./images/img_047.png)
 
-This will exit the ```nano``` Test Editor returning to the Terminal:
+This will exit the nano Test Editor returning to the Terminal:
 
 ![img_048](./images/img_048.png)
 
@@ -323,25 +323,25 @@ bash ~/Documents/script0.sh
 
 ![img_049](./images/img_049.png)
 
-In ```nano``` the shortcut key ```^/``` i.e. ```Ctrl``` + ```/``` can be used to select a location in the file by line and column for example ```1, 8```:
+In nano the shortcut key ^/ i.e. Ctrl + / can be used to select a location in the file by line and column for example 1, 8:
 
 ![img_050](./images/img_050.png)
 ![img_051](./images/img_051.png)
 
-In ```nano``` the shortcut key ```^/``` i.e. ```Ctrl``` + ```/``` can be used to select go to line as before. In this menu other shortcut keys display such as ```^t``` i.e. ```Ctrl``` + ```t``` which can be used to go to text that matches a search query: 
+In nano the shortcut key ^/ i.e. Ctrl + / can be used to select go to line as before. In this menu other shortcut keys display such as ^t i.e. Ctrl + t which can be used to go to text that matches a search query: 
 
 ![img_052](./images/img_052.png)
 ![img_053](./images/img_053.png)
 
-The shortcut key ````^\``` i.e. ```Ctrl``` + ```\``` can be used to perform a replace. You will be prompted for a search term. Input it and press ```↵```:
+The shortcut key `^\ i.e. Ctrl + \ can be used to perform a replace. You will be prompted for a search term. Input it and press ↵:
 
 ![img_055](./images/img_055.png)
 
-Then a replace term. Input it and press ```↵```:
+Then a replace term. Input it and press ↵:
 
 ![img_056](./images/img_056.png)
 
-Then prompted to replace the instance. Input ```y``` and press ```↵```:
+Then prompted to replace the instance. Input y and press ↵:
 
 ![img_057](./images/img_057.png)
 
@@ -351,9 +351,9 @@ The replacement will now be made:
 
 ## touch new file
 
-The command ```touch``` can be used to *touch a directory* i.e. create a file in the directory.
+The command touch can be used to *touch a directory* i.e. create a file in the directory.
 
-The ```touch``` command requires a file name and extension. For example, the script file ```script1.sh``` can be made using:
+The touch command requires a file name and extension. For example, the script file script1.sh can be made using:
 
 ```
 cd ~/Documents
@@ -363,7 +363,7 @@ touch script1.sh
 ![img_059](./images/img_059.png)
 ![img_060](./images/img_060.png)
 
-This script file can eb opened with ```nano``` using:
+This script file can eb opened with nano using:
 
 ```
 nano script1.sh
@@ -371,21 +371,21 @@ nano script1.sh
 
 ![img_061](./images/img_061.png)
 
-An ```echo``` command can be made using:
+An echo command can be made using:
 
 ```
 echo "this file was made in the Terminal"
 ```
 
-Once again the file can be saved by pressing ```Ctrl``` + ```x```:
+Once again the file can be saved by pressing Ctrl + x:
 
 ![img_062](./images/img_062.png)
 
-Then inputting ```y```:
+Then inputting y:
 
 ![img_063](./images/img_063.png)
 
-And inputting ```↵``` to save the file using the existing file name:
+And inputting ↵ to save the file using the existing file name:
 
 ![img_064](./images/img_064.png)
 
@@ -397,7 +397,7 @@ bash script1.sh
 
 ![img_065](./images/img_065.png)
 
-The file icon for the ```script1.sh``` only updates to a script file icon once its got some content in the file.
+The file icon for the script1.sh only updates to a script file icon once its got some content in the file.
 
 ![img_066](./images/img_066.png)
 
@@ -412,11 +412,11 @@ bash script1.sh
 
 ## rm remove file
 
-The ```rm``` command may be used to remove a file.
+The rm command may be used to remove a file.
 
 ![img_067](./images/img_067.png)
 
-For example the file ```NewDocument.txt``` can be removed by changing the directory to ```Documents``` and using:
+For example the file NewDocument.txt can be removed by changing the directory to Documents and using:
 
 ```
 cd ~/Documents
@@ -439,11 +439,11 @@ Both files are now removed in Files:
 ![img_070](./images/img_070.png)
 ![img_071](./images/img_071.png)
 
-In the ```My Notes``` directory: 
+In the My Notes directory: 
 
 ![img_072](./images/img_072.png)
 
-There is a ```script0.sh``` file:
+There is a script0.sh file:
 
 ![img_073](./images/img_073.png)
 
@@ -460,11 +460,11 @@ RRecall because there is a space in the fodler, that quotations have to be used:
 
 ## rmdir Remove Directory
 
-The command ```rmdir``` can be used to remove an empty directory. 
+The command rmdir can be used to remove an empty directory. 
 
 ![img_076](./images/img_076.png)
 
-The empty directory ```MyNotes``` can be removed using:
+The empty directory MyNotes can be removed using:
 
 ```
 rmdir MyNotes
@@ -473,7 +473,7 @@ rmdir MyNotes
 ![img_077](./images/img_077.png)
 ![img_078](./images/img_078.png)
 
-The empty directory ```My Notes``` can also be removed. This has a space and will require quotations. The full file path can be selected:
+The empty directory My Notes can also be removed. This has a space and will require quotations. The full file path can be selected:
 
 ```
 rmdir ~/Documents/"My Notes"
@@ -484,7 +484,7 @@ rmdir ~/Documents/"My Notes"
 
 ## mkdir Make Directory
 
-The command ```mkdir``` can be used to make a directory. A directory called ```Project0``` can be made in ```Documents``` using:
+The command mkdir can be used to make a directory. A directory called Project0 can be made in Documents using:
 
 ```
 cd ~/Documents
@@ -494,7 +494,7 @@ mkdir Project0
 ![img_081](./images/img_081.png)
 ![img_082](./images/img_082.png)
 
-Alternatively a directory ```Project1``` can be made by specifying the full file path:
+Alternatively a directory Project1 can be made by specifying the full file path:
 
 ```
 mkdir ~/Documents/Project1
@@ -505,11 +505,11 @@ mkdir ~/Documents/Project1
 
 ## mv Move
 
-A file can be moved using the ```mv``` command. If directories are not selected, the file is renamed in the current directory:
+A file can be moved using the mv command. If directories are not selected, the file is renamed in the current directory:
 
 ![img_084](./images/img_084.png)
 
-```script0.sh``` can be moved to ```testscript.sh``` using:
+script0.sh can be moved to testscript.sh using:
 
 ```
 mv script0.sh testscript.sh
@@ -518,7 +518,7 @@ mv script0.sh testscript.sh
 ![img_085](./images/img_085.png)
 ![img_164](./images/img_164.png)
 
-```testscript.sh``` can be moved to the directory ```Project0``` in ```Documents``` as ```script0.sh``` using:
+testscript.sh can be moved to the directory Project0 in Documents as script0.sh using:
 
 ```
 mv testscript.sh ~/Documents/script0.sh
@@ -530,11 +530,11 @@ mv testscript.sh ~/Documents/script0.sh
 
 ## cp Copy
 
-A file can be copied using the ```cp``` command:
+A file can be copied using the cp command:
 
 ![img_089](./images/img_089.png)
 
-```script1.sh``` can be copied as ```script2.sh``` using:
+script1.sh can be copied as script2.sh using:
 
 ```
 cp script1.sh script2.sh
@@ -545,11 +545,11 @@ cp script1.sh script2.sh
 
 ## zip
 
-A zip file can be created using the ```zip``` command.
+A zip file can be created using the zip command.
 
 ![img_091](./images/img_091.png)
 
-The folder ```Project0```, ```script1.sh``` and ```script2.sh``` can be added to a zipped folder ```ZippedFiles.zip``` using:
+The folder Project0, script1.sh and script2.sh can be added to a zipped folder ZippedFiles.zip using:
 
 ```
 zip ZippedFiles.zip Project0 script1.sh script2.sh
@@ -561,7 +561,7 @@ zip ZippedFiles.zip Project0 script1.sh script2.sh
 
 ## rm Remove a Directory with FIles
 
-When ```rmdir``` is used on a the directory ```Project0``` an error displays informing us the directory is not empty:
+When rmdir is used on a the directory Project0 an error displays informing us the directory is not empty:
 
 ```
 rmdir Project0
@@ -569,7 +569,7 @@ rmdir Project0
 
 ![img_095](./images/img_095.png)
 
-If ```rm``` is used on the directory an error message displays informing us that ```project0``` is a directory and not a file:
+If rm is used on the directory an error message displays informing us that project0 is a directory and not a file:
 
 ```
 rm Project0
@@ -577,7 +577,7 @@ rm Project0
 
 ![img_096](./images/img_096.png)
 
-The command ```rm``` can be used with optional arguments ```-rf``` to remove a directory containign files:
+The command rm can be used with optional arguments -rf to remove a directory containign files:
 
 ```
 rm -rf Project0
@@ -585,11 +585,11 @@ rm -rf Project0
 
 ![img_097](./images/img_097.png)
 
-```f``` stands for force and ```r``` stands for recursive.
+f stands for force and r stands for recursive.
 
 ![img_098](./images/img_098.png)
 
-The directory ```Project1``` can be seleted using ```rmdir``` because it is empty:
+The directory Project1 can be seleted using rmdir because it is empty:
 
 ```
 rmdir Project1
@@ -600,11 +600,11 @@ rmdir Project1
 
 ## unzip
 
-The ```unzip``` command can eb used to unzip a zipped folder:
+The unzip command can eb used to unzip a zipped folder:
 
 ![img_100](./images/img_100.png)
 
-For example ```ZippedFile.zip``` can be unzipped using:
+For example ZippedFile.zip can be unzipped using:
 
 ```
 unzip ZippedFiles.zip
@@ -615,7 +615,7 @@ unzip ZippedFiles.zip
 
 ## man Manual
 
-The ```man``` command can be used to get the manual for a command. ```rm``` was used earlier to delete a direcotry with files using the optional commands ```f``` and ```r```. Details about these are found when using:
+The man command can be used to get the manual for a command. rm was used earlier to delete a direcotry with files using the optional commands f and r. Details about these are found when using:
 
 ```
 man rm
@@ -629,13 +629,13 @@ The manual can be scrolled through using the arrows or mouse wheel:
 ![img_105](./images/img_105.png)
 ![img_106](./images/img_106.png)
 
-And quit using ```q```.
+And quit using q.
 
 ![img_107](./images/img_107.png)
 
 ## info Information
 
-The ```info``` command can also be used to get further information about a command in the rare scenario where the manual is not detailed enough:
+The info command can also be used to get further information about a command in the rare scenario where the manual is not detailed enough:
 
 ```
 info rm
@@ -647,9 +647,9 @@ info rm
 
 ## / root
 
-So far all file manipulations have been carried out in the Home ```~``` directory or subfolders within the Home directory where the user has access.
+So far all file manipulations have been carried out in the Home ~ directory or subfolders within the Home directory where the user has access.
 
-On Linux it is also possible to access the root directory or ```/```:
+On Linux it is also possible to access the root directory or /:
 
 ![img_111](./images/img_111.png)
 ![img_112](./images/img_112.png)
@@ -662,7 +662,7 @@ cd /
 
 ![img_113](./images/img_113.png)
 
-Notice if the ```touch``` command iss used to attempt to create a new file:
+Notice if the touch command iss used to attempt to create a new file:
 
 ```
 touch myfile.txt
@@ -676,7 +676,7 @@ that an error message displays saying Permission denied.
 
 sudo is an abbreviation for **s**uper **u**ser **do** and can be thought of as the Linux equivalent of Windows "run as administrator".
 
-If the command above is used with the ```sudo``` prefix it will be ran as a super user:
+If the command above is used with the sudo prefix it will be ran as a super user:
 
 ```
 sudo touch myfile.txt
@@ -700,7 +700,7 @@ another permission error will display:
 
 ![img_117](./images/img_117.png)
 
-Once again this command needs to be prefixed with ```sudo```:
+Once again this command needs to be prefixed with sudo:
 
 ```
 sudo rm myfile.txt
@@ -757,7 +757,7 @@ Followed by a Permission or multiple Permissions:
 |w|Write|
 |x|Execute|
 
-So to remove the write permissions for ```script1.sh``` for the user, the following command is used:
+So to remove the write permissions for script1.sh for the user, the following command is used:
 
 ```
 chmod u-w script1.sh
@@ -769,12 +769,12 @@ The file has a padlock on it, indicating it is read only:
 
 ![img_143](./images/img_143.png)
 
-If it is opened with ```nano```, ```nano``` informs the file is unwritable:
+If it is opened with nano, nano informs the file is unwritable:
 
 ![img_144](./images/img_144.png)
 ![img_145](./images/img_145.png)
 
-If it is opened with ```nano``` using ```sudo``` is is writable:
+If it is opened with nano using sudo is is writable:
 
 ![img_146](./images/img_146.png)
 ![img_147](./images/img_147.png)
@@ -797,13 +797,13 @@ The Linux package manager is used to install Linux Software Updates and Operatin
 
 Like Python, the Linux ecosystem is pretty vast and there are a multiude of Linux distributions and package managers. The package manager is normally used to install software updates and software applications.
 
-Ubuntu is a Debian based distribution and uses the Advanced Package Tool ```apt``` found within Debian. It also uses ```snap``` for snap packages. One of the rationales for the two package managers is to seperate user installed programs from Operating System components. However other Linux distributions that are Ubuntu based such as Mint have moved to ```flatpak``` for this purpose. 
+Ubuntu is a Debian based distribution and uses the Advanced Package Tool apt found within Debian. It also uses snap for snap packages. One of the rationales for the two package managers is to seperate user installed programs from Operating System components. However other Linux distributions that are Ubuntu based such as Mint have moved to flatpak for this purpose. 
 
-RedHat distros such as Fedora use the Dandified Yellowdog Updater Modified which has the abbreviation ```dnf```. 
+RedHat distros such as Fedora use the Dandified Yellowdog Updater Modified which has the abbreviation dnf. 
 
 Despite the differences in the package manager names, the syntax of the package managers is quite straight forward.
 
-```apt``` will be used as an example:
+apt will be used as an example:
 
 ```
 apt
@@ -811,7 +811,7 @@ apt
 
 ![img_120](./images/img_120.png)
 
-There are five main commands ```list```, ```search```, ```install```, ```remove``` and ```upgrade```. The middle three commands require a package to be specified. The last 3 commands require super user permissions.
+There are five main commands list, search, install, remove and upgrade. The middle three commands require a package to be specified. The last 3 commands require super user permissions.
 
 ![img_121](./images/img_121.png)
 
@@ -826,7 +826,7 @@ will display all the installed packages including Operating System components:
 ![img_122](./images/img_122.png)
 ![img_123](./images/img_123.png)
 
-The ```search``` command can be sued to search for a package such as ```gparted```:
+The search command can be sued to search for a package such as gparted:
 
 ```
 apt search gparted
@@ -835,7 +835,7 @@ apt search gparted
 ![img_124](./images/img_124.png)
 ![img_125](./images/img_125.png)
 
-A software package can be installed using the ```install``` command prefixed with ```sudo```. ```gparted``` can be installed using:
+A software package can be installed using the install command prefixed with sudo. gparted can be installed using:
 
 ```
 sudo install gparted
@@ -843,7 +843,7 @@ sudo install gparted
 
 ![img_126](./images/img_126.png)
 
-Details about the changes will outlined. Input ```y``` in order to proceed:
+Details about the changes will outlined. Input y in order to proceed:
 
 ![img_127](./images/img_127.png)
 
@@ -855,7 +855,7 @@ sudo apt remove gparted
 
 ![img_129](./images/img_129.png)
 
-Details about the changes will outlined. Input ```y``` in order to proceed:
+Details about the changes will outlined. Input y in order to proceed:
 
 ![img_130](./images/img_130.png)
 
@@ -878,7 +878,7 @@ sudo apt upgrade
 
 ![img_133](./images/img_133.png)
 
-Details about the changes will outlined. Input ```y``` in order to proceed:
+Details about the changes will outlined. Input y in order to proceed:
 
 ![img_134](./images/img_134.png)
 
@@ -910,7 +910,7 @@ quit
 
 The bash programming language has other programming constructs such as variables, conditional logic, for and while loops. These programming constructs are easier to learn in Python which the rest of these guides will focus on.
 
-If the directory is changed to ```Documents```, a new Python Script file can be created by using the command ```touch```:
+If the directory is changed to Documents, a new Python Script file can be created by using the command touch:
 
 ```
 cd ~/Documents
@@ -920,7 +920,7 @@ touch script0.py
 ![img_151](./images/img_151.png)
 ![img_152](./images/img_152.png)
 
-It can be edited in the ```nano``` Text Editor using:
+It can be edited in the nano Text Editor using:
 
 ```
 nano script0.py
@@ -934,15 +934,15 @@ The Python code:
 print("Hello World")
 ```
 
-can be added. ```Ctrl``` + ```x``` can be pressed to save the file:
+can be added. Ctrl + x can be pressed to save the file:
 
 ![img_154](./images/img_154.png)
 
-Input ```y``` to proceed with the save:
+Input y to proceed with the save:
 
 ![img_155](./images/img_155.png)
 
-Press ```↵``` to save the file using the existing file name:
+Press ↵ to save the file using the existing file name:
 
 ![img_156](./images/img_156.png)
 
@@ -966,7 +966,7 @@ python3
 
 ![img_159](./images/img_159.png)
 
-The prompt changes to ```>>>``` indicating that Python is running opposed to ```bash```.
+The prompt changes to >>> indicating that Python is running opposed to bash.
 
 
 ![img_160](./images/img_160.png)

@@ -194,13 +194,13 @@ Another example is the ```email``` module which exists as a folder of Python scr
 
 ![img_029](./images/img_029.png)
 
-One of the Python Script Files is called ```\_\_init\_\_.py```. When the following is input in a Python program:
+One of the Python Script Files is called ```__init__.py```. When the following is input in a Python program:
 
 ```
 import email
 ```
 
-the contents of this ```\_\_init\_\_.py``` file are imported. The other Python Script files can be accessed from the folder using dot ```.``` notation. For example the Python Script File ```charset.py``` can be accessed using:
+the contents of this ```__init__.py``` file are imported. The other Python Script files can be accessed from the folder using dot ```.``` notation. For example the Python Script File ```charset.py``` can be accessed using:
 
 ```
 email.charset
@@ -760,7 +760,7 @@ import email
 references this file:
 
 ```
-~/mambaforge/envs/spyder/lib/python3.11/email/\_\_init\_\_.py
+~/mambaforge/envs/spyder/lib/python3.11/email/__init__.py
 ```
 
 And
@@ -796,7 +796,7 @@ import numpy as np
 references this file:
 
 ```
-~/mambaforge/envs/spyder/lib/python3.11/site-packages/numpy/\_\_init\_\_.py
+~/mambaforge/envs/spyder/lib/python3.11/site-packages/numpy/__init__.py
 ```
 
 ![img_121](./images/img_121.png)
@@ -805,7 +805,7 @@ references this file:
 
 ![img_122](./images/img_122.png)
 
-This ```linalg``` folder has its own Python Modules including a ```\_\_init\_\_.py```
+This ```linalg``` folder has its own Python Modules including a ```__init__.py```
 
 ```
 np.linalg
@@ -814,12 +814,12 @@ np.linalg
 references this file:
 
 ```
-~/mambaforge/envs/spyder/lib/python3.11/site-packages/numpy/linalg/\_\_init\_\_.py
+~/mambaforge/envs/spyder/lib/python3.11/site-packages/numpy/linalg/__init__.py
 ```
 
 ![img_123](./images/img_123.png)
 
-For ```matplotlib``` there is a ```\_\_init\_\_.py``` which would be referenced if ```import matplotlib``` was input:
+For ```matplotlib``` there is a ```__init__.py``` which would be referenced if ```import matplotlib``` was input:
 
 However it is more common to use the ```pyplot.py``` module opposed to the entire library:
 
