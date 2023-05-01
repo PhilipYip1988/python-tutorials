@@ -1,5 +1,5 @@
 <!-- wp:paragraph -->
-<p>The str class is an abbreviation for a string of Unicode characters. The str class is an immutable ordered collection of character. Immutable means once it has been instantiated it cannot be later modified.</p>
+<p>The str class is an abbreviation for a string of Unicode characters. The str class is an immutable ordered Collection of Unicode characters. Immutable means once it has been instantiated it cannot be later modified.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:heading -->
@@ -5427,7 +5427,7 @@ Type:      builtin_function_or_method</pre>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>A string is also an ordered Sequence which means it contains the data model identifiers __getitem__, __len__, __contains__, __iter__ and __reversed__ alongside the identifiers index and count.</p>
+<p>A string is also an Sequence which means it contains the data model identifiers __getitem__, __len__, __contains__, __iter__ and __reversed__ alongside the identifiers index and count.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -5971,6 +5971,265 @@ Type:      builtin_function_or_method</pre>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
+<p>If greeting and the len of greeting are examined:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting = 'hello world!'\nlen(greeting)","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;hello world!\u0026#39;\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003elen\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(greeting)\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting = 'hello world!'
+len(greeting)" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">greeting </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;hello world!&#39;</span></span>
+<span class="line"><span style="color: #005CC5">len</span><span style="color: #24292E">(greeting)</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>12</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>The center method can be used to center the string over a specified width using whitespace (default) or a specified fill character. Alternatively the ljust and rjust are used to left and right justify the string and have consistent input arguments. Note the / in the input arguments meaning they have to be specified positionally:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  greeting.center(width, fillchar=' ', /)
+Docstring:
+Return a centered string of length width.
+
+Padding is done using the specified fill character (default is a space).
+Type:      builtin_function_or_method</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  greeting.ljust(width, fillchar=' ', /)
+Docstring:
+Return a left-justified string of length width.
+
+Padding is done using the specified fill character (default is a space).
+Type:      builtin_function_or_method</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  greeting.rjust(width, fillchar=' ', /)
+Docstring:
+Return a right-justified string of length width.
+
+Padding is done using the specified fill character (default is a space).
+Type:      builtin_function_or_method</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting.center(20)\ngreeting.center(20, '◯')\ngreeting.ljust(20, '◯')\ngreeting.rjust(20, '◯')","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting.center(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e20\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting.center(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e20\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e, \u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting.ljust(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e20\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e, \u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting.rjust(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e20\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e, \u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting.center(20)
+greeting.center(20, '◯')
+greeting.ljust(20, '◯')
+greeting.rjust(20, '◯')" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">greeting.center(</span><span style="color: #005CC5">20</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">greeting.center(</span><span style="color: #005CC5">20</span><span style="color: #24292E">, </span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">greeting.ljust(</span><span style="color: #005CC5">20</span><span style="color: #24292E">, </span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">greeting.rjust(</span><span style="color: #005CC5">20</span><span style="color: #24292E">, </span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">)</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'    hello world!    '
+'◯◯◯◯hello world!◯◯◯◯'
+'◯◯◯◯◯◯◯◯hello world!'
+'hello world!◯◯◯◯◯◯◯◯'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>If the following string is created:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting2 = greeting.center(20, '◯')\ngreeting2","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting2 \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e greeting.center(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e20\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e, \u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting2\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting2 = greeting.center(20, '◯')
+greeting2" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">greeting2 </span><span style="color: #D73A49">=</span><span style="color: #24292E"> greeting.center(</span><span style="color: #005CC5">20</span><span style="color: #24292E">, </span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">greeting2</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'◯◯◯◯hello world!◯◯◯◯'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>The opposite operation can be carried out using the identifiers lstrip and rstrip which left strip and right strip whitespace by default or a specified fill character or character sequence:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  greeting2.lstrip(chars=None, /)
+Docstring:
+Return a copy of the string with leading whitespace removed.
+
+If chars is given and not None, remove characters in chars instead.
+Type:      builtin_function_or_method</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  greeting2.rstrip(chars=None, /)
+Docstring:
+Return a copy of the string with trailing whitespace removed.
+
+If chars is given and not None, remove characters in chars instead.
+Type:      builtin_function_or_method</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting2.lstrip('◯')\ngreeting2.lstrip('◯').rstrip('◯')","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting2.lstrip(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting2.lstrip(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e).rstrip(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting2.lstrip('◯')
+greeting2.lstrip('◯').rstrip('◯')" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">greeting2.lstrip(</span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">greeting2.lstrip(</span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">).rstrip(</span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">)</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'hello world!◯◯◯◯'
+'hello world!'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>There are the associated identifiers removeprefix and removesuffix that are more precise and will only remove a specified prefix or suffix:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  greeting2.removeprefix(prefix, /)
+Docstring:
+Return a str with the given prefix string removed if present.
+
+If the string starts with the prefix string, return string[len(prefix):].
+Otherwise, return a copy of the original string.
+Type:      builtin_function_or_method</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  greeting2.removesuffix(suffix, /)
+Docstring:
+Return a str with the given suffix string removed if present.
+
+If the string ends with the suffix string and that suffix is not empty,
+return string[:-len(suffix)]. Otherwise, return a copy of the original
+string.
+Type:      builtin_function_or_method</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting2.removeprefix('◯◯◯')\ngreeting2.removesuffix('◯')","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting2.removeprefix(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯◯◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting2.removesuffix(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;◯\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting2.removeprefix('◯◯◯')
+greeting2.removesuffix('◯')" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">greeting2.removeprefix(</span><span style="color: #032F62">&#39;◯◯◯&#39;</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">greeting2.removesuffix(</span><span style="color: #032F62">&#39;◯&#39;</span><span style="color: #24292E">)</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'◯hello world!◯◯◯◯'
+'◯◯◯◯hello world!◯◯◯'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>Earlier the binary number corresponding to the character 'a' was computed:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"bin(ord('a'))","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003ebin\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003eord\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;a\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e))\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="bin(ord('a'))" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #005CC5">bin</span><span style="color: #24292E">(</span><span style="color: #005CC5">ord</span><span style="color: #24292E">(</span><span style="color: #032F62">&#39;a&#39;</span><span style="color: #24292E">))</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'0b1100001'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>The string identifier removeprefix can be used to remove the '0b':</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"bin(ord('a')).removeprefix('0b')","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003ebin\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003eord\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;a\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)).removeprefix(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;0b\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="bin(ord('a')).removeprefix('0b')" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #005CC5">bin</span><span style="color: #24292E">(</span><span style="color: #005CC5">ord</span><span style="color: #24292E">(</span><span style="color: #032F62">&#39;a&#39;</span><span style="color: #24292E">)).removeprefix(</span><span style="color: #032F62">&#39;0b&#39;</span><span style="color: #24292E">)</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'1100001'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>There is also the string method zfill which can be used to zero fill a string and is mainly intended for strings of numeric values:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"lettera = bin(ord('a')).removeprefix('0b')","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003elettera \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003ebin\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003eord\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;a\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)).removeprefix(\u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;0b\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="lettera = bin(ord('a')).removeprefix('0b')" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">lettera </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #005CC5">bin</span><span style="color: #24292E">(</span><span style="color: #005CC5">ord</span><span style="color: #24292E">(</span><span style="color: #032F62">&#39;a&#39;</span><span style="color: #24292E">)).removeprefix(</span><span style="color: #032F62">&#39;0b&#39;</span><span style="color: #24292E">)</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:enlighter/codeblock {"language":"raw"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:  lettera.zfill(width, /)
+Docstring:
+Pad a numeric string with zeros on the left, to fill a field of the given width.
+
+The string is never truncated.
+Type:      builtin_function_or_method
+</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:paragraph -->
+<p>Since this is a byte, the width can be specified as 8, once again this is specified positionally as the input argument is followed by a /</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"lettera = lettera.zfill(8)\nlettera","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003elettera \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e lettera.zfill(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e8\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003elettera\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="lettera = lettera.zfill(8)
+lettera" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">lettera </span><span style="color: #D73A49">=</span><span style="color: #24292E"> lettera.zfill(</span><span style="color: #005CC5">8</span><span style="color: #24292E">)</span></span>
+<span class="line"><span style="color: #24292E">lettera</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'01100001'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>In the above reassignment is used. Recall that the assignment operator should be approached from right to left, so the operation on the right should be calculated using the original string. After the zfill of the original string '1100001', there is a new string '01100001'. The instance name should be conceptualised as a label and before the reassignment points to the original string '1100001' and after the assignment points to the new string '01100001'.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Binary Operators</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The string is an ordered immutable Sequence as previously discussed. An immutable Sequence often has the data model identifiers addition __add__ and multiplication __mul__ which map to the operators + and * respectively. For a mutable sequence these perform the task of concatenation and replication with an integer respectively. The reverse multiplication __rmul__ is also typically defined which operates if the integer is multiplied by the string instead of the string multiplied by the integer giving the same result. Note that these data model identifiers alongside the previously examined __mod__ data model identifier which maps to the % operator have different behaviour in numeric data types where they instead behave differently and perform a numeric operation. The typical functionality of these data model identifiers is different for Sequences and numbers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The __add__ data model identifier is called a binary operator as it requires the string instance <em>self</em> and the string instance value.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:enlighter/codeblock {"language":"raw","linenumbers":"false"} -->
+<pre class="EnlighterJSRAW" data-enlighter-language="raw" data-enlighter-theme="" data-enlighter-highlight="" data-enlighter-linenumbers="false" data-enlighter-lineoffset="" data-enlighter-title="" data-enlighter-group="">Signature:       lettera.__add__(value, /)
+Call signature:  lettera.__add__(*args, **kwargs)
+Type:           method-wrapper
+String form:    &lt;method-wrapper '__add__' of str object at 0x000001F166FEB6B0>
+Docstring:      Return self+value.</pre>
+<!-- /wp:enlighter/codeblock -->
+
+<!-- wp:paragraph -->
+<p>The binary prefix '0b' can be added to the string lettera:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"'0b' + lettera","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;0b\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e+\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e lettera\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="'0b' + lettera" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #032F62">&#39;0b&#39;</span><span style="color: #24292E"> </span><span style="color: #D73A49">+</span><span style="color: #24292E"> lettera</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'0b01100001'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>Note in the above that '0b' is the instance self and lettera is the instance value because '0b' is on the left hand side of the + operator. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The return value can be reassigned to lettera, recall that the operation on the right hand side of the assignment operator is carried out first and creates a new instance. Then the assignment of this new object to the instance name is carried out. The instance name be conceptualised as a label then initially pointed at the string '01100001' and now points to the new string '0b01100001':</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"lettera = '0b' + lettera\nlettera","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003elettera \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #032F62\u0022\u003e\u0026#39;0b\u0026#39;\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e+\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e lettera\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003elettera\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="lettera = '0b' + lettera
+lettera" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff"><code><span class="line"><span style="color: #24292E">lettera </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #032F62">&#39;0b&#39;</span><span style="color: #24292E"> </span><span style="color: #D73A49">+</span><span style="color: #24292E"> lettera</span></span>
+<span class="line"><span style="color: #24292E">lettera</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'0b01100001'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
 <p></p>
 <!-- /wp:paragraph -->
 
@@ -5979,27 +6238,15 @@ Type:      builtin_function_or_method</pre>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>centre, ljust, rjust</p>
+<p>*</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>zfill</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>strip lstrip rstrip</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>removeprefix, removesuffix</p>
+<p>and __mod__ which are often mapped for </p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p>The object has 2 comparison operators, each character in a string is ordinal and has 6 comparison operators.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>+, *</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
