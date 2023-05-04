@@ -1,0 +1,153 @@
+<!-- wp:paragraph -->
+<p>This tutorial will look at the installation and updating of Mambaforge on a Windows 11 PC. The PC should meet the following minimum requirements:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Windows 11 22H2 or Later</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>8th Generation Intel i5 Processor or Equivalent</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>256 GB SSD Drive</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>8 GB RAM</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Uninstallation</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>It is recommended to uninstall all previous Python installations such as Python, Anaconda, Miniconda, Miniforge, Mambaforge and standalone Spyder installations. Old Python Installations, particularly Anaconda will leave old configuration files on your computer which can be problematic. To remove these follow <a href="https://dellwindowsreinstallationguide.com/windows-uninstall-anaconda/" target="_blank" rel="noreferrer noopener">Uninstalling Python and Anaconda</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Download</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mambaforge can be downloaded from the Mambaforge GitHub repository. Make sure to download Mambaforge and not Miniforge (which excludes the Mamba package manager):</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><a href="https://github.com/conda-forge/miniforge#mambaforge">Mambaforge</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Install</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Double click to launch the installer:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_001.png" alt="img_001"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Select Next:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_002.png" alt="img_002"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Select Next:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_003.png" alt="img_003"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Select Just Me (recommended):</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_004.png" alt="img_004"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>In the next screen you will be asked where you want to install Mambaforge. Install in the default directory. In Windows this will be in</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In the next screen you will be asked where you want to install Mambaforge. Install in the default directory. In Windows this will be in</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"%UserProfile%\\mambaforge","codeHTML":"\u003cpre class=\u0022shiki solarized-light\u0022 style=\u0022background-color: #FDF6E3\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #859900\u0022\u003e%\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003eUserProfile\u003c/span\u003e\u003cspan style=\u0022color: #859900\u0022\u003e%\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e\\mambaforge\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"powershell","theme":"solarized-light","bgColor":"#FDF6E3","textColor":"#657B83","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(43, 150, 189, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#FDF6E3"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="%UserProfile%\mambaforge" style="color:#657B83;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki solarized-light" style="background-color: #FDF6E3" tabindex="0"><code><span class="line"><span style="color: #859900">%</span><span style="color: #657B83">UserProfile</span><span style="color: #859900">%</span><span style="color: #657B83">\mambaforge</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_005.png" alt="img_005"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>which in my case maps to</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"C:\\Users\\Phili\\mambaforge","codeHTML":"\u003cpre class=\u0022shiki solarized-light\u0022 style=\u0022background-color: #FDF6E3\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003eC:\\Users\\Phili\\mambaforge\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"powershell","theme":"solarized-light","bgColor":"#FDF6E3","textColor":"#657B83","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(43, 150, 189, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#FDF6E3"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="C:\Users\Phili\mambaforge" style="color:#657B83;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki solarized-light" style="background-color: #FDF6E3" tabindex="0"><code><span class="line"><span style="color: #657B83">C:\Users\Phili\mambaforge</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_006.png" alt="img_006"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>In the next screen, select the default options to register Mambaforge as my default Python and create start menu shortcuts.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_007.png" alt="img_007"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p><strong>Mambaforge can optionally be added to the Windows Environment Variable Path.</strong> This makes the base Python environment accessible via the Windows Terminal. This allows third party applications to accessing Python from the Windows Terminal. Such a use case is normally more advanced, for example a C++ IDE that is configured by default to access the Windows Terminal will also be able to invoke a Python Script if Mambaforge is added to the Windows Environmental Variables Path.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Note that in most regular use scenarios the Mambaforge Prompt should be preferentially used to interact with Python instead of the Windows Terminal. The Mambaforge Prompt is similar to the Windows Terminal but is optimised to work with multiple Python environments and not hard coded to the single base environment provided in the Windows Environmental Variables Path like in the case of the Windows Terminal. The Mambaforge Prompt can be used to install packages in Python environments and launch IDEs installed in the Python environments.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_008.png" alt="img_008"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Once the decision to add Mambaforge to the Windows Environmental Path or not is configured. Select Install:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_009.png" alt="img_009"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Select Next and Finish:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_010.png" alt="img_010"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image -->
+<figure class="wp-block-image"><img src="https://raw.githubusercontent.com/PhilipYip1988/python-tutorials/main/001_install/001_windows_install/images/img_011.png" alt="img_011"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Updating the base Python Environment</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

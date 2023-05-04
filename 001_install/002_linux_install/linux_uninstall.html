@@ -1,0 +1,203 @@
+<!-- wp:paragraph -->
+<p>This guide will instruct on uninstalling the Anaconda Python distribution and purging the computer of old configuration files which can be problematic. The instructions can be used to uninstall Miniconda/Miniforge and Mambaforge which all leave similar configuration files behind.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Go to the Home folder. Select options and Show Hidden Files:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":57535,"sizeSlug":"full","linkDestination":"media"} -->
+<figure class="wp-block-image size-full"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_002.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_002.png" alt="" class="wp-image-57535"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The Prompt in the Terminal will be prefixed with (base) from previously initialised Anaconda/Miniconda/Miniforge/Mambaforge installations:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"To run a commmand as administrator (user \u0022root\u0022), use \u0022sudo \u0026lt;command\u003e\u0022.\nSee \u0022man sudo_root\u0022 for details.\n\n(base) philip@pc:~$","codeHTML":"\u003cpre class=\u0022shiki github-dark\u0022 style=\u0022background-color: #24292e\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #F97583\u0022\u003eTo\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #79B8FF\u0022\u003erun\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e a commmand \u003c/span\u003e\u003cspan style=\u0022color: #F97583\u0022\u003eas\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e administrator (user \u003c/span\u003e\u003cspan style=\u0022color: #9ECBFF\u0022\u003e\u0026quot;root\u0026quot;\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e), use \u003c/span\u003e\u003cspan style=\u0022color: #9ECBFF\u0022\u003e\u0026quot;sudo \u0026lt;command\u0026gt;\u0026quot;\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e.\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003eSee \u003c/span\u003e\u003cspan style=\u0022color: #9ECBFF\u0022\u003e\u0026quot;man sudo_root\u0026quot;\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #F97583\u0022\u003efor\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e details.\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e(base) philip@pc:~$\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"github-dark","bgColor":"#24292e","textColor":"#e1e4e8","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(212, 226, 245, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#24292e"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="To run a commmand as administrator (user &quot;root&quot;), use &quot;sudo &lt;command&gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+
+(base) philip@pc:~$" style="color:#e1e4e8;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-dark" style="background-color: #24292e" tabindex="0"><code><span class="line"><span style="color: #F97583">To</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">run</span><span style="color: #E1E4E8"> a commmand </span><span style="color: #F97583">as</span><span style="color: #E1E4E8"> administrator (user </span><span style="color: #9ECBFF">&quot;root&quot;</span><span style="color: #E1E4E8">), use </span><span style="color: #9ECBFF">&quot;sudo &lt;command&gt;&quot;</span><span style="color: #E1E4E8">.</span></span>
+<span class="line"><span style="color: #E1E4E8">See </span><span style="color: #9ECBFF">&quot;man sudo_root&quot;</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">for</span><span style="color: #E1E4E8"> details.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">(base) philip@pc:~$</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>Close down any open Terminals. Then open up the .bashrc file in the text editor:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":57540,"sizeSlug":"full","linkDestination":"media"} -->
+<figure class="wp-block-image size-full"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_003a.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_003a.png" alt="" class="wp-image-57540"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Remove the conda initialise code block which should look like the following:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"# \u003e\u003e\u003e conda initialize \u003e\u003e\u003e\n# !! Contents within this block are managed by 'conda init' !!\n__conda_setup=\u0022$('/home/philip/anaconda3/bin/conda' 'shell.bash' 'hook' 2\u003e /dev/null)\u0022\nif [ $? -eq 0 ]; then\n    eval \u0022$__conda_setup\u0022\nelse\n    if [ -f \u0022/home/philip/anaconda3/etc/profile.d/conda.sh\u0022 ]; then\n        . \u0022/home/philip/anaconda3/etc/profile.d/conda.sh\u0022\n    else\n        export PATH=\u0022/home/philip/anaconda3/bin:$PATH\u0022\n    fi\nfi\nunset __conda_setup\n# \u0026lt;\u0026lt;\u0026lt; conda initialize \u0026lt;\u0026lt;\u0026lt;","codeHTML":"\u003cpre class=\u0022shiki solarized-light\u0022 style=\u0022background-color: #FDF6E3\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #93A1A1; font-style: italic\u0022\u003e# \u0026gt;\u0026gt;\u0026gt; conda initialize \u0026gt;\u0026gt;\u0026gt;\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #93A1A1; font-style: italic\u0022\u003e# !! Contents within this block are managed by \u0026#39;conda init\u0026#39; !!\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e__conda_setup\u003c/span\u003e\u003cspan style=\u0022color: #859900\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #2AA198\u0022\u003e\u0026quot;$(\u0026#39;/home/philip/anaconda3/bin/conda\u0026#39; \u0026#39;shell.bash\u0026#39; \u0026#39;hook\u0026#39; 2\u0026gt; /dev/null)\u0026quot;\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #859900\u0022\u003eif\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e [ \u003c/span\u003e\u003cspan style=\u0022color: #DC322F\u0022\u003e$?\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #859900\u0022\u003e-\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003eeq \u003c/span\u003e\u003cspan style=\u0022color: #D33682\u0022\u003e0\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e ]; then\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e    \u003c/span\u003e\u003cspan style=\u0022color: #268BD2\u0022\u003eeval\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #2AA198\u0022\u003e\u0026quot;$__conda_setup\u0026quot;\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #859900\u0022\u003eelse\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e    \u003c/span\u003e\u003cspan style=\u0022color: #859900\u0022\u003eif\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e [ \u003c/span\u003e\u003cspan style=\u0022color: #859900\u0022\u003e-\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003ef \u003c/span\u003e\u003cspan style=\u0022color: #2AA198\u0022\u003e\u0026quot;/home/philip/anaconda3/etc/profile.d/conda.sh\u0026quot;\u003c/span\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e ]; then\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e        . \u003c/span\u003e\u003cspan style=\u0022color: #2AA198\u0022\u003e\u0026quot;/home/philip/anaconda3/etc/profile.d/conda.sh\u0026quot;\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e    \u003c/span\u003e\u003cspan style=\u0022color: #859900\u0022\u003eelse\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e        export \u003c/span\u003e\u003cspan style=\u0022color: #CB4B16\u0022\u003ePATH\u003c/span\u003e\u003cspan style=\u0022color: #859900\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #2AA198\u0022\u003e\u0026quot;/home/philip/anaconda3/bin:$PATH\u0026quot;\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003e    fi\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003efi\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #657B83\u0022\u003eunset __conda_setup\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #93A1A1; font-style: italic\u0022\u003e# \u0026lt;\u0026lt;\u0026lt; conda initialize \u0026lt;\u0026lt;\u0026lt;\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"solarized-light","bgColor":"#FDF6E3","textColor":"#657B83","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(43, 150, 189, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#FDF6E3"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="# &gt;&gt;&gt; conda initialize &gt;&gt;&gt;
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup=&quot;$('/home/philip/anaconda3/bin/conda' 'shell.bash' 'hook' 2&gt; /dev/null)&quot;
+if [ $? -eq 0 ]; then
+    eval &quot;$__conda_setup&quot;
+else
+    if [ -f &quot;/home/philip/anaconda3/etc/profile.d/conda.sh&quot; ]; then
+        . &quot;/home/philip/anaconda3/etc/profile.d/conda.sh&quot;
+    else
+        export PATH=&quot;/home/philip/anaconda3/bin:$PATH&quot;
+    fi
+fi
+unset __conda_setup
+# &lt;&lt;&lt; conda initialize &lt;&lt;&lt;" style="color:#657B83;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki solarized-light" style="background-color: #FDF6E3" tabindex="0"><code><span class="line"><span style="color: #93A1A1; font-style: italic"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span></span>
+<span class="line"><span style="color: #93A1A1; font-style: italic"># !! Contents within this block are managed by &#39;conda init&#39; !!</span></span>
+<span class="line"><span style="color: #657B83">__conda_setup</span><span style="color: #859900">=</span><span style="color: #2AA198">&quot;$(&#39;/home/philip/anaconda3/bin/conda&#39; &#39;shell.bash&#39; &#39;hook&#39; 2&gt; /dev/null)&quot;</span></span>
+<span class="line"><span style="color: #859900">if</span><span style="color: #657B83"> [ </span><span style="color: #DC322F">$?</span><span style="color: #657B83"> </span><span style="color: #859900">-</span><span style="color: #657B83">eq </span><span style="color: #D33682">0</span><span style="color: #657B83"> ]; then</span></span>
+<span class="line"><span style="color: #657B83">    </span><span style="color: #268BD2">eval</span><span style="color: #657B83"> </span><span style="color: #2AA198">&quot;$__conda_setup&quot;</span></span>
+<span class="line"><span style="color: #859900">else</span></span>
+<span class="line"><span style="color: #657B83">    </span><span style="color: #859900">if</span><span style="color: #657B83"> [ </span><span style="color: #859900">-</span><span style="color: #657B83">f </span><span style="color: #2AA198">&quot;/home/philip/anaconda3/etc/profile.d/conda.sh&quot;</span><span style="color: #657B83"> ]; then</span></span>
+<span class="line"><span style="color: #657B83">        . </span><span style="color: #2AA198">&quot;/home/philip/anaconda3/etc/profile.d/conda.sh&quot;</span></span>
+<span class="line"><span style="color: #657B83">    </span><span style="color: #859900">else</span></span>
+<span class="line"><span style="color: #657B83">        export </span><span style="color: #CB4B16">PATH</span><span style="color: #859900">=</span><span style="color: #2AA198">&quot;/home/philip/anaconda3/bin:$PATH&quot;</span></span>
+<span class="line"><span style="color: #657B83">    fi</span></span>
+<span class="line"><span style="color: #657B83">fi</span></span>
+<span class="line"><span style="color: #657B83">unset __conda_setup</span></span>
+<span class="line"><span style="color: #93A1A1; font-style: italic"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>Save the file. When the terminal is opened it should look at the updated .bashrc file and the prompt should now exclude the prefix (base):</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"To run a commmand as administrator (user \u0022root\u0022), use \u0022sudo \u0026lt;command\u003e\u0022.\nSee \u0022man sudo_root\u0022 for details.\n\nphilip@pc:~$","codeHTML":"\u003cpre class=\u0022shiki github-dark\u0022 style=\u0022background-color: #24292e\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #F97583\u0022\u003eTo\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #79B8FF\u0022\u003erun\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e a commmand \u003c/span\u003e\u003cspan style=\u0022color: #F97583\u0022\u003eas\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e administrator (user \u003c/span\u003e\u003cspan style=\u0022color: #9ECBFF\u0022\u003e\u0026quot;root\u0026quot;\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e), use \u003c/span\u003e\u003cspan style=\u0022color: #9ECBFF\u0022\u003e\u0026quot;sudo \u0026lt;command\u0026gt;\u0026quot;\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e.\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003eSee \u003c/span\u003e\u003cspan style=\u0022color: #9ECBFF\u0022\u003e\u0026quot;man sudo_root\u0026quot;\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #F97583\u0022\u003efor\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e details.\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003ephilip@pc:~$\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"github-dark","bgColor":"#24292e","textColor":"#e1e4e8","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(212, 226, 245, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#24292e"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="To run a commmand as administrator (user &quot;root&quot;), use &quot;sudo &lt;command&gt;&quot;.
+See &quot;man sudo_root&quot; for details.
+
+philip@pc:~$" style="color:#e1e4e8;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-dark" style="background-color: #24292e" tabindex="0"><code><span class="line"><span style="color: #F97583">To</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">run</span><span style="color: #E1E4E8"> a commmand </span><span style="color: #F97583">as</span><span style="color: #E1E4E8"> administrator (user </span><span style="color: #9ECBFF">&quot;root&quot;</span><span style="color: #E1E4E8">), use </span><span style="color: #9ECBFF">&quot;sudo &lt;command&gt;&quot;</span><span style="color: #E1E4E8">.</span></span>
+<span class="line"><span style="color: #E1E4E8">See </span><span style="color: #9ECBFF">&quot;man sudo_root&quot;</span><span style="color: #E1E4E8"> </span><span style="color: #F97583">for</span><span style="color: #E1E4E8"> details.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">philip@pc:~$</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>Delete the folder(s):</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>anaconda3</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>miniconda3</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>miniforge</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>mambaforge</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:image {"id":57545,"sizeSlug":"large","linkDestination":"media"} -->
+<figure class="wp-block-image size-large"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_312-Copy.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_312-Copy-1024x629.png" alt="" class="wp-image-57545"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Delete the following hidden configuration folders:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>.amaconda</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>.conda</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>.continuum</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>.ipython</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>.jupyter</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Delete the file:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>.condarc</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:image {"id":57547,"sizeSlug":"large","linkDestination":"media"} -->
+<figure class="wp-block-image size-large"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_316-Copy.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_316-Copy-1024x637.png" alt="" class="wp-image-57547"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Having an old version of this file from a previous Anaconda installation and then installing Mambaforge for example without deleting this file may result in the mamba package manager using the wrong channel (conda instead of conda-forge) which can be problematic.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":57549,"sizeSlug":"large","linkDestination":"media"} -->
+<figure class="wp-block-image size-large"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_317.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_317-1024x761.png" alt="" class="wp-image-57549"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Go to the folder:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>.config</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p><strong>Do not delete this folder as it is used by Linux and other programs.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":57552,"sizeSlug":"large","linkDestination":"media"} -->
+<figure class="wp-block-image size-large"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_318-Copy.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_318-Copy-1024x629.png" alt="" class="wp-image-57552"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>Delete the subfolders:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>matplotlib</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>spyder-py3</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:image {"id":57554,"sizeSlug":"large","linkDestination":"media"} -->
+<figure class="wp-block-image size-large"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_319-Copy.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_319-Copy-1024x629.png" alt="" class="wp-image-57554"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The folder options can be used to Hide Hidden Files:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":57556,"sizeSlug":"full","linkDestination":"media"} -->
+<figure class="wp-block-image size-full"><a href="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_001.png"><img src="https://dellwindowsreinstallationguide.com/wp-content/uploads/2023/05/img_001.png" alt="" class="wp-image-57556"/></a></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>This gives a clean Linux Operating System to install Mambaforge or an updated version of Anaconda.</p>
+<!-- /wp:paragraph -->
