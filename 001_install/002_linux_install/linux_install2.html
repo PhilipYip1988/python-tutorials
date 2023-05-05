@@ -910,6 +910,14 @@ conda commands available from other packages (legacy):
 <!-- /wp:list-item -->
 
 <!-- wp:list-item -->
+<li>create</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>activate</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
 <li>install</li>
 <!-- /wp:list-item -->
 
@@ -923,19 +931,13 @@ conda commands available from other packages (legacy):
 
 <!-- wp:list-item -->
 <li>clean</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>create</li>
-<!-- /wp:list-item -->
-
-<!-- wp:list-item -->
-<li>activate</li>
 <!-- /wp:list-item --></ul>
 <!-- /wp:list -->
 
+
+
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">list</h3>
+<h2 class="wp-block-heading">list</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -1121,7 +1123,7 @@ zstd                      1.5.2                h3eb15da_6    conda-forge
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">search</h3>
+<h2 class="wp-block-heading">search</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -1232,8 +1234,144 @@ spyder                         5.4.3  py39hf3d152e_0  conda-forge
 <span class="line"><span style="color: #E1E4E8">(base) philip@pc:~ $ </span></span></code></pre></div>
 <!-- /wp:kevinbatdorf/code-block-pro -->
 
+<!-- wp:heading -->
+<h2 class="wp-block-heading">create</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>A Python environment is a subinstallation of Python which you can use to install a different version of Python and an assortment of Python packages without touching your base Python environment (default). Python environments are stored in the envs subfolder:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"~/mambaforge/envs\n~/anaconda3/envs","codeHTML":"\u003cpre class=\u0022shiki rose-pine-dawn\u0022 style=\u0022background-color: #faf4ed\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #575279\u0022\u003e~\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003emambaforge\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003eenvs\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #575279\u0022\u003e~\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003eanaconda3\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003eenvs\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"rose-pine-dawn","bgColor":"#faf4ed","textColor":"#575279","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(49, 31, 172, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#faf4ed"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="~/mambaforge/envs
+~/anaconda3/envs" style="color:#575279;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki rose-pine-dawn" style="background-color: #faf4ed" tabindex="0"><code><span class="line"><span style="color: #575279">~</span><span style="color: #286983">/</span><span style="color: #575279">mambaforge</span><span style="color: #286983">/</span><span style="color: #575279">envs</span></span>
+<span class="line"><span style="color: #575279">~</span><span style="color: #286983">/</span><span style="color: #575279">anaconda3</span><span style="color: #286983">/</span><span style="color: #575279">envs</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>A Python environment with the name spyder will be created for the latest version of the Spyder IDE. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>In Mambaforge use:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(base) philip@pc:~ $ mamba create -n spyder","codeHTML":"\u003cpre class=\u0022shiki nord\u0022 style=\u0022background-color: #2e3440ff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003ebase\u003c/span\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e)\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003e philip@pc\u003c/span\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e:\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003e~ $ mamba create \u003c/span\u003e\u003cspan style=\u0022color: #81A1C1\u0022\u003e-\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003en spyder\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"nord","bgColor":"#2e3440ff","textColor":"#d8dee9ff","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(201, 218, 248, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#2e3440ff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(base) philip@pc:~ $ mamba create -n spyder" style="color:#d8dee9ff;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki nord" style="background-color: #2e3440ff" tabindex="0"><code><span class="line"><span style="color: #ECEFF4">(</span><span style="color: #D8DEE9FF">base</span><span style="color: #ECEFF4">)</span><span style="color: #D8DEE9FF"> philip@pc</span><span style="color: #ECEFF4">:</span><span style="color: #D8DEE9FF">~ $ mamba create </span><span style="color: #81A1C1">-</span><span style="color: #D8DEE9FF">n spyder</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>In Anaconda use:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(base) philip@pc:~ $ conda create -n spyder","codeHTML":"\u003cpre class=\u0022shiki nord\u0022 style=\u0022background-color: #2e3440ff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003ebase\u003c/span\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e)\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003e philip@pc\u003c/span\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e:\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003e~ $ conda create \u003c/span\u003e\u003cspan style=\u0022color: #81A1C1\u0022\u003e-\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003en spyder\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"nord","bgColor":"#2e3440ff","textColor":"#d8dee9ff","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(201, 218, 248, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#2e3440ff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(base) philip@pc:~ $ conda create -n spyder" style="color:#d8dee9ff;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki nord" style="background-color: #2e3440ff" tabindex="0"><code><span class="line"><span style="color: #ECEFF4">(</span><span style="color: #D8DEE9FF">base</span><span style="color: #ECEFF4">)</span><span style="color: #D8DEE9FF"> philip@pc</span><span style="color: #ECEFF4">:</span><span style="color: #D8DEE9FF">~ $ conda create </span><span style="color: #81A1C1">-</span><span style="color: #D8DEE9FF">n spyder</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>Details about the Python environment will be given:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(base) philip@pc:~ $ conda create -n spyder","codeHTML":"\u003cpre class=\u0022shiki nord\u0022 style=\u0022background-color: #2e3440ff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003ebase\u003c/span\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e)\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003e philip@pc\u003c/span\u003e\u003cspan style=\u0022color: #ECEFF4\u0022\u003e:\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003e~ $ conda create \u003c/span\u003e\u003cspan style=\u0022color: #81A1C1\u0022\u003e-\u003c/span\u003e\u003cspan style=\u0022color: #D8DEE9FF\u0022\u003en spyder\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"nord","bgColor":"#2e3440ff","textColor":"#d8dee9ff","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(201, 218, 248, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#2e3440ff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(base) philip@pc:~ $ conda create -n spyder" style="color:#d8dee9ff;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki nord" style="background-color: #2e3440ff" tabindex="0"><code><span class="line"><span style="color: #ECEFF4">(</span><span style="color: #D8DEE9FF">base</span><span style="color: #ECEFF4">)</span><span style="color: #D8DEE9FF"> philip@pc</span><span style="color: #ECEFF4">:</span><span style="color: #D8DEE9FF">~ $ conda create </span><span style="color: #81A1C1">-</span><span style="color: #D8DEE9FF">n spyder</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>The spyder subfolder will appear:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"~/mambaforge/envs/spyder\n~/anaconda3/envs/spyder","codeHTML":"\u003cpre class=\u0022shiki rose-pine-dawn\u0022 style=\u0022background-color: #faf4ed\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #575279\u0022\u003e~\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003emambaforge\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003eenvs\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003espyder\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #575279\u0022\u003e~\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003eanaconda3\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003eenvs\u003c/span\u003e\u003cspan style=\u0022color: #286983\u0022\u003e/\u003c/span\u003e\u003cspan style=\u0022color: #575279\u0022\u003espyder\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"rose-pine-dawn","bgColor":"#faf4ed","textColor":"#575279","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(49, 31, 172, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#faf4ed"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="~/mambaforge/envs/spyder
+~/anaconda3/envs/spyder" style="color:#575279;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki rose-pine-dawn" style="background-color: #faf4ed" tabindex="0"><code><span class="line"><span style="color: #575279">~</span><span style="color: #286983">/</span><span style="color: #575279">mambaforge</span><span style="color: #286983">/</span><span style="color: #575279">envs</span><span style="color: #286983">/</span><span style="color: #575279">spyder</span></span>
+<span class="line"><span style="color: #575279">~</span><span style="color: #286983">/</span><span style="color: #575279">anaconda3</span><span style="color: #286983">/</span><span style="color: #575279">envs</span><span style="color: #286983">/</span><span style="color: #575279">spyder</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>This folder will be empty until packages have been added to it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">activate</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The prompt has the prefix base which means the base Python environment is selected and therefore any commands like list, install, remove, update will look at or make changes to the base Python environment:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(base) philip@pc:~ $","codeHTML":"\u003cpre class=\u0022shiki github-dark\u0022 style=\u0022background-color: #24292e\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e(base) philip@pc:~ $\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"github-dark","bgColor":"#24292e","textColor":"#e1e4e8","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(212, 226, 245, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#24292e"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(base) philip@pc:~ $" style="color:#e1e4e8;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-dark" style="background-color: #24292e" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">(base) philip@pc:~ $</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>To switch Python environment. In Mambaforge use:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(base) philip@pc:~ $ mamba activate spyder","codeHTML":"\u003cpre class=\u0022shiki github-dark\u0022 style=\u0022background-color: #24292e\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e(base) philip@pc:~ $ mamba \u003c/span\u003e\u003cspan style=\u0022color: #79B8FF\u0022\u003eactivate\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e spyder\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"github-dark","bgColor":"#24292e","textColor":"#e1e4e8","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(212, 226, 245, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#24292e"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(base) philip@pc:~ $ mamba activate spyder" style="color:#e1e4e8;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-dark" style="background-color: #24292e" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">(base) philip@pc:~ $ mamba </span><span style="color: #79B8FF">activate</span><span style="color: #E1E4E8"> spyder</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>In Anaconda use:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(base) philip@pc:~ $ conda activate spyder","codeHTML":"\u003cpre class=\u0022shiki github-dark\u0022 style=\u0022background-color: #24292e\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e(base) philip@pc:~ $ conda \u003c/span\u003e\u003cspan style=\u0022color: #79B8FF\u0022\u003eactivate\u003c/span\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e spyder\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"github-dark","bgColor":"#24292e","textColor":"#e1e4e8","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(212, 226, 245, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#24292e"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(base) philip@pc:~ $ conda activate spyder" style="color:#e1e4e8;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-dark" style="background-color: #24292e" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">(base) philip@pc:~ $ conda </span><span style="color: #79B8FF">activate</span><span style="color: #E1E4E8"> spyder</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>Notice that the (base) now changes to (spyder) indicating the spyder Python environment is selected:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(spyder) philip@pc:~ $ ","codeHTML":"\u003cpre class=\u0022shiki github-dark\u0022 style=\u0022background-color: #24292e\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e(spyder) philip@pc:~ $ \u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"github-dark","bgColor":"#24292e","textColor":"#e1e4e8","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(212, 226, 245, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#24292e"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(spyder) philip@pc:~ $ " style="color:#e1e4e8;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-dark" style="background-color: #24292e" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">(spyder) philip@pc:~ $ </span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p>Notice that the (base) now changes to (spyder) indicating the spyder Python environment is selected. Now any commands like list, install, remove, update will look at or make changes to the base Python environment. For example:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"(spyder) philip@pc:~ $ mamba list","codeHTML":"\u003cpre class=\u0022shiki github-dark\u0022 style=\u0022background-color: #24292e\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #E1E4E8\u0022\u003e(spyder) philip@pc:~ $ mamba \u003c/span\u003e\u003cspan style=\u0022color: #79B8FF\u0022\u003elist\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"applescript","theme":"github-dark","bgColor":"#24292e","textColor":"#e1e4e8","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","lineHighlightColor":"rgba(212, 226, 245, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#24292e"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="(spyder) philip@pc:~ $ mamba list" style="color:#e1e4e8;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-dark" style="background-color: #24292e" tabindex="0"><code><span class="line"><span style="color: #E1E4E8">(spyder) philip@pc:~ $ mamba </span><span style="color: #79B8FF">list</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:paragraph -->
+<p><strong>The Python environment will be activated only for that terminal session.</strong> If the terminal is closed and relaunched, the (base) Python environment which is the default will be reselected. The spyder environment will need to be activated again to work with it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- wp:heading {"level":3} -->
-<h3 class="wp-block-heading">install</h3>
+<h2 class="wp-block-heading">install</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
