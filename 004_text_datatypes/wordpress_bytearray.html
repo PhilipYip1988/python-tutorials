@@ -992,7 +992,7 @@ bytearray(b'\xce\x93\xce\xb5\xce\xb9\xce\xac \xcf\x83\xce\xbf\xcf\x85 \xce\x9a\x
 <!-- /wp:code -->
 
 <!-- wp:paragraph -->
-<p>In both cases the 2 bytes corresponding to each Greek letters are shown as escape characters and the bytes corresponding to the ASCII characters ' ' and '!' are automatically decoded and displayed. Notice the repr for the bytearray involves the byte, indicating how close these two classes are.</p>
+<p>In both cases the 2 bytes corresponding to each Greek letters are shown as escape characters and the bytes corresponding to the ASCII characters ' ' and '!' are automatically decoded and displayed. Notice the formal representation for the bytearray involves the byte, indicating how close these two classes are.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -1037,12 +1037,24 @@ hex(greeting_rw[0]).removeprefix('0x')</pre>
 <!-- /wp:code -->
 
 <!-- wp:paragraph -->
-<p>Slicing can also be used to return a slice of the bytes or bytearray:</p>
+<p>And:</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting_r[:2]\ngreeting_rw[0:2]","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting_r[:\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e2\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e]\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting_rw[\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e0\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e:\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e2\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e]\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
-<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting_r[:2]
-greeting_rw[0:2]" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292E">greeting_r[:</span><span style="color: #005CC5">2</span><span style="color: #24292E">]</span></span>
+<!-- wp:kevinbatdorf/code-block-pro {"code":"hex(206)","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003ehex\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e(\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e206\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e)\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="hex(206)" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #005CC5">hex</span><span style="color: #24292E">(</span><span style="color: #005CC5">206</span><span style="color: #24292E">)</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>'0xce'</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>Slicing can also be used to return a slice</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting_r[0:2]\ngreeting_rw[0:2]","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting_r[\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e0\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e:\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e2\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e]\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting_rw[\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e0\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e:\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e2\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e]\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting_r[0:2]
+greeting_rw[0:2]" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292E">greeting_r[</span><span style="color: #005CC5">0</span><span style="color: #24292E">:</span><span style="color: #005CC5">2</span><span style="color: #24292E">]</span></span>
 <span class="line"><span style="color: #24292E">greeting_rw[</span><span style="color: #005CC5">0</span><span style="color: #24292E">:</span><span style="color: #005CC5">2</span><span style="color: #24292E">]</span></span></code></pre></div>
 <!-- /wp:kevinbatdorf/code-block-pro -->
 
@@ -1104,7 +1116,19 @@ greeting_rw" style="color:#24292e;display:none" aria-label="Copy" class="code-bl
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p>An individual byte can also be deleted:</p>
+<p>Attempting to do the same with the bytes will give a TypeError:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:kevinbatdorf/code-block-pro {"code":"greeting_r[0] = 0xde","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting_r[\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e0\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e] \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e=\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e \u003c/span\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003e0x\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003ede\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
+<div class="wp-block-kevinbatdorf-code-block-pro" style="font-size:.875rem;line-height:1.25rem"><span style="display:block;padding:16px 0 0 16px;margin-bottom:-1px;width:100%;text-align:left;background-color:#fff"><svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14"><g fill="none" fill-rule="evenodd" transform="translate(1 1)"><circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle><circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle><circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle></g></svg></span><span role="button" tabindex="0" data-code="greeting_r[0] = 0xde" style="color:#24292e;display:none" aria-label="Copy" class="code-block-pro-copy-button"><svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path class="with-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path><path class="without-check" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></span><pre class="shiki github-light" style="background-color: #fff" tabindex="0"><code><span class="line"><span style="color: #24292E">greeting_r[</span><span style="color: #005CC5">0</span><span style="color: #24292E">] </span><span style="color: #D73A49">=</span><span style="color: #24292E"> </span><span style="color: #D73A49">0x</span><span style="color: #005CC5">de</span></span></code></pre></div>
+<!-- /wp:kevinbatdorf/code-block-pro -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>TypeError: 'bytes' object does not support item assignment</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>In the bytearray, an individual byte can also be deleted:</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:kevinbatdorf/code-block-pro {"code":"del greeting_rw[0]\ngreeting_rw","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003edel\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e greeting_rw[\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e0\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e]\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting_rw\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
@@ -1134,7 +1158,7 @@ greeting_rw" style="color:#24292e;display:none" aria-label="Copy" class="code-bl
 <!-- /wp:code -->
 
 <!-- wp:paragraph -->
-<p>The other byte that originally encoded the first character can be deleted:</p>
+<p>If the other byte that originally encoded the first character is also deleted:</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:kevinbatdorf/code-block-pro {"code":"del greeting_rw[0]\ngreeting_rw","codeHTML":"\u003cpre class=\u0022shiki github-light\u0022 style=\u0022background-color: #fff\u0022 tabindex=\u00220\u0022\u003e\u003ccode\u003e\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #D73A49\u0022\u003edel\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e greeting_rw[\u003c/span\u003e\u003cspan style=\u0022color: #005CC5\u0022\u003e0\u003c/span\u003e\u003cspan style=\u0022color: #24292E\u0022\u003e]\u003c/span\u003e\u003c/span\u003e\n\u003cspan class=\u0022line\u0022\u003e\u003cspan style=\u0022color: #24292E\u0022\u003egreeting_rw\u003c/span\u003e\u003c/span\u003e\u003c/code\u003e\u003c/pre\u003e","language":"python","theme":"github-light","bgColor":"#fff","textColor":"#24292e","fontSize":".875rem","lineHeight":"1.25rem","headerType":"headlights","seeMoreString":"","seeMoreAfterLine":"","seeMoreTransition":false,"lineHighlightColor":"rgba(16, 41, 67, 0.2)","copyButton":true} -->
@@ -1158,14 +1182,6 @@ greeting_rw" style="color:#24292e;display:none" aria-label="Copy" class="code-bl
 <!-- wp:code -->
 <pre class="wp-block-code"><code>'ειά σου Κόσμε!'</code></pre>
 <!-- /wp:code -->
-
-<!-- wp:paragraph -->
-<p>Slicing can be used to get the bytes corresponding to the remainder of the first word:</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p></p>
-<!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
 <p></p>
