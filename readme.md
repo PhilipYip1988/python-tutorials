@@ -1,113 +1,183 @@
 # Python Tutorials
 
-This set of tutorials goes through basic to intermediate concepts of the Python Programming Language using the markdown and notebook aspects of the JupyterLab IDE. For illustration variables are explored using the Variable Explorer of the Spyder IDE as JupyterLab unfortunately falls behind in this area. The tutorials themselves are written in markdown, and therefore can be downloaded as a zip file, extracted and opened in JupyterLab if GitHub doesn't render images or equations correctly.
+This is a repository of Python tutorials that give an overview of the Python programming language, commonly used Python standard libraries, commonly used datascience libraries numpy, pandas and matplotlib as well as Anaconda/Miniconda and the conda package manager. The tutorials will also cover IPython and the Jupyter ecosystem, particularly focusing on the JupyterLab 4 IDE. The tutorials are in the form of markdown files or interactive Python notebooks. Please feel free to star, share and fork this repository.
 
-Please star the tutorials on GitHub and share with friends if you have found them useful.
+## Python Installation
 
-## Installation
+The Anaconda 2023-09 Data Science Python Distribution contains Python and Python Standard Modules, the conda package manager, relatively modern versions of the datascience libraries such as numpy, pandas and matplotlib, Python IDEs such as Spyder and JupyterLab. It also includes Python linters such as pylint, flake8 and pyflakes and Python formatters such as autopep8, isort and black which can greatly help improve code quality. 
 
-The Python ecosystem is very large and has multiple package managers for third-party libraries and numerous IDEs available for writing Python code. Installation is normally skimmed over briefly in other tutorials however configuring a Python environment using Mambaforge and the mamba package manager can be a good introduction to the Python programming language itself. Covering the basics of a package manager and examining what is going on behind the scenes in the file explorer early on will help later when configuring/troubleshooting custom Python environments and trying to install third-party packages which otherwise can be problematic for begineers. This tutorial also explains how to use Python from the Terminal, the IDLE IDE, the Spyder IDE, the JupyterLab IDE and the Visual Code IDE:
+Miniconda is a bootstrap version of Anaconda and allows the use of the conda package manager to create Python Environments. The instructions below will equally apply to Miniconda.
 
-[Mambaforge Installation](https://github.com/PhilipYip1988/python-tutorials/blob/main/001_install/readme.md)
+### Concise Installation
+
+Anaconda or Miniconda should be installed, updated and initialised for the Windows or Linux Terminal. A conda environment should be created for the newest version of JupyterLab:
+
+```powershell
+conda create -n jupyter-env -c conda-forge python jupyterlab jupyter cython seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter lxml sqlalchemy tabulate nodejs ipywidgets plotly pyqt isort autopep8 ruff black ipympl jupyterlab-variableinspector jupyterlab_code_formatter jupyterlab-spellchecker ghostscript nbconvert 
+```
+
+Follow the detailed installation instructions below if unfamiliar with Anaconda/Miniconda.
+
+### Windows Installation
+
+* [Installing Anaconda or Miniconda](./anaconda/windows/install.md)
+* [Using the Conda Package Manager and Managing Conda Python Environments to Install the Latest Version of Spyder and JupyterLab](./anaconda/windows/conda.md)
+* [Installing VSCode, Selecting a Python Environment and Configuring Extensions](./anaconda/windows/vscode.md)
+
+### Linux/Mac Installation
+
+* [Installing Anaconda or Miniconda](./anaconda/linux/install.md)
+* [Using the Conda Package Manager and Managing Conda Python Environments to Install the Latest Version of Spyder and JupyterLab](./anaconda/linux/conda.md)
+* [Installing VSCode, Selecting a Python Environment and Configuring Extensions](./anaconda/linux/vscode.md)
+
+For Linux, Ubuntu will be used as an example distro but the procedure is the same on most other distros. The Mac Terminal and File System are Linux Based and therefore installation on Mac should therefore be more or less identical to Linux.
 
 ## Markdown
 
-The JupyterLab IDE has the ability to write formatted notes in a Markdown file. This tutorial will cover the basics of Markdown syntax. All of these tutorials are written using this basic Markdown syntax. An Interactive Python Notebook File has Markdown cells and Code cells allowing one to create a detailed notebook to run Python Code from:
+Markdown uses simple syntax to format text and is commonly used on GitHub and within Interactive Python Notebooks. For mathematical equations it is supplemented using TeX:
 
-[Markdown Tutorial](https://github.com/PhilipYip1988/python-tutorials/blob/main/002_markdown/readme.md)
+* [Markdown and TeX Syntax](./markdown/readme.md)
 
-## Terminal
+## Viewing Markdown Files and Notebook Files
 
-When running Python code from the Terminal, two progra	mming languages are used. In Linux and Mac there is the inbuilt programming language bash and in Windows there is PowerShell which closely resembles bash. The bash programming language is optimised for basic file operations within the operating system and is commonly used in conjunction with Python. bash however uses a different programming syntax to Python and this tutorial will cover basic file operating systems using bash. Familarity with bash before delving into Python will prevent later confusion when using the terminal with Python commands:
+These tutorials use markdown and notebook files and can be viewed in the browser or in an IDE such as JupyterLab or VSCode:
 
-[Terminal Commands](https://github.com/PhilipYip1988/python-tutorials/blob/main/003_terminal/readme.md)
+* [Viewing and Running Files](./viewing_notebooks/viewing.md)
 
-## Fundamental Data Types
+## Builtins Module
 
-There are 3 fundamental text data types, the unicode string, the bytes string and the bytearray. The Unicode string is the most widely used text data type in Python, however it is useful to know about the other two data types and establish a concept behind encoding:
+The builtins module is automatically imported. It contains Pythons fundamental classes. These classes are based around the object class and the builtins module contains the functions which are used to invoke object based datamodel methods:
 
-[Text Data Types: str, bytes, bytearray](https://github.com/PhilipYip1988/python-tutorials/tree/main/004_text_datatypes/readme.md)
+* [Object Class](./builtins_module_object/notebook.ipynb)
+* [Immutable String Class](./builtins_module_str/notebook.ipynb)
+* [Immutable Bytes Class](./builtins_module_bytes/notebook.ipynb)
+* [Mutable ByteArray Class](./builtins_module_bytearray/notebook.ipynb)
+* [Immutable Integer Class](./builtins_module_int/notebook.ipynb)
+* [Immutable Floating Point Class](./builtins_module_float/notebook.ipynb)
+* [Immutable Boolean Class](./builtins_module_bool/notebook.ipynb)
+* [Immutable Tuple Class](./builtins_module_tuple/notebook.ipynb)
+* [Mutable List Class](./builtins_module_list/notebook.ipynb)
+* [Immutable FrozenSet Class](./builtins_module_frozenset/notebook.ipynb)
+* [Mutable Set Class](./builtins_module_set/notebook.ipynb)
+* [Mutable Dictionary Class](./builtins_module_dict/notebook.ipynb)
 
-There are 6 fundamental numeric datatypes used in Python. The ```int``` class (whole number), ```bool``` class (```True``` or ```False```), the ```float``` class (number with a decimal point), the ```complex``` class (number with imaginary component $j=\sqrt{-1}$), the ```float``` class (number displayed with a decimal point but encoded in binary), ```Decimal``` class (higher accuracy number with decimal point encoded in decimal) and the ```Fraction``` class:
+## IPython Magics
 
-[Numeric Data Types: int, bool, float, complex, Decimal, Fraction](https://github.com/PhilipYip1988/python-tutorials/blob/main/005_numeric_datatypes/readme.md)
+The Interactive Python Shell has a number of enhancements over the regular Python Shell. It can be used to run Python code and commonly used Shell commands that have been reimplemented as IPython magics. The Shell used for these commands will differ depending on the Operating System:
 
-## Collections
+* [IPython Magics on Windows](./ipython_magics/notebook_windows.ipynb)
+* [IPython Magics on Linux/Mac](./ipython_magics/notebook_linux.ipynb)
 
-Python has four collections the immutable tuple, which can be conceptualised as an archive of references. The mutable list, which can be conceptualised as being active current working directory of references. The set which can be conceptualised as a collection of unique references. And the dictionary which can be conceptualised as a mapping of immutable keys to values:
+## Formatters
 
-[Collections; tuple, list, set, dict](https://github.com/PhilipYip1988/python-tutorials/blob/main/006_collections/readme.md)
+Python has a number of formatters that can be used to format code:
 
-## Programming Constructs
+* [Code Formatters on Windows (AutoPEP8, ISort, Black and Ruff)](./formatters/notebook_windows.ipynb)
+* [Code Formatters on Linux/Mac (AutoPEP8, ISort, Black and Ruff)](./formatters/notebook_linux.ipynb)
+* [JupyterLab Code Formatter Extension (AutoPEP8, ISort and Black)](./formatters/notebook_jupyterlab_code_formatter_extension.ipynb)
 
-Indentation and spacing is very important in Python and code is often grouped into a code block. Code blocks are used to direct code in response to a condition, to repeat an operation multiple times, to error handle and to create custom functions:
+## Collections and Code Blocks
 
-[Programming Constructs using Code Blocks](https://github.com/PhilipYip1988/python-tutorials/blob/main/007_programming_constructs_with_code_blocks/readme.md)
+A Python code block can be used to direct Python code in response to a condition, loop a series of operations again and again, perform error handling and to create custom functions:
 
-The builtins module contains the ```str```, ```list```, ```tuple```, ```set``` and ```dict``` collections. The collections module includes a number of additional collections which supplement these such as the ```NamedTuple``` which is a ```tuple``` subclass that has field names, ```deque``` (double ended queue) that is list like, ```defaultdict``` which is a ```dict``` subclass with default behaviour when new keys that don't exist are indexed, and ```Counter``` which is a ```dict``` subclass used for counting. A number of these collections almost became inbuilt identifiers themselves and therefore this is one of the closest modules to Python ```builtins```. Learning this module at this stage will build an understanding for subclassing:
+* [Code Blocks](./programming_constructs/notebook.ipynb)
 
-[Collections Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/008_collections_module/readme.md) 
+## Collections Module
 
-The concept of an iterators was covered briefly when looking at programming constructs using code blocks. The ```builtins``` module contains commonly used iterators such as the ```zip```, ```filter``` and ```map``` iterator classes. Python also has an iterator module ```itertools``` that contains ```zip_longest```, ```filterfalse```, and ```starmap``` iterator classes which complement their similar counterpart in ```builtins```. The itertools module also has a ```cycle```, ```repeat``` and ```count``` iterator classes which are endless iterators. The ```cycle``` iterator can be used to continuously index around a collection, returning to the top after reaching the bottom. Like the collections module, the itertools module is one of the closest modules to Python builtins. Effective use of these two modules simplifies common programming tasks and generally makes the code more Pythonic and easier to read:
+The collections module contains a number of supplementary collections based around the collections seen in the Python builtins module. This includes the ```namedtuple```, ```deque```, ```Counter``` and ```defaultdict``` classes:
 
-[Iterator Tools Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/009_itertools_module/readme.md) 
+* [Collections Module](./collections_module/notebook.ipynb)
 
-## Math and Statistics
+## Itertools Module
 
-The ```math``` module is used to carry out common mathematical operations on scaler numeric data. Learning how to use this module and reinforcing the underlying mathematics is a perquisite when it comes to any data science tasks. There is an associated complex math module ```cmath``` which is designed to handle complex numbers:
+The itertools module contains supplementary iterators that are closely related to and extend those found in Python builtins:
 
-[Math and Complex Math Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/010_math_module/readme.md) 
+* [Itertools Module](./itertools_module/notebook.ipynb)
 
-The ```random``` module is a pseudo random number generator which can be used to select a choice or choices from a list which are operations done with replacement. Alternatively it may be used to select a sample from a list which is done without replacement or to mutate the existing list by shuffling it. There are also a number of statistical distributions that a number can be generated from including the commonly used uniform, normal and exponential distributions:
+## Math and Complex Math Modules
 
-[Random Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/011_random_module/readme.md)
+The math and complex math modules contain commonly used mathematical functions typically returning scalar values:
 
-The ```datetime``` module is a module for working with dates and times. The associated ```zoneinfo``` module is for dealing with timezones. The ```time``` module is a module written in C and exists mainly for advanced use timing applications. There are a couple of the functions from the ```time``` module that are commonly used such as ```time``` which retrieves the time from the system hardware and ```sleep``` which is used to delay execution of a Python script:
+* [Math and Complex Math Modules](./math_module/notebook.ipynb)
 
-[DateTime, ZoneInfo and Time Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/012_datetime_module/readme.md)
+## Statistics Module
 
-The ```statistics``` module is a module for working with basic statistics:
+The statistics module is a functional module covering basic statistics:
 
-[Statistics Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/013_statistics_module/readme.md)
+* [Statistics Module](./statistics_module/notebook.ipynb)
 
-## Programming Constructs Continued
+## Random Module
 
-The system module ```sys``` gives details about objects used or maintained by the Python interpreter. This gives details about the builtin modules, the standard modules and third-party modules. Custom user modules can also be added:
+The random module is used to generate a random scalar number, often from a distribution:
 
-[The System Module and Working with Custom Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/014_system_module_custom_modules/readme.md)
+* [Random Module](./random_module/notebook.ipynb)
 
-This tutorial will look at the concept of a class, a subclass, using an Abstract Base Class (ABC) from the ```abc``` module to create a design pattern and ultimately creating a custom class where each instance has data attributes and instance methods:
+## Datetime Module
 
-[The Abstract Base Classes Module and Custom Classes](https://github.com/PhilipYip1988/python-tutorials/blob/main/015_abc_custom_classes/readme.md)
+The datetime module is used to generate scalar date, times, datetimes and timedeltas (time differences):
 
-## Working with Files
+* [Datetime Module](./datetime_module/notebook.ipynb)
 
-The previous tutorials looked at programming constructs which compartmentalised Python code. In addition to code compartmentalisation, there is often data compartmentalisation. There are a number of file formats used to store data such as the text file (.txt), the comma seperated values file (.csv), and the JavaScript Object Notation file (.json). 
+## File Formats
 
-To work with files the Operating System module ```os``` is typically used to navigate around the Operating System and perform low level file and directory operations. This is supplemented by the Shell Utilties Module ```shutil``` for higher level operations such as copying. The file statistics module ```stat``` gives file statistics otherwise known as file properties. Note the ```stat``` module should not be confused with the ```statistics``` module and the ```shutil``` module (copying files or directories) should not be confused with the ```copy``` module (copying Python objects) which have previously been examined:
+The Input Output (IO) module is used for reading and writing text files .txt and binary files .bin. The IO module is commonly used with the Comma Separated Values (CSV) Module for reading and writing comma separated files .csv, printed format files .prn and text delimited files .tab. The IO module is also commonly used with the JavaScript Object Notation (JSON) module for reading and writing JavaScript object notation files .json. The above are all examples of high level human-readable formats. Data can also be serialised using the pickle module which uses pickle files .pkl and serialised data can be stored in a database using the shelve module:
 
-[The Operating System, Stat and Shell Utilities Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/016_operating_system_module/readme.md)
+* [File Formats Windows](./io_module/notebook_windows.ipynb)
+* [File Formats Linux](./io_module/notebook_linux.ipynb)
 
-The Comma Separated Values Module ```csv``` allows basic reading and writing of ```csv``` files to ```builtins``` objects, in the form of lists of strings or nested lists of strings. Use of this basic module gives a good understanding of the file format. It is more routine to read the .csv file format into a more specialised data structure such as the ```DataFrame``` which the Python and Data Analysis Library revolves round. This will be discussed in a later tutorial:
+## Operating System Module
 
-[The Comma Separated Values Module](https://github.com/PhilipYip1988/python-tutorials/blob/main/017_comma_separated_values_module/readme.md)
+The Operating System module is essentially a Python implementation of the Shell programming languages and contains commands to navigate around the Operating System:
 
-Python objects can be serialized to a bytes object for data transfer. The ```pickle``` module is used to serialize Python data, because the serialized data is hard for a user to visualize, it is said to pickled. This serialized data can be saved to a bytes string or to a ```.txt``` file. The associated ```shelve``` module creates a database which consists of shelves of pickled data:
+* [Operating System Module Windows](./os_module/notebook_windows.ipynb)
+* [Operating System Module Linux](./os_module/notebook_linux.ipynb)
 
-[Serializing Python Objects using the Pickle and the Shelve Modules](https://github.com/PhilipYip1988/python-tutorials/blob/main/018_pickle_module/readme.md)
+## Path Library Module
 
-### Data Science Libraries
+The Path and Library module is similar to the Operating System Module however uses an Object Orientated Programming (OOP) approach to file paths and libraries within the user profile or home directory. File paths are returned as instances of the Path class which have a number of useful attributes and the ```/``` operator can be used for folder and file concatenation:
 
-The Numeric Python Library known as numpy is based around the ```ndarray```. The ```ndarray``` is a multi-dimensional numeric array that is configured for numeric data. The identifiers and data model identifiers for the ```ndarray``` are configured for numerical operations, math and statistics essentially allowing broadcasting of an operation over the size of the array. This allows for a much cleaner syntax and faster operation than the use of multiple for loops. The numpy library also has an associated random module that allows broadcasting of randomly generated numbers across an array and has a more accurate datetime and timedelta giving ns precision. The numpy library is the general foundation for all other scientific libraries:
+* [Path and Library Windows](./pathlib_module/notebook_windows.ipynb)
+* [Path and Library Linux](./pathlib_module/notebook_linux.ipynb)
 
-[The Numeric Python Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/021_numeric_python_library/readme.md)
+## System Module
 
-The Matrix Plotting Library known as ```matplotlib``` is Pythons most commonly used plotting library, and the base library of other common plotting libraries. matplotlib as the name suggests is designed for plotting numeric data in 1d ndarrays and 2d ndarrays. This library is commonly used for an assortment of plots including, line plots, scatter plots, bar graphs, pie charts, histograms, box plots, violin plots, matrix color plots, contour plots, surface plots and wireframe plots:
+The System module provides access to some variables used or maintained by the Python interpreter and to functions that interact strongly with the interpreter:
 
-[The Matrix Plotting Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/022_matrix_plotting_library/readme.md)
+* [System Module](./sys_module/notebook.ipynb)
 
-Incomplete tutorial: Beginning Section Complete
+## The Numeric Python Library
 
-The Seaborn Data Visualisation Library is a wrapper library around ```pyplot``` and allows easy visualisation from data within a ```pandas``` ```DataFrame``` instance. ```seaborn``` includes 1 line plot commands for the most commonly used data visualisations. In theory all the plots that can be created in ```seaborn``` can be produced directly using ```pyplot``` however the simplified syntax of ```seaborn``` is often more elegant and makes the code more readible, allowing more focus on the data visualisation:
+The Numeric Python library is based upon the data structure of the NDimensional Array. This is a datastructure that is a collection however unlike ```builtins``` collections, all the datamodel methods are configured for numeric operations. numpy also broadcasts the functions found in the math, datetime and random modules to an ndarray:
 
-[The Seaborn Library](https://github.com/PhilipYip1988/python-tutorials/blob/main/024_seaborn_library/readme.md)
+* [NDimensional Array Class](./numpy_library/notebook.ipynb)
+
+## The Python and Data Analysis Library
+
+The Python and Data Analysis library builds upon the data structure of the ndarray, creating a Series which is a 1D Array (1D) with a column name and a DataFrame which is a grouping of Series analogous in form to an Excel SpreadSheet. The Python and Data analysis library can be used to programmatically manipulate the data stored in the DataFrame analogous to any data operations that would be carried out manually in Excel:
+
+* [Index, Series and DataFrame Classes](./pandas_library/notebook.ipynb)
+
+## The Matrix Plotting Library
+
+The matrix plotting library encompasses a large group of modules compartmentalising objects used for visual elements in a plot. As a user generally only the Python Plot Module is used which allows manipulation of the above objects using a simplified functional and object-orientated programming syntax:
+
+* [Python Plot Module](./matplotlib_library/notebook.ipynb)
+* [Plot Backends Comparison](./matplotlib_library/notebook_backends.ipynb)
+
+## The Data Visualisation Library
+
+seaborn is a wrapper library for matplotlib which greatly simplifies the code required to create plots that are commonly used for data visualisation of data stored in a DataFrame:
+
+* [Data Visualisation Library](./seaborn_library/notebook.ipynb)
+
+## The Plotly Library
+
+plotly is a Python plotting library that creates plots using nodejs. This allows plots to be displayed interactively in the cell output of an interactive Python notebook:
+
+* [Plotly Library](./plotly_library/notebook.ipynb)
+
+## The Python Imaging Library
+
+The Python Imaging Library contains the Image module which contains the Image data structure. This module is used for Image construction from an ndarray or an image file taken from another image manipulation program or camera:
+
+* [The Python Imaging Library](./pillow_library/notebook.ipynb)
