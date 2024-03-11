@@ -1,4 +1,4 @@
-# Install
+# Anaconda Install (Ubuntu)
 
 This guide looks at installing Anaconda 2024-02.1 on Ubuntu 24.04.
 

@@ -1,4 +1,4 @@
-# Uninstall
+# Anaconda Uninstall (Ubuntu)
 
 For best results Anaconda should be installed on a clean computer without any previous Python or Python Distributions present. Note that Python is preinstalled on Linux and the preinstalled Python should be considered as part of the OS and left as is. 
 

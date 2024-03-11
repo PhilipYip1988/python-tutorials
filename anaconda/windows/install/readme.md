@@ -1,4 +1,4 @@
-# Install
+# Anaconda Install (Windows)
 
 This guide looks at installing Anaconda 2024-02.1 on Windows 11.
 

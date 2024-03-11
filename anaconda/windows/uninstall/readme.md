@@ -1,4 +1,4 @@
-# Uninstall
+# Anaconda Uninstall (Windows)
 
 For best results Anaconda should be installed on a clean computer without any previous Python or Python Distributions. 
 
