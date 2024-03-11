@@ -2,19 +2,12 @@
 
 This is a repository of Python tutorials that give an overview of the Python programming language, commonly used Python standard libraries, commonly used datascience libraries numpy, pandas and matplotlib as well as Anaconda/Miniconda and the conda package manager. The tutorials will also cover IPython and the Jupyter ecosystem, particularly focusing on the JupyterLab 4 IDE. The tutorials are in the form of markdown files or interactive Python notebooks. Please feel free to star, share and fork this repository.
 
-Note the markdown tutorials are image heavy. Unfortunately GitHub may timeout when it comes to downloading the images and they may not display properly on a slow connection. You may get better results by downloading the repository locally and opening the markdown preview in a general purpose code editor like VSCode, VSCode does not need any extensions to view markdown files.
-
 ## Anaconda or Miniconda Installation
 
 For datascience it is recommended to install Python in a conda environment. This can be done using the Anaconda 2024-02.1 Data Science Python Distribution or bootstrap Miniconda.
 
-### Windows Installation
-
-* [Installing Anaconda or Miniconda](./anaconda/windows/install/readme.md)
-
-### Linux/Mac Installation
-
-* [Installing Anaconda or Miniconda](./anaconda/linux/install/readme.md)
+* [Installing Anaconda or Miniconda (Windows)](./anaconda/windows/install/readme.md)
+* [Installing Anaconda or Miniconda (Ubuntu)](./anaconda/linux/install/readme.md)
 
 For Linux, Ubuntu will be used as an example distro but the procedure is the same on most other distros. The Mac Terminal and File System are Linux Based and therefore installation on Mac should therefore be more or less identical to Linux.
 
@@ -63,8 +56,8 @@ The builtins module is automatically imported. It contains Pythons fundamental c
 
 The Interactive Python Shell has a number of enhancements over the regular Python Shell. It can be used to run Python code and commonly used Shell commands that have been reimplemented as IPython magics. The Shell used for these commands will differ depending on the Operating System:
 
-* [IPython Magics on Windows](./ipython_magics/notebook_windows.ipynb)
-* [IPython Magics on Linux/Mac](./ipython_magics/notebook_linux.ipynb)
+* [IPython Magics (Windows)](./ipython_magics/notebook_windows.ipynb)
+* [IPython Magics (Ubuntu)](./ipython_magics/notebook_linux.ipynb)
 
 ## Formatters
 
@@ -120,22 +113,22 @@ The datetime module is used to generate scalar date, times, datetimes and timede
 
 The Input Output (IO) module is used for reading and writing text files .txt and binary files .bin. The IO module is commonly used with the Comma Separated Values (CSV) Module for reading and writing comma separated files .csv, printed format files .prn and text delimited files .tab. The IO module is also commonly used with the JavaScript Object Notation (JSON) module for reading and writing JavaScript object notation files .json. The above are all examples of high level human-readable formats. Data can also be serialised using the pickle module which uses pickle files .pkl and serialised data can be stored in a database using the shelve module:
 
-* [File Formats Windows](./io_module/notebook_windows.ipynb)
-* [File Formats Linux](./io_module/notebook_linux.ipynb)
+* [File Formats (Windows)](./io_module/notebook_windows.ipynb)
+* [File Formats (Ubuntu)](./io_module/notebook_linux.ipynb)
 
 ## Operating System Module
 
 The Operating System module is essentially a Python implementation of the Shell programming languages and contains commands to navigate around the Operating System:
 
-* [Operating System Module Windows](./os_module/notebook_windows.ipynb)
-* [Operating System Module Linux](./os_module/notebook_linux.ipynb)
+* [Operating System Module (Windows)](./os_module/notebook_windows.ipynb)
+* [Operating System Module (Ubuntu)](./os_module/notebook_linux.ipynb)
 
 ## Path Library Module
 
 The Path and Library module is similar to the Operating System Module however uses an Object Orientated Programming (OOP) approach to file paths and libraries within the user profile or home directory. File paths are returned as instances of the Path class which have a number of useful attributes and the ```/``` operator can be used for folder and file concatenation:
 
-* [Path and Library Windows](./pathlib_module/notebook_windows.ipynb)
-* [Path and Library Linux](./pathlib_module/notebook_linux.ipynb)
+* [Path and Library (Windows)](./pathlib_module/notebook_windows.ipynb)
+* [Path and Library (Ubuntu)](./pathlib_module/notebook_linux.ipynb)
 
 ## System Module
 
