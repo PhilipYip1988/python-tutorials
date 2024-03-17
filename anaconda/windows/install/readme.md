@@ -556,7 +556,7 @@ The command
 python
 ```
 
-now work as expected:
+now works as expected:
 
 <img src='./images/img_087.png' alt='img_087' width='450'/>
 
