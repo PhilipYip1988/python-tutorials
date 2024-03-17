@@ -565,12 +565,12 @@ now works as expected:
 Returning to:
 
 ```powershell
-%USERPROFILE%\anaconda3\Sxcripts
+%USERPROFILE%\anaconda3\Scripts
 ```
 
 <img src='./images/img_088.png' alt='img_088' width='450'/>
 
-The ```anaconda-navigator``` is the Anaconda Navigator:
+On Anacodna, the Anaconda Navigator is preinstalled, this is not preinstalled in Miniconda. The Anaconda Navigator is the ```anaconda-navigator``` application:
 
 <img src='./images/img_089.png' alt='img_089' width='450'/>
 
@@ -664,7 +664,7 @@ Returning to:
 
 <img src='./images/img_107.png' alt='img_107' width='450'/>
 
-The Interactive Python shell can be found as ```ipython``` or the alias ```ipython3```. In the past when Python Version 2 and 3 were installed, the 3 was used to distinguish versions. Now that Python 2 has reached end of life and is not installed, the alias without the 3 is typically used:
+In Anaconda, the Interactive Python shell is preinstalled. This is not installed in Miniconda. The Interactive Python shell can be found as the ```ipython``` application which also has the alias ```ipython3```. In the past when Python Version 2 and 3 were installed, the 3 was used to distinguish versions. Now that Python 2 has reached end of life and is not installed, the alias without the 3 is typically used:
 
 <img src='./images/img_108.png' alt='img_108' width='450'/>
 
@@ -691,6 +691,8 @@ The reason for preferencing CMD over PowerShell is due to the common prevalence 
 <img src='./images/img_111.png' alt='img_111' width='450'/>
 
 ### Jupyter
+
+Jupyter is preinstalled in Anaconda. For Miniconda, a custom Python environment will need to be created, detailed below.
 
 Jupyter is an abbreviation for Julia, Python et R. There are four main applications:
 
