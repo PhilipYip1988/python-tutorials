@@ -461,7 +461,7 @@ In this folder are a number of applications such as the ```miktex-console```:
 This can be launched in the Windows Terminal by using:
 
 ```powershell
-miktex
+miktex-console
 ```
 
 <img src='./images/img_070.png' alt='img_070' width='450'/>
