@@ -690,7 +690,7 @@ The reason for preferencing CMD over PowerShell is due to the common prevalence 
 
 <img src='./images/img_111.png' alt='img_111' width='450'/>
 
-### Jupyter
+## Jupyter
 
 Jupyter is preinstalled in Anaconda. For Miniconda, a custom Python environment will need to be created, detailed below.
 
