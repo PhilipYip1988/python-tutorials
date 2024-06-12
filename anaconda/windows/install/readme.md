@@ -678,17 +678,21 @@ Notice that it looks very similar to the Python shell however there are some key
 
 <img src='./images/img_109.png' alt='img_109' width='450'/>
 
-The identifiers beginning with ```%``` are ipython magics and are commonly used shell commands, for example ```%conda```. The ipython magics allow use of commonly used shell commands within the ipython shell, without exiting the ipython shell. 
-
-On Windows the ipython magics use the legacy CMD instead of modern PowerShell. CMD is a subset of PowerShell. 
+The identifiers beginning with ```%``` are ipython magics, which are Python implementations of commonly used shell commands. The ipython magics allow use of commonly used shell commands within the ipython shell, without exiting the ipython shell.
 
 A functions docstring can be viewed in the ipython cell output. The other main improvement over the Python shell is that syntax highlighting is applied making it easier to read the Python code:
 
 <img src='./images/img_110.png' alt='img_110' width='450'/>
 
-The reason for preferencing CMD over PowerShell is due to the common prevalence of ```-``` in a PowerShell commandlet for example ```Get-Alias``` and ```Set-Location``` because ```-``` is recognised in Python code as the ```-``` operator. The CMD commands are more similar to the names of the bash commands which is the shell language in Linux and are more concise and less likely to contain ```-```. It is recommended to use the commands with the ```%``` prefix to highlight that they are ipython magics however they can be used without the ```%``` prefix:
+On Windows there are two shell programming languages, the legacy CMD shell and the modern PowerShell. Although PowerShell is the modern standard, the legacy CMD shell is still widely used and is the basis of IPython magics. The main reason for this is the form of a CMD ```command`` versus a PowerShell ```Command-Let```. The prevalence of ```-``` in a PowerShell ```Command-Let``` results in confusion because the ```-``` is recognised by Python as an operator. 
 
 <img src='./images/img_111.png' alt='img_111' width='450'/>
+
+For example the PowerShell ```Command-Let``` ```Set-Location``` has the CMD command ```cd``` as an alias. This is implemented as an ```IPython``` magic using ```%cd```. 
+
+The IPython magic can also be used as ```cd``` without inclusion of the ```%```, although it is generally recommended to use the ```%``` with an IPython magic as it makes it clear that a Shell command is being used. 
+
+```%Set-Location``` is not available as an IPython Magic, because ```Set-Location``` without the ```%``` sign would result in Python looking for the variable ```Set``` and the variable ```Location``` and then attempt of the binary datamodel method ```-``` resulting in confusion.
 
 ## Jupyter
 
