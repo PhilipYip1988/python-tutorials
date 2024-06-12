@@ -820,7 +820,7 @@ Note the specification of the ```-n``` (```--name```), which is a commandline op
 
 Note the specification of the ```-c``` (```--channel```) which instructs the current operation to preferentially install packages from the community channel and is seen in the channels list below. 
 
-* Each package can have their channel individually specified using ```conda-forge::python conda-forge::jupyterlab``` but this approach is cumbersome when all packages are being installed from the same channel.
+* Each package can have their channel individually specified using ```conda-forge::python conda-forge::jupyterlab``` but this approach is cumbersome when all packages are being installed from the same channel. This approach is normally only used with a handful of additional packages are installed, from another channel.
 
 The conda package manager, now that it has the modern libmamba solver by default will quickly solve the Python environment. It essentially checks the requirements for each library and solves a set of compatible versions:
 
