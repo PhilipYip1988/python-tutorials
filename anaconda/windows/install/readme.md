@@ -813,7 +813,7 @@ In the above, ```conda``` is the Cmdlet.
 
 Note the specification of the ```-n``` (```--name```), which is a commandline option that expects the environment name in the form of a string. Generally the environment name is in lowercase and uses ```-``` instead of spaces for example ```-n jupyter-env```. Specification of the name instructs the current operation to install packages into the Python environment ```jupyter-env``` opposed to the Python environment ```(base)```.
 
-* Notice use of a lowercase environment name with ```-``` is consistent to ````jupyter-lab``` found in the ```Scripts``` folder.
+* Notice use of a lowercase environment name with ```-``` is consistent to ```jupyter-lab``` found in the ```Scripts``` folder.
 * Using a space for example ```-n jupyter env``` will result in ```-n``` receiving two strings instead of one and result in confusion, as the commandline option ```-n``` does not know what to do with the second string.
 * Double quotations can be used to enclose the string for example ```-n "jupyter env"``` and this will allow for a string with spaces, however this is bad practice as it makes subsequent commands involving the environment unnecessarily cumbersome.
 * Mixed case for example ```-n Jupyter-Env``` is also not recommended as it can make subsequent commands involving the environment name more cumbersome.
