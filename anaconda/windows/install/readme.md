@@ -684,37 +684,37 @@ A functions docstring can be viewed in the ipython cell output. The other main i
 
 <img src='./images/img_110.png' alt='img_110' width='450'/>
 
-On Windows there are two shell programming languages, the legacy CMD shell and the modern PowerShell. Although PowerShell is the modern standard, the legacy CMD shell is still widely used and is the basis of IPython magics. The main reason for this is the form of a CMD ```command`` versus a PowerShell ```Command-Let```. The prevalence of ```-``` in a PowerShell ```Command-Let``` results in confusion because the ```-``` is recognised by Python as an operator. 
+On Windows there are two shell programming languages, the legacy CMD shell and the modern PowerShell. Although PowerShell is the modern standard, the legacy CMD shell is still widely used and is the basis of IPython magics. The main reason for this is the form of a CMD command versus a PowerShell command (known as a Cmdlet). The prevalence of ```-``` in a PowerShell ```Cmdlet``` results in confusion because the ```-``` is recognised by Python as an operator. 
 
 <img src='./images/img_111.png' alt='img_111' width='450'/>
 
-For example the PowerShell ```Command-Let``` ```Set-Location``` has the CMD command ```cd``` as an alias. This is implemented as an ```IPython``` magic using ```%cd```. 
+For example the PowerShell Cmdlet ```Set-Location``` has the CMD command ```cd``` available an alias. This is implemented as an ```IPython``` magic using ```%cd```. 
 
-The IPython magic can also be used as ```cd``` without inclusion of the ```%```, although it is generally recommended to use the ```%``` with an IPython magic as it makes it clear that a Shell command is being used. 
+The IPython magic can also be used as ```cd``` without inclusion of the ```%```, although it is generally recommended to use the ```%``` with an IPython magic as it makes it clear that a Shell command is being used. In CMD, the command ```CD``` is normally uppercase but uppercase and lowercase are accepted. The IPython magic is always lowercase.
 
-```%Set-Location``` is not available as an IPython Magic, because ```Set-Location``` without the ```%``` sign would result in Python looking for the variable ```Set``` and the variable ```Location``` and then attempt of the binary datamodel method ```-``` resulting in confusion.
+The Cmdlet ```%Set-Location``` is not available as an IPython Magic, because ```Set-Location``` without the ```%``` sign would result in Python looking for the variable ```Set``` and the variable ```Location``` and then attempt of the binary datamodel method ```-``` resulting in confusion. Note in PowerShell, the Cmdlet isn't case sensitive but it is better practice to use ```Pascal-Case``` which is consistent to Microsoft's documentation.
+
+Note that when the Windows Terminal is initialised that it will search within the activated Python environments ```Scripts``` folder for applications. In other words the applicaion ```ipython.exe``` is essentially recognised as the Cmdlet ```ipython```.
 
 ## Jupyter
 
-Jupyter is preinstalled in Anaconda. For Miniconda, a custom Python environment will need to be created, detailed below.
+Jupyter is preinstalled in the Anaconda base Python environment. For Miniconda, a custom Python environment will need to be created (more details below).
 
-Jupyter is an abbreviation for Julia, Python et R. There are four main applications:
+<img src='./images/img_112.png' alt='img_112' width='450'/>
+
+Jupyter is an abbreviation for Julia, Python et R. There are four main applications, available as the Cmdlets:
 
 * ```jupyter-console```
 * ```jupyter-qtconsole```
 * ```jupyter-notebook```
 * ```jupyter-lab```
 
-The application ```jupyter``` also accepts the command option:
+The application ```jupyter``` is a CMDlet that accepts a command option (specified after a space) which can be used to launch a Jupyter application:
 
 * ```jupyter console```
 * ```jupyter qtconsole```
 * ```jupyter notebook```
 * ```jupyter lab```
-
-however it is more common to use each application directly.
-
-<img src='./images/img_112.png' alt='img_112' width='450'/>
 
 The ```jupyter-kernelspec``` application can be used with the command ```list``` to list kernels. By default only a Python kernel is listed:
 
@@ -726,7 +726,7 @@ On Windows, Julia is not available as a ```conda-forge``` package and must be in
 winget install julia -s msstore
 ```
 
-Unfortunately, winget is not available by default on Windows 11, unless the Windows Store is opened, the library selected and Get Updates selected:
+Unfortunately, winget is not available as a Cmdlet by default on Windows 11, unless the Windows Store is opened, the library selected and Get Updates selected:
 
 <img src='./images/img_114.png' alt='img_114' width='450'/>
 
@@ -807,9 +807,20 @@ conda create -n jupyter-env -c conda-forge python jupyterlab jupyter cython seab
 
 <img src='./images/img_124.png' alt='img_124' width='450'/>
 
-Note the specification of the ```-n``` (```--name```) which instructs the current operation to install packages into the Python environment ```jupyter-env``` opposed to the Python environment ```(base)```.
+In the above, ```conda``` is the Cmdlet.
 
-Note the specification of the ```-c``` (```--channel```) which instructs the current operation to preferentially install packages from the community channel and is seen in the channels list below.
+```create``` is a command used by the Cmdlet.
+
+Note the specification of the ```-n``` (```--name```), which is a commandline option that expects the environment name in the form of a string. Generally the environment name is in lowercase and uses ```-``` instead of spaces for example ```-n jupyter-env```. Specification of the name instructs the current operation to install packages into the Python environment ```jupyter-env``` opposed to the Python environment ```(base)```.
+
+* Notice use of a lowercase environment name with ```-``` is consistent to ````jupyter-lab``` found in the ```Scripts``` folder.
+* Using a space for example ```-n jupyter env``` will result in ```-n``` receiving two strings instead of one and result in confusion, as the commandline option ```-n``` does not know what to do with the second string.
+* Double quotations can be used to enclose the string for example ```-n "jupyter env"``` and this will allow for a string with spaces, however this is bad practice as it makes subsequent commands involving the environment unnecessarily cumbersome.
+* Mixed case for example ```-n Jupyter-Env``` is also not recommended as it can make subsequent commands involving the environment name more cumbersome.
+
+Note the specification of the ```-c``` (```--channel```) which instructs the current operation to preferentially install packages from the community channel and is seen in the channels list below. 
+
+* Each package can have their channel individually specified using ```conda-forge::python conda-forge::jupyterlab``` but this approach is cumbersome when all packages are being installed from the same channel.
 
 The conda package manager, now that it has the modern libmamba solver by default will quickly solve the Python environment. It essentially checks the requirements for each library and solves a set of compatible versions:
 
