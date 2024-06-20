@@ -4,9 +4,7 @@ This guide looks at installing Anaconda 2024-02.1 on Windows 11.
 
 ## Removing Previous Installations
 
-Anaconda should be installed on a Linux PC that has no previous Python installations outwith the system Python. The system Python is preinstalled as part of the Linux Operating system and should be considered as part of the Operating System and not modified by the user.
-
-If an old Anaconda Installation or an Anaconda based installation such as Miniconda or is present these should be removed by deleting their perspective folders. Note that deletion of these folders leaves behind a large number of configuration files and the presence of these files often results in problematic settings persisting after a reinstall. For best results it is recommended to delete all these configuration files. For more details see [Uninstallation Instructions](../uninstall/readme.md).
+Anaconda should be installed on a Windows PC that has no previous Python installations. Note that uninstalling Anaconda leaves behind a large number of configuration files and the presence of these files often results in problematic settings persisting after a reinstall. For best results it is recommended to delete all these configuration files. For more details see [Uninstallation Instructions](../uninstall/readme.md).
 
 ## Anaconda vs Miniconda 
 
