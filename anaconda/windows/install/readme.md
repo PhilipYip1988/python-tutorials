@@ -1021,7 +1021,7 @@ When opened in notebook it displays in json format. This is used by the JupyterL
 
 Typically the notebook is not opened in Notepad. Instead JupyterLab is launched and the files tab is used to open the notebook. The notebooks kernel should also be restarted in order to continue editing the notebook.
 
-Jupyter Notebook is a simplified version of JupyterLab.
+Jupyter Notebook is a simplified version of JupyterLab and will not be covered in this tutorial.
 
 When the Terminal is opened, the ```base``` Python environment is activated: 
 
