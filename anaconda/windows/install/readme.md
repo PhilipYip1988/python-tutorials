@@ -1077,7 +1077,7 @@ The proposed changes are now made:
 
 Note it is advised to update the ```conda``` package manager in ```base``` periodically before using the ```conda``` package manager in another Python environment. Recall that ```base``` should always use the channel ```anaconda``` and only ```conda``` should be updated. 
 
-Attemping to use the ```conda-forge``` channel or ```--all``` will attempt to make too many changes to the Anaconda ```base``` Python environment and ultimately make it unstable.
+Attempting to use the ```conda-forge``` channel or ```--all``` will attempt to make too many changes to the Anaconda ```base``` Python environment and ultimately make it unstable.
 
 ```powershell
 conda update -c anaconda conda
@@ -1279,27 +1279,6 @@ conda env create -f OneDrive\Documents\jupyter-env-file.yml
 The environment is then recreated:
 
 <img src='./images/img_192.png' alt='img_192' width='450'/>
-
-## Updating an Environment
-
-The ```conda``` package manager can be used to update ```--all``` packages to the latest version.
-
-**--all should never be used with base**, instead the ```conda``` package manager should be used to update ```conda``` which will collectively update the distribution.
-
-**-c conda-forge should never be used with base**, instead only the ```anaconda``` channel (also known as the default channel) should be used.
-
-The ```jupyter-env``` can be updated using:
-
-```powershell
-conda active jupyter-env
-conda update -c conda-forge --all
-```
-
-Input ```y``` in order to proceed:
-
-<img src='./images/img_193.png' alt='img_193' width='450'/>
-
-Often with a complicated Python environments, better results are achieved by deleted the Python environment and recreating it with all packages specified during the time of creation.
 
 ## Revision
 
