@@ -604,7 +604,7 @@ The Configure Conda button is a means to configure the conda package manager rec
 
 <img src='./images/img_096.png' alt='img_096' width='450'/>
 
-As the Preferences window cannot be sued when it displays offscreen, the two files above can be modified using notepad. For the Anaconda Navigator, open up file explorer and go to:
+As the Preferences window cannot be used when it displays offscreen, the two files above can be modified using notepad. For the Anaconda Navigator, open up file explorer and go to:
 
 ```powershell
 %APPDATA%
@@ -662,7 +662,7 @@ Returning to:
 
 <img src='./images/img_107.png' alt='img_107' width='450'/>
 
-In Anaconda, the Interactive Python shell is preinstalled. This is not installed in Miniconda. The Interactive Python shell can be found as the ```ipython``` application which also has the alias ```ipython3```. In the past when Python Version 2 and 3 were installed, the 3 was used to distinguish versions. Now that Python 2 has reached end of life and is not installed, the alias without the 3 is typically used:
+In Anaconda, the Interactive Python shell is preinstalled. This is not installed in Miniconda. The Interactive Python shell can be found as the ```ipython``` application which also has the alias ```ipython3```. In the past when Python Version 2 and 3 were installed, the 3 was used to distinguish between the versions. Now that Python 2 has reached end of life and is not installed, the alias without the 3 is typically used:
 
 <img src='./images/img_108.png' alt='img_108' width='450'/>
 
@@ -707,7 +707,7 @@ Jupyter is an abbreviation for Julia, Python et R. There are four main applicati
 * ```jupyter-notebook```
 * ```jupyter-lab```
 
-The application ```jupyter``` is a CMDlet that accepts a command option (specified after a space) which can be used to launch a Jupyter application:
+The application ```jupyter``` is a Cmdlet that accepts a command option (specified after a space) which can be used to launch a Jupyter application:
 
 * ```jupyter console```
 * ```jupyter qtconsole```
@@ -816,6 +816,8 @@ Note the specification of the ```-n``` (```--name```), which is a commandline op
 * Double quotations can be used to enclose the string for example ```-n "jupyter env"``` and this will allow for a string with spaces, however this is bad practice as it makes subsequent commands involving the environment unnecessarily cumbersome.
 * Mixed case for example ```-n Jupyter-Env``` is also not recommended as it can make subsequent commands involving the environment name more cumbersome.
 
+The create ```command``` is used to create a Python environment and a channel to install packages from and number of initial packages can be specified.
+
 Note the specification of the ```-c``` (```--channel```) which instructs the current operation to preferentially install packages from the community channel and is seen in the channels list below. 
 
 * Each package can have their channel individually specified using ```conda-forge::python conda-forge::jupyterlab``` but this approach is cumbersome when all packages are being installed from the same channel. This approach is normally only used with a handful of additional packages are installed, from another channel.
@@ -848,7 +850,7 @@ conda activate jupyter-env
 
 <img src='./images/img_130.png' alt='img_130' width='450'/>
 
-Notice the prefix is now (jupyter-env) which mean the python application and its associated libraries and applications are preferentially used over their counterparts in base.
+Notice the prefix is now (jupyter-env) which mean the python application and its associated libraries and applications are preferentially used over their counterparts in base. 
 
 Now when:
 
@@ -997,7 +999,7 @@ The notebook can be saved, using File → Save Notebook. There is also the optio
 
 <img src='./images/img_155.png' alt='img_155' width='450'/>
 
-When the browser is clsoed:
+When the browser is closed:
 
 <img src='./images/img_156.png' alt='img_156' width='450'/>
 
@@ -1020,6 +1022,72 @@ When opened in notebook it displays in json format. This is used by the JupyterL
 Typically the notebook is not opened in Notepad. Instead JupyterLab is launched and the files tab is used to open the notebook. The notebooks kernel should also be restarted in order to continue editing the notebook.
 
 Jupyter Notebook is a simplified version of JupyterLab.
+
+When the Terminal is opened, the ```base``` Python environment is activated: 
+
+<img src='./images/img_200.png' alt='img_200' width='450'/>
+
+The ```jupyter-env``` can be activated using:
+
+```powershell
+conda activate jupyter-env
+```
+
+<img src='./images/img_201.png' alt='img_201' width='450'/>
+
+If the ```conda``` Cmdlet is used with the command ```install``` or ```update```. It will install/update packages into ```jupyter-env``` instead of ```base```. When using the ```install``` or ```update``` command the channel to install the packages from ```-c conda-forge``` should be specified before specifying the packages to install. For example the package ```python-docx``` can be installed using:
+
+```powershell
+conda install -c python-docx
+```
+
+<img src='./images/img_202.png' alt='img_202' width='450'/>
+
+The ```conda``` package manager will solve the environment:
+
+<img src='./images/img_203.png' alt='img_203' width='450'/>
+
+The proposed changes will be listed, listing the new packages to be installed, the packages to be updated and the packages to be downgraded (if applicable), input ```y``` in order to proceed:
+
+<img src='./images/img_204.png' alt='img_204' width='450'/>
+
+The proposed changes are now made:
+
+<img src='./images/img_205.png' alt='img_205' width='450'/>
+
+To update all packages in the Python environment ```--all``` can be used instead of a package name:
+
+```powershell
+conda update -c conda-forge --all
+```
+
+<img src='./images/img_206.png' alt='img_206' width='450'/>
+
+The ```conda``` package manager will solve the environment:
+
+<img src='./images/img_207.png' alt='img_207' width='450'/>
+
+The proposed changes will be listed, listing the new packages to be installed, the packages to be updated and the packages to be downgraded (the downgrade in this case installs the same version number). Input ```y``` in order to proceed:
+
+<img src='./images/img_208.png' alt='img_208' width='450'/>
+
+The proposed changes are now made:
+
+<img src='./images/img_209.png' alt='img_209' width='450'/>
+
+Note it is advised to update the ```conda``` package manager in ```base``` periodically before using the ```conda``` package manager in another Python environment. Recall that ```base``` should always use the channel ```anaconda``` and only ```conda``` should be updated. 
+
+Attemping to use the ```conda-forge``` channel or ```--all``` will attempt to make too many changes to the Anaconda ```base``` Python environment and ultimately make it unstable.
+
+```powershell
+conda update -c anaconda conda
+```
+
+<img src='./images/img_210.png' alt='img_210' width='450'/>
+
+In this example, the ```conda``` package manager in base is already up to date:
+
+<img src='./images/img_211.png' alt='img_211' width='450'/>
 
 ## Spyder
 
