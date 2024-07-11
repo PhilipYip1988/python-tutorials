@@ -4,7 +4,7 @@ This is a repository of Python tutorials that give an overview of the Python pro
 
 ## Anaconda or Miniconda Installation
 
-For datascience it is recommended to install Python in a conda environment. This can be done using the Anaconda 2024-02.1 Data Science Python Distribution or bootstrap Miniconda.
+For datascience it is recommended to install Python in a conda environment. This can be done using the Anaconda 2024-06.1 Data Science Python Distribution or bootstrap Miniconda.
 
 * [Installing Anaconda or Miniconda (Windows)](./anaconda/windows/install/readme.md)
 * [Installing Anaconda or Miniconda (Ubuntu)](./anaconda/linux/install/readme.md)
