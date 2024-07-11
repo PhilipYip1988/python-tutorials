@@ -1,6 +1,6 @@
 # Anaconda Install (Windows)
 
-This guide looks at installing Anaconda 2024-02.1 on Windows 11.
+This guide looks at installing Anaconda 2024-06.1 on Windows 11.
 
 ## Removing Previous Installations
 
