@@ -1,7 +1,0 @@
-string	integer	boolean	floatingpoint	date	time	category
-the fat black cat	4	True	0.8599999999999999	2023-07-24 11:30:00	0 days 11:36:00	A
-sat on the mat	4	True	0.8599999999999999	2023-07-25 00:00:00	0 days 12:36:00	A
-twinkle, twinkle	2	True	-1.1400000000000001	2023-07-26 00:00:00	0 days 13:36:00	B
-little star	2	True	-1.1400000000000001	2023-07-27 00:00:00	0 days 14:36:00	B
-how I wonder	3	False	-0.14000000000000012	2023-07-28 00:00:00	0 days 15:36:00	B
-what you are	4	True	0.8599999999999999	2023-07-29 00:00:00	0 days 16:36:00	B

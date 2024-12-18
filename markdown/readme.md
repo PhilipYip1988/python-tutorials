@@ -1,32 +1,6 @@
 # Markdown
 
-A text file can only be used to store unformatted text. The markdown file is similar to a text file, however allows text to be formatted using very simple markdown syntax. The Markdown syntax is also used for markdown cells in Interactive Python Notebooks. Markdown cells are commonly used to create documentation around code, in a similar form to a scientific paper.
-
-In JupyterLab opening a markdown file opens up the markdown editor:
-
-![img_011](./images/img_011.png)
-
-To view the formatted Markdown. Right click blank space on the Markdown preview and select Markdown Preview:
-
-![img_012](./images/img_012.png)
-
-The table of contents can be viewed:
-
-![img_013](./images/img_013.png)
-
-Unfortunately in JupyterLab the markdown editor and markdown preview panes are not linked and using a link in the table of contents will only navigate to the heading in the currently select pane. This makes it more difficult to modify the markdown file.
-
-In VSCode the markdown file can be opened:
-
-![img_001](./images/img_001.png)
-
-The file can be right clicked to view the markdown preview:
-
-![img_002](./images/img_002.png)
-
-In VSCode the markdown editor and markdown preview panes are linked and the table of contents in the markdown editor will navigate to the heading in both panes. Having both panes linked makes it easier to modify the markdown file and view the output:
-
-![img_003](./images/img_003.png)
+A text file can only be used to store unformatted text. The markdown file is similar to a text file, however allows text to be formatted using very simple markdown syntax. The Markdown syntax is also used for markdown cells in Interactive Python Notebooks. In a notebook file, markdown cells are commonly used to create documentation around code, in a similar form to a scientific paper.
 
 ## Formatted Text
 
@@ -85,7 +59,7 @@ Produces:
 
 #### Heading Level 4
 
-Each heading will display on the Table of Contents in VSCode or JupyterLab.
+Each heading will display on the markdown files table of contents.
 
 ---
 
@@ -354,12 +328,12 @@ powershell:
 
 ````
 ```powershell
-cd "~\Anaconda3"
+cd "~\miniforge3"
 ```
 ````
 
 ```powershell
-cd "~\Anaconda3"
+cd "~\miniforge3"
 ```
 
 There is the abbreviation ps1 (ps is another programming language postscript) however ps1 is not as widely recognised as powershell by markdown renderers.
@@ -369,12 +343,12 @@ bash:
 
 ````
 ```bash
-cd "~/Anaconda3"
+cd "~/miniforge3"
 ```
 ````
 
 ```bash
-cd "~/Anaconda3"
+cd "~/miniforge3"
 ```
 
 tex:
@@ -439,70 +413,62 @@ If the link is an image this may be prepended with an exclamation mark ```![]()`
 
 The following markdown:
 
-```
-[Anaconda](https://upload.wikimedia.org/wikipedia/en/c/cd/Anaconda_Logo.png)
+```markdown
+[Bytes](https://github.com/PhilipYip1988/python-tutorials/blob/main/markdown/images/img_001.png)
 ```
 
 Produces:
 
-[Anaconda](https://upload.wikimedia.org/wikipedia/en/c/cd/Anaconda_Logo.png)
+[Bytes](https://github.com/PhilipYip1988/python-tutorials/blob/main/markdown/images/img_001.png)
 
 The following markdown:
 
 ```markdown
-![Anaconda](https://upload.wikimedia.org/wikipedia/en/c/cd/Anaconda_Logo.png)
+![Bytes](https://github.com/PhilipYip1988/python-tutorials/blob/main/markdown/images/img_001.png)
 ```
 
 Produces:
 
-![Anaconda](https://upload.wikimedia.org/wikipedia/en/c/cd/Anaconda_Logo.png)
+![Bytes](https://github.com/PhilipYip1988/python-tutorials/blob/main/markdown/images/img_1.png)
 
-If the Image can't be found, the information provided in the square brackets displays:
-
-```markdown
-![This is supposed to be an Anaconda Logo Image](https://upload.wikimedia.org/wikipedia/en/c/cd/Anaconda_Logo2.png)
-```
-
-![This is supposed to be an Anaconda Logo Image](https://upload.wikimedia.org/wikipedia/en/c/cd/Anaconda_Logo2.png)
+If the Image can't be found, the information provided in the square brackets displays.
 
 If the image is in the same folder as the markdown file. The file name can be specified directly.
 
 In the file path ```./``` can be used to specify a subfolder and ```../``` can be used to go up a level. The ```img_001.png``` in the subfolder ```images``` can be selected for example using the following markdown:
 
 ```markdown
-![img_001](./images/img_001.png)
-![img_001](./images/img_001a.png)
+![Bytes](./images/img_001.png)
+![Bytes](./images/img_1.png)
 ```
 
 Producing:
 
-![Markdown File opened in VSCode](./images/img_001.png)
+![Bytes](./images/img_001.png)
 
-![Markdown File opened in VSCode](./images/img_001a.png)
+![Bytes](./images/img_1.png)
 
 **Note some programs will save to ```.PNG``` and others will save to ```.png``` by default.**
 
 **It is recommended to enable file extensions for known file types and ensure all file extensions are in lower case.** 
 
-GitHub for example seems to be sensitive regarding the case of the file extension and won't render properly if the file has a file extension that uses a different case. By enabling the file extension you will be able to see what case each file extension is using and can update them all to be lower case for the sake of being consistent. 
-
-JupyterLab and VSCode on the other hand are insensitive regarding the case of the file extension therefore an image may display in these IDEs and fail to render properly when a repository is uploaded to GitHub. 
+GitHub for example seems to be sensitive regarding the case of the file extension and won't render properly if the file has a file extension that uses a different case. By enabling the file extension the case of each file extension can be examined. 
 
 To specify the width of an image, HTML can instead be used:
 
 ```markdown
-<img src='./images/img_001.png' alt='img_001' width='400'/>
+<img src='./images/img_001.png' alt='Bytes' width='400'/>
 
-<img src='./images/img_001.png' alt='img_001' width='300'/>
+<img src='./images/img_001.png' alt='Bytes' width='300'/>
 
-<img src='./images/img_001.png' alt='img_001' width='200'/>
+<img src='./images/img_001.png' alt='Bytes' width='200'/>
 ```
 
-<img src='./images/img_001.png' alt='img_001' width='400'/>
+<img src='./images/img_001.png' alt='Bytes' width='400'/>
 
-<img src='./images/img_001.png' alt='img_001' width='300'/>
+<img src='./images/img_001.png' alt='Bytes' width='300'/>
 
-<img src='./images/img_001.png' alt='img_001' width='200'/>
+<img src='./images/img_001.png' alt='Bytes' width='200'/>
 
 ## TeX
 
@@ -511,66 +477,51 @@ The markdown file supports TeX and this can be used for both Inline and Display 
 Inline Equation:
 
 ```tex
-$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$
+$EQUATION$
 ```
-
-$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$
 
 Display Equation:
 
 ```tex
-$$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$$
+$$EQUATION$$
 ```
 
-$$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$$
-
-Microsoft Word and the free cross-platform Only Office Desktops Editor have a WYSIWYG equation editor. An equation can be constructed using the visual aspects of the equation editor, converted to linear TeX format and copied between a set of ```$``` or double ```$$```.
-
-The visual elements can be used to create an equation:
-
-![img_004](./images/img_004.png)
-
-![img_005](./images/img_005.png)
-
-![img_006](./images/img_006.png)
-
-![img_007](./images/img_007.png)
-
-Select LaTeX:
-
-![img_008](./images/img_008.png)
-
-Select Current (Linear):
-
-![img_009](./images/img_009.png)
-
-The equation is now in LaTeX format which you can be copied and pasted into a set of single \$ for an inline equation or double \$\$  for a display equation:
-
-![img_010](./images/img_010.png)
-
-There is a subtle difference between TeX and LaTeX. LaTeX is essentially an extension of TeX which is the underlying typeset and LateX can be extended with packages. 
-
-For the purpose of inserting an equation TeX and LaTeX are usually equivalent... However there are sometimes some issues when the equation editor outputs code in LaTeX that is not recognised by TeX and therefore fails to render. For example the following column vector:
-
-$$ \begin{bmatrix}
-   a \\
-   b \\
-   c \\
-   \end{bmatrix} $$
-
-In OnlyOffice Desktop Editors is output using LaTeX:
+Inline Equation example:
 
 ```tex
-$$\left[\matrix{a&b&c}\right$$
+$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$
 ```
 
-And is output in Word using TeX:
+$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$
+
+Display Equation example:
+
+```tex
+$$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$$
+```
+
+$$\sin{\alpha}\pm\sin{\beta}=2\sin{\frac{1}{2}\left(\alpha\pm\beta\right)}\cos{\frac{1}{2}\left(\alpha\mp\beta\right)}$$
+
+
+Only Office Desktop Editors is a free cross-platform office suite developed on GitHub. [GitHub: Only Office Desktop Editors](https://github.com/ONLYOFFICE/DesktopEditors/releases). On Ubuntu a snap package is available in Ubuntu software. It has an equation editor that can be used to visually construct an equation. The constructed equation can be converted to Linear using LaTeX. Markdown uses teX which is a subset of LaTeX. In most cases the equation can be used directly in a Markdown Document or modified slightly:
+
+<img src='./images/img_002.png' alt='img_002' width='600'/>
+
+<img src='./images/img_003.png' alt='img_003' width='600'/>
+
+<img src='./images/img_004.png' alt='img_004' width='600'/>
+
+<img src='./images/img_005.png' alt='img_005' width='600'/>
+
+The equation editor in Microsoft Word is similar.
+
+TeX should be insensitive with spacing and newlines:
 
 ```tex
 $$\left[\begin{matrix}a\\b\\c\end{matrix}\right]$$
 ```
 
-TeX should be insensitive with spacing and newlines however the TeX renderer on GitHub has bugs and this does not render unless it is spaced out over multiple lines:
+However the TeX renderer on GitHub has bugs and this does not render unless it is spaced out over multiple lines:
 
 ```tex
 $$ \begin{bmatrix}
@@ -580,23 +531,14 @@ $$ \begin{bmatrix}
    \end{bmatrix} $$
 ```
 
+$$ \begin{bmatrix}
+   a \\
+   b \\
+   c \\
+   \end{bmatrix} $$
+
 The same issue occurs with matrices:
 
-$$ \begin{bmatrix} 
-   a & b & c \\
-   d & e & f \\
-   g & h & i \\
-   \end{bmatrix} $$
-
-
-GitHub does not render matrices properly provided in linear format:
-
-```tex
-$$\begin{bmatrix}a&b&c\\d&e&f\\g&h&i\\\end{bmatrix}$$
-```
-
-However when input with spacing and newlines it renders properly:
-
 ```tex
 $$ \begin{bmatrix} 
    a & b & c \\
@@ -604,18 +546,25 @@ $$ \begin{bmatrix}
    g & h & i \\
    \end{bmatrix} $$
 ```
+$$ \begin{bmatrix} 
+   a & b & c \\
+   d & e & f \\
+   g & h & i \\
+   \end{bmatrix} $$
 
-In Microsoft Word, the trigonometric identities use additional LaTeX syntax which needs to be simplified into TeX in order to render properly:
+In Microsoft Word, the trigonometric identities use additional LaTeX syntax:
 
-$$\sin(x)$$
-
-```tex
-$$\sin\funcapply(x)$$
+```latex
+$\sin\funcapply(x)$
 ```
 
+This needs to be simplified into TeX in order to render properly:
+
 ```tex
-$$\sin(x)$$
+$\sin(x)$
 ```
+
+$\sin(x)$
 
 ### Reserved Symbols
 
@@ -1107,4 +1056,4 @@ $$\bigwedge_{\text{lower}}^{\text{upper}}{x}$$
 
 ---
 
-[Return to Anaconda Tutorial](../readme.md)
+[Return to Python Tutorials](../readme.md)
