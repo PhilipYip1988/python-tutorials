@@ -96,6 +96,7 @@ In [9]: np.
 #     - bool_                      : Boolean type (True or False).
 #     - str_                       : Unicode string type (variable length).
 #     - bytes_                     : Byte string type (variable length).
+#     - object_                    : object type.
 #     - datetime64                 : Type representing dates and times.
 #     - timedelta64                : Represents differences in datetime64 objects.
 
@@ -153,6 +154,9 @@ In [9]: np.
 #     - take_along_axis           : Selects elements from an array along an axis using an array of indices.
 #     - compress                  : Selects elements using a condition mask.
 #     - insert                    : Inserts values into an array at specified indices along an axis.
+#     - flip                      : Reverses the order of elements along all or specified axes.
+#     - fliplr                    : Reverses the order of elements along the left-right axis (columns) in a 2D array.
+#     - flipud                    : Reverses the order of elements along the up-down axis (rows) in a 2D array.
 
 # 🔢 Sorting Functions:
 #     - argmin                     : Returns the indices of the minimum values along an axis.
@@ -167,15 +171,10 @@ In [9]: np.
 #     - broadcast                   : Produces an object that mimics broadcasting.
 #     - broadcast_to                : Broadcasts an array to a new shape.
 #     - vectorize                   : Vectorizes a function to apply element-wise on arrays.
+#     - apply_along_axis            : Applies a function along a specific axis of an array.
 
 # 📊 Mathematical Functions:
-#     - add                       : Element-wise addition.
-#     - subtract                  : Element-wise subtraction.
-#     - multiply                  : Element-wise multiplication.
-#     - divide                    : Element-wise division.
-#     - power                     : Element-wise power.
 #     - sqrt                      : Element-wise square root.
-#     - mod                       : Element-wise modulus.
 #     - exp                       : Element-wise exponential (e^x).
 #     - log                       : Natural logarithm (base e).
 #     - log10                     : Base-10 logarithm.
@@ -187,23 +186,44 @@ In [9]: np.
 #     - arctan                    : Inverse tangent function.
 #     - deg2rad                   : Converts degrees to radians.
 #     - rad2deg                   : Converts radians to degrees.
+#     - prod                      : Returns the product array elements.
 #     - cumprod                   : Cumulative product of array elements.
 #     - cumsum                    : Cumulative sum of array elements.
 
 # 📊 Statistical Functions:
-#     - mean                      : Computes the arithmetic mean along the specified axis.
-#     - median                    : Computes the median along the specified axis.
-#     - average                   : Computes the weighted average.
-#     - std                       : Computes the standard deviation along the specified axis.
-#     - var                       : Computes the variance along the specified axis.
 #     - min                       : Returns the minimum value along a given axis.
 #     - max                       : Returns the maximum value along a given axis.
+#     - all                       : Checks if all elements are True along the specified axis.
+#     - any                       : Checks if any elements are True along the specified axis.
+#     - sum                       : Returns the sum of ndarray elements along the specified axis.
+
+#     - mean                      : Computes the arithmetic mean along the specified axis.
+#     - var                       : Computes the variance along the specified axis.
+#     - std                       : Computes the standard deviation along the specified axis.
 #     - ptp                       : Peak-to-peak (max - min) value along an axis.
+
+#     - median                    : Computes the median along the specified axis.
+#     - average                   : Computes the weighted average.
 #     - quantile                  : Computes the q-th quantile of the data along the specified axis.
 #     - histogram                 : Computes the histogram of a set of data.
 #     - bincount                  : Counts the number of occurrences of each value in a 1D array.
 #     - corrcoef                  : Computes the Pearson correlation coefficients.
 #     - cov                       : Computes the covariance matrix.
+
+# 🔗 Supplementary Numerical Identifiers
+#     - round                      : Rounds the ndarray elements to the given number of decimals.
+#     - astype                     : Converts the ndarray to a different data type.
+#     - clip                       : Limits the values in the ndarray to a given range.
+#     - choose                     : Constructs an ndarray by selecting elements from a sequence of ndarrays.
+#     - diff                       : Returns the difference of ndarray elements along the specified axis.
+#     - signbit                    : Returns True for negative values.
+#     - isfinite                   : Returns True for finite elements.
+#     - isinf                      : Returns True for infinite elements.
+#     - isnan                      : Returns True for NaN elements.
+#     - isreal                     : Returns True for real elements in the array.
+#     - iscomplex                  : Returns True for complex elements in the array.
+#     - isrealobj                  : Checks if the array is entirely real (no imaginary parts).
+#     - iscomplexobj               : Checks if the array is entirely complex.            : Returns True for negative values.
 
 # 📦 Set Operations:
 #     - unique                    : Finds the unique elements of an array.
@@ -214,16 +234,18 @@ In [9]: np.
 #     - in1d                      : Tests whether each element of a 1D array is also in a second array.
 
 # 🎲 Random Number Generation
+#     - random.seed                 : Sets the seed for the random number generator.
 #     - random.rand                 : Generates random numbers in a uniform distribution over [0,1].
 #     - random.randn                : Generates random numbers in a standard normal distribution.
 #     - random.randint              : Generates random integers within a specified range.
 #     - random.random_sample        : Returns random floats in the half-open interval [0.0, 1.0).
 #     - random.choice               : Generates a random sample from a given array.
 #     - random.shuffle              : Randomly shuffles an array.
-#     - random.seed                 : Sets the seed for the random number generator.
 
 # 🧮 Linear Algebra
 #     - dot                         : Dot product of two arrays.
+#     - inner                       : Inner product of two arrays.
+#     - outer                       : Outer product of two arrays.
 #     - matmul                      : Matrix product of two arrays.
 #     - linalg.inv                  : Computes the inverse of a matrix.
 #     - linalg.eig                  : Computes the eigenvalues and eigenvectors of a matrix.
@@ -271,38 +293,6 @@ In [9]: np.ndarray
 #     - __init_subclass__          : Called when a subclass of ndarray is created.
 #     - __subclasshook__           : Defines custom behavior for determining class inheritance.
 
-# 🔗 Numeric Identifiers
-#     - __abs__                    : Returns the absolute value of the ndarray object.
-#     - __pos__                    : Unary plus (+) for the ndarray object.
-#     - __neg__                    : Unary minus (-) for the ndarray object.
-#     - __add__                    : Addition operation (+).
-#     - __sub__                    : Subtraction operation (-).
-#     - __mul__                    : Multiplication operation (*).
-#     - __pow__                    : Power operation (**).
-#     - __floordiv__               : Floor division (//).
-#     - __mod__                    : Modulus operation (%).
-#     - __divmod__                 : Division and modulus together (divmod()).
-#     - __truediv__                : True division (/).
-#     - __radd__                   : Reverse addition (right-hand side).
-#     - __rsub__                   : Reverse subtraction.
-#     - __rmul__                   : Reverse multiplication.
-#     - __rpow__                   : Reverse power operation.
-#     - __rfloordiv__              : Reverse floor division.
-#     - __rmod__                   : Reverse modulus.
-#     - __rdivmod__                : Reverse division and modulus together.
-#     - __rtruediv__               : Reverse true division.
-#     - real                       : The real part of a complex ndarray.
-#     - imag                       : The imaginary part of a complex ndarray.
-#     - conjugate                  : The complex conjugate of the ndarray.
-
-# 🔗 Bitwise Identifiers
-#     - __and__                    : Bitwise and.
-#     - __or__                     : Bitwise or.
-#     - __xor__                    : Bitwise xor.
-#     - __invert__                 : Bitwise not.
-#     - __lshift__                 : Bitwise left shift.
-#     - __rshift__                 : Bitwise right shift.
-
 # 🔗 Casting Identifiers
 #     - tolist                     : Converts the ndarray to a nested list.
 #     - tobytes                    : Converts the ndarray to a bytes string.
@@ -344,27 +334,70 @@ In [9]: np.ndarray
 #     - argsort                    : Returns the indices that would sort the ndarray.
 #     - searchsorted               : Finds indices where elements should be inserted to maintain order.
 
+# 🔗 Numeric Identifiers
+#     - __abs__                    : Returns the absolute value of the ndarray object.
+#     - __pos__                    : Unary plus (+) for the ndarray object.
+#     - __neg__                    : Unary minus (-) for the ndarray object.
+#     - __add__                    : Addition operation (+).
+#     - __sub__                    : Subtraction operation (-).
+#     - __mul__                    : Multiplication operation (*).
+#     - __pow__                    : Power operation (**).
+#     - __floordiv__               : Floor division (//).
+#     - __mod__                    : Modulus operation (%).
+#     - __divmod__                 : Division and modulus together (divmod()).
+#     - __truediv__                : True division (/).
+#     - __radd__                   : Reverse addition (right-hand side).
+#     - __rsub__                   : Reverse subtraction.
+#     - __rmul__                   : Reverse multiplication.
+#     - __rpow__                   : Reverse power operation.
+#     - __rfloordiv__              : Reverse floor division.
+#     - __rmod__                   : Reverse modulus.
+#     - __rdivmod__                : Reverse division and modulus together.
+#     - __rtruediv__               : Reverse true division.
+#     - real                       : The real part of a complex ndarray.
+#     - imag                       : The imaginary part of a complex ndarray.
+#     - conjugate                  : The complex conjugate of the ndarray.
+
+# 🔗 Bitwise Identifiers
+#     - __and__                    : Bitwise and.
+#     - __or__                     : Bitwise or.
+#     - __xor__                    : Bitwise xor.
+#     - __invert__                 : Bitwise not.
+#     - __lshift__                 : Bitwise left shift.
+#     - __rshift__                 : Bitwise right shift.
+
+# 📊 Mathematical Functions:
+#     - prod                      : Returns the product array elements.
+#     - cumprod                   : Cumulative product of array elements.
+#     - cumsum                    : Cumulative sum of array elements.
+
+# 📊 Statistical Functions:
+#     - min                       : Returns the minimum value along a given axis.
+#     - max                       : Returns the maximum value along a given axis.
+#     - all                       : Checks if all elements are True along the specified axis.
+#     - any                       : Checks if any elements are True along the specified axis.
+#     - sum                       : Returns the sum of ndarray elements along the specified axis.
+
+#     - mean                      : Computes the arithmetic mean along the specified axis.
+#     - var                       : Computes the variance along the specified axis.
+#     - std                       : Computes the standard deviation along the specified axis.
+#     - ptp                       : Peak-to-peak (max - min) value along an axis.
+
+
 # 🔗 Supplementary Numerical Identifiers
 #     - round                      : Rounds the ndarray elements to the given number of decimals.
 #     - astype                     : Converts the ndarray to a different data type.
-#     - dot                        : Computes the dot product of two ndarrays.
-#     - conjugate                  : Returns the complex conjugate of the ndarray.
-#     - min                        : Returns the minimum value along the specified axis.
-#     - max                        : Returns the maximum value along the specified axis.
 #     - clip                       : Limits the values in the ndarray to a given range.
-#     - mean                       : Returns the mean value along the specified axis.
 #     - all                        : Checks if all elements are True along the specified axis.
 #     - any                        : Checks if any elements are True along the specified axis.
-#     - sum                        : Returns the sum of ndarray elements along the specified axis.
-#     - var                        : Returns the variance along the specified axis.
-#     - std                        : Returns the standard deviation along the specified axis.
 #     - prod                       : Returns the product of ndarray elements along the specified axis.
 #     - cumprod                    : Returns the cumulative product of ndarray elements.
 #     - cumsum                     : Returns the cumulative sum of ndarray elements.
 #     - choose                     : Constructs an ndarray by selecting elements from a sequence of ndarrays.
 
-# 🔗 Miscellaneous Operations
-#     - byteswap                   : Swaps the byte order of the ndarray data.
+# 🧮 Linear Algebra
+#     - dot                         : Dot product of two arrays.
+#     - __matmul__                  : Matrix product of two arrays.
 ```
 
 Notice that the `ndarray`, like everything in Python follows an `object` design pattern. Notice also that the `ndarray` follows a numeric design pattern and a `Collection`-like design pattern. Most of the methods in the `ndarray` are immutable however a handful of the methods are mutable, behaving consistently to their design pattern.
@@ -1408,8 +1441,7 @@ The 2d `ndarray` on the other hand is a singular data structure:
   <tr>
     <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
     <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1</td>  
-    <td style="padding: 8px; background-color: #a33c8d; color: #ffffff;">2</td>  
-          
+    <td style="padding: 8px; background-color: #a33c8d; color: #ffffff;">2</td>     
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
@@ -3402,10 +3434,9 @@ Humans visualise data only in 3 dimensions. Higher dimensions are harder to conc
 
 <img src='./images/img_006.png' alt='img_006' width='400'/>
 
-`axis` is a common optional parameter in many functions and methods. `axis=None` generally flattens the `ndarray` treating it as a vector (1d `ndarray`), `axis=-1` means an operation is being carried out along the `axis` that represents the number of columns, `axis=-2` means an operation is being carried out along the `axis` that represents the number of rows, `axis=-3` means an operation is being carried out along the `axis` that represents the number of sheets... This can be seen with the `concatenate` function:
+`axis` is a common optional parameter in many functions and methods. `axis=None` generally flattens the `ndarray` treating it as a vector (1d `ndarray`), `axis=-1` means an operation is being carried out along the `axis` that represents the number of columns, `axis=-2` means an operation is being carried out along the `axis` that represents the number of rows, `axis=-3` means an operation is being carried out along the `axis` that represents the number of sheets... This can be seen with the `flip` function:
 
 ```python
-
 In [7]: book
 Out[7]:
 array([[[1. , 2. , 3. , 4. ],
@@ -3417,17 +3448,81 @@ array([[[1. , 2. , 3. , 4. ],
        [[1.2, 2.2, 3.2, 4.2],
         [5.2, 6.2, 7.2, 8.2]]])
 
-In [8]: book.shape
-Out[8]: (3, 2, 4)
+In [8]: np.flip(book, axis=-1) # flip along column axis
+Out[8]: 
+array([[[4. , 3. , 2. , 1. ],
+        [8. , 7. , 6. , 5. ]],
 
-In [9]: np.concatenate((book, book), axis=None) # flatten
-Out[9]: array([1. , 2. , 3. , 4. , 5. , 6. , 7. , 8. , 1.1, 2.1, 3.1, 4.1, 5.1,
+       [[4.1, 3.1, 2.1, 1.1],
+        [8.1, 7.1, 6.1, 5.1]],
+
+       [[4.2, 3.2, 2.2, 1.2],
+        [8.2, 7.2, 6.2, 5.2]]])
+
+In [9]: np.flip(book, axis=-2) # flip along row axis
+Out[9]: 
+array([[[5. , 6. , 7. , 8. ],
+        [1. , 2. , 3. , 4. ]],
+
+       [[5.1, 6.1, 7.1, 8.1],
+        [1.1, 2.1, 3.1, 4.1]],
+
+       [[5.2, 6.2, 7.2, 8.2],
+        [1.2, 2.2, 3.2, 4.2]]])
+```
+
+`fliplr` and `flipud` are equivalent functions that flip along `axis=-1` (the column axis) and `axis-2` (the row axis) respectively:
+
+```python
+In [10]: np.fliplr(book)
+Out[10]: 
+array([[[5. , 6. , 7. , 8. ],
+        [1. , 2. , 3. , 4. ]],
+
+       [[5.1, 6.1, 7.1, 8.1],
+        [1.1, 2.1, 3.1, 4.1]],
+
+       [[5.2, 6.2, 7.2, 8.2],
+        [1.2, 2.2, 3.2, 4.2]]])
+
+In [11]: np.flipud(book)
+Out[11]: 
+array([[[1.2, 2.2, 3.2, 4.2],
+        [5.2, 6.2, 7.2, 8.2]],
+
+       [[1.1, 2.1, 3.1, 4.1],
+        [5.1, 6.1, 7.1, 8.1]],
+
+       [[1. , 2. , 3. , 4. ],
+        [5. , 6. , 7. , 8. ]]])
+```
+
+The effect of `axis` can also be seen with the `concatenate` function:
+
+```python
+
+In [12]: book
+Out[12]:
+array([[[1. , 2. , 3. , 4. ],
+        [5. , 6. , 7. , 8. ]],
+
+       [[1.1, 2.1, 3.1, 4.1],
+        [5.1, 6.1, 7.1, 8.1]],
+
+       [[1.2, 2.2, 3.2, 4.2],
+        [5.2, 6.2, 7.2, 8.2]]])
+
+In [13]: book.shape
+Out[13]: (3, 2, 4)
+
+In [14]: np.concatenate((book, book), axis=None) # flatten
+Out[14]: array([1. , 2. , 3. , 4. , 5. , 6. , 7. , 8. , 1.1, 2.1, 3.1, 4.1, 5.1,
        6.1, 7.1, 8.1, 1.2, 2.2, 3.2, 4.2, 5.2, 6.2, 7.2, 8.2, 1. , 2. ,
        3. , 4. , 5. , 6. , 7. , 8. , 1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 7.1,
        8.1, 1.2, 2.2, 3.2, 4.2, 5.2, 6.2, 7.2, 8.2])
 
-In [11]: np.concatenate((book, book), axis=-1) # along column axis
-Out[11]:
+In [15]: np.concatenate((book, book), axis=-1) # along column axis
+Out[15]:
 array([[[1. , 2. , 3. , 4. , 1. , 2. , 3. , 4. ],
         [5. , 6. , 7. , 8. , 5. , 6. , 7. , 8. ]],
 
@@ -3437,8 +3532,8 @@ array([[[1. , 2. , 3. , 4. , 1. , 2. , 3. , 4. ],
        [[1.2, 2.2, 3.2, 4.2, 1.2, 2.2, 3.2, 4.2],
         [5.2, 6.2, 7.2, 8.2, 5.2, 6.2, 7.2, 8.2]]])
 
-In [12]: np.concatenate((book, book), axis=-2) # along row axis 
-Out[12]:
+In [16]: np.concatenate((book, book), axis=-2) # along row axis 
+Out[16]:
 array([[[1. , 2. , 3. , 4. ],
         [5. , 6. , 7. , 8. ],
         [1. , 2. , 3. , 4. ],
@@ -3454,8 +3549,8 @@ array([[[1. , 2. , 3. , 4. ],
         [1.2, 2.2, 3.2, 4.2],
         [5.2, 6.2, 7.2, 8.2]]])
 
-In [12]: np.concatenate((book, book), axis=-3) # along sheet axis
-Out[12]:
+In [17]: np.concatenate((book, book), axis=-3) # along sheet axis
+Out[17]:
 array([[[1. , 2. , 3. , 4. ],
         [5. , 6. , 7. , 8. ]],
 
@@ -3478,8 +3573,8 @@ array([[[1. , 2. , 3. , 4. ],
 The `insert` function when operated along `axis=-2` (the row axis) can be used to insert a row of an equal number of columns:
 
 ```python
-In [13]: np.insert(book, 1, np.full((1, 4), 99), axis=-2)
-Out[13]:
+In [18]: np.insert(book, 1, np.full((1, 4), 99), axis=-2)
+Out[18]:
 array([[[ 1. ,  2. ,  3. ,  4. ],
         [99. , 99. , 99. , 99. ],
         [ 5. ,  6. ,  7. ,  8. ]],
@@ -3496,7 +3591,7 @@ array([[[ 1. ,  2. ,  3. ,  4. ],
 Note `insert` is not defined as a mutable method for the `ndarray` and the function returns a new value.
 
 ```python
-In [14]: exit
+In [19]: exit
 ```
 
 ## sorting
@@ -3780,275 +3875,1404 @@ array([[ 3,  7, 10, 12],
        [ 1,  4, 11, 14]])
 ```
 
+The following matrix has a number of zero-elements:
+
+```python
+In [14]: mat = np.array([[0, 7, 0, 0],
+       :                 [0, 9, 0, 6],
+       :                 [0, 14, 4, 11]])
+```
+
+The number of non-zeros can be counted along the column axis (`axis=-1`) using:
+
+```python
+In [15]: np.count_nonzero(mat, axis=-1, keepdims=True)
+Out[15]: 
+array([[1],
+       [2],
+       [3]])
+```
+
+The indexes of these zero elements can be retrieved using the method `nonzero`:
+
+```python
+In [16]: mat.nonzero()
+Out[16]: (array([0, 1, 1, 2, 2, 2]), array([1, 1, 3, 1, 2, 3]))
+```
+
+`mat` can be indexed into using these indexes to retrieve a vector of these non-zero values:
+
+```python
+In [17]: mat[mat.nonzero()]
+Out[17]: array([ 7,  9,  6, 14,  4, 11])
+```
+
+Supposing there is the following sorted vector:
+
+```python
+In [18]: vec = np.array([3, 4, 4, 7, 9])
+```
+
+And the following sorted elements are to be inserted into the vector:
+
+```python
+In [19]: elements = np.array([1, 2, 6, 6, 8, 10, 11, 13])
+```
+
+The indexes to insert each element into `vec` can be calculated using the method `searchsorted`:
+
+```python
+In [20]: vec.searchsorted(elements)
+Out[20]: array([0, 0, 3, 3, 4, 5, 5, 5])
+```
+
+Note both `1` and `2` from `elements` are smaller than the smallest element `3` in `vec` and should be inserted at index `0`. Likewise `10`, `11` and `13` from `elements` are larger than `9` the largest element in `vec` and are therefore inserted at index `-1`, which in this case is `5`. These indexes can be used with the `insert` function:
+
+```python
+In [21]: np.insert(vec, vec.searchsorted(elements), elements)
+Out[21]: array([ 1,  2,  3,  4,  4,  6,  6,  7,  8,  9, 10, 11, 13])
+```
+
+When 2 elements are inserted at the same index, the order the elements are inserted is maintained. This can be seen clearly with the example below. Both `3` and `2` are inserted at index `1`. As `3` was provided first, this displays before `2`:
+
+```python
+In [22]: np.insert(np.array([9, 9, 9]), np.array([1, 1]), np.array([3, 2]))
+Out[22]: array([9, 3, 2, 9, 9])
+```
+
+## Broadcasting and Vectorization
+
+If the kernel is restarted and `numpy` is imported:
+
+```python
+In [23]: exit
+In [1]: import numpy as np
+```
+
+`np` has the following functions:
+
+```python
+In [2]: np.
+# 🔗 Broadcasting and Vectorization
+#     - broadcast                   : Produces an object that mimics broadcasting.
+#     - broadcast_to                : Broadcasts an array to a new shape.
+#     - vectorize                   : Vectorizes a function to apply element-wise on arrays.
+#     - apply_along_axis            : Applies a function along a specific axis of an array.
+```
+
+The function broadcast to can be used to broadcast a scalar to a vector or higher dimension `ndarray`:
+
+```python
+In [2]: scalar = 9
+      : vector = np.array([1, 2, 3, 4])
+In [3]: np.broadcast_to(scalar, vector.shape)
+Out[3]: array([9, 9, 9, 9])
+```
+
+A `row` or a `column` to a matrix:
+
+```python
+In [4]: row = np.array([[9, 10]])
+      : mat = np.array([[1, 2],
+      :                 [3, 4],
+      :                 [5, 6]])
+
+In [5]: np.broadcast_to(row, mat.shape)
+Out[5]: 
+array([[ 9, 10],
+       [ 9, 10],
+       [ 9, 10]])
+
+In [6]: col = np.array([[9],
+      :                 [10],
+      :                 [11]])
+      : mat = np.array([[1, 2],
+      :                 [3, 4],
+      :                 [5, 6]])
+
+In [7]: np.broadcast_to(col, mat.shape)
+Out[7]: 
+array([[ 9,  9],
+       [10, 10],
+       [11, 11]])
+```
+
+A matrix which can be conceptualised as a sheet can be broadcast to a book:
+
+```python
+In [8]: sheet = np.array([[-1, -2, -3, -4],
+      :                   [-5, -6, -7, -8]])
+      :
+      : book = np.array([[[1. , 2. , 3. , 4. ],
+      :                   [5. , 6. , 7. , 8. ]],
+      :
+      :                  [[1.1, 2.1, 3.1, 4.1],
+      :                   [5.1, 6.1, 7.1, 8.1]],
+      :
+      :                  [[1.2, 2.2, 3.2, 4.2],
+      :                   [5.2, 6.2, 7.2, 8.2]]])
+
+In [9]: np.broadcast_to(sheet, book.shape)
+Out[9]: 
+array([[[-1, -2, -3, -4],
+        [-5, -6, -7, -8]],
+
+       [[-1, -2, -3, -4],
+        [-5, -6, -7, -8]],
+
+       [[-1, -2, -3, -4],
+        [-5, -6, -7, -8]]])
+```
+
+Returning to:
+
+```python
+In [10]: scalar = 9
+       : vector = np.array([1, 2, 3, 4])
+In [11]: np.broadcast_to(scalar, vector.shape)
+Out[11]: array([9, 9, 9, 9])
+```
+
+The `broadcast` function can be used to create a broadcast `object`:
+
+```python
+In [11]: b = np.broadcast(scalar, vector)
+       : b
+Out[11]: <numpy.broadcast at 0x275f2d617b0>
+```
+
+The broadcast `object` has a shape:
+
+```python
+In [12]: b.shape
+Out[12]: (4,)
+```
+
+And can be looped through in a `list` comprehension:
+
+```python
+In [13]: [nums for nums in b]
+Out[13]: [(np.int64(9), np.int64(1)),
+          (np.int64(9), np.int64(2)),
+          (np.int64(9), np.int64(3)),
+          (np.int64(9), np.int64(4))]
+```
+
+Notice every item in the `list` is a 2 element `tuple` of number, therefore a numeric operator can be used between these two elements:
+
+```python:
+In [14]: b = np.broadcast(scalar, vector)
+       :
+       : [num1 + num2 for (num1, num2) in b]
+Out[14]: [10, 11, 12, 13]
+```
+
+More typically an empty `ndarray` is constructed using the shape of `b` and if the `out
+
+```python:
+In [14]: b = np.broadcast(scalar, vector)
+       : result = np.empty(b.shape)
+```
+
+A `flat` iterator can be taken from the empty `result` and assigned to the `list` comprehension. Notice that `result` has the dimensions of the `vector`, which the `scalar` was also broadcast to and the numeric operation has been carried out for each element:
+
+```python
+In [15]: result.flat = [num1 + num2 for (num1, num2) in b]
+       : result
+Out[15]: np.array([10, 11, 12, 13])
+```
+
+This works for higher dimensional broadcasting:
+
+```python:
+In [16]: b = np.broadcast(sheet, book)
+       : result = np.empty(b.shape)
+       : result.flat = [num1 + num2 for (num1, num2) in b]
+       : result
+Out[16]: 
+array([[[0. , 0. , 0. , 0. ],
+        [0. , 0. , 0. , 0. ]],
+
+       [[0.1, 0.1, 0.1, 0.1],
+        [0.1, 0.1, 0.1, 0.1]],
+
+       [[0.2, 0.2, 0.2, 0.2],
+        [0.2, 0.2, 0.2, 0.2]]])
+```
+
+When the numeric operators is used, it is automatically broadcast:
+
+```python
+In [17]: sheet + book
+Out[17]: 
+array([[[0. , 0. , 0. , 0. ],
+        [0. , 0. , 0. , 0. ]],
+
+       [[0.1, 0.1, 0.1, 0.1],
+        [0.1, 0.1, 0.1, 0.1]],
+
+       [[0.2, 0.2, 0.2, 0.2],
+        [0.2, 0.2, 0.2, 0.2]]])
+```
+
+All of the numeric operators found in the `int`, `float` and `bool` classes previously examined are broadcast and operate element by element:
+
+```python
+In [18]: np.ndarray.
+# 🔗 Object Identifiers
+#     - __eq__                     : Equality comparison (==).
+#     - __ne__                     : Inequality comparison (!=).
+#     - __ge__                     : Greater than or equal to comparison (>=).
+#     - __le__                     : Less than or equal to comparison (<=).
+#     - __gt__                     : Greater than comparison (>).
+#     - __lt__                     : Less than comparison (<).
+
+# 🔗 Numeric Identifiers
+#     - __abs__                    : Returns the absolute value of the ndarray object.
+#     - __pos__                    : Unary plus (+) for the ndarray object.
+#     - __neg__                    : Unary minus (-) for the ndarray object.
+#     - __add__                    : Addition operation (+).
+#     - __sub__                    : Subtraction operation (-).
+#     - __mul__                    : Multiplication operation (*).
+#     - __pow__                    : Power operation (**).
+#     - __floordiv__               : Floor division (//).
+#     - __mod__                    : Modulus operation (%).
+#     - __divmod__                 : Division and modulus together (divmod()).
+#     - __truediv__                : True division (/).
+#     - __radd__                   : Reverse addition (right-hand side).
+#     - __rsub__                   : Reverse subtraction.
+#     - __rmul__                   : Reverse multiplication.
+#     - __rpow__                   : Reverse power operation.
+#     - __rfloordiv__              : Reverse floor division.
+#     - __rmod__                   : Reverse modulus.
+#     - __rdivmod__                : Reverse division and modulus together.
+#     - __rtruediv__               : Reverse true division.
+#     - real                       : The real part of a complex ndarray.
+#     - imag                       : The imaginary part of a complex ndarray.
+#     - conjugate                  : The complex conjugate of the ndarray.
+
+# 🔗 Bitwise Identifiers
+#     - __and__                    : Bitwise and.
+#     - __or__                     : Bitwise or.
+#     - __xor__                    : Bitwise xor.
+#     - __invert__                 : Bitwise not.
+#     - __lshift__                 : Bitwise left shift.
+#     - __rshift__                 : Bitwise right shift.
+```
+
+Note that many of the data model methods are also available as functions in the `numpy` namespace however generally the data model and numeric operator is preferred:
+
+```python
+In [19]: np.
+# 🔢 Arithmetic Operations
+#     - abs                        : Equivalent to `__abs__`.
+#     - positive                   : Equivalent to `__pos__`.
+#     - negative                   : Equivalent to `__neg__`.
+#     - add                        : Equivalent to `__add__`.
+#     - subtract                   : Equivalent to `__sub__`.
+#     - multiply                   : Equivalent to `__mul__`.
+#     - matmul                     : Equivalent to `__matmul__`.
+#     - pow                        : Equivalent to `__pow__`.
+#     - power                      : Alias for pow, equivalent to `__pow__`.
+#     - floor_divide               : Equivalent to `__floordiv__`.
+#     - mod                        : Equivalent to `__mod__`.
+#     - remainder                  : Alias for mod, equivalent to `__mod__`.
+#     - divmod                     : Equivalent to `__divmod__`.
+#     - true_divide                : Equivalent to `__truediv__`.
+
+# ⚖️ Comparison Operations
+#     - equal                      : Equivalent to `__eq__`.
+#     - not_equal                  : Equivalent to `__ne__`.
+#     - greater                    : Equivalent to `__gt__`.
+#     - greater_equal              : Equivalent to `__ge__`.
+#     - less                       : Equivalent to `__lt__`.
+#     - less_equal                 : Equivalent to `__le__`.
+
+# 🧮 Bitwise Operations
+#     - logical_and                : Equivalent to `__and__`.
+#     - logical_or                 : Equivalent to `__or__`.
+#     - logical_xor                : Equivalent to `__xor__`.
+#     - logical_not                : Equivalent to `__invert__`.
+#     - invert                     : Equivalent to `__invert__`.
+#     - bitwise_and                : Equivalent to `__and__`.
+#     - bitwise_or                 : Equivalent to `__or__`.
+#     - bitwise_xor                : Equivalent to `__xor__`.
+#     - left_shift                 : Equivalent to `__lshift__`.
+#     - right_shift                : Equivalent to `__rshift__`.
+```
+
+If the following function is defined:
+
+```python
+In [19]: def croot(num):
+       :     return num ** (1 / 3)
+```
+
+It can be mapped to a `list` using `map`:
+
+```python
+In [20]: map(croot, [1, 3, 27])
+Out[20]: <map at 0x275f6d61c60>
+```
+
+The `map` `object` can be cast into a `list` to return all the values:
+
+```python
+In [21]: list(map(croot, [1, 3, 27]))
+Out[21]: [1.0, 1.4422495703074083, 3.0]
+```
+
+The function `vectorize` is similar but vectorizes the function to an `ndarray`:
+
+```python
+In [22]: croot_vectorize = np.vectorize(croot)
+```
+
+This vectorized function can be applied to an `ndarray` and operates element by element:
+
+```python
+In [23]: croot_vectorize(np.array([[1, 3], 
+       :                           [27, 64]]))
+Out[23]: 
+array([[1.        , 1.44224957],
+       [3.        , 4.        ]])
+```
+
+The `builtins` function `max` cannot be vectorized because it does not operate on a scalar:
+
+```python
+In [24]: max_vectorized = np.vectorize(max)
+
+In [25]: mat
+Out[25]: array([[1, 2],
+       :        [3, 4],
+       :        [5, 6]])
+
+In [26]: max_vectorized(mat)
+TypeError: 'numpy.int64' object is not iterable
+```
+
+The function `apply_along_axis` can be used to apply the `max` function along the axis of an array
+
+```python
+In [27]: np.apply_along_axis(max, axis=1, arr=mat, keepdims=True)
+Out[27]: array([2, 4, 6])
+```
+
+The `numpy` library includes vectorization of most of the functions from the `math` module:
+
+```python
+In [28]: np.
+# 📊 Mathematical Functions:
+#     - exp                       : Element-wise exponential (e^x).
+#     - log                       : Natural logarithm (base e).
+#     - log10                     : Base-10 logarithm.
+#     - sin                       : Trigonometric sine function.
+#     - cos                       : Trigonometric cosine function.
+#     - tan                       : Trigonometric tangent function.
+#     - arcsin                    : Inverse sine function.
+#     - arccos                    : Inverse cosine function.
+#     - arctan                    : Inverse tangent function.
+#     - deg2rad                   : Converts degrees to radians.
+#     - rad2deg                   : Converts radians to degrees.
+#     - cumprod                   : Cumulative product of array elements.
+#     - cumsum                    : Cumulative sum of array elements.
+```
+
+These vectorized mathematical functions are quite commonly used in conjunction with the `linspace` function:
+
+```python
+In [29]: np.linspace(0, 2*np.pi, 10)
+Out[29]: 
+array([0.        , 0.6981317 , 1.3962634 , 2.0943951 , 2.7925268 ,
+       3.4906585 , 4.1887902 , 4.88692191, 5.58505361, 6.28318531])
+
+In [30]: np.sin(np.linspace(0, 2*np.pi, 10))
+Out[30]: 
+array([ 0.00000000e+00,  6.42787610e-01,  9.84807753e-01,  8.66025404e-01,
+        3.42020143e-01, -3.42020143e-01, -8.66025404e-01, -9.84807753e-01,
+       -6.42787610e-01, -2.44929360e-16])
+```
+
+Most of statistical functions in `builtins` and `statistics` module are available as `mdarray` methods. The methods have `axis` and `keepdims` as optional parameters. These methods are supplemented by functions:
+
+```python
+In [31]: np.ndarray.
+# 📊 Statistical Functions (based on builtins identifiers):
+#     - min                       : Returns the minimum value along a given axis.
+#     - max                       : Returns the maximum value along a given axis.
+#     - all                       : Checks if all elements are True along the specified axis.
+#     - any                       : Checks if any elements are True along the specified axis.
+#     - sum                       : Returns the sum of ndarray elements along the specified axis.
+# 📊 Statistical Functions (based on supplementary math and statistics identifiers):
+#     - mean                      : Computes the arithmetic mean along the specified axis.
+#     - var                       : Computes the variance along the specified axis.
+#     - std                       : Computes the standard deviation along the specified axis.
+#     - ptp                       : Peak-to-peak (max - min) value along an axis.
+```
+
+```python
+In [31]: np.
+# 📊 Statistical Functions (based on builtins identifiers):
+#     - min                       : Returns the minimum value along a given axis.
+#     - max                       : Returns the maximum value along a given axis.
+#     - all                       : Checks if all elements are True along the specified axis.
+#     - any                       : Checks if any elements are True along the specified axis.
+#     - sum                       : Returns the sum of ndarray elements along the specified axis.
+# 📊 Statistical Functions (based on supplementary math and statistics identifiers):
+#     - mean                      : Computes the arithmetic mean along the specified axis.
+#     - var                       : Computes the variance along the specified axis.
+#     - std                       : Computes the standard deviation along the specified axis.
+#     - ptp                       : Peak-to-peak (max - min) value along an axis.
+#     - median                    : Computes the median along the specified axis.
+#     - average                   : Computes the weighted average.
+#     - quantile                  : Computes the q-th quantile of the data along the specified axis.
+#     - histogram                 : Computes the histogram of a set of data.
+#     - bincount                  : Counts the number of occurrences of each value in a 1D array.
+#     - corrcoef                  : Computes the Pearson correlation coefficients.
+#     - cov                       : Computes the covariance matrix.
+```
+
+Note that the method `var` and `std` also include the parameter delta degrees of freedom `ddof` which has a default value of `0`. This is normally assigned to `-1` when looking at the variance or standard deviation along a sample along a single axis:
+
+```python
+In [31]: nums = [1, 2, 3]
+
+In [32]: import statistics
+       : statistics.mean(nums)
+Out[32]: 2
+
+In [33]: statistics.stdev(nums)
+Out[33]: 1.0
+
+In [34]: mat = np.array([1, 2, 3])
+
+In [35]: mat.mean()
+Out[35]: np.float64(2.0)
+
+In [35]: mat.std()
+Out[35]: np.float64(0.816496580927726)
+
+In [36]: mat.std(ddof=1)
+Out[36]: np.float64(1.0)
+```
+
+The following methods and functions and also available:
+
+```python
+In [37]: np.ndarray.
+# 🔗 Supplementary Numerical Identifiers
+#     - round                      : Rounds the ndarray elements to the given number of decimals.
+#     - astype                     : Converts the ndarray to a different data type.
+#     - clip                       : Limits the values in the ndarray to a given range.
+#     - choose                     : Constructs an ndarray by selecting elements from a sequence of ndarrays.
+```
+
+```python
+In [37]: np.
+# 🔗 Supplementary Numerical Identifiers
+#     - round                      : Rounds the ndarray elements to the given number of decimals.
+#     - astype                     : Converts the ndarray to a different data type.
+#     - clip                       : Limits the values in the ndarray to a given range.
+#     - diff                       : Returns the difference of ndarray elements along the specified axis.
+```
+
+The data model method `__round__` is not defined for a `ndarray` and instead the `round` method is used:
+
+```python
+In [37]: mat = np.array([[1.12, -2.12, 3.12, -4.12],
+       :                 [-5.12, 6.12, -7.12, 8.12],
+       :                 [9.12, -10.12, 11.12, -12.12]])
+
+In [38]: mat.round() # defaults to integer rounding
+Out[38]: 
+array([[  1.,  -2.,   3.,  -4.],
+       [ -5.,   6.,  -7.,   8.],
+       [  9., -10.,  11., -12.]])
+
+In [39]: np.round(1)
+Out[39]: 
+array([[  1.1,  -2.1,   3.1,  -4.1],
+       [ -5.1,   6.1,  -7.1,   8.1],
+       [  9.1, -10.1,  11.1, -12.1]])
+```
+
+Notice:
+
+```python
+In [40]: mat.round().dtype
+Out[40]: dtype('float64')
+```
+
+If this is compared to `__round__`, notice that the class type is changed when rounding to an `int`:
+
+```python
+In [40]: round(5.12)
+Out[40]: 5
+
+In [41]: round(5.12)
+Out[41]: 5
+
+In [41]: round(5.12, 1)
+Out[41]: 5
+
+In [42]: type(round(5.1))
+Out[42]: int
+
+In [43]: type(round(5.12, 1))
+Out[43]: float
+```
+
+The `round` method does not change the datatype of a `ndarray`. This can be manually changed using the method `astype`:
+
+```python
+In [44]: mat.round().astype(np.int64)
+Out[44]: 
+array([[  1,  -2,   3,  -4],
+       [ -5,   6,  -7,   8],
+       [  9, -10,  11, -12]])
+```
+
+Datatypes were briefly covered when casting a `bytes` instance to an `ndarray`. The default integer datatype is `int64`, the default floating point datatype is `float64` and the default complex datatype is `complex128`. Using a datatype that spans over a smaller number of bytes (recall 8 bits are in a byte) can make a program more memory efficient but limits the range of numbers:
+
+```python
+In [45]: np.
+# 🏷️ Data Types:
+#     - int8                       : 8-bit signed integer (-128 to 127).
+#     - int16                      : 16-bit signed integer (-32768 to 32767).
+#     - int32                      : 32-bit signed integer (-2147483648 to 2147483647).
+#     - int64                      : 64-bit signed integer (-9223372036854775808 to 9223372036854775807).
+#     - uint8                      : 8-bit unsigned integer (0 to 255).
+#     - uint16                     : 16-bit unsigned integer (0 to 65535).
+#     - uint32                     : 32-bit unsigned integer (0 to 4294967295).
+#     - uint64                     : 64-bit unsigned integer (0 to 18446744073709551615).
+#     - float16                    : Half precision float (16-bit).
+#     - float32                    : Single precision float (32-bit).
+#     - float64                    : Double precision float (64-bit).
+#     - complex64                  : Complex number represented by two 32-bit floats (real and imaginary).
+#     - complex128                 : Complex number represented by two 64-bit floats.
+```
+
+`np.uint8` stands for unsigned 8 bit integer and ranges between:
+
+```python
+In [45]: range(0, 2**8)
+Out[45]: range(0, 256)
+```
+
+The following matrix is instantiated:
+
+```python
+In [46]: mat = np.array([[1, 2], 
+       :                 [3, 4]], dtype=np.uint8) 
+```
+
+If an integer scalar is added to an `ndarray` and the results are all less than the upper bound `256`, addition behaves as expected:
+
+```python
+In [47]: mat + 200
+Out[47]: 
+array([[201, 202],
+       [203, 204]], dtype=uint8)
+```
+
+Note when the value exceeds `256`, the number rolls over:
+
+```python
+In [48]: mat + 255
+Out[48]:
+array([[0, 1],
+       [2, 3]], dtype=uint8)
+```
+
+If a number is subtracted, so the result is below the lower bound `0`, the number once again rolls over:
+
+```python
+In [49]: mat - 20
+Out[49]:
+array([[237, 238],
+       [239, 240]], dtype=uint8)
+```
+
+`np.int8` stands for signed 8 bit integer and as half of the values are engative and half of the vals are positive ranges between:
+
+```python
+In [50]: range(-2**8 // 2, 2**8 // 2)
+Out[50]: range(-128, 128)
+```
+
+The following matrix is instantiated:
+
+```python
+In [51]: mat = np.array([[1, 2], 
+       :                 [3, 4]], dtype=np.int8) 
+```
+
+If an integer scalar is added to an `ndarray` and the results are all less than the upper bound `256`, addition behaves as expected:
+
+```python
+In [52]: mat + 100
+Out[52]: 
+array([[101, 102],
+       [103, 104]], dtype=int8)
+```
+
+If a result is outwith the specified range, there is an overflow error:
+
+```python
+In [53]: mat + 200
+---------------------------------------------------------------------------
+OverflowError                             Traceback (most recent call last)
+Cell In[53], line 1
+----> 1 mat + 200
+
+OverflowError: Python integer 200 out of bounds for int8
+```
+
+For floating point numbers, the number of `bytes` used essentially restricts the precision. Recall a floating point number normally uses 64 bits and is displayed in decimal but encoded in binary. The binary encoding can be examined using `pickle`:
+
+```python
+In [54]: import pickle
+In [55]: num = 1e-8
+```
+
+The following float is encoded in binary using 8 bytes (64 bits) and the bits are arranged into the sign, biased exponent and mantissa:
+
+```python
+In [56]: binary = bin(int(pickle.dumps(num).hex()[24:40], base=16)).removeprefix('0b').zfill(64)
+
+Out[57]: binary[0], binary[1:12], binary[12:]
+Out[57]: ('0', '01111100100', '0101011110011000111011100010001100001000110000111010')
+```
+
+As the number of bits decreases, the dynamic range in the exponent gets restricted, the `float` `1e-8` for example can be encoded using `np.float64` and `np.float32` but is too small for `np.float16`: 
+
+```python
+In [54]: np.array([1e-8], dtype=np.float64)
+Out[54]: array([1.e-08])
+
+In [55]: np.array([1e-8], dtype=np.float32)
+Out[55]: array([1.e-08], dtype=float32)
+
+In [56]: np.array([1e-8], dtype=np.float16)
+Out[56]: array([0.], dtype=float16)
+```
+
+As decimal encoding uses 10 digits to represent a number and binary only uses 2 digits to encode a number, some numbers displayed in decimal do not encode perfectly in binary, recursive rounding errors display when using floating point numbers:
+
+```python
+In [57]: 0.1 + 0.2
+Out[57]: 0.30000000000000004
+```
+
+When `ndarray` instances are used, rounding to the least significant digit is carried out. The effect of rounding can be compared by casting the result to a `float`:
+
+```python
+In [58]: np.array([0.1], dtype=np.float64) + np.array([0.2], dtype=np.float64)
+Out[58]: array([0.3])
+
+In [59]: float((np.array([0.1], dtype=np.float64) + np.array([0.2], dtype=np.float64))[0])
+Out[59]: 0.30000000000000004
+```
+
+The rounding is essentially:
+
+```
+0.30000000000000004
+0.3000000000000000
+```
+
+When the datatype `np.float32` is used:
+
+```python
+In [60]: np.array([0.1], dtype=np.float32) + np.array([0.2], dtype=np.float32)
+Out[60]: array([0.3])
 
 
+In [61]: float((np.array([0.1], dtype=np.float32) + np.array([0.2], dtype=np.float32))[0])
+Out[61]: 0.30000001192092896
+```
+
+Casting to a `float` which is higher precision, introduces junk values, the number is essentially and rounded to:
+
+```
+0.30000001192092896
+0.30000001
+0.3000000
+```
+
+The lower precision can be seen for `np.float16`:
+
+```python
+In [62]: np.array([0.1], dtype=np.float16) + np.array([0.2], dtype=np.float16)
+Out[62]: array([0.2998], dtype=float16)
+
+In [63]: float((np.array([0.1], dtype=np.float16) + np.array([0.2], dtype=np.float16))[0])
+Out[63]: 0.2998046875
+```
+
+```
+0.2998046875
+0.29980
+0.2998
+```
+
+`ndarray` are not usually preferred over `builtins` classes for non-numeric datatypes however `numpy` supports non-numeric datatypes:
+
+```python
+In [64]: np.
+# 🏷️ Data Types:
+#     - str_                       : Unicode string type (variable length).
+#     - bytes_                     : Byte string type (variable length).
+#     - object_                    : object type.
+```
+
+An `ndarray` of Unicode characters can be created using:
+
+```python
+In [64]: mat = np.array([['a', 'b'], 
+       :                 ['c', 'd']])
+```
+
+Notice that, the type shown on the Variable Explorer is `array of str32` which means each `str` in the `ndarray` is occupying 4 bytes (32 bits) i.e. utf-32 encoding:
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">mat</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of str32</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 2)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[a  b]<br>&nbsp;[c  d]]</td>
+  </tr>                              
+</table>
+
+
+<table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">a</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">b</td>     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">c</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">d</td>        
+  </tr>
+  </table>
+
+
+If the `dtype` is examined:
+
+```python
+In [65]: mat.dtype
+Out[65]: dtype('<U1')
+```
+
+It displays as `'<U1'` which means less than or equal to 1, utf-32 encoded Unicode character. The `ndarray` can be indexed into:
+
+```python
+In [66]: mat[0, 1]
+Out[66]: np.str_('b')
+```
+
+If it is replaced with a string that has more than 1 Unicode character, the `str` is truncated:
+
+```python
+In [67]: mat[0, 1] = 'hello'
+```
+
+<table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">a</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">h</td>     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">c</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">d</td>        
+  </tr>
+  </table>
+
+The `ndarray` can be preallocated a larger memory size during instantiation, for example up to 100 Unicode characters:
+
+```python
+In [68]: mat = np.array([['a', 'b'], 
+       :                 ['c', 'd']], dtype='<U100')
+```
+
+Notice that, the type shown on the Variable Explorer is `array of str3200` which means each `str` in the `ndarray` is occupying 400 bytes (3200 bits):
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">mat</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of str3200</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 2)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[a  b]<br>&nbsp;[c  d]]</td>
+  </tr>                              
+</table>
+
+<table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">a</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">b</td>     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">c</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">d</td>        
+  </tr>
+  </table>
+
+Now the `str` `'hello'` fits and is no longer truncated:
+
+```python
+In [69]: mat[0, 1] = 'hello'
+```
+
+<table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">a</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">hello</td>     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">c</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">d</td>        
+  </tr>
+  </table>
+
+The `ndarray` can also use the datatype `np.object_`:
+
+```python
+In [70]: mat = np.array([['a', 'b', 'c'], 
+       :                 [1, 2, 3]], dtype=np.object_)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">mat</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of object</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 3)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[a  b c]<br>&nbsp;[1 2 3]]</td>
+  </tr>                              
+</table>
+
+<table style="width: 45%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="34" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th> 
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">a</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">b</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">c</td>        
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</td>             
+  </tr>
+  </table>
+
+This is normally only preferred over a builtins datastructure when the indexing capability of the `ndarray` is desired:
+
+```python
+In [71]: mat[0, 1]
+Out[71]: 'b'
+```
+
+An example of this behaviour is seen in the return value of the `pyplot` `subplots` function which returns an `ndarray` of `Axes` instances:
+
+```python
+In [72]: import matplotlib.pyplot as plt
+       : fig, ax = plt.subplots(2, 2)
+```
+
+<img src='./images/img_007.png' alt='img_007' width='400'/>
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">ax</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of object</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 2)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[&lt;Axes: &gt;  &lt;Axes: &gt;]<br>&nbsp;[&lt;Axes: &gt;  &lt;Axes: &gt;]]</td>
+  </tr>                              
+</table>
+
+
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>        
+  </tr>
+  </table>
+
+An `Axes` is selected from the `ndarray`:
+
+```python
+In [73]: ax[1, 0]
+Out[73]: <Axes: >
+
+In [74]: ax[1, 0].plot(np.array([0, 1, 2, 3]), np.array([0, 1, 2, 3]))
+Out[74]: [<matplotlib.lines.Line2D at 0x1ba56efb500>]
+```
+
+<img src='./images/img_008.png' alt='img_008' width='400'/>
+
+`matplotlib` will be examined in more detail in the next tutorial.
+
+The following matrix is instantiated:
+
+```python
+In [75]: mat = np.array([[100, 200],
+       :                 [300, 400]])
+```
+
+The method `clip` will clip all elements between a given range (this does not change the datatype). It has the named parameters `min` and `max`:
+
+```python
+In [76]: mat.clip(min=200)
+Out[76]: 
+array([[200, 200],
+       [300, 400]])
+
+In [77]: mat.clip(max=300)
+Out[77]: 
+array([[100, 200],
+       [300, 300]])
+```
+
+When both are used, they are typically supplied positionally:
+
+```python
+In [78]: mat.clip(200, 300)
+Out[78]: 
+array([[200, 200],
+       [300, 300]])
+```
+
+The following matrix is instantiated:
+
+```python
+In [79]: mat = np.array([[4, 1, 6], 
+       :                 [3, 7, 7], 
+       :                 [9, 5, 0],
+       :                 [8, 5, 2]])
+```
+
+The `sum` method calculates the sum along an `axis` of an `ndarray`:
+
+```python
+In [80]: mat.sum(axis=-1, keepdims=True) # along column axis
+Out[80]: 
+array([[11],
+       [17],
+       [14],
+       [15]])
+```
+
+
+The cumulative method `cumsum` method calculates the cumulative sum along an `axis` of an `ndarray`:
+
+```python
+In [81]: mat.cumsum(axis=-1) # along column axis
+Out[81]: 
+array([[ 4,  5, 11],
+       [ 3, 10, 17],
+       [ 9, 14, 14],
+       [ 8, 13, 15]])
+```
+
+Note the first column is unchanged as nothing has been added to it, and the last column is the column returned from the sum method.
+
+The `diff` function calculates the difference along an `ndarray`, 2 elements are used to calculate a difference and therefore when this function operates along the column `axis`, the result has `column` shorter:
+
+
+
+```python
+In [82]: mat
+Out[82]: 
+array([[4, 1, 6],
+       [3, 7, 7],
+       [9, 5, 0],
+       [8, 5, 2]])
+
+In [83]: np.diff(mat, axis=-1)
+Out[83]: 
+array([[-3,  5],
+       [ 4,  0],
+       [-4, -5],
+       [-3, -3]])       
+```
+
+The difference of the difference can also be calculated:
+
+```python
+In [84]: np.diff(np.diff(mat, axis=-1), axis=-1)
+Out[84]: 
+array([[ 8],
+       [-4],
+       [-1],
+       [ 0]])
+```
+
+This can be done directly by setting `n`, the number of differences to `2`:
+
+```python
+In [85]: np.diff(mat, n=2, axis=-1)
+Out[85]: 
+array([[ 8],
+       [-4],
+       [-1],
+       [ 0]])
+```
+
+There are a number of functions which can used to check a condition and return a boolean `ndarray`:
+
+```python
+In [37]: np.
+# 🔗 Supplementary Numerical Identifiers
+#     - signbit                    : Returns True for negative values.
+#     - isfinite                   : Returns True for finite elements.
+#     - isinf                      : Returns True for infinite elements.
+#     - isnan                      : Returns True for NaN elements.
+#     - isreal                     : Returns True for real elements in the array.
+#     - iscomplex                  : Returns True for complex elements in the array.
+#     - isrealobj                  : Checks if the array is entirely real (no imaginary parts).
+#     - iscomplexobj               : Checks if the array is entirely complex.
+```
+
+If the following matrix which has positive and negative values is examines, the `signbit` function will return `True` with the sign is negative and `False` otherwise:
+
+```python
+In [83]: np.diff(mat, axis=-1)
+Out[83]: 
+array([[-3,  5],
+       [ 4,  0],
+       [-4, -5],
+       [-3, -3]])   
+```
+
+```python
+In [84]: np.signbit(np.diff(mat, axis=-1))
+Out[84]: 
+array([[ True, False],
+       [False, False],
+       [ True,  True],
+       [ True,  True]])
+```
+
+This can be combined with the `ndarray` method `all` or `any`:
+
+```python
+In [85]: np.signbit(np.diff(mat)).any(axis=-1, keepdims=True)
+Out[85]: 
+array([[ True],
+       [False],
+       [ True],
+       [ True]])
+
+In [86]: np.signbit(np.diff(mat)).all(axis=-1, keepdims=True)
+Out[86]: 
+array([[False],
+       [False],
+       [ True],
+       [ True]])
+```
+
+When the dimensions aren't kept, these boolean arrays can be used for indexing purposes:
+
+```python
+In [87]: np.signbit(np.diff(mat)).all(axis=-1)
+Out[87]: array([False, False,  True,  True])
+```
+
+This boolean vector can be used to select rows from `mat` where the difference is negative:
+
+```python
+In [88]: mat[np.signbit(np.diff(mat)).all(axis=-1), :]
+Out[88]: 
+array([[9, 5, 0],
+       [8, 5, 2]])
+```
+
+The method `choices` assumes the `ndarray` is a boolean `ndarray` and this boolean array can be used to select elements from either `ndarray` 1 or `ndarray` 2, depending on the choice:
+
+```python
+In [89]: choices = np.array([[True, False],
+       :                     [False, True]])
+
+       : if_true = np.array([[1, 2],
+       :                     [3, 4]])
+
+       : if_false = np.array([[-1, -2],
+       :                      [-3, -4]])
+       :
+       : choices.choose([if_true, if_false])
+Out[89]: 
+array([[-1,  2],
+       [ 3, -4]])
+```
+
+When division by `0` is carried out. a `RunTimeWarning` displays:
+
+```python
+In [90]: p.array(1) / np.array(0)
+RuntimeWarning: divide by zero encountered in divide
+  np.array(1) / np.array(0)
+Out[90]: np.float64(inf)
+```
+
+This can be suppressed using:
+
+```python
+In [91]: np.seterr(divide='ignore')
+Out[91]: {'divide': 'warn', 'over': 'warn', 'under': 'ignore', 'invalid': 'warn'}
+
+In [92]: np.array(1) / np.array(0)
+Out[92]: np.float64(inf)
+```
+
+The attribute `np.inf` represents infinity and has the datatype `float`:
+
+```python
+In [93]: type(np.inf)
+Out[93]: float
+```
+
+This can be used in a calculation with another `float`:
+
+```python
+In [94]: 1 + np.inf
+Out[94]: inf
+
+In [95]: 1 / np.inf
+Out[95]: 0.0
+```
+
+Dividing infinity by infinity is undefined and regarded as `nan`, not a number:
+
+```python
+In [96]: np.inf / np.inf
+Out[96]: nan
+```
+Although `nan` isn't a number, it still has the datatype `float`, so it can be used in an `ndarray` as an undefined number, maintaining a uniform datatype across the `ndarray`:
+
+```python
+In [97]: type(np.nan)
+Out[97]: float
+```
+
+Any numeric operation involving a `nan` is by definition undefined and returns `nan`:
+
+```python
+In [98]: 1 + np.nan
+Out[98]: nan
+```
+
+The following matrix is instantiated:
+
+```python
+In [99]: mat = np.array([[1, 2, np.inf],
+       :                 [4, np.nan, 6]])
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">mat</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of float64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 3)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[1.  2. inf]<br>&nbsp;[4.  nan 6.]]</td>
+  </tr>                              
+</table>
+
+<table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>    
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1.</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2.</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">inf</td>         
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4.</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">nan</td>   
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">6.</td>            
+  </tr>
+  </table>
+
+The functions `isinf` and `isnan` are designed to look for infinite and not a number values respectively:
+
+```python
+In [100]: np.isinf(mat)
+Out[100]: 
+array([[False, False,  True],
+       [False, False, False]])
+
+In [101]: np.isnan(mat)
+Out[101]: 
+array([[False, False, False],
+       [False,  True, False]])
+```
+
+Real and complex components of a matrix can be setup:
+
+```python
+In [102]: matr = np.array([[1, 2], 
+        :                  [3, 4]])
+
+In [103]: matj = np.array([[0, 4], 
+        :                  [3, 0]])
+
+In [104]: mat = matr + matj * 1j
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">mat</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of complex128</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 2)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[1+0j 2+4j]<br>&nbsp;[3+3j 4+0j]]</td>
+  </tr>                              
+</table>
+
+<table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>          
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1+0j</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2+4j</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3+3j</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4+0j</td>              
+  </tr>
+  </table>
+
+
+This can also be instantiated using:
+
+```python
+In [105]: mat
+Out[105]: 
+array([[1.+0.j, 2.+4.j],
+       [3.+3.j, 4.+0.j]])
+```
+
+The functions `isreal` and `iscomplex` check to see if each element is real or complex respectively:
+
+```python
+In [106]: np.isreal(mat)
+Out[106]: 
+array([[ True, False],
+       [False,  True]])
+
+In [107]: np.iscomplex(mat)
+Out[107]: 
+array([[False,  True],
+       [ True, False]])
+```
 
 
 
 ```
-update the section above to have these before sort
+
+#     - isrealobj                  : Checks if the array is entirely real (no imaginary parts).
+#     - iscomplexobj               : Checks if the array is entirely complex.
+#     - signbit                    : Returns True for negative values.
 ```
 
-```
-np.fliplr
-np.flipud
-np.filip
-```
-
-
-
-
-
-```
-vec = np.array([3, 4, 4, 7, 9]) # sorted array
-
-elements = [1, 2, 6, 6, 8, 10, 11, 13] # elements to be inserted into sorted array
-
-indices = np.searchsorted(sorted_array, elements, side='right')
-
-vec_extended = np.insert(vec, indices, elements)
-
-vec_extended
-
-vec
-vec1 = np.insert(vec, 0, 1)
-vec2 = np.insert(vec1, 0, 2)
-vec3 = np.insert(vec2, 3, 3)
-
-```
-
-
-
-
-
-```
-
-
-
-## other collection based behaviour
-
-active1 = ['apples', 'cherries', 'bananas']
-active2 = ['grapes', 'avocados', 'pears']
-
-# vector expansion
-
-mat = np.array([[1, 2, 3],
-                [4, 5, 6]])
-
-row = np.array([10, 20, 30])[np.newaxis, :]
-
-col = np.array([10, 40])[:, np.newaxis]
-
-row_x2_num = row * 2 # scalar broadcast
-
-row_x2_collection = np.tile(row, 2)
-row_x2_collection = np.tile(row, 4)
-row_x_2_4_collection = np.tile(row, (4, 2))
-
-# view
-# mat
-# view row
-
-mat + row # row broadcast
-mat + np.tile(row, (2, 1))
-mat + np.array([10, 20, 30]) # also works
-# but generally better to be explicit
-
-
-
-# under the hood the broadcasting use np.broadcast
-b = np.broadcast(row, mat)
-out = np.zeros(shape=b.shape)
-out.flat = [u + v for (u, v) in b]
-#             ↑ operator being broadcast
-
-row_broadcast_to_mat = np.broadcast_to(row, shape=mat.shape)
-
-scalar_3_broadcast_to_mat = np.broadcast_to(3, shape=mat.shape)
-scalar_3_broadcast_to_mat2 = np.full_like(mat, fill_value=3) # better to use full_like
-
-mat + col # col broadcast
-mat + np.tile(col, (1, 3))
-
-mat + np.array([10, 40]) # doesn't work
-
-page0 = np.array([[1, 2],
-                  [3, 4]])
-
-page1 = np.array([[5, 6],
-                  [7, 8]])
-
-page2 = np.array([[9, 10],
-                  [11, 12]])
-
-
-
-vec = np.array([3, 4, 4, 7, 9]) # sorted array
-
-elements = [1, 2, 6, 6, 8, 10, 11, 13] # elements to be inserted into sorted array
-
-indices = np.searchsorted(sorted_array, elements, side='right')
-
-vec_extended = np.insert(vec, indices, elements)
-
-vec_extended
-
-vec
-vec1 = np.insert(vec, 0, 1)
-vec2 = np.insert(vec1, 0, 2)
-vec3 = np.insert(vec2, 3, 3)
-
-mat
-
-mat_lr = mat[:, ::-1]
-
-mat_lr2 = np.fliplr(mat)
-
-mat_ud = mat[::-1, :]
-
-mat_ud2 = np.flipud(mat)
-
-mat_lr3 = np.flip(mat, axis=-1) # operating along columns axis
-
-mat
-
-mat_padded = np.pad(mat, pad_width=((1, 2), (3, 4)), mode='constant',
-                    constant_values=0)
-
-mat_padded2 = np.pad(mat, pad_width=(0, 2), (0, 0))
-
-# broadcast numeric operators
-
-exit
-
-mat1 = np.arange(16).reshape(4, 4)
-mat2 = np.arange(-15, 15+2, 2).reshape(4, 4)
-
- '__abs__', # Returns the absolute value of the object.
- '__pos__', # Unary plus (+) for the object.
- '__neg__', # Unary minus (-) for the object.
-
- '__add__', # Addition operation (+).
- '__sub__', # Subtraction operation (-).
- '__mul__', # Multiplication operation (*).
- '__pow__', # Power operation (**).
- '__floordiv__', # Floor division (//).
- '__mod__', # Modulus operation (%).
- '__divmod__', # Division and modulus together (divmod()).
- '__truediv__', # True division (/).
-
- 'real', # Returns the real part of a complex number.
- 'imag', # Returns the imaginary part of a complex number.
- 'conjugate', # Returns the complex conjugate of a number.
-
-# unitary operators
-u__abs__mat2 = abs(mat2)
-u__pos__mat2 = +mat2
-u__neg__mat2 = -mat2
-
-# binary operators
-
-mat1__add__mat2 = mat1 + mat2
-mat1__sub__mat2 = mat1 - mat2
-mat1__mul__mat2 = mat1 * mat2
-mat2__pow__mat1 = mat2 ** mat1
-
-mat2__pow__2 = mat2 ** 2
-
-mat1__floordiv__mat2 = mat1 // 2
-mat1__div__2 = mat1 % 2
-mat1__divmod__2 = divmod(mat1, 2)
-
-mat1__truediv__2 = mat1 / 2
-
-mat3 = mat2 ** 0.5 # error
-
-mat4 = mat2.astype(np.complex128) ** 0.5
-
-mat4_real = mat4.real
-mat4_imag = mat4.imag
-mat4_conjugate = mat3.conjugate()
-
-# rounding
-
-mat = np.array([[1.12, -2.12, 3.12, -4.12],
-                [-5.12, 6.12, -7.12, 8.12],
-                [9.12, -10.12, 11.12, -12.12]])
-
-mat_round_to_int = mat.round() # datatype is float64
-mat_round_to_1dp = mat.round(decimals=1)
-
-# datatypes
-
-nums = np.array([[1, 2], [3, 4]], dtype=np.uint8)
-2 ** 8
-
-nums + 200
-
-nums + 255
-
-nums - 20
-
-nums = np.array([[1, 2], [3, 4]], dtype=np.int8)
--(2 ** 8 / 2)
-(2 ** 8 / 2) - 1 # because 0
-
-nums + 100
-
-nums - 100
-
-nums + 200
-
-# boolean section
-
-x = np.array([0, 0, 0, 1, 0, 0, 2, 0, 0, 1])
-
-n_nonzero_elements_x = np.count_nonzero(x)
-
-indexes_nonzero_elements_x = np.nonzero(x)
-
-x[indexes_nonzero_elements_x]
-
-x == 0
-
-x != 0
-
-# array([False, False, False,  True, False, False,  True, False, False,
-#        True])
-
-x[x != 0]
-# array([1, 2, 1])
-
-x[x > 1]
-
-y = np.array([1, 2, 3, 4])
-boolean_mask = np.array([True, True, False, False])
-
-
-boolean_mask.shape == y.shape
-
-y_where_booleans_mask_true = y[boolean_mask]
-
-text_vec = np.where(y==0, 'zero', 'non-zero')
-# condition, what to do if True, what to do if False
-
-z = np.array([(0+1j), 2, (2+2j), (1-3j), 5, 6])
-
-result = np.isreal(z)
-
-result = np.iscomplex(z)
-
-mat1 = np.arange(0, 20, 1).reshape(5, 4)
-mat2 = -mat1
-
-selection_mask = np.zeros(shape=(5, 4))
-selection_mask[1:3, :]
-selection_mask[1:3, :] = np.ones(shape=(2, 4))
-selection_mask = selection_mask.astype(np.int64)
-
-mat3_choice = np.choose(selection_mask, [mat1, mat2])
-
-# set operations
+## set-like Identifiers
 
 active = [1, 1, 1, 2, 2, 3, 4, 4, 5, 8]
 unique = set(active)
@@ -4070,312 +5294,13 @@ np.setdiff1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
 {1, 2, 3, 6} ^ {1, 2, 4, 5, 9}
 np.setxor1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
 
-# statistics
 
-w = np.array([0.4, 1.2, 1.3, 2.3, 2.3, 2.4, 3.5, 3.4, 4.1, 4.2,
-              4.7, 5.1, 5.1, 5.5, 5.7, 5.7, 5.8, 5.9, 5.9, 5.9,
-              6.1, 6.1, 6.1, 6.7, 6.2, 7.3, 7.4, 7.4, 7.4, 7.4,
-              8.8, 8.8, 8.8, 8.8, 8.8, 9.2, 9.2, 9.2, 9.2, 9.9])
 
-w_min_val = w.min()
-w_min_idx = w.argmin()
-w[min_idx]
 
-w_max_val = w.max()
-w_max_idx = w.argmax()
-w[max_idx]
 
-w_cumulative_sum = w.cumsum()
-w_sum = w.sum()
 
-w_mean = w.mean()
-w.sum() / w.size
 
-w_variance = w.var(ddof=1) # n-1
-
-w_standard_deviation = w.std(ddof=1) # n-1
-w.var(ddof-1) ** 0.5
-
-w_peaktopeak = w.ptp()
-
-w_cumulative_product = w.cumprod()
-w_product = w.prod()
-
-w_clipped_between_3_and_9 = w.clip(3, 8)
-
-# statistics
-active = [1, 2, 3, 4]
-max(active) # builtins
-min(active) # builtins
-sum(active) # builtins
-
-range(5) # builtins
-
-x = np.array([0, 0, 0, 1, 0, 0, 2, 0, 0, 1])
-x_any = x.any()
-x_all = x.all()
-
-exit
-
-w = np.array([0.4, 1.2, 1.3, 2.3, 2.3, 2.4, 3.5, 3.4, 4.1, 4.2,
-              4.7, 5.1, 5.1, 5.5, 5.7, 5.7, 5.8, 5.9, 5.9, 5.9,
-              6.1, 6.1, 6.1, 6.7, 6.2, 7.3, 7.4, 7.4, 7.4, 7.4,
-              8.8, 8.8, 8.8, 8.8, 8.8, 9.2, 9.2, 9.2, 9.2, 9.9])
-
-# historically
-# from numpy import *
-# builtins max, min, range, sum, any, all builtins would be reassigned to np functions
-# a prefix (meaning array) amax, amin and arange were used instead
-# import * discouraged
-# max and min added for consistency with array methods
-
-min_val_w = np.min(w)
-min_idx_w = np.argmin(w)
-max_val_w = np.max(w)
-max_idx_w = np.argmax(w)
-cumsum_w = np.cumsum(w)
-sum_w = np.sum(w)
-mean_w = np.mean(w)
-var_w = np.var(w, ddof=1) # n-1
-std_w = np.std(w, ddof=1) # n-1
-ptp_w = np.ptp(w)
-cumprod_w = np.cumprod(w)
-prod_w = np.prod(w)
-clip_w = np.clip(w, 3, 8)
-
-x = np.array([1, 2, 3, 4])
-boolean_mask = np.array([True, True, False, False])
-
-any_x = np.any(x)
-all_x = np.all(x)
-
-# all of these statistical functions take in an axis
-
-mat = np.array([[9, 3, 5, 6],
-                [12, 4, 2, 3],
-                [1, 6, 9, 8]])
-
-max_mat = mat.max(axis=None)
-argmax_mat = mat.argmax(axis=None)
-
-mat.ravel()
-mat.ravel()[10]
-
-max_col = mat.max(axis=-1, keepdims=True) # operate along column axis
-argmax_col = mat.argmax(axis=-1, keepdims=True)
-
-max_col_indexes = mat.argmax(axis=-1)
-mat[np.arange(0, 3), max_col_indexes]
-
-max_row = mat.max(axis=-2, keepdims=True) # operate along row axis
-argmax_row = mat.argmax(axis=-2, keepdims=True)
-
-# additional statistics available as functions only
-
-x = np.array([1, 2, 3, 4, 5])
-y = np.array([2, 4, 6, 8, 10])
-
-covar = np.sum((x - x.mean()) * (y - y.mean())) / (len(x) - 1)
-
-x_var = x.var(ddof=1)
-y_var = y.var(ddof=1)
-
-np.cov(x, y)
-
-differences_col = np.diff(mat, axis=-1)
-difference_col_of_differences = np.diff(differences_col, axis=-1)
-difference_col_of_differences2 = np.diff(mat, axis=-1, n=2)
-
-y = np.array([1, 2, 2, 3, 1, 0, 1])
-unique_y = np.unique(z)
-bincount_y = np.bincount(z)
-
-from collections import Counter
-counts = Counter(y)
-
-z = np.array([0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4])
-
-median_z = np.median(w)
-
-mean_z = np.mean(z)
-average_z = np.average(z)
-
-weights_z = np.array([1, 1, 1, 1000, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
-average_weighted_z = np.average(w, weights=w_weights)
-
-boundaries_20_percent = np.quantile(x, [0, 0.2, 0.4, 0.6, 0.8, 1]) # 0-1
-boundaries_25_percent = np.quantile(x, [0, 0.25, 0.5, 0.75, 1]) # 0-1
-boundaries_20_percent2 = np.percentile(x, [0, 20, 40, 60, 80, 100]) # 0-100
-
-x = np.array([0.4, 1.2, 1.3, 2.3, 2.3, 2.4, 3.5, 3.4, 4.1, 4.2,
-              4.7, 5.1, 5.1, 5.5, 5.7, 5.7, 5.8, 5.9, 5.9, 5.9,
-              6.1, 6.1, 6.1, 6.7, 6.2, 7.3, 7.4, 7.4, 7.4, 7.4,
-              8.8, 8.8, 8.8, 8.8, 8.8, 9.2, 9.2, 9.2, 9.2, 9.9])
-
-counts, bins = np.histogram(x) # histogram
-
-# look at histogram of x in variable explorer, roughly equivalent, bins differ
-
-x = np.array([0.4, 1.2, 1.3, 2.3, 2.3, 2.4, 3.5, 3.4, 4.1, 4.2,
-              4.7, 5.1, 5.1, 5.5, 5.7, 5.7, 5.8, 5.9, 5.9, 5.9,
-              6.1, 6.1, 6.1, 6.7, 6.2, 7.3, 7.4, 7.4, 7.4, 7.4,
-              8.8, 8.8, 8.8, 8.8, 8.8, 9.2, 9.2, 9.2, 9.2, 9.9])
-
-
-x2 = 2 * x - 1
-correlation = np.correlate(x, x2, mode='full')
-
-x2[10] = 20.1
-corrcoef_x_x2 = np.corrcoef(x, x2)
-
-x2[10] = 2000
-corrcoef_x_x2 = np.corrcoef(x, x2)
-
-x2 = -2 * x - 1
-corrcoef_x_x2 = np.corrcoef(x, x2)
-
-## correlate
-x = np.array([1, 2, 3])
-y = np.array([0, 1, 0.5])
-
-y = np.array([0, 1, 0.5])
-# lag -2
-y_m2 = np.array([0, 0, 0])
-np.dot(x, y_m2)
-# lag -1
-y_m1 = np.array([0, 0, 1])
-np.dot(x, y_m1)
-# lag 0
-y = np.array([0, 1, 0.5])
-np.dot(x, y)
-# lag +1
-y_p1 = np.array([1, 0.5, 0])
-np.dot(x, y_p1)
-# lag +2
-y_p2 = np.array([0.5, 0, 0])
-np.dot(x, y_p2)
-
-correlation = np.correlate(x, y, mode='full')
-
-## math
-
-# circle constant / 2
-np.pi
-
-# infinite
-np.inf
-
-# not a number
-np.nan
-
-# eulers number
-
-def factorial(n):
-    if n < 0:
-        raise ValueError('Factorial is not defined for negative numbers')
-    result = 1
-    for idx in range(2, n + 1):
-        result *= idx
-    return result
-
-def series_expansion(terms=1000):
-    return sum(1 / factorial(n) for n in range(terms))
-
-series_expansion(1)  
-series_expansion(10)
-series_expansion(100)      
-series_expansion(1000)
-
-np.e
-
-# euler gamma number
-
-def series_expansion2(n=1000):
-    return np.sum(1.0 / np.arange(1, n + 1)) - np.log(n)
-
-
-series_expansion2(1)  
-series_expansion2(10)
-series_expansion2(100)      
-series_expansion2(1000)  
-
-np.euler_gamma
-   
-
-inf_mat = np.full(shape=(4, 2), fill_value=np.inf)
-
-# a Python function
-def croot(num):
-    return num ** (1 / 3)
-
-# Can be mapped to a list:
-map(croot, [1, 3, 27])
-
-# The result can be cast into a list to sreturn all the values:
-list(map(croot, [1, 3, 27]))
-
-# vectorize is similar but vectorizes to an ndarray
-
-np_croot = np.vectorize(croot)
-np_croot(np.array([1, 3, 27]))
-
-# Most math expressions are already vectorised...
-
-import math
-
-math.sqrt(4)
-np.sqrt(4)
-
-vec = np.array([1, 4, 9, 16, 25])
-np.sqrt(vec)
-
-mat = np.array([[1, 4, 9],
-                [15, 25, 36]])
-
-# natural
-np.exp(1)
-np.e
-
-x = np.linspace(0, 10, 100)
-
-y1 = np.exp(x) # natural base
-# use variable explorer to plot both and view
-
-y2 = np.log(np.exp(x)) # natural base # cancel out
-
-# base 10
-x = np.array([10**0, 10**1, 10**2, 10**3, 10**4, 10**5])
-
-y = np.log10(x) # retrieves the powers
-y
-
-np.pi
-2 * np.pi
-
-x1 = np.linspace(0, 360, 100)
-x2 = np.deg2rad(x1)
-# x1 * (2 * np.pi) / 360
-x3 = np.rad2deg(x2)
-# x3 * 360 / (2 * np.pi)
-
-y1 = np.sin(x2)
-# plot y1 from variable explorer
-
-y2 = np.cos(x2)
-# plot y2 from variable explorer
-
-y3 = np.tan(x2)
-# plot y3 from variable explorer
-
-x4 = np.linspace(0, np.pi/4, 100)
-
-y4 = np.arcsin(x4)
-
-y5 = np.arccos(x4)
-
-y6 = np.arctan(x4)
-
-# random number generation
+```
 
 import numpy as np
 
