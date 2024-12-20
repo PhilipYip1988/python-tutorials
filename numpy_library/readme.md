@@ -586,6 +586,78 @@ In [9]: mat1 = np.ndarray(shape=(8, 4), dtype=np.int32, buffer=b)
       : mat2 = np.ndarray(shape=(8, 4), dtype=np.int64, buffer=b2)
 ```
 
+When the code is ran in the Spyder IDE:
+
+<img src='./images/img_001.png' alt='img_001' width='600'/>
+
+The variable (`object` name) `mat1` displays in the Variable Explorer:
+
+<img src='./images/img_002.png' alt='img_002' width='400'/>
+
+This variable `mat1` can be expanded:
+
+<img src='./images/img_003.png' alt='img_003' width='400'/>
+
+`axis=0` for a 2d `ndarray` is the following axis, operating along the row axis:
+
+<img src='./images/img_004.png' alt='img_004' width='400'/>
+
+`axis=1` for a 2d `ndarray` is the following axis, operating along the column axis:
+
+<img src='./images/img_005.png' alt='img_005' width='400'/>
+
+`mat1` has the following `shape` tuple:
+
+>>> Note Spyder displays `[8, 4]` under the heading "Size". The terminology here is confusing because the `ndarray` has the attribute `size` which is the number of elements `32` i.e. the product of the elements in the list shown. The `ndarray` has the attribute `shape` which is `(8, 4)` and is equivalent to what Spyder displays, although Spyder represents this as a list opposed to a tuple.
+
+<img src='./images/img_006.png' alt='img_006' width='400'/>
+
+When viewed in the IPython console, `axis=0` can be understood to be the outer axis:
+
+<img src='./images/img_007.png' alt='img_007' width='400'/>
+
+`axis=1` can be understood to be the inner axis:
+
+<img src='./images/img_008.png' alt='img_008' width='400'/>
+
+If the `shape` tuple is examined, `8` can be understood to be the number of rows along `axis=0` and `4` can be understood to be the number of columns along `axis=1`:
+
+<img src='./images/img_009.png' alt='img_009' width='400'/>
+
+<img src='./images/img_010.png' alt='img_010' width='400'/>
+
+The `shape` tuple has been conceptualised from left to right as:
+
+```
+→0→1→
+(8, 4)
+```
+
+Instead it can be conceptualised right to left as:
+
+```
+←-2←-1
+(8, 4)
+```
+
+In the expanded view, the index order can be changed:
+
+<img src='./images/img_011.png' alt='img_011' width='400'/>
+
+Unfortunately Spyder doesn't display the negative indexes, when this is selected:
+
+<img src='./images/img_012.png' alt='img_012' width='400'/>
+
+For clarity the positive and negative indexes are shown side by side:
+
+<img src='./images/img_013.png' alt='img_013' width='600'/>
+
+The positive index (left to right) of the `axis` in the `shape` tuple that corresponds to columns increments as the dimensionality of the `ndarray` increments because the outer dimensions always take `axis=0`. For a 1d `ndarray` known as a vector the columns are `axis=0`, for a 2d `ndarray` known as a matrix the columsn are `axis=1`, for a 3d `ndarray` known as a book the columns are `axis=2`.
+
+The negative index (right to left) of the `axis` in the `shape` tuple that corresponds to columns always remains the same `axis=-1`. 
+
+Higher dimensional `ndarray` instances will be explored in more detail later.
+
 The `ndarray` attributes can be examined.
 
 `ndim` is the number of dimensions of the `ndarray`:
@@ -1115,7 +1187,7 @@ In the expanded view `col` and `vec` look very similar, however `vec` is a 1d `n
   </tr>  
 </table>
 
-This can be seen when indexing into the `ndarray`. Indexing for the column can be carried out using square brackets and supplying `[nrow, ncol]` where `ncol` is the last index and `nrow` is the second last index. This is analogous to the behaviour of the `shape` `tuple`:
+This can be seen when indexing into the `ndarray`. Indexing for the column can be carried out using square brackets and supplying `[nrow, ncol]` where `ncol` is the last index and `nrow` is the second last index. This is analogous to the behaviour of the `shape` tuple:
 
 ```python
 In [37]: col[1]
@@ -1254,7 +1326,7 @@ array([[ 0,  1,  2,  3],
        [ 8,  9, 10, 11]])
 ```
 
-To reshape into a row, the `shape` `tuple` should have `1` row and be the length of the original `ndarray`
+To reshape into a row, the `shape` tuple should have `1` row and be the length of the original `ndarray`
 
 ```python
 In [57]: np.arange(3).reshape((1, len(np.arange(3))))
@@ -1467,7 +1539,7 @@ In [72]: mat2[(1, 0)]
 Out[72]: np.int64(3)
 ```
 
-Note that the `tuple` has the same form as the `shape` `tuple` previously examined:
+Note that the `tuple` has the same form as the `shape` tuple previously examined:
 
 ```python
 In [73]: np.zeros((3, 2))
@@ -1487,7 +1559,7 @@ In [75]: mat2[1, 0]
 Out[75]: np.int64(3)
 ```
 
-Note that this is not possible in all functions where the `shape` `tuple` is used. Unpacking in the `zeros` function for example implies each element in the `shape` `tuple` is a different positional parameter and flags up a `TypeError`:
+Note that this is not possible in all functions where the `shape` tuple is used. Unpacking in the `zeros` function for example implies each element in the `shape` tuple is a different positional parameter and flags up a `TypeError`:
 
 ```python
 In [76]: np.zeros(3, 2)
@@ -2397,7 +2469,7 @@ array([[ 1,  2,  5,  6,  9, 10],
        [ 3,  4,  7,  8, 11, 12]])
 ```
 
-Recall the `shape` `tuple` has the form `(nrows, ncols)`. Index `0` of the `shape` `tuple` operates along `axis` `0` and specifies the number of rows:
+Recall the `shape` tuple has the form `(nrows, ncols)`. Index `0` of the `shape` tuple operates along `axis` `0` and specifies the number of rows:
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
@@ -2421,7 +2493,7 @@ Recall the `shape` `tuple` has the form `(nrows, ncols)`. Index `0` of the `shap
   </tr>
   </table>
 
-Index `1` of the `shape` `tuple` operates along axis `1` and specifies the number of columns:
+Index `1` of the `shape` tuple operates along axis `1` and specifies the number of columns:
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
@@ -2496,7 +2568,7 @@ In [13]: book = np.stack((mat1, mat2, mat3))
   </tr>                  
 </table>
 
-`book` is a 3d `ndarray` with the `shape` `tuple`:
+`book` is a 3d `ndarray` with the `shape` tuple:
 
 ```python
 In [14]: nsheets, nrows, ncols = book.shape
@@ -2867,7 +2939,7 @@ array([[1, 2],
        [3, 4]])
 ```
 
-The function `tile` can be used to tile the `ndarray` using a `shape` `tuple`:
+The function `tile` can be used to tile the `ndarray` using a `shape` tuple:
 
 ```python
 In [32]: np.tile(mat1, (3, 1))
@@ -2933,7 +3005,7 @@ array([[0, 0, 0, 0, 0, 0, 0, 0, 0],
        [0, 0, 0, 0, 0, 0, 0, 0, 0]])
 ```
 
-For `pad` the `shape` `tuple` has the form `(rows, cols)` however `rows` is itself a 2-element `tuple` as rows can be padded before the original data and after the original data. `cols` likewise is a 2-element `tuple` and columns can be padded before and after the original data.
+For `pad` the `shape` tuple has the form `(rows, cols)` however `rows` is itself a 2-element `tuple` as rows can be padded before the original data and after the original data. `cols` likewise is a 2-element `tuple` and columns can be padded before and after the original data.
 
 `rows` can be set to `(0, 0)` allowing only the columns to be padded. `mode` is an optional parameter and has a default value of `'constant'`. The constant itself is set with another optional parameter `constant_values` which has a default value of `0`:
 
@@ -3358,11 +3430,11 @@ If `vec`, `row` and `col` are compared and conceptualised in the collapsed view 
 
 If `vec`, `mat` and `book` are compared, notice the `shape` `tuples` have `1` element, `2` elements and `3` elements indicating that `vec` is a 1d `ndarray`, `mat` is a 2d `ndarray` and `book` is a 3d `ndarray`.
 
-`vec` has an outer `list` with `4` elements. This gives a `shape` `tuple` of `(4,)` which of the form `(ncols,)`.
+`vec` has an outer `list` with `4` elements. This gives a `shape` tuple of `(4,)` which of the form `(ncols,)`.
 
-`mat` has an outer `list` with `2` elements that are each a nested `list`. Each nested `list` has `4` elements. This gives a `shape` `tuple` of `(2, 4)` which of the form `(nrows, ncols)`.
+`mat` has an outer `list` with `2` elements that are each a nested `list`. Each nested `list` has `4` elements. This gives a `shape` tuple of `(2, 4)` which of the form `(nrows, ncols)`.
 
-`book` has an outer `list` with `3` elements that are each a nested `list` (`axis` `0`). Each nested `list` has `2` elements that are each a nested `list` (`axis` `1`). Each of these nested `list` elements are in turn a nested `list` of `2` elements (`axis` `2`). This gives a `shape` `tuple` of `(3, 2, 4)` which of the form `(sheets, nrows, ncols)`.
+`book` has an outer `list` with `3` elements that are each a nested `list` (`axis` `0`). Each nested `list` has `2` elements that are each a nested `list` (`axis` `1`). Each of these nested `list` elements are in turn a nested `list` of `2` elements (`axis` `2`). This gives a `shape` tuple of `(3, 2, 4)` which of the form `(sheets, nrows, ncols)`.
 
 <table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
@@ -3387,7 +3459,7 @@ If `vec`, `mat` and `book` are compared, notice the `shape` `tuples` have `1` el
   </tr>                          
 </table>
 
-If the general form of each of the `shape` `tuple` for each dimension is examined:
+If the general form of each of the `shape` tuple for each dimension is examined:
 
 |dimensions|shape tuple|
 |---|---|
@@ -3397,9 +3469,9 @@ If the general form of each of the `shape` `tuple` for each dimension is examine
 
 Notice that the outer dimension is always `axis` `0` and is different for each dimension of `ndarray`. This can be conceptualised as `{'1d': 'ncols', '2d': 'nrows', '3d: 'ncols'}`.
 
-Indexing the `shape` `tuple` left to right, gives `axis=0`, `axis=1`, `axis=2`, ... and `axis=0` has a different meaning for each dimension of `ndarray`.
+Indexing the `shape` tuple left to right, gives `axis=0`, `axis=1`, `axis=2`, ... and `axis=0` has a different meaning for each dimension of `ndarray`.
 
-Indexing the `shape` `tuple` right to left, gives `axis=-1`, `axis=-2`, `axis=-3`. Notice `axis=-1` will always correspond to `ncols`, `axis=-2` will always correspond to `ncols` and `axis=-3` will always correspond to `nsheets`.
+Indexing the `shape` tuple right to left, gives `axis=-1`, `axis=-2`, `axis=-3`. Notice `axis=-1` will always correspond to `ncols`, `axis=-2` will always correspond to `ncols` and `axis=-3` will always correspond to `nsheets`.
 
 Humans visualise data only in 3 dimensions. Higher dimensions are harder to conceptualise, however the following folder structure can be visualised:
 
@@ -3414,25 +3486,25 @@ Humans visualise data only in 3 dimensions. Higher dimensions are harder to conc
 
 `axis=-2` row of vectors:
 
-<img src='./images/img_001.png' alt='img_001' width='400'/>
+<img src='./images/img_014.png' alt='img_014' width='400'/>
 
 `axis=-3` sheet of rows:
 
-<img src='./images/img_002.png' alt='img_002' width='400'/>
+<img src='./images/img_015.png' alt='img_015' width='400'/>
 
 `axis=-4` book of sheets:
 
-<img src='./images/img_003.png' alt='img_003' width='400'/>
+<img src='./images/img_016.png' alt='img_016' width='400'/>
 
 `axis=-5` subfolder of books:
 
-<img src='./images/img_004.png' alt='img_004' width='400'/>
+<img src='./images/img_017.png' alt='img_017' width='400'/>
 
-<img src='./images/img_005.png' alt='img_005' width='400'/>
+<img src='./images/img_018.png' alt='img_018' width='400'/>
 
 `axis=-6` folder of subfolders:
 
-<img src='./images/img_006.png' alt='img_006' width='400'/>
+<img src='./images/img_019.png' alt='img_019' width='400'/>
 
 `axis` is a common optional parameter in many functions and methods. `axis=None` generally flattens the `ndarray` treating it as a vector (1d `ndarray`), `axis=-1` means an operation is being carried out along the `axis` that represents the number of columns, `axis=-2` means an operation is being carried out along the `axis` that represents the number of rows, `axis=-3` means an operation is being carried out along the `axis` that represents the number of sheets... This can be seen with the `flip` function:
 
@@ -3458,6 +3530,19 @@ array([[[4. , 3. , 2. , 1. ],
 
        [[4.2, 3.2, 2.2, 1.2],
         [8.2, 7.2, 6.2, 5.2]]])
+```
+
+```python
+In [9]: book
+Out[9]:
+array([[[1. , 2. , 3. , 4. ],
+        [5. , 6. , 7. , 8. ]],
+
+       [[1.1, 2.1, 3.1, 4.1],
+        [5.1, 6.1, 7.1, 8.1]],
+
+       [[1.2, 2.2, 3.2, 4.2],
+        [5.2, 6.2, 7.2, 8.2]]])
 
 In [9]: np.flip(book, axis=-2) # flip along row axis
 Out[9]: 
@@ -3471,38 +3556,38 @@ array([[[5. , 6. , 7. , 8. ],
         [1.2, 2.2, 3.2, 4.2]]])
 ```
 
-`fliplr` and `flipud` are equivalent functions that flip along `axis=-1` (the column axis) and `axis-2` (the row axis) respectively:
+`fliplr` and `flipud` are equivalent functions that flip along `axis=-1` (the column axis) and `axis-2` (the row axis) respectively. These are generally only used for a 2d `ndarray`:
 
 ```python
-In [10]: np.fliplr(book)
-Out[10]: 
-array([[[5. , 6. , 7. , 8. ],
-        [1. , 2. , 3. , 4. ]],
+In [10]: mat
+Out[10]:
+array([[1, 2, 3, 4],
+       [5, 6, 7, 8]])
 
-       [[5.1, 6.1, 7.1, 8.1],
-        [1.1, 2.1, 3.1, 4.1]],
+In [11]: np.fliplr(mat) # np.flip(mat, axis=-1)
+Out[11]:
+array([[4, 3, 2, 1],
+       [8, 7, 6, 5]])
+```
 
-       [[5.2, 6.2, 7.2, 8.2],
-        [1.2, 2.2, 3.2, 4.2]]])
+```python
+In [12]: mat
+Out[12]:
+array([[1, 2, 3, 4],
+       [5, 6, 7, 8]])
 
-In [11]: np.flipud(book)
-Out[11]: 
-array([[[1.2, 2.2, 3.2, 4.2],
-        [5.2, 6.2, 7.2, 8.2]],
-
-       [[1.1, 2.1, 3.1, 4.1],
-        [5.1, 6.1, 7.1, 8.1]],
-
-       [[1. , 2. , 3. , 4. ],
-        [5. , 6. , 7. , 8. ]]])
+In [13]: np.flipud(mat) # np.flip(mat, axis=-2)
+Out[13]:
+array([[5, 6, 7, 8],
+       [1, 2, 3, 4]])
 ```
 
 The effect of `axis` can also be seen with the `concatenate` function:
 
 ```python
 
-In [12]: book
-Out[12]:
+In [14]: book
+Out[14]:
 array([[[1. , 2. , 3. , 4. ],
         [5. , 6. , 7. , 8. ]],
 
@@ -3512,17 +3597,17 @@ array([[[1. , 2. , 3. , 4. ],
        [[1.2, 2.2, 3.2, 4.2],
         [5.2, 6.2, 7.2, 8.2]]])
 
-In [13]: book.shape
-Out[13]: (3, 2, 4)
+In [15]: book.shape
+Out[15]: (3, 2, 4)
 
-In [14]: np.concatenate((book, book), axis=None) # flatten
-Out[14]: array([1. , 2. , 3. , 4. , 5. , 6. , 7. , 8. , 1.1, 2.1, 3.1, 4.1, 5.1,
+In [16]: np.concatenate((book, book), axis=None) # flatten
+Out[16]: array([1. , 2. , 3. , 4. , 5. , 6. , 7. , 8. , 1.1, 2.1, 3.1, 4.1, 5.1,
        6.1, 7.1, 8.1, 1.2, 2.2, 3.2, 4.2, 5.2, 6.2, 7.2, 8.2, 1. , 2. ,
        3. , 4. , 5. , 6. , 7. , 8. , 1.1, 2.1, 3.1, 4.1, 5.1, 6.1, 7.1,
        8.1, 1.2, 2.2, 3.2, 4.2, 5.2, 6.2, 7.2, 8.2])
 
-In [15]: np.concatenate((book, book), axis=-1) # along column axis
-Out[15]:
+In [17]: np.concatenate((book, book), axis=-1) # along column axis
+Out[17]:
 array([[[1. , 2. , 3. , 4. , 1. , 2. , 3. , 4. ],
         [5. , 6. , 7. , 8. , 5. , 6. , 7. , 8. ]],
 
@@ -3532,8 +3617,8 @@ array([[[1. , 2. , 3. , 4. , 1. , 2. , 3. , 4. ],
        [[1.2, 2.2, 3.2, 4.2, 1.2, 2.2, 3.2, 4.2],
         [5.2, 6.2, 7.2, 8.2, 5.2, 6.2, 7.2, 8.2]]])
 
-In [16]: np.concatenate((book, book), axis=-2) # along row axis 
-Out[16]:
+In [18]: np.concatenate((book, book), axis=-2) # along row axis 
+Out[18]:
 array([[[1. , 2. , 3. , 4. ],
         [5. , 6. , 7. , 8. ],
         [1. , 2. , 3. , 4. ],
@@ -3549,8 +3634,8 @@ array([[[1. , 2. , 3. , 4. ],
         [1.2, 2.2, 3.2, 4.2],
         [5.2, 6.2, 7.2, 8.2]]])
 
-In [17]: np.concatenate((book, book), axis=-3) # along sheet axis
-Out[17]:
+In [19]: np.concatenate((book, book), axis=-3) # along sheet axis
+Out[19]:
 array([[[1. , 2. , 3. , 4. ],
         [5. , 6. , 7. , 8. ]],
 
@@ -3573,8 +3658,8 @@ array([[[1. , 2. , 3. , 4. ],
 The `insert` function when operated along `axis=-2` (the row axis) can be used to insert a row of an equal number of columns:
 
 ```python
-In [18]: np.insert(book, 1, np.full((1, 4), 99), axis=-2)
-Out[18]:
+In [20]: np.insert(book, 1, np.full((1, 4), 99), axis=-2)
+Out[20]:
 array([[[ 1. ,  2. ,  3. ,  4. ],
         [99. , 99. , 99. , 99. ],
         [ 5. ,  6. ,  7. ,  8. ]],
@@ -3588,10 +3673,24 @@ array([[[ 1. ,  2. ,  3. ,  4. ],
         [ 5.2,  6.2,  7.2,  8.2]]])
 ```
 
+For an aggregate method such as `sum`, the aggregation occurs along an `axis` and the number of elements in that `axis` is reduced to `1` in the result:
+
+```python
+In [21]: mat
+array([[1, 2, 3, 4],
+       [5, 6, 7, 8]])
+
+In [22]: mat.sum(axis=-1, keepdims=True)
+Out[22]: 
+array([[10],
+       [26]])
+```
+<img src='./images/img_020.png' alt='img_020' width='600'/>
+
 Note `insert` is not defined as a mutable method for the `ndarray` and the function returns a new value.
 
 ```python
-In [19]: exit
+In [23]: exit
 ```
 
 ## sorting
@@ -4838,7 +4937,7 @@ In [72]: import matplotlib.pyplot as plt
        : fig, ax = plt.subplots(2, 2)
 ```
 
-<img src='./images/img_007.png' alt='img_007' width='400'/>
+<img src='./images/img_021.png' alt='img_021' width='400'/>
 
 <table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
@@ -4884,7 +4983,7 @@ In [74]: ax[1, 0].plot(np.array([0, 1, 2, 3]), np.array([0, 1, 2, 3]))
 Out[74]: [<matplotlib.lines.Line2D at 0x1ba56efb500>]
 ```
 
-<img src='./images/img_008.png' alt='img_008' width='400'/>
+<img src='./images/img_022.png' alt='img_022' width='400'/>
 
 `matplotlib` will be examined in more detail in the next tutorial.
 
