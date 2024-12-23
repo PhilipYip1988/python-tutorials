@@ -7054,7 +7054,7 @@ $$ col = \begin{bmatrix}
    5 \\
    \end{bmatrix}$$
 
-So in matrix form (GitHub may not render this properly):
+So in matrix form:
 
 $$
 \begin{bmatrix} 
@@ -7063,14 +7063,29 @@ $$
 3 & -2 & 5 & -1 \\
 4 & 1 & -3 & 2 \\   
 \end{bmatrix} 
+$$
+
+
+$$
 \cdot
+$$
+
+
+$$
 \begin{bmatrix}
 x_0 \\
 x_1 \\
 x_2 \\
 x_3 \\
 \end{bmatrix}
+$$
+
+
+<div align="center">
 =
+</div>
+
+$$
 \begin{bmatrix}
 1 \\
 4 \\
@@ -7165,14 +7180,29 @@ $$
 3 & -2 & 5 & -1 \\
 4 & 1 & -3 & 2 \\   
 \end{bmatrix} 
+$$
+
+
+$$
 \cdot
+$$
+
+
+$$
 \begin{bmatrix} 
 x_0 \\
 x_1 \\
 x_2 \\
 x_3 \\
 \end{bmatrix}
+$$
+
+<div align="center">
 =
+</div>
+
+
+$$
 \begin{bmatrix} 
 1x_0 + 0x_1 + 0x_2 + 0x_3 \\
 0x_0 + 1x_1 + 0x_2 + 0x_3 \\
