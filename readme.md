@@ -38,6 +38,9 @@ The Ubuntu instructions can be modified slightly for another Linux distribution 
 
 Preference of IDE is somewhat subjective. The remaining tutorials are in markdown format, and can be used in any other Python IDE that has an ipython console such as JupyterLab and VSCode (when VSCode is configured for Python). 
 
+* [JupyterLab Setup](./jupyter_install_ubuntu/readme.md)
+
+
 ## Python and Standard Libraries
 
 These tutorials cover the `object` orientated design pattern of `builtins` classes, focusing on text datatypes, numeric datatypes and collection datatypes. The `object` orientated design pattern is known as the Python Data Model:

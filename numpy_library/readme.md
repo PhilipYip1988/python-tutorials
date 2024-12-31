@@ -220,6 +220,7 @@ In [9]: np.
 #     - isfinite                   : Returns True for finite elements.
 #     - isinf                      : Returns True for infinite elements.
 #     - isnan                      : Returns True for NaN elements.
+#     - isin                       : Tests whether elements in an array are contained in another array.
 #     - isreal                     : Returns True for real elements in the array.
 #     - iscomplex                  : Returns True for complex elements in the array.
 #     - isrealobj                  : Checks if the array is entirely real (no imaginary parts).
@@ -227,11 +228,10 @@ In [9]: np.
 
 # 📦 Set Operations:
 #     - unique                    : Finds the unique elements of an array.
-#     - intersect1d               : Computes the intersection of two arrays.
 #     - union1d                   : Computes the union of two arrays.
+#     - intersect1d               : Computes the intersection of two arrays.
 #     - setdiff1d                 : Computes the set difference of two arrays.
 #     - setxor1d                  : Computes the exclusive or of two arrays.
-#     - in1d                      : Tests whether each element of a 1D array is also in a second array.
 
 # 🎲 Random Number Generation
 #     - random.seed                 : Sets the seed for the random number generator.
@@ -608,7 +608,10 @@ This variable `mat1` can be expanded:
 
 `mat1` has the following `shape` tuple:
 
->>> Note Spyder displays `[8, 4]` under the heading "Size". The terminology here is confusing because the `ndarray` has the attribute `size` which is the number of elements `32` i.e. the product of the elements in the list shown. The `ndarray` has the attribute `shape` which is `(8, 4)` and is equivalent to what Spyder displays, although Spyder represents this as a list opposed to a tuple.
+>>> Note Spyder displays `[8, 4]` under the heading "Size". 
+>>> Size is used in some `numpy` functions to indicate the number of elements in a 1d `ndarray` i.e. the `len` and the `shape` in a 2d `ndarray`.
+>>> Note that the `ndarray` also has the attribute `size` which is the number of elements and equal to the `len` in the 1d `ndarray` or product of the dimensions in `shape`. 
+>>> Spyder displays the shape as `[8, 4]` opposed to `(8, 4)` which is generally preferred by `numpy`.
 
 <img src='./images/img_006.png' alt='img_006' width='400'/>
 
@@ -655,7 +658,6 @@ For clarity the positive and negative indexes are shown side by side:
 The positive index (left to right) of the `axis` in the `shape` tuple that corresponds to columns increments as the dimensionality of the `ndarray` increments because the outer dimensions always take `axis=0`. For a 1d `ndarray` known as a vector the columns are `axis=0`, for a 2d `ndarray` known as a matrix the columsn are `axis=1`, for a 3d `ndarray` known as a book the columns are `axis=2`.
 
 The negative index (right to left) of the `axis` in the `shape` tuple that corresponds to columns always remains the same `axis=-1`. 
-
 Higher dimensional `ndarray` instances will be explored in more detail later.
 
 The `ndarray` attributes can be examined.
@@ -1018,23 +1020,23 @@ Because the `ndarray` has a uniform `np.int64` datatype and each element is a sc
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr> 
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>     
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>  
 </table>
 
@@ -1083,23 +1085,23 @@ Notice these both explictly show as a column and row in the collapsed and expand
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr> 
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>     
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>  
 </table>
 
@@ -1135,23 +1137,23 @@ Notice these both explictly show as a column and row in the collapsed and expand
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr> 
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>     
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
-    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0<td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">0</td>
   </tr>  
 </table>
 
@@ -1503,7 +1505,7 @@ The 2d `ndarray` on the other hand is a singular data structure:
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat2 - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat2 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1591,7 +1593,7 @@ In [77]: mat1 = np.arange(20).reshape(5, 4)
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1646,7 +1648,7 @@ Out[78]: np.int64(14)
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1701,7 +1703,7 @@ Out[79]: array([ 6, 14])
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1757,7 +1759,7 @@ Out[80]: array([ 2,  6, 10, 14, 18])
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1828,7 +1830,7 @@ Out[83]: array([ 6, 11])
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1876,7 +1878,7 @@ Out[83]: array([ 6, 11])
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1933,7 +1935,7 @@ array([[ 6,  7],
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -1999,7 +2001,7 @@ For clarity the negative indexes are shown below:
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2053,7 +2055,7 @@ In [89]: mat1[1:3, 2:4] = np.full((2, 2), fill_value=9)
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2215,7 +2217,7 @@ array([[1, 2],
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2473,7 +2475,7 @@ Recall the `shape` tuple has the form `(nrows, ncols)`. Index `0` of the `shape`
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2497,7 +2499,7 @@ Index `1` of the `shape` tuple operates along axis `1` and specifies the number 
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2578,7 +2580,7 @@ When visualised axis `0` is selected by default and `sheet0` `book[0, :, :]` dis
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2606,7 +2608,7 @@ When visualised axis `0` is selected by default and `sheet0` `book[0, :, :]` dis
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2634,7 +2636,7 @@ When visualised axis `0` is selected by default and `sheet0` `book[0, :, :]` dis
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2662,7 +2664,7 @@ When visualised axis `0` is selected by default and `sheet0` `book[0, :, :]` dis
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2693,7 +2695,7 @@ When visualised axis `0` is selected by default and `sheet0` `book[0, :, :]` dis
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2726,7 +2728,7 @@ When visualised axis `0` is selected by default and `sheet0` `book[0, :, :]` dis
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -2757,7 +2759,7 @@ When visualised axis `0` is selected by default and `sheet0` `book[0, :, :]` dis
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">book - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -3222,7 +3224,7 @@ array([[1, 2],
 
 <table style="width: 30%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy object array</th>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat1 - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -3718,7 +3720,7 @@ In [2]: mat = np.array([[12, 7, 3, 10],
 
 <table style="width: 60%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -3849,7 +3851,7 @@ In [3]: mat = np.array([[12, 7, 3, 10],
 
 <table style="width: 60%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy object array</th>
+    <th colspan="5" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">mat - numpy int64 array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
@@ -3882,11 +3884,13 @@ In [3]: mat = np.array([[12, 7, 3, 10],
   </table>
 
 
-The argument minimum method `argmin` gives the index of the minimum element:
+The argument minimum method `argmin` gives the index of the minimum element. This is an aggregate function that propages along the column axis returning a single colimn of indexes: 
 
 ```python
-In [4]: mat.argmin(axis=-1) # along column axis
-Out[4]: array([2, 3, 0])
+In [4]: mat.argmin(axis=-1, keepdims=True) # aggregate along column axis
+Out[4]: array([[2],
+      :        [3],
+      :        [0]])
 ```
 
 For row `0`, the minimum value is `3` at index `2`. For row `1`, the minimum value is `6` at index `3`. For row `2`, the minimum value is `1` at index `0`. 
@@ -3920,7 +3924,7 @@ In [9]: mat.max(axis=-1)
 Out[9]: array([12, 15, 14])
 ```
 
-`argmin` and `argmax` have the optional parameter `keepdims` which make it easier to visualise. Operating along `axis=-1` (the column axis) returns a column of indexes:
+The aggregate functions have the optional parameter `keepdims` which make it easier to visualise, the aggregation along an axis. Operating along `axis=-1` (the column axis) aggregates all the columns and the return value is a single column of indexes:
 
 ```python
 In [10]: mat.argmin(axis=-1, keepdims=True)
@@ -5029,7 +5033,7 @@ In [79]: mat = np.array([[4, 1, 6],
 The `sum` method calculates the sum along an `axis` of an `ndarray`:
 
 ```python
-In [80]: mat.sum(axis=-1, keepdims=True) # along column axis
+In [80]: mat.sum(axis=-1, keepdims=True) # aggregate along column axis
 Out[80]: 
 array([[11],
        [17],
@@ -5051,8 +5055,7 @@ array([[ 4,  5, 11],
 
 Note the first column is unchanged as nothing has been added to it, and the last column is the column returned from the sum method.
 
-The `diff` function calculates the difference along an `ndarray`, 2 elements are used to calculate a difference and therefore when this function operates along the column `axis`, the result has `column` shorter:
-
+The `diff` function calculates the difference along an `ndarray`, 2 elements are used to calculate a difference and therefore when this function propogates along the column `axis` the result is a `column` shorter. This is similar to the aggregate methods previously explored but progrates to `n-1` instead of aggregating to `1` element:
 
 
 ```python
@@ -5101,6 +5104,7 @@ In [37]: np.
 #     - signbit                    : Returns True for negative values.
 #     - isfinite                   : Returns True for finite elements.
 #     - isinf                      : Returns True for infinite elements.
+#     - isin                       : Tests whether elements in an array are contained in another array.
 #     - isnan                      : Returns True for NaN elements.
 #     - isreal                     : Returns True for real elements in the array.
 #     - iscomplex                  : Returns True for complex elements in the array.
@@ -5293,16 +5297,34 @@ array([[False, False, False],
        [False,  True, False]])
 ```
 
+The function `isin` can be used to check whether elements in `arr` an `ndarray` are contained in  `test_elements` which is another `ndarray`. The boolean `ndarray` returned matches the dimensionality of the `arr` and is independent of the dimensionality of `test_elements`:
+
+```python
+In [102]: arr = np.array([[4, 1, 6], 
+        :                 [3, 7, 7], 
+        :                 [9, 5, 0],
+        :                 [8, 5, 2]])
+
+In [103]: test_elements = np.array([2, 4, 6, 8, 10])
+
+In [104]: np.isin(arr, elements)
+Out[104]: 
+array([[ True, False,  True],
+       [False, False, False],
+       [False, False, False],
+       [ True, False,  True]])
+```
+
 Real and complex components of a matrix can be setup:
 
 ```python
-In [102]: matr = np.array([[1, 2], 
+In [105]: matr = np.array([[1, 2], 
         :                  [3, 4]])
 
-In [103]: matj = np.array([[0, 4], 
+In [106]: matj = np.array([[0, 4], 
         :                  [3, 0]])
 
-In [104]: mat = matr + matj * 1j
+In [107]: mat = matr + matj * 1j
 ```
 
 <table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
@@ -5342,8 +5364,8 @@ In [104]: mat = matr + matj * 1j
 This can also be instantiated using:
 
 ```python
-In [105]: mat
-Out[105]: 
+In [108]: mat
+Out[108]: 
 array([[1.+0.j, 2.+4.j],
        [3.+3.j, 4.+0.j]])
 ```
@@ -5351,372 +5373,1894 @@ array([[1.+0.j, 2.+4.j],
 The functions `isreal` and `iscomplex` check to see if each element is real or complex respectively:
 
 ```python
-In [106]: np.isreal(mat)
-Out[106]: 
+In [109]: np.isreal(mat)
+Out[109]: 
 array([[ True, False],
        [False,  True]])
 
-In [107]: np.iscomplex(mat)
-Out[107]: 
+In [110]: np.iscomplex(mat)
+Out[110]: 
 array([[False,  True],
        [ True, False]])
 ```
 
+The functions `isrealobj` and `iscomplexobj` check if the `ndarray` is real or complex:
 
+```python
+In [111]: np.isrealobj(mat)
+Out[111]: False
 
-```
-
-#     - isrealobj                  : Checks if the array is entirely real (no imaginary parts).
-#     - iscomplexobj               : Checks if the array is entirely complex.
-#     - signbit                    : Returns True for negative values.
+In [112]: np.iscomplexobj(mat)
+Out[112]: True
 ```
 
 ## set-like Identifiers
 
-active = [1, 1, 1, 2, 2, 3, 4, 4, 5, 8]
-unique = set(active)
+The `numpy` library has a number of `set`-like functions. Recall however that a `set` does not have an index or the sense of dimensionality and therefore the `set`-like functions are restricted to a 1d `ndarray`:
 
-x = np.array([1, 1, 1, 2, 2, 3, 4, 4, 5, 8])
-unique = np.unique(x)
-
-np.in1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
-
-{1, 2, 3, 6} | {1, 2, 4, 5, 9}
-np.union1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
-
-{1, 2, 3, 6} & {1, 2, 4, 5, 9}
-np.intersect1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
-
-{1, 2, 3, 6} - {1, 2, 4, 5, 9}
-np.setdiff1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
-
-{1, 2, 3, 6} ^ {1, 2, 4, 5, 9}
-np.setxor1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
-
-
-
-
-
-
-
+```python
+In [113]: exit
+In [1]: import numpy as np
+In [2]: np.
+# 📦 Set Operations:
+#     - unique                    : Finds the unique elements of an array.
+#     - union1d                   : Computes the union of two arrays.
+#     - intersect1d               : Computes the intersection of two arrays.
+#     - setdiff1d                 : Computes the set difference of two arrays.
+#     - setxor1d                  : Computes the exclusive or of two arrays.
 ```
 
-import numpy as np
-
-[## Random Number Generators & Utility Functions:
- ## These functions deal with generating or setting seeds for random number generation.
- 'seed', # Sets the seed for the random number generator to ensure reproducibility.
- 'get_state', # Returns the current state of the random number generator.
- 'set_state', # Sets the state of the random number generator.
- 'random_state', # Returns a new random state generator.
- 'PCG64', # Instantiates a PCG64 pseudo-random number generator.
-
- ## Random Sampling and Permutation Functions:
- ## These functions generate random selections or reorder elements of arrays.
- 'permutation', # Returns a randomly permuted sequence or array.
- 'shuffle', # Shuffles the sequence x in place.
- 'choice', # Randomly selects elements from an array with or without replacement.
-
- ## Continuous Distributions:
- ## These functions generate random floating-point numbers based on various continuous
- ## distributions.
- 'randint', # Generates random integers between low (inclusive) and high (exclusive).
- 'uniform', # Samples from a uniform distribution in the range [low, high).
- 'random_sample', # Generates random floats in the range [0, 1).
- 'triangular', # Samples from a triangular distribution.
- 'standard_normal', # Samples from a standard normal distribution (mean = 0, variance = 1).
- 'normal', # Samples from a normal (Gaussian) distribution.
- 'exponential', #  Samples from an exponential distribution.
- 'standard_exponential', # Samples from a standard exponential distribution.
- 'rayleigh', # Samples from a Rayleigh distribution.
- 'gamma', # Samples from a gamma distribution.
- 'standard_gamma', # Samples from a standard gamma distribution.
- 'lognormal', # Samples from a log-normal distribution.
- 'beta', # Samples from a beta distribution.
- 'laplace', # Samples from a Laplace distribution (double-exponential distribution).
- 'weibull', # Samples from a Weibull distribution.
- 'chisquare', # Samples from a chi-square distribution.
- 'f', # Samples from an F-distribution.
- 'pareto', # Samples from a Pareto distribution.
- 'logistic', # Samples from a logistic distribution.
- 'gumbel', # Samples from a Gumbel distribution, typically used for modeling extreme values.
- 'power', # Samples from a power-law distribution.
- 'wald', # Samples from a Wald (inverse Gaussian) distribution.
- 'vonmises', # Samples from a von Mises distribution, a circular distribution.
- 'standard_cauchy', # Samples from a standard Cauchy distribution.
-
- ## Discrete Distributions:
- ## These distributions generate random integers based on various discrete probability
- ## distributions.
- 'binomial', # Samples from a binomial distribution with n trials and success probability p.
- 'geometric', # Samples from a geometric distribution, representing the number of trials
-  # before the first success.
- 'hypergeometric', # Samples from a hypergeometric distribution, modeling draws without
- # replacement.
- 'negative_binomial', # Samples from a negative binomial distribution.
- 'poisson', # Samples from a Poisson distribution.
- 'multinomial', #  Samples from a multinomial distribution (generalization of the
- # binomial distribution).
- 'zipf', # Samples from a Zipf distribution.
-
- ## Multivariate Distributions:
- ## These distributions generate random vectors based on multivariate probability
- ## distributions.
- 'multivariate_normal', # Samples from a multivariate normal distribution.
- 'dirichlet', # Samples from a Dirichlet distribution, often used in Bayesian statistics.
-]
-
-np.random.seed(66) # set random number generator to a state (for reproducability)
-vec = np.arange(16)
-permutation(vec)
-
-np.random.shuffle(vec) # no return value
-vec # mutatedin place
-
-np.random.choice(vec)
-np.random.choice(vec, size=(12,))
-np.random.choice(vec, size=(12,), replace=False)
-
-np.random.choice(vec, size=(4, 5))
-
-# int
-x1 = np.random.randint(low=0, high=11, size=(int(1e7),))
-
-# dtype float...
-x2 = np.random.uniform(low=0.0, high=11.0, size=(int(1e7),))
-
-x3 = np.random.random_sample(size=(int(1e7),))
-# x3 = np.random.uniform(low=0.0, high=1.0, size=(int(1e7),))
-
-x4 = np.random.triangular(left=3, mode=4, right=5, size=(int(1e7),))
-
-x5 = np.random.triangular(left=3, mode=3, right=5, size=(int(1e7),))
-
-x6 = np.random.normal(loc=100, scale=30, size=(int(1e7),))
-
-x7 = np.random.standard_normal(size=(int(1e7),))
-# x7 = np.random.standard_normal(loc=0, scale=1, size=(int(1e7),))
-
-x8 = np.random.exponential(scale=0.1, size=(int(1e7),))
-
-x9 = np.random.exponential(scale=10, size=(int(1e7),))
-
-x10 = np.random.standard_exponential(size=(int(1e7),))
-# x10 = np.random.exponential(scale=1.0, size=(int(1e7),))
-
-x11 = np.random.rayleigh(scale=1, size=(int(1e7),))
-
-x12 = np.random.binomial(n=100, p=0.1, size=(int(1e7),))
-
-x13 = np.random.binomial(n=100, p=0.2, size=(int(1e7),))
-
-x14 = np.random.binomial(n=100, p=1, size=(int(1e7),))
-
-x15 = np.random.poisson(lam=1, size=(int(1e7),))
-# view histogram and plot, skewed to low values with low lam
-
-x16 = np.random.poisson(lam=4, size=(int(1e7),))
-# view histogram and plot, becomes more symmetric as lam increases
-
-x17 = np.random.poisson(lam=10, size=(int(1e7),))
-# view histogram and plot, large lam, approximates a normal distribution
-
-x18 = np.random.gamma(shape=1, scale=5, size=(int(1e7),))
-# view histogram and plot, similar to negative exponential with a scale of 1
-
-x19 = np.random.gamma(shape=2, scale=5, size=(int(1e7),))
-# view histogram and plot, moves towards a bellshape
-
-x20 = np.random.gamma(shape=3, scale=5, size=(int(1e7),))
-# view histogram and plot, tend continues to moves towards a bellshape
-
-x21 = np.random.gamma(shape=100000, scale=5, size=(int(1e7),))
-# view histogram and plot, the plot tends towards a bellshape with a mean of 500000
-# which is the product of shape and scale
-
-## np.datetime64, accurate to a ns
-
-np.datetime64('2024-09-16T17:30:25.123456789')
-
-# np.timedelta64, accuracy to
-
-np.datetime64('2024-09-01') - np.datetime64('2024-08-01')
-
-np.datetime64('2024-09-01') - np.datetime64('2024-08-01T01')
-
-np.datetime64('2024-09-01') - np.datetime64('2024-08-01T01:15')
-
-np.datetime64('2024-09-01') - np.datetime64('2024-08-01T01:15:30')
-
-np.datetime64('2024-09-01') - np.datetime64('2024-08-01T01:15:30.001')
-
-np.datetime64('2024-09-01') - np.datetime64('2024-08-01T01:15:30.001002')
-
-np.datetime64('2024-09-01') - np.datetime64('2024-08-01T01:15:30.001002003')
-
-# np.timedelta64
-
-np.timedelta64(1,'D') + np.timedelta64(1,'h') + np.timedelta64(1,'m') + \
-    np.timedelta64(1, 's') + np.timedelta64(1, 'ms') + \
-        np.timedelta64(1, 'us') + np.timedelta64(1, 'ns')
-
-# doesn't support dates as it focuuses on float division
-np.linspace(np.datetime64('2024-09-01'),
-            np.datetime64('2024-09-03'),
-            3)
-
-dates = np.arange(np.datetime64('2024-09-01'),
-                  np.datetime64('2024-09-03') + np.timedelta64(1, 'D'),
-                  np.timedelta64(1, 'D'))
-
-# doesn't display in variable explroer
-# look in ipython console
-
-times = np.arange(np.timedelta64(1, 's'),
-                  np.timedelta64(10, 's') + np.timedelta64(1, 's'),
-                  np.timedelta64(1, 's'))
-
-# doesn't display in variable explorer
-# look in ipython console
-
-# array operations and linear algebra
-
-# exit
-
-# normalised matrix
-
-vec = np.array([3, 4])
-np.linalg.norm(vec)
-
-# ((3 ** 2) + (4 ** 2)) ** 0.5
-
-mat = np.array([[1, 2],
-                [3, 4]])
-np.linalg.norm(mat)
-# ((1 ** 2) + (2 ** 2) + (3 ** 2) + (4 ** 2)) ** 0.5
-
-# exit
-row = np.array([3, 4])[np.newaxis, :]
-col = np.array([1, 2])[:, np.newaxis]
-# open in the variable explorer
-
-row.shape[-1] == col.shape[0]
-
-mat = row @ col
-
-(row.shape[0], col.shape[-1]) == mat.shape
-
-np.inner(np.array([3, 4]),
-         np.array([1, 2]))
-
-col.shape[-1] == row.shape[0]
-
-mat = col @ row
-
-(col.shape[0], row.shape[1]) == mat.shape
-
-np.outer(np.array([3, 4]),
-         np.array([1, 2]))
-
-# equations used to create this matrix are not unique
-# (3x + 4y)
-# (6x + 8y) = 2 * (3x + 4y)
-
-# The determinnant of the matrix is the difference of the products of the diagonals
-np.linalg.det(mat)
-
-# Therefore this matrix has no inverse and
-np.linalg.inv(mat)
-# gives an error singularmatrix
-
-matrix = np.array([[5, 6],
-                   [3, 3]])
-
-
-results = np.array([83, 42])[:, np.newaxis]
-
-
-# matrix @ coeefficients = results
-# (2, 2) @ (2, 1) = (2, 1)
-
-inv_matrix = np.linalg.inv(matrix)
-
-inv_matrix @ matrix
-# creates the identity matrix
-
-np.identity(2)
-# the identity matrix can be made shorthand using
-
-col = np.array([1, 2])[:, np.newaxis]
-# take an example column
-
-np.identity(2) @ col
-# look at this operation by opening the variables in the variable explorer
-# look at the effect of multiplying by 1
-
-# matrix @ coeefficients = results
-# (2, 2) * (2, 1) = (2, 1)
-
-# inv_matrix @ matrix @ coefficients = inv_matrix @ results
-# (2, 2) @ (2, 2) @ (2, 1) = (2, 2) @ (2, 1)
-
-# identity @ coefficients = inv_matrix @ results
-# (2, 2) @ (2, 1) = (2, 2) @ (2, 1)
-
-# coefficients = inv_matrix @ results
-# (2, 1) = (2, 2) @ (2, 1)
-
-coefficients = inv_matrix @ results
-
-coefficients = np.linalg.solve(matrix, results)
-
-## eigenvalues and eigenvectors
-
-mat = np.array([[4, -2],
-                [1, 1]])
-
-eigenvalues, eigenvectors = np.linalg.eig(mat)
-
-v = eigenvectors[:, 0]
-lamb = eigenvalues[0]
-
-mat @ v
-
-lamb * v
-
-v = eigenvectors[:, 1]
-lamb = eigenvalues[1]
-
-mat @ v
-
-lamb * v
-
-## single vector decomposition
-
-mat = np.array([[1, 2],
-                [3, 4],
-                [5, 6]])
-
-u, s, v = np.linalg.svd(mat)
-
-
-sigma = np.zeros((mat.shape))
-sigma[:len(s), :len(s)] = np.diag(s)
-
-
-mat_reconstructed = u @ sigma @ v
-
-##  qr decomposition
-
-mat = np.array([[1, 2],
-                [3, 4],
-                [5, 6]])
-
-q, r = np.linalg.qr(mat)
-
-mat_reconstructed = q @ r
-
-# other statistical functions
-
-## more specialised scientific functions scipy...
+The `unique` function returns an `ndarray` of unique values:
+
+```python
+In [3]: vec = np.array([1, 1, 1, 2, 2, 3, 4, 4, 5, 8])
+In [4]: np.unique(vec)
+Out[4]: array([1, 2, 3, 4, 5, 8])
 ```
+
+The `union1d` function is a counterpart to the `set` immutable method `union` and `set` immutable data model method `__or__`. Note that in the `ndarray` `__or__` is already reserved for bitwise operation:
+
+```python
+In [5]: np.union1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
+Out[5]: array([1, 2, 3, 4, 5, 6, 9])
+```
+
+The `intersect1d` function is a counterpart to the `set` immutable method `intersect` and `set` immutable data model method `__and__`. Note that in the `ndarray` `__and__` is already reserved for bitwise operation:
+
+```python
+In [6]: np.intersect1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
+Out[6]: array([1, 2])
+```
+
+The `setdiff1d` function is a counterpart to the `set` immutable method `difference` and `set` immutable data model method `__sub__`. Note that in the `ndarray` `__sub__` is already reserved for a numeric operation:
+
+```python
+In [7]: np.setdiff1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
+Out[7]: array([3, 6])
+```
+
+The `setxor1d` function is a counterpart to the `set` immutable method `symmetric_difference` and `set` immutable data model method `__xor__`. Note that in the `ndarray` `__xor__` is already reserved for a bitwise operation:
+
+```python
+In [8]: np.setxor1d(np.array([1, 2, 3, 6]), np.array([1, 2, 4, 5, 9]))
+Out[8]: array([3, 4, 5, 6, 9])
+```
+
+## timedelta64 and datetime64
+
+An `ndarray` of `datetime` and `timedelta` classes can be constructed. Recall the `datetime` and `timedelta` classes are compartmentalised in the standard module `datetime`:
+
+```python
+In [1]: import datetime 
+      : import numpy as np
+```
+
+Recall that the standard module `datetime` has a class `datetime`, which are both lower case and should't be confused with one another. A `datetime` instance can be instantiated using the parameters `year`, `month`, `day`, `hour`, `minute`, `second`, `microsecond`:
+
+```python
+In [2]: sunrise_today = datetime.datetime(2024, 12, 21, 8, 43, 0, 0)
+      : sunset_today = datetime.datetime(2024, 12, 21, 15, 47, 0, 0)
+```
+
+Notice in the Variable Explorer that the higher accuracy second and microseconds unit are dropped:
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunrise_today</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #236c16; color: #ffffff;">datetime(2024, 12, 21, 8, 43)</td>
+  </tr>   
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunset_today</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #236c16; color: #ffffff;">datetime(2024, 12, 21, 15, 47)</td>
+  </tr>                                
+</table>
+
+The time difference is expressed as a `timedelta` instance:
+
+```python
+In [3]: sunlight_duration = sunset_today - sunrise_today
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunlight_duration</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #236c16; color: #ffffff;">timedelta(seconds=25440)</td>
+  </tr>                                
+</table>
+
+
+This can be expressed in multiple time units but the default representation displays the unit in seconds:
+
+```python
+In [4]: datetime.timedelta(hours=7, minutes=4)
+Out[4]: datetime.timedelta(seconds=25440)
+```
+
+A `datetime` instance also has the `isoformat`:
+
+```python
+In [5]: sunrise_today.isoformat()
+Out[5]: '2024-12-21T08:43:00'
+```
+
+Which can be used as an alternative constructor:
+
+```python
+In [6]: datetime.datetime.fromisoformat('2024-12-21T08:43:00:000000')
+Out[6]: datetime.datetime(2024, 12, 21, 8, 43)
+
+In [7]: datetime.datetime.fromisoformat('2024-12-21T08:43:00')
+Out[7]: datetime.datetime(2024, 12, 21, 8, 43)
+```
+
+A 1d `ndarray` of `sunrises` for every day in the month of December can be created:
+
+```python
+In [8]: sunrises = np.array([
+      :                      datetime.datetime.fromisoformat('2024-12-01T08:21:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-02T08:23:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-03T08:24:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-04T08:26:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-05T08:27:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-06T08:29:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-07T08:30:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-08T08:31:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-09T08:32:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-10T08:34:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-11T08:35:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-12T08:36:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-13T08:37:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-14T08:38:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-15T08:39:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-16T08:40:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-17T08:40:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-18T08:41:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-19T08:42:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-20T08:42:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-21T08:43:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-22T08:43:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-23T08:44:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-24T08:44:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-25T08:44:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-26T08:44:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-27T08:45:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-28T08:45:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-29T08:45:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-30T08:45:00'),
+      :                      datetime.datetime.fromisoformat('2024-12-31T08:44:00'),
+      :                    ])
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunrises</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of object</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(31,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[datetime(2024, 12, 1, 8, 21) datetime(2024, 12, 2, 8, 23) datetime(2024, 12, 3, 8, 24) ...]</td>
+  </tr>                              
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">sunrises - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"> </th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>        
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 1, 8, 21)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 2, 8, 23)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 3, 8, 24)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 4, 8, 26)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 5, 8, 27)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 6, 8, 29)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">6</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 7, 8, 30)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">7</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 8, 8, 31)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 9, 8, 32)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 10, 8, 34)</td>              
+  </tr>
+  <!-- Continue similarly for all remaining indices and times -->
+</table>
+
+Notice that the datatype is `'O'` which means `np.object_`:
+
+```python
+In [9]: sunrises.dtype
+Out[9]: dtype('O')
+```
+
+If another 1d `ndarray` is made for sunsets:
+
+```python
+In [10]: sunsets = np.array([
+       :                      datetime.datetime.fromisoformat('2024-12-01T15:50:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-02T15:50:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-03T15:49:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-04T15:48:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-05T15:48:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-06T15:47:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-07T15:47:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-08T15:46:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-09T15:46:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-10T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-11T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-12T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-13T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-14T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-15T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-16T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-17T15:45:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-18T15:46:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-19T15:46:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-20T15:46:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-21T15:47:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-22T15:47:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-23T15:48:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-24T15:49:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-25T15:49:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-26T15:50:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-27T15:51:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-28T15:52:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-29T15:53:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-30T15:54:00'),
+       :                      datetime.datetime.fromisoformat('2024-12-31T15:55:00'),
+       :                    ])
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunsets</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of object</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(31,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[datetime(2024, 12, 1, 15, 50) datetime(2024, 12, 2, 15, 50) datetime(2024, 12, 3, 15, 49) ...]</td>
+  </tr>                              
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">sunsets - numpy object array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"> </th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>        
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 1, 16, 12)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 2, 16, 11)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 3, 16, 10)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 4, 16, 10)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 5, 16, 09)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 6, 16, 09)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">6</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 7, 16, 09)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">7</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 8, 16, 09)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 9, 16, 09)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime(2024, 12, 10, 16, 10)</td>              
+  </tr>
+  <!-- Continue similarly for all remaining indices and times -->
+</table>
+
+`sunlight_durations` can be created using element by element subtraction of these two `object` `ndarray` instances. The `-` operator can only be broadcast because each element is a `datetime` instance and `__sub__` between two `datetime` instances is defined in the `datetime` class:
+
+```python
+In [11]: sunlight_durations = sunsets - sunrises
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunlight_durations</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of object</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(31,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[timedelta(seconds=26940) timedelta(seconds=26820) timedelta(seconds=26700) ...]</td>
+  </tr>                              
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">sunlight_duration - numpy timedelta array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"> </th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>        
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26940)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26820)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26700)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26520)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26460)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26280)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">6</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26220)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">7</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26100)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=26040)</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta(seconds=25860)</td>              
+  </tr>
+  <!-- Continue similarly for all remaining indices and durations -->
+</table>
+
+The `float` class has a higher or equal to precision than `np.float16`, `np.float32` and `np.float64` counterparts and therefore the classes are not typically used to instantiate an `ndarray`. Instead the `dtype` is assigned.
+
+The `datetime` and `timedelta` classes have a μs precision:
+
+```python
+In [12]: microsecond_precision = datetime.datetime(2024, 12, 21, 8, 43, 1, 123456)
+
+In [13]: microsecond_precision.isoformat()
+Out[13]: '2024-12-21T08:43:01.123456'
+```
+
+The `np.datetime64` and `np.timedelta64` classes on the other hand have a ns precision. Therefore the `np.datetime64` and `np.timedelta64` classes are typically instantiated directly. The `np.datetime64` class is typically instantiated using a isoformat `str`:
+
+```python
+In [14]: np.datetime64('2024-12-21T08:43:01.123456789')
+Out[14]: np.datetime64('2024-12-21T08:43:01.123456789')
+```
+
+Todays sunrise and sunset can be examined:
+
+```python
+In [15]: sunrise_today = np.datetime64('2024-12-21T08:43:00')
+       : sunset_today = np.datetime64('2024-12-21T15:47:00')
+
+In [16]: duration = sunset_today - sunrise_today
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunrise_today</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #236c16; color: #ffffff;">datetime('2024-12-21T08:43:00')</td>
+  </tr>   
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunset_today</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #236c16; color: #ffffff;">datetime64('2024-12-21T15:47:00')</td>
+  </tr> 
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunlight_duration</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #236c16; color: #ffffff;">timedelta64(25440, 's')</td>
+  </tr>                                  
+</table>
+
+An `ndarray` of the `np.datetime64` instances can be instantiated:
+
+```python
+In [17]: sunrises = np.array([
+       :                      np.datetime64('2024-12-01T08:21:00'),
+       :                      np.datetime64('2024-12-02T08:23:00'),
+       :                      np.datetime64('2024-12-03T08:24:00'),
+       :                      np.datetime64('2024-12-04T08:26:00'),
+       :                      np.datetime64('2024-12-05T08:27:00'),
+       :                      np.datetime64('2024-12-06T08:29:00'),
+       :                      np.datetime64('2024-12-07T08:30:00'),
+       :                      np.datetime64('2024-12-08T08:31:00'),
+       :                      np.datetime64('2024-12-09T08:32:00'),
+       :                      np.datetime64('2024-12-10T08:34:00'),
+       :                      np.datetime64('2024-12-11T08:35:00'),
+       :                      np.datetime64('2024-12-12T08:36:00'),
+       :                      np.datetime64('2024-12-13T08:37:00'),
+       :                      np.datetime64('2024-12-14T08:38:00'),
+       :                      np.datetime64('2024-12-15T08:39:00'),
+       :                      np.datetime64('2024-12-16T08:40:00'),
+       :                      np.datetime64('2024-12-17T08:40:00'),
+       :                      np.datetime64('2024-12-18T08:41:00'),
+       :                      np.datetime64('2024-12-19T08:42:00'),
+       :                      np.datetime64('2024-12-20T08:42:00'),
+       :                      np.datetime64('2024-12-21T08:43:00'),
+       :                      np.datetime64('2024-12-22T08:43:00'),
+       :                      np.datetime64('2024-12-23T08:44:00'),
+       :                      np.datetime64('2024-12-24T08:44:00'),
+       :                      np.datetime64('2024-12-25T08:44:00'),
+       :                      np.datetime64('2024-12-26T08:45:00'),
+       :                      np.datetime64('2024-12-27T08:45:00'),
+       :                      np.datetime64('2024-12-28T08:45:00'),
+       :                      np.datetime64('2024-12-29T08:45:00'),
+       :                      np.datetime64('2024-12-30T08:45:00'),
+       :                      np.datetime64('2024-12-31T08:44:00')
+       :                     ])
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunrises</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of datetime64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(31,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[datetime64('2024-12-01T08:21:00') datetime64('2024-12-02T08:23:00') datetime64('2024-12-03T08:24:00') ...]</td>
+  </tr>                              
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">sunrises - numpy datetime64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>        
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-01T08:21:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-02T08:23:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-03T08:24:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-04T08:26:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-05T08:27:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-06T08:29:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">6</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-07T08:30:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">7</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-08T08:31:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-09T08:32:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-10T08:34:00')</td>              
+  </tr>
+  <!-- Continue similarly for all remaining indices and times -->
+</table>
+
+Note this `ndarray` has the datatype:
+
+```python
+In [18]: sunrises.dtype
+Out[18]: dtype('<M8[s]')
+```
+
+`M` means `datetime64`, `8` means each value is stored using 8 bytes and `s` is the precision. 
+
+Another `ndarray` can be created for `sunsets`:
+
+```python
+In [19]: sunsets = np.array([
+       :                      np.datetime64('2024-12-01T15:50:00'),
+       :                      np.datetime64('2024-12-02T15:50:00'),
+       :                      np.datetime64('2024-12-03T15:49:00'),
+       :                      np.datetime64('2024-12-04T15:48:00'),
+       :                      np.datetime64('2024-12-05T15:48:00'),
+       :                      np.datetime64('2024-12-06T15:47:00'),
+       :                      np.datetime64('2024-12-07T15:47:00'),
+       :                      np.datetime64('2024-12-08T15:46:00'),
+       :                      np.datetime64('2024-12-09T15:46:00'),
+       :                      np.datetime64('2024-12-10T15:45:00'),
+       :                      np.datetime64('2024-12-11T15:45:00'),
+       :                      np.datetime64('2024-12-12T15:45:00'),
+       :                      np.datetime64('2024-12-13T15:45:00'),
+       :                      np.datetime64('2024-12-14T15:45:00'),
+       :                      np.datetime64('2024-12-15T15:45:00'),
+       :                      np.datetime64('2024-12-16T15:45:00'),
+       :                      np.datetime64('2024-12-17T15:45:00'),
+       :                      np.datetime64('2024-12-18T15:46:00'),
+       :                      np.datetime64('2024-12-19T15:46:00'),
+       :                      np.datetime64('2024-12-20T15:46:00'),
+       :                      np.datetime64('2024-12-21T15:47:00'),
+       :                      np.datetime64('2024-12-22T15:47:00'),
+       :                      np.datetime64('2024-12-23T15:48:00'),
+       :                      np.datetime64('2024-12-24T15:49:00'),
+       :                      np.datetime64('2024-12-25T15:49:00'),
+       :                      np.datetime64('2024-12-26T15:50:00'),
+       :                      np.datetime64('2024-12-27T15:51:00'),
+       :                      np.datetime64('2024-12-28T15:52:00'),
+       :                      np.datetime64('2024-12-29T15:53:00'),
+       :                      np.datetime64('2024-12-30T15:54:00'),
+       :                      np.datetime64('2024-12-31T15:55:00')
+       :                     ])
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunsets</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of datetime64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(31,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[datetime64('2024-12-01T15:50:00') datetime64('2024-12-02T15:50:00') datetime64('2024-12-03T15:49:00') ...]</td>
+  </tr>                              
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">sunsets - numpy datetime64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>        
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-01T17:16:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-02T17:15:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-03T17:15:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-04T17:15:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-05T17:14:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-06T17:14:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">6</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-07T17:14:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">7</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-08T17:14:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-09T17:14:00')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">datetime64('2024-12-10T17:14:00')</td>              
+  </tr>
+  <!-- Continue similarly for all remaining indices and times -->
+</table>
+
+The `sunlight_durations` can be calculated:
+
+```python
+In [20]: sunlight_durations = sunsets - sunrises
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sunlight_durations</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of timedelta64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(31,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[timedelta64(26940, 's') timedelta64(26820, 's') timedelta64(26700, 's') ...]</td>
+  </tr>                              
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">sunlight_durations - numpy timedelta64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>        
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26940, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26760, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26760, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26760, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26640, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26640, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">6</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26640, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">7</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26640, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26640, 's')</td>              
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">timedelta64(26640, 's')</td>              
+  </tr>
+  <!-- Continue similarly for all remaining indices and durations -->
+</table>
+
+The `array` funciton works with two `np.datetime64` `start` and `stop` instance and a `np.timedelta64` `step`. Or a `np.timedelta64`, `start`, `stop` and `step`:
+
+```python
+In [21]: np.arange(np.datetime64('2024-12-01'), 
+       :           np.datetime64('2024-12-31'), 
+       :           np.timedelta64(1, 'D'))
+Out[21]: 
+array(['2024-12-01', '2024-12-02', '2024-12-03', '2024-12-04',
+       '2024-12-05', '2024-12-06', '2024-12-07', '2024-12-08',
+       '2024-12-09', '2024-12-10', '2024-12-11', '2024-12-12',
+       '2024-12-13', '2024-12-14', '2024-12-15', '2024-12-16',
+       '2024-12-17', '2024-12-18', '2024-12-19', '2024-12-20',
+       '2024-12-21', '2024-12-22', '2024-12-23', '2024-12-24',
+       '2024-12-25', '2024-12-26', '2024-12-27', '2024-12-28',
+       '2024-12-29', '2024-12-30'], dtype='datetime64[D]')
+```
+
+Note that the `arange` function remains exclusive of the `stop` bound and is missing the last day in the month:
+
+```python
+In [22]: np.arange(np.datetime64('2024-12-01'), 
+       :           np.datetime64('2024-12-31')+np.timedelta64(1, 'D'), 
+       :           np.timedelta64(1, 'D'))
+Out[22]: 
+array(['2024-12-01', '2024-12-02', '2024-12-03', '2024-12-04',
+       '2024-12-05', '2024-12-06', '2024-12-07', '2024-12-08',
+       '2024-12-09', '2024-12-10', '2024-12-11', '2024-12-12',
+       '2024-12-13', '2024-12-14', '2024-12-15', '2024-12-16',
+       '2024-12-17', '2024-12-18', '2024-12-19', '2024-12-20',
+       '2024-12-21', '2024-12-22', '2024-12-23', '2024-12-24',
+       '2024-12-25', '2024-12-26', '2024-12-27', '2024-12-28',
+       '2024-12-29', '2024-12-30', '2024-12-31'], dtype='datetime64[D]')
+```
+
+```python
+In [23]: np.arange(np.timedelta64(0, 'D'), 
+       : np.timedelta64(1, 'D')+np.timedelta64(1, 'h'), 
+       : np.timedelta64(1, 'h'))
+Out[23]: 
+array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
+       17, 18, 19, 20, 21, 22, 23, 24], dtype='timedelta64[h]')
+```
+
+Unfortunately the `linspace` function is not configured to work with these data types:
+
+```python
+In [24]: np.linspace(np.timedelta64(0, 'D'), np.timedelta64(1, 'D'), 50)
+DTypePromotionError: The DType <class 'numpy.dtypes._PyFloatDType'> could not be promoted by <class 'numpy.dtypes.TimeDelta64DType'>. This means that no common DType exists for the given inputs. For example they cannot be stored in a single array unless the dtype is `object`. The full list of DTypes is: (<class 'numpy.dtypes.TimeDelta64DType'>, <class 'numpy.dtypes.TimeDelta64DType'>, <class 'numpy.dtypes._PyFloatDType'>)
+```
+
+```python 
+In [25]: exit
+```
+
+## random Module
+
+The `numpy` library has a number of modules that compartmentalise additional functionality. The modules can be seen by examining the identifier `np.__all__` and list identifiers that correspond to modules:
+
+```python
+
+In [1]: import inspect
+      : import numpy as np
+      : [identifier for identifier in np.__all__ if inspect.ismodule(getattr(np, identifier))]
+Out[1]: 
+['core',
+ 'testing',
+ 'dtypes',
+ 'random',
+ 'lib',
+ 'exceptions',
+ 'rec',
+ 'fft',
+ 'polynomial',
+ 'emath',
+ 'linalg',
+ 'typing',
+ 'f2py',
+ 'char',
+ 'strings',
+ 'ctypeslib',
+ 'ma']
+```
+
+Note the module `np.random` and `random` share the same name. Often both modules are used in conjunction with one another and it is recommended to make use of namespaces. If the kernel is restarted:
+
+```python
+In [2]: exit
+```
+
+The standard `random` module and `numpy` library can be imported:
+
+```python
+In [4]: import random
+      : import numpy
+```
+
+Identifiers from the standard module `random` can be accessed from its namespace:
+
+```python
+In [5]: random.
+
+# random module Identifiers
+
+# 🌟 State and Seed Management:
+#     - getstate                    : Returns the current internal state of the random number generator.
+#     - setstate                    : Restores the state of the random number generator from a state object.
+#     - seed                        : Initializes the random number generator with a seed.
+#     - getrandbits                 : Returns a random integer with the specified number of bits.
+
+# 🔢 Statistical and Sampling Operations:
+#     - randint                     : Returns a random integer between two integers [a, b].
+#     - randrange                   : Returns a randomly selected element from a specified range.
+#     - choice                      : Selects a random element from a non-empty sequence.
+#     - choices                     : Returns a list of randomly selected elements from a sequence with specified weights.
+#     - shuffle                     : Shuffles the elements of a sequence in place.
+#     - sample                      : Returns a list of unique elements chosen from a sequence.
+
+# 🎲 Probability Distributions:
+#     - random                      : Returns a random float in the range [0.0, 1.0) (uniform distribution).
+#     - uniform                     : Returns a random float in the specified range [a, b).
+#     - triangular                  : Returns a random float from a triangular distribution.
+#     - betavariate                 : Returns a random float from a Beta distribution.
+#     - gammavariate                : Returns a random float from a Gamma distribution.
+#     - gauss                       : Returns a random float from a Gaussian (normal) distribution.
+#     - lognormvariate              : Returns a random float from a log-normal distribution.
+#     - vonmisesvariate             : Returns a random float from a von Mises distribution.
+#     - paretovariate               : Returns a random float from a Pareto distribution.
+#     - expovariate                 : Returns a random float from an exponential distribution.
+#     - weibullvariate              : Returns a random float from a Weibull distribution.
+```
+
+Identifiers from the `np` module `random` can be accessed from its namespace:
+
+
+```python
+In [6]: np.random.
+# 🌟 Random State and Seed Management:
+#     - seed                        : Sets the seed for random number generation to ensure reproducibility.
+#     - get_state                   : Returns the current state of the random number generator.
+#     - set_state                   : Restores the state of the random number generator.
+#     - RandomState                 : Class for random number generation with a specific state.
+#     - Generator                   : Class for random number generation.
+#     - default_rng                 : Returns a random number generator instance.
+
+# 🧩 Statistical and Sampling Operations:
+#     - randint                      : Generates random integers within a specified range.
+#     - choice                       : Randomly chooses elements from a given 1-D array.
+#     - shuffle                      : Shuffles the elements of a given array or list in place.
+#     - permutation                  : Returns a permuted sequence or array of the input.
+
+# 🎲 Probability Distributions:
+#     - random                      : Returns random floats in the half-open interval [0.0, 1.0) (uniform distribution).
+#     - rand                        : Generates random samples from a uniform distribution over [0, 1).
+#     - randn                       : Generates random samples from a standard normal distribution (mean=0, std=1).
+#     - uniform                     : Draws samples from a uniform distribution over a specified range.
+#     - normal                      : Draws samples from a normal (Gaussian) distribution.
+#     - standard_normal             : Draws samples from the standard normal distribution (mean=0, std=1).
+#     - binomial                    : Draws samples from a binomial distribution.
+#     - poisson                     : Draws samples from a Poisson distribution.
+#     - exponential                 : Draws samples from an exponential distribution.
+#     - gamma                       : Draws samples from a gamma distribution.
+#     - beta                        : Draws samples from a Beta distribution.
+#     - chi2                        : Draws samples from a Chi-squared distribution.
+#     - triang                      : Draws samples from a triangular distribution.
+#     - lognormal                   : Draws samples from a log-normal distribution.
+#     - vonmises                    : Draws samples from the von Mises distribution (circular normal).
+#     - multivariate_normal         : Draws samples from a multivariate normal distribution.
+#     - dirichlet                   : Draws samples from a Dirichlet distribution.
+#     - f                           : Draws samples from an F-distribution.
+#     - hypergeometric              : Draws samples from a hypergeometric distribution.
+#     - weibull                     : Draws samples from a Weibull distribution.
+#     - laplace                     : Draws samples from a Laplace distribution.
+#     - zipf                        : Draws samples from a Zipf distribution.
+```
+
+The `random` module makes a selection from a `builtins` `Collection` such as a `list` and normally returns a scalar in the form of an `int` or `float`. 
+
+The `np.random` module on the other hand makes a selection from an `ndarray` and generates an `ndarray` of random numbers using the `shape` parameter.
+
+"Random numbers" generated by computers are typically pseudo-random numbers. These are numbers produced using deterministic algorithms that simulate randomness but are ultimately predictable if you know the algorithm and the initial `seed` value. 
+
+he `seed` is often set so the code runs reproducibility. For simplicity if a 1d `ndarray` of numbers is generated:
+
+```python
+In [8]: vec = np.arange(16)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>       
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">vec</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(16, )</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[ 0  1  2  ... 13 14 15]</td>
+  </tr>                                
+</table>
+
+A random permutation (reordering of elements in the `ndarray`) can be examined:
+
+```python
+In [10]: array([ 1,  6,  8,  9, 13,  4,  2, 14, 10,  7, 15, 11,  3,  0,  5, 12])
+```
+
+If this is ran again and again, 2 different purmutations are observed:
+
+```python
+In [11]: np.random.permutation(vec)
+Out[11]: array([ 2, 14, 12,  9,  0,  3,  4, 10, 11,  5, 15,  8, 13,  7,  6,  1])
+
+In [12]: np.random.permutation(vec)
+Out[12]: array([ 5, 13,  7,  4, 10, 14,  6, 11,  9, 12,  1,  8,  3,  2,  0, 15])
+```
+
+Notice when the IPython console is exited and the seed is set to `0`, the permutations are consistent:
+
+```python
+In [13]: exit
+
+In [1]: import numpy as np
+      : np.random.seed(0)
+
+In [2]: vec = np.arange(16)
+
+In [3]: np.random.permutation(vec)
+Out[3]: array([ 1,  6,  8,  9, 13,  4,  2, 14, 10,  7, 15, 11,  3,  0,  5, 12])
+
+In [4]: np.random.permutation(vec)
+Out[4]: array([ 2, 14, 12,  9,  0,  3,  4, 10, 11,  5, 15,  8, 13,  7,  6,  1])
+
+In [5]: np.random.permutation(vec)
+Out[5]: array([ 5, 13,  7,  4, 10, 14,  6, 11,  9, 12,  1,  8,  3,  2,  0, 15])
+```
+
+If the seed is changed, a different set of permutations display:
+
+```python
+In [6]: exit
+
+In [1]: import numpy as np
+      : np.random.seed(1)
+
+In [2]: vec = np.arange(16)
+
+In [4]: np.random.permutation(vec)
+Out[4]: array([ 3, 13,  7,  2,  6, 10,  4,  1, 14,  0, 15,  9,  8, 12, 11,  5])
+
+In [5]: np.random.permutation(vec)
+Out[5]: array([ 8,  3, 13,  9,  0,  6,  1,  7, 11, 12, 10, 15,  2,  5, 14,  4])
+
+In [6]: np.random.permutation(vec)
+Out[6]: array([12,  8,  2,  4,  3,  5, 14, 11, 10,  0,  1, 15,  6, 13,  7,  9])
+```
+
+The function `choice` can be used to be make a number of choices from the supplied `ndarray` instance:
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>       
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">vec</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(16, )</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[ 0  1  2  ... 13 14 15]</td>
+  </tr>                                
+</table>
+
+The second positional parameter is `size` which can be set to a scalar outputting a 1d `ndarray`:
+
+```python
+In [7]: np.random.choice(vec, 5)
+Out[7]: array([ 8, 14,  7,  3,  6])
+```
+
+However it can also be provided a `shape` which outputs an nd `ndarray`:
+
+```python
+In [8]: np.random.choice(vec, (6, 2))
+Out[8]: 
+array([[ 5,  1],
+       [ 9,  3],
+       [ 4,  8],
+       [ 1, 11],
+       [12, 10],
+       [ 4,  0]])
+```
+
+`choice` makes choices with replacement by default. In `vec` each value was unique, however the output `ndarray` has duplicates. The optional parameter `replace` can be set to `False`:
+
+```python
+In [9]: np.random.choice(vec, (6, 2), replace=False)
+Out[9]: 
+array([[10, 14],
+       [ 5,  6],
+       [11,  1],
+       [ 8,  7],
+       [12, 15],
+       [ 4,  0]])
+```
+
+If the `size` or "`size` of the `shape`" is equal to all the number of elements, the result is essentially a permutation:
+
+```python
+In [10]: np.random.choice(vec, (8, 2), replace=False)
+Out[10]: 
+array([[10,  8],
+       [ 1, 12],
+       [ 2, 13],
+       [ 0,  6],
+       [ 3,  9],
+       [ 5, 11],
+       [ 4, 15],
+       [14,  7]])
+```
+
+If a selection is made for a `size` larger than the number of elements available in the supplied `ndarray`, a `ValueError` displays:
+
+```python
+In [11]: np.random.choice(vec, 20, replace=False)
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[11], line 1
+----> 1 np.random.choice(vec, 20, replace=False)
+
+File numpy\\random\\mtrand.pyx:1020, in numpy.random.mtrand.RandomState.choice()
+
+ValueError: Cannot take a larger sample than population when 'replace=False'
+```
+
+The function `shuffle` is a mutable counterpart to `permutation` and mutates the `ndarray` in place, consistent with its counterpart in the standard `random` module: 
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>       
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">vec</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(16, )</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[ 0  1  2  ... 13 14 15]</td>
+  </tr>                                
+</table>
+
+
+```python
+In [11]: np.random.shuffle(vec)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>       
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">vec</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(16, )</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[ 6  2  9  ... 10 12  3]</td>
+  </tr>                                
+</table>
+
+The function `randint` returns a random integer between a specified `low` (inclusive) to a `high` (exclusive) value.
+
+```python
+In [12]: np.random.randint(0, 11)
+Out[12]: 6
+
+
+In [13]: np.random.randint(0, 11, 6)
+Out[13]: array([4, 5, 6, 2, 5, 7], dtype=int32)
+```
+
+If the following function is made using `matplotlib` (`matplotlib` will be covered in more detail in the next tutorial):
+
+```python
+In [14]: def plot(x, title, bins=11, /):
+       :    import matplotlib.pyplot as plt
+       :    fig, ax = plt.subplots() 
+       :    ax.hist(x, bins=bins, linewidth=5, facecolor='seagreen', edgecolor='black', hatch='ooo')
+       :    ax.set_xlabel('int')
+       :    ax.set_ylabel('counts')
+       :    ax.set_title(title)
+       :    ax.grid(which='major', linestyle='-', linewidth=0.5)
+       :    ax.minorticks_on()
+       :    ax.grid(which='minor', linestyle=':', linewidth=0.5)
+```
+
+A large integer can be specified and plotted it looks like:
+
+
+```python
+In [15]: x = np.random.randint(0, 11, 100)
+       : plot(x, 'randint(0, 11, 100)')
+```
+
+<img src='./images/img_023.png' alt='img_023' width='400'/>
+
+As `size` is increased, the underlying distribution becomes more apparent:
+
+```python
+In [16]: x = np.random.randint(0, 11, 10_000)
+       : plot(x, 'randint(0, 11, 10000)')
+```
+
+<img src='./images/img_024.png' alt='img_024' width='400'/>
+
+```python
+In [17]: x = np.random.randint(0, 11, 1_000_000)
+       : plot(x, 'randint(0, 11, 1000000)')
+```
+
+<img src='./images/img_025.png' alt='img_025' width='400'/>
+
+The `uniform` function returns a random float between a specified `low` and `high` boundary. In this function integer steps aren't used and the unit steps are essentially determined by the `float` precision: 
+
+```python
+In [12]: np.random.uniform(0.0, 11.0)
+Out[12]: 0.8498170090822672
+```
+
+When plotted, notice the additional bar at `11` is present:
+
+```python
+In [13]: x = np.random.uniform(0.0, 11.0, 1_000_000)
+       : plot(x, 'uniform(0.0, 11.0, 1000000)', 12)
+```
+
+<img src='./images/img_026.png' alt='img_026' width='400'/>
+
+The minimum and maximum values of this `ndarray` can be examined:
+
+```python
+In [14]: x.min()
+Out[14]: np.float64(5.537419402612542e-05)
+
+In [15]: x.max()
+Out[15]: np.float64(10.999993843023043)
+```
+
+The `random_sample` is a normalised cast of `uniform` with `low=0.0` and `high=1.0`:
+
+
+```python
+In [16]: np.random.sample()
+Out[16]: 0.966211078855633
+```
+
+When plotted, notice the additional bar at `11` is present:
+
+```python
+In [17]: x = np.random.sample(1_000_000)
+       : plot(x, 'sample(1000000)')
+```
+
+<img src='./images/img_027.png' alt='img_027' width='400'/>
+
+```python
+In [18]: x.min()
+Out[18]: np.float64(1.9833890951836963e-06)
+
+In [19]: x.max()
+Out[19]: np.float64(0.9999997399879226)
+```
+
+The previous distributions have all been uniform, meaning each value has an equal chance of beign selected. There are a number of other distributions that are non-uniform. For example the triangular distribution:
+
+```python
+In [20]: x = np.random.triangular(left=3, mode=4, right=5, size=1_000_000)
+       : plot(x, 'triangular(left=3, mode=4, right=5, size=1000000)')
+```
+
+<img src='./images/img_028.png' alt='img_028' width='400'/>
+
+Changing the parameters of the distribution, chanegs the shape:
+
+```python
+In [21]: x = np.random.triangular(left=3, mode=3, right=5, size=1_000_000)
+       : plot(x, 'triangular(left=3, mode=3, right=5, size=1000000)')
+```
+
+<img src='./images/img_029.png' alt='img_029' width='400'/>
+
+A common statistical distribution is the normal distribution. This is bellshaped around a location and has a scale, which defines the width of the values distributed around the central value. The location is known as the mean and the scale is known as the standard deviation:
+
+```python
+In [22]: x = np.random.normal(loc=100, scale=30, size=1_000_000_000)
+       : plot(x, 'normal(loc=100, scale=30, size=1000000000)', 50)
+```
+
+<img src='./images/img_030.png' alt='img_030' width='400'/>
+
+```python
+In [23]: x = np.random.normal(loc=100, scale=15, size=1_000_000_000)
+       : plot(x, 'normal(loc=100, scale=15, size=1000000000)', 50)
+```
+
+<img src='./images/img_031.png' alt='img_031' width='400'/>
+
+A `standard_normal` has a location of `0` and a width of `1`, i.e. is centred around the origin:
+
+```python
+In [23]: x = np.random.normal(size=1_000_000_000)
+       : plot(x, 'standard_normal(size=1000000000)', 50)
+```
+
+<img src='./images/img_032.png' alt='img_032' width='400'/>
+
+An `exponential` will a scale of `1` can be examined:
+
+```python
+In [24]: x = np.random.exponential(scale=1, size=1_000_000_000)  
+       : plot(x, 'exponential(scale=1, size=1000000000)', 10_001)
+```
+
+<img src='./images/img_033.png' alt='img_033' width='400'/>
+
+This is the same as a `standard_exponential`:
+
+```python
+In [25]: x = np.random.standard_exponential(size=1_000_000_000)  
+       : plot(x, 'standard_exponential(size=1000000000)', 10_001)
+```
+
+<img src='./images/img_034.png' alt='img_034' width='400'/>
+
+The effect of doubling the `scale` can be seen in the `x` axis:
+
+```python
+In [26]: x = np.random.exponential(scale=2, size=1_000_000_000)
+       : plot(x, 'exponential(scale=2, size=1000000000)', 10_001)
+```
+
+<img src='./images/img_035.png' alt='img_035' width='400'/>
+
+A standard rayleigh distribution can also be obtained:
+
+```python
+In [27]: x = np.random.rayleigh(scale=1, size=1_000_000_000)
+       : plot(x, 'rayleigh(scale=1, size=1000000000)', 1_001)
+```
+
+<img src='./images/img_036.png' alt='img_036' width='400'/>
+
+A binomial distribution can be explored, the distribution of `100` trials passing with a probability of `0.1`, is approximately centred around `10` as expected:
+
+```python
+In [27]: x = np.random.binomial(n=100, p=0.1, size=1_000_000_000)
+       : plot(x, 'binomial(n=100, p=0.1, size=1_000_000_000)', 100)
+```
+
+<img src='./images/img_037.png' alt='img_037' width='400'/>
+
+Because the number of observations passing is constrained to full trials (`int` instance known as a discrete distribution) passing between `0` and `100`, this distribution is slightly different to the Gaussian distribution explored earlier. Changes can be seen more prominently when the probabilities are smaller or larger:
+
+```python
+In [28]: x = np.random.binomial(n=100, p=0.01, size=1_000_000_000)
+       : plot(x, 'binomial(n=100, p=0.01, size=1000000000)', 100)
+```
+
+<img src='./images/img_038.png' alt='img_038' width='400'/>
+
+```python
+In [29]: x = np.random.binomial(n=100, p=0.99, size=1_000_000_000)
+       : plot(x, 'binomial(n=100, p=0.99, size=1000000000)', 100)
+```
+
+<img src='./images/img_039.png' alt='img_039' width='400'/>
+
+The poisson distribution can also be explored, note it also a discrete distribution. For low values of lambda, the distribution is skewed to low values:
+
+```python
+In [30]: x = np.random.poisson(lam=1, size=1_000_000_000)
+       : plot(x, 'poisson(lam=1, size=1000000000)', 100)
+```
+
+<img src='./images/img_040.png' alt='img_040' width='400'/>
+
+The effect of changing lambda can be observed, it becomes more symmetric and then more similar in form to a normal distribution:
+
+```python
+In [31]: x = np.random.poisson(lam=4, size=1_000_000_000)
+       : plot(x, 'poisson(lam=4, size=1000000000)', 100)
+```
+
+<img src='./images/img_041.png' alt='img_041' width='400'/>
+
+```python
+In [31]: x = np.random.poisson(lam=10, size=1_000_000_000)
+       : plot(x, 'poisson(lam=10, size=1000000000)', 100)
+```
+
+<img src='./images/img_042.png' alt='img_042' width='400'/>
+
+Another important distribution is the `gamma` distribution, with a shape and scale of 1, it is exponential like:
+
+```python
+In [32]: x = np.random.gamma(shape=1, scale=1, size=1_000_000_000)
+       : plot(x, 'gamma(shape=1, scale=1, size=1000000000)', 100)
+```
+
+<img src='./images/img_043.png' alt='img_043' width='400'/>
+
+As the shape increases it moves more towards a bell curve:
+
+```python
+In [33]: x = np.random.gamma(shape=1, scale=5, size=1_000_000_000)
+       : plot(x, 'gamma(shape=1, scale=5, size=1000000000)', 100)
+```
+
+<img src='./images/img_044.png' alt='img_044' width='400'/>
+
+The other distributions are more specialised and generally reserved for specific scientific and engineering problems.
+
+## linalg Module
+
+The kernel can be restarted and the `numpy` library imported:
+
+```python
+[34] exit
+[1]: import numpy as np
+```
+
+In the `ndarray` class, there is the data model method `__matmul__` which multiplies two arrays using matrix multiplication:
+
+```python
+[2]: np.ndarray.
+# 🎲 Matrix Operations:
+#     - __matmul__                 : Special method for matrix multiplication using @.
+#     - dot                        : Computes the dot product of two arrays.
+
+#     - matmul                     : Matrix multiplication of two arrays (or @ operator).
+```
+
+These are complemented by the linear algebra module `linalg`:
+
+```python
+In [2]: np.linalg.
+# 🔄 Linear Systems Solvers:
+#     - solve                      : Solves a linear matrix equation or system of linear scalar equations.
+#     - lstsq                      : Computes the least-squares solution to a linear matrix equation.
+#     - inv                        : Computes the (multiplicative) inverse of a matrix.
+#     - pinv                       : Computes the Moore-Penrose pseudo-inverse of a matrix.
+
+# 🧮 Matrix and Vector Operations:
+#     - norm                       : Computes vector or matrix norm.
+#     - dot                        : Computes the dot product of two arrays.
+#     - inner                      : Computes the inner product of two arrays.
+#     - outer                      : Computes the outer product of two vectors.
+#     - det                        : Computes the determinant of a matrix.
+#     - matrix_rank                : Computes the rank of a matrix.
+#     - multi_dot                  : Efficiently multiplies two or more matrices.
+
+# 🔢 Decompositions:
+#     - eig                        : Computes the eigenvalues and right eigenvectors of a square array.
+#     - eigvals                    : Computes the eigenvalues of a square array.
+#     - eigh                       : Computes the eigenvalues and eigenvectors of a Hermitian or symmetric array.
+#     - eigvalsh                   : Computes the eigenvalues of a Hermitian or symmetric array.
+#     - svd                        : Computes the singular value decomposition (SVD) of a matrix.
+#     - svdvals                    : Computes the singular values of a matrix.
+#     - cholesky                   : Computes the Cholesky decomposition of a matrix.
+#     - qr                         : Computes the QR decomposition of a matrix.
+
+# ⚙️ Matrix Factorizations:
+#     - matrix_power               : Raises a square matrix to the (integer) power n.
+#     - tensorinv                  : Computes the inverse of an N-dimensional tensor.
+#     - tensorsolve                : Solves a linear equation involving N-dimensional tensors.
+```
+
+Normalisation essentially squares all the elements in an `ndarray`, sums them and then calculates the square root:
+
+```python
+In [3]: ((3 ** 2) + (4 ** 2)) ** 0.5
+Out[3]: 5.0
+```
+
+Notice if the above elements are divided by the normalisation factor and squared and summed, that the result is `1.0`:
+
+```python
+In [4]: (((3/5) ** 2) + ((4/5) ** 2)) ** 0.5
+Out[4]: 1.0
+```
+
+The `norm` function calculates the normalisation factor of an `ndarray`:
+
+```python
+In [5]: vec = np.array([3, 4])
+      : np.linalg.norm(vec)
+Out[5]: np.float64(5.0)
+
+In [6]: mat = np.array([[1, 2],
+      :                 [3, 4]])
+      : np.linalg.norm(mat)
+Out[6]: np.float64(5.477225575051661)
+```
+
+The data model `__matmul__` defines the behaviour of the `@` operator and carries out matrix multiplication. The following 2d `ndarrays`, `row` and `col` can be examined:
+
+```python
+In [7]: vec = np.array([1, 2, 3, 4])
+      : row = vec[np.newaxis, :]
+      : col = vec[:, np.newaxis]
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>     
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">vec</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(4, )</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[ 1  2  3  4]</td>
+  </tr>    
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">row</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(1, 4)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[ 1  2  3  4]]</td>
+  </tr>        
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">col</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(4, 1)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[1]<br>&nbsp;[2]<br>&nbsp;[3]<br>&nbsp;[4]]</td>
+  </tr> 
+</table>
+
+For matrix multiplication the inner dimensions of the two arrays being multiplied has to match. In the example the inner dimensions are the larger dimension:
+
+```python
+In [8]: row.shape
+Out[8]: (1, 4)
+
+In [9]: col.shape
+Out[9]: (4, 1)
+```
+
+And the output `ndarray` will have the dimensions:
+
+```python
+In [10]: row.shape[0], col.shape[-1]
+Out[10]: (1, 1)
+```
+
+Matrix multiplication can be carried out using:
+
+$$ 
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+\end{bmatrix} 
+\cdot
+\begin{bmatrix}
+1 \\
+2 \\
+3 \\
+4 \\
+\end{bmatrix}
+$$
+
+```python
+In [11]: row @ col
+Out[11]: array([[30]])
+```
+
+This is calculated as:
+
+$$\left[1 * 1 + 2 * 2 + 3 * 3 + 4 * 4\right]$$
+
+$$\left[30\right]$$
+
+Think of `row` as quantities of items, for example 1 notebook, 2 pencils, 3 erasers and 4 rulers:
+
+$$ \begin{bmatrix}
+   1 & 2 & 3 & 4 \\
+   \end{bmatrix}$$
+
+And `col` as the item value in GBP:
+
+$$ \begin{bmatrix}
+   1 \\
+   2 \\
+   3 \\
+   4 \\
+   \end{bmatrix}$$
+
+The total in GBP is therefore:
+
+$$\left[1 * 1 + 2 * 2 + 3 * 3 + 4 * 4\right]$$
+
+$$\left[30\right]$$
+
+Note the result is a 2d `ndarray` of ` element and has two sets of square brackets.
+
+The `inner` function carries out this operation with two vectors, returning the scalar:
+
+```python
+In [12]: np.linalg.inner(vec, vec)
+Out[12]: np.int64(30)
+```
+
+For matrix multiplication the inner dimensions of the two arrays being multiplied has to match. In the example the inner dimensions are the unit dimension:
+
+```python
+In [13]: col.shape
+Out[13]: (4, 1)
+
+In [14]: row.shape
+Out[14]: (1, 4)
+```
+
+And the output `ndarray` will have the dimensions:
+
+```python
+In [15]: col.shape[0], row.shape[-1]
+Out[15]: (4, 4)
+```
+
+Matrix multiplication can be carried out using:
+
+$$ 
+\begin{bmatrix}
+1 \\
+2 \\
+3 \\
+4 \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+1 & 2 & 3 & 4 \\
+\end{bmatrix} 
+$$
+
+```python
+In [16]: col @ row
+Out[16]: 
+array([[ 1,  2,  3,  4],
+       [ 2,  4,  6,  8],
+       [ 3,  6,  9, 12],
+       [ 4,  8, 12, 16]])
+```
+
+This is calculated as:
+
+$$ \begin{bmatrix} 
+   1 * 1 & 2 * 1 & 3 * 1 & 4 * 1 \\
+   1 * 2 & 2 * 2 & 3 * 2 & 4 * 2 \\
+   1 * 3 & 2 * 3 & 3 * 3 & 4 * 3 \\
+   1 * 4 & 2 * 4 & 3 * 4 & 4 * 4 \\   
+   \end{bmatrix} $$
+
+$$ \begin{bmatrix} 
+   1 & 2 & 3 & 4 \\
+   2 & 4 & 6 & 8 \\
+   3 & 6 & 9 & 12 \\
+   4 & 8 & 12 & 16 \\   
+   \end{bmatrix} $$
+
+Think of the column as notebook, 2 pencils, 3 erasers and 4 rulers:
+
+$$ \begin{bmatrix}
+   1 \\
+   2 \\
+   3 \\
+   4 \\
+   \end{bmatrix}$$
+
+Think of the row as the price of a notebook, pencil, eraser and ruler in GBP, Euros, USD and Czech Koruna:
+
+$$ \begin{bmatrix}
+   1 & 2 & 3 & 4 \\
+   \end{bmatrix}$$
+
+Then each line will give the total price of notebooks, pencils, erasers and rulers in each currency:
+
+$$ \begin{bmatrix} 
+   1 & 2 & 3 & 4 \\
+   2 & 4 & 6 & 8 \\
+   3 & 6 & 9 & 12 \\
+   4 & 8 & 12 & 16 \\   
+   \end{bmatrix} $$
+
+The `outer` function carries out this operation with two vectors, returning the matrix:
+
+```python
+In [17]: np.linalg.outer(vec, vec)
+Out[17]: 
+array([[ 1,  2,  3,  4],
+       [ 2,  4,  6,  8],
+       [ 3,  6,  9, 12],
+       [ 4,  8, 12, 16]])
+```
+
+A system of equations has the form as:
+
+$$arr \cdot x=col$$
+
+Where:
+
+$$ arr = \begin{bmatrix} 
+   2 & 3 & -1 & 4 \\
+   -1 & 7 & 2 & 3 \\
+   3 & -2 & 5 & -1 \\
+   4 & 1 & -3 & 2 \\   
+   \end{bmatrix} $$
+
+$$ x = \begin{bmatrix}
+   x_0 \\
+   x_1 \\
+   x_2 \\
+   x_3 \\
+   \end{bmatrix}$$
+
+$$ col = \begin{bmatrix}
+   1 \\
+   4 \\
+   -2 \\
+   5 \\
+   \end{bmatrix}$$
+
+So in matrix form:
+
+$$
+\begin{bmatrix} 
+2 & 3 & -1 & 4 \\
+-1 & 7 & 2 & 3 \\
+3 & -2 & 5 & -1 \\
+4 & 1 & -3 & 2 \\   
+\end{bmatrix} 
+$$
+
+
+$$
+\cdot
+$$
+
+
+$$
+\begin{bmatrix}
+x_0 \\
+x_1 \\
+x_2 \\
+x_3 \\
+\end{bmatrix}
+$$
+
+
+<div align="center">
+=
+</div>
+
+$$
+\begin{bmatrix}
+1 \\
+4 \\
+-2 \\
+5 \\
+\end{bmatrix}
+$$
+
+`arr` and `col` can be instantiated as `ndarray` instances:
+
+```python
+In [18]: arr = np.array([[2, 3, -1, 4],
+                         [-1, 7, 2, 3],
+                         [3, -2, 5, -1],
+                         [4, 1, -3, 2]])
+
+In [19]: vec = np.array([[1], 
+       :                 [4], 
+       :                 [-2], 
+       :                 [5]])
+```
+
+The determinant of `arr` can be calculated using:
+
+```python
+In [20]: np.linalg.det(arr)
+np.float64(-403.99999999999983)
+```
+
+Notice that this is non-zero, which means that `arr` has an inverse:
+
+```python
+In [21]: np.linalg.inv(arr)
+Out[21]: 
+array([[-0.14356436,  0.05445545,  0.1039604 ,  0.25742574],
+       [-0.28217822,  0.22772277, -0.01980198,  0.21287129],
+       [ 0.08415842,  0.01980198,  0.12871287, -0.13366337],
+       [ 0.55445545, -0.19306931, -0.0049505 , -0.32178218]])
+```
+
+`arr` can be matrix multiplied by its inverse:
+
+```python
+In [22]: arr @ np.linalg.inv(arr)
+Out[22]: 
+array([[ 1.00000000e+00, -1.11022302e-16,  0.00000000e+00,
+         2.22044605e-16],
+       [-1.11022302e-16,  1.00000000e+00, -6.93889390e-18,
+         1.66533454e-16],
+       [ 1.11022302e-16, -2.77555756e-17,  1.00000000e+00,
+        -5.55111512e-17],
+       [ 0.00000000e+00,  0.00000000e+00, -1.38777878e-17,
+         1.00000000e+00]])
+```
+
+This effectively returns the inverse, which has `1` along the diagonal and `0` elsewhere. There is a bit of recursive rounding here however if this is rounded, for example to a more sensible number of decimal places it becomes more clear:
+
+```python
+In [23]: (arr @ np.linalg.inv(arr)).round(6)
+Out[23]: 
+array([[ 1., -0.,  0.,  0.],
+       [-0.,  1., -0.,  0.],
+       [ 0., -0.,  1., -0.],
+       [ 0.,  0., -0.,  1.]])
+```
+
+Also note that
+
+```python
+In [24]: (np.linalg.inv(arr) @ arr).round(6)
+Out[24]: 
+array([[ 1.,  0., -0.,  0.],
+       [ 0.,  1., -0.,  0.],
+       [-0., -0.,  1., -0.],
+       [-0., -0.,  0.,  1.]])
+```
+
+The equation can be modified to array multiply both sides by the inverse:
+
+$$arr_{inv} \cdot arr \cdot x=arr_{inv} \cdot col$$
+
+As seen before the left hand side simplifies down to the identity matrix being multiplied by $x$:
+
+$$eye \cdot x=arr_{inv} \cdot col$$
+
+Multiplication of a vector by the identity matrix, leaves the vector unchanged. This can be seen below:
+
+$$
+\begin{bmatrix} 
+2 & 3 & -1 & 4 \\
+-1 & 7 & 2 & 3 \\
+3 & -2 & 5 & -1 \\
+4 & 1 & -3 & 2 \\   
+\end{bmatrix} 
+$$
+
+
+$$
+\cdot
+$$
+
+
+$$
+\begin{bmatrix} 
+x_0 \\
+x_1 \\
+x_2 \\
+x_3 \\
+\end{bmatrix}
+$$
+
+<div align="center">
+=
+</div>
+
+
+$$
+\begin{bmatrix} 
+1x_0 + 0x_1 + 0x_2 + 0x_3 \\
+0x_0 + 1x_1 + 0x_2 + 0x_3 \\
+0x_0 + 0x_1 + 1x_2 + 0x_3 \\
+0x_0 + 0x_1 + 0x_2 + 1x_3 \\   
+\end{bmatrix} 
+$$
+
+This simplifies to:
+
+$$
+\begin{bmatrix} 
+x_0 \\
+x_1 \\
+x_2 \\
+x_3 \\   
+\end{bmatrix} 
+$$
+
+which leaves $x$ unchanged. So the matrix multiplication becomes:
+
+$$x=arr_{inv} \cdot col$$
+
+Which can be calculated using:
+
+```python
+In [25]: np.linalg.inv(arr) @ vec
+Out[25]: 
+array([[ 1.15346535],
+       [ 1.73267327],
+       [-0.76237624],
+       [-1.81683168]])
+```
+
+The identity matrix `eye(4)` multiplied by `x` can be calculated using:
+
+```python
+In [26]: np.eye(4) @ (np.linalg.inv(arr) @ vec)
+Out[26]: 
+array([[ 1.15346535],
+       [ 1.73267327],
+       [-0.76237624],
+       [-1.81683168]])
+```
+
+Note `x` is unchanged as expected.
+
+The set of equations above can be solved directly using:
+
+```python
+In [27]: np.linalg.solve(arr, vec)
+Out[27]: 
+array([[ 1.15346535],
+       [ 1.73267327],
+       [-0.76237624],
+       [-1.81683168]])
+```
+
+Most of the remaining identifiers in the `linalg` module specialised to scientific and engineering applications, crossing over with Scientific Python `scipy`. `scipy` builds upon `numpy` and includes more high-level scientific and engineering functions. More details about numpy and scipy can be found in the official documentation [NumPy User Guide](https://numpy.org/doc/stable/user/index.html) [SciPy User Guide](https://docs.scipy.org/doc/scipy/tutorial/index.html#user-guide).
+
+[Return to Python Tutorials](../readme.md)

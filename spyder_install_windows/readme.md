@@ -905,7 +905,7 @@ A new environment can be created using:
 conda create -n spyder-env spyder-kernels python seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter lxml sqlalchemy tabulate pyqt ffmpeg ruff
 ```
 
-This has `spyder-kernels` which is required for Syder to use the environment. `seaborn` which has `numpy`, `pandas` and `matplotlib` as dependencies. `scikit-learn` for machine learning. `pyarrow`, `openpyxl`, `xlrd`, `xlsxwriter`, `lxml`, `sqlalchemy`, `tabulate` for various file pandas formats. `pyqt` for matplotlib's interactive backend and `ffmpeg` for saving matplotlib animations.
+This has `spyder-kernels` which is required for Spyder to use the environment. `seaborn` which has `numpy`, `pandas` and `matplotlib` as dependencies. `scikit-learn` for machine learning. `pyarrow`, `openpyxl`, `xlrd`, `xlsxwriter`, `lxml`, `sqlalchemy`, `tabulate` for various file pandas formats. `pyqt` for matplotlib's interactive backend and `ffmpeg` for saving matplotlib animations.
 
 `-n` means name and `spyder-env` is the name of the Python environment. Specifying an environment using `-n` means changes to that environment will be made opposed to `base` which is the currently activate environment.
 
