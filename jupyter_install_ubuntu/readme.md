@@ -16,7 +16,7 @@ sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-gener
 
 ## Updating the conda Package Manager
 
-The purpose of the `base` environment is to use the conda package manager to install packages in other Python environments. Before using the conda package manager, the conda package manager should be updated to the latest version:
+The purpose of the base (conda) Python environment is to use the conda package manager to install packages, that are compartmentalised in other (conda) Python environments. Before using the conda package manager, the conda package manager should be updated to the latest version using:
 
 ```bash
 conda update conda
@@ -42,7 +42,7 @@ The terminal can be cleared by inputting:
 clear
 ```
 
-And environments can be listed by inputting:
+And (conda) Python environments can be listed by inputting:
 
 ```bash
 conda env list
@@ -52,19 +52,19 @@ conda env list
 
 ## Creating a JupyterLab conda-forge Environment
 
-JupyterLab is mainly used with Python. To create a new environment for JupyterLab which includes the Python kernel, the following command can be used:
+JupyterLab is mainly used with Python. To create a new (conda) Python environment for JupyterLab which includes the Python kernel, the following command can be used:
 
 ```bash
-conda create -n jupyter-env jupyterlab jupyter cython seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter lxml sqlalchemy tabulate nodejs ipywidgets plotly pyqt isort autopep8 ruff black jupyterlab-variableinspector jupyterlab_code_formatter jupyterlab-spellchecker jupyterlab-spreadsheet-editor
+conda create -n jupyter-env jupyterlab jupyter cython seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter lxml sqlalchemy tabulate nodejs ipywidgets plotly pyqt ipympl isort autopep8 ruff black jupyterlab-variableinspector jupyterlab_code_formatter jupyterlab-spellchecker jupyterlab-spreadsheet-editor
 ```
 
 <img src='./images/img_006.png' alt='img_006' width='600'/>
 
-`jupyterlab` is the IDE itself. `seaborn` has `numpy`, `pandas` and `matplotlib` as dependencies and are the scientific libraries. `scikit-learn` is used for machine learning. `pyarrow`, `openpyxl`, `xlrd`, `xlsxwriter`, `lxml`, `sqlalchemy`, `tabulate` are for various file pandas formats. `pyqt` is for matplotlib's interactive backend and `ffmpeg` is for saving matplotlib animations.
+`jupyterlab` is the IDE itself. `seaborn` has `numpy`, `pandas` and `matplotlib` as dependencies and are the scientific libraries. `scikit-learn` is used for machine learning. `pyarrow`, `openpyxl`, `xlrd`, `xlsxwriter`, `lxml`, `sqlalchemy`, `tabulate` are for various file pandas formats. `pyqt` is for matplotlib's interactive backend, `ipympl` is used for the widget backend and `ffmpeg` is for saving matplotlib animations.
 
 `jupyterlab-variableinspector`, `jupyterlab_code_formatter`, `jupyterlab-spellchecker`, `jupyterlab-spreadsheet-editor` are common extensions for JupyterLab. In order for extensions to be installed, nodejs needs to be installed. The JupyterLab IDE and extensions are written in nodejs, which is a programming language used for web content. Knowledge of nodejs is not required to use Python with JupyterLab.
 
-`-n` means name and `jupyter-env` is the name of the Python environment. Specifying an environment using `-n` means changes to that environment will be made opposed to `base` which is the currently activate environment.
+`-n` means name and `jupyter-env` is the name of the (conda) Python environment. Specifying an environment using `-n` means changes to that environment will be made opposed to `base` which is the currently activated environment.
 
 The environment location will be listed, along with details about the packages to be installed:
 
@@ -74,9 +74,36 @@ Input `y` in order to proceed:
 
 <img src='./images/img_008.png' alt='img_008' width='600'/>
 
+## Updating JupyterLab
+
+There is a new release of JupyterLab, approximately every month. To keep it up to date. Open up the Terminal and update the conda package manager in the base Python environment using:
+
+```bash
+conda update conda
+```
+
+Then activate `jupyter-env` and search for updates to all packages using `--all`:
+
+```bash
+conda activate jupyter-env
+conda update --all
+```
+
+If there are troubles updating the (conda) Python environment, it can be removed and recreated from scratch using:
+
+```bash
+conda env remove -n jupyter-env
+```
+
+You may need to manually delete the residual `jupyter-env` folder after removing this environment:
+
+```bash
+conda create -n jupyter-env jupyterlab jupyter cython seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter lxml sqlalchemy tabulate nodejs ipywidgets plotly pyqt ipympl isort autopep8 ruff black jupyterlab-variableinspector jupyterlab_code_formatter jupyterlab-spellchecker jupyterlab-spreadsheet-editor
+```
+
 ## Launching JupyterLab
 
-To activate `jupyterlab-env` input:
+To activate the (conda) Python environment `jupyterlab-env` input:
 
 ```bash
 conda activate jupyter-env
@@ -88,11 +115,11 @@ The prefix will now show `(jupyter-env)` instead of `(base)`:
 
 <img src='./images/img_010.png' alt='img_010' width='600'/>
 
-This means that instead of searching the bin folder in `(base)` which is the `miniforge3` folder:
+This means that instead of searching the bin folder in  the base (conda) Python environment which is the `miniforge3` folder:
 
 <img src='./images/img_011.png' alt='img_011' width='600'/>
 
-The equivalent bin folder is used for the currently activated environment `jupyter-env`.
+The equivalent bin folder is used for the currently activated (conda) Python environment `jupyter-env`.
 
 The `envs` folder contains the environments:
 
@@ -102,7 +129,7 @@ The `jupyter-env` folder is currently activated:
 
 <img src='./images/img_013.png' alt='img_013' width='600'/>
 
-This means the current bin and lib folders are preferentially searched for binaries and programs:
+And therefore the bin and lib folders are preferentially searched for binaries and programs:
 
 <img src='./images/img_014.png' alt='img_014' width='600'/>
 
@@ -146,7 +173,7 @@ To the right hand side, a new launcher can be selected, this can be used to star
 
 ## Script Editor and Terminal
 
-The terminal is equivalent to a new session of the Linux terminal and starts with `(base)`, the base `conda-forge` environment:
+The terminal is equivalent to a new session of the Linux terminal and starts with `(base)`, indicating the (conda) base Python environment:
 
 <img src='./images/img_023.png' alt='img_023' width='600'/>
 
@@ -169,7 +196,7 @@ plt.ylabel(R'$x2 \pi x \sin{x}$', usetex=True)
 ```
 
 ```bash
-conda activivate jupyter-env
+conda activate jupyter-env
 python3 script.py
 ```
 
@@ -227,7 +254,7 @@ np.__↹
 
 <img src='./images/img_033.png' alt='img_033' width='600'/>
 
-The identifier `__file__` is an instance and can be returned to an ipython cell output:
+The data model identifier `__file__` is an instance and can be returned to an ipython cell output:
 
 <img src='./images/img_034.png' alt='img_034' width='600'/>
 
@@ -632,7 +659,7 @@ Currently there is limited support for the Julia programming language supporting
 
 ## R Kernel
 
-If the `jupyter-env` is activated, the following R packages can be installed:
+If the (conda) Python environment `jupyter-env` is activated, the following R packages can be installed:
 
 ```bash
 conda install r-irkernel jupyter-lsp-r r-tidyverse r-ggthemes r-palmerpenguins r-writexl 
@@ -658,7 +685,7 @@ It has options for the R programming language:
 
 ## Julia Kernel
 
-`conda` has limited support for Julia. It is recommended to download the latest binary from [Julia](https://julialang.org/):
+The `conda` package manager has limited support for Julia. It is recommended to download the latest binary from [Julia](https://julialang.org/):
 
 <img src='./images/img_114.png' alt='img_114' width='600'/>
 
@@ -678,14 +705,14 @@ Notice it has its own bin and lib folder:
 
 <img src='./images/img_118.png' alt='img_118' width='600'/>
 
-Installing the `conda-forge` package (not recommended at present):
+Installing `julia` using the `conda-forge` package is not recommended at present, as it is significantly out of date:
 
 ```bash
 conda activate jupyter-env
 conda install julia
 ```
 
-Will integrate these folders with the existing folders in the `conda-forge` environment `jupyter-env`. Checks need to be made to avoid naming conflicts, which is why the `conda-forge` package is out of date.
+However installation of `julia` via the `conda-forge` package will integrate these folders with the existing folders in the (conda) Python environment `jupyter-env`. Checks need to be made to avoid naming conflicts, which is why the `conda-forge` package is out of date.
 
 If blank space in the bin folder is right clicked and opened in the terminal:
 
@@ -711,7 +738,7 @@ exit()
 
 <img src='./images/img_122.png' alt='img_122' width='600'/>
 
-In order to use Julia with JupyterLab, its binary folder needs to be added to the path. This can be done by modifying the `.bashrc` file. This is a hidden file withing the Home directory `~`:
+In order to use Julia with JupyterLab, its binary folder needs to be added to the path. This can be done by modifying the `.bashrc` file. This is a hidden file within the Home directory `~`:
 
 <img src='./images/img_123.png' alt='img_123' width='600'/>
 
@@ -721,9 +748,9 @@ Open this file in the text editor:
 
 Notice that a code block that has been added by Spyder to preferentially recognise the binary `spyder` as the standalone installer. 
 
-Below this is the `conda` initialisation which means a search for a binary will preferentially be searched in the activated `conda-forge` environment and then fallback to `(base)` and then fallback to the system binaries. 
+Below this is the `conda` initialisation which means a search for a binary will preferentially be searched in the activated (conda) Python environment and then fallback to the `base` (conda) Python environment and then fallback to the system binaries. 
 
-* `conda` for example is only installed in `(base)` so a search for `conda` will search the currently selected environment `jupyter-env`, not find the binary `conda` and therefore use `conda` in the `base` environment.
+* `conda` for example is only installed in the base (conda) Python environment. A search for `conda` will search the currently selected (conda) Python environment `jupyter-env` and not find the binary `conda`. Therefore it will fallback and look for `conda` in the base (conda) Python environment.
 
 * The `.bashrc` preferences the standalone `spyder` and this version of spyder will be preferenced over a spyder binary installed in an activated conda environment.
 
@@ -763,7 +790,7 @@ exit()
 
 <img src='./images/img_130.png' alt='img_130' width='600'/>
 
-Now when the `jupter-env` is activated and the `jupyter-lab` binary launched:
+Now when the (conda) Python envionment `jupter-env` is activated and the `jupyter-lab` binary launched:
 
 ```bash
 conda activate jupyter-env

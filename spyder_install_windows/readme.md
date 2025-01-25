@@ -673,7 +673,7 @@ There is a `ModuleNotFoundError`:
 
 ## spyder-runtime Environment
 
-Spyder uses its own `spyder-runtime` environment that is conda based. Spyder is installed in local application data:
+Spyder uses its own `spyder-runtime` environment that is conda based (conda is a package manager that is closely associated with Python but is general purpose and can be used to install Python and non-Python data science packages). Spyder is installed in local application data:
 
 ```
 %LOCALAPPDATA%
@@ -691,19 +691,19 @@ This folder contains the `base`, environment. In the scripts subfolder there is 
 
 <img src='./images/img_107.png' alt='img_107' width='600'/>
 
-The Spyder installer is `conda` based, the purpose of the base environment is for use of the `conda.exe` which is a package manager that is used to install packages and create Python environments. There is an `envs` folder which contaisn Python environments:
+The Spyder installer is `conda` based, the purpose of the base environment is for use of the `conda.exe` which is a package manager that is used to install packages and create Python environments. There is an `envs` folder which contains (conda) Python environments:
 
 <img src='./images/img_111.png' alt='img_111' width='600'/>
 
-The `spyder-runtime` environment is in its own subfolder:
+The (conda) Python environment `spyder-runtime` is in its own subfolder:
 
 <img src='./images/img_112.png' alt='img_112' width='600'/>
 
-The `spyder-runtime` environment has its own `Scripts` folder which contains its `python.exe.` It also has its own `Lib` subfolder:
+The (conda) Python environment `spyder-runtime` environment has its own contains its `python.exe`. It has its own `Scripts` folder which contains the `spyder.exe` and it also has its own `Lib` subfolder which contains Python libraries associated with the `python.exe`:
 
 <img src='./images/img_113.png' alt='img_113' width='600'/>
 
-Which contains the standard modules such as `datetime.py` which is a single script file:
+The root of the `Lib` folder containts the standard modules such as `datetime.py` which is a single script file:
 
 <img src='./images/img_114.png' alt='img_114' width='600'/>
 
@@ -729,15 +729,28 @@ There is also the subfolder `matplotlib`. This also has a `__init__.py` file. Ty
 
 <img src='./images/img_120.png' alt='img_120' width='600'/>
 
-Note there is no `seaborn` subfolder as it is not preinstalled with Spyder.
+Note that there is no `seaborn` subfolder as it is not preinstalled with Spyder.
 
-The Spyder installer is `conda` based, the base environment is used to update `conda`, which is in turn is used to update the `spyder-runtime` environment when there is a Spyder update available. This `conda` is not intended to be used by the end user.
+The Spyder installer is `conda` based, the (conda) base Python environment is used to update `conda.exe`, which is in turn is used to update the `spyder-runtime` environment when there is a Spyder update available. This `conda.exe` is not intended to be used by the end user.
 
 ## Miniforge Installation
 
-Miniforge is a minimal installer for `conda` which uses the community channel `conda-forge` by default. The Miniforge `base` environment is used only for the `conda` package manager and other packages are typically installed in separate Python environments. Note Anaconda/Miniconda are not recommended as they use a tainted repository `anaconda` by default which has commercial restrictions and older package versions which often result with incompatibilities with the current version of Spyder.
+Miniforge is a minimal installer for `conda.exe` which uses the community channel `conda-forge` by default. The Miniforge (conda) base Python environment is used only for the `conda.exe` package manager and other packages are typically installed in separate Python environments, where they can be compartmentalised. Compartmentalisation allows installation of a set of packages without alteration to the (conda) base Python environment and therefore does not risk breaking the functionality of the conda package manager itself. 
 
-Miniforge is developed on GitHub and the latest release is on the [GitHub Miniforge Releases Page](https://github.com/conda-forge/miniforge/releases). Note Mambaforge is considered obsolete and therefore the installers listed at the top should be avoided. 
+There are a number of conda based installers:
+
+|Installer|base environment|default channel|
+|---|---|---|
+|Miniforge|minimal (conda package manager)|conda-forge (community)|
+|Mambaforge|minimal (conda + mamba package manager)|conda-forge (community)|
+|Miniconda|minimal (conda package manager)|anaconda (commercial)|
+|Anaconda|data science distribution (conda package manager)|anaconda (commercial)|
+
+Mambaforge was a developmental version of Miniforge where the package manager `mamba.exe` was used in place of `conda.exe`. `mamba.exe` used a faster C++ solver offering a significant performance boost and increased reliability. The solver for `conda.exe` was updated to `lib-mamba` and now takes advantage of these developments. Miniforge now contains both the `conda.exe` (used by default and recommended for general use) and `mamba.exe` (which should essentially be thought of as a developmental version of `conda.exe`). Since Miniforge contains both these package managers, Mambaforge is now considered obsolete.
+
+Anaconda/Miniconda use a tainted repository `anaconda` by default which has commercial restrictions and has significantly older package versions than on the community channel `conda-forge`. Anaconda is a data science distribution and Anaconda groups a large number of popular data science packages and tests them for stability with one another. This includes an odler version of the Spyder IDE and JupyterLab IDE. The Anaconda distribution is generally designed to be used "as is" and the stability is broken when other packages from the community channel are added. Using these significantly older packages result with the current version of Spyder results in incompatibilities because the current version of Spyder requires up to date packages.
+
+Miniforge is developed on GitHub and the latest release is on the [GitHub Miniforge Releases Page](https://github.com/conda-forge/miniforge/releases). Note Mambaforge is considered obsolete and therefore the Mambaforge installers listed at the top should be avoided. 
 
 For Windows the `Miniforge3-x.xx.x-x-Windows-x86_64.exe` or `Miniforge3-Windows-x86_64.exe` should be selected (these are the same installer):
 
@@ -785,7 +798,7 @@ Select Install, using only the recommended options:
 
 <img src='./images/img_133.png' alt='img_133' width='600'/>
 
-It is not recommended to add `base` to the Windows Environmental Variables Path as this locks a single environment to the Terminal and is less flexible than initialising conda.
+During installation is not recommended to add the (conda) base Python environment to the Windows Environmental Variables Path as this locks a single environment to the Terminal and is less flexible than initialising the conda package manager which allows activation of different (conda) Python environments.
 
 Select next:
 
@@ -839,15 +852,24 @@ Notice the Windows Terminal has no `(base)` because it is not initialised:
 
 <img src='./images/img_145.png' alt='img_145' width='600'/>
 
-To initialise conda, the Windows Terminal execution policy should be set to RemoteSigned using:
+To initialise conda, the Windows Terminal script execution policy should be changed, to `RemoteSigned`. The Windows Terminal script execution policy has the following options:
+
+* Restricted (default): Disables script execution entirely.
+* RemoteSigned: Allows digitally signed remote scripts to be executed and local scripts to be executed.
+* Unrestricted: Allows all scripts to run, but prompts for confirmation for remote scripts.
+* AllSigned: Requires all scripts (local and remote) to be digitally signed.
+
+To change the execution policy input:
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned
 ```
 
+Note this lowers the default security level of the Windows Terminal to `RemoteSigned` which is often chosen as a middle ground between security and usability. `RemoteSigned` means scripts downloaded from the internet require a trusted digital signature in order to execute, an example of this is the `conda.exe` initialisation script. Scripts created locally by the current user can be run without a digital signature.
+
 <img src='./images/img_146.png' alt='img_146' width='600'/>
 
-Then `conda` can be initialised by inputting:
+Then the `conda.exe` can be initialised by inputting:
 
 ```powershell
 .\miniforge3\Scripts\conda init --all
@@ -859,17 +881,17 @@ Details about the changes will be listed, close the Terminal:
 
 <img src='./images/img_148.png' alt='img_148' width='600'/>
 
-Right click the Start button and select Terminal. The Admin version should not be sued, it was only used previously so the Execution Policy could be changed:
+Right click the Start button and select Terminal (Non-Admin). The Admin version was required previously to change the Execution Policy, in this case the Windows Terminal is being used by the user for use within the `%UserProfile%`:
 
 <img src='./images/img_149.png' alt='img_149' width='400'/>
 
-Notice it now has the `(base)` prefix:
+Notice it now has the `(base)` prefix, indicating that the base (conda) Python environment is activated:
 
 <img src='./images/img_150.png' alt='img_150' width='600'/>
 
 ## Creating a Custom spyder-env Environment (conda)
 
-Before using `conda` it should be updated to the latest version using:
+Before using the package manager `conda.exe` it should be updated to the latest version using:
 
 ```python
 conda update conda
@@ -877,7 +899,7 @@ conda update conda
 
 <img src='./images/img_151.png' alt='img_151' width='600'/>
 
-The channels will be `conda-forge` by default:
+Since Miniforge is used, the channel will be `conda-forge` by default:
 
 <img src='./images/img_152.png' alt='img_152' width='600'/>
 
@@ -885,7 +907,7 @@ Input `y` in order to proceed:
 
 <img src='./images/img_153.png' alt='img_153' width='600'/>
 
-The conda package manager is now updated:
+The `conda.exe` package manager is now updated:
 
 <img src='./images/img_154.png' alt='img_154' width='600'/>
 
@@ -911,7 +933,7 @@ This has `spyder-kernels` which is required for Spyder to use the environment. `
 
 <img src='./images/img_156.png' alt='img_156' width='600'/>
 
-These packages will all be installed from the `conda-forge` channel. In the `spyder-env` folder which is found in the `envs` subfolder of `base`:
+These packages will all be installed from the `conda-forge` channel and installed compartmentalised in the (conda) Python environment `spyder-env`. `spyder-env` is a subfolder which is found in the `envs` subfolder of the `base` Miniforge installation `%UserProfile%/Miniforge3`:
 
 <img src='./images/img_157.png' alt='img_157' width='600'/>
 
@@ -939,7 +961,7 @@ conda activate spyder-env
 
 <img src='./images/img_162.png' alt='img_162' width='600'/>
 
-Notice the prefix is now `(spyder-env)` meaning this environment is activated:
+Notice the prefix is now `(spyder-env)` meaning the (conda) Python environment `spyder-env` is activated:
 
 <img src='./images/img_163.png' alt='img_163' width='600'/>
 
@@ -951,13 +973,13 @@ Notice two programming languages are used, highlighted is PowerShell using the p
 
 <img src='./images/img_165.png' alt='img_165' width='600'/>
 
-If `email`, `datetime`, `numpy`, `matplotlib`, `pandas` and `seaborn` are imported, their `__file__` can be checked. Notice these are in the `spyder-env` environment: 
+If `email`, `datetime`, `numpy`, `matplotlib`, `pandas` and `seaborn` are imported, their `__file__` can be checked. Notice these are found in the `spyder-env` environment: 
 
 <img src='./images/img_166.png' alt='img_166' width='600'/>
 
 ## Selecting the Custom spyder-env Environment (conda)
 
-In Spyder, the default environment `spyder-runtime` is selected:
+In Spyder, the default (conda) Python nvironment `spyder-runtime` is selected:
 
 <img src='./images/img_167.png' alt='img_167' width='600'/>
 
@@ -1131,13 +1153,14 @@ Other useful tools are available such as a color picker which is activated using
 There is a new release of Spyder, approximately every month. When available a prompt for the upgrade should display and Spyder should update using packages from `conda-forge` using its internal `conda` package manager:
 
 
-If an external conda environment was created, it will need to be updated, with a compatible version of `spyder-kernels`. Open up the Windows Terminal an updte the `conda` package manager in base:
+
+If an external conda environment was created, it will also need to be updated, with a compatible version of `spyder-kernels`. Open up the Windows Terminal and update the `conda.exe` package manager to the latest version, recall this is found in the (codna) base Python environment:
 
 ```powershell
 conda update conda
 ```
 
-Then activate `spyder-env` and searh for updates to all packages:
+Then activate the (conda) Python environment `spyder-env` and search for updates to all packages using `--all`:
 
 ```powershell
 conda activate spyder-env

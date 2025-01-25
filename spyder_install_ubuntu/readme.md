@@ -2,7 +2,7 @@
 
 ## Linux Terminal
 
-The Linux Terminal can be opened from the Start Menu or using the shortcut `Ctrl`, `Alt` + `t`:
+The Linux Terminal can be opened from the Start Menu or using the shortcut `Alt+t`:
 
 <img src='./images/img_001.png' alt='img_001' width='600'/>
 
@@ -94,7 +94,7 @@ Details about commands available to use with the `apt` binary are shown. the `in
 sudo apt-get install texlive-xetex texlive-fonts-recommended texlive-plain-generic cm-super dvipng
 ```
 
-To copy and paste in the terminal, use the right click or keyboard shortcut keys `Ctrl`, `⇧` + `c` or `Ctrl`, `⇧` + `v`:
+To copy and paste in the terminal, use the right click or keyboard shortcut keys `Ctrl+⇧+c` or `Ctrl+⇧+v`:
 
 <img src='./images/img_017.png' alt='img_017' width='600'/>
 
@@ -266,7 +266,7 @@ cd ~
 
 <img src='./images/img_049.png' alt='img_049' width='600'/>
 
-And Documents can be selected frm Home using:
+And Documents can be selected from Home using:
 
 ```bash
 cd ~/Documents
@@ -311,7 +311,7 @@ echo "Hello World!"
 
 <img src='./images/img_057.png' alt='img_057' width='600'/>
 
-The binary `ls` can be used to view all the files:
+The binary `ls` can be used to list all the files in the current working directory:
 
 ```bash
 ls
@@ -392,7 +392,7 @@ When Spyder is first launched, a prompt to begin a tour will display:
 
 <img src='./images/img_072.png' alt='img_072' width='600'/>
 
-To the bottom right is the IPython Console, where commands can be input individually. Notice the cells are numbered, by execution oder. The code can be input:
+To the bottom right is the IPython Console, where commands can be input individually. Notice the cells are numbered, by execution order. The code can be input:
 
 ```python
 In [1]: 'hello'
@@ -1059,7 +1059,7 @@ If folder options are selected and Show Hidden Files is selected:
 
 <img src='./images/img_171.png' alt='img_171' width='600'/>
 
-The `.local` folder contains locally installed programs:
+The hidden `.local` folder contains locally installed programs:
 
 <img src='./images/img_172.png' alt='img_172' width='600'/>
 
@@ -1095,7 +1095,7 @@ The `conda` folder contains the conda package manager:
 
 <img src='./images/img_180.png' alt='img_180' width='600'/>
 
-The purpose of the `base` environment is use of the conda of the package manager. The conda package manager is used to create Python environments which are in the `envs` subfolder:
+The purpose of the base (conda) Python environment, also known as the root (conda) Python is use of the conda package manager itself. The conda package manager is used to create Python environments which are in the `envs` subfolder:
 
 <img src='./images/img_181.png' alt='img_181' width='600'/>
 
@@ -1141,11 +1141,24 @@ However normally the `pyplot` interface module is referenced:
 
 Note there is no `seaborn` subfolder as it is not preinstalled with Spyder.
 
-The Spyder installer is `conda` based, the base environment is used to update `conda`, which is in turn is used to update the `spyder-runtime` environment when there is a Spyder update available. This `conda` is not intended to be used by the end user.
+The Spyder installer is conda based, the base (conda) Python environment is used to update the `conda` binary. The `conda` binary in turn is used to update the `spyder-runtime` environment when there is a Spyder update available. This `conda` binary is not intended to be used by the end user.
 
 ## Miniforge Installation
 
-Miniforge is a minimal installer for `conda` which uses the community channel `conda-forge` by default. The Miniforge `base` environment is used only for the `conda` package manager and other packages are typically installed in separate Python environments. Note Anaconda/Miniconda are not recommended as they use a tainted repository `anaconda` by default which has commercial restrictions and older package versions which often result with incompatibilities with the current version of Spyder.
+Miniforge is a minimal installer for the `conda` binary which uses the community channel `conda-forge` by default. The Miniforge (conda) base Python environment is used only for the `conda` binary package manager and other packages are typically installed in separate Python environments, where they can be compartmentalised. Compartmentalisation allows installation of a set of packages without alteration to the (conda) base Python environment and therefore does not risk breaking the functionality of the conda package manager itself. 
+
+There are a number of conda based installers:
+
+|Installer|base environment|default channel|
+|---|---|---|
+|Miniforge|minimal (conda package manager)|conda-forge (community)|
+|Mambaforge|minimal (conda + mamba package manager)|conda-forge (community)|
+|Miniconda|minimal (conda package manager)|anaconda (commercial)|
+|Anaconda|data science distribution (conda package manager)|anaconda (commercial)|
+
+Mambaforge was a developmental version of Miniforge where the package manager binary `mamba` was used in place of `conda`. `mamba` used a faster C++ solver offering a significant performance boost and increased reliability. The solver for `conda` was updated to `lib-mamba` and now takes advantage of these developments. Miniforge now contains both the `conda` (used by default and recommended for general use) and `mamba` (which should essentially be thought of as a developmental version of `conda`). Since Miniforge contains both these package managers, Mambaforge is now considered obsolete.
+
+Anaconda/Miniconda use a tainted repository `anaconda` by default which has commercial restrictions and has significantly older package versions than on the community channel `conda-forge`. Anaconda is a data science distribution and Anaconda groups a large number of popular data science packages and tests them for stability with one another. This includes an odler version of the Spyder IDE and JupyterLab IDE. The Anaconda distribution is generally designed to be used "as is" and the stability is broken when other packages from the community channel are added. Using these significantly older packages result with the current version of Spyder results in incompatibilities because the current version of Spyder requires up to date packages.
 
 Miniforge is developed on GitHub and the latest release is on the [GitHub Miniforge Releases Page](https://github.com/conda-forge/miniforge/releases). Note Mambaforge is considered obsolete and therefore the installers listed at the top should be avoided. 
 
@@ -1197,11 +1210,11 @@ To install in the default location press `↵`:
 
 <img src='./images/img_201.png' alt='img_201' width='600'/>
 
-A prompt to initialise `conda` will display. Note the default option if `↵` is input is `No`, which means `Miniforge` is installed but not initialised/
+A prompt to initialise the `conda` binary will display. Note the default option if `↵` is input is `No`, which means `Miniforge` is installed but not initialised/
 
 <img src='./images/img_202.png' alt='img_202' width='600'/>
 
-Initialisation updates the `.bashrc` file which are the bash recall parameters used by the Linux Terminal:
+Initialisation updates the `.bashrc` file, which contains the bash recall parameters used by the Linux Terminal:
 
 <img src='./images/img_203.png' alt='img_203' width='600'/>
 
@@ -1209,7 +1222,7 @@ Note the Spyder installer has already updated this `.bashrc` file, so the binary
 
 <img src='./images/img_204.png' alt='img_204' width='600'/>
 
-To initialise `conda` with the Terminal, input `yes` and press `↵`:
+To initialise the `conda` binary with the Terminal, input `yes` and press `↵`:
 
 <img src='./images/img_205.png' alt='img_205' width='600'/>
 
@@ -1225,7 +1238,7 @@ A `conda` initialisation block displays:
 
 <img src='./images/img_208.png' alt='img_208' width='600'/>
 
-When a new Terminal instance is opened, it will look at the recall parameters and add the prefix `(base)`, indicating the `base` Python environment (from Miniforge) is selected:
+When a new Terminal instance is opened, it will look at the recall parameters and add the prefix `(base)`, indicating the `base` (conda) Python environment (from Miniforge) is selected:
 
 <img src='./images/img_209.png' alt='img_209' width='600'/>
 
@@ -1239,7 +1252,7 @@ conda init --reverse
 
 <img src='./images/img_210.png' alt='img_210' width='600'/>
 
-This means the following initialisation block is not present int he `.bashrc` file:
+This means the following initialisation block is not present in the `.bashrc` file:
 
 <img src='./images/img_211.png' alt='img_211' width='600'/>
 
@@ -1267,13 +1280,13 @@ The `./` means look in the same directory as the current working directory for t
 
 <img src='./images/img_216.png' alt='img_216' width='600'/>
 
-Miniforge is installed and initialised. When a new Terminal instance is opened, it will look at the recall parameters and add the prefix `(base)`, indicating the `base` Python environment (from Miniforge) is selected.
+Miniforge is installed and initialised. When a new Terminal instance is opened, it will look at the recall parameters and add the prefix `(base)`. This indicates the `base` (conda) Python environment (from Miniforge) is selected.
 
 <img src='./images/img_217.png' alt='img_217' width='600'/>
 
 ## Creating a Custom spyder-env Environment (conda)
 
-The purpose of the `base` environment is to use the conda package manager. It is not recommended to install other packages in `base`:
+The purpose of the `base` conda Python environment is to use the conda package manager. It is not recommended to install other packages in `base`:
 
 <img src='./images/img_218.png' alt='img_218' width='600'/>
 
@@ -1289,7 +1302,7 @@ The default channel is `conda-forge` which is the community channel:
 
 <img src='./images/img_220.png' alt='img_220' width='600'/>
 
-`conda` and `conda` dependencies will be updated. Input `y` in order to proceed:
+`conda` and its dependencies will be updated. Input `y` in order to proceed:
 
 <img src='./images/img_221.png' alt='img_221' width='600'/>
 
@@ -1297,7 +1310,7 @@ The default channel is `conda-forge` which is the community channel:
 
 <img src='./images/img_222.png' alt='img_222' width='600'/>
 
-A new environment can be created using:
+A new (conda) Python environment can be created using:
 
 ```bash
 conda create -n spyder-env spyder-kernels python seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter lxml sqlalchemy tabulate pyqt ffmpeg ruff
@@ -1305,11 +1318,11 @@ conda create -n spyder-env spyder-kernels python seaborn scikit-learn pyarrow sy
 
 This has `spyder-kernels` which is required for Syder to use the environment. `seaborn` which has `numpy`, `pandas` and `matplotlib` as dependencies. `scikit-learn` for machine learning. `pyarrow`, `openpyxl`, `xlrd`, `xlsxwriter`, `lxml`, `sqlalchemy`, `tabulate` for various file pandas formats. `pyqt` for matplotlib's interactive backend and `ffmpeg` for saving matplotlib animations.
 
-`-n` means name and `spyder-env` is the name of the Python environment. Specifying an environment using `-n` means changes to that environment will be made opposed to `base` which is the currently activate environment.
+`-n` means name and `spyder-env` is the name of the Python environment. Specifying an environment using `-n` means changes to that environment will be made opposed to `base`:
 
 <img src='./images/img_223.png' alt='img_223' width='600'/>
 
-These packages will all be installed from the `conda-forge` channel. In the `spyder-env` folder which is found in the `envs` subfolder of `base`:
+These packages will all be installed from the `conda-forge` channel and installed compartmentalised in the (conda) Python environment `spyder-env`. `spyder-env` is a subfolder which is found in the `envs` subfolder of the `base` Miniforge installation `~/Miniforge3`:
 
 <img src='./images/img_224.png' alt='img_224' width='600'/>
 
@@ -1333,7 +1346,7 @@ conda activate spyder-env
 
 <img src='./images/img_228.png' alt='img_228' width='600'/>
 
-Notice the prefix is now `(spyder-env)` meaning this environment is activated. An `ipython` shell can be launched. Imports of the standard modules and third-party libraries can be carried out, if the `__file__` attribute of these is checked, notice they are all found in the directory of `spyder-env`:
+Notice the prefix is now `(spyder-env)` meaning the (conda) Python environment `spyder-env` is activated. An `ipython` shell can be launched. Imports of the standard modules and third-party libraries can be carried out, if the `__file__` attribute of these is checked, notice they are all found in the directory of `spyder-env`:
 
 <img src='./images/img_229.png' alt='img_229' width='600'/>
 
@@ -1345,7 +1358,7 @@ Notice the prefix is now `(spyder-env)` meaning this environment is activated. A
 
 ## Selecting the Custom spyder-env Environment (conda)
 
-In Spyder, the default environment `spyder-runtime` is selected:
+In Spyder, the default Python environment `spyder-runtime` (conda) is selected:
 
 <img src='./images/img_233.png' alt='img_233' width='600'/>
 
@@ -1422,13 +1435,13 @@ There is a new release of Spyder, approximately every month. When available a pr
 
 If an external conda environment was created, it will need to be updated, with a compatible version of `spyder-kernels`. Open up the Windows Terminal an updte the `conda` package manager in base:
 
-```powershell
+```bash
 conda update conda
 ```
 
-Then activate `spyder-env` and searh for updates to all packages:
+Then activate `spyder-env` and search for updates to all packages:
 
-```powershell
+```bash
 conda activate spyder-env
 conda update --all
 ```

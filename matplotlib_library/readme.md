@@ -496,7 +496,7 @@ In [13]: exit
 
 ## Procedural Programming Syntax
 
-An `ndarray` is typically used to store data used for plots. The following imports are comonly used:
+An `ndarray` is typically used to store data used for plots. The following imports are commonly used:
 
 ```python
 In [1]: import numpy as np
