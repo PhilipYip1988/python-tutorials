@@ -13,8 +13,16 @@ Python has a large number of development environments. Beginners often have prob
 The following guides covers installation and basic use of the:
 
 * **S**cientific **Py**thon **D**evelopment **E**nvi**r**onment (Spyder).
+
+<img src='./images/img_001.png' alt='img_001' width='600'/>
+
 * JupyterLab (**Ju**lia, **Pyt**hon **e**t **R** **Lab**oratory)
+
+<img src='./images/img_002.png' alt='img_002' width='600'/>
+
 * VSCode (**V**isual **S**tudio **Code**)
+
+<img src='./images/img_003.png' alt='img_003' width='600'/>
 
 Spyder is tailored for scientists and engineers and has the most commonly used packages from the scientific stack preinstalled, a conda environment can be used to install additional packages. This makes it very beginner friendly. This installation guide will also cover installation of additional packages using Miniforge to create a `conda-forge` (community channel) environment. Additional dependencies such as TeX (commonly used in plots), which do not have a `conda-forge` package. 
 
@@ -29,7 +37,8 @@ Preference of a specific Python IDE is somewhat subjective and I routinely use t
 * [GitHub Desktop Setup + Cloning this Repository](./github_install_windows/readme.md)
 * [Spyder Setup + Miniforge Setup + TeX Setup](./spyder_install_windows/readme.md)
 * [JupyterLab Setup](/jupyter_install_windows/readme.md)
-* VSCode Setup
+    * [Markdown](./markdown/readme.md)
+* [VSCode Setup](./vscode_install_windows/readme.md)
 
 ### Ubuntu
 
@@ -38,6 +47,7 @@ The Ubuntu instructions can be modified slightly for another Linux distribution 
 * [GitHub Desktop Setup + Cloning this Repository](./github_install_ubuntu/readme.md)
 * [Spyder Setup + Miniforge Setup + Tex Setup](./spyder_install_ubuntu/readme.md)
 * [JupyterLab Setup](./jupyter_install_ubuntu/readme.md)
+    * [Markdown](./markdown/readme.md)
 * [VSCode Setup](./vscode_install_ubuntu/readme.md)
 
 ## Python and Standard Libraries
@@ -48,6 +58,7 @@ These tutorials cover the `object` orientated design pattern of `builtins` class
 * [OOP and Text Datatypes](./text_datatypes/readme.md)
 * [OOP and Numeric Datatypes](./numeric_datatypes/readme.md)
 * [OOP and Collection Datatypes](./collection_datatypes/readme.md)
+* [OOP and Iterator Datatypes](./iterator_datatypes/readme.md)
 
 ## Numeric Python Stack
 
@@ -58,8 +69,3 @@ These tutorials cover the numeric Python stack, which bridge a numeric design pa
 * [Python and Data Analysis Library (pandas)]
 * [Data Visualisation Library (seaborn)]
 
-## Markdown
-
-Tutorial on markdown syntax:
-
-* [Markdown](./markdown/readme.md)

@@ -176,7 +176,9 @@ Select the vscode-env created earlier:
 
 <img src='./images/img_036.png' alt='img_036' width='600'/>
 
-If a Python script is open in the file explorer:
+## Python Script and Python Shell
+
+To the left hand side the Python Script file can be opened:
 
 ```python
 #%% Import Libraries
@@ -209,61 +211,186 @@ When this is closed, the new prompt displays. If the terminal in VSCode, is exam
 
 <img src='./images/img_040.png' alt='img_040' width='600'/>
 
-## Pylance Code Completion
+VSCode has Pylance and IntelliSense installed showing identifiers and docstrings as code is typed:
 
 <img src='./images/img_041.png' alt='img_041' width='600'/>
+
 <img src='./images/img_042.png' alt='img_042' width='600'/>
+
 <img src='./images/img_043.png' alt='img_043' width='600'/>
+
+## Python Script and IPython Shell
+
+Selecting the Run Cell button will instead run the Script file using an IPython Shell:
+
 <img src='./images/img_044.png' alt='img_044' width='600'/>
+
 <img src='./images/img_045.png' alt='img_045' width='600'/>
+
 <img src='./images/img_046.png' alt='img_046' width='600'/>
+
+Variables can be seen by selecting Jupyter Variables:
+
 <img src='./images/img_047.png' alt='img_047' width='600'/>
+
+The `ndarray` can be explored in the Data Wrangler extension:
+
 <img src='./images/img_048.png' alt='img_048' width='600'/>
+
+Select Allow:
+
 <img src='./images/img_049.png' alt='img_049' width='600'/>
+
+The Data Wrangled Variable displays in a seperate tab:
+
 <img src='./images/img_050.png' alt='img_050' width='600'/>
+
+Plots are shown using the inline backend by default:
+
 <img src='./images/img_051.png' alt='img_051' width='600'/>
+
+## Notebook
+
+VSCode can also be used to run a Notebook and the layout is similar to the layout previously examined in JupyterLab. Select Run All to run all the cells and then select Python Environments:
+
 <img src='./images/img_052.png' alt='img_052' width='600'/>
+
+Select the `vscode-env`, (conda) Python environment which has the binary `~/miniforge3/envs/vscode-env/bin/python`:
+
 <img src='./images/img_053.png' alt='img_053' width='600'/>
+
+The notebook displays similarly to how it displays in JupyterLab:
+
 <img src='./images/img_054.png' alt='img_054' width='600'/>
+
 <img src='./images/img_055.png' alt='img_055' width='600'/>
+
+In VSCode, docstrings are truncated by default:
+
 <img src='./images/img_056.png' alt='img_056' width='600'/>
+
+However they can be viewed as scrollable elements:
+
 <img src='./images/img_057.png' alt='img_057' width='600'/>
+
 <img src='./images/img_058.png' alt='img_058' width='600'/>
+
+Plots are displayed by default using the `inline` backend, however the backend can be changed using `%matplotlib` in the same way as previously seen when using JupyterLab:
+
 <img src='./images/img_059.png' alt='img_059' width='600'/>
-<img src='./images/img_060.png' alt='img_060' width='600'/>
+
+## Formatters and Linters
+
+Returning the the Python Script file. Press `Ctrl+⇧+p` to open up the command palette. Select Format Document With...:
+
 <img src='./images/img_061.png' alt='img_061' width='600'/>
+
+Select autopep8:
+
 <img src='./images/img_062.png' alt='img_062' width='600'/>
+
+This corrects the spacing around the assignment `=` and around `,` delimiters but other operators are not spaced out as expected:
+
 <img src='./images/img_063.png' alt='img_063' width='600'/>
+
+Press `Ctrl+⇧+p` to open up the command palette and search for organize imports, select organize imports:
+
 <img src='./images/img_064.png' alt='img_064' width='600'/>
+
+Then select isort:
+
 <img src='./images/img_065.png' alt='img_065' width='600'/>
+
+The imports are now grouped alphabetically into groups (standard modules and third-party modules, in this case no standard modules aren't used so only one list of third-party modules displays):
+
 <img src='./images/img_066.png' alt='img_066' width='600'/>
+
+Press `Ctrl+⇧+p` to open up the command palette and search for Format Document With...:
+
 <img src='./images/img_067.png' alt='img_067' width='600'/>
+
+Select the Black Formatter:
+
 <img src='./images/img_068.png' alt='img_068' width='600'/>
+
+The spacing around other operators is now corrected but unfortunately black changed all string quotations from single to double, differing from the default Python style:
+
 <img src='./images/img_069.png' alt='img_069' width='600'/>
+
+The Ruff formatter uses the black formatter by default. However it can be customised with a `ruff.toml` file which is placed within the project folder. For more details see [Configuring Ruff](https://docs.astral.sh/ruff/configuration/#__tabbed_1_2):
+
+```python
+[format]
+# Use single quotes in `ruff format`.
+quote-style = "single"
+```
+
 <img src='./images/img_070.png' alt='img_070' width='600'/>
+
 <img src='./images/img_071.png' alt='img_071' width='600'/>
+
+Press `Ctrl+⇧+p` to open up the command palette and search for Format and select Ruff or Format Document With... and select Ruff:
+
 <img src='./images/img_072.png' alt='img_072' width='600'/>
+
+Now the quote style is single as desired, more closely matching the formatting used within Python itself. The underlined code is flagged up by either the spell checker or code linters:
+
 <img src='./images/img_073.png' alt='img_073' width='600'/>
+
+Formatting can also be carried out on a Notebook. Before using Format Notebook, the default Formatter should be selected. Press `Ctrl+⇧+p` to open up the command palette and search for Format and select Ruff or Format Document With... 
+
 <img src='./images/img_074.png' alt='img_074' width='600'/>
+
+Select Configure Default Formatter...
+
 <img src='./images/img_075.png' alt='img_075' width='600'/>
+
+Select Ruff:
+
 <img src='./images/img_076.png' alt='img_076' width='600'/>
+
+Now select the notebook file. Press `Ctrl+⇧+p` to open up the command palette and search for Format Notebook:
+
 <img src='./images/img_077.png' alt='img_077' width='600'/>
+
+The notebook wil now be formatted:
+
 <img src='./images/img_078.png' alt='img_078' width='600'/>
+
+The underlined code is flagged up by either the spell checker or code linters:
+
 <img src='./images/img_079.png' alt='img_079' width='600'/>
+
+In this case, it is by the spell checker selecting View Problem gives spelling suggestions:
+
 <img src='./images/img_080.png' alt='img_080' width='600'/>
+
+Many identifiers and parameter options will not be recognised. Select add to user settings:
+
 <img src='./images/img_081.png' alt='img_081' width='600'/>
+
+The linting will disappear now that this parameter is recognised:
+
 <img src='./images/img_082.png' alt='img_082' width='600'/>
+
+Other linters will identify other problems with the code which can usually be addressed in a similar way:
+
 <img src='./images/img_083.png' alt='img_083' width='600'/>
+
+## Other Extensions
+
+If a `.csv` file is opened, there will be details about the Rainbow Extension, select Install. Each column in the `.csv` is now colour-coded making it easier to read:
+
 <img src='./images/img_084.png' alt='img_084' width='600'/>
+
+The Excel Viewer Extension can be installed:
+
 <img src='./images/img_085.png' alt='img_085' width='600'/>
+
+Now the Excel File can be viewed in VSCode:
+
 <img src='./images/img_086.png' alt='img_086' width='600'/>
-<img src='./images/img_087.png' alt='img_087' width='600'/>
-<img src='./images/img_088.png' alt='img_088' width='600'/>
-<img src='./images/img_089.png' alt='img_089' width='600'/>
-<img src='./images/img_090.png' alt='img_090' width='600'/>
-<img src='./images/img_091.png' alt='img_091' width='600'/>
-<img src='./images/img_092.png' alt='img_092' width='600'/>
-<img src='./images/img_093.png' alt='img_093' width='600'/>
-<img src='./images/img_094.png' alt='img_094' width='600'/>
-<img src='./images/img_095.png' alt='img_095' width='600'/>
-<img src='./images/img_096.png' alt='img_096' width='600'/>
+
+VSCode has additional extensions to enhance markdown capabilities. Also because VSCode is cross-programming language, it also has numerous other extensions for other programming languages, making it suitable for cross-programming language development. These will not be further discussed as this installation guide is for Python development only.
+
+[Return to Python Tutorials](../readme.md)

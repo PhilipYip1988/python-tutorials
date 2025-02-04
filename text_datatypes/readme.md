@@ -1,6 +1,6 @@
 # Text Data Types
 
-## The object Base Class and Collections Abstract Base Class
+## The object Base Class and Sequence Abstract Base Class
 
 Recall from the previous tutorial covering the data model that the `object` class is the `base` class of all classes. `dir` can be used to view a list of it's identifiers:
 
@@ -81,7 +81,23 @@ Out[3]: ['str', 'object']
 
 Recall the `str` class inherits everything from the `object` class. Some identifiers are redefined in the `str` class for additional functionality and additional identifiers are supplemented. The method resolution order essentially means preferentially use the method if it is redefined in the `str` class over the equivalent method in the `object` class.
 
-The `str` class follows the design pattern of the abstract base class immutable `Collection` and therefore has the behaviour of an immutable `Collection`. When `str` is input, followed by a dot `.` the identifiers are typically listed alphabetically. However it is easier to understand the identifiers in the `str` class when the identifiers are grouped by design pattern and purpose:
+The `str` class follows the design pattern of the abstract base class (immutable) `Sequence` which in turn follows the design pattern of `Collection` and `Reversible`. `Collection` in turn follows the design pattern of `Container`, `Iterable` and `Sized`. These all follow the design pattern of `object` as `object` is the base class of everythin in Python (for clarity in the table below, `object` identifiers are not listed):
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|2|`Reversible`||`__reversed__`|
+|||||
+|3|`Sequence`|`Collection`,<br> `Reversible`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br>`__reversible__`,<br><br>`__getitem__`,<br>`index`,<br>`count`,<br>`__add__`,<br>`__mul__`,<br>|
+
+Abstract base classes level 1 and 2 will be examined in a bit more detail when collections are examined. For now it is important to note that the `str` class follows the level 3 design pattern and therefore has the methods listed under `Sequence`. When `str` is input, followed by a dot `.` the identifiers are typically listed alphabetically. However it is easier to understand the identifiers in the `str` class when the identifiers are grouped by design pattern and purpose:
 
 ```python
 In [4]: str.
@@ -115,7 +131,7 @@ In [4]: str.
 #     - __class__                                   : The class of the string.
 #     - __doc__                                     : The docstring of the string class.
 
-# 🔧 Collection-Based Methods (from `str` and the Collection ABC):
+# 🔧 Sequence-Based Methods (from `str` and the Sequence ABC):
 #     - __contains__(self, key, /)                  : Checks if a substring is in the string (`in`).
 #     - __iter__(self, /)                           : Returns an iterator over the string.
 #     - __len__(self, /)                            : Returns the length of the string.
@@ -125,7 +141,7 @@ In [4]: str.
 #     - index(self, sub, start=0,                   : Returns the index of the first occurrence of a substring.
 #             end=9223372036854775807, /) 
 
-# 🔧 Supplementary Collection-Based Methods:
+# 🔧 Supplementary Sequence-Based Methods:
 #     - rindex(self, sub, start=0,                  : Returns the highest index of a substring.
 #              end=9223372036854775807, /) 
 #     - find(self, sub, start=0,                    : Finds the first index of a substring.
@@ -134,7 +150,7 @@ In [4]: str.
 #             end=9223372036854775807, /) 
 #     - replace(self, old, new, count=-1, /)        : Replaces occurrences of a substring.
 
-# 🔧 Collection-Like Operators:
+# 🔧 Sequence-Like Operators:
 #     - __add__(self, value, /)                     : Implements string concatenation (`+`).
 #     - __mul__(self, value, /)                     : Implements string repetition (`*`).
 #     - __rmul__(self, value, /)                    : Implements reflected multiplication (`*`).
@@ -212,13 +228,13 @@ In [4]: str.
 #     - rpartition(self, sep, /)                    : Splits the string into a 3-tuple around a separator, from #                                                     the right.
 ```
 
-The `str` is a `Collection` where each element (fundamental unit) in the `Collection` is a Unicode Character. The `str` class always uses the Unicode Transformation Format-8 (UTF-8) to encode an Unicode character and this greatly simplifies text related operations as the user does not need to handle encoding and decoding using various other translation tables.
+The `str` is a `Sequence` where each element (fundamental unit) in the `Sequence` is a Unicode Character. The `str` class always uses the Unicode Transformation Format-8 (UTF-8) to encode an Unicode character and this greatly simplifies text related operations as the user does not need to handle encoding and decoding using various other translation tables.
 
-Another text datatype is the `bytes` class. The `bytes` class is also a `Collection` where each element in the `Collection` is a byte. The byte is a logical unit in a computers memory. It is helpful to conceptualise it as the combination of 8 binary switches:
+Another text datatype is the `bytes` class. The `bytes` class is also a `Sequence` where each element in the `Sequence` is a byte. The byte is a logical unit in a computers memory. It is helpful to conceptualise it as the combination of 8 binary switches:
 
 <img src='./images/img_001.png' alt='img_001' width='400'/>
 
-Each combination in the 8 switches above corresponds to an `int` between `0` and `256` so the `bytes` class also has some numeric behaviour. An encoding standard is used to designate a single byte or multiple bytes to a Unicode character. However unlike the Unicode `str`, there are a variety of encoding tables and the numeric `bytes` `Collection` must be encoded and decoded using the same encoding table for the text to make sense. Notice that the identifiers in the `bytes` class are largely constent with identifiers in the `str` class but may behave slightly different as they use a difference unit in the `Collection`:
+Each combination in the 8 switches above corresponds to an `int` between `0` and `256` so the `bytes` class also has some numeric behaviour. An encoding standard is used to designate a single byte or multiple bytes to a Unicode character. However unlike the Unicode `str`, there are a variety of encoding tables and the numeric `bytes` `Sequence` must be encoded and decoded using the same encoding table for the text to make sense. Notice that the identifiers in the `bytes` class are largely constent with identifiers in the `str` class but may behave slightly different as they use a difference unit in the `Sequence`:
 
 ```python
 In [4]: dir(bytes)
@@ -265,7 +281,7 @@ In [5]: bytes.
 #     - __class__                                      : The class of the bytes object.
 #     - __doc__                                        : The docstring of the bytes class.
 
-# 🔧 Collection-Based Methods (from `bytes` and the Collection ABC):
+# 🔧 Sequence-Based Methods (from `bytes` and the Sequence ABC):
 #     - __contains__(self, key, /)                     : Checks if a byte value is in the bytes (`in`).
 #     - __iter__(self, /)                              : Returns an iterator over the bytes.
 #     - __len__(self, /)                               : Returns the length of the bytes.
@@ -275,7 +291,7 @@ In [5]: bytes.
 #     - index(self, sub, start=0,                      : Returns the index of the first occurrence of a sub-byte.
 #             end=9223372036854775807, /) 
 
-# 🔧 Supplementary Collection-Based Methods:
+# 🔧 Supplementary Sequence-Based Methods:
 #     - rindex(self, sub, start=0,                      : Returns the highest index of the first occurrence of a sub-byte.
 #     - find(self, sub, start=0,                       : Finds the index of a sub-byte sequence.
 #            end=9223372036854775807, /)  
@@ -283,7 +299,7 @@ In [5]: bytes.
 #            end=9223372036854775807, /)  
 #     - replace(self, old, new, count=-1, /)           : Replaces occurrences of a sub-byte sequence.
 
-# 🔧 Collection-Like Operators:
+# 🔧 Sequence-Like Operators:
 #     - __add__(self, value, /)                        : Implements bytes concatenation (`+`).
 #     - __mul__(self, value, /)                        : Implements bytes repetition (`*`).
 #     - __rmul__(self, value, /)                       : Implements reflected multiplication (`*`).
@@ -303,9 +319,6 @@ In [5]: bytes.
 #     - fromhex(string, /)                             : Creates a `bytes` object from a hexadecimal string.
 #     - __mod__(self, value, /)                        : Implements C-style formatting using `%`.
 #     - __rmod__(self, value, /)                       : Implements reverse C-style formatting using `%`.
-
-# 🅰️ Case-Specific Methods (For Mutable Equivalent `bytearray`):
-#     - **N/A for `bytes`, as they are immutable.** (Mutable `bytearray` provides `lower`, `upper`, etc.)
 
 # 🔠 Boolean Methods (Data Validation):
 #     - isalnum(self, /)                               : Checks if all bytes are alphanumeric.
@@ -341,7 +354,44 @@ In [5]: bytes.
 #     - rpartition(self, sep, /)                       : Splits into a 3-tuple around a separator, from the right.
 ```
 
-The `str` and `bytes` classes are immutable which essentially means all methods with exception to the constructor return a new instance (of the same class or a different class). The `bytes` class has a mutable counterpart the `bytearray`, which has additional methods which mutate the `bytearray` in place:
+The `str` and `bytes` classes are immutable which essentially means all methods with exception to the constructor return a new instance (of the same class or a different class). Recall, these follow the design pattern of an (immutable) `Sequence`:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|2|`Reversible`||`__reversed__`|
+|||||
+|3|`Sequence`|`Collection`,<br> `Reversible`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br>`__reversible__`,<br><br>`__getitem__`,<br>`index`,<br>`count`,<br>`__add__`,<br>`__mul__`,<br>|
+
+
+The `bytes` class has a mutable counterpart the `bytearray`, which has additional methods which mutate the `bytearray` in place. This follows the design pattern of a `MutableSequence`:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|2|`Reversible`||`__reversed__`|
+|||||
+|3|`Sequence`|`Collection`,<br> `Reversible`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br>`__reversible__`,<br><br>`__getitem__`,<br>`index`,<br>`count`,<br>`__add__`,<br>`__mul__`,<br>|
+|||||
+|4|`MutableSequence`|`Sequence`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br>`__reversible__`,<br><br>`__getitem__`,<br>`index`,<br>`count`,<br>`__add__`,<br>`__mul__`,<br><br>`append`,<br>`extend`,<br>`insert`,<br>`pop`,<br>`remove`,<br>`clear`,<br>`reverse`,<br>`__setitem__`, <br>`__delitem__`,<br>`__iadd__`,<br>`__imul__`,<br>|
+
+This level 4 design pattern contains all the previous methods seen in level 3 and has supplementary mutable methods.
+
+The identifiers of the `bytearray` class can be examined:
 
 ```python
 In [5]: bytearray.
@@ -375,7 +425,7 @@ In [5]: bytearray.
 #     - __class__                                      : The class of the bytearray object.
 #     - __doc__                                        : The docstring of the bytearray class.
 
-# 🔧 Collection-Based Methods (from `bytearray` and the Collection ABC):
+# 🔧 Sequencen-Based Methods (from `bytearray` and the Sequence ABC):
 #     - __contains__(self, key, /)                     : Checks if a byte value is in the bytearray (`in`).
 #     - __iter__(self, /)                              : Returns an iterator over the bytearray.
 #     - __len__(self, /)                               : Returns the length of the bytearray.
@@ -385,7 +435,7 @@ In [5]: bytearray.
 #     - index(self, sub, start=0,                      : Returns the index of the first occurrence of a sub-byte.
 #             end=9223372036854775807, /) 
 
-# 🔧 Supplementary Collection-Based Methods:
+# 🔧 Supplementary Sequence-Based Methods:
 #     - rindex(self, sub, start=0,                     : Returns the highest index of a sub-byte sequence.
 #              end=9223372036854775807, /) 
 #     - find(self, sub, start=0,                       : Finds the lowest index of a sub-byte sequence.
@@ -394,7 +444,7 @@ In [5]: bytearray.
 #            end=9223372036854775807, /)  
 #     - replace(self, old, new, count=-1, /)           : Replaces occurrences of a sub-byte sequence.
 
-# 🔧 Mutable Collection-Specific Methods:
+# 🔧 MutableSequence-Specific Methods:
 #     - __setitem__(self, key, value, /)               : Assigns a value to an item (`[] =`).
 #     - __delitem__(self, key, /)                      : Deletes an item from the bytearray.
 #     - append(self, item, /)                          : Appends a byte to the end of the bytearray.
@@ -405,7 +455,7 @@ In [5]: bytearray.
 #     - clear(self, /)                                 : Removes all bytes from the bytearray.
 #     - reverse(self, /)                               : Reverses the order of bytes in place.
 
-# 🔧 Collection-Like Operators:
+# 🔧 Sequence-Like Operators:
 #     - __add__(self, value, /)                        : Implements bytearray concatenation (`+`).
 #     - __mul__(self, value, /)                        : Implements bytearray repetition (`*`).
 #     - __rmul__(self, value, /)                       : Implements reflected multiplication (`*`).
@@ -468,7 +518,7 @@ In [5]: bytearray.
 #     - rpartition(self, sep, /)                       : Splits into a 3-tuple around a separator, from the right.
 ```
 
-## Instantiation, Encoding and Collection Properties
+## Instantiation, Encoding and Sequence Properties
 
 A `str` instance can be explictly instantiated using:
 
@@ -552,7 +602,7 @@ And will display in the Variable Explorer:
 
 Notice the Variable Explorer displays the type and the length and the length is the number of Unicode Characters in each `str`.
 
-Another text datatype is the `byte` class. Recall the `bytes` class is a `Collection` where each element in the `Collection` is a byte and a byte can be concepualised as a combination of 8 switches:
+Another text datatype is the `byte` class. Recall the `bytes` class is a `Sequence` where each element in the `Sequence` is a byte and a byte can be concepualised as a combination of 8 switches:
 
 <img src='./images/img_001.png' alt='img_001' width='400'/>
 
@@ -2899,7 +2949,7 @@ The Variable Explorer in Spyder assumes `'utf-8'` encoding for a `bytes` instanc
 
 Notice the length of `text` and `text_b` are different because the element in each class is different. In `text_b` some of the characters are encoded to multiple `bytes`:
 
-This can be seen by casting each `Collection` explictly to a `tuple`:
+This can be seen by casting each `Sequence` explictly to a `tuple`:
 
 ```python
 In [7]: text_as_tuple = tuple(text)
@@ -3469,10 +3519,10 @@ In [10]: bytes((206, 147, 206, 181, 206, 185, 206, 177,  32, 207,
 Out[10]: b'\xce\x93\xce\xb5\xce\xb9\xce\xb1 \xcf\x83\xce\xbf\xcf\x85 \xce\x9a\xce\xbf\xcf\x83\xce\xbc\xce\xbf!'
 ```
 
-Now that the element in each `Collection` is understood, the following `Collection` based identifiers can be used:
+Now that the element in each `Sequence` is understood, the following `Sequence` based identifiers can be used:
 
 ```python
-# 🔧 Collection-Based Methods (from `str` and the Collection ABC):
+# 🔧 Sequence-Based Methods (from `str` and the Sequence ABC):
 #     - __contains__(self, key, /)                  : Checks if a substring is in the string (`in`).
 #     - __iter__(self, /)                           : Returns an iterator over the string.
 #     - __len__(self, /)                            : Returns the length of the string.
@@ -3513,7 +3563,7 @@ In [17]: text[1] # text.__index__(1)
 Out[17]: 'ε'
 ```
 
-Notice that Python use zero-order indexing. This means the first index is at index `0` and the last index is the length of the `Collection` minus `1`:
+Notice that Python use zero-order indexing. This means the first index is at index `0` and the last index is the length of the `Sequence` minus `1`:
 
 ```python
 In [17]: text[0] 
@@ -4457,7 +4507,7 @@ Traceback (most recent call last):
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xce in position 0: invalid continuation byte
 ```
 
-The `Collection` method `count` will count the number of occurances a substring occurs in a `str`:
+The `Sequence` method `count` will count the number of occurances a substring occurs in a `str`:
 
 ```python
 In [53]: text
@@ -4470,7 +4520,7 @@ In [54]: text.count('σ')
 Out[54]: 2
 ```
 
-The `Collection` method `index` will retrieve the index of the first occurance of a value:
+The `Sequence` method `index` will retrieve the index of the first occurance of a value:
 
 ```python
 In [55]: dict(enumerate(text))
@@ -4609,10 +4659,10 @@ In [74]: text_b.index(207, 9+1, len(text_b))
 Out[74]: 13
 ```
 
-The `str` has the following `Collection` based binary operators:
+The `str` has the following `Sequence` based binary operators:
 
 ```python
-# 🔧 Collection-Like Operators:
+# 🔧 Sequence-Like Operators:
 #     - __add__(self, value, /)                     : Implements string concatenation (`+`).
 #     - __mul__(self, value, /)                     : Implements string repetition (`*`).
 #     - __rmul__(self, value, /)                    : Implements reflected multiplication (`*`).
@@ -4661,7 +4711,7 @@ Out[82]: b'\xce\x93\xce\xb5\xce\xb9\xce\xb1 \xcf\x83\xce\xbf\xcf\x85 \xce\x9a\xc
 In [83]: exit
 ```
 
-## Instantiation and MutableCollection Properties
+## Instantiation and MutableSequence Properties
 
 The `bytes` class has the mutable counterpart the `bytearray`. A `bytearray` instance can be instantiated by casting from a `bytes` instance to a `bytearray`: 
 
@@ -6412,10 +6462,10 @@ In [27]: 'Γεια σου Κοσμο!'.translate(remove_punctuation).casefold().
 Out[27]: ['γεια', 'σου', 'κοσμο']
 ```
 
-This can be used to count the number of occurances of each word using a `collection` such as a `Counter` and the top words can be examined:
+This can be used to count the number of occurances of each word using a `Sequence` such as a `Counter` and the top words can be examined:
 
 ```python
-In [28]: from collections import Counter
+In [28]: from Sequences import Counter
 In [29]: Counter(['γεια', 'σου', 'κοσμο'])
 Out[29]: Counter({'γεια': 1, 'σου': 1, 'κοσμο': 1})
 ```

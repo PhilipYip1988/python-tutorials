@@ -101,7 +101,23 @@ Out[4]: ['__add__', '__bytes__', '__class__', '__contains__', '__delattr__',
          'swapcase', 'title', 'translate', 'upper', 'zfill']
 ```
 
-The `tuple`, `str` and `bytes` classes each have the design pattern of the base class `object` and the  abstract base classes `Collection` and `Sequence`. The abstract base class immutable `Collection` gives collection based properties i.e. each of these classes is a collection of some sort of element. The abstract base class immutable `Sequence` which gives additional ordered properties and each element corresponds to a numeric index. The `tuple` is a `Sequence` where each element in the `Sequence` is a reference to a Python `object`. The `str` is a `Sequence` where each element in the `Sequence` is a Unicode character and the `bytes` is a `Sequence` where each element in the `Sequence` is a byte, which is essentially an `int` between `0:256`. Immutable means an instance is read only and cannot be modified after instantiation.
+The `tuple`, `str` and `bytes` classes each have the following design pattern:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|2|`Reversible`||`__reversed__`|
+|||||
+|3|`Sequence`|`Collection`,<br> `Reversible`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br>`__reversible__`,<br><br>`__getitem__`,<br>`index`,<br>`count`,<br>`__add__`,<br>`__mul__`,<br>|
+
+The abstract base class level 0 is the base class `object`, which is the base class of any Python `object`. The abstract base class level 4 is an  (immutable) `Sequence` that gives sequence based properties i.e. each of these classes is a `Sequence` of some sort of element. The `tuple` is a `Sequence` where each element in the `Sequence` is a reference to a Python `object`. The `str` is a `Sequence` where each element in the `Sequence` is a Unicode character and the `bytes` is a `Sequence` where each element in the `Sequence` is a byte, which is essentially an `int` between `0:256`. Immutable means an instance is read only and cannot be modified after instantiation.
 
 When `tuple` is input, followed by a dot `.` the identifiers are typically listed alphabetically. However it is easier to understand the identifiers in the `tuple` class when the identifiers are grouped by design pattern and purpose:
 
@@ -136,7 +152,7 @@ In [5]: tuple.
 #     - __class__                                   : The class of the tuple.
 #     - __doc__                                     : The docstring of the tuple class.
 
-# 🔧 Collection-Based Methods (from `tuple` and the Collection ABC):
+# 🔧 Sequence-Based Methods (from `tuple` and the Collection ABC):
 #     - __contains__(self, key, /)                  : Checks if an element is in the tuple (`in`).
 #     - __iter__(self, /)                           : Returns an iterator over the tuple.
 #     - __len__(self, /)                            : Returns the number of elements in the tuple.
@@ -144,17 +160,32 @@ In [5]: tuple.
 #     - count(self, value, /)                       : Counts the number of occurrences of a value.
 #     - index(self, value, start=0, end=-1, /)      : Returns the index of the first occurrence of a value.
 
-# 🔧 Collection-Like Operators:
+# 🔧 Sequence-Like Operators:
 #     - __add__(self, value, /)                     : Concatenates two tuples (`+`).
 #     - __mul__(self, value, /)                     : Repeats the tuple (`*`).
 #     - __rmul__(self, value, /)                    : Reflects multiplication (`*`).
 ```
 
-When the text related datatypes were examined, the immutable `Sequence` `bytes` was seen to have a `MutableSequence` counterpart `bytearray`. The `MutableSequence` has consistent immutable methods to its immutable `Sequence` as it follows the same design pattern. Each of these methods return a value. The `MutableSequence` however includes additional mutable methods, which typically don't return a value but instead modify the instance in place:
+The `tuple` has a `MutableSequence` counterpart `list`:
 
 ```python
-In [6]: dir(bytearray)
-Out[6]: ['__add__', '__alloc__', '__class__', '__contains__', '__delattr__', 
+In [6]: dir(list)
+Out[6]: ['__add__', '__class__', '__class_getitem__', '__contains__', '__delattr__', 
+         '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', 
+         '__getattribute__', '__getitem__', '__getstate__', '__gt__', '__hash__', 
+         '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', 
+         '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', 
+         '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', 
+         '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 
+         'append', 'clear', 'copy', 'count', 'extend', 
+         'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+```
+
+Notice consistency with the `bytearray` which is the `MutableSequence` counterpart to the `bytes`:
+
+```python
+In [7]: dir(bytearray)
+Out[7]: ['__add__', '__alloc__', '__class__', '__contains__', '__delattr__', 
          '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', 
          '__getattribute__', '__getitem__', '__getstate__', '__gt__', '__hash__', 
          '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', 
@@ -172,22 +203,25 @@ Out[6]: ['__add__', '__alloc__', '__class__', '__contains__', '__delattr__',
          'title', 'translate', 'upper', 'zfill']
 ```
 
-The `tuple` is an immutable `Sequence` that has a `MutableSequence` counterpart `list`:
+These classes follow the following level 4 `MutableSequence` design pattern and therefore have consistent behaviour to their immutable counterparts as they follow the same level 3 design pattern but have additional behaviour via level 4 which gives mutable methods:
 
-```python
-In [7]: dir(list)
-Out[7]: ['__add__', '__class__', '__class_getitem__', '__contains__', '__delattr__', 
-         '__delitem__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', 
-         '__getattribute__', '__getitem__', '__getstate__', '__gt__', '__hash__', 
-         '__iadd__', '__imul__', '__init__', '__init_subclass__', '__iter__', 
-         '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', 
-         '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', 
-         '__setattr__', '__setitem__', '__sizeof__', '__str__', '__subclasshook__', 
-         'append', 'clear', 'copy', 'count', 'extend', 
-         'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
-```
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|2|`Reversible`||`__reversed__`|
+|||||
+|3|`Sequence`|`Collection`,<br> `Reversible`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br>`__reversible__`,<br><br>`__getitem__`,<br>`index`,<br>`count`,<br>`__add__`,<br>`__mul__`,<br>|
+|||||
+|4|`MutableSequence`|`Sequence`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br>`__reversible__`,<br><br>`__getitem__`,<br>`index`,<br>`count`,<br>`__add__`,<br>`__mul__`,<br><br>`append`,<br>`extend`,<br>`insert`,<br>`pop`,<br>`remove`,<br>`clear`,<br>`reverse`,<br>`__setitem__`, <br>`__delitem__`,<br>`__iadd__`,<br>`__imul__`,<br>|
 
-The identifiers for the `list` class can also be examined:
+The identifiers for the `list` class can be examined in more detail:
 
 ```python
 In [8]: list.
@@ -221,7 +255,7 @@ In [8]: list.
 #     - __class__                                      : The class of the list object.
 #     - __doc__                                        : The docstring of the list class.
 
-# 🔧 Collection-Based Methods (from `list` and the Collection ABC):
+# 🔧 Sequencen-Based Methods (from `list` and the Collection ABC):
 #     - __contains__(self, item, /)                    : Checks if an item is in the list (`in`).
 #     - __iter__(self, /)                              : Returns an iterator over the list.
 #     - __len__(self, /)                               : Returns the length of the list.
@@ -229,7 +263,7 @@ In [8]: list.
 #     - count(self, value, /)                          : Counts the occurrences of a value in the list.
 #     - index(self, value, start=0, stop=None, /)      : Returns the index of the first occurrence of a value.
 
-# 🔧 Mutable Collection-Specific Methods:
+# 🔧 MutableSequence-Specific Methods:
 #     - __setitem__(self, index, value, /)             : Assigns a value to an item (`[] =`).
 #     - __delitem__(self, index, /)                    : Deletes an item from the list.
 #     - append(self, item, /)                          : Appends an item to the end of the list.
@@ -240,7 +274,7 @@ In [8]: list.
 #     - clear(self, /)                                 : Removes all items from the list.
 #     - reverse(self, /)                               : Reverses the order of the list in place.
 
-# 🔧 Collection-Like Operators:
+# 🔧 Sequence-Like Operators:
 #     - __add__(self, other, /)                        : Implements list concatenation (`+`).
 #     - __mul__(self, other, /)                        : Implements list repetition (`*`).
 #     - __rmul__(self, other, /)                       : Implements reflected multiplication (`*`).
@@ -250,7 +284,7 @@ In [8]: list.
 #     - copy(self, /)                                  : Returns a shallow copy of the list.
 ```
 
-A `frozenset` is a `Set` of unique elements, where each element is a reference to a Python `object`. A `frozenset` follows the design pattern of a `Collection` and therefore has collection based properties consistent to the `tuple`, `str` and `bytes` explored earlier. In a `frozenset`, the element is a unique `object`. The `frozenset` is not a `Sequence` and its elements are unordered. The `set` therefore lacks the data model method `__getitem__` which is used to access an element using a numeric index in the other classes:
+The identifiers of the `frozenset` class can be examined:
 
 ```python
 In [9]: dir(frozenset)
@@ -264,7 +298,22 @@ Out[9]: ['__and__', '__class__', '__class_getitem__', '__contains__', '__delattr
          'issuperset', 'symmetric_difference', 'union']
 ```
 
-Details about its identifiers are shown:
+A `frozenset` follows the design pattern of a `Set`. Notice that this follows the level 2 design pattern of a `Collection` but not `Reversible` because a `Set` is unordered. The level 3 design pattern is a `Set` and this differs from a `Sequence` previously examined:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|3|`Set`|`Collection`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br><br>`union`,<br>`intersection`,<br>`difference`,<br>`symmetric_difference`,<br>`__le__`,<br>`__lt__`,<br>`__eq__`,<br>`__ne__`,<br>`__gt__`,<br>`__ge__`,<br>`__or__`,<br>`__and__`,<br>`__sub__`,<br>`__xor__`,<br>`isdisjoint`
+|||||
+
+A `frozenset` will therefore have consistent behaviour to a `tuple` as they both follow the level 2 design pattern of a `Collection` but the behaviour will differ because the `tuple` has an additional level 2 design pattern of `Reversible` and a level 3 design pattern of a `Sequence` wherease the `frozenset` has a level 3 design pattern of a `Set`. The `frozenset` therefore for example lacks the data model method `__getitem__` which comes from the level 3 design pattern `Sequence` and is used to access an element using a numeric index in a Sequence`. The `frozenset` is unordered and does not have a numeric index. Details about its identifiers are shown:
 
 ```python
 In [10]: frozenset.
@@ -323,7 +372,7 @@ In [10]: frozenset.
 #     - issuperset(self, other, /)                     : Checks if the frozenset is a superset of another.
 ```
 
-The `frozenset` has an mutable counterpart `set`. Unlike the `bytes`/`bytearray` and `tuple`/`list`, where the immutable `Sequence` is the default, for `frozenset`/`set`, the `MutableSet` counterpart is the default. Note do not confuse the abstract base class `Set` (PascalCase) which is immutable, with the mutable class `set` (lowercase). For clarity `set` follows the design pattern of a `MutableSet` and `Set`, and `frozenset` follows the design pattern of a `Set`. The directory of the `set` can be examined:
+The `frozenset` has an mutable counterpart `set`. Unlike the `bytes`/`bytearray` and `tuple`/`list`, where the immutable `Sequence` is the default, for `frozenset`/`set`, the `MutableSet` counterpart is the default:
 
 ```python
 In [10]: dir(set)
@@ -339,7 +388,23 @@ Out[10]: ['__and__', '__class__', '__class_getitem__', '__contains__', '__delatt
          'symmetric_difference', 'symmetric_difference_update', 'union', 'update']
 ```
 
-Details about its identifiers are shown:
+The `set` follows the level 4 design pattern of a `MutableSet` and has a consistent design pattern with a `frozenset` as both the `frozenset` and `set` follow the level 3 design pattern of `Set`. Do not confuse the abstract base class `Set` (Pascal Case) with the builtins class `set` (lower case):
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|3|`Set`|`Collection`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br><br>`union`,<br>`intersection`,<br>`difference`,<br>`symmetric_difference`,<br>`__le__`,<br>`__lt__`,<br>`__eq__`,<br>`__ne__`,<br>`__gt__`,<br>`__ge__`,<br>`__or__`,<br>`__and__`,<br>`__sub__`,<br>`__xor__`,<br>`isdisjoint`
+|||||
+|4|`MutableSet`|`Set`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br><br>`union`,<br>`intersection`,<br>`difference`,<br>`symmetric_difference`,<br>`__le__`,<br>`__lt__`,<br>`__eq__`,<br>`__ne__`,<br>`__gt__`,<br>`__ge__`,<br>`__or__`,<br>`__and__`,<br>`__sub__`,<br>`__xor__`,<br>`isdisjoint`,<br>`add`,<br>`remove`,<br>`discard`,<br>`pop`,<br>`clear`,<br>`intersection_update`,<br>`update`,<br>`difference_update`,<br>`symmetric_difference_update`,<br>`__ior__`,<br>`__iand__`,<br>`__isub__`,<br>`__ixor__`|
+
+The `set` classes identifiers can be examined:
 
 ```python
 In [11]: set.
@@ -403,10 +468,10 @@ In [11]: set.
 #     - discard(self, element, /)                      : Removes a specified element if it exists.
 #     - pop(self, /)                                   : Removes and returns an arbitrary element; raises KeyError if empty.
 #     - clear(self, /)                                 : Removes all elements from the set.
-#     - update(self, *others)                          : Updates the set with the union of itself and others.
 
 # 🔄 Mutable Set Methods:
 #     - intersection_update(self, *others)             : Updates the set with the intersection of itself and others.
+#     - update(self, *others)                          : Updates the set with the union of itself and others.
 #     - difference_update(self, *others)               : Updates the set with the difference between itself and others.
 #     - symmetric_difference_update(self, other, /)    : Updates the set with the symmetric difference of itself and another.
 
@@ -417,7 +482,7 @@ In [11]: set.
 #     - __ixor__(self, other, /)                       : Implements in-place symmetric difference operation (`^=`).
 ```
 
-A `dict` is a `MutableMapping` where each element is an item. An *item* has a *key*, which is usually an immutable instance usually in the form of a `str` instance that maps to a *value* which is an `object`. The ability to change items or add/remove keys is fundamental to the utility of a `dict` and therefore the `dict` has no `builtins` immutable counterpart. A `Mapping` is a child class of the abstract base class `Collection` and the `dict` therefore has collection like properties, where each element is an item. A `Mapping` is not a `Sequence` and although it is ordered by insertion order, it has no numeric index. In a `Mapping` the data model method `__getitem__` is redefined to use the key to retrieve the value. The directory of a `dict` can be examined:
+A `dict` is a `MutableMapping` where each element is an item. An *item* has a *key*, which is usually an immutable instance usually in the form of a `str` instance that maps to a *value* which is an `object`. The ability to change items or add/remove keys is fundamental to the utility of a `dict` and therefore the `dict` has no `builtins` immutable counterpart. 
 
 ```python
 In [11]: dir(dict)
@@ -430,7 +495,24 @@ Out[11]: ['__class__', '__class_getitem__', '__contains__', '__delattr__', '__de
           'fromkeys', 'get', 'items', 'keys', 'pop', 'popitem', 'setdefault', 'update', 'values']
 ```
 
-The identifiers of the `dict` are as follows:
+The design pattern of a `MutableMapping` is based upon a `Mapping` which is in turn based upon a `Collection`:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|3|`Mapping`|`Collection`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br><br>`__getitem__`,<br>`keys`,<br>`items`,<br>`values`,<br>`get`,<br>`__eq__`,<br>,`__ne__`|
+|||||
+|4|`MutableMapping`|`Mapping`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br><br>`__getitem__`,<br>`keys`,<br>`items`,<br>`values`,<br>`get`,<br>`__eq__`,<br>,`__ne__`,<br>`__setitem__`,<br>`__delitem__`,<br>,`update`,<br>,`setdefault`,<br>`pop`,<br>`popitem`,<br>`clear`,<br>|
+|||||
+
+In a `Mapping` the data model method `__getitem__` is defined to use the key to retrieve the value. The identifiers of the `dict` are as follows:
 
 ```python
 In [12]: dict.
@@ -4487,7 +4569,7 @@ Out[8]: {'red': '#ff0000', 'green': '#008000', 'blue': '#0000ff'}
 In [9]: color_mapping4 = dict(zip(keys4, values4))
 ```
 
-The `dict` instance has the attributes `items`, `keys` and `values` which are each a `Collection`:
+The `dict` instance has the attributes `items`, `keys` and `values`:
 
 ```python
 In [10]: color_mapping.items()
@@ -4500,14 +4582,66 @@ In [12]: color_mapping.values()
 Out[12]: dict_values(['#ff0000', '#008000', '#0000ff'])
 ```
 
-Notice that `dict_items` is similar to enumeration of a `Collection` that has a numeric index:
+`dict_items`, `dict_keys` and `dict_values` follow the design pattern of a `MappingView`:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Sized`||`__len__`|
+|||||
+|2|`MappingView`|`Sized`|`__contains__`,<br>`__iter__`,<br>`__init__`|
+
+`dict_keys` specifically follows the design pattern of `KeysView` which in turn follows the design pattern of `MappingView` and `Set`:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|3|`Set`|`Collection`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br><br>`union`,<br>`intersection`,<br>`difference`,<br>`symmetric_difference`,<br>`__le__`,<br>`__lt__`,<br>`__eq__`,<br>`__ne__`,<br>`__gt__`,<br>`__ge__`,<br>`__or__`,<br>`__and__`,<br>`__sub__`,<br>`__xor__`,<br>`isdisjoint`
+
+`dict_values` specifically follows the design pattern of `ValuesView` which in turn follows the design pattern of `MappingView` and `Collection`:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+
+`dict_items` follows the design pattern of `ValuesView` which in turn follows the design pattern of `MappingView` and `Set`:
+
+||ABC|Inherits from|Methods|
+|---|---|---|---|
+|0|`object`|||
+|||||
+|1|`Container`||`__contains__`|
+|1|`Iterable`||`__iter__`|
+|1|`Sized`||`__len__`|
+|||||
+|2|`Collection`|`Container`,<br>`Iterable`,<br>`Sized`|`__contains__`,<br>`__iter__`,<br>`__len__`|
+|||||
+|3|`Set`|`Collection`|`__contains__`,<br>`__iter__`,<br>`__len__`,<br><br>`union`,<br>`intersection`,<br>`difference`,<br>`symmetric_difference`,<br>`__le__`,<br>`__lt__`,<br>`__eq__`,<br>`__ne__`,<br>`__gt__`,<br>`__ge__`,<br>`__or__`,<br>`__and__`,<br>`__sub__`,<br>`__xor__`,<br>`isdisjoint`
+
+`dict_keys`, `dict_values` and `dict_items` each follow the design pattern of a `Collection`. `dict_keys` and `dict_values` also follow the design pattern of a `Set`.
+
+Because `dict_items` follows the design pattern of a `Collection` it can be enumerated with a numeric index:
 
 ```python
 In [13]: list(enumerate(values4))
 Out[13]: [(0, '#ff0000'), (1, '#008000'), (2, '#0000ff')]
 ```
 
-These `Collection` attributes are normally used for the purpose of looping:
+The `Collection` attributes are normally used for the purpose of looping:
 
 ```python
 In [14]: for key, value in color_mapping.items():
@@ -4550,7 +4684,7 @@ In [20]: next(forward)
 Out[20]: 'blue'
 ```
 
-Therefore the `keys` attribute is not commonly used as looping over a `dict`, loops over the `keys`:
+Therefore the `keys` attribute is not commonly used as looping over a `dict` by default loops over the `keys`:
 
 ```python
 In [21]: for key in color_mapping:
@@ -4960,22 +5094,22 @@ The `collections` module contains a number of supplementary `Collection` based c
 In [49]: exit
 In [1]: import collections
 In [2]: collections?
-Type:        module
-String form: <module 'collections' from 'C:\\Users\\phili\\AppData\\Local\\spyder-6\\envs\\spyder-runtime\\Lib\\collections\\__init__.py'>
-File:        c:\users\phili\appdata\local\spyder-6\envs\spyder-runtime\lib\collections\__init__.py
-Docstring:  
-This module implements specialized container datatypes providing
-alternatives to Python's general purpose built-in containers, dict,
-list, set, and tuple.
-* namedtuple   factory function for creating tuple subclasses with named fields
-* deque        list-like container with fast appends and pops on either end
-* ChainMap     dict-like class for creating a single view of multiple mappings
-* Counter      dict subclass for counting hashable objects
-* OrderedDict  dict subclass that remembers the order entries were added
-* defaultdict  dict subclass that calls a factory function to supply missing values
-* UserDict     wrapper around dictionary objects for easier dict subclassing
-* UserList     wrapper around list objects for easier list subclassing
-* UserString   wrapper around string objects for easier string subclassing
+# Type:        module
+# String form: <module 'collections' from 'C:\\Users\\phili\\AppData\\Local\\spyder-6\\envs\\spyder-runtime\\Lib\\collections\\__init__.py'>
+# File:        c:\users\phili\appdata\local\spyder-6\envs\spyder-runtime\lib\collections\__init__.py
+# Docstring:  
+# This module implements specialized container datatypes providing
+# alternatives to Python's general purpose built-in containers, dict,
+# list, set, and tuple.
+# * namedtuple   factory function for creating tuple subclasses with named fields
+# * deque        list-like container with fast appends and pops on either end
+# * ChainMap     dict-like class for creating a single view of multiple mappings
+# * Counter      dict subclass for counting hashable objects
+# * OrderedDict  dict subclass that remembers the order entries were added
+# * defaultdict  dict subclass that calls a factory function to supply missing values
+# * UserDict     wrapper around dictionary objects for easier dict subclassing
+# * UserList     wrapper around list objects for easier list subclassing
+# * UserString   wrapper around string objects for easier string subclassing
 ```
 
 Notice that the `namedtuple` is a factory function that allows essentially creation of a `tuple` with named fields. 
@@ -6010,3 +6144,5 @@ In [26]: Counter.
 #     - __ge__(self, other, /)                         : Checks if one Counter is greater than or equal to 
 #                                                      : another (all counts must be ≥).
 ```
+
+[Return to Python Tutorials](../readme.md)
