@@ -1310,6 +1310,26 @@ The default channel is `conda-forge` which is the community channel:
 
 <img src='./images/img_222.png' alt='img_222' width='600'/>
 
+Note there is an issue going from `conda` 24 to 25 where it doesn't update properly and says:
+
+```
+==> WARNING: A newer version of conda exists <==
+current version: 24.w.w
+latest version: 25.x.x
+
+Please update conda by running:
+
+conda update -n base -c conda-forge conda
+```
+
+And inputting the command listed takes you back to the same screen. To bypass this use:
+
+```bash
+conda install conda=25.x.x
+```
+
+Where `25.x.xx` should be replaced by the latest version number.
+
 A new (conda) Python environment can be created using:
 
 ```bash
@@ -1431,19 +1451,88 @@ This allows modification and visualisation of the plot using the console.
 
 ## Updating
 
-There is a new release of Spyder, approximately every month. When available a prompt for the upgrade should display and Spyder should update using packages from `conda-forge` using its internal `conda` package manager:
+There is a new release of Spyder, approximately every month. When available a prompt for the upgrade should display when Help → Check for Updates is selected:
 
-If an external conda environment was created, it will need to be updated, with a compatible version of `spyder-kernels`. Open up the Windows Terminal an updte the `conda` package manager in base:
+<img src='./images/img_244.png' alt='img_244' width='600'/>
+
+Select Yes:
+
+<img src='./images/img_245.png' alt='img_245' width='600'/>
+
+Select Yes:
+
+<img src='./images/img_246.png' alt='img_246' width='600'/>
+
+Spyders, internal conda package manager and then internal runtime environment should update:
+
+<img src='./images/img_247.png' alt='img_247' width='600'/>
+
+Spyder should be updated:
+
+<img src='./images/img_248.png' alt='img_248' width='600'/>
+
+If an external conda environment was created, it will also need to be updated, with a compatible version of `spyder-kernels`. Open up a seperate Terminal instance and input:
 
 ```bash
 conda update conda
 ```
 
-Then activate `spyder-env` and search for updates to all packages:
+<img src='./images/img_249.png' alt='img_249' width='600'/>
+
+The base environment is selected and the channel should be conda-forge and the platform should be linux-64:
+
+<img src='./images/img_250.png' alt='img_250' width='600'/>
+
+In this case, the conda update is not working correctly and essentially reinstructs in running the command above. Instead specifically install the latest version listed by using (updating to the current version in your case):
 
 ```bash
-conda activate spyder-env
+conda install conda=25.1.1
+```
+
+<img src='./images/img_251.png' alt='img_251' width='600'/>
+
+Input `y` in order to proceed:
+
+<img src='./images/img_252.png' alt='img_252' width='600'/>
+
+The conda package manager in the `base` environment is updated:
+
+<img src='./images/img_253.png' alt='img_253' width='600'/>
+
+Activate `spyder-env` by inputting:
+
+```bash
+activate spyder-env
+```
+
+<img src='./images/img_254.png' alt='img_254' width='600'/>
+
+Now update this environment using:
+
+```bash
 conda update --all
 ```
+
+<img src='./images/img_255.png' alt='img_255' width='600'/>
+
+The spyder-env environment is selected and the channel should be conda-forge and the platform should be linux-64:
+
+<img src='./images/img_256.png' alt='img_256' width='600'/>
+
+A newer version of `spyder-kernels` is shown. Input `y` in order to proceed:
+
+<img src='./images/img_257.png' alt='img_257' width='600'/>
+
+`spyder-env` now has all the dependencies for the latest version of Spyder. Close the Terminal:
+
+<img src='./images/img_258.png' alt='img_258' width='600'/>
+
+Press `↵` in the other Terminal:
+
+<img src='./images/img_259.png' alt='img_259' width='600'/>
+
+Spyder is now up to date:
+
+<img src='./images/img_260.png' alt='img_260' width='600'/>
 
 [Return to Python Tutorials](../readme.md)

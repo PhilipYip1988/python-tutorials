@@ -48,6 +48,26 @@ Input `y` in order to proceed with any changes. In this example the `conda` pack
 
 <img src='./images/img_007.png' alt='img_007' width='600'/>
 
+Note there is an issue going from `conda` 24 to 25 where it doesn't update properly and says:
+
+```
+==> WARNING: A newer version of conda exists <==
+current version: 24.w.w
+latest version: 25.x.x
+
+Please update conda by running:
+
+conda update -n base -c conda-forge conda
+```
+
+And inputting the command listed takes you back to the same screen. To bypass this use:
+
+```bash
+conda install conda=25.x.x
+```
+
+Where `25.x.xx` should be replaced by the latest version number.
+
 ## Creating a VSCode conda-forge Environment
 
 To create a new environment for VSCode the following command can be used:

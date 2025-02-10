@@ -911,6 +911,26 @@ The `conda.exe` package manager is now updated:
 
 <img src='./images/img_154.png' alt='img_154' width='600'/>
 
+Note there is an issue going from `conda` 24 to 25 where it doesn't update properly and says:
+
+```
+==> WARNING: A newer version of conda exists <==
+current version: 24.w.w
+latest version: 25.x.x
+
+Please update conda by running:
+
+conda update -n base -c conda-forge conda
+```
+
+And inputting the command listed takes you back to the same screen. To bypass this use:
+
+```powershell
+conda install conda=25.x.x
+```
+
+Where `25.x.xx` should be replaced by the latest version number.
+
 Inputting:
 
 ```powershell
@@ -1150,21 +1170,90 @@ Other useful tools are available such as a color picker which is activated using
 
 ## Updating
 
-There is a new release of Spyder, approximately every month. When available a prompt for the upgrade should display and Spyder should update using packages from `conda-forge` using its internal `conda` package manager:
+There is a new release of Spyder, approximately every month. When available a prompt for the upgrade should display when Help → Check for Updates is selected:
 
+<img src='./images/img_203.png' alt='img_203' width='600'/>
 
+Select Yes:
 
-If an external conda environment was created, it will also need to be updated, with a compatible version of `spyder-kernels`. Open up the Windows Terminal and update the `conda.exe` package manager to the latest version, recall this is found in the (codna) base Python environment:
+<img src='./images/img_204.png' alt='img_204' width='400'/>
+
+Select Yes:
+
+<img src='./images/img_205.png' alt='img_205' width='400'/>
+
+Spyders, internal conda package manager should update:
+
+<img src='./images/img_206.png' alt='img_206' width='600'/>
+
+Spyders, internal runtime environment should update:
+
+<img src='./images/img_207.png' alt='img_207' width='600'/>
+
+Spyder should be updated:
+
+<img src='./images/img_208.png' alt='img_208' width='600'/>
+
+If an external conda environment was created, it will also need to be updated, with a compatible version of `spyder-kernels`. Open up a seperate instance of the Windows Terminal and input:
 
 ```powershell
 conda update conda
 ```
 
-Then activate the (conda) Python environment `spyder-env` and search for updates to all packages using `--all`:
+<img src='./images/img_209.png' alt='img_209' width='600'/>
+
+The base environment is selected and the channel should be conda-forge and the platform should be win-64:
+
+<img src='./images/img_210.png' alt='img_210' width='600'/>
+
+In this case, the conda update is not working correctly and essentially reinstructs in running the command above. Instead specifically install the latest version listed by using (updating to the current version in your case):
 
 ```powershell
-conda activate spyder-env
+conda install conda=25.1.1
+```
+
+<img src='./images/img_211.png' alt='img_211' width='600'/>
+
+Input `y` in order to proceed:
+
+<img src='./images/img_212.png' alt='img_212' width='600'/>
+
+The `base` environment is updated:
+
+<img src='./images/img_213.png' alt='img_213' width='600'/>
+
+Activate `spyder-env` by inputting:
+
+```powershell
+activate spyder-env
+```
+
+<img src='./images/img_214.png' alt='img_214' width='600'/>
+
+Now update this environment using:
+
+```powershell
 conda update --all
 ```
+
+The spyder-env environment is selected and the channel should be conda-forge and the platform should be win-64:
+
+<img src='./images/img_215.png' alt='img_215' width='600'/>
+
+A newer version of `spyder-kernels` is shown. Input `y` in order to proceed:
+
+<img src='./images/img_216.png' alt='img_216' width='600'/>
+
+`spyder-env` now has all the dependencies for the latest version of Spyder. Close the Terminal:
+
+<img src='./images/img_217.png' alt='img_217' width='600'/>
+
+Press `↵` in the other Terminal:
+
+<img src='./images/img_218.png' alt='img_218' width='600'/>
+
+Spyder is now up to date:
+
+<img src='./images/img_219.png' alt='img_219' width='600'/>
 
 [Return to Python Tutorials](../readme.md)
