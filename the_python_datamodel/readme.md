@@ -266,7 +266,7 @@ NameError: name 'text' is not defined
 
 ## Exit
 
-To restart the kernel, clearing all variables and resetting the IPython console back to `In [1]` in the main menu select `Consoles` → `Restart Kernel`. This also has the keyboard shortcut `Ctrl` + `.`. 
+To restart the kernel, clearing all variables and resetting the IPython console back to `In [1]` in the main menu select `Consoles` → `Restart Kernel`. This also has the keyboard shortcut `Ctrl+.`. 
 
 It is sometimes more convenient to type `exit` in the IPython console which will close the current console and then open up a new console. Input `exit`:
 
@@ -451,7 +451,7 @@ In [11]: fun(input1=1, 2)
 SyntaxError: positional argument follows keyword argument
 ```
 
-To input multiple commands in a single input use `Ctrl` + `↵`. Then use `↵` to execute a cell:
+To input multiple commands in a single input use `Ctrl+↵`. Then use `↵` to execute a cell:
 
 ```python
 In [12]: one = 1

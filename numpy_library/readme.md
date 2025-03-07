@@ -1,6 +1,8 @@
 # numpy
 
-## builtins classes
+`numpy` is the Numeric Python library.
+
+## builtins classes recap
 
 Previously classes that followed a numeric design pattern such as `int`, `float` and `bool` were examined alongside classes that followed a `Collection` design pattern such as `tuple`, `list` and `str`. Both design patterns were based upon an `object` as the `object` is the base class for everything in Python. 
 
@@ -55,7 +57,7 @@ However looping becomes more complicated and less readible for higher dimensiona
 
 ## Library Overview and Imports
 
-`numpy`, an abbreviation for the numeric Python library is typically imported as the abbreviated alias `np`:
+`numpy` is typically imported as the abbreviated alias `np`:
 
 ```python
 In [7]: import numpy as np
@@ -265,7 +267,7 @@ In [9]: np.
 The `numpy` library revolves around the `ndarray` class:
 
 ```python
-In [9]: np.ndarray
+In [9]: np.ndarray.
 # 🔗 Object Identifiers
 #     - __doc__                    : Documentation string of the ndarray object.
 #     - __class__                  : The class/type of the ndarray object.

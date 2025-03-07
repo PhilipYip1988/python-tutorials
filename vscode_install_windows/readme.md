@@ -95,7 +95,7 @@ Where `25.x.xx` should be replaced by the latest version number.
 To create a new environment for VSCode the following command can be used:
 
 ```powershell
-conda create -n vscode-env notebook jupyter cython seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter lxml sqlalchemy tabulate nodejs ipywidgets plotly pyqt ipympl isort autopep8 ruff black
+conda create -n vscode-env notebook jupyter cython seaborn scikit-learn pyarrow sympy openpyxl xlrd xlsxwriter pytables lxml sqlalchemy tabulate nodejs ipywidgets plotly pyqt ipympl isort autopep8 ruff black
 ```
 
 <img src='./images/img_013.png' alt='img_013' width='650'/>

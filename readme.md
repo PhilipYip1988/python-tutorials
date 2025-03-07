@@ -55,10 +55,10 @@ The Ubuntu instructions can be modified slightly for another Linux distribution 
 These tutorials cover the `object` orientated design pattern of `builtins` classes, focusing on text datatypes, numeric datatypes and collection datatypes. The `object` orientated design pattern is known as the Python Data Model:
 
 * [Object Orientated Programming (OOP) and the Python Data Model](./the_python_datamodel/readme.md)
-* [OOP and Text Datatypes](./text_datatypes/readme.md)
-* [OOP and Numeric Datatypes](./numeric_datatypes/readme.md)
-* [OOP and Collection Datatypes](./collection_datatypes/readme.md)
-* [OOP and Iterator Datatypes](./iterator_datatypes/readme.md)
+* [Text Datatypes](./text_datatypes/readme.md)
+* [Numeric Datatypes](./numeric_datatypes/readme.md)
+* [Collection Datatypes](./collection_datatypes/readme.md)
+* [Iterator Datatypes](./iterator_datatypes/readme.md)
 
 ## Numeric Python Stack
 
@@ -66,6 +66,6 @@ These tutorials cover the numeric Python stack, which bridge a numeric design pa
 
 * [Numeric Python Library (numpy)](./numpy_library/readme.md)
 * [Matrix Plotting Library (matplotlib)](./matplotlib_library/readme.md)
-* [Python and Data Analysis Library (pandas)]
-* [Data Visualisation Library (seaborn)]
+* [Python and Data Analysis Library (pandas)](./pandas_library/readme.md)
+* [Data Visualisation Library (seaborn)](./seaborn_library/readme.md)
 
