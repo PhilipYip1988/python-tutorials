@@ -81,23 +81,37 @@ In [5]: sns.
 # - sns.load_dataset            : Loads example datasets from Seaborn.
 # - sns.get_dataset_names       : Returns available built-in datasets.
 
-# 🎭 Faceted and Multi-Plot Grids (sns.axisgrid):
+# 📊📈📉 Faceted and Multi-Plot Classes:
 # - sns.FacetGrid               : 📊📈📉 Class for creating faceted plots across multiple subplots.
-# - sns.PairGrid                : 📊📈📉 Grid for pairwise relationships between variables.
-# - sns.JointGrid               : 📊📈📉 Grid for bivariate plots with marginal distributions.
+# - sns.PairGrid                : 📊📈📉 Class for pairwise relationships between variables across multiple subplots.
+# - sns.JointGrid               : 📊📈📉 Class for bivariate plots with marginal distributions across multiple subplots.
 
 # 🔬 Seaborn Plotting Modules:
-# - sns.regression              : Regression-based plots.
-# - sns.categorical             : Categorical plotting functions.
-# - sns.distributions           : Distribution plots (histograms, KDE, ECDF).
-# - sns.matrix                  : Functions for heatmaps and clustering.
-# - sns.axisgrid                : Grid-based plotting utilities (FacetGrid, PairGrid).
 # - sns.relational              : Relational plotting functions.
+# - sns.regression              : Regression-based plots.
+# - sns.distributions           : Distribution plots (histograms, KDE, ECDF).
+# - sns.axisgrid                : Grid-based plotting utilities (FacetGrid, PairGrid).
+# - sns.categorical             : Categorical plotting functions.
+# - sns.matrix                  : Functions for heatmaps and clustering.
+
+# 📈 Relational Plotting Functions (sns.relational):
+# - sns.relplot                 : 📊📈📉 FacetGrid-based regressional plot.
+# - sns.lineplot                : 📉 Axes-level line plot with optional confidence intervals.
+# - sns.scatterplot             : 📉 Axes-level scatter plot with additional styling options. 
 
 # 📈 Regression and Statistical Plots (sns.regression):
-# - sns.regplot                 : 📉 Axes-level plot. Plots a scatter plot with a regression line.
 # - sns.lmplot                  : 📊📈📉 FacetGrid-based linear regression plot.
+# - sns.regplot                 : 📉 Axes-level plot. Plots a scatter plot with a regression line.
 # - sns.residplot               : 📉 Axes-level plot. Residuals plot for regression analysis.
+
+# 📊 Distribution Plots (sns.distributions):
+# - sns.displot                 : 📊📈📉 FacetGrid-based distribution plot.
+# - sns.histplot                : 📉 Axes-level histogram with flexible binning. 
+# - sns.kdeplot                 : 📉 Axes-level kernel density estimation plot.
+# - sns.ecdfplot                : 📉 Axes-level empirical cumulative distribution function.
+
+# 📊 Axis Grid Plots (sns.axisgrid):
+# - sns.pairplot                : 📊📈📉 FacetGrid-based pairwise scatter plots of numerical variables.
 
 # 📊 Categorical Plotting Functions (sns.categorical):
 # - sns.catplot                 : 📊📈📉 FacetGrid-based categorical plot (bar, box, violin, strip, swarm).
@@ -108,36 +122,13 @@ In [5]: sns.
 # - sns.boxplot                 : 📉 Axes-level box-and-whisker plot.
 # - sns.violinplot              : 📉 Axes-level violin plot for visualizing distribution.
 
-# 📊 High-Level Plotting Functions:
-# - sns.scatterplot             : 📉 Axes-level scatter plot with additional styling options. (sns.relational)
-# - sns.lineplot                : 📉 Axes-level line plot with optional confidence intervals. (sns.relational)
-# - sns.histplot                : 📉 Axes-level histogram with flexible binning. (sns.distributions)
-# - sns.kdeplot                 : 📉 Axes-level kernel density estimation plot. (sns.distributions)
-# - sns.ecdfplot                : 📉 Axes-level empirical cumulative distribution function. (sns.distributions)
-# - sns.pairplot                : 📊📈📉 FacetGrid-based pairwise scatter plots of numerical variables. (sns.axisgrid)
-# - sns.heatmap                 : 📉 Axes-level matrix visualization using color encoding. (sns.matrix)
-
-# 🎭 Identifiers Available in Both `sns` and Modules:
-# - scatterplot  📉 (sns, sns.relational)
-# - lineplot     📉 (sns, sns.relational)
-# - barplot      📉 (sns, sns.categorical)
-# - countplot    📉 (sns, sns.categorical)
-# - boxplot      📉 (sns, sns.categorical)
-# - violinplot   📉 (sns, sns.categorical)
-# - histplot     📉 (sns, sns.distributions)
-# - kdeplot      📉 (sns, sns.distributions)
-# - ecdfplot     📉 (sns, sns.distributions)
-# - heatmap      📉 (sns, sns.matrix)
-# - clustermap   📊📈📉 (sns, sns.matrix)
-# - pairplot     📊📈📉 (sns, sns.axisgrid)
-# - FacetGrid    📊📈📉 (sns, sns.axisgrid)
-# - PairGrid     📊📈📉 (sns, sns.axisgrid)
-# - JointGrid    📊📈📉 (sns, sns.axisgrid)
+# 📊 Matrix Plots (sns.matrix):
+# - sns.heatmap                 : 📉 Axes-level matrix visualization using color encoding.  
 
 # 🔧 Utility Functions (sns.utils):
 # - sns.despine                 : Removes axis spines for a cleaner plot.
 # - sns.move_legend             : Moves the legend within a plot.
-# - sns.axis_ticklabels_overlap  : Checks for overlapping tick labels.
+# - sns.axis_ticklabels_overlap : Checks for overlapping tick labels.
 # - sns.relative_luminance      : Computes the luminance of a color.
 # - sns.ci_to_errsize           : Converts confidence intervals into error bar sizes.
 ```
@@ -1958,97 +1949,337 @@ The style can be returned to `'whitegrid'` with a default palette of `'deep'`:
 In [41]: sns.set_theme(style='whitegrid', palette='deep')
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 `mpl` plotting functions are generally configured for data in the form of a `ndarray`:
 
 ```python
-In [34]: x = np.array([0, 1, 2, 3, 4])
+In [42]: x = np.array([0, 1, 2, 3, 4])
        : y = np.array([0, 2, 4, 6, 8])
-       : plt.plot(x, y, linewidth=5);
 ```
 
-<img src='./images/img_019.png' alt='img_019' width='600'/>
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">x</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(5,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[ 0  1  2  3  4]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">y</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(5,)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[ 0  2  4  6  8]</td>
+  </tr>              
+</table>
 
-A `DataFrame` can also be used. Recall a `DataFrame` can be conceptualised as a `Collection` of `Series` which each have a common `Index` an that a `Series` in turn is essentially an 1d `ndarray` with a `name`:
+<table style="width: 20%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">x - numpy int64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;"> </td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">1</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">2</td>
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">3</td>
+  </tr>     
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">4</td>
+  </tr>  
+</table>
+
+<table style="width: 20%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">y - numpy int64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;"> </td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">2</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">4</td>
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">6</td>
+  </tr>     
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">8</td>
+  </tr>  
+</table>
 
 ```python
-In [35]: df = pd.DataFrame({'x': np.array([0, 1, 2, 3, 4]),
-                            'y': np.array([0, 2, 4, 6, 8])})
-       : plt.plot(df['x'], df['y'], linewidth=5);
+In [43]: plt.plot(x, y, linewidth=5);
 ```
 
 <img src='./images/img_020.png' alt='img_020' width='600'/>
 
-The `Series` name, can be used for the `xlabel` and `ylabel`:
+Recall that a `Series` is essentially a 1d `ndarray` with a name:
 
 ```python
-In [36]: plt.xlabel('x')
-Out[36]: Text(0.5, 25.52222222222222, 'x')
+In [44]: x = pd.Series([0, 1, 2, 3, 4], name='x')
+       : y = pd.Series([0, 2, 4, 6, 8], name='y')
+```
 
-In [37]: plt.ylabel('y')
-Out[37]: Text(56.972222222222214, 0.5, 'y')
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">x</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Series of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(5,)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">index=[ 0  1  2  3  4], data=[ 0  1  2  3  4], name=x</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">y</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Series of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(5,)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">index=[ 0  1  2  3  4], data=[ 0  2  4  6  8], name=y</td>
+  </tr>            
+</table>
+
+<table style="width: 20%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">x - numpy int64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">x</td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">1</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">2</td>
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">3</td>
+  </tr>     
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">4</td>
+  </tr>  
+</table>
+
+<table style="width: 20%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">y - numpy int64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">y</td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">2</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">4</td>
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">6</td>
+  </tr>     
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">8</td>
+  </tr>  
+</table>
+
+And a `DataFrame` is essentially a `Collection` of `Series`:
+
+```python
+In [45]: df = pd.DataFrame({'x': [0, 1, 2, 3, 4],
+       :                    'y': [0, 2, 4, 6, 8]})
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">df</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(5, 2)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: x, y</td>
+  </tr>             
+</table>
+
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">df - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">x</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">y</td>           
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>    
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">2</td>   
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">2</td>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">4</td>        
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">4</td>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">6</td>        
+  </tr>      
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">6</td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">8</td>      
+  </tr>
+</table>
+
+```python
+In [46]: plt.plot(df['x'], df['y'], linewidth=5);
 ```
 
 <img src='./images/img_021.png' alt='img_021' width='600'/>
 
-`sns` plotting functions on the other hand are generally configured with the input argument `data` which is provided as a `DataFrame` instance and each axis is assigned to the respective `Series` `name`. These names will also automatically be used for the perspective axis label when not otherwise specified:
+The `Series` name, can be used for the `xlabel` and `ylabel`:
 
 ```python
-In [38]: sns.lineplot(data=df, x='x', y='y');
+In [47]: plt.xlabel('x')
+Out[47]: Text(0.5, 25.52222222222222, 'x')
+
+In [48]: plt.ylabel('y')
+Out[48]: Text(56.972222222222214, 0.5, 'y')
 ```
 
 <img src='./images/img_022.png' alt='img_022' width='600'/>
 
-Because the plotting function above is essentially a wrapper around `plt.plot`, it can accept many of the same optional parameters:
+`sns` plotting functions on the other hand are generally configured with the input argument `data` which is provided as a `DataFrame` instance and each axis is assigned to the respective `Series` `name`. These names will also automatically be used for the perspective axis label when not otherwise specified:
 
 ```python
-In [38]: sns.lineplot(data=df, x='x', y='y', linewidth=5);
+In [49]: sns.lineplot(data=df, x='x', y='y');
 ```
 
 <img src='./images/img_023.png' alt='img_023' width='600'/>
 
+Because the plotting function above is essentially a wrapper around `plt.plot`, it can accept many of the same optional parameters:
+
+```python
+In [50]: sns.lineplot(data=df, x='x', y='y', linewidth=5);
+```
+
+<img src='./images/img_024.png' alt='img_024' width='600'/>
+
 If a categorical `Series` is added:
 
 ```python
-In [39]: df['group'] = np.array(['one', 'two', 'one', 'two', 'one'])
-In [40]: df['group'] = df['group'].astype('category')
+In [51]: df['group'] = np.array(['one', 'two', 'one', 'two', 'one'])
+In [52]: df['group'] = df['group'].astype('category')
 ```
 
-And `df` is examined:
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">df</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(5, 3)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: x, y, group</td>
+  </tr>             
+</table>
 
-```python
-In [41]: df
-Out[41]:
-   x  y group
-0  0  0   one
-1  1  2   two
-2  2  4   one
-3  3  6   two
-4  4  8   one
-```
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">df - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">x</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">y</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">group</td>           
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">one</td>     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #a33c7b; color: #ffffff;">2</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">two</td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">2</td>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">4</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">one</td>          
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">4</td>
+    <td style="padding: 8px; background-color: #693cab; color: #ffffff;">6</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">two</td>            
+  </tr>      
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">6</td>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">8</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">one</td>          
+  </tr>
+</table>
 
 `df` can be split by each category in `df['group']:
 
 ```python
-In [42]: df[df['group'] == 'one']
-Out[42]: 
+In [53]: df[df['group'] == 'one']
+Out[53]: 
    x  y group
 0  0  0   one
 2  2  4   one
@@ -2056,8 +2287,8 @@ Out[42]:
 ```
 
 ```python
-In [43]: df[df['group'] == 'two']
-Out[43]: 
+In [54]: df[df['group'] == 'two']
+Out[54]: 
    x  y group
 1  1  2   two
 3  3  6   two
@@ -2066,29 +2297,29 @@ Out[43]:
 These two groups can be plotted using `mpl` directly but the `mpl` syntax is somewhat cumbersome:
 
 ```python
-In [44]: plt.scatter(df['x'][df['group'] == 'one'], df['y'][df['group'] == 'one'])
+In [55]: plt.scatter(df['x'][df['group'] == 'one'], df['y'][df['group'] == 'one'])
        : plt.scatter(df['x'][df['group'] == 'two'], df['y'][df['group'] == 'two'])
        : plt.xlabel('x')
        : plt.xlabel('y');
 ```
 
-<img src='./images/img_024.png' alt='img_024' width='600'/>
+<img src='./images/img_025.png' alt='img_025' width='600'/>
 
 `sns` syntax is much simpler and uses the `hue` parameter, to seperate out each category.Notice also that a legend is also automatically generated  because multiple traces are present on the plot:
 
 ```python
-In [45]: sns.scatterplot(data=df, x='x', y='y', hue='group');
+In [56]: sns.scatterplot(data=df, x='x', y='y', hue='group');
 ```
 
-<img src='./images/img_025.png' alt='img_025' width='600'/>
+<img src='./images/img_026.png' alt='img_026' width='600'/>
 
 ## Example Datasets
 
 `seaborn` includes a number of practice datasets which are useful for exploring data visualisation principles. These are in the `DataFrame` format and the function `get_dataset_names` lists the dataset names:
 
 ```python
-In [46]: sns.get_dataset_names()
-Out[46]: 
+In [57]: sns.get_dataset_names()
+Out[57]: 
 ['anagrams',
  'anscombe',
  'attention',
@@ -2116,7 +2347,7 @@ Out[46]:
 A dataset can be loaded using the function `sns.load_dataset` and providing the `name` of the dataset. For example the `'flights'` dataset which shows the number of passengers each month for the years 1949-1960:
 
 ```python
-In [47]: flights = sns.load_dataset(name='flights')
+In [58]: flights = sns.load_dataset(name='flights')
 ```
 
 The `DataFrame` instance `flights` can be explored in the Variable Explorer:
@@ -2137,7 +2368,7 @@ The `head` values are:
 
 <table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">df - DataFrame</th>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">flights - DataFrame</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
@@ -2179,7 +2410,7 @@ And the `tail` values are:
 
 <table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">df - DataFrame</th>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">flights - DataFrame</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
@@ -2217,15 +2448,1245 @@ And the `tail` values are:
   </tr>             
 </table>
 
+The `DataFrame` method `info` can be used to summerise each `Series`:
+
+```python
+In [59]: flights.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 144 entries, 0 to 143
+Data columns (total 3 columns):
+ #   Column      Non-Null Count  Dtype   
+---  ------      --------------  -----   
+ 0   year        144 non-null    int64   
+ 1   month       144 non-null    category
+ 2   passengers  144 non-null    int64   
+dtypes: category(1), int64(2)
+memory usage: 2.9 KB
+```
+
+And the `DataFrame` method `describe` will give numeric statistics for each numeric `Series`:
+
+```python
+In [60]: flights.describe()
+Out[60]: 
+              year  passengers
+count   144.000000  144.000000
+mean   1954.500000  280.298611
+std       3.464102  119.966317
+min    1949.000000  104.000000
+25%    1951.750000  180.000000
+50%    1954.500000  265.500000
+75%    1957.250000  360.500000
+max    1960.000000  622.000000
+```
+
+## Axes and Grid Plotting Functions
+
+If the plotting related functions are examined. Notice that there are three new classes `FacetGrid`, `PairGrid` and `JointGrid`. When one of these classes is used, the data being visualised is normally spanned along a grid of subplots. In `mpl` a grid of subplots is essentially a `Figure` level operation. These classes can conceptually be thought of as child class of `mpl.Figure` and essentially return a new `Figure`. 
+
+Many plotting functions return one of these three classes which means they are `Figure`-level plotting functions. Most `Figure`-level plotting function has an `Axes`-level plotting function. The `Axes`-level plotting functions, like `pyplot` plotting functions operate on the currently selected `Axes`:
+
+```python
+In [61]: sns.
+# 📊📈📉 Faceted and Multi-Plot Classes:
+# - sns.FacetGrid               : 📊📈📉 Class for creating faceted plots across multiple subplots.
+# - sns.PairGrid                : 📊📈📉 Class for pairwise relationships between variables across multiple subplots.
+# - sns.JointGrid               : 📊📈📉 Class for bivariate plots with marginal distributions across multiple subplots.
+
+# 🔬 Seaborn Plotting Modules:
+# - sns.relational              : Relational plotting functions.
+# - sns.regression              : Regression-based plots.
+# - sns.distributions           : Distribution plots (histograms, KDE, ECDF).
+# - sns.axisgrid                : Grid-based plotting utilities (FacetGrid, PairGrid).
+# - sns.categorical             : Categorical plotting functions.
+# - sns.matrix                  : Functions for heatmaps and clustering.
+
+# 📈 Relational Plotting Functions (sns.relational):
+# - sns.relplot                 : 📊📈📉 FacetGrid-based regressional plot.
+# - sns.lineplot                : 📉 Axes-level line plot with optional confidence intervals.
+# - sns.scatterplot             : 📉 Axes-level scatter plot with additional styling options. 
+
+# 📈 Regression and Statistical Plots (sns.regression):
+# - sns.lmplot                  : 📊📈📉 FacetGrid-based linear regression plot.
+# - sns.regplot                 : 📉 Axes-level plot. Plots a scatter plot with a regression line.
+# - sns.residplot               : 📉 Axes-level plot. Residuals plot for regression analysis.
+
+# 📊 Distribution Plots (sns.distributions):
+# - sns.displot                 : 📊📈📉 FacetGrid-based distribution plot.
+# - sns.histplot                : 📉 Axes-level histogram with flexible binning. 
+# - sns.kdeplot                 : 📉 Axes-level kernel density estimation plot.
+# - sns.ecdfplot                : 📉 Axes-level empirical cumulative distribution function.
+
+# 📊 Axis Grid Plots (sns.axisgrid):
+# - sns.pairplot                : 📊📈📉 FacetGrid-based pairwise scatter plots of numerical variables.
+
+# 📊 Categorical Plotting Functions (sns.categorical):
+# - sns.catplot                 : 📊📈📉 FacetGrid-based categorical plot (bar, box, violin, strip, swarm).
+# - sns.swarmplot               : 📉 Axes-level categorical scatter plot with non-overlapping points.
+# - sns.stripplot               : 📉 Axes-level categorical scatter plot (jittered points).
+# - sns.barplot                 : 📉 Axes-level categorical bar plot with grouped data.
+# - sns.countplot               : 📉 Axes-level count of categorical observations.
+# - sns.boxplot                 : 📉 Axes-level box-and-whisker plot.
+# - sns.violinplot              : 📉 Axes-level violin plot for visualizing distribution.
+
+# 📊 Matrix Plots (sns.matrix):
+# - sns.heatmap                 : 📉 Axes-level matrix visualization using color encoding.  
+```
+
+## Relational Plots (sns.relational)
+
+A relational plots is used to plot the relationship usually between an independent `x` variable and depenendent `y` variable. For example the `lineplot` plotting function can be used. Notice that the return value is a new `Axes` as this plot operates on the `Axes` level and no `Figure` or `Axes` previously existed:
+
+```python
+In [62]: sns.lineplot(data=flights, x='year', y='passengers')
+Out[62]: <Axes: xlabel='year', ylabel='passengers'>
+```
+
+<img src='./images/img_027.png' alt='img_027' width='600'/>
+
+If the `scatterplot` function is now used, notice that the return value is an `Axes` however notice that the plotting function operates on the currently selected `Axes` which updates `figure(1)` in place:
+
+```python
+In [63]: sns.scatterplot(data=flights, x='year', y='passengers')
+Out[63]: <Axes: xlabel='year', ylabel='passengers'>
+```
+
+<img src='./images/img_028.png' alt='img_028' width='600'/>
+
+If the `hue` parameter is used and assigned to the `Series` `'month'`, the 12 months can be visualised and once again the `Axes` is modified in place:
+
+```python
+In [64]: sns.scatterplot(data=flights, x='year', y='passengers', hue='month')
+Out[64]: <Axes: xlabel='year', ylabel='passengers'>
+```
+
+Having a plot operate on the `Axes` level allows interoperability with other `plt` plotting functions. For example:
+
+```python
+In [65]: fig, ax = plt.subplots(2, 2)
+```
+
+<img src='./images/img_029.png' alt='img_029' width='600'/>
+
+Recall that `ax` is essentially an `ndarray`:
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">fig</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Figure</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #2d2d2d; color: #ffffff;">&lt;Figure size 640x480 with 6 Axes&gt;</td>
+  </tr>      
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">ax</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of Axes</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 2)</td>
+    <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[ &lt;Axes: &gt;  &lt;Axes: &gt;]<br>&nbsp;[ &lt;Axes: &gt;  &lt;Axes: &gt;]]</td>
+  </tr>                  
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="3" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax - numpy Axes array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>        
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>             
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>    
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">&lt;Axes: &gt;</td>          
+  </tr>
+  </table>
+
+In the form above, a `plt` plotting function is typically called as a method from the `Axes`:
+
+```python
+In [66]: ax[0, 0].plot(flights['year'], flights['passengers'])
+Out[66]: [<matplotlib.lines.Line2D at 0x1f4a9795810>]
+```
+
+<img src='./images/img_030.png' alt='img_030' width='600'/>
+
+`sns` is a separate library and as a consequence the plotting functions do not show as `Axes` methods. Therefore the set current Axes function `sca`  is used before calling the `sns` plotting function can be used:
+
+```python
+In [67]: plt.sca(ax[0, 1])
+In [68]: sns.lineplot(data=flights, x='year', y='passengers')
+Out[68]: <Axes: xlabel='year', ylabel='passengers'>
+```
+
+<img src='./images/img_031.png' alt='img_031' width='600'/>
+
+Notice this is the same format as:
+
+```python
+In [69]: plt.sca(ax[1, 0])
+In [70]: plt.scatter(flights['year'], flights['passengers'])
+Out[70]: <matplotlib.collections.PathCollection at 0x1f4aa3c4190>
+```
+
+<img src='./images/img_032.png' alt='img_032' width='600'/>
+
+```python
+In [71]: plt.sca(ax[1, 1])
+In [72]: sns.scatterplot(data=flights, x='year', y='passengers')
+Out[72]: <Axes: xlabel='year', ylabel='passengers'>
+```
+
+<img src='./images/img_033.png' alt='img_033' width='600'/>
+
+In the subplots above, the similarities and differences between the `plt` plotting functions `plot`, `scatter` and `sns` plotting functions `lineplot` and `scatterplot` can be seen. Notice that the syntax used between the two `sns` plotting functions is identical.
+
+The `sns` plotting function returns a `FacetGrid` which is on the `Figure`-level, this means any `sca` will be overridden when the new `Figure` and `Axes` :
+
+```python
+In [73]: plt.sca(ax[1, 1])
+In [74]: sns.relplot(data=flights, x='year', y='passengers')
+Out[74]: <seaborn.axisgrid.FacetGrid at 0x1f4a13f7380>
+```
+
+<img src='./images/img_034.png' alt='img_034' width='600'/>
+
+Notice the plot above is `figure (3)`. The current `Figure` can be selected using the `pyplot` function `gcf`:
+
+```python
+In [75]: fig = plt.gcf()
+```
+
+Or by specifying the figure number:
+
+```python
+In [76]: fig = plt.figure(3)
+```
+
+The `axes` attribute can be used to access each `Axes`:
+
+```python
+In [77]: fig.axes
+Out[77]: [<Axes: xlabel='year', ylabel='passengers'>]
+```
+
+Because there is only a single `Axes`, it can be retrieved using the `pyplot` function `gca`:
+
+```python
+In [78]: ax = plt.gca()
+```
+
+Once the `Figure` and `Axes` are instantiated to the instance names `fig` and `ax`, `Figure` and `Axes` methods can be used to get and set properties:
+
+```python
+In [79]: ax.get_xlabel()
+Out[79]: 'year'
+
+In [80]: ax.get_ylabel()
+Out[80]: 'passengers'
+
+In [81]: ax.set_ylabel('number of passengers')
+Out[81]: Text(33.0, 0.5, 'number of passengers')
+```
+
+<img src='./images/img_035.png' alt='img_035' width='600'/>
+
+The `relplot` outputs a `FacetGrid` which can be instantiated when the `sns` plotting function `relplot` is used. The `hue` parameter previously seen in the other `sns` plotting functions can be used:
+
+```python
+In [82]: fg = sns.relplot(data=flights, x='year', y='passengers', hue='month')
+```
+
+<img src='./images/img_036.png' alt='img_036' width='600'/>
+
+```python
+In [83]: fg.
+# 🔗 Data and Layout
+# - fig                         # The Matplotlib figure containing the facets.
+# - axes                        # 2D NumPy array of subplot axes.
+# - ax                          # The primary plotting axis of the grid.
+# - legend                      # Returns the legend instance.
+# - data                        # The dataset used to create the FacetGrid.
+# - hue_names                   # Names of the hue variable categories.
+# - hue_kws                     # Dictionary of keyword arguments for the hue variable.
+# - col_names                   # List of column facet variable names.
+# - row_names                   # List of row facet variable names.
+# - col_var                     # Column variable name.
+# - row_var                     # Row variable name.
+# - col_wrap                    # Number of columns to wrap facets into.
+# - axes_dict                   # Dictionary mapping facet positions to axes.
+
+# 🔗 Plotting Methods
+# - add_legend                  # Adds a legend.
+# - set                         # Sets axis labels and limits.
+# - set_axis_labels             # Sets labels for the x and y axes.
+# - set_titles                  # Sets titles for the facets.
+# - set_xlabels                 # Sets x-axis labels.
+# - set_ylabels                 # Sets y-axis labels.
+# - set_xticklabels             # Sets x-axis tick labels.
+# - set_yticklabels             # Sets y-axis tick labels.
+# - add_legend                  # Adds a legend to the plot.
+# - savefig                     # Saves the figure to a file.
+# - map                         # Maps a plotting function to the grid.
+# - map_dataframe               # Maps a function using a DataFrame format.
+# - facet_data                  # Generates subsets of data for each facet.
+# - facet_axis                  # Returns the axis for a specific facet.
+# - despine                     # Removes the top and right spines from the plot.
+# - refline                     # Adds reference lines to the plot.
+
+# 🔗 Utility Methods
+# - apply                       # Applies a function to each facet.
+# - pipe                        # Allows method chaining using a function.
+# - tick_params                 # Modifies tick properties.
+# - tight_layout                # Adjusts subplot parameters for better layout.
+```
+
+Notice that the `fg` has the attributes `fig` and `ax` which makes it easier to retrieve the `Figure` and `Axes`:
+
+```python
+In [84]: fig = fg.fig
+
+In [85]: fg.axes
+Out[85]: array([[<Axes: xlabel='year', ylabel='passengers'>]], dtype=object)
+```
+
+Notice that the `axes` is a 2d ndarray, despite in this case only containing only a scalar `Axes`. This `Axes` can be retrieved by indexing:
+
+```python
+In [86]: fg.axes[0, 0]
+Out[86]: <Axes: xlabel='year', ylabel='passengers'>
+
+In [87]: ax = fg.axes[0, 0]
+```
+
+Notice there is `col_names`, `row_names` and `col_wrap` and the plotting methods are plural equivalents to what is found in an `Axes`. If the categorical `Series` `'month'` is assigned to the parameter `col`:
+
+```python
+In [88]: fg = sns.relplot(data=flights, x='year', y='passengers', hue='month', col='month')
+```
+
+<img src='./images/img_037.png' alt='img_037' width='800'/>
+
+Notice that each `'month'` is now a new column in the `FacetGrid`. The plural plotting methods can be used to update the labels of all the subplots in the `FacetGrid`. If a scalar is supplied, all the labels will be updated:
+
+```python
+In [89]: fg.set_xlabels('date')
+Out[89]: <seaborn.axisgrid.FacetGrid at 0x1f4ae5b3250>
+```
+
+<img src='./images/img_038.png' alt='img_038' width='800'/>
+
+Note if a `list` of labels is provided, this `list` is cast to a `str` and each individual `str` is not applied to the respective column:
+
+```python
+In [90]: fg.set_titles(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
+Out[90]: <seaborn.axisgrid.FacetGrid at 0x1f4ae5b3250>
+```
+<img src='./images/img_039.png' alt='img_039' width='800'/>
+
+An `ndarray` of the correct dimensions also gives this behaviour:
+
+```python
+In [91]: fg.set_titles(np.array([['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]))
+Out[91]: <seaborn.axisgrid.FacetGrid at 0x1f4ae5b3250>
+```
+
+<img src='./images/img_040.png' alt='img_040' width='800'/>
+
+To perform this operation the `axes` attribute can be looped over. Normally this `ndarray` is flattened making it easier to apply the loop:
+
+```python
+In [92]: titles = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+In [93]: for ax, title in zip(fg.axes.flat, titles):
+             ax.set_title(title)
+```
+
+<img src='./images/img_041.png' alt='img_041' width='800'/>
+
+Another categorical `Series` could be assigned to the parameter `row` however this dataset only has one categorical `Series` and it is more appropriate to use `col_wrap` to wrap the columns:
+
+```python
+In [94]: fg = sns.relplot(data=flights, x='year', y='passengers', hue='month', col='month', col_wrap=4)
+```
+
+<img src='./images/img_042.png' alt='img_042' width='800'/>
+
+The same code as before can be sued to rename each title:
+
+```python
+In [95]: titles = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+In [96]: for ax, title in zip(fg.axes.flat, titles):
+             ax.set_title(title)
+```
+
+<img src='./images/img_043.png' alt='img_043' width='800'/>
+
+The data above is only split into columns, therefore only the attribute `col_names` is populated and `row_names` and `hue_names` are unpopulated:
+
+```python
+In [97]: fg.col_names
+Out[97]: 
+['Jan',
+ 'Feb',
+ 'Mar',
+ 'Apr',
+ 'May',
+ 'Jun',
+ 'Jul',
+ 'Aug',
+ 'Sep',
+ 'Oct',
+ 'Nov',
+ 'Dec']
+
+In [98]: fg.row_names
+Out[98]: []
+
+In [99]: fg.hue_names
+Out[99]
+```
+
+The method `facet_data` is a generator. When `next` is called on the generator a `2`-element `tuple` is shown. The first element has the form `(row_index, col_index, hue_index)` and the second is the `DataFrame` used to plot the data. In this case, the `DataFrame` is only split over a `col_index` by use of the categorical `Series` `'month'`:
+
+```python
+In [100]: data = fg.facet_data()
+
+In [101]: next(data)
+Out[101]: 
+((0, 0, 0),
+      year month  passengers
+ 0    1949   Jan         112
+ 12   1950   Jan         115
+ 24   1951   Jan         145
+ 36   1952   Jan         171
+ 48   1953   Jan         196
+ 60   1954   Jan         204
+ 72   1955   Jan         242
+ 84   1956   Jan         284
+ 96   1957   Jan         315
+ 108  1958   Jan         340
+ 120  1959   Jan         360
+ 132  1960   Jan         417)
+
+In [102]: next(data)
+Out[102]:
+((0, 1, 0),
+      year month  passengers
+ 1    1949   Feb         118
+ 13   1950   Feb         126
+ 25   1951   Feb         150
+ 37   1952   Feb         180
+ 49   1953   Feb         196
+ 61   1954   Feb         188
+ 73   1955   Feb         233
+ 85   1956   Feb         277
+ 97   1957   Feb         301
+ 109  1958   Feb         318
+ 121  1959   Feb         342
+ 133  1960   Feb         391)
+
+In [103]: next(data)
+Out[103]:
+((0, 2, 0),
+      year month  passengers
+ 2    1949   Mar         132
+ 14   1950   Mar         141
+ 26   1951   Mar         178
+ 38   1952   Mar         193
+ 50   1953   Mar         236
+ 62   1954   Mar         235
+ 74   1955   Mar         267
+ 86   1956   Mar         317
+ 98   1957   Mar         356
+ 110  1958   Mar         362
+ 122  1959   Mar         406
+ 134  1960   Mar         419)
+
+In [104]: next(data)
+Out[104]:
+((0, 3, 0),
+      year month  passengers
+ 3    1949   Apr         129
+ 15   1950   Apr         135
+ 27   1951   Apr         163
+ 39   1952   Apr         181
+ 51   1953   Apr         235
+ 63   1954   Apr         227
+ 75   1955   Apr         269
+ 87   1956   Apr         313
+ 99   1957   Apr         348
+ 111  1958   Apr         348
+ 123  1959   Apr         396
+ 135  1960   Apr         461)
+
+In [105]: next(data)
+Out[105]:
+((0, 4, 0),
+      year month  passengers
+ 4    1949   May         121
+ 16   1950   May         125
+ 28   1951   May         172
+ 40   1952   May         183
+ 52   1953   May         229
+ 64   1954   May         234
+ 76   1955   May         270
+ 88   1956   May         318
+ 100  1957   May         355
+ 112  1958   May         363
+ 124  1959   May         420
+ 136  1960   May         472)
+
+In [106]: next(data)
+Out[106]:
+((0, 5, 0),
+      year month  passengers
+ 5    1949   Jun         135
+ 17   1950   Jun         149
+ 29   1951   Jun         178
+ 41   1952   Jun         218
+ 53   1953   Jun         243
+ 65   1954   Jun         264
+ 77   1955   Jun         315
+ 89   1956   Jun         374
+ 101  1957   Jun         422
+ 113  1958   Jun         435
+ 125  1959   Jun         472
+ 137  1960   Jun         535)
+```
+
+## Regressional Plots (sns.regression)
+
+If only the flights in April are examined:
+
+```python
+In [107]: april_flights = flights[flights['month'] == 'Apr']
+```
+
+The `DataFrame` instance `flights` can be explored in the Variable Explorer:
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">april_flights</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(12, 3)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: year, month, passengers</td>
+  </tr>             
+</table>
+
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">flights - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">year</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">month</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">passengers</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1949</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">129</td>                   
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">15</th>
+    <td style="padding: 8px; background-color: #a33c53; color: #ffffff;">1950</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #a33c4c; color: #ffffff;">135</td>     
+  </tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">27</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1951</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #a33c52; color: #ffffff;">163</td>     
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">39</th>
+    <td style="padding: 8px; background-color: #a33c80; color: #ffffff;">1952</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #a33c68; color: #ffffff;">181</td>    
+  </tr>     
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">51</th>
+    <td style="padding: 8px; background-color: #a33c93; color: #ffffff;">1953</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #a33c8a; color: #ffffff;">235</td>       
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">63</th>
+    <td style="padding: 8px; background-color: #a33ca7; color: #ffffff;">1954</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #a33c85; color: #ffffff;">227</td>       
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">75</th>
+    <td style="padding: 8px; background-color: #943cab; color: #ffffff;">1955</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #a33ca0; color: #ffffff;">269</td>       
+  </tr>   
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">87</th>
+    <td style="padding: 8px; background-color: #813cab; color: #ffffff;">1956</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #923cab; color: #ffffff;">313</td>       
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">99</th>
+    <td style="padding: 8px; background-color: #6d3cab; color: #ffffff;">1957</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #7c3cab; color: #ffffff;">348</td>       
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">111</th>
+    <td style="padding: 8px; background-color: #5a3cab; color: #ffffff;">1958</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #7c3cab; color: #ffffff;">348</td>       
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">123</th>
+    <td style="padding: 8px; background-color: #473cab; color: #ffffff;">1959</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #5d3cab; color: #ffffff;">396</td>       
+  </tr>   
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">135</th>
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">1960</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">Apr</td>   
+    <td style="padding: 8px; background-color: #3840ab; color: #ffffff;">461</td>       
+  </tr>                           
+</table>
+
+Visually, a linear trend can be seen by comparing the color maps applied to each numeric `Series` by the Spyder IDE. This can also be seen in a scatter plot:
+
+```python
+In [108]: fig, ax = plt.subplots()
+        : sns.scatterplot(data=april_flights, x='year', y='passengers');
+```
+
+<img src='./images/img_044.png' alt='img_044' width='600'/>
+
+A regression plot is essentially a scatter plot with a line or curve of best fit. `sns` plotting functions `regplot`, `residplot` occur on the `Axes`-level and `lmplot` occurs on the `Figure`-level (outputting a `FacetGrid`). 
+
+The `Axes`-level `regplot` is more powerful than the `Figure`-level `lmplot` and allows a 1st, 2nd and 3rd order polynomial fit. It is commonly used with the `Axes`-level `residplot` to plot the residuals:
+
+```python
+In [109]: fig, ax = plt.subplots(2, 1)
+        : plt.sca(ax[0])
+        : sns.regplot(data=april_flights, x='year', y='passengers')
+        : plt.sca(ax[1])
+        : sns.residplot(data=april_flights, x='year', y='passengers');
+```
+
+<img src='./images/img_045.png' alt='img_045' width='600'/>
+
+Visually a linear fit appears to be good for this data and the residuals are randomly distributed around `0`.
+
+In the above the `plt` function set current `Axes` `sca` was used to select the `Axes` to apply each plot to. `sns`, `Axes`-level plorring functions have the parameter `ax` which can be used to simplify the code:
+
+```python
+In [110]: fig, ax = plt.subplots(2, 1)
+        : sns.regplot(data=april_flights, x='year', y='passengers', ax=ax[0])
+        : sns.residplot(data=april_flights, x='year', y='passengers', ax=ax[1]);
+```
+
+<img src='./images/img_046.png' alt='img_046' width='600'/>
+
+Higher order models are not required for this dataset, however they can be compared using the `regplot` and `residplot` specific parameter `order`:
+
+```python
+In [111]: sns.regplot(data=april_flights, x='year', y='passengers', ax=ax[0], order=2)
+        : sns.residplot(data=april_flights, x='year', y='passengers', ax=ax[1], order=2);
+```
+
+<img src='./images/img_047.png' alt='img_047' width='600'/>
+
+There is a slight difference in the 2nd order and 1st order fit and the residuals are marginally better but it is likely the data is overfitted as a 1st order model is sufficient.
+
+```python
+In [112]: sns.regplot(data=april_flights, x='year', y='passengers', ax=ax[0], order=3)
+        : sns.residplot(data=april_flights, x='year', y='passengers', ax=ax[1], order=3);
+```
+
+<img src='./images/img_048.png' alt='img_048' width='600'/>
+
+Notice the 3rd order fit overlaps completely with the 2nd order fit and the residuals do not change between the 2nd and 3rd order fit because the data is already overfitted. 
+
+The `sns` plotting function linear model plot `lmplot` gives a linear fit consistent with that of `regplot` (when the default parameters are used for `regplot`) returning a `FacetGrid`:
+
+```python
+In [113]: fg = sns.lmplot(data=april_flights, x='year', y='passengers')
+```
+
+<img src='./images/img_049.png' alt='img_049' width='600'/>
+
+The optional parameters `hue`, `col` and `row` can be set to a categorical `Series`. The behaviour is consistent to the behaviour previously seen when `relplot` was used as both these plotting functions output a `FacetGrid`:
+
+```python
+In [113]: fg = sns.lmplot(data=flights, x='year', y='passengers', hue='month', col='month', col_wrap=4)
+```
+
+<img src='./images/img_050.png' alt='img_050' width='800'/>
+
+## Distribution Plots (sns.distributions)
+
+The `'iris'` dataset measures physical features for sepals and petals for 3 species of iris plant and is an example of a distribution dataset. The `load_dataset` function can be used this dataset:
+
+```python
+In [114]: iris = sns.load_dataset('iris')
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">iris</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(150, 5)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: sepal_length, sepal_width, petal_length, petal_height, species</td>
+  </tr>             
+</table>
+
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="6" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">flights - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sepal_length</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sepal_width</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">petal_length</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">petal_height</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">species</td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c75; color: #ffffff;">5.1</td>
+    <td style="padding: 8px; background-color: #833cab; color: #ffffff;">3.5</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">1.4</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c6a; color: #ffffff;">4.9</td>
+    <td style="padding: 8px; background-color: #a33c9f; color: #ffffff;">3.0</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">1.4</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #a33c5e; color: #ffffff;">4.7</td>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">3.2</td>
+    <td style="padding: 8px; background-color: #a33c51; color: #ffffff;">1.3</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #a33c58; color: #ffffff;">4.6</td>
+    <td style="padding: 8px; background-color: #a33ca8; color: #ffffff;">3.1</td>
+    <td style="padding: 8px; background-color: #a33c58; color: #ffffff;">1.5</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>    
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #a33c70; color: #ffffff;">5.0</td>
+    <td style="padding: 8px; background-color: #7a3cab; color: #ffffff;">3.6</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">1.4</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>         
+</table>
+
+The `DataFrame` methods `info` and `describe` can be used to get an overview of the `DataFrame`. All of the `Series` in the `DataFrame` have 150 entries are there are no `NaN` values:
+
+```python
+In [115]: iris.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   sepal_length  150 non-null    float64
+ 1   sepal_width   150 non-null    float64
+ 2   petal_length  150 non-null    float64
+ 3   petal_width   150 non-null    float64
+ 4   species       150 non-null    object 
+dtypes: float64(4), object(1)
+memory usage: 6.0+ KB
+
+In [116]: iris.describe()
+Out[116]: 
+       sepal_length  sepal_width  petal_length  petal_width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.057333      3.758000     1.199333
+std        0.828066     0.435866      1.765298     0.762238
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+```
+
+The `sns` plotting functions `histplot`, `rugplot`, `kdeplot` and `ecdfplot` are `Axes`-level distribution functions. These plotting functions have the parameters `x` and `y` which can be assigned to a numeric `Series`. If only `x` is assigned, the plot will be `1d`:
+
+```python
+In [117]: fig, ax = plt.subplots(2, 2)
+        : sns.histplot(data=iris, x='sepal_length', hue='species', ax=ax[0, 0])
+        : sns.histplot(data=iris, x='sepal_width', hue='species', ax=ax[0, 1])
+        : sns.histplot(data=iris, x='petal_length', hue='species', ax=ax[1, 0])
+        : sns.histplot(data=iris, x='petal_width', hue='species', ax=ax[1, 1]);
+```
+
+<img src='./images/img_051.png' alt='img_051' width='600'/>
+
+If the third subplot is examined with `x='petal_length'`, notice that the blue category `'setosa'` is visually distinct from the orange category `'versicolor'` and green category `'virginica'`. The orange category `'versicolor'` and green category `'virginica'` can be seen to have different histograms but these histograms overlap. The other three categories can be set to `y` outputting the following 2d plots:
+
+```python
+In [117]: fig, ax = plt.subplots(3, 1)
+        : sns.histplot(data=iris, x='petal_length', y='sepal_length', hue='species', ax=ax[0])
+        : sns.histplot(data=iris, x='petal_length', y='sepal_width', hue='species', ax=ax[1])
+        : sns.histplot(data=iris, x='petal_length', y='petal_width', hue='species', ax=ax[2]);
+```
+
+<img src='./images/img_052.png' alt='img_052' width='600'/>
+
+Of the following 2d plots, `y='petal_width'` gives the best distinction between the orange and green categories. The legend in the above plot becomes a hinderance when it comes to visually the data on such small subplots and it can be disabled by assigning the optional boolean parameter `legend` to `False`. The number of bins used for the histogram can be controlled using the optional parameter `bins`. For a 1d plot, this is assigned to a scalar and for a 2d plot it is assigned to a 2-element `tuple` which has the form `(nbin_x, nbin_y)`:
+
+```python
+In [118]: fig, ax = plt.subplots(3, 2)
+        : sns.histplot(data=iris, x='petal_length', hue='species', ax=ax[0, 0], legend=False, bins=5)
+        : sns.histplot(data=iris, x='petal_length', y='sepal_length', hue='species', ax=ax[0, 1], legend=False, bins=(5, 5))
+        : sns.histplot(data=iris, x='petal_length', hue='species', ax=ax[1, 0], legend=False, bins=50)
+        : sns.histplot(data=iris, x='petal_length', y='sepal_length', hue='species', ax=ax[1, 1], legend=False, bins=(5, 10))
+        : sns.histplot(data=iris, x='petal_length', hue='species', ax=ax[2, 0], legend=False, bins=200)
+        : sns.histplot(data=iris, x='petal_length', y='sepal_length', hue='species', ax=ax[2, 1], legend=False, bins=(50, 50));
+```
+
+<img src='./images/img_053.png' alt='img_053' width='600'/>
+
+When the number of bins is too small, like in the first row, the overall trend may be obscured. The last row gives enough bins to visually distinguish each category. A larger number of bins would make the datapoints too small to visually examine.
+
+The `rugplot` plotting function displays each data point as a discrete transparent line and therefore the density of the lines around a specific value depict the frequency of that value. The `kdeplot` plotting function essentially sums each of the lines in the rugplotm then normalised the area under the curve to `1` to display the probability distribution:
+
+```python
+In [119]: fig, ax = plt.subplots(3, 1)
+        : sns.histplot(data=iris, x='petal_length', hue='species', ax=ax[0], legend=False, bins=50)
+        : sns.rugplot(data=iris, x='petal_length', hue='species', ax=ax[1], legend=False)
+        : sns.kdeplot(data=iris, x='petal_length', hue='species', ax=ax[2], legend=False);
+```
+
+<img src='./images/img_054.png' alt='img_054' width='600'/>
+
+These can also be examined in 2d:
+
+```python
+In [120]: fig, ax = plt.subplots(3, 1)
+sns.histplot(data=iris, x='petal_length', y='sepal_length', hue='species', ax=ax[0], legend=False, bins=(50, 50))
+sns.rugplot(data=iris, x='petal_length', y='sepal_length', hue='species', ax=ax[1], legend=False)
+sns.kdeplot(data=iris, x='petal_length', y='sepal_length', hue='species', ax=ax[2], legend=False);
+```
+
+<img src='./images/img_055.png' alt='img_055' width='600'/>
+
+The emperical cumlative distribution function `ecdf` plotting function plots out the proportion of datapoints at and below a specified value. This is again normalised to `1` and therefore starts at `0` and ends at `1`. It is 1d only and can again be used to visually distinguish the three distributions:
+
+```python
+In [121]: fig, ax = plt.subplots()
+        : sns.ecdfplot(data=iris, x='petal_length', hue='species');
+```
+
+<img src='./images/img_056.png' alt='img_056' width='600'/>
+
+In 2d, the `rugplot` is often used as a companion to the `kdeplot`:
+
+```python
+In [122]: fig, ax = plt.subplots()
+        : sns.rugplot(data=iris, x='petal_length', y='sepal_length', hue='species')
+        : sns.kdeplot(data=iris, x='petal_length', y='sepal_length', hue='species');
+```
+
+<img src='./images/img_057.png' alt='img_057' width='600'/>
+
+The `sns` `Axes`-level distribution plotting functions `histplot`, `rugplot`, `kdeplot` and `ecdfplot` are complemented by `displot` which is a `Figure`-level function that outputs a `FacetGrid`:
+
+```python
+In [123]: fg = sns.displot(data=iris, x='petal_length', y='sepal_length', hue='species')
+```
+
+<img src='./images/img_058.png' alt='img_058' width='600'/>
+
+Notice that `displot` displays a histogram by default and because this is a `Figure`-level `FacetGrid`, the `legend` is more appropriately handled. `displot` has a parameter `kind` which defaults to `'hist'` but can be assigned to another plot type such as `'kde'` or `'ecfd'` (recalling that `'ecfd'` only works in 1d). `rug` is a boolean parameter and can be enabled:
+
+```python
+In [124]: fg = sns.displot(data=iris, x='petal_length', y='sepal_length', hue='species', kind='kde', rug=True)
+```
+
+<img src='./images/img_059.png' alt='img_059' width='600'/>
+
+Because this is a `FacetGrid`, the optional parameters `hue`, `col` and `row` can be set to a categorical `Series`. The behaviour is consistent to the behaviour previously seen when `relplot` and `lmplot`.
+
+## Axisgrid Plots (sns.axisgrid)
+
+When the `'iris'` dataset was explored, a 1d `kdeplot` was used to explore a numeric `Series` and categorical `hue` and a 2d `histplot` was used to explore the relationship between two numeric `Series` and a categorical `'hue'`. When the number of numeric `Series` is low and there is a single categorical `hue`, the plotting function `pairplot` can be used to view all the possible combinations as a subplot within an `AxisGrid`:
+
+```python
+In [125]: sns.pairplot(data=iris, hue='species') 
+Out[125]: <seaborn.axisgrid.PairGrid at 0x1f4bfe75810>
+```
+
+<img src='./images/img_060.png' alt='img_060' width='800'/>
+
+Notice the return value is a `PairGrid` instance instead of a `FacetGrid` instance. Notice in all the `FacetGrid` instances previously explorered each subplot in the `FacetGrid` was the same plot type. In a `PairGrid` there is a difference in the plot used in diagonal `Axes` instances which are 1d plots and in the non-diagonal instances which are 2d plots. The `PairGrid` class essentially allows grouping of these diagonal plots. Notice in the `PairGrid` above the diagonal and below the diagonal display essentially the same data, where the `xaxis` and `yaxis` are essentially transposed. It is therefore common to just display one of the corners:
+
+```python
+In [125]: sns.pairplot(data=iris, hue='species', corner=True) 
+```
+
+<img src='./images/img_061.png' alt='img_061' width='800'/>
+
+The identifiers of the `PairGrid` instance `pg` can be viewed. Notice the inclusion of attributes related specifically related to the diagonal:
+
+```python
+In [126]: pg.
+# 🔗 Data and Layout
+# - fig                         # The Matplotlib figure containing the subplots.
+# - axes                        # 2D NumPy array of subplot axes.
+# - legend                      # Returns the legend instance.
+# - palette                     # The color palette used for the plot.
+# - data                        # The dataset used to create the grid.
+# - hue_names                   # Names of the hue variable categories.
+# - hue_vals                    # Unique values of the hue variable.
+# - hue_kws                     # Dictionary of keyword arguments for the hue variable.
+# - x_vars                      # List of variables plotted along the x-axis.
+# - y_vars                      # List of variables plotted along the y-axis.
+# - diag_vars                   # List of variables plotted on the diagonal (for pair plots).
+# - diag_axes                   # Axes corresponding to the diagonal subplots.
+# - diag_sharey                 # Boolean indicating whether diagonal subplots share the y-axis.
+# - square_grid                 # Boolean indicating if the grid is square.
+
+# 🔗 Plotting Methods
+# - add_legend                  # Adds a legend.
+# - set                         # Sets axis labels and limits.
+# - savefig                     # Saves the figure to a file.
+# - map                         # Maps a plotting function to all subplots.
+# - map_diag                    # Maps a function to the diagonal subplots.
+# - map_lower                   # Maps a function to the lower triangle of the grid.
+# - map_upper                   # Maps a function to the upper triangle of the grid.
+# - map_offdiag                 # Maps a function to the off-diagonal subplots.
+
+# 🔗 Utility Methods
+# - apply                       # Applies a function to each subplot.
+# - pipe                        # Allows method chaining using a function.
+# - tick_params                 # Modifies tick properties.
+# - tight_layout                # Adjusts subplot parameters for better layout.
+```
+
+The `pairplot` has the optional parameters `kind` and `diag_kind` which can be used to change the kind of 2d plot used on the non-diagonal and kind of 1d plot used on the diagonal respectively. The default for the non-diagonal is `'scatter'` and the diagonal is `'kde'` respectively. Both of these can be changed to `'hist'`:
+
+```python
+In [127]: pg = sns.pairplot(data=iris, hue='species', corner=True, kind='hist', diag_kind='hist')
+```
+
+<img src='./images/img_062.png' alt='img_062' width='800'/>
+
+Both the non-diagonal and diagonal plots are histograms. However the non-diagonal plot is 2d and the diagonal plot is 1d. There is therefore some ambiguity when the optional parameter `bins` is used. `plot_kws` and `diag_kws` are `dict` instances used to compartmentalise parameters for the non-diagonal and diagonal plots respectively. This allows setting the parameter `bins` to be set for the non-diagonal (2d plot, so 2-element tuple of integer bins) and setting the parameter `bins` to the diagonal (1d plot so scalar of integer bins) respectively:
+
+```python
+In [128]: pg = sns.pairplot(data=iris, hue='species', corner=True, kind='hist', diag_kind='hist', 
+                            plot_kws={'bins': (50, 50)}, 
+                            diag_kws={'bins': 50})
+```
+
+Instantiation of the `dict` class using the `dict` class directly opposed to `{}` is preferred in this use case because syntax highlighting of the input parameters is consistent:
+
+```python
+In [128]: pg = sns.pairplot(data=iris, hue='species', corner=True, kind='hist', diag_kind='hist', 
+                            plot_kws=dict(bins=(50, 50)), 
+                            diag_kws=dict(bins=50))
+```
+
+<img src='./images/img_063.png' alt='img_063' width='800'/>
+
+Another distribution dataset is the `penguins `dataset, which measures physical features of `3` species of penguin on `3` different islands of differing sex:
+
+```python
+In [129]: penguins = sns.load_dataset('penguins')
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">penguins</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(344, 7)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: 'species', 'island', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g', 'sex'</td>
+  </tr>             
+</table>
+
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="8" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">penguins - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">species</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">island</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">bill_length_mm</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">bill_depth_mm</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">flipper_length_mm</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">body_mass_g</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sex</td>                           
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c7c; color: #ffffff;">39.1</td>
+    <td style="padding: 8px; background-color: #7a3cab; color: #ffffff;">18.7</td>  
+    <td style="padding: 8px; background-color: #a33c67; color: #ffffff;">181</td>
+    <td style="padding: 8px; background-color: #a33c84; color: #ffffff;">3750</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Male</th>    
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c7c; color: #ffffff;">39.5</td>
+    <td style="padding: 8px; background-color: #9b3cab; color: #ffffff;">17.4</td>  
+    <td style="padding: 8px; background-color: #a33c79; color: #ffffff;">186</td>
+    <td style="padding: 8px; background-color: #a33c87; color: #ffffff;">3800</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Female</th>  
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c86; color: #ffffff;">40.3</td>
+    <td style="padding: 8px; background-color: #8c3cab; color: #ffffff;">18.0</td>  
+    <td style="padding: 8px; background-color: #a33c99; color: #ffffff;">196</td>
+    <td style="padding: 8px; background-color: #a33c67; color: #ffffff;">3250</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Female</th>  
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">NaN</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">NaN</td>  
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">NaN</td>
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">NaN</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">NaN</th>  
+  </tr>      
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c6a; color: #ffffff;">36.7</td>
+    <td style="padding: 8px; background-color: #6b3cab; color: #ffffff;">19.3</td>  
+    <td style="padding: 8px; background-color: #a33c92; color: #ffffff;">193</td>
+    <td style="padding: 8px; background-color: #a33c73; color: #ffffff;">3450</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Female</th>  
+  </tr> 
+</table>
+
+Note this dataset has `340` rows in the `Index` but each `Series` contains null values:
+
+```python
+In [130]: penguins.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 344 entries, 0 to 343
+Data columns (total 7 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   species            344 non-null    object 
+ 1   island             344 non-null    object 
+ 2   bill_length_mm     342 non-null    float64
+ 3   bill_depth_mm      342 non-null    float64
+ 4   flipper_length_mm  342 non-null    float64
+ 5   body_mass_g        342 non-null    float64
+ 6   sex                333 non-null    object 
+dtypes: float64(4), object(3)
+memory usage: 18.9+ KB
+```
+
+The `DataFrame` method `dropna` can be used to drop any row with null values outputing a new `DataFrame` and the `DataFrame` method `info` can in turn be called on this:
+
+```python
+In [131]: penguins.dropna().info()
+<class 'pandas.core.frame.DataFrame'>
+Index: 333 entries, 0 to 343
+Data columns (total 7 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   species            333 non-null    object 
+ 1   island             333 non-null    object 
+ 2   bill_length_mm     333 non-null    float64
+ 3   bill_depth_mm      333 non-null    float64
+ 4   flipper_length_mm  333 non-null    float64
+ 5   body_mass_g        333 non-null    float64
+ 6   sex                333 non-null    object 
+dtypes: float64(4), object(3)
+memory usage: 20.8+ KB
+```
+
+The number of rows is still sufficient, so `penguins` can be updated in place:
+
+```python
+In [132]: penguins = penguins.dropna()
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">penguins</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(333, 7)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: 'species', 'island', 'bill_length_mm', 'bill_depth_mm', 'flipper_length_mm', 'body_mass_g', 'sex'</td>
+  </tr>             
+</table>
+
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="8" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">penguins - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">species</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">island</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">bill_length_mm</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">bill_depth_mm</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">flipper_length_mm</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">body_mass_g</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sex</td>                           
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c7c; color: #ffffff;">39.1</td>
+    <td style="padding: 8px; background-color: #7a3cab; color: #ffffff;">18.7</td>  
+    <td style="padding: 8px; background-color: #a33c67; color: #ffffff;">181</td>
+    <td style="padding: 8px; background-color: #a33c84; color: #ffffff;">3750</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Male</th>    
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c7c; color: #ffffff;">39.5</td>
+    <td style="padding: 8px; background-color: #9b3cab; color: #ffffff;">17.4</td>  
+    <td style="padding: 8px; background-color: #a33c79; color: #ffffff;">186</td>
+    <td style="padding: 8px; background-color: #a33c87; color: #ffffff;">3800</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Female</th>  
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c86; color: #ffffff;">40.3</td>
+    <td style="padding: 8px; background-color: #8c3cab; color: #ffffff;">18.0</td>  
+    <td style="padding: 8px; background-color: #a33c99; color: #ffffff;">196</td>
+    <td style="padding: 8px; background-color: #a33c67; color: #ffffff;">3250</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Female</th>  
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c6a; color: #ffffff;">36.7</td>
+    <td style="padding: 8px; background-color: #6b3cab; color: #ffffff;">19.3</td>  
+    <td style="padding: 8px; background-color: #a33c92; color: #ffffff;">193</td>
+    <td style="padding: 8px; background-color: #a33c73; color: #ffffff;">3450</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Female</th>  
+  </tr>      
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Adelie</th>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Torgersen</th>        
+    <td style="padding: 8px; background-color: #a33c7e; color: #ffffff;">39.3</td>
+    <td style="padding: 8px; background-color: #4a3cab; color: #ffffff;">20.6</td>  
+    <td style="padding: 8px; background-color: #a33c87; color: #ffffff;">190</td>
+    <td style="padding: 8px; background-color: #a33c7e; color: #ffffff;">3650</td>  
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Male</th>  
+  </tr> 
+</table>
+
+```python
+In [133]: penguins.info()
+<class 'pandas.core.frame.DataFrame'>
+Index: 333 entries, 0 to 343
+Data columns (total 7 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   species            333 non-null    object 
+ 1   island             333 non-null    object 
+ 2   bill_length_mm     333 non-null    float64
+ 3   bill_depth_mm      333 non-null    float64
+ 4   flipper_length_mm  333 non-null    float64
+ 5   body_mass_g        333 non-null    float64
+ 6   sex                333 non-null    object 
+dtypes: float64(4), object(3)
+memory usage: 20.8+ KB
+```
+
+```python
+In [134]: penguins.describe()
+Out[134]: 
+       bill_length_mm  bill_depth_mm  flipper_length_mm  body_mass_g
+count      333.000000     333.000000         333.000000   333.000000
+mean        43.992793      17.164865         200.966967  4207.057057
+std          5.468668       1.969235          14.015765   805.215802
+min         32.100000      13.100000         172.000000  2700.000000
+25%         39.500000      15.600000         190.000000  3550.000000
+50%         44.500000      17.300000         197.000000  4050.000000
+75%         48.600000      18.700000         213.000000  4775.000000
+max         59.600000      21.500000         231.000000  6300.000000
+```
+
+```python
+In [135]: pg = sns.pairplot(data=penguins, hue='species', corner=True) 
+```
+
+<img src='./images/img_064.png' alt='img_064' width='800'/>
+
+The scatterplot with the two numeric `Series` `x='bill_length_mm'` and `y='flipper_length_mm'` shows the clearest distinction between the three species. A `displot` can be used with these two numeric `Series` and the `col` and `row` can be set to the other categorical `Series`, `'island'` and `'sex'`:
+
+```python
+In [136]: fg = sns.displot(data=penguins, x='bill_length_mm', y='flipper_length_mm', hue='species', col='island', row='sex')
+```
+
+<img src='./images/img_065.png' alt='img_065' width='800'/>
+
+Here it is clear to visualise the additional information such as the `'Adelie'` species (blue category) residing on the three islands, the `'Gentoo'` species (green category) only being on the first island `'Biscoe'` and the `'Chinstrap'` species (red category) only being on the second island `'Dream'`. 
+
+This means the use of the island can clearly separate out the `'Gentoo'` species (green category) and the `'Chinstrap'` species (red category).
+
+## Categorical Plots (sns.categorical)
 
 
 
 
 
 
-x = np.array([0, 1, 2, 3, 4])
-y = np.array([0, 2, 4, 6, 8])
-plt.plot(x, y);
 
 
 

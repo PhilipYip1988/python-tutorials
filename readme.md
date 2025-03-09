@@ -2,13 +2,13 @@
 
 This GitHub repository contains Python tutorials in markdown format. These tutorials look at installation on Python and setup of Python IDEs on Windows and Linux. These tutorials look at object orientated programming and the object orientated design pattern known as the Python data model. These tutorials also look at the way the Python data model is extended for text, numeric and collection builtins classes using the object orientated programming concept of inheritance. Finally these tutorials look at the numeric Python stack which bridges the numeric and collect based design patterns. The numeric Python stack provides a number of data structures and plotting libraries which are commonly used in scientific fields (my own background is in biophysics) however the principles covered in these tutorials should also help give the foundations for other fields like web development.
 
-Please star and share this repository if you've found it useful as it will make it easier for others to find. 
+Please star and share this repository if you've found it useful as it will make it easier for others to find.
 
 ## Viewing Markdown Files
 
 ### GitHub Website 
 
-These tutorials are in markdown format and GitHub displays the markdown as a webpage. Note some of the guides are screenshot intensive and on slow connections, the browser may timeout before all the images are downloaded. The browser caches downloaded images, refresh the page a couple of times to allow the browser to download the remaining images and the page should display correctly. 
+These tutorials are in markdown format and GitHub displays the markdown as a webpage. Note some of the guides are screenshot intensive and on slow connections, the browser may timeout before all the images are downloaded. The browser caches downloaded images, refresh the page a couple of times to allow the browser to download the remaining images and the page should display correctly.
 
 ### Cloning the GitHub Repository and Opening in VSCode
 
@@ -73,7 +73,7 @@ Optional information is provided about other installers below:
 
 </details>
 
-### **S**cientific **Py**thon **D**evelopment **E**nvi**r**onment (Spyder).
+### **S**cientific **Py**thon **D**evelopment **E**nvi**r**onment (Spyder)
 
 Spyder is tailored for scientists and engineers and has the most commonly used packages from the scientific stack preinstalled, a conda environment can be used to install additional packages. This makes it very beginner friendly. This installation guide will also cover installation of additional packages using Miniforge to create a `conda-forge` (community channel) environment. Additional dependencies such as TeX (commonly used in plots), which do not have a `conda-forge` package. 
 
@@ -102,11 +102,11 @@ VSCode is a general purpose code editor and can be used with Python, when the Py
 * [Windows: VSCode Setup for Python](./vscode_install_windows/readme.md)
 * [Ubuntu: VSCode Setup for Python](./vscode_install_ubuntu/readme.md)
 
-Preference of a specific Python IDE is somewhat subjective and I routinely use the 3 IDEs above for different purposes. These markdown tutorials can be used with any of the above 3 IDEs or another IDE that has an ipython console. 
+Preference of a specific Python IDE is somewhat subjective and each IDE has its strengths and weaknesses. I routinely use the 3 IDEs above for different purposes. The remaining markdown tutorials can be used with any of the above 3 IDEs or another IDE that has an ipython console. 
 
 ## Python and Standard Libraries
 
-These tutorials cover the `object` orientated design pattern of `builtins` classes, focusing on text datatypes, numeric datatypes and collection datatypes. The `object` orientated design pattern is known as the Python data ,odel:
+These tutorials cover the `object` orientated design pattern of `builtins` classes, focusing on text datatypes, numeric datatypes and collection datatypes. The `object` orientated design pattern is known as the Python data model:
 
 * [Object Orientated Programming (OOP) and the Python Data Model](./the_python_datamodel/readme.md)
 * [Text Datatypes](./text_datatypes/readme.md)
