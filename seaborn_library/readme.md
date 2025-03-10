@@ -3354,7 +3354,7 @@ Out[125]: <seaborn.axisgrid.PairGrid at 0x1f4bfe75810>
 Notice the return value is a `PairGrid` instance instead of a `FacetGrid` instance. Notice in all the `FacetGrid` instances previously explorered each subplot in the `FacetGrid` was the same plot type. In a `PairGrid` there is a difference in the plot used in diagonal `Axes` instances which are 1d plots and in the non-diagonal instances which are 2d plots. The `PairGrid` class essentially allows grouping of these diagonal plots. Notice in the `PairGrid` above the diagonal and below the diagonal display essentially the same data, where the `xaxis` and `yaxis` are essentially transposed. It is therefore common to just display one of the corners:
 
 ```python
-In [125]: sns.pairplot(data=iris, hue='species', corner=True) 
+In [125]: pg = sns.pairplot(data=iris, hue='species', corner=True) 
 ```
 
 <img src='./images/img_061.png' alt='img_061' width='800'/>
@@ -3682,26 +3682,515 @@ This means the use of the island can clearly separate out the `'Gentoo'` species
 
 ## Categorical Plots (sns.categorical)
 
+The `exercise` dataset compares the performance of `2` groups of people that are either on a low fat diet or a no fat diet. Their pulse is measured at 3 times 1 min, 15 min and 30 min after a different level of exercise rest, walking or running. It can be imported using:
 
+```python
+In [137]: exercise = sns.load_dataset('exercise')
+```
 
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">exercise</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(90, 6)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: 'Unnamed: 0', 'id', 'diet', 'pulse', 'time', 'kind'], dtype='object'</td>
+  </tr>             
+</table>
 
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="7" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">exercise - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Unnamed: 0</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">id</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">diet</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">pulse</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">time</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">kind</td>                           
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">0</td>  
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">85</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">1 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c49; color: #ffffff;">1</td>  
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">85</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">15 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #a33c4b; color: #ffffff;">2</td>  
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c5f; color: #ffffff;">88</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">30 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>    
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #a33c4d; color: #ffffff;">3</td>  
+    <td style="padding: 8px; background-color: #a33c4e; color: #ffffff;">2</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c65; color: #ffffff;">90</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">1 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #a33c50; color: #ffffff;">4</td>  
+    <td style="padding: 8px; background-color: #a33c4e; color: #ffffff;">3</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c6b; color: #ffffff;">902</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">30 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>      
+</table>
 
+The `Series` `'Unnamed: 0'` is a copy of the `Index` column (likely the file was saved to a `'csv'` with the `Index` column and this was read in as a new `Series`) and can be dropped. The `DataFrame` drop method acts on the `Index` by default. The `axis` parameter therefore needs to be changed from the default value `'index'` (alias `'rows'`) to `'columns'`:
 
+```python
+In [138]: exercise.drop('Unnamed: 0', axis='columns')
+Out[138]: 
+    id     diet  pulse    time     kind
+0    1  low fat     85   1 min     rest
+1    1  low fat     85  15 min     rest
+2    1  low fat     88  30 min     rest
+3    2  low fat     90   1 min     rest
+4    2  low fat     92  15 min     rest
+..  ..      ...    ...     ...      ...
+85  29   no fat    135  15 min  running
+86  29   no fat    130  30 min  running
+87  30   no fat     99   1 min  running
+88  30   no fat    111  15 min  running
+89  30   no fat    150  30 min  running
 
+[90 rows x 5 columns]
+```
 
+The `DataFrame` can be updated in place:
 
+```python
+In [139]: exercise = exercise.drop('Unnamed: 0', axis='columns')
+```
 
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">exercise</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(90, 5)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: 'id', 'diet', 'pulse', 'time', 'kind'], dtype='object'</td>
+  </tr>             
+</table>
 
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="6" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">exercise - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">id</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">diet</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">pulse</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">time</td>  
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">kind</td>                           
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th> 
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">85</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">1 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>  
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">85</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">15 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>  
+    <td style="padding: 8px; background-color: #a33c46; color: #ffffff;">1</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c5f; color: #ffffff;">88</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">30 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>    
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th> 
+    <td style="padding: 8px; background-color: #a33c4e; color: #ffffff;">2</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c65; color: #ffffff;">90</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">1 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #a33c4e; color: #ffffff;">3</td> 
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">low fat</td>
+    <td style="padding: 8px; background-color: #a33c6b; color: #ffffff;">902</td>            
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">30 min</td>   
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">rest</td>    
+  </tr>      
+</table>
 
+Note this dataset has `90` rows in the `Index` and each `Series` contains no null values:
 
+```python
+In [140]: exercise.info()
+Out[140]:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 90 entries, 0 to 89
+Data columns (total 5 columns):
+ #   Column  Non-Null Count  Dtype   
+---  ------  --------------  -----   
+ 0   id      90 non-null     int64   
+ 1   diet    90 non-null     category
+ 2   pulse   90 non-null     int64   
+ 3   time    90 non-null     category
+ 4   kind    90 non-null     category
+dtypes: category(3), int64(2)
+memory usage: 2.2 KB
+```
 
+Two of the rows are numeric and three are categorical and descriptive statistics can be applied to the numeric `Series`:
 
+```python
+In [141]: exercise.describe()
+Out[141]: 
+              id       pulse
+count  90.000000   90.000000
+mean   15.500000   99.700000
+std     8.703932   14.858471
+min     1.000000   80.000000
+25%     8.000000   90.250000
+50%    15.500000   96.000000
+75%    23.000000  103.000000
+max    30.000000  150.000000
+```
 
+A categorical plot typically examines the distribution of a numeric `Series` `x`, in this case the `'pulse'` measured and compares the distribution in response to a categorical `Series` `y`, in this case, the `'kind'` of exercise. The `hue` parameter can be used to compare the distribution of some categorical `Series`, in this case the `'diet'`. The plotting functions `stripplot`, `swarmplot`, `boxplot` and `violinplot` are `Axes`-level distribution functions. The `stripplot` and `swarmplot` are both categorical scatter plots, however in the `swarmplot` there is a slight difference in the way the datapoints are laid out in order to make the trend more visible:
 
+```python
+In [142]: fig, ax = plt.subplots(1, 2)
+        : sns.stripplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[0])
+        : sns.swarmplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[1]);
+```
 
-The custom third-party module ```load_dataset``` will also be imported. This will download all the example datasets giving a local cached copy. This reduces the chances of ```URLError: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>``` displaying on Windows machines when attempting to use the ```load_dataset``` function. 
+<img src='./images/img_066.png' alt='img_066' width='600'/>
 
+The `boxplot` visually summarises the physical distribution using a mean value, enclosed in an inner quartile range box that has whiskers which span out to the minimum and maximum values (excluding outliers). The inner quartile range contains the closest 50 % of values to the mean (1 standard deviation). The `violinplot` is similar but makes a KDE instead of a box. Normally the KDE is mirrored around the top and bottom of the box however when there are only two categories it can be split as shown:
 
+```python
+In [143]: fig, ax = plt.subplots(2, 2)
+        : sns.boxplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[0, 0])
+        : sns.violinplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[0, 1])
+        : sns.swarmplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[1, 0])
+        : sns.violinplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[1, 1], split=True);
+```
 
+<img src='./images/img_067.png' alt='img_067' width='600'/>
 
+The `barplot` and `pointplot` are other simple representations of the distribution. The `barplot` is typically projected from a mean value to the origin. It also has an errorbar of 1 standard deviation. The `pointplot` essentially just plots the mean value as a point and shows the standard deviation around it:
 
+```python
+In [144]: fig, ax = plt.subplots(1, 2)
+        : sns.barplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[0])
+        : sns.pointplot(data=exercise, x='pulse', y='kind', hue='diet', ax=ax[1])
+```
+
+<img src='./images/img_068.png' alt='img_068' width='600'/>
+
+The `Axes`-level `stripplot`, `swarmplot`, `boxplot`, `violinplot`, `pointplot` and `barplot` and complemented by the `Figure`-level `catplot` which returns a `FacetGrid`:
+
+```python
+In [145]: fg = sns.catplot(data=exercise, x='pulse', y='kind', hue='diet', col='time')
+```
+
+<img src='./images/img_069.png' alt='img_069' width='800'/>
+
+In the plot above, the greatest comparison between the hue parameter `'diet'` is seen when `'running'` at a `'time'` of 30 minutes. The `catplot` defaults to a strip plot and the
+`'kind'` parameter can be used to change this plot to a different plot type, for example to `'swarm'`, `'box'`, `'violin'`:
+
+```python
+In [146]: fg = sns.catplot(data=exercise, x='pulse', y='kind', hue='diet', col='time', kind='swarm')
+```
+
+<img src='./images/img_070.png' alt='img_070' width='800'/>
+
+```python
+In [147]: fg = sns.catplot(data=exercise, x='pulse', y='kind', hue='diet', col='time', kind='box')
+```
+
+<img src='./images/img_071.png' alt='img_071' width='800'/>
+
+```python
+In [148]: fg = sns.catplot(data=exercise, x='pulse', y='kind', hue='diet', col='time', kind='violin')
+```
+
+<img src='./images/img_072.png' alt='img_072' width='800'/>
+
+The other `kind` of plots are `'boxen'`, `'bar'`, `'count'`, and `'point'`.
+
+## Matrix Plots (sns.matrix)
+
+If the `'iris'` data is re-examined:
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>  
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">iris</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">DataFrame</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(150, 5)</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">Column names: sepal_length, sepal_width, petal_length, petal_height, species</td>
+  </tr>             
+</table>
+
+<table style="width: 40%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="6" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">flights - DataFrame</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index</th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sepal_length</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sepal_width</td>     
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">petal_length</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">petal_height</td> 
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">species</td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #a33c75; color: #ffffff;">5.1</td>
+    <td style="padding: 8px; background-color: #833cab; color: #ffffff;">3.5</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">1.4</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #a33c6a; color: #ffffff;">4.9</td>
+    <td style="padding: 8px; background-color: #a33c9f; color: #ffffff;">3.0</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">1.4</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>  
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #a33c5e; color: #ffffff;">4.7</td>
+    <td style="padding: 8px; background-color: #9e3cab; color: #ffffff;">3.2</td>
+    <td style="padding: 8px; background-color: #a33c51; color: #ffffff;">1.3</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #a33c58; color: #ffffff;">4.6</td>
+    <td style="padding: 8px; background-color: #a33ca8; color: #ffffff;">3.1</td>
+    <td style="padding: 8px; background-color: #a33c58; color: #ffffff;">1.5</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>    
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #a33c70; color: #ffffff;">5.0</td>
+    <td style="padding: 8px; background-color: #7a3cab; color: #ffffff;">3.6</td>
+    <td style="padding: 8px; background-color: #a33c55; color: #ffffff;">1.4</td>
+    <td style="padding: 8px; background-color: #a33c4f; color: #ffffff;">0.2</td>         
+    <td style="padding: 8px; background-color: #252526; color: #ffffff;">setosa</td>                     
+  </tr>         
+</table>
+
+Notice that it has 4 numeric `Series` and one categorical `Series`, the categorical `Series` `'species'` can be dropped and this allows the correlation of each numeric `Series` to be examined:
+
+```python
+In [149]: iris.drop('species', axis='columns').corr()
+Out[149]: 
+              sepal_length  sepal_width  petal_length  petal_width
+sepal_length      1.000000    -0.117570      0.871754     0.817941
+sepal_width      -0.117570     1.000000     -0.428440    -0.366126
+petal_length      0.871754    -0.428440      1.000000     0.962865
+petal_width       0.817941    -0.366126      0.962865     1.000000
+```
+
+A perfect correlation of `1` or `-1` and essentially means the two `Series` display the same information and if the correlation is `0`, then the 2 `Series` are completely at random. 
+
+A `Series` correlated with itself is always `1`. Note that `'petal_width'` and `'petal_length'` have a high correlation of `0.96`. If the `pairplot` is re-examined:
+
+```python
+In [150]: pg = sns.pairplot(data=iris, hue='species', corner=True) 
+```
+
+<img src='./images/img_073.png' alt='img_073' width='800'/>
+
+Notice the data shown in red, is largely replicated. While these two parameters may at first appear to be the best when it comes to distinguishing the three species, the essential overlap of the 1d plots and the high correlation essentially means the two features being used to make the 2d plot is pretty much a duplication. Having `x='sepal_width'` and `y='petal_width'` with a correlation of `-0.367` is a better choice as the features are not highly correlated and therefore give supplementary information in 2 dimensions. When `x='sepal_length'` and `y='sepal_width'`, the correlation `-0.118` is very low however the `'sepal_length'` does not seem to clearly distinguish each of the three `Species`.
+
+The correlation is often viewed as a heatmap:
+
+```python
+In [151]: fig, ax = plt.subplots()
+        : sns.heatmap(iris.drop('species', axis='columns').corr());
+```
+
+<img src='./images/img_074.png' alt='img_074' width='600'/>
+
+This can optionally be annotated:
+
+```python
+In [152]: fig, ax = plt.subplots()
+        : sns.heatmap(iris.drop('species', axis='columns').corr(), annot=True);
+```
+
+<img src='./images/img_075.png' alt='img_075' width='600'/>
+
+## JointGrid
+
+If the following 2d `scatterplot` is made `x='sepal_width'` and `y='petal_width'` 
+
+```python
+In [153]: fig, ax = plt.subplots()
+        : sns.scatterplot(data=iris, x='sepal_width', hue='species');
+```
+
+<img src='./images/img_076.png' alt='img_076' width='600'/>
+
+It can be supplemented with the following 1d `histplot` where `x='sepal_width'`:
+
+```python
+In [154]: fig, ax = plt.subplots()
+        : sns.histplot(data=iris, x='sepal_width', hue='species');
+```
+
+<img src='./images/img_077.png' alt='img_077' width='600'/>
+
+And another 1d `histplot` where `y='petal_width'`:
+
+```python
+In [155]: fig, ax = plt.subplots()
+        : sns.histplot(data=iris, y='petal_width', hue='species');
+```
+
+<img src='./images/img_078.png' alt='img_078' width='600'/>
+
+These can be plotted together using:
+
+```python
+In [156]: fig, ax = plt.subplots(2, 2)
+        : sns.histplot(data=iris, x='sepal_width', hue='species', ax=ax[0, 0], legend=False)
+        : # None
+        : sns.scatterplot(data=iris, x='sepal_width', y='petal_width', hue='species', ax=ax[1, 0], legend=False)
+        : sns.histplot(data=iris, y='petal_width', hue='species', ax=ax[1, 1], legend=False);
+```
+
+<img src='./images/img_079.png' alt='img_079' width='600'/>
+
+The `JointGrid` class is a better way of implementing the plot above. The `JoinGrid` class is typically instantiated directly, supplying the `DataFrame` to `data` and the `Series` to `'x'` and `'y'`:
+
+```python
+In [157]: jg = sns.JointGrid(data=penguins, x='bill_length_mm', y='bill_depth_mm', hue='species')
+```
+
+<img src='./images/img_080.png' alt='img_080' width='600'/>
+
+The identifiers for the `JointGGrid` class are:
+
+```python
+In [157]: jg.
+# 🔗 Data and Layout
+# - fig                         # The Matplotlib figure containing the plot.
+# - ax_joint                    # The main plotting axis for the joint plot.
+# - ax_marg_x                   # The axis for the x-axis marginal plot.
+# - ax_marg_y                   # The axis for the y-axis marginal plot.
+# - data                        # The dataset used to create the JointGrid.
+# - hue_names                   # Names of the hue variable categories.
+# - hue_kws                     # Dictionary of keyword arguments for the hue variable.
+# - legend                      # Returns the legend instance.
+
+# 🔗 Plotting Methods
+# - plot                        # Generic method for mapping functions to the grid.
+# - plot_joint                  # Maps a function to the main joint plot.
+# - plot_marginals              # Maps a function to the marginal plots.
+# - refline                     # Adds reference lines to the plot.
+# - set                         # Sets axis labels and limits.
+# - set_axis_labels             # Sets labels for the x and y axes.
+# - set_xlabels                 # Sets x-axis labels.
+# - set_ylabels                 # Sets y-axis labels.
+# - set_xticklabels             # Sets x-axis tick labels.
+# - set_yticklabels             # Sets y-axis tick labels.
+# - add_legend                  # Adds a legend to the plot.
+# - savefig                     # Saves the figure to a file.
+
+# 🔗 Utility Methods
+# - apply                       # Applies a function to the entire grid.
+# - pipe                        # Allows method chaining using a function.
+# - tick_params                 # Modifies tick properties.
+# - tight_layout                # Adjusts subplot parameters for better layout.
+```
+
+The `plot_joint` can be used to select a 2d plot type to use for the main plot:
+
+```python
+In [157]: jg.plot_joint(sns.scatterplot);
+```
+
+<img src='./images/img_081.png' alt='img_081' width='600'/>
+
+The `plot_marginals` can be used to select a 1d plot type for the marginal plots:
+
+```python
+In [158]: jg.plot_marginals(sns.histplot);
+```
+
+<img src='./images/img_082.png' alt='img_082' width='600'/>
+
+The `plot` function combines these together:
+
+```python
+In [159]: jg = sns.JointGrid(data=penguins, x='bill_length_mm', y='bill_depth_mm', hue='species')
+        : jg.plot(sns.kdeplot, sns.kdeplot);
+```
+
+<img src='./images/img_083.png' alt='img_083' width='600'/>
+
+Each `Axes` in the `JointGrid` can be selected:
+
+```python
+In [160]: jg.ax_joint
+Out[160]: <Axes: xlabel='bill_length_mm', ylabel='bill_depth_mm'>
+
+In [161]: jg.ax_marg_x
+Out[161]: <Axes: xlabel='bill_length_mm', ylabel='Density'>
+
+In [162]: jg.ax_marg_y
+Out[162]: <Axes: xlabel='Density', ylabel='bill_depth_mm'>
+```
+
+The method `move_legned` can be used to select the legend from the `Axes` instance `ax_joint` and move the legend to the `'lower left'` of the `Axes`:
+
+```python
+In [163]: sns.move_legend(jg.ax_joint, 'lower left')
+```
+
+<img src='./images/img_084.png' alt='img_084' width='600'/>
+
+[Return to Python Tutorials](../readme.md)

@@ -317,12 +317,10 @@ In [2]: np.ndarray.
 #     - all                       : Checks if all elements are True along the specified axis.
 #     - any                       : Checks if any elements are True along the specified axis.
 #     - sum                       : Returns the sum of ndarray elements along the specified axis.
-
 #     - mean                      : Computes the arithmetic mean along the specified axis.
 #     - var                       : Computes the variance along the specified axis.
 #     - std                       : Computes the standard deviation along the specified axis.
 #     - ptp                       : Peak-to-peak (max - min) value along an axis.
-
 
 # 🔗 Supplementary Numerical Identifiers
 #     - round                      : Rounds the ndarray elements to the given number of decimals.
@@ -1087,7 +1085,7 @@ In [24]: pd.Index.
 #     - __subclasshook__           : Defines custom behavior for determining class inheritance.
 
 # 🔗 Casting Identifiers
-#     - tolist                     : Converts the Index to a list.
+#     - to_list                    : Converts the Index to a list.
 #     - to_series                  : Converts the Index to a pandas Series.
 #     - to_numpy                   : Converts the Index to a NumPy array.
 #     - to_flat_index              : Converts the Index to a flat Index object.
@@ -1218,7 +1216,7 @@ And viewed on the Variable Explorer:
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">month</td>
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Series of int64</td>
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(12,)</td>
-    <td style="padding: 8px; background-color: #642260; color: #ffffff;">index=[2025-01-01, 2025-02-01, 2025-03-01, ...], data=[1, 2, 3, ...], name=month_as_int</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">index=[2025-01-01 2025-02-01 2025-03-01, ...], data=[1  2  3  ...], name=month_as_int</td>
   </tr>             
 </table>
 
@@ -1295,7 +1293,7 @@ In [27]: month = pd.Series(data=np.arange(1, 13),
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">month</td>
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Series of int64</td>
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(12,)</td>
-    <td style="padding: 8px; background-color: #642260; color: #ffffff;">index=[0, 1, 2, ...], data=[1, 2, 3, ...], name=month_as_int</td>
+    <td style="padding: 8px; background-color: #642260; color: #ffffff;">index=[ 0  1  2  ...], data=[ 1  2  3  ...], name=month_as_int</td>
   </tr>             
 </table>
 
@@ -1391,7 +1389,7 @@ In [28]: pd.Series.
 #     - __subclasshook__           : Defines custom behavior for determining class inheritance.
 
 # 🔗 Casting Identifiers
-#     - tolist                     : Converts the Series to a list.
+#     - to_list                    : Converts the Series to a list.
 #     - to_frame                   : Converts the Series to a DataFrame.
 #     - to_numpy                   : Converts the Series to a NumPy array.
 #     - to_clipboard               : Copies the Series to the system clipboard.
@@ -1424,9 +1422,20 @@ In [28]: pd.Series.
 #     - values                     : Returns the underlying values in the Series.
 
 # 🔗 Supplementary Collection Identifiers 
+#     - pop                        : Removes and returns a column from the DataFrame.
+#     - info                       : Prints a concise summary of the Series, including dtype, memory usage, and non-null values.
+#     - describe                   : Generates descriptive statistics for the Series, such as count, mean, min, and max.
 #     - align                      : Aligns two Series on their indexes.
 #     - combine                    : Combines two Series based on some operation.
 #     - combine_first              : Combines two Series using the first non-null value.
+
+# 🔗 Reshaping and Reindexing
+#     - unstack                    : Reshapes the Series to a DataFrame by unstacking its index.
+#     - reset_index                : Resets the index of the Series, turning it into a DataFrame.
+#     - reorder_levels             : Reorders the levels of a MultiIndex Series.
+#     - squeeze                    : Reduces the dimensions of the Series.
+#     - drop_duplicates            : Drops duplicate values from the Series.
+#     - reorder_levels             : Reorders the levels of a MultiIndex Series.
 
 # 🔗 Sorting, Searching, and Counting (shared with Index)
 #     - argmin                     : Returns the index of the minimum value.
@@ -1466,18 +1475,18 @@ In [28]: pd.Series.
 #     - skew                       : Returns the skewness of the values in the Series.
 #     - kurt, kurtosis             : Returns the kurtosis of the values in the Series.
 
-# 🔗 Accessors
-#     - str                        : Provides access to string-specific methods for string-like Series.
-#     - cat                        : Provides access to categorical-specific methods for string-like Series.
-#     - dt                         : Provides access to datetime-specific methods for datetime-like Series.
-#     - plot                       : Provides access to plotting methods.
-
 # 🔗 Missing Data and Filling
 #     - isna, isnull               : Checks if elements in the Series are missing (NaN).
 #     - notna, notnull             : Checks if elements in the Series are not missing (non-NaN).
 #     - dropna                     : Drops the missing values from the Series.
 #     - fillna                     : Fills the missing values in the Series.
 #     - ffill, bfill               : Forward fill or backward fill for missing values.
+
+# 🔗 Accessors
+#     - str                        : Provides access to string-specific methods for string-like Series.
+#     - cat                        : Provides access to categorical-specific methods for string-like Series.
+#     - dt                         : Provides access to datetime-specific methods for datetime-like Series.
+#     - plot                       : Provides access to plotting methods.
 
 # 🔗 Window and Resampling
 #     - rolling                    : Provides a moving window view for the Series.
@@ -1499,19 +1508,9 @@ In [28]: pd.Series.
 #     - between_time               : Retrieves data between specific times of day.
 #     - tz_convert, tz_localize    : Converts or localizes time zones for a datetime Series.
 
-# 🔗 Reshaping and Reindexing
-#     - unstack                    : Reshapes the Series to a DataFrame by unstacking its index.
-#     - reset_index                : Resets the index of the Series, turning it into a DataFrame.
-#     - reorder_levels             : Reorders the levels of a MultiIndex Series.
-#     - squeeze                    : Reduces the dimensions of the Series.
-#     - drop_duplicates            : Drops duplicate values from the Series.
-#     - reorder_levels             : Reorders the levels of a MultiIndex Series.
-
 # 🔗 More Utilities
-#     - pop                        : Removes and returns an element from the Series.
 #     - pipe                       : Allows chaining operations using a function pipeline.
 #     - sample                     : Randomly samples from the Series.
-
 #     - memory_usage               : Returns the memory usage of the Series.
 #     - flags                      : Access to the flags of the Series (metadata).
 ```
@@ -2098,13 +2097,26 @@ In [56]: pd.DataFrame.
 #     - items                      : Returns an iterator yielding column names and Series objects.
 #     - columns                    : Accesses or modifies the column names.
 #     - shape                      : Returns the shape of the DataFrame (rows, columns).
+#     - size                       : Returns the total number of elements (rows * columns) in the DataFrame.
+#     - ndim                       : Returns the number of dimensions (always 2 for DataFrames).
 
 # 🔗 Supplementary Collection Identifiers 
+#     - pop                        : Removes and returns a column from the DataFrame.
+#     - info                       : Prints a concise summary of each Series, including dtype, memory usage, and non-null values.
+#     - describe                   : Generates descriptive statistics for each Series, such as count, mean, min, and max.
 #     - align                      : Aligns two DataFrames on their indexes.
 #     - merge                      : Merges two DataFrames based on the keys.
 #     - join                       : Joins two DataFrames on their indexes or keys.
 #     - combine_first              : Combines two DataFrames, taking the first non-null value.
 #     - combine                    : Combines two DataFrames based on some operation.
+
+# 🔗 Reshaping and Reindexing
+#     - unstack                    : Reshapes the DataFrame to a Series by unstacking its index.
+#     - reset_index                : Resets the index of the DataFrame, turning it into a regular column.
+#     - reorder_levels             : Reorders the levels of a MultiIndex DataFrame.
+#     - squeeze                    : Reduces the dimensions of the DataFrame.
+#     - drop_duplicates            : Drops duplicate rows from the DataFrame.
+#     - stack                      : Converts columns to rows (creates a Series).
 
 # 🔗 Sorting, Searching, and Counting (shared with pd.Series)
 #     - sort_index                 : Sorts the DataFrame by index (or row labels).
@@ -2118,8 +2130,8 @@ In [56]: pd.DataFrame.
 
 # 🔗 Arithmetic and Comparison Identifiers
 #     - abs                        : Returns the absolute values of the DataFrame (like Series).
-#     - add, sub, mul, div          : Arithmetic operations between DataFrames or Series.
-#     - eq, ne, lt, le, gt, ge      : Element-wise comparison (==, !=, <, <=, >, >=).
+#     - add, sub, mul, div         : Arithmetic operations between DataFrames or Series.
+#     - eq, ne, lt, le, gt, ge     : Element-wise comparison (==, !=, <, <=, >, >=).
 #     - radd, rsub, rmul, rdiv     : Reflective arithmetic operations (reverse order).
 #     - compare                    : Compares two DataFrames element-wise.
 
@@ -2147,40 +2159,17 @@ In [56]: pd.DataFrame.
 #     - fillna                     : Fills the missing values in the DataFrame.
 #     - ffill, bfill               : Forward fill or backward fill for missing values.
 
-# 🔗 Grouping and Aggregation
-#     - groupby                    : Groups the DataFrame by some criteria.
-#     - aggregate, agg             : Aggregates the DataFrame using a specified function.
-#     - transform                  : Transforms the DataFrame using a specified function.
-#     - corrwith                   : Computes correlation with another DataFrame or Series.
-#     - pivot                       : Pivots data in the DataFrame.
-#     - pivot_table                 : Creates a pivot table from the DataFrame.
-#     - apply                      : Applies a function along a DataFrame axis (rows or columns).
-#     - applymap                   : Applies a function element-wise to the entire DataFrame.
-#     - melt                        : Melts a DataFrame from wide format to long format.
+# 🔗 Accessors
+#     - str                        : Provides access to string-specific methods for string-like Series.
+#     - cat                        : Provides access to categorical-specific methods for string-like Series.
+#     - dt                         : Provides access to datetime-specific methods for datetime-like Series.
+#     - plot                       : Provides access to plotting methods.
 
-# 🔗 String Methods
-#     - str                        : Provides access to string-specific methods for string-like columns.
-
-# 🔗 Window and Resampling
-#     - rolling                    : Provides a moving window view for the DataFrame.
-#     - ewm                        : Exponentially weighted functions.
-#     - expanding                  : Expanding window view for the DataFrame.
-#     - resample                   : Resamples the DataFrame (for time series).
-#     - shift                      : Shifts the DataFrame by a specified number of periods.
-#     - diff                       : Computes the difference between consecutive elements of the DataFrame.
-
-# 🔗 Reshaping and Reindexing
-#     - unstack                    : Reshapes the DataFrame to a Series by unstacking its index.
-#     - reset_index                : Resets the index of the DataFrame, turning it into a regular column.
-#     - reorder_levels             : Reorders the levels of a MultiIndex DataFrame.
-#     - squeeze                    : Reduces the dimensions of the DataFrame.
-#     - drop_duplicates            : Drops duplicate rows from the DataFrame.
-#     - stack                      : Converts columns to rows (creates a Series).
-
-# 🔗 Transformation
-#     - transpose                  : Transposes the DataFrame (rows become columns).
-#     - transform                  : Transforms the data in the DataFrame using a function.
-#     - pipe                       : Allows chaining operations using a function pipeline.
+# 🔗 Indexing and Slicing Accessors
+#     - loc                        : Access a group of rows and columns by labels.
+#     - iloc                       : Access a group of rows and columns by integer positions.
+#     - at                         : Access a single value for a row/column pair by label.
+#     - iat                        : Access a single value for a row/column pair by integer position.
 
 # 🔗 Data Input/Output
 #     - to_clipboard               : Copies the DataFrame to the system clipboard.
@@ -2195,22 +2184,34 @@ In [56]: pd.DataFrame.
 #     - to_parquet                 : Converts the DataFrame to Parquet format.
 #     - to_records                 : Converts the DataFrame to a list of records (similar to a dict of dicts).
 
+# 🔗 Grouping and Aggregation
+#     - groupby                    : Groups the DataFrame by some criteria.
+#     - aggregate, agg             : Aggregates the DataFrame using a specified function.
+#     - transform                  : Transforms the DataFrame using a specified function.
+#     - corrwith                   : Computes correlation with another DataFrame or Series.
+#     - pivot                      : Pivots data in the DataFrame.
+#     - pivot_table                : Creates a pivot table from the DataFrame.
+#     - apply                      : Applies a function along a DataFrame axis (rows or columns).
+#     - applymap                   : Applies a function element-wise to the entire DataFrame.
+#     - melt                       : Melts a DataFrame from wide format to long format.
+
+# 🔗 Window and Resampling
+#     - rolling                    : Provides a moving window view for the DataFrame.
+#     - ewm                        : Exponentially weighted functions.
+#     - expanding                  : Expanding window view for the DataFrame.
+#     - resample                   : Resamples the DataFrame (for time series).
+#     - shift                      : Shifts the DataFrame by a specified number of periods.
+#     - diff                       : Computes the difference between consecutive elements of the DataFrame.
+
+# 🔗 Transformation
+#     - transpose                  : Transposes the DataFrame (rows become columns).
+#     - transform                  : Transforms the data in the DataFrame using a function.
+#     - pipe                       : Allows chaining operations using a function pipeline.
+
 # 🔗 Other Utilities
-#     - pop                        : Removes and returns a column from the DataFrame.
 #     - sample                     : Randomly samples from the DataFrame.
-#     - plot                       : Plots the DataFrame (if applicable).
 #     - memory_usage               : Returns the memory usage of the DataFrame.
 #     - flags                      : Access to the flags of the DataFrame (metadata).
-
-# 🔗 Indexing and Slicing
-#     - loc                        : Access a group of rows and columns by labels.
-#     - iloc                       : Access a group of rows and columns by integer positions.
-#     - at                         : Access a single value for a row/column pair by label.
-#     - iat                        : Access a single value for a row/column pair by integer position.
-
-# 🔗 More Utilities
-#     - size                       : Returns the total number of elements (rows * columns) in the DataFrame.
-#     - ndim                       : Returns the number of dimensions (always 2 for DataFrames).
 ```
 
 In a `DataFrame` data is normally manipulated by updating a `Series`, the `Collection` based identifiers of the `DataFrame` class are typically used to access a `Series`. These will be explored in more detail later.

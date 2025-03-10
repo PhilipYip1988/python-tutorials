@@ -2452,7 +2452,7 @@ In [33]: fig2, ax2 = plt.subplots(2, 1)
 
 <table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax2 - numpy object array</th>
+    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax2 - numpy Axes array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index ▲</th>
@@ -2493,7 +2493,7 @@ In [34]: fig3, ax3 = plt.subplots(1, 3)
 
 <table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax3 - numpy object array</th>
+    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax3 - numpy Axes array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index ▲</th>
@@ -2531,7 +2531,7 @@ In [35]: fig4, ax4 = plt.subplots(2, 3)
   </tr>      
   <tr>
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">ax4</td>
-    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of int64</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">Array of Axes</td>
     <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2, 3)</td>
     <td style="padding: 8px; background-color: #705693; color: #ffffff;">[[ &lt;Axes: &gt;  &lt;Axes: &gt;  &lt;Axes: &gt;]<br>&nbsp;[ &lt;Axes: &gt;  &lt;Axes: &gt;  &lt;Axes: &gt;]]</td>
   </tr>                  
@@ -2539,7 +2539,7 @@ In [35]: fig4, ax4 = plt.subplots(2, 3)
 
 <table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
   <tr>
-    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax4 - numpy object array</th>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">ax4 - numpy Axes array</th>
   </tr>
   <tr>
     <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index ▲</th>
