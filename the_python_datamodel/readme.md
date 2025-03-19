@@ -8276,7 +8276,7 @@ In [61]: hash(3.14)
 Out[61]: 322818021289917443
 ```
 
-With exception to `__new__` and `__new__` which recall are used to construct the instance `self` and provide it with instance data during instantiation, each instance method in an immutable class returns a new instance (of the same class or of another class).
+With exception to `__new__` and `__init__` which recall are used to construct the instance `self` and provide it with instance data during instantiation, each instance method in an immutable class returns a new instance (of the same class or of another class).
 
 Immutable instances can be used as `keys` in a `dict`. The most common keys used are `str` instances:
 

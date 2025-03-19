@@ -2692,6 +2692,8 @@ Out[26]: (7+4j)
 In [27]: exit
 ```
 
+The Python standard library has the `fractions`, `math`, `cmath`, `decimal`, `random`, `statistics` and `datetime` modules which compartmentalise supplementary numeric operations. The `math`, `cmath`, `random` and `statistics` module use a `Collection` of numeric values. The next tutorial covers the concept behind a `Collection` which may be useful to review before looking at these modules.
+
 ## math Module
 
 A number of additional numeric identifiers are compartmentalised into the mathemematics module `math`, some fo these identifiers that were closely related to `float` rounding deviations or closely associated with a `builtins` function or data model operator have already been explored:
@@ -5185,7 +5187,1687 @@ Out[123]:
 
 ## random Module
 
+The `random` module is used to select a pseudo random number from a `Collection` such as a `list` or an underlying distribution. It can be imported using:
+
+```python
+In [124]: import random
+```
+
+Its identifiers can be viewed by inputting:
+
+```python
+In [125]: random.
+# 🔗 Core Random Number Generation
+# - seed                        # Initializes the random number generator.
+# - getstate                    # Returns the internal state of the generator.
+# - setstate                    # Restores the generator’s state.
+
+# 🔗 Choice-Based Randomness
+# - choice                      # Returns a random element from a sequence.
+# - choices                     # Returns multiple random elements with replacement.
+# - sample                      # Returns a subset of elements without replacement.
+# - shuffle                     # Shuffles a list in place.
+
+# 🔗 Uniform Distributions
+# - random                      # Returns a random float in the range [0.0, 1.0).
+# - uniform                     # Returns a random float in the range [a, b].
+# - randint                     # Returns a random integer in the range [a, b].
+# - randrange                   # Returns a random integer from a range with a step.
+# - randbytes                   # Returns a random bytes object of the given length.
+# - getrandbits                 # Returns a random integer with k bits.
+
+# 🔗 Other Statistical Distributions
+# - triangular                  # Returns a random float from a triangular distribution.
+# - vonmisesvariate             # Returns a random float from a von Mises distribution.
+# - paretovariate               # Returns a random float from a Pareto distribution.
+
+# 🔗 Normal and Related Distributions
+# - normalvariate, gauss        # Returns a random float from a normal distribution.
+# - lognormvariate              # Returns a random float from a log-normal distribution.
+# - expovariate                 # Returns a random float from an exponential distribution.
+# - gammavariate                # Returns a random float from a gamma distribution.
+# - betavariate                 # Returns a random float from a beta distribution.
+# - weibullvariate              # Returns a random float from a Weibull distribution.
+
+# 🔗 System-Based Randomness
+# - SystemRandom                # Cryptographically secure random number generator.
+```
+
+The random selection is randomly computer generated and is not really random. This is known as pseudo-random. If the following `list` instance `nums` is instantiated:
+
+```python
+In [125]: nums = [1, 3, 5, 7, 9]
+```
+
+The pseudo-random result can be reproduced by using the function `seed` and setting the input argument `a` usually to an integer, in this case `0`:
+
+```python
+In [126]: random.seed(0)
+```
+
+Each integer maps to a state, which under the hood uses a sequence of bytes used to generate random numbers. If the function `choice` is used three times, the following three numbers are returned:
+
+```python
+In [127]: random.choice(nums)
+Out[127]: 7
+
+In [128]: random.choice(nums)
+Out[128]: 7
+
+In [129]: random.choice(nums)
+Out[129]: 1
+```
+
+If the `seed` function is reset to an integer of `0` and another three choices are made, these will be the same three choices as before:
+
+```python
+In [130]: random.choice(nums)
+Out[130]: 7
+
+In [131]: random.choice(nums)
+Out[131]: 7
+
+In [132]: random.choice(nums)
+Out[132]: 1
+```
+
+The current state can be retrieved and assigned to a variable:
+
+```python
+In [133]: state = random.getstate()
+
+In [134]: random.choice(nums)
+Out[134]: 5
+
+In [135]: random.choice(nums)
+Out[135]: 9
+
+In [136]: random.choice(nums)
+Out[136]: 7
+```
+
+This state can be restored from the variable and if three random choices are made, they will be the the same as before:
+
+```python
+In [137]: random.setstate(state)
+
+In [138]: random.choice(nums)
+Out[138]: 5
+
+In [139]: random.choice(nums)
+Out[139]: 9
+
+In [140]: random.choice(nums)
+Out[140]: 7
+```
+
+If the seed is changed to a different integer, a different state is used and therefore using `choice` will generate different numbers:
+
+```python
+In [141]: random.seed(1)
+
+In [142]: random.choice(nums)
+Out[142]: 3
+
+In [143]: random.choice(nums)
+Out[143]: 9
+```
+
+If the `seed` is set to an integer of `0`:
+
+```python
+In [144]: random.seed(0)
+```
+
+The function `getstate` can be used to get the `state`:
+
+```python
+In [145]: state = random.getstate()
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">state</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">tuple</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</td>
+    <td style="padding: 8px; background-color: #3A3586; color: #ffffff;">3, (2147483648, 766982754, 497961170, 3952298588, 2331775348, ...), None)</td> <!-- Tuple background -->
+  </tr>
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">archive - tuple (3 elements)</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</td> <!-- Value background -->
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">tuple</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">625</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(2147483648, 766982754, 497961170, 3952298588, 2331775348, ...)</td> <!-- Value background -->
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">NoneType</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">None</td> <!-- Value background -->
+  </tr>
+</table>
+
+The first element in the `tuple` gives `3` which is the version of the random number generator state. The second element is a `tuple` representing the internal state (for MT19937), which is an internal buffer of `625` integers. The third element is `None` because this is only used for older versions of the random number generator state. When a random function is used, the internal buffer changes:
+
+```python
+In [146]: random.choice(nums)
+Out[146]: 7
+
+In [147]: state = random.getstate()
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">state</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">tuple</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</td>
+    <td style="padding: 8px; background-color: #3A3586; color: #ffffff;">3, (1372342863, 3221959423, 4180954279, 3990540705, 1021773023, ...), None)</td> <!-- Tuple background -->
+  </tr>
+</table>
+
+<table style="width: 80%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">archive - tuple (3 elements)</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Index ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">0</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">3</td> <!-- Value background -->
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">tuple</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">625</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">(1372342863, 3221959423, 4180954279, 3990540705, 1021773023...)</td> <!-- Value background -->
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">2</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">NoneType</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">None</td> <!-- Value background -->
+  </tr>
+</table>
+
+The function `choices` can be used to make multiple choices from a population, the number of choices is determined by specifying the keyword argument `k` which has a default value of `1` and therefore behaves similar to `choice` by default:
+
+```python
+In [148]: random.seed(0)
+        : random.choices(nums, k=1)
+Out[148]: [9]        
+```
+
+If `k=10`, `10` random numbers are generated, note the first number is `9` because the `seed` was reset to an integer of `0`:
+
+```python
+In [149]: random.seed(0)
+        : random.choices(nums, k=10)
+Out[149]: [9, 7, 5, 3, 5, 5, 7, 3, 5, 5]
+```
+
+If `k=626`, `626` random numbers are generated which is larger than the number of bytes in the buffer. Once the buffer is exhausted the generator re-seeds itself using an internal transformation (called "twisting") allowing an infinite sequence of numbers to be generated:
+
+```python
+In [150]: random.choices(nums, k=626)
+Out[150]: 
+[9, 7, 5, 3, 5, 5, 7, 3, 5, 5, 9, 5, 3, 7, 7, 3, 9, 9, 9, 9, 3, 7, 9, 7, 5, 1, 5, 7, 9, 9, 5, 9, 3, 9, 5, 1, 7, 3, 9, 7, 1, 5, 9, 3, 3, 9, 1, 5, 3, 9, 9, 5, 1, 3, 5, 9, 1, 5, 7, 5, 9, 5, 9, 7, 5, 5, 5, 3, 5, 3, 1, 1, 7, 7, 5, 1, 7, 9, 9, 9, 9, 9, 5, 3, 7, 3, 9, 9, 9, 5, 9, 5, 5, 7, 9, 9, 7, 1, 7, 5, 7, 9, 3, 7, 1, 3, 7, 3, 9, 1, 1, 7, 1, 5, 9, 5, 7, 1, 7, 7, 5, 3, 3, 9, 1, 1, 9, 1, 1, 3, 9, 9, 1, 5, 1, 3, 3, 7, 3, 1, 5, 1, 1, 9, 1, 3, 7, 9, 9, 1, 7, 9, 1, 7, 9, 3, 3, 5, 5, 1, 5, 5, 5, 5, 3, 3, 9, 3, 5, 1, 7, 3, 1, 3, 3, 9, 3, 3, 3, 9, 7, 7, 7, 3, 5, 7, 1, 1, 3, 3, 7, 3, 9, 5, 5, 5, 7, 5, 7, 1, 5, 3, 1, 5, 5, 5, 7, 9, 5, 3, 5, 9, 9, 9, 1, 9, 7, 1, 7, 9, 5, 7, 3, 3, 7, 1, 9, 5, 1, 1, 7, 9, 3, 9, 1, 9, 3, 1, 3, 5, 7, 9, 1, 5, 7, 3, 9, 3, 1, 1, 7, 5, 9, 9, 9, 1, 7, 7, 7, 7, 9, 7, 3, 5, 3, 5, 1, 1, 3, 7, 7, 3, 7, 1, 1, 9, 3, 3, 5, 3, 5, 3, 1, 1, 5, 1, 5, 3, 5, 1, 9, 5, 9, 9, 3, 5, 7, 5, 3, 7, 9, 9, 7, 3, 9, 7, 1, 1, 7, 1, 1, 3, 5, 5, 5, 5, 7, 5, 3, 9, 3, 7, 5, 3, 1, 9, 7, 9, 5, 7, 1, 3, 3, 1, 9, 3, 1, 1, 3, 5, 1, 9, 9, 1, 5, 7, 9, 5, 9, 3, 5, 5, 7, 3, 7, 3, 3, 9, 9, 9, 1, 1, 3, 7, 9, 5, 7, 9, 1, 1, 9, 1, 3, 1, 1, 9, 3, 1, 1, 7, 9, 5, 9, 5, 5, 7, 9, 7, 9, 7, 9, 3, 5, 5, 9, 5, 7, 3, 5, 9, 7, 7, 1, 1, 5, 3, 1, 9, 9, 3, 5, 9, 1, 7, 1, 3, 9, 1, 1, 5, 5, 9, 7, 7, 1, 9, 5, 7, 3, 1, 5, 1, 1, 7, 7, 1, 5, 3, 3, 7, 5, 9, 7, 5, 7, 3, 1, 7, 7, 7, 1, 9, 7, 9, 9, 7, 9, 5, 7, 1, 7, 5, 7, 5, 7, 1, 1, 9, 5, 9, 9, 7, 5, 3, 1, 9, 9, 7, 7, 5, 3, 1, 5, 5, 9, 9, 5, 1, 7, 7, 1, 5, 7, 1, 9, 9, 7, 1, 1, 3, 1, 3, 1, 9, 9, 1, 9, 3, 3, 7, 9, 1, 1, 3, 1, 7, 9, 1, 1, 3, 9, 1, 9, 3, 5, 3, 9, 9, 7, 1, 9, 1, 5, 1, 9, 9, 9, 3, 3, 7, 3, 5, 1, 1, 1, 1, 1, 5, 5, 7, 1, 5, 7, 1, 5, 3, 9, 1, 5, 5, 7, 3, 3, 3, 5, 9, 7, 3, 5, 7, 7, 5, 3, 7, 5, 3, 5, 9, 1, 5, 7, 5, 3, 1, 7, 7, 1, 3, 7, 7, 5, 1, 7, 5, 7, 7, 3, 7, 3, 9, 1, 9, 1, 3, 5, 5, 3, 1, 3, 3, 7, 9, 5, 1, 7, 3, 3, 5, 3, 9, 1, 5, 3, 5, 5, 7]
+```
+
+The `choices` function also makes choices from the population with replacement. With replacement means that once a choice is made, it is still present in the population. It is therefore possible to make `626` choices from a `list` that only has `5` items.
+
+The population above was assumed to be uniformly distributed i.e. each value has the same weight or the same chance of occurring:
+
+```python
+In [151]: nums = [1, 3, 5, 7, 9]
+        : random.seed(0)
+        : random.choices(nums, k=20)
+Out[151]: [9, 7, 5, 3, 5, 5, 7, 3, 5, 5, 9, 5, 3, 7, 7, 3, 9, 9, 9, 9]
+```
+
+Each value can be weighted, using the keyword argument weights and assigning it to a `list` instance of respective weights for each value in the population. For example:
+
+```python
+In [152]: nums = [1, 3, 5, 7, 9]
+        : weights = [5, 2, 1, 1, 1]
+        : random.seed(0)
+        : random.choices(nums, weights=weights, k=20)
+Out[152]: [7, 5, 1, 1, 3, 1, 5, 1, 1, 3, 9, 3, 1, 5, 3, 1, 9, 9, 7, 9]
+```
+
+In the example above the weights are selected so they sum to `10`. The weight of `1` is $\frac{5}{10}$ and therefore out of the `20` choices approximately $20\times\frac{5}{10}$ of them should be `1`. This ratio becomes more apparent when a larger number of choices are made. For convenience the `list` instance output from `k=10000` can be used with the `Counter` class to return a `Counter` instance of counts for each value:
+
+```python
+In [153]: from collections import Counter
+        : Counter(random.choices(nums, weights=weights, k=10000))
+Out[153]: Counter({1: 4983, 3: 2020, 7: 1048, 5: 995, 9: 954})
+```
+
+The ratios returned are approximately equivalent to the weights as expected. Cumulative weights can also be used. The cumulative weight is the cumulative weight of all previous elements plus the new weight of the current element:
+
+```python
+In [154]: weights = [5, 2, 1, 1, 1]
+        : scalar = 0
+```
+
+The walrus operator `:=` can be used to update the value in `scalar` while using the `scalar` to build up a `list` or cumulative values using `list` comprehensions:
+
+```python
+In [155]: cumweights = [scalar := scalar + weight for weight in weights]
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">cum_weights</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[5 7 8 9 10]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">scalar</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">10</td>
+  </tr>  
+</table>
+
+Once the cumulative weights are obtained, they can be used with the named keyword input argument `cum_weights` and a similar ratio is obtained in the `Counter` instance as before:
+
+```python
+In [156]: random.seed(0)
+        : Counter(random.choices(nums, cum_weights=cumweights, k=10000))
+Out[156]: Counter({1: 4980, 3: 2018, 7: 1049, 5: 996, 9: 957})
+```
+
+The `sample` function can be used to take a sample of `k` values from a population. Unlike choices the values taken for the sample are taken without replacement. For a population of `5` items where each item has a single count. A sample of `3` values can be taken:
+
+```python
+In [157]: nums = [1, 3, 5, 7, 9]
+        : random.seed(0)
+        : random.sample(nums, k=3)
+Out[157]: [7, 9, 1]
+```
+
+When a sample of `5` items is taken from a population of `5` items, all the items are taken and the `list` instance returned is essentially shuffled:
+
+```python
+In [158]: nums = [1, 3, 5, 7, 9]
+        : random.seed(0)
+        : random.sample(nums, k=5)
+Out[158]: [7, 9, 1, 3, 5]
+```
+
+If `6` items are attempted to be taken from a population of only `5` items, there is a `ValueError`:
+
+```python
+In [159]: nums = [1, 3, 5, 7, 9]
+        : random.seed(0)
+        : random.sample(nums, k=6)
+ValueError: Sample larger than population or is negative
+```
+
+The counts can be assigned to values which matched the previously used weights:
+
+```python
+In [160]: nums = [1, 3, 5, 7, 9]
+        : counts = [5, 2, 1, 1, 1]
+```
+
+Since counts has a sum of `10`, there are `10` values in the full sample. This means there are five occurrences of `1`, two occurrences of `3`, one occurrence of `5`, one occurrence of `7` and one occurrence of `9`. This can be seen when a full sample is taken:
+
+```python
+In [161]: random.seed(0)
+        : random.sample(nums, counts=counts, k=10)
+Out[161]: [3, 9, 1, 1, 1, 1, 3, 1, 7, 5]
+```
+
+```python
+In [162]: random.seed(0)
+        : Counter(random.sample(nums, counts=counts, k=10))
+Out[162]: Counter({1: 5, 3: 2, 9: 1, 7: 1, 5: 1})
+```
+
+Generally a number of smaller sample is taken from a larger dataset:
+
+```python
+In [163]: random.seed(0)
+        : random.sample(nums, counts=counts, k=3)
+Out[163]: [3, 9, 1]
+```
+
+The `shuffle` function takes in a `list` and mutates the order of values in place:
+
+```python
+In [164]: nums = [1, 3, 5, 7, 9]
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">nums</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 3 5 7 9]</td>
+  </tr> 
+</table>
+
+```python
+In [165]: random.seed(0)
+        : random.shuffle(nums)
+```
+
+Note there is no return value because this function is mutable and `nums` is shuffled in place:
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">nums</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">5</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[5 3 1 9 7]</td>
+  </tr> 
+</table>
+
+Essentially this is the mutable counterpart to taking a sample of all the values in the `list` where every value in the sample has a default count of `1`. 
+
+The `random` module has a large number of identifiers which retrieve a number from a statistical distribution. For example, the `random` sample will display a random normalised `float`:
+
+```python
+In [166]: random.seed(0)
+        : random.random()
+Out[166]: 0.8444218515250481
+```
+
+A `list` of random numbers can be obtained using a `list` comprehension:
+
+```python
+In [167]: random.seed(0)
+        : [random.random() for num in range(10)]
+Out[167]: 
+[0.8444218515250481,
+ 0.7579544029403025,
+ 0.420571580830845,
+ 0.25891675029296335,
+ 0.5112747213686085,
+ 0.4049341374504143,
+ 0.7837985890347726,
+ 0.30331272607892745,
+ 0.4765969541523558,
+ 0.5833820394550312]
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_047.png' alt='img_047' width='600'/>
+
+The `random` function is a normalised version of the `uniform` function which looks for a random floating point number within a specified range:
+
+```python
+In [168]: random.seed(0)
+        : random.uniform(1.5, 2.0)
+Out[168]: 1.9222109257625242
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_048.png' alt='img_048' width='600'/>
+
+The `randint` function looks for a random integer within a specified range:
+
+```python
+In [169]: random.seed(0)
+        : random.randint(0, 10)
+Out[169]: 6
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_049.png' alt='img_049' width='600'/>
+
+The `randrange` function looks for a random integer within a specified range, behaving more similar to the `range` function and including an optional step:
+
+```python
+In [170]: random.seed(0)
+        : random.randrange(0, 10, 2)
+Out[170]: 6
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_050.png' alt='img_050' width='600'/>
+
+Recall that Python counts using zero-order indexing and the `range` function is inclusive of the `start` bound and is exclusive of the `stop` bount (counts from `start` using the `step` value supplied to the `stop` value but does not include the `stop` value itself).
+
+The function `randbytes` can be used to select a specified random number of bytes. The randomly generated byte can be converted to hexadecimal:
+
+```python
+In [171]: random.seed(0)
+        : random.randbytes(1)
+Out[171]: b'\xd8'
+```
+
+This can be seen in `hex`:
+
+```python
+In [172]: random.seed(0)
+        : random.randbytes(1).hex()
+Out[172]: 'd8'
+```
+
+If this is cast into an integer, notice it is between `0` and `256`:
+
+```python
+In [173]: random.seed(0)
+        : int(random.randbytes(1).hex(), base=16)
+Out[173: 216
+```
+
+And can be displayed in binary as:
+
+```python
+In [174]: random.seed(0)
+        : bin(int(random.randbytes(1).hex(), base=16))
+Out[174]: '0b11011000'
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_051.png' alt='img_051' width='600'/>
+
+The function `getrandbits` is similar and will return a random number of bits as an integer directly. Recall there are 8 bits in a byte:
+
+```python
+In [175]: random.seed(0)
+        : random.getrandbits(8)
+Out[175]: 216
+```
+
+And displayed in binary as:
+
+```python
+In [176]: random.seed(0)
+        : bin(random.getrandbits(8))
+Out[176]: '0b11011000'
+```
+
+Note as this function is in bits opposed to bytes and the number of bits does not need to be expressed in multiples of 8:
+
+```python
+In [177]: random.seed(0)
+        : bin(random.getrandbits(9))
+Out[177]: '0b110110000'
+```
+
+There are also non-uniform statistical distributions, for example, the `tirangular` distribution gives a triangular distribution:
+
+```python
+In [178]: random.seed(0) 
+        : random.triangular()
+Out[178]: 0.7210930724462443
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_052.png' alt='img_052' width='600'/>
+
+The lower x and upper x value can be specified:
+
+```python
+In [179]: random.seed(0) 
+        : random.triangular(0, 10)
+Out[179]: 7.210930724462443
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_053.png' alt='img_053' width='600'/>
+
+When the mode is not specified it is taken to be the average of the lower and upper x values giving a symmetrical triangle. The mode value can also be specified which will give an unsymmetric triangle:
+
+```python
+In [180]: random.seed(0) 
+        : random.triangular(5, 10, 6)
+Out[180]: 8.236037707461115
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_054.png' alt='img_054' width='600'/>
+
+Another popular distribution is the `normalvariate`:
+
+```python
+In [181]: random.seed(0) 
+        : random.normalvariate()
+Out[181]: -0.18386822109325826
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_055.png' alt='img_055' width='600'/>
+
+The normal distribution is gaussian (bell-curve) shaped, note it is centred around the average value `mu=0` which is the origin and has a standard deviation `sigma=1`. The normal distribution has the empirical rule where the following percentage of values lie between the specified number of standard deviations:
+
+|standard deviations|number of values|
+|---|---|
+|1|68|
+|2|95|
+|3|99.7|
+
+The `mu` value can be changed:
+
+```python
+In [182]: random.seed(0) 
+        : random.normalvariate(mu=1)
+Out[182]: 0.8161317789067417
+```
+
+Notice that `random.normalvariate(mu=1)` is essentially `1 + random.normalvariate()`.
+
+The `sigma` value can be changed:
+
+```python
+In [183]: random.seed(0)
+        : random.normalvariate(sigma=2)
+Out[183]: -0.3677364421865165
+```
+
+`100000` values can be viewed in a histogram. The top `2` histograms are the default values `mu=0`, `sigma=1`. The bottom left histogram changes `mu=1` and bottom right used `sigma=2`:
+
+<img src='./images/img_056.png' alt='img_056' width='600'/>
+
+The exponential of this function is commonly used:
+
+```python
+In [184]: random.seed(0)
+        : math.exp(random.normalvariate(mu=0, sigma=1))
+Out[184]: 0.8320454426412622
+```
+
+And is called the log normal variate:
+
+```python
+In [185]: random.seed(0)
+        : random.lognormvariate(mu=0, sigma=1)
+Out[185]: 0.8320454426412622
+```
+
+Note the distribution is called log normal because the logarithm of the output follows a normal distribution.
+
+```python
+In [186]: random.seed(0)
+        : math.log(random.lognormvariate(mu=0, sigma=1))
+Out[186]: -0.18386822109325823
+
+In [187]: random.seed(0)
+        : random.normalvariate(mu=0, sigma=1)
+Out[187]: -0.18386822109325826
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_057.png' alt='img_057' width='600'/>
+
+The exponential distribution can also be used:
+
+```python
+In [188]: random.seed(0)
+        : random.expovariate()
+Out[188]: 1.8606071110652234
+```
+
+`100000` values can be viewed in a histogram:
+
+<img src='./images/img_058.png' alt='img_058' width='600'/>
+
+The peak in the histogram is at `4663` (y) at `0` (x). If this y peak value is divided by `math.e`:
+
+```python
+In [189]: 4663 / math.e
+Out[189]: 1715.4218341824355
+```
+
+Note that this is `1` (x) on the histogram. The  `lambd` parameter (`lambda` is not used to prevent confusion with lambda expressions) is the inverse of this value:
+
+```python
+In [190]: random.seed(0)
+        : random.expovariate(2.0)
+Out[190]: 0.9303035555326117
+```
+
+If the `lambd=1` and `lambd=2` are compared notice that the peak in both cases is `4663` at `0`. The peak divided by `math.e` is at an x value of `1/1` and `1/2` respectively:
+
+<img src='./images/img_059.png' alt='img_059' width='600'/>
+
+The `gammavariate` function is used to generate a random floating point number from a gamma distribution. The gamma distribution has two parameters `a` and `b`. 
+
+```python
+In [191]: random.seed(0)
+        : random.gammavariate(1, 1)
+Out[191]: 1.8606071110652234
+
+In [192]: random.seed(0)
+        : random.expovariate(1)
+Out[192]: 1.8606071110652234
+```
+
+`100000` values can be viewed in a histogram with differing values of `a` and `b`:
+
+<img src='./images/img_060.png' alt='img_060' width='600'/>
+
+Note that `a` is the shape parameter:
+
+* If a < 1, the distribution is heavily skewed.
+* If a = 1, the gamma distribution simplifies to an exponential distribution.
+* If a > 1, the distribution starts to resemble a normal distribution.
+
+`b` is the scale parameter, which stretches or compresses the distribution:
+
+* The mean of the distribution is `a * b`.
+* The variance is `a * b ** 2`.
+
+The `betavariate` generates a random normalised floating point number from a beta distribution. The beta distribution has two parameters `alpha` and `beta` which determine how the probability is distributed over the interval between `0` and `1`:
+
+```python
+In [193]: random.seed(0)
+        : random.betavariate(1, 1)
+Out[193]: 0.5673903803365107
+```
+
+`100000` values can be viewed in a histogram with differing values of `alpha` and `beta`:
+
+<img src='./images/img_061.png' alt='img_061' width='600'/>
+
+Note that:
+
+* `alpha=1` and `beta=1` give a distribution similar to a random uniform distribution
+* `alpha=5` and `beta=1` give a distribution similar to a positive exponential distribution
+* `alpha=5` and `beta=1` gives a distribution similar to a positive exponential distribution
+* `alpha=5` and `beta=5` gives a distribution similar to a Gaussian bell shape distribution
+
+The `paretovariate` function generates a random floating point number from a Pareto distribution. The Parento distribution is a power law probability statistical distribution with a sharp probability peak and symmetric long probability tail. It was originally used by Pareto to model the distribution of wealth per percentile population, where it was found that 20 % of the population held 80 % of the wealth:
+
+It has a shape parameter `alpha` which was empirically calculated to be $\log_4{(5)}=1.161$ for the so called 80-20 rule:
+
+```python
+In [194]: random.seed(0)
+        : random.paretovariate(alpha=1.161)
+Out[194]: 4.965877923269533
+```
+
+`100` values can be viewed in a histogram:
+
+<img src='./images/img_062.png' alt='img_062' width='600'/>
+
+The `weibullvariate` function generates a random floating point number from a Weibull distribution. The Weibull distribution has a scale parameter `alpha` and a shape parameter `beta`:
+
+```python
+In [195]: random.seed(0)
+        : random.weibullvariate(alpha=1, beta=1)
+Out[195]: 1.8606071110652234
+```
+
+<img src='./images/img_063.png' alt='img_063' width='600'/>
+
+Note that:
+
+* `alpha=1`, `beta=0.5` give a distribution similar to a Pareto distribution
+* `alpha=1`, `beta=1` give a distribution that moves towards a negative exponential distribution
+* `alpha=1`, `beta=2` gives a distribution that begins to move towards the normal distribution
+* `alpha=1`, `beta=3` gives a distribution that is more similar to the normal distribution:
+
+The `vonmisesvariate` function generates a random floating point number from a Vonmises distribution. The Vonmises Distribution is a circular data distribution. It has two input arguments, the angle `mu` and the concentration parameter `kappa`:
+
+When `kappa=0` the distribution generates a uniform random angle:
+
+```python
+In [195]: random.seed(0)
+        : random.vonmisesvariate(mu=math.tau/4, kappa=0)
+Out[195]: 5.305658970563565
+```
+
+<img src='./images/img_064.png' alt='img_064' width='600'/>
+
+The x scale ranges from `0` to `tau`. For clarity it can be expressed in the units of $\frac{1}{16}\tau$:
+
+<img src='./images/img_065.png' alt='img_065' width='600'/>
+
+The height of each bar can also be viewed on a polar plot:
+
+<img src='./images/img_066.png' alt='img_066' width='600'/>
+
+If the angle remains the same `mu=tau/4`, the effect of the concentration parameter can be examined. When `kappa` is increased to `kappa=1` and `kappa=2`, the histogram plotted on a polar axis looks like:
+
+<img src='./images/img_067.png' alt='img_067' width='600'/>
+
+<img src='./images/img_068.png' alt='img_068' width='600'/>
+
 ## statistics Module
 
+The `statistics` module is imported using:
+
+```python
+In [196]: import statistics
+```
+
+And has the following identifiers:
+
+```python
+In [197]: statistics.
+# 🔗 Measures of Central Tendency
+# - mean                        # Returns the arithmetic mean of data.
+# - median                      # Returns the median (middle value) of data.
+# - median_low                  # Returns the low median of data.
+# - median_high                 # Returns the high median of data.
+# - mode                        # Returns the most common data point.
+# - multimode                   # Returns a list of most common data points.
+
+# 🔗 Measures of Spread
+# - variance                    # Returns the variance of data.
+# - stdev                       # Returns the standard deviation of data.
+# - pstdev                      # Returns the population standard deviation.
+# - pvariance                   # Returns the population variance.
+
+# 🔗 Measures of Order Statistics
+# - quantiles                   # Returns cut points dividing data into equal-sized groups.
+
+# 🔗 Measures of Robustness
+# - harmonic_mean               # Returns the harmonic mean of data.
+# - geometric_mean              # Returns the geometric mean of data.
+# - fmean                       # Returns the floating-point arithmetic mean.
+
+# 🔗 Correlation and Regression
+# - correlation                 # Returns the Pearson correlation coefficient.
+# - covariance                  # Returns the sample covariance of two datasets.
+# - linear_regression           # Returns the slope and intercept of a linear regression.
+
+# 🔗 Other Statistical Functions
+# - NormalDist                  # Creates a normal distribution object.
+# - erf                         # Returns the error function of x.
+# - erfc                        # Returns the complementary error function of x.
+# - factorial                   # Returns the factorial of an integer.
+# - perm                        # Returns the number of permutations of n items taken k at a time.
+# - comb                        # Returns the number of combinations of n items taken k at a time.
+```
+
+The measures of central tendancy can be examined from a very simple dataset:
+
+```python
+In [196]: data = [7, 5, 3, 1, 2, 4, 6, 4]
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[7 5 3 1 2 4 6 4]</td>
+  </tr>
+</table>
+
+The `list` mutable method `sort` can be used to sort the `list` instance `data` in place:
+
+```python
+In [197]: data.sort()
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4 4 5 6 7]</td>
+  </tr>
+</table>
+
+`data` can be expanded in the Variable Explorer. The index associated with each value is shown. Note that the first index is `0` because Python uses zero-order indexing. The last index is `7` and the length is `8` (which is `1` higher than the last index):
+
+<table style="width: 20%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="2" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">data - numpy int64 array</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;"></th>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;"> </td>       
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">0</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">1</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">1</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">2</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">2</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">3</td>
+  </tr> 
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">3</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">4</td>
+  </tr>     
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">4</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">4</td>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">5</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">5</td>
+  </tr>    
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">6</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">6</td>
+  </tr>    
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">7</th>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">7</td>
+  </tr>                 
+</table>
+
+```python
+In [198]: len_data = len(data)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4 4 5 6 7]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">len_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">8</td>
+  </tr>  
+</table>
+
+The sum of the data can be calculated using:
+
+$$\text{sum}=1+2+3+4+4+5+6+7=32$$
+
+```python
+In [199]: sum_data = sum(data)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4 4 5 6 7]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">len_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">8</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sum_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">32</td>
+  </tr>      
+</table>
+
+The mean and modulus can be calculated as integer instances:
+
+```python
+In [200]: sum(data) // len(data)
+Out[200]: 4
+```
+
+```python
+In [201]: sum(data) % len(data)
+Out[201]: 0
+```
+
+Or the mean can be calculated as a floating point number:
+
+```python
+In [202]: sum(data) / len(data)
+Out[202]: 4.0
+```
+
+Notice although this divides down to an `int`, the value returned is a `float` i.e. `4.0` instead of `4`. The `mean` function returns the mean as an integer when no modulus is present and as a floating point number otherwise:
+
+```python
+In [203]: statistics.mean(data)
+Out[203]: 4
+```
+
+The difference can be seen when the value `8` is appended:
+
+```python
+In [204]: data.append(8)
+        : len_data = len(data)
+        : sum_data = sum(data)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4 4 5 6 7 8]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">len_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">9</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sum_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">40</td>
+  </tr>      
+</table>
+
+```python
+In [205]: statistics.mean(data)
+Out[205]: 4.444444444444445
+```
+
+If this last value is popped off:
+
+```python
+In [206]: data.pop
+Out[206]: 8
+        : len_data = len(data)
+        : sum_data = sum(data)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4 4 5 6 7]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">len_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">8</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sum_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">32</td>
+  </tr>      
+</table>
+
+The `fmean` (float mean) function will return the mean always as a floating point number:
+
+```python
+In [207]: statistics.fmean(data)
+Out[207]: 4.0
+```
+
+The median is the middle point of the data which can be selected directly when the data is odd. When the data has an even number of values it is the mean of these two middle values:
+
+$$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&\textbf{4}&5&6&7\end{matrix}\right]$$
+
+$$\text{median}=\frac{4+4}{2}=4$$
+
+The `meadian` function can be used to return the `mean`:
+
+```python
+In [208]: statistics.median(data)
+Out[208]: 4.0
+```
+
+The value on the left is known as the median low value:
+
+$$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&4&5&6&7\end{matrix}\right]$$
+
+And can be read of using the `meadian_low` function:
+
+```python
+In [209]: statistics.median_low(data)
+Out[209]: 4
+```
+
+The value on the right is known as the median high value:
+
+$$\text{data}=\left[\begin{matrix}1&2&3&4&\textbf{4}&5&6&7\end{matrix}\right]$$
+
+```python
+In [210]: statistics.median_high(data)
+Out[210]: 4
+```
+
+The mode is the most commonly occuring value:
+
+$$\text{data}=\left[\begin{matrix}1&2&3&\textbf{4}&\textbf{4}&5&6&7\end{matrix}\right]$$
+
+The `mode` function can be used to read off the mode:
+
+```python
+In [211]: statistics.mode(data)
+Out[211]: 4
+```
+
+The mode can be an important metric in a trial run. For example if a fashion designer wants to issue a prototype design, they may simplify manufacturing by starting only with the mode size, as it has the largest customer base. If the trial of the first batch is successful, they may complicate the manufacturer process to accommodate additional sizes. Sometimes a dataset will have multiple mode values, using mode will only give one of these values:
+
+```python
+In [212]: data2 = [1, 2, 2, 2, 2, 3, 4, 4, 4, 4, 6, 6, 7]
+In [213]: statistics.mode(data2)
+Out[213]: 2
+```
+
+The `multi_mode` funcrion can be used to read off multiple modes:
+
+```python
+In [213]: statistics.multimode(data2)
+Out[213]: [2, 4]
+```
+
+The `Counter` class is normally used for this purpose:
+
+```python
+In [214]: from collections import Counter
+        : Counter(data2)
+Out[214]: Counter({2: 4, 4: 4, 6: 2, 1: 1, 3: 1, 7: 1})
+```
+
+The concept of variance is to compute the average distance a datapoint differs from the mean. If the simple set `data` is examined. Notice when when the sum of (each datapoint minus the mean) is calculated, the positive values and negative values cancel each other out and the result is 0:
+
+$$\sum_{i=0}^{n}\left(x-\mu\right)=\left(1-4\right)+\left(2-4\right)+\left(3-4\right)+\left(4-4\right)+\left(4-4\right)+\left(5-4\right)+\left(6-4\right)+\left(7-4\right)$$
+
+$$\left(-3\right)+\left(-2\right)+\left(-1\right)+\left(0\right)+\left(0\right)+\left(1\right)+\left(2\right)+(3)$$
+
+$$-3-2-1+0+0+1+2+3$$
+
+$$0$$
+
+Instead the sum of (each datapoint minus the mean) squared is calculated. A negative value multiplied by itself is positive and this therefore always gives a positive value:
+
+$$\sum_{i=0}^{n}\left(x-\mu\right)^2=\left(1-4\right)^2+\left(2-4\right)^2+\left(3-4\right)^2+\left(4-4\right)^2+\left(4-4\right)^2+\left(5-4\right)^2+\left(6-4\right)^2+\left(7-4\right)^2$$
+
+$$\left(-3\right)^2+\left(-2\right)^2+\left(-1\right)^2+\left(0\right)^2+\left(0\right)^2+\left(1\right)^2+\left(2\right)^2+\left(3\right)^2$$
+
+$$9+4+1+0+0+1+4+9$$
+
+$$28$$
+
+The mean is a normalised sum, and the population variance is the normalised sum of (each datapoint minus the mean) squared. The normalisation factor is the number of datapoints:
+
+$$\frac{28}{8}=3.5$$
+
+The variance takes into account a difference in the number of degrees of freedom and uses the number of datapoints minus one as a normalisation factor:
+
+$$\frac{28}{(8-1)}=\frac{28}{7}=4.0$$
+
+The `pvariance` and `variance` functions calculate the population variance and variance respectively:
+
+```python
+In [215]: statistics.pvariance(data)
+Out[215]: 3.5
+
+In [216]: statistics.variance(data)
+Out[216]: 4
+```
+
+Due to the squaring used when calculating the population variance or variance, these measurements have units of the mean squared. The standard deviation is the square root of the variance, which is measured in the same units as the mean. 
+
+$$\sqrt{3.5}=1.8708$$
+
+$$\sqrt{4.0}=2.0$$
+
+The `pstdev` and `stdev` functions calculate the population standard deviation and standard deviation respectively:
+
+```python
+In [217]: statistics.pstdev(data)
+Out[217]: 1.8708286933869707
+
+In [218]: statistics.stdev(data)
+Out[218]: 2.0
+```
+
+A distribution is normally described using the mean and standard deviation in the form:
+
+$$4.0\pm2.0$$
+
+The median value is less susceptible to large outliers and in such a scenario can be more accurate when describing a small dataset. For example if an outlier is purposely introduced, there is not much change in the median but the mean is highly distorted:
+
+```python
+In [219]: data.append(99)
+        : len_data = len(data)
+        : sum_data = sum(data)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">9</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4 4 5 6 7 99]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">len_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">9</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sum_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">131</td>
+  </tr>      
+</table>
+
+```python
+In [210]: statistics.mean(data)
+Out[210]: 114.55555555555556
+
+In [211]: statistics.median(data)
+Out[211]: 4.0
+
+In [212]: statistics.stdev(data)
+Out[212]: 331.67194300660674
+```
+
+If this outlier value is popped off:
+
+```python
+In [213]: data.pop
+Out[213]: 8
+        : len_data = len(data)
+        : sum_data = sum(data)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">8</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4 4 5 6 7]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">len_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">8</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">sum_data</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">32</td>
+  </tr>      
+</table>
+
+The `quantiles` function is used to group data into quantiles, that is quarters with equal proability:
+
+```python
+In [214]: statistics.quantiles(data)
+Out[214]: [2.25, 4.0, 5.75]
+```
+
+The quantile values can be used to cut the data into quantiles using:
+
+```python
+In [215]: q1 = []
+        : q2 = []
+        : q3 = []
+        : q4 = []
+        : for num in data:
+        :     if(num < statistics.quantiles(data)[0]):
+        :         q1.append(num)
+        :     elif (num < statistics.quantiles(data)[1]):
+        :         q2.append(num)
+        :     elif (num < statistics.quantiles(data)[2]):
+        :         q3.append(num)
+        :     else:
+        :         q4.append(num)
+        : print(q1, q2, q3, q4, sep='\n')
+[1, 2]
+[3]
+[4, 4, 5]
+[6, 7]
+```
+
+Note the values returned above are not exactly quarters because this is a small dataset with duplicate values.
+
+The mean is calculated using a normalised sum. The geometric mean instead uses a normalised product of all the elements:
+
+```python
+In [216]: math.prod(data)
+Out[216]: 20160
+
+In [217]: len(data)
+Out[217]: 8
+
+In [218]: math.prod(data) ** (1 / len(data))
+Out[218]: 3.451924719784297
+```
+
+The `geometric_mean` function calculates this directly:
+
+```python
+In [219]: statistics.geometric_mean(data)
+Out[219]: 3.451924719784297
+```
+
+The harmonic mean is calculated using the inverse sum:
+
+```python
+In [220]: [1 / element for element in data]
+Out[220]: 
+[1.0,
+ 0.5,
+ 0.3333333333333333,
+ 0.25,
+ 0.25,
+ 0.2,
+ 0.16666666666666666,
+ 0.14285714285714285]
+```
+
+This is summed:
+
+```python
+In [221]: sum([1 / element for element in data])
+Out[221]: 2.8428571428571425
+```
+
+Then divided through by `8`:
+
+```python
+In [222]: (sum([1 / element for element in data])) / 8
+Out[222]: 0.3553571428571428
+```
+
+FInally the inverse of this is taken:
+
+```python
+In [223]: 1 / ((sum([1 / element for element in data])) / 8)
+Out[223]: 2.814070351758794
+```
+
+The `harmonic_mean` function calculates this directly:
+
+```python
+In [224]: statistics.harmonic_mean(data)
+Out[224]: 2.814070351758794
+```
+
+Supposing the following grouped data is obtained from a histogram of values:
+
+```python
+In [225]: data = [2, 2, 3, 3, 3, 4]
+```
+
+Then for each individual datapoint the range is between:
+
+|central value|range|
+|---|---|
+|2|$1.5\text{ to } 2.5$|
+|2|$1.5\text{ to } 2.5$|
+|3|$2.5\text{ to } 3.5$|
+|3|$2.5\text{ to } 3.5$|
+|3|$2.5\text{ to } 3.5$|
+|4|$3.5\text{ to } 4.5$|
+
+There are 6 datapoints so $n=6$ and each datapoint spans an interval $i=1$. 
+
+The median range is $2.5\text{ to } 3.5$, this has a lower limit of $l=2.5$ and has a frequency $f=3$.
+
+There are 2 datapoints before the median range, so $b=2$.
+
+The median grouped is defined as:
+
+$$l+\frac{\left(\frac{n}{2}-b\right)}{f}\ast i$$
+
+$$2.5+\frac{\left(\frac{6}{2}-2\right)}{3}\ast1$$
+
+$$2.833$$
+
+The `median_grouped` function can be used to calculate the above:
+
+```python
+In [226]: statistics.median_grouped(data)
+Out[226]: 2.8333333333333335
+```
+
+The default $i=1$ is set by the named parameter `interval=1` , this can be increased to `2`. For each individual datapoint the range is between:
+
+|central value|range|
+|---|---|
+|2|$1.0\text{ to } 3.0$|
+|2|$1.0\text{ to } 3.0$|
+|3|$2.0\text{ to } 4.0$|
+|3|$2.0\text{ to } 4.0$|
+|3|$2.0\text{ to } 4.0$|
+|4|$3.0\text{ to } 5.0$|
+
+There are 6 datapoints so $n=6$ and each datapoint spans an interval $i=2$. 
+
+The median range is $2.0\text{ to } 4.0$, this has a lower limit of $l=2.0$ and has a frequency $f=3$.
+
+There are 2 datapoints before the median range, so $b=2$.
+
+The median grouped is defined as:
+
+$$l+\frac{\left(\frac{n}{2}-b\right)}{f}\ast i$$
+
+$$2.0+\frac{\left(\frac{6}{2}-2\right)}{3}\ast2$$
+
+$$2.667$$
+
+This can be calculated using:
+
+```python
+In [227]: statistics.median_grouped(data, 2)
+Out[227]: 2.6666666666666665
+```
+
+The covariance is a measure of the joint variability of two datasets of the same size. To examine this the following datasets will be created and their respective mean and variance will be calculated: 
+
+```python
+In [228]: data1 = [1, 2, 3, 4]
+        : data2 = [1, 2, 3, 2]
+        :
+        : mean_data1 = statistics.mean(data1)
+        : var_data1 = statistics.variance(data1)
+        :
+        : mean_data2 = statistics.mean(data2)
+        : var_data2 = statistics.variance(data2)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">mean_data1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">float</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">2.5</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">mean_data2</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">int</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">2.0</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">var_data1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">float</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">1.6666666666666667</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">var_data2</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">float</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">1</td>
+    <td style="padding: 8px; background-color: #8c5616; color: #ffffff;">0.6666666666666666</td>
+  </tr>  
+</table>
+
+The covariance of two datasets is similar to the variance of a single dataset. Instead of summing the squared differences from the mean, of a single dataset. The sum of the product of the difference from the mean of the first dataset is multiplied by the difference from the mean of the second dataset:
+
+$$\sum_{i=0}^{n}{\left(x_i-\mu_x\right)\ast(y_i-\mu_y)}=\left(1-2.5\right)\ast\left(1-2\right)+\left(2-2.5\right)\ast\left(2-2\right)+\left(3-2.5\right)\ast\left(3-2\right)+\left(4-2.5\right)\ast(2-2)=2.0$$
+
+This can be calculated using a `list` comprehension:
+
+```python
+In [229]: [(num1 - mean_data1) * (num2 - mean_data2) for num1, num2 in zip(data1, data2)]
+Out[229]: [1.5, -0.0, 0.5, 0.0]
+```
+
+That is summed:
+
+```python
+In [230]: sum([(num1 - mean_data1) * (num2 - mean_data2) for num1, num2 in zip(data1, data2)])
+Out[230]: 2.0
+```
+
+The covariance takes into account a difference in the number of degrees of freedom and uses the number of datapoints minus one as a normalisation factor:
+
+$$\frac{2.0}{4-1}=\frac{2}{3}=0.667$$
+
+This can be calculated manually using:
+
+```python
+In [231]: sum([(num1 - mean_data1) * (num2 - mean_data2) for num1, num2 in zip(data1, data2)]) / (len(data1) - 1)
+Out[231]: 0.6666666666666666
+```
+
+Or using the `covariance` function:
+
+```python
+In [232]: statistics.covariance(data1, data2)
+Out[232]: 0.6666666666666666
+```
+
+The correlation between two variables is the ratio of the covariance of the two variables divided by the square root of each of the individual variances: 
+
+$$\text{corr}\left(x,y\right)=\frac{\text{cov}\left(x,y\right)}{\sqrt{\text{var}\left(x\right)}\ast\sqrt{\text{var}\left(y\right)}}$$
+
+For the datasets above:
+
+$$\frac{0.6667}{\sqrt{0.6667}\ast\sqrt{0.6667}}=0.6325$$
+
+The `correlation` function can be used:
+
+```python
+In [233]: statistics.correlation(data1, data2)
+Out[233]: 0.6324555320336759
+```
+
+The correlation values range between `-1` and `1`. A correlation close to `-1`, means a negative correlation and therefore the `y` variable decreases as the `x` value increases. A correlation close to `0` means no correlation and the `y` variable is uninfluenced when the `x` value increases. A correlation close to `1`, means a positive correlation and therefore the `y` variable increases as the `x` value increases. 
+
+The datasets has a positive correlation of `0.6324` and the relationship can be seen in a plot:
+
+<img src='./images/img_069.png' alt='img_069' width='600'/>
+
+Linear Regression can be used to calculate the best straight line fit between these datapoints that has the form:
+
+$$y=\text{slope}*x+\text{intercept}+\text{noise}$$
+
+And the line of best fit, minimises the noise. The `linear_regression` function can be used:
+
+```python
+In [224]: statistics.linear_regression(data1, data2)
+Out[224]: LinearRegression(slope=0.4, intercept=1.0)
+```
+
+Notice this returns an instance of the `LinearRegression` class, which is a `NamedTuple` with the field names `slope` and `intersect`. If assigned to an instance name:
+
+```python
+In [225]: lin_fit = statistics.linear_regression(data1, data2)
+```
+
+These fields can be accessed:
+
+```python
+In [226]: lin_fit.slope
+Out[226]: 0.4
+
+In [227]: lin_fit.intercept
+Out[227]: 1.0
+```
+
+`data1` is the independent `x` variable and `data2` is the dependent `y` variable. The slope and intercept canbe used to calculated predicted `y` values:
+
+```python
+In [228]: data2_pred = []
+        :
+        : for x in data1:
+        :     data2_pred.append(lin_fit.slope * x + lin_fit.intercept)
+```
+
+<table style="width: 65%; border-collapse: collapse; font-family: sans-serif;">
+  <tr>
+    <th colspan="4" style="text-align:center; padding: 8px; background-color: #2d2d30; color: #ffffff;">Variable Explorer</th>
+  </tr>
+  <tr>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Name ▲</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Type</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Size</th>
+    <th style="padding: 8px; background-color: #252526; color: #ffffff;">Value</th>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data1</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 4]</td>
+  </tr>
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data2</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1 2 3 2]</td>
+  </tr>    
+  <tr>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">data2_pred</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">list</td>
+    <td style="padding: 8px; background-color: #1e1e1e; color: #ffffff;">4</td>
+    <td style="padding: 8px; background-color: #2C748E; color: #ffffff;">[1.4 1.8 2.2 2.6]</td>
+  </tr>
+</table>
+
+On a plot this looks like:
+
+<img src='./images/img_070.png' alt='img_070' width='600'/>
 
 [Return to Python Tutorials](../readme.md)
