@@ -1,4 +1,4 @@
-# Python tutorials for Scientists
+# Python Tutorials for Scientists
 
 
 **Comprehensive Python tutorials designed for beginners and scientists.**  
