@@ -1,10 +1,17 @@
-# Python Tutorials
+# Python tutorials for Scientists
 
-Comprehensive Python tutorials designed for beginners and scientists, covering installation, object-oriented programming, and the scientific Python stack
 
-This GitHub repository contains Python tutorials in markdown format. These tutorials look at installation on Python and setup of Python IDEs on Windows and Linux. These tutorials look at object orientated programming and the object orientated design pattern known as the Python data model. These tutorials also look at the way the Python data model is extended for text, numeric and collection builtins classes using the object orientated programming concept of inheritance. Finally these tutorials look at the numeric Python stack which bridges the numeric and collect based design patterns. The numeric Python stack provides a number of data structures and plotting libraries which are commonly used in scientific fields (my own background is in biophysics) however the principles covered in these tutorials should also help give the foundations for other fields like web development.
+**Comprehensive Python tutorials designed for beginners and scientists.**  
 
-Please star and share this repository if you've found it useful as it will make it easier for others to find.
+These tutorials cover:  
+- Python installation and setup  
+- Object-oriented programming (OOP) and the Python data model  
+- The scientific Python stack: **NumPy, pandas, Matplotlib, Seaborn**  
+- IDEs geared towards scientific use: **Spyder, JupyterLab, VSCode**  
+
+My background is in **biophysics**, where Python is becoming increasingly important for **data analysis, visualisation, and simulation**. This repository is designed to help both beginners and scientists build strong foundations in Python while also learning how to apply it in **research and practical problem-solving**.  
+
+⭐ **Please star and share this repository** if you’ve found it useful — it will help others discover it too!  
 
 ## Viewing Markdown Files
 
